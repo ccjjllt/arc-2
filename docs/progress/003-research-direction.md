@@ -2,6 +2,8 @@
 
 日期：2026-09-29。对应计划：`docs/plan/003-research-direction.md`。实现交接：`docs/plan/004-specialist-solver.md`。
 
+后续更新：用户明确排除 SOAR 7B，并要求优先研究比 Qwen3 更强的初始化模型。本文保留当时的文献记录；SOAR 次线推荐已撤回，当前优先级与模型比较见 `005-stronger-backbones.md`。没有证据证明 NVARC 的 Qwen3 已达容量上限。
+
 ## 本轮决策
 
 主线选择 **ARC2 新规则数据 + 已有 4B 网格专用模型继续微调 + 逐题适配**；次线选择 **独立的 7B 程序模型 + 示例执行反馈与修复**。先回答新数据是否带来新解题能力，再研究两分支互补。
@@ -101,7 +103,7 @@
 | 方法 | 证据 | 决策 |
 | --- | --- | --- |
 | 4B 网格模型继续训练 | NVARC 有模型、数据和训练实现，2025 private 24.03%；2026 多个公开 Notebook 已能运行 | **主线**：复用底座，把资源投入新增 ARC2 规则和组合难度；不把历史分数当本项目结果 |
-| SOAR 小模型程序搜索 | [代码](https://github.com/flowersteam/SOAR)、[7B权重](https://huggingface.co/julien31/Soar-qwen-7b)、[论文v2](https://arxiv.org/html/2507.14172v2)齐备；52%是 ARC1 大搜索集成结果 | **次线**：独立测 ARC2 的新增解题，不预设强于网格模型 |
+| SOAR 小模型程序搜索 | [代码](https://github.com/flowersteam/SOAR)、[7B权重](https://huggingface.co/julien31/Soar-qwen-7b)、[论文v2](https://arxiv.org/html/2507.14172v2)齐备；52%是 ARC1 大搜索集成结果 | **推荐已撤回**：用户明确排除；仅保留历史文献事实，不再安排实验 |
 | Poetiq / ArcMemo | [Poetiq](https://github.com/poetiq-ai/poetiq-arc-agi-solver)依赖 API；[ArcMemo](https://arxiv.org/html/2509.04439v3)59.33%来自 ARC1 的100题子集 | 借鉴执行反馈、修复、不同输出保留；先不复刻多 API agent 系统 |
 | LLaDA 递归扩散 | [ARChitects 报告](https://lambdalabsml.github.io/ARC2025_Solution_by_the_ARChitects/)有 2D 位置编码和递归解码；完整离线训练8×H100约39h | 有价值但工程与训练投入较大，本轮不做主线 |
 | TRM / DRM | [TRM](https://github.com/SamsungSAILMontreal/TinyRecursiveModels)官方ARC2训练示例为4×H100约3天；[DRM论文](https://arxiv.org/abs/2604.18839)的14M模型public pass@2为24.9%，[代码](https://github.com/wwwwwwwwz/DenoisingRecursionModels)公开但本轮未见checkpoint | 可直接复用的TRM权重先作互补候选；DRM需单独训练研究，暂不从零重造架构 |
