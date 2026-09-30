@@ -1,0 +1,151 @@
+{
+  "retrieved_on": "2026-09-30",
+  "method": "Kaggle MCP get_notebook_info with explicit versionLabelNullable",
+  "note": "Read-only archive of executed Notebook sources. Not rerun during this review. Server last_run_time values are preserved as returned; retrieval date is not execution time.",
+  "entries": [
+    {
+      "file": "experiments/006/source/r0b-v5.ipynb",
+      "notebook": "ccjjllt/r0b-27b-l4-feasibility",
+      "requested_version": "v5",
+      "metadata": {
+        "id": 136399387,
+        "ref": "ccjjllt/r0b-27b-l4-feasibility",
+        "title": "R0b 27B L4 feasibility",
+        "author": "ccjjllt",
+        "slug": "r0b-27b-l4-feasibility",
+        "last_run_time": "2026-09-27T01:47:10.995980700Z",
+        "language": "python",
+        "kernel_type": "notebook",
+        "is_private": true,
+        "enable_gpu": true,
+        "enable_internet": false,
+        "category_ids": [
+          "gpu"
+        ],
+        "dataset_data_sources": [
+          "ccjjllt/qwen38-wheelhouse-py312"
+        ],
+        "competition_data_sources": [
+          "arc-prize-2026-arc-agi-2"
+        ],
+        "model_data_sources": [
+          "ugvfpdcuwfnh/qwen3-8-27b/Transformers/transformers-bf16/1"
+        ],
+        "enable_tpu": false,
+        "current_version_number": 5,
+        "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+        "machine_shape": "NvidiaL4"
+      },
+      "source_sha256": "a98754a0664d6358a721bb2f7b59d31669166f6991838e3182adf99bbde45e7d",
+      "readable_code_file": "experiments/006/source/r0b-v5.py"
+    },
+    {
+      "file": "experiments/006/source/r1-v3.ipynb",
+      "notebook": "ccjjllt/r1-27b-infer-baseline",
+      "requested_version": "v3",
+      "metadata": {
+        "id": 136418015,
+        "ref": "ccjjllt/r1-27b-infer-baseline",
+        "title": "R1 27B infer baseline",
+        "author": "ccjjllt",
+        "slug": "r1-27b-infer-baseline",
+        "last_run_time": "2026-09-27T01:47:19.933594Z",
+        "language": "python",
+        "kernel_type": "notebook",
+        "is_private": true,
+        "enable_gpu": true,
+        "enable_internet": false,
+        "category_ids": [
+          "gpu"
+        ],
+        "dataset_data_sources": [
+          "ccjjllt/qwen38-wheelhouse-py312"
+        ],
+        "competition_data_sources": [
+          "arc-prize-2026-arc-agi-2"
+        ],
+        "model_data_sources": [
+          "ugvfpdcuwfnh/qwen3-8-27b/Transformers/transformers-bf16/1"
+        ],
+        "enable_tpu": false,
+        "current_version_number": 3,
+        "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+        "machine_shape": "NvidiaL4"
+      },
+      "source_sha256": "08e5fc5c7b3fdf1d9883c0dc3cf038e6f972db0823154bb26165752f2ba34206",
+      "readable_code_file": "experiments/006/source/r1-v3.py"
+    },
+    {
+      "file": "experiments/006/source/r2-v1.ipynb",
+      "notebook": "ccjjllt/r2-ttt-0-8-16",
+      "requested_version": "v1",
+      "metadata": {
+        "id": 136424471,
+        "ref": "ccjjllt/r2-ttt-0-8-16",
+        "title": "R2 TTT 0 8 16",
+        "author": "ccjjllt",
+        "slug": "r2-ttt-0-8-16",
+        "last_run_time": "2026-09-27T01:47:15.340820700Z",
+        "language": "python",
+        "kernel_type": "notebook",
+        "is_private": true,
+        "enable_gpu": true,
+        "enable_internet": false,
+        "category_ids": [
+          "gpu"
+        ],
+        "dataset_data_sources": [
+          "ccjjllt/qwen38-wheelhouse-py312"
+        ],
+        "competition_data_sources": [
+          "arc-prize-2026-arc-agi-2"
+        ],
+        "model_data_sources": [
+          "ugvfpdcuwfnh/qwen3-8-27b/Transformers/transformers-bf16/1"
+        ],
+        "enable_tpu": false,
+        "current_version_number": 1,
+        "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+        "machine_shape": "NvidiaL4"
+      },
+      "source_sha256": "39fce17044d8f55cc231f90a9ea527db6db1db8dfa53e49ddc183c07a0ec48e6",
+      "readable_code_file": "experiments/006/source/r2-v1.py"
+    },
+    {
+      "file": "experiments/006/source/r2b-v1.ipynb",
+      "notebook": "ccjjllt/r2b-ttt-8-16-focused",
+      "requested_version": "v1",
+      "metadata": {
+        "id": 136432599,
+        "ref": "ccjjllt/r2b-ttt-8-16-focused",
+        "title": "R2b TTT 8 16 focused",
+        "author": "ccjjllt",
+        "slug": "r2b-ttt-8-16-focused",
+        "last_run_time": "2026-09-27T01:47:23.955189300Z",
+        "language": "python",
+        "kernel_type": "notebook",
+        "is_private": true,
+        "enable_gpu": true,
+        "enable_internet": false,
+        "category_ids": [
+          "gpu"
+        ],
+        "dataset_data_sources": [
+          "ccjjllt/qwen38-wheelhouse-py312"
+        ],
+        "competition_data_sources": [
+          "arc-prize-2026-arc-agi-2"
+        ],
+        "model_data_sources": [
+          "ugvfpdcuwfnh/qwen3-8-27b/Transformers/transformers-bf16/1"
+        ],
+        "enable_tpu": false,
+        "current_version_number": 1,
+        "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+        "machine_shape": "NvidiaL4"
+      },
+      "source_sha256": "c38c55b80047d928db5f561a4f1eb966bf189e171ae7ba2eee009633d235e8b1",
+      "readable_code_file": "experiments/006/source/r2b-v1.py"
+    }
+  ]
+}

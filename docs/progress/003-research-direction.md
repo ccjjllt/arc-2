@@ -94,7 +94,7 @@
 
 ### 训练覆盖的实际影响
 
-[NVARC 训练配方](https://github.com/1ytic/NVARC/tree/main/ARChitects)包含 `arc2_evaluation6`；其数据脚本把任务的 train/test pairs 合并构造训练材料。因脚本有过滤逻辑，未逐题证明全部 120 个都实际进入最终 checkpoint，但已经足以说明不能默认公开 evaluation 是干净留出集。
+2026-09-30源码复核更正：[NVARC 训练配置](https://github.com/1ytic/NVARC/blob/main/ARChitects/sft_mg.yaml)将 `arc2_evaluation6` 放在 `val_dataset_path`，不在 `train_dataset_path`；README列出准备该子集不能证明真实evaluation答案直接参与SFT。训练列表中的 `nvarc_full` 使用evaluation规则描述生成合成任务，所以仍不能默认公开evaluation是未见规则留出集。数据构造脚本将一个任务的train/test pairs合并，是episode生成逻辑，不等同于证明这些真实eval样本进入了训练。
 
 因此要区分：公开题诊断、已知任务族的新采样、新组合规则与未知私榜。即使把 ARC-GEN 的 task_id 分组留出，也只能保证本轮续训没有使用这些 family，不能抹去初始化 checkpoint 可能已经看过原始规则的历史。
 
