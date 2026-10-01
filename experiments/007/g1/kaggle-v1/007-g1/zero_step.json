@@ -1,0 +1,321 @@
+{
+  "skipped": false,
+  "reason": null,
+  "time_guard": false,
+  "time_guard_s": 1200,
+  "max_new_tokens": 960,
+  "do_sample": false,
+  "repetition_penalty": 1.0,
+  "top_k": 0,
+  "no_repeat_ngram_size": 0,
+  "presence_penalty": "omitted",
+  "tasks": [
+    {
+      "task_id": "833966f4",
+      "status": "generated",
+      "decoded_text": "5\n4\n6\n2\n7<|im_end|>",
+      "parse_text": "5\n4\n6\n2\n7",
+      "parse": "ok",
+      "grid": [
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [
+          6
+        ],
+        [
+          2
+        ],
+        [
+          7
+        ]
+      ],
+      "exact_match": true,
+      "prepare_s": 0.0008,
+      "generate_s": 4.0332,
+      "wall_s": 4.0364,
+      "prompt_tokens": 142,
+      "generated_tokens": 10,
+      "truncated": false,
+      "dropped_trailing_eos": true,
+      "text_to_grid_agrees": true,
+      "target_text_in_prompt": false
+    },
+    {
+      "task_id": "6150a2bd",
+      "status": "generated",
+      "decoded_text": "0 0 4\n0 8 6\n5 3 6<|im_end|>",
+      "parse_text": "0 0 4\n0 8 6\n5 3 6",
+      "parse": "ok",
+      "grid": [
+        [
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          8,
+          6
+        ],
+        [
+          5,
+          3,
+          6
+        ]
+      ],
+      "exact_match": true,
+      "prepare_s": 0.0008,
+      "generate_s": 4.3505,
+      "wall_s": 4.352,
+      "prompt_tokens": 182,
+      "generated_tokens": 18,
+      "truncated": false,
+      "dropped_trailing_eos": true,
+      "text_to_grid_agrees": true,
+      "target_text_in_prompt": false
+    },
+    {
+      "task_id": "e9afcf9a",
+      "status": "generated",
+      "decoded_text": "6 2 6 2 6 2\n2 6 2 6 2 6<|im_end|>",
+      "parse_text": "6 2 6 2 6 2\n2 6 2 6 2 6",
+      "parse": "ok",
+      "grid": [
+        [
+          6,
+          2,
+          6,
+          2,
+          6,
+          2
+        ],
+        [
+          2,
+          6,
+          2,
+          6,
+          2,
+          6
+        ]
+      ],
+      "exact_match": true,
+      "prepare_s": 0.0009,
+      "generate_s": 5.7188,
+      "wall_s": 5.7204,
+      "prompt_tokens": 212,
+      "generated_tokens": 24,
+      "truncated": false,
+      "dropped_trailing_eos": true,
+      "text_to_grid_agrees": true,
+      "target_text_in_prompt": false
+    },
+    {
+      "task_id": "5582e5ca",
+      "status": "generated",
+      "decoded_text": "8 8 8\n8 8 8\n8 8 8<|im_end|>",
+      "parse_text": "8 8 8\n8 8 8\n8 8 8",
+      "parse": "ok",
+      "grid": [
+        [
+          8,
+          8,
+          8
+        ],
+        [
+          8,
+          8,
+          8
+        ],
+        [
+          8,
+          8,
+          8
+        ]
+      ],
+      "exact_match": true,
+      "prepare_s": 0.001,
+      "generate_s": 4.3869,
+      "wall_s": 4.3885,
+      "prompt_tokens": 234,
+      "generated_tokens": 18,
+      "truncated": false,
+      "dropped_trailing_eos": true,
+      "text_to_grid_agrees": true,
+      "target_text_in_prompt": false
+    },
+    {
+      "task_id": "d037b0a7",
+      "status": "generated",
+      "decoded_text": "4 0 8\n4 0 8\n4 7 8<|im_end|>",
+      "parse_text": "4 0 8\n4 0 8\n4 7 8",
+      "parse": "ok",
+      "grid": [
+        [
+          4,
+          0,
+          8
+        ],
+        [
+          4,
+          0,
+          8
+        ],
+        [
+          4,
+          7,
+          8
+        ]
+      ],
+      "exact_match": true,
+      "prepare_s": 0.001,
+      "generate_s": 4.601,
+      "wall_s": 4.6026,
+      "prompt_tokens": 234,
+      "generated_tokens": 18,
+      "truncated": false,
+      "dropped_trailing_eos": true,
+      "text_to_grid_agrees": true,
+      "target_text_in_prompt": false
+    },
+    {
+      "task_id": "d631b094",
+      "status": "generated",
+      "decoded_text": "4 4 4 4<|im_end|>",
+      "parse_text": "4 4 4 4",
+      "parse": "ok",
+      "grid": [
+        [
+          4,
+          4,
+          4,
+          4
+        ]
+      ],
+      "exact_match": false,
+      "prepare_s": 0.0009,
+      "generate_s": 2.1512,
+      "wall_s": 2.1527,
+      "prompt_tokens": 234,
+      "generated_tokens": 8,
+      "truncated": false,
+      "dropped_trailing_eos": true,
+      "text_to_grid_agrees": true,
+      "target_text_in_prompt": false
+    },
+    {
+      "task_id": "66e6c45b",
+      "status": "generated",
+      "decoded_text": "2 0 0 3\n0 0 0 0\n0 0 0 0\n4 0 0 9<|im_end|>",
+      "parse_text": "2 0 0 3\n0 0 0 0\n0 0 0 0\n4 0 0 9",
+      "parse": "ok",
+      "grid": [
+        [
+          2,
+          0,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          9
+        ]
+      ],
+      "exact_match": true,
+      "prepare_s": 0.0009,
+      "generate_s": 7.4686,
+      "wall_s": 7.4702,
+      "prompt_tokens": 252,
+      "generated_tokens": 32,
+      "truncated": false,
+      "dropped_trailing_eos": true,
+      "text_to_grid_agrees": true,
+      "target_text_in_prompt": false
+    },
+    {
+      "task_id": "00576224",
+      "status": "generated",
+      "decoded_text": "3 2 3 2 3 2\n7 8 7 8 7 8\n7 8 7 8 7 8\n3 2 3 2 3 2\n3 2 3 2 3 2\n7 8 7 8 7 8<|im_end|>",
+      "parse_text": "3 2 3 2 3 2\n7 8 7 8 7 8\n7 8 7 8 7 8\n3 2 3 2 3 2\n3 2 3 2 3 2\n7 8 7 8 7 8",
+      "parse": "ok",
+      "grid": [
+        [
+          3,
+          2,
+          3,
+          2,
+          3,
+          2
+        ],
+        [
+          7,
+          8,
+          7,
+          8,
+          7,
+          8
+        ],
+        [
+          7,
+          8,
+          7,
+          8,
+          7,
+          8
+        ],
+        [
+          3,
+          2,
+          3,
+          2,
+          3,
+          2
+        ],
+        [
+          3,
+          2,
+          3,
+          2,
+          3,
+          2
+        ],
+        [
+          7,
+          8,
+          7,
+          8,
+          7,
+          8
+        ]
+      ],
+      "exact_match": false,
+      "prepare_s": 0.001,
+      "generate_s": 16.3531,
+      "wall_s": 16.3548,
+      "prompt_tokens": 260,
+      "generated_tokens": 72,
+      "truncated": false,
+      "dropped_trailing_eos": true,
+      "text_to_grid_agrees": true,
+      "target_text_in_prompt": false
+    }
+  ],
+  "elapsed_s": 49.399
+}

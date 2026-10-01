@@ -16,7 +16,7 @@
 | 004 NVARC 网格续训对照 | [plan/004-specialist-solver.md](docs/plan/004-specialist-solver.md) | 保留对照；SOAR路线已移除；未运行 |
 | 005 更强初始化模型比较 | [plan/005-stronger-backbones.md](docs/plan/005-stronger-backbones.md) | [progress/005-stronger-backbones.md](docs/progress/005-stronger-backbones.md)；已选Qwen3.8-27B |
 | 006 Qwen3.8-27B与12小时方案 | [plan/006-qwen38-l4-budget.md](docs/plan/006-qwen38-l4-budget.md) | [progress/006-qwen38-l4-budget.md](docs/progress/006-qwen38-l4-budget.md)；首轮诊断已收官，源码/摘要已归档 |
-| 007 正式网格微调与NVARC专用化 | [plan/007-grid-specialist-sft.md](docs/plan/007-grid-specialist-sft.md) | [progress/007-grid-specialist-sft.md](docs/progress/007-grid-specialist-sft.md)；当前实现交接，训练未运行 |
+| 007 正式网格微调与NVARC专用化 | [plan/007-grid-specialist-sft.md](docs/plan/007-grid-specialist-sft.md) | [progress/007-grid-specialist-sft.md](docs/progress/007-grid-specialist-sft.md)；诊断 7/8，留出 960 下 0/5、2048 下 6/20；G2 的 3 万条池已生成、未训练 |
 
 ## Kaggle 操作链（2026-09-29 实测结论）
 
@@ -32,4 +32,4 @@ Notebook 发布与数据源挂载三条路只通两条，按稳定性排序：
 
 本地 M5 / 32GB 用于开发与分析，Kaggle L4×4 优先用于训练和正式环境实验，Colab v5e-1 暂作为备选。可行性判断与尚未核实的资源额度见 001 进展文档。
 
-006已完成BF16短程LoRA与小题集推理诊断。007已根据真实源码修正thinking、答案loss与结果口径，下一步是保存可复用的网格专项微调权重；尚无本项目正式SFT或新的竞赛提分结果。
+006已完成BF16短程LoRA与小题集推理诊断。007 的 G1 已在 4×L4 上完成 200 次更新并保存 adapter。独立加载后，诊断题 exact-match 7/8。留出题 25 个 query 已评完：960 token 下 0/5，2048 token 下 6/20。这不是竞赛分数。零步底座是 6/8。G2 的 3 万条数据池已生成但未训练。G2 的 GDN 训练、G3、TTT、Unsloth 仍未运行。

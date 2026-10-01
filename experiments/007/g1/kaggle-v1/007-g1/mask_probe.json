@@ -1,0 +1,16 @@
+{
+  "episode_id": "beb8660c|loo|0|rot180|ident",
+  "prompt_len": 464,
+  "target_len": 56,
+  "supervised_text": "8 8 8 8\n2 2 2 0\n3 3 0 0\n1 0 0 0\n0 0 0 0\n0 0 0 0\n0 0 0 0<|im_end|>",
+  "target_grid_text": "8 8 8 8\n2 2 2 0\n3 3 0 0\n1 0 0 0\n0 0 0 0\n0 0 0 0\n0 0 0 0",
+  "eos_piece": "<|im_end|>",
+  "target_plus_eos_piece": "8 8 8 8\n2 2 2 0\n3 3 0 0\n1 0 0 0\n0 0 0 0\n0 0 0 0\n0 0 0 0<|im_end|>",
+  "supervised_text_equals_target_plus_eos": true,
+  "supervised_ids_equal_target_plus_eos": true,
+  "prompt_labels_all_ignored": true,
+  "n_supervised": 56,
+  "n_ignored": 464,
+  "target_in_prompt_text": false,
+  "label_shift": "none_hf_shifts_once"
+}

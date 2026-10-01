@@ -1,0 +1,27 @@
+{
+  "id": "ccjjllt/g1-grid-eval-007-rest2",
+  "title": "G1 grid eval 007 rest2",
+  "code_file": "g1-grid-eval-rest2.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [
+    "gpu"
+  ],
+  "dataset_sources": [
+    "ccjjllt/qwen38-wheelhouse-py312",
+    "ccjjllt/arc2-007-g1-adapter"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "arc-prize-2026-arc-agi-2"
+  ],
+  "model_sources": [
+    "ugvfpdcuwfnh/qwen3-8-27b/Transformers/transformers-bf16/1"
+  ],
+  "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+  "machine_shape": "NvidiaL4"
+}

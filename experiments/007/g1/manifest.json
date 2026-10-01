@@ -1,0 +1,157 @@
+{
+  "created": "2026-09-30",
+  "seed": 20260930,
+  "n_episodes": 10000,
+  "n_episodes_requested": 10000,
+  "n_train_tasks_used": 892,
+  "n_train_tasks_available": 892,
+  "n_train_tasks_with_base": 892,
+  "n_holdout": 100,
+  "n_diag": 8,
+  "n_skipped": 72,
+  "n_skipped_note": "Train-split base episodes (one test index or one loo index) not expanded. Each skipped base drops all 24 geometry x color variants. A base is skipped when a grid is missing, non-rectangular, or outside a 1..30 grid of ints 0-9, or when the test solution is missing. A loo base is also skipped when a remaining demonstration has the same output grid as the held-out target. Test episodes are not skipped for that reason: the test answer is not placed in the prompt, and a matching grid is a real official item. Cells are never dropped or truncated to fit a length.",
+  "skip_reasons": {
+    "target_equals_demo_output": {
+      "loo": 72
+    }
+  },
+  "skip_examples": {
+    "target_equals_demo_output": [
+      {
+        "task_id": "1a2e2828",
+        "query_kind": "loo",
+        "query_index": 2
+      },
+      {
+        "task_id": "1a2e2828",
+        "query_kind": "loo",
+        "query_index": 4
+      },
+      {
+        "task_id": "1b2d62fb",
+        "query_kind": "loo",
+        "query_index": 3
+      },
+      {
+        "task_id": "1b2d62fb",
+        "query_kind": "loo",
+        "query_index": 4
+      },
+      {
+        "task_id": "1fad071e",
+        "query_kind": "loo",
+        "query_index": 0
+      },
+      {
+        "task_id": "1fad071e",
+        "query_kind": "loo",
+        "query_index": 2
+      },
+      {
+        "task_id": "239be575",
+        "query_kind": "loo",
+        "query_index": 0
+      },
+      {
+        "task_id": "239be575",
+        "query_kind": "loo",
+        "query_index": 1
+      }
+    ]
+  },
+  "geometry_counts": {
+    "ident": 3558,
+    "rot90": 3558,
+    "rot180": 2858,
+    "rot270": 10,
+    "flipud": 10,
+    "fliplr": 6
+  },
+  "color_counts": {
+    "ident": 5352,
+    "perm1": 4648
+  },
+  "query_kind_counts": {
+    "test": 5378,
+    "loo": 4622
+  },
+  "unique_family_count": 892,
+  "source": "official_train",
+  "revision": "kaggle:arc-prize-2026-arc-agi-2",
+  "color_perms": {
+    "ident": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "perm1": [
+      1,
+      8,
+      0,
+      9,
+      4,
+      2,
+      5,
+      3,
+      6,
+      7
+    ],
+    "perm2": [
+      2,
+      1,
+      5,
+      0,
+      3,
+      8,
+      6,
+      7,
+      4,
+      9
+    ],
+    "perm3": [
+      4,
+      7,
+      9,
+      6,
+      8,
+      3,
+      0,
+      5,
+      2,
+      1
+    ]
+  },
+  "prompt_tokens_note": "prompt_tokens and target_tokens are null because tokenization happens on the Kaggle tokenizer.",
+  "episodes_sha256": "42765f3b078484a85e8c7d256e51d5a88c404da83b9e4fe6995d9eefa40568e3",
+  "arcgen_pool": "not_generated",
+  "n_challenges": 1000,
+  "n_solutions": 1000,
+  "n_tasks_with_solutions": 1000,
+  "n_eligible": 992,
+  "n_valid_base": {
+    "test": 962,
+    "loo": 2819
+  },
+  "n_augmented_pool": 90744,
+  "inputs": {
+    "challenges": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/007/raw/arc-prize-2026/arc-agi_training_challenges.json",
+      "bytes": 4010050,
+      "sha256": "779eaba89790ebad9af02514a7efc0aefaf2cf8236f046a31bbf8b9ec48f20f5"
+    },
+    "solutions": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/007/raw/arc-prize-2026/arc-agi_training_solutions.json",
+      "bytes": 658743,
+      "sha256": "9f07a38bd25af5e83aa5bf85c5cb1a1fefdb30f6a755256fa65429e697ca97f9"
+    }
+  },
+  "python": "3.9.6",
+  "sampling": "Eligible task ids are present in both challenges and solutions and are not in diag. Order eligible by sha256(utf-8 of '20260930:'+task_id) hex digest ascending, ties broken by task_id. holdout is the first 100 of that order, then sorted lexicographically in this file. train is the remaining eligible ids, sorted lexicographically. diag is the fixed 006 exclusion list in its given order, excluded from the train pool and the holdout. family_id = task_id for official tasks. Round-robin sampling walks lexicographically sorted train ids, one episode per task per turn. Within a task, test bases stay in test-index order and loo bases stay in train-index order. The primary pair is the first test base, if any, then the first loo base, if any. Front augmentations are geometry outer (ident, rot90, rot180, rot270, flipud, fliplr) and color inner (ident, then perm1). For each front augmentation, yield each primary base once. After that prefix, yield every remaining geometry, color (ident, perm1, perm2, perm3), and interleaved base (test0, loo0, test1, loo1, ...), skipping episode ids already yielded. A 10k cap therefore mixes ident and perm1 on test0 and loo0 before later geometries, perm2, or perm3."
+}

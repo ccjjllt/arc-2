@@ -1,0 +1,1363 @@
+"""007 episode pools.
+
+main() builds the G1 official-train split and a 10_000-episode pool. It does
+not read ARC-GEN. build_g2() writes the separate G2 pool. No torch or
+transformers. prompt_tokens and target_tokens stay null; the Kaggle tokenizer
+fills them later.
+"""
+
+from __future__ import annotations
+
+import argparse
+import contextlib
+import copy
+import hashlib
+import io
+import json
+import random
+import shutil
+import signal
+import subprocess
+import sys
+import time
+import zipfile
+from collections import deque
+from pathlib import Path
+
+
+SYSTEM_PROMPT = (
+    "Output only the answer grid. Each row is digits 0-9 separated by "
+    "single spaces. Put one row on each line. Do not write an explanation."
+)
+
+SOURCE = "official_train"
+REVISION = "kaggle:arc-prize-2026-arc-agi-2"
+DEFAULT_SEED = 20260930
+DEFAULT_HOLDOUT_N = 100
+DEFAULT_N_EPISODES = 10000
+CREATED = "2026-09-30"
+ARCGEN_COMMIT = "a15cbdb44c776610aeeb9f487a06af875d3d0878"
+ARCGEN_SOURCE = "arcgen_v2"
+ARCGEN_REVISION = "arc-gen:" + ARCGEN_COMMIT
+G2_OFFICIAL_N = 12000
+G2_ARCGEN_N = 18000
+G2_CREATED = "2026-10-01"
+# A generate() call that does not return is a failed draw, not a grid.
+ARCGEN_DRAW_TIMEOUT_SECONDS = 10.0
+
+# 006 diagnostic tasks. Out of the train pool and out of the fresh holdout.
+DIAG_TASK_IDS = (
+    "833966f4",
+    "6150a2bd",
+    "e9afcf9a",
+    "5582e5ca",
+    "d037b0a7",
+    "d631b094",
+    "66e6c45b",
+    "00576224",
+)
+
+GEOMETRIES = ("ident", "rot90", "rot180", "rot270", "flipud", "fliplr")
+N_COLORS = 10
+AUGMENTATIONS_PER_BASE = len(GEOMETRIES) * 4  # identity color + 3 perms
+
+
+def grid_to_text(grid) -> str:
+    return "\n".join(" ".join(str(int(c)) for c in row) for row in grid)
+
+
+def text_to_grid(text) -> list | None:
+    """Parse one rectangle of single digits. None unless the stripped text is exact."""
+    if not isinstance(text, str):
+        return None
+    stripped = text.strip()
+    if stripped == "":
+        return None
+    rows = []
+    width = None
+    for line in stripped.split("\n"):
+        if line == "" or line != line.strip():
+            return None
+        cells = line.split(" ")
+        parsed = []
+        for cell in cells:
+            if len(cell) != 1 or cell < "0" or cell > "9":
+                return None
+            parsed.append(ord(cell) - 48)
+        if width is None:
+            width = len(parsed)
+        elif len(parsed) != width:
+            return None
+        rows.append(parsed)
+    if width is None or width < 1:
+        return None
+    return rows
+
+
+def target_text(grid) -> str:
+    return grid_to_text(grid)
+
+
+def apply_geometry(grid, name) -> list:
+    """Return a new grid. rot90 is clockwise. flipud reverses rows. fliplr reverses each row."""
+    if name == "ident":
+        return [row[:] for row in grid]
+    if name == "rot180":
+        return [row[::-1] for row in reversed(grid)]
+    if name == "flipud":
+        return [row[:] for row in reversed(grid)]
+    if name == "fliplr":
+        return [row[::-1] for row in grid]
+    if name not in ("rot90", "rot270"):
+        raise ValueError("unknown geometry: %s" % name)
+    if not grid or not grid[0]:
+        return []
+    height = len(grid)
+    width = len(grid[0])
+    if name == "rot90":
+        # new[c][height - 1 - r] = old[r][c]
+        return [[grid[height - 1 - r][c] for r in range(height)] for c in range(width)]
+    # rot270 clockwise: new[width - 1 - c][r] = old[r][c]
+    return [[grid[r][width - 1 - c] for r in range(height)] for c in range(width)]
+
+
+def apply_color(grid, perm) -> list:
+    """One lookup table. Do not walk colors and overwrite the grid in place."""
+    if len(perm) != N_COLORS or sorted(perm) != list(range(N_COLORS)):
+        raise ValueError("color perm must be a permutation of 0..9")
+    return [[perm[c] for c in row] for row in grid]
+
+
+def build_messages(demos, query_input) -> list:
+    """demos is a list of {input, output} grids. One train pair may pass demos=[]."""
+    parts = []
+    for i, pair in enumerate(demos):
+        parts.append("[demo %d] in:\n%s" % (i, grid_to_text(pair["input"])))
+        parts.append("[demo %d] out:\n%s" % (i, grid_to_text(pair["output"])))
+    parts.append("[query] in:\n%s" % grid_to_text(query_input))
+    parts.append("[query] out:")
+    return [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": "\n".join(parts)},
+    ]
+
+
+def derive_color_perms(seed: int) -> list:
+    """Identity is separate. Three more perms from Random(seed), shared by every task.
+
+    Each draw shuffles a copy of range(10). Identity and duplicates are rejected
+    and another shuffle is drawn, so rejected draws still consume RNG state.
+    """
+    rng = random.Random(seed)
+    identity = list(range(N_COLORS))
+    perms = []
+    draws = 0
+    while len(perms) < 3:
+        trial = identity[:]
+        rng.shuffle(trial)
+        draws += 1
+        if draws > 10000:
+            raise RuntimeError("could not draw 3 non-identity color permutations")
+        if trial == identity or trial in perms:
+            continue
+        perms.append(trial[:])
+    return perms
+
+
+def exclude_arcgen_families(generator_task_ids, holdout_ids, diag_ids):
+    """Return generator ids whose family is not in the holdout or DIAG sets.
+
+    Official tasks use family_id == task_id. Each ARC-GEN generator id is
+    treated as that family id, so an id listed in ``holdout_ids`` or
+    ``diag_ids`` is removed. Input order is kept, including duplicates of
+    ids that remain. This function does not read ARC-GEN and does not build
+    the 30k pool; G2 calls it later.
+    """
+    banned = set(holdout_ids) | set(diag_ids)
+    return [gid for gid in generator_task_ids if gid not in banned]
+
+
+def task_order_key(task_id: str, seed: int) -> str:
+    payload = ("%d:%s" % (seed, task_id)).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
+def ordering_rule(seed: int, holdout_n: int) -> str:
+    return (
+        "Eligible task ids are present in both challenges and solutions and are not in diag. "
+        "Order eligible by sha256(utf-8 of '%d:'+task_id) hex digest ascending, ties broken by task_id. "
+        "holdout is the first %d of that order, then sorted lexicographically in this file. "
+        "train is the remaining eligible ids, sorted lexicographically. "
+        "diag is the fixed 006 exclusion list in its given order, excluded from the train pool and the holdout. "
+        "family_id = task_id for official tasks. "
+        "Round-robin sampling walks lexicographically sorted train ids, one episode per task per turn. "
+        "Within a task, test bases stay in test-index order and loo bases stay in train-index order. "
+        "The primary pair is the first test base, if any, then the first loo base, if any. "
+        "Front augmentations are geometry outer (ident, rot90, rot180, rot270, flipud, fliplr) "
+        "and color inner (ident, then perm1). "
+        "For each front augmentation, yield each primary base once. "
+        "After that prefix, yield every remaining geometry, color (ident, perm1, perm2, perm3), "
+        "and interleaved base (test0, loo0, test1, loo1, ...), skipping episode ids already yielded. "
+        "A 10k cap therefore mixes ident and perm1 on test0 and loo0 before later geometries, perm2, or perm3."
+        % (seed, holdout_n)
+    )
+
+
+def make_split(challenge_ids, solution_ids, seed: int, holdout_n: int, diag_ids=DIAG_TASK_IDS):
+    diag = [tid for tid in diag_ids]
+    diag_set = set(diag)
+    both = set(challenge_ids) & set(solution_ids)
+    eligible = [tid for tid in both if tid not in diag_set]
+    eligible.sort(key=lambda tid: (task_order_key(tid, seed), tid))
+    if holdout_n < 0:
+        raise ValueError("holdout_n must be >= 0")
+    picked = eligible[:holdout_n]
+    picked_set = set(picked)
+    holdout = sorted(picked)
+    train = sorted(tid for tid in eligible if tid not in picked_set)
+    if not set(diag).isdisjoint(holdout) or not set(diag).isdisjoint(train):
+        raise RuntimeError("diag leaked into holdout or train")
+    if not set(holdout).isdisjoint(train):
+        raise RuntimeError("holdout and train overlap")
+    return diag, holdout, train
+
+
+def grid_problem(grid) -> str | None:
+    """None when grid is a rectangular 1..30 grid of ints 0-9. Does not mutate."""
+    if not isinstance(grid, list) or len(grid) < 1:
+        return "not_rectangular"
+    if len(grid) > 30:
+        return "height_out_of_range"
+    width = None
+    for row in grid:
+        if not isinstance(row, list):
+            return "not_rectangular"
+        if len(row) < 1:
+            return "width_out_of_range"
+        if len(row) > 30:
+            return "width_out_of_range"
+        if width is None:
+            width = len(row)
+        elif len(row) != width:
+            return "not_rectangular"
+        for cell in row:
+            if isinstance(cell, bool) or not isinstance(cell, int) or cell < 0 or cell > 9:
+                return "value_out_of_range"
+    return None
+
+
+def _note_skip(skipped, reason, task_id, query_kind, query_index):
+    skipped["n"] += 1
+    by_kind = skipped["reasons"].setdefault(reason, {})
+    by_kind[query_kind] = by_kind.get(query_kind, 0) + 1
+    examples = skipped["examples"].setdefault(reason, [])
+    if len(examples) < 8:
+        examples.append(
+            {
+                "task_id": task_id,
+                "query_kind": query_kind,
+                "query_index": query_index,
+            }
+        )
+
+
+def _pair_problem(pair) -> str | None:
+    if not isinstance(pair, dict):
+        return "pair_not_object"
+    return grid_problem(pair.get("input")) or grid_problem(pair.get("output"))
+
+
+def collect_bases(task_id, task, solution, skipped):
+    """Valid base episodes for one train task. Grids are the loaded objects, not copies."""
+    bases = []
+    if not isinstance(task, dict):
+        _note_skip(skipped, "task_not_object", task_id, "test", -1)
+        return bases
+    train = task.get("train", [])
+    test = task.get("test", [])
+    if not isinstance(train, list):
+        _note_skip(skipped, "train_not_list", task_id, "loo", -1)
+        train = []
+    if not isinstance(test, list):
+        _note_skip(skipped, "test_not_list", task_id, "test", -1)
+        test = []
+    sols = solution if isinstance(solution, list) else None
+
+    for index, item in enumerate(test):
+        if not isinstance(item, dict):
+            _note_skip(skipped, "query_not_object", task_id, "test", index)
+            continue
+        if sols is None or index >= len(sols):
+            _note_skip(skipped, "solution_missing", task_id, "test", index)
+            continue
+        reason = grid_problem(item.get("input")) or grid_problem(sols[index])
+        if reason:
+            _note_skip(skipped, reason, task_id, "test", index)
+            continue
+        demos = []
+        demo_reason = None
+        for pair in train:
+            demo_reason = _pair_problem(pair)
+            if demo_reason:
+                break
+            demos.append(pair)
+        if demo_reason:
+            _note_skip(skipped, demo_reason, task_id, "test", index)
+            continue
+        # Keep the official test item even when its gold grid equals a demo output.
+        # That answer is not copied into the prompt; dropping it would discard a real query.
+        target = sols[index]
+        bases.append(
+            {
+                "query_kind": "test",
+                "query_index": index,
+                "demos": demos,
+                "query_input": item["input"],
+                "target": target,
+            }
+        )
+
+    for index, pair in enumerate(train):
+        reason = _pair_problem(pair)
+        if reason:
+            _note_skip(skipped, reason, task_id, "loo", index)
+            continue
+        demos = []
+        demo_reason = None
+        for other_index, other in enumerate(train):
+            if other_index == index:
+                continue
+            demo_reason = _pair_problem(other)
+            if demo_reason:
+                break
+            demos.append(other)
+        if demo_reason:
+            _note_skip(skipped, demo_reason, task_id, "loo", index)
+            continue
+        target = pair["output"]
+        if any(demo["output"] == target for demo in demos):
+            _note_skip(skipped, "target_equals_demo_output", task_id, "loo", index)
+            continue
+        bases.append(
+            {
+                "query_kind": "loo",
+                "query_index": index,
+                "demos": demos,
+                "query_input": pair["input"],
+                "target": target,
+            }
+        )
+    return bases
+
+
+def _color_tables(perms):
+    tables = [("ident", list(range(N_COLORS)))]
+    for index, perm in enumerate(perms, start=1):
+        tables.append(("perm%d" % index, list(perm)))
+    return tables
+
+
+def _make_episode(
+    task_id, base, geometry, color_name, perm, seed, source=SOURCE, revision=REVISION
+):
+    demos = []
+    for pair in base["demos"]:
+        demos.append(
+            {
+                "input": apply_color(apply_geometry(pair["input"], geometry), perm),
+                "output": apply_color(apply_geometry(pair["output"], geometry), perm),
+            }
+        )
+    query = apply_color(apply_geometry(base["query_input"], geometry), perm)
+    target = apply_color(apply_geometry(base["target"], geometry), perm)
+    target_grid_text = target_text(target)
+    if text_to_grid(target_grid_text) != target:
+        raise RuntimeError("target text did not round-trip: %s" % task_id)
+    messages = build_messages(demos, query)
+    # Loo targets must not be shown as a remaining demo output. Test gold may match
+    # a demo grid; that official item is kept and is not a prompt-construction leak.
+    if base["query_kind"] == "loo":
+        for block in _demo_output_texts(messages[1]["content"]):
+            if block == target_grid_text:
+                raise RuntimeError("loo target leaked into a demo output: %s" % task_id)
+    return {
+        "episode_id": "%s|%s|%d|%s|%s"
+        % (task_id, base["query_kind"], base["query_index"], geometry, color_name),
+        "task_id": task_id,
+        "family_id": task_id,
+        "source": source,
+        "revision": revision,
+        "seed": seed,
+        "augmentation": "%s|%s" % (geometry, color_name),
+        "query_kind": base["query_kind"],
+        "query_index": base["query_index"],
+        "split": "train",
+        "prompt_tokens": None,
+        "target_tokens": None,
+        "color_perm": list(perm),
+        "geometry": geometry,
+        "messages": messages,
+        "target_grid_text": target_grid_text,
+    }
+
+
+def _interleaved_bases(bases):
+    test_bases = [base for base in bases if base["query_kind"] == "test"]
+    loo_bases = [base for base in bases if base["query_kind"] == "loo"]
+    interleaved = []
+    for index in range(max(len(test_bases), len(loo_bases))):
+        if index < len(test_bases):
+            interleaved.append(test_bases[index])
+        if index < len(loo_bases):
+            interleaved.append(loo_bases[index])
+    primary = []
+    if test_bases:
+        primary.append(test_bases[0])
+    if loo_bases:
+        primary.append(loo_bases[0])
+    return primary, interleaved
+
+
+def iter_augmented(task_id, bases, color_tables, seed):
+    # Front: each geometry with ident then perm1, on the first test and first loo only.
+    # A 10k round-robin keeps ~12 episodes per task, so this prefix is what the file contains.
+    primary, interleaved = _interleaved_bases(bases)
+    perm_by_name = {name: perm for name, perm in color_tables}
+    seen = set()
+
+    def emit(base, geometry, color_name):
+        episode = _make_episode(task_id, base, geometry, color_name, perm_by_name[color_name], seed)
+        if episode["episode_id"] in seen:
+            return None
+        seen.add(episode["episode_id"])
+        return episode
+
+    front_colors = [name for name in ("ident", "perm1") if name in perm_by_name]
+    for geometry in GEOMETRIES:
+        for color_name in front_colors:
+            for base in primary:
+                episode = emit(base, geometry, color_name)
+                if episode is not None:
+                    yield episode
+    for geometry in GEOMETRIES:
+        for color_name, _perm in color_tables:
+            for base in interleaved:
+                episode = emit(base, geometry, color_name)
+                if episode is not None:
+                    yield episode
+
+
+def _demo_output_texts(user_text):
+    lines = user_text.split("\n")
+    index = 0
+    found = []
+    while index < len(lines):
+        line = lines[index]
+        if line.startswith("[demo ") and line.endswith("] out:"):
+            label = line[len("[demo ") : -len("] out:")]
+            if label.isdigit():
+                index += 1
+                block = []
+                while index < len(lines) and not (
+                    lines[index].startswith("[demo ") or lines[index].startswith("[query] ")
+                ):
+                    block.append(lines[index])
+                    index += 1
+                found.append("\n".join(block))
+                continue
+        index += 1
+    return found
+
+
+def iter_round_robin(task_bases, color_tables, seed, limit):
+    pending = deque()
+    for task_id, bases in task_bases:
+        if bases:
+            pending.append((task_id, iter_augmented(task_id, bases, color_tables, seed)))
+    seen = set()
+    produced = 0
+    while pending and produced < limit:
+        task_id, stream = pending.popleft()
+        try:
+            episode = next(stream)
+        except StopIteration:
+            continue
+        if episode["episode_id"] in seen:
+            raise RuntimeError("duplicate episode_id %s" % episode["episode_id"])
+        seen.add(episode["episode_id"])
+        produced += 1
+        yield episode
+        pending.append((task_id, stream))
+
+
+def _sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1 << 20), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _extract_json(zip_path: Path, dest_json: Path) -> Path:
+    with zipfile.ZipFile(zip_path) as archive:
+        members = [
+            name
+            for name in archive.namelist()
+            if name.lower().endswith(".json") and not name.endswith("/")
+        ]
+        if not members:
+            raise FileNotFoundError("no json member in %s" % zip_path)
+        chosen = None
+        for name in members:
+            if Path(name).name == dest_json.name:
+                chosen = name
+                break
+        if chosen is None:
+            if len(members) != 1:
+                raise FileNotFoundError("multiple json members in %s: %s" % (zip_path, members))
+            chosen = members[0]
+        if dest_json.resolve() == zip_path.resolve():
+            dest_json = zip_path.with_suffix("")
+            if dest_json.suffix != ".json":
+                dest_json = dest_json.parent / (dest_json.name + ".json")
+        dest_json.parent.mkdir(parents=True, exist_ok=True)
+        # Member names are untrusted. Write only the destination basename.
+        with archive.open(chosen) as src, dest_json.open("wb") as dst:
+            shutil.copyfileobj(src, dst)
+    print("unzipped %s from %s -> %s" % (Path(chosen).name, zip_path, dest_json))
+    return dest_json
+
+
+def ensure_json(path: Path) -> Path:
+    """Use a JSON file, or unzip a sibling/same-path zip into that JSON path first."""
+    path = Path(path)
+    if path.is_file() and not zipfile.is_zipfile(path):
+        return path
+    zip_path = None
+    dest = path
+    if path.is_file() and zipfile.is_zipfile(path):
+        zip_path = path
+    else:
+        candidates = [Path(str(path) + ".zip"), path.with_suffix(path.suffix + ".zip")]
+        for candidate in candidates:
+            if candidate.is_file():
+                zip_path = candidate
+                break
+    if zip_path is None:
+        raise FileNotFoundError(path)
+    return _extract_json(zip_path, dest)
+
+
+def load_task_map(path: Path):
+    resolved = ensure_json(path)
+    with resolved.open("r", encoding="utf-8") as handle:
+        data = json.load(handle)
+    if not isinstance(data, dict):
+        raise ValueError("%s is not a JSON object" % resolved)
+    return data, resolved
+
+
+def _file_record(path: Path) -> dict:
+    return {
+        "path": str(path.resolve()),
+        "bytes": path.stat().st_size,
+        "sha256": _sha256_file(path),
+    }
+
+
+def _bump(counter, key):
+    counter[key] = counter.get(key, 0) + 1
+
+
+def build(challenges_path, solutions_path, out_dir, n_episodes, seed, holdout_n):
+    challenges, challenges_file = load_task_map(Path(challenges_path))
+    solutions, solutions_file = load_task_map(Path(solutions_path))
+    diag, holdout, train = make_split(challenges.keys(), solutions.keys(), seed, holdout_n)
+    holdout_set = set(holdout)
+    diag_set = set(diag)
+    perms = derive_color_perms(seed)
+    color_tables = _color_tables(perms)
+
+    skipped = {"n": 0, "reasons": {}, "examples": {}}
+    valid_base = {"test": 0, "loo": 0}
+    task_bases = []
+    for task_id in train:
+        bases = collect_bases(task_id, challenges[task_id], solutions.get(task_id), skipped)
+        for base in bases:
+            valid_base[base["query_kind"]] += 1
+        task_bases.append((task_id, bases))
+
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    split_path = out_dir / "split.json"
+    episodes_path = out_dir / "episodes.jsonl"
+    manifest_path = out_dir / "manifest.json"
+
+    split_doc = {
+        "seed": seed,
+        "ordering_rule": ordering_rule(seed, holdout_n),
+        "diag": diag,
+        "holdout": holdout,
+        "train": train,
+    }
+    with split_path.open("w", encoding="utf-8", newline="\n") as handle:
+        json.dump(split_doc, handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
+
+    geometry_counts = {}
+    color_counts = {}
+    query_kind_counts = {}
+    used_tasks = set()
+    used_families = set()
+    written = 0
+    with episodes_path.open("w", encoding="utf-8", newline="\n") as handle:
+        for episode in iter_round_robin(task_bases, color_tables, seed, n_episodes):
+            if episode["task_id"] in holdout_set or episode["task_id"] in diag_set:
+                raise RuntimeError("refusing to write held-out task %s" % episode["task_id"])
+            handle.write(json.dumps(episode, ensure_ascii=False, separators=(",", ":")))
+            handle.write("\n")
+            written += 1
+            used_tasks.add(episode["task_id"])
+            used_families.add(episode["family_id"])
+            _bump(geometry_counts, episode["geometry"])
+            color_name = episode["augmentation"].split("|", 1)[1]
+            _bump(color_counts, color_name)
+            _bump(query_kind_counts, episode["query_kind"])
+
+    n_valid = valid_base["test"] + valid_base["loo"]
+    manifest = {
+        "created": CREATED,
+        "seed": seed,
+        "n_episodes": written,
+        "n_episodes_requested": n_episodes,
+        "n_train_tasks_used": len(used_tasks),
+        "n_train_tasks_available": len(train),
+        "n_train_tasks_with_base": sum(1 for _, bases in task_bases if bases),
+        "n_holdout": len(holdout),
+        "n_diag": len(diag),
+        "n_skipped": skipped["n"],
+        "n_skipped_note": (
+            "Train-split base episodes (one test index or one loo index) not expanded. "
+            "Each skipped base drops all %d geometry x color variants. "
+            "A base is skipped when a grid is missing, non-rectangular, or outside a 1..30 "
+            "grid of ints 0-9, or when the test solution is missing. "
+            "A loo base is also skipped when a remaining demonstration has the same output "
+            "grid as the held-out target. Test episodes are not skipped for that reason: "
+            "the test answer is not placed in the prompt, and a matching grid is a real official item. "
+            "Cells are never dropped or truncated to fit a length."
+            % AUGMENTATIONS_PER_BASE
+        ),
+        "skip_reasons": skipped["reasons"],
+        "skip_examples": skipped["examples"],
+        "geometry_counts": geometry_counts,
+        "color_counts": color_counts,
+        "query_kind_counts": query_kind_counts,
+        "unique_family_count": len(used_families),
+        "source": SOURCE,
+        "revision": REVISION,
+        "color_perms": {
+            "ident": list(range(N_COLORS)),
+            "perm1": list(perms[0]),
+            "perm2": list(perms[1]),
+            "perm3": list(perms[2]),
+        },
+        "prompt_tokens_note": (
+            "prompt_tokens and target_tokens are null because tokenization happens "
+            "on the Kaggle tokenizer."
+        ),
+        "episodes_sha256": _sha256_file(episodes_path),
+        "arcgen_pool": "not_generated",
+        "n_challenges": len(challenges),
+        "n_solutions": len(solutions),
+        "n_tasks_with_solutions": len(solutions),
+        "n_eligible": len(train) + len(holdout),
+        "n_valid_base": valid_base,
+        "n_augmented_pool": n_valid * AUGMENTATIONS_PER_BASE,
+        "inputs": {
+            "challenges": _file_record(challenges_file),
+            "solutions": _file_record(solutions_file),
+        },
+        "python": sys.version.split()[0],
+        "sampling": ordering_rule(seed, holdout_n),
+    }
+    with manifest_path.open("w", encoding="utf-8", newline="\n") as handle:
+        json.dump(manifest, handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
+
+    print("challenges=%d solutions=%d" % (len(challenges), len(solutions)))
+    print("diag=%d holdout=%d train=%d" % (len(diag), len(holdout), len(train)))
+    print(
+        "valid_base test=%d loo=%d skipped_base=%d augmented_pool=%d"
+        % (valid_base["test"], valid_base["loo"], skipped["n"], manifest["n_augmented_pool"])
+    )
+    print("skip_reasons=%s" % json.dumps(skipped["reasons"], sort_keys=True))
+    print("episodes=%d tasks_used=%d families=%d" % (written, len(used_tasks), len(used_families)))
+    print("geometry_counts=%s" % json.dumps(geometry_counts, sort_keys=True))
+    print("color_counts=%s" % json.dumps(color_counts, sort_keys=True))
+    print("query_kind_counts=%s" % json.dumps(query_kind_counts, sort_keys=True))
+    print("color_perms=%s" % json.dumps(manifest["color_perms"]))
+    print("episodes_sha256=%s" % manifest["episodes_sha256"])
+    print("inputs challenges_bytes=%d solutions_bytes=%d" % (
+        manifest["inputs"]["challenges"]["bytes"],
+        manifest["inputs"]["solutions"]["bytes"],
+    ))
+    print("wrote %s" % split_path)
+    print("wrote %s" % episodes_path)
+    print("wrote %s" % manifest_path)
+    return manifest
+
+
+def _geometry_color_cycle(color_tables):
+    """Six geometries under one color table, then the next table. 24 pairs, then repeat."""
+    cycle = []
+    for color_name, perm in color_tables:
+        for geometry in GEOMETRIES:
+            cycle.append((geometry, color_name, list(perm)))
+    return cycle
+
+
+def _target_in_demos(episode) -> bool:
+    target = episode["target_grid_text"]
+    for block in _demo_output_texts(episode["messages"][1]["content"]):
+        if block == target:
+            return True
+    return False
+
+
+def arcgen_v2_ids(task_list_path):
+    """Generator ids imported in task_list.py after the '# V2 Tasks' comment."""
+    lines = Path(task_list_path).read_text(encoding="utf-8").splitlines()
+    start = None
+    for index, line in enumerate(lines):
+        if line.strip() == "# V2 Tasks":
+            start = index + 1
+            break
+    if start is None:
+        raise RuntimeError("V2 Tasks comment not found in %s" % task_list_path)
+    ids = []
+    for line in lines[start:]:
+        stripped = line.strip()
+        if stripped.startswith("from tasks import task_"):
+            ids.append(stripped.split("task_", 1)[1])
+        elif stripped.startswith("def "):
+            break
+    if not ids or ids[0] != "00576224":
+        raise RuntimeError("V2 generator ids did not start at 00576224")
+    return ids
+
+
+class _GenerateTimeout(Exception):
+    pass
+
+
+def _on_generate_timeout(signum, frame):
+    raise _GenerateTimeout()
+
+
+_TIMEOUT_HANDLER_READY = False
+
+
+def _ensure_generate_timeout():
+    global _TIMEOUT_HANDLER_READY
+    if not _TIMEOUT_HANDLER_READY:
+        signal.signal(signal.SIGALRM, _on_generate_timeout)
+        _TIMEOUT_HANDLER_READY = True
+
+
+def _arcgen_seed_int(task_id, instance, slot, attempt) -> int:
+    """sha256 of the material, first 8 bytes, little-endian.
+
+    Attempt 0 uses 20260930:task:instance:slot. A failed draw appends :attempt.
+    """
+    material = "20260930:%s:%s:%s" % (task_id, instance, slot)
+    if attempt:
+        material = "%s:%d" % (material, attempt)
+    digest = hashlib.sha256(material.encode("utf-8")).digest()
+    return int.from_bytes(digest[:8], "little")
+
+
+def _draw_arcgen_pair(generate, task_id, instance, slot, attempt_reasons, stdout_families, throw_examples):
+    last_reason = "not_drawn"
+    _ensure_generate_timeout()
+    for attempt in range(20):
+        random.seed(_arcgen_seed_int(task_id, instance, slot, attempt))
+        buffer = io.StringIO()
+        try:
+            signal.setitimer(signal.ITIMER_REAL, ARCGEN_DRAW_TIMEOUT_SECONDS)
+            try:
+                with contextlib.redirect_stdout(buffer):
+                    pair = generate()
+            finally:
+                signal.setitimer(signal.ITIMER_REAL, 0.0)
+        except _GenerateTimeout:
+            last_reason = "generate_timeout"
+            _bump(attempt_reasons, last_reason)
+            if buffer.getvalue():
+                stdout_families.add(task_id)
+            if attempt == 0:
+                print(
+                    "generate_timeout task=%s instance=%s slot=%s" % (task_id, instance, slot),
+                    flush=True,
+                )
+            continue
+        except Exception as exc:
+            last_reason = "generate_throw:%s" % type(exc).__name__
+            _bump(attempt_reasons, last_reason)
+            if buffer.getvalue():
+                stdout_families.add(task_id)
+            if len(throw_examples) < 8:
+                message = "%s: %s" % (type(exc).__name__, exc)
+                throw_examples.append(
+                    {
+                        "task_id": task_id,
+                        "instance": instance,
+                        "slot": slot,
+                        "attempt": attempt,
+                        "error": message[:200],
+                    }
+                )
+            continue
+        if buffer.getvalue():
+            stdout_families.add(task_id)
+        if not isinstance(pair, dict):
+            last_reason = "pair_not_object"
+            _bump(attempt_reasons, last_reason)
+            continue
+        reason = grid_problem(pair.get("input")) or grid_problem(pair.get("output"))
+        if reason:
+            last_reason = reason
+            _bump(attempt_reasons, last_reason)
+            continue
+        return (
+            {
+                "input": copy.deepcopy(pair["input"]),
+                "output": copy.deepcopy(pair["output"]),
+            },
+            None,
+        )
+    return None, last_reason
+
+
+def _arcgen_instance(generate, task_id, instance, skipped, attempt_reasons, stdout_families, throw_examples):
+    """Four seeded draws. Slots 0-2 are demos and slot 3 is the query."""
+    pairs = []
+    for slot in range(4):
+        pair, reason = _draw_arcgen_pair(
+            generate, task_id, instance, slot, attempt_reasons, stdout_families, throw_examples
+        )
+        if pair is None:
+            _note_skip(skipped, reason or "slot_failed", task_id, "gen", instance)
+            return None
+        pairs.append(pair)
+    target = pairs[3]["output"]
+    if any(pair["output"] == target for pair in pairs[:3]):
+        _note_skip(skipped, "target_equals_demo_output", task_id, "gen", instance)
+        return None
+    return {
+        "task_id": task_id,
+        "instance": instance,
+        "demos": pairs[:3],
+        "query_input": pairs[3]["input"],
+        "target": target,
+    }
+
+
+def _collect_arcgen_bases(allowed, generators, need, skipped, attempt_reasons, stdout_families, throw_examples):
+    """One kept base per family before any family receives a second."""
+    state = {}
+    usable = []
+    for task_id in allowed:
+        info = generators.get(task_id)
+        generate = None
+        if isinstance(info, (list, tuple)) and info:
+            generate = info[0]
+        if not callable(generate):
+            _note_skip(skipped, "generator_missing", task_id, "gen", -1)
+            continue
+        state[task_id] = {
+            "alive": True,
+            "n_kept": 0,
+            "next_instance": 0,
+            "fails": 0,
+            "generate": generate,
+        }
+        usable.append(task_id)
+    kept = []
+    idle_passes = 0
+    while len(kept) < need and any(state[task_id]["alive"] for task_id in usable):
+        min_kept = min(state[task_id]["n_kept"] for task_id in usable if state[task_id]["alive"])
+        progress = False
+        for task_id in usable:
+            if len(kept) >= need:
+                break
+            item = state[task_id]
+            if not item["alive"] or item["n_kept"] != min_kept:
+                continue
+            instance = item["next_instance"]
+            item["next_instance"] += 1
+            if instance >= 32:
+                item["alive"] = False
+                _note_skip(skipped, "instance_cap", task_id, "gen", instance)
+                continue
+            base = _arcgen_instance(
+                item["generate"],
+                task_id,
+                instance,
+                skipped,
+                attempt_reasons,
+                stdout_families,
+                throw_examples,
+            )
+            if base is None:
+                item["fails"] += 1
+                if item["fails"] >= 8:
+                    item["alive"] = False
+                continue
+            item["fails"] = 0
+            item["n_kept"] += 1
+            kept.append(base)
+            progress = True
+            if len(kept) % 50 == 0:
+                print(
+                    "arcgen_bases_kept=%d last=%s instance=%d" % (len(kept), task_id, instance),
+                    flush=True,
+                )
+        if progress:
+            idle_passes = 0
+        else:
+            idle_passes += 1
+            if idle_passes > 32:
+                break
+    alive = sum(1 for task_id in usable if state[task_id]["alive"])
+    return kept, alive
+
+
+def _new_source_bucket(color_tables):
+    return {
+        "n": 0,
+        "geometry": {name: 0 for name in GEOMETRIES},
+        "color": {name: 0 for name, _perm in color_tables},
+        "query_kind": {},
+        "families": set(),
+    }
+
+
+def _tally_episode(episode, geometry_counts, color_counts, query_kind_counts, bucket):
+    color_name = episode["augmentation"].split("|", 1)[1]
+    _bump(geometry_counts, episode["geometry"])
+    _bump(color_counts, color_name)
+    _bump(query_kind_counts, episode["query_kind"])
+    _bump(bucket["geometry"], episode["geometry"])
+    _bump(bucket["color"], color_name)
+    _bump(bucket["query_kind"], episode["query_kind"])
+    bucket["n"] += 1
+    bucket["families"].add(episode["family_id"])
+
+
+def _write_episode(handle, episode):
+    handle.write(json.dumps(episode, ensure_ascii=False, separators=(",", ":")))
+    handle.write("\n")
+
+
+def _iter_official_g2(task_bases, cycle, seed, limit, skipped):
+    pending = deque()
+    for task_id, bases in task_bases:
+        if bases:
+            pending.append((task_id, bases, 0))
+    produced = 0
+    cycle_len = len(cycle)
+    while pending and produced < limit:
+        task_id, bases, step = pending.popleft()
+        base = bases[step // cycle_len]
+        geometry, color_name, perm = cycle[step % cycle_len]
+        try:
+            episode = _make_episode(task_id, base, geometry, color_name, perm, seed)
+        except RuntimeError as exc:
+            _note_skip(skipped, "episode_build_failed", task_id, base["query_kind"], base["query_index"])
+            if len(skipped["examples"].setdefault("episode_build_failed", [])) <= 8:
+                examples = skipped["examples"]["episode_build_failed"]
+                if examples and examples[-1].get("error") is None and len(examples) <= 8:
+                    examples[-1]["error"] = str(exc)[:200]
+            step += 1
+            if step < len(bases) * cycle_len:
+                pending.append((task_id, bases, step))
+            continue
+        produced += 1
+        yield episode
+        step += 1
+        if step < len(bases) * cycle_len:
+            pending.append((task_id, bases, step))
+
+
+def _git_head(root: Path) -> str:
+    return subprocess.check_output(
+        ["git", "-C", str(root), "rev-parse", "HEAD"],
+        text=True,
+    ).strip()
+
+
+def build_g2(
+    challenges_path,
+    solutions_path,
+    split_path,
+    out_dir,
+    arcgen_root,
+    official_n=G2_OFFICIAL_N,
+    arcgen_n=G2_ARCGEN_N,
+    seed=DEFAULT_SEED,
+):
+    """Write the G2 pool. Does not modify the G1 split, episodes, or adapters.
+
+    Official rows are a round-robin over split train families. Inside a family
+    the 6 geometries cycle under each of the 4 color tables before the next
+    base repeats that cycle. ARC-GEN keeps one base per allowed V2 family
+    before any family gets a second, then expands each kept base across that
+    same cycle. A short side is not filled from the other side.
+    """
+    started = time.time()
+    if official_n < 0 or arcgen_n < 0:
+        raise ValueError("episode caps must be >= 0")
+    arcgen_root = Path(arcgen_root)
+    commit = _git_head(arcgen_root)
+    if commit != ARCGEN_COMMIT:
+        raise RuntimeError("ARC-GEN commit %s != %s" % (commit, ARCGEN_COMMIT))
+
+    split_path = Path(split_path)
+    with split_path.open("r", encoding="utf-8") as handle:
+        split_doc = json.load(handle)
+    diag = list(split_doc["diag"])
+    holdout = list(split_doc["holdout"])
+    train = list(split_doc["train"])
+    banned = set(diag) | set(holdout)
+    if not banned.isdisjoint(train):
+        raise RuntimeError("split train overlaps diag or holdout")
+
+    challenges, challenges_file = load_task_map(Path(challenges_path))
+    solutions, solutions_file = load_task_map(Path(solutions_path))
+    perms = derive_color_perms(seed)
+    color_tables = _color_tables(perms)
+    cycle = _geometry_color_cycle(color_tables)
+
+    skipped_official = {"n": 0, "reasons": {}, "examples": {}}
+    task_bases = []
+    for task_id in train:
+        bases = collect_bases(
+            task_id,
+            challenges.get(task_id),
+            solutions.get(task_id),
+            skipped_official,
+        )
+        task_bases.append((task_id, bases))
+    families_with_base = sum(1 for _task_id, bases in task_bases if bases)
+
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    episodes_path = out_dir / "episodes.jsonl"
+    manifest_path = out_dir / "manifest.json"
+
+    geometry_counts = {name: 0 for name in GEOMETRIES}
+    color_counts = {name: 0 for name, _perm in color_tables}
+    query_kind_counts = {}
+    by_source = {
+        SOURCE: _new_source_bucket(color_tables),
+        ARCGEN_SOURCE: _new_source_bucket(color_tables),
+    }
+    seen = set()
+    leak_count = 0
+    duplicate_skipped = 0
+    arcgen_row_skips = {"n": 0, "reasons": {}, "examples": {}}
+    written = {"official": 0, "arcgen": 0}
+
+    def accept(episode, bucket_name):
+        nonlocal leak_count, duplicate_skipped
+        if episode["task_id"] in banned or episode["family_id"] in banned:
+            leak_count += 1
+            return False
+        if episode["episode_id"] in seen:
+            duplicate_skipped += 1
+            return False
+        if episode["prompt_tokens"] is not None or episode["target_tokens"] is not None:
+            raise RuntimeError("token fields must stay null")
+        seen.add(episode["episode_id"])
+        _write_episode(handle, episode)
+        _tally_episode(
+            episode,
+            geometry_counts,
+            color_counts,
+            query_kind_counts,
+            by_source[bucket_name],
+        )
+        return True
+
+    with episodes_path.open("w", encoding="utf-8", newline="\n") as handle:
+        for episode in _iter_official_g2(task_bases, cycle, seed, official_n, skipped_official):
+            if episode["source"] != SOURCE or episode["revision"] != REVISION:
+                raise RuntimeError("official row lost its source or revision")
+            if accept(episode, SOURCE):
+                written["official"] += 1
+                if written["official"] % 2000 == 0:
+                    print("official_rows=%d" % written["official"], flush=True)
+        print(
+            "official_done rows=%d families_with_base=%d elapsed=%.1f"
+            % (written["official"], families_with_base, time.time() - started),
+            flush=True,
+        )
+        del task_bases
+        del challenges
+        del solutions
+
+        attempt_reasons = {}
+        stdout_families = set()
+        throw_examples = []
+        skipped_arcgen = {"n": 0, "reasons": {}, "examples": {}}
+        kept = []
+        generators = {}
+        allowed = []
+        v2_ids = []
+        try:
+            v2_ids = arcgen_v2_ids(arcgen_root / "task_list.py")
+            allowed = exclude_arcgen_families(v2_ids, holdout, diag)
+            if any(task_id in banned for task_id in allowed):
+                raise RuntimeError("exclude_arcgen_families left a banned id")
+            root_text = str(arcgen_root.resolve())
+            if root_text not in sys.path:
+                sys.path.insert(0, root_text)
+            import task_list
+
+            generators = task_list.task_list()
+            need = (arcgen_n + len(cycle) - 1) // len(cycle) if arcgen_n else 0
+            print(
+                "arcgen_generators v2=%d allowed=%d bases_needed=%d"
+                % (len(v2_ids), len(allowed), need),
+                flush=True,
+            )
+            kept, _alive = _collect_arcgen_bases(
+                allowed,
+                generators,
+                need,
+                skipped_arcgen,
+                attempt_reasons,
+                stdout_families,
+                throw_examples,
+            )
+            print(
+                "arcgen_bases_kept=%d elapsed=%.1f" % (len(kept), time.time() - started),
+                flush=True,
+            )
+            for geometry, color_name, perm in cycle:
+                if written["arcgen"] >= arcgen_n:
+                    break
+                for base in kept:
+                    if written["arcgen"] >= arcgen_n:
+                        break
+                    episode_base = {
+                        "query_kind": "gen",
+                        "query_index": base["instance"],
+                        "demos": base["demos"],
+                        "query_input": base["query_input"],
+                        "target": base["target"],
+                    }
+                    try:
+                        episode = _make_episode(
+                            base["task_id"],
+                            episode_base,
+                            geometry,
+                            color_name,
+                            perm,
+                            seed,
+                            source=ARCGEN_SOURCE,
+                            revision=ARCGEN_REVISION,
+                        )
+                    except Exception as exc:
+                        _note_skip(
+                            arcgen_row_skips,
+                            "episode_build_failed",
+                            base["task_id"],
+                            "gen",
+                            base["instance"],
+                        )
+                        if len(throw_examples) < 8:
+                            throw_examples.append(
+                                {
+                                    "task_id": base["task_id"],
+                                    "instance": base["instance"],
+                                    "slot": None,
+                                    "attempt": None,
+                                    "error": str(exc)[:200],
+                                }
+                            )
+                        continue
+                    if _target_in_demos(episode):
+                        _note_skip(
+                            arcgen_row_skips,
+                            "target_equals_demo_output",
+                            base["task_id"],
+                            "gen",
+                            base["instance"],
+                        )
+                        continue
+                    if episode["source"] != ARCGEN_SOURCE or episode["revision"] != ARCGEN_REVISION:
+                        raise RuntimeError("arcgen row lost its source or revision")
+                    if episode["query_kind"] != "gen":
+                        raise RuntimeError("arcgen query_kind")
+                    if accept(episode, ARCGEN_SOURCE):
+                        written["arcgen"] += 1
+                        if written["arcgen"] % 2000 == 0:
+                            print("arcgen_rows=%d" % written["arcgen"], flush=True)
+        except Exception as exc:
+            _note_skip(skipped_arcgen, "arcgen_aborted", "_pool", "gen", -1)
+            if len(throw_examples) < 8:
+                throw_examples.append(
+                    {
+                        "task_id": "_pool",
+                        "instance": None,
+                        "slot": None,
+                        "attempt": None,
+                        "error": "%s: %s" % (type(exc).__name__, exc)[:200],
+                    }
+                )
+            print("arcgen_aborted %s: %s" % (type(exc).__name__, exc), flush=True)
+
+    official_families = by_source[SOURCE]["families"]
+    arcgen_families = by_source[ARCGEN_SOURCE]["families"]
+    instance_counts = {}
+    for base in kept:
+        key = str(base["instance"])
+        instance_counts[key] = instance_counts.get(key, 0) + 1
+    manifest = {
+        "created": G2_CREATED,
+        "seed": seed,
+        "trained": False,
+        "commit": commit,
+        "n_episodes": written["official"] + written["arcgen"],
+        "n_episodes_requested": official_n + arcgen_n,
+        "row_counts_by_source": {
+            SOURCE: written["official"],
+            ARCGEN_SOURCE: written["arcgen"],
+        },
+        "official_requested": official_n,
+        "arcgen_requested": arcgen_n,
+        "official_shortfall": official_n - written["official"],
+        "arcgen_shortfall": arcgen_n - written["arcgen"],
+        "family_counts": {
+            SOURCE: len(official_families),
+            ARCGEN_SOURCE: len(arcgen_families),
+            "unique": len(official_families | arcgen_families),
+            "official_train_available": len(train),
+            "official_train_with_base": families_with_base,
+            "arcgen_v2_generators": len(v2_ids),
+            "arcgen_v2_allowed": len(allowed),
+            "arcgen_v2_excluded": len(v2_ids) - len(allowed) if v2_ids else None,
+            "arcgen_v2_with_base": len({base["task_id"] for base in kept}),
+        },
+        "geometry_counts": geometry_counts,
+        "color_counts": color_counts,
+        "geometry_counts_by_source": {
+            SOURCE: by_source[SOURCE]["geometry"],
+            ARCGEN_SOURCE: by_source[ARCGEN_SOURCE]["geometry"],
+        },
+        "color_counts_by_source": {
+            SOURCE: by_source[SOURCE]["color"],
+            ARCGEN_SOURCE: by_source[ARCGEN_SOURCE]["color"],
+        },
+        "query_kind_counts": query_kind_counts,
+        "diag_holdout_leak_count": leak_count,
+        "duplicate_episode_id_skipped": duplicate_skipped,
+        "episodes_sha256": _sha256_file(episodes_path),
+        "skip_reasons": {
+            "official_base": skipped_official["reasons"],
+            "arcgen_instance": skipped_arcgen["reasons"],
+            "arcgen_attempt": attempt_reasons,
+            "arcgen_row": arcgen_row_skips["reasons"],
+        },
+        "skip_examples": {
+            "official_base": skipped_official["examples"],
+            "arcgen_instance": skipped_arcgen["examples"],
+            "arcgen_row": arcgen_row_skips["examples"],
+            "arcgen_throw": throw_examples,
+        },
+        "arcgen_bases_kept": len(kept),
+        "arcgen_bases_needed_for_full_cycle": (arcgen_n + len(cycle) - 1) // len(cycle) if arcgen_n else 0,
+        "arcgen_instance_counts": instance_counts,
+        "arcgen_stdout_family_count": len(stdout_families),
+        "arcgen_draw_timeout_seconds": ARCGEN_DRAW_TIMEOUT_SECONDS,
+        "source_revisions": {
+            SOURCE: REVISION,
+            ARCGEN_SOURCE: ARCGEN_REVISION,
+        },
+        "color_perms": {
+            "ident": list(range(N_COLORS)),
+            "perm1": list(perms[0]),
+            "perm2": list(perms[1]),
+            "perm3": list(perms[2]),
+        },
+        "augmentation_cycle": ["%s|%s" % (geometry, color_name) for geometry, color_name, _perm in cycle],
+        "sampling": (
+            "Official: round-robin over split.json train ids in file order, one row per family per turn. "
+            "Within a family, bases stay in collect_bases order (test index, then loo index). "
+            "Each base is expanded by color table outer (ident, perm1, perm2, perm3) and geometry inner "
+            "(ident, rot90, rot180, rot270, flipud, fliplr) before the next base repeats that 24-step cycle. "
+            "iter_augmented()'s ident/perm1 front prefix is not used. Cap %d. "
+            "ARC-GEN: V2 import order after '# V2 Tasks', minus diag and holdout via exclude_arcgen_families. "
+            "Each allowed family receives one kept instance before any family receives a second. "
+            "An instance is four generate() calls, slots 0-2 demos and slot 3 query, seeded by sha256 "
+            "of '20260930:'+task_id+':'+instance+':'+slot (first 8 bytes, little-endian) into random.seed. "
+            "A rejected slot appends ':'+attempt and is retried up to 20 times. "
+            "A generate() call that does not return within %d seconds is a failed attempt "
+            "(generate_timeout), not a stored grid. "
+            "Kept bases are then expanded across the same 24-step cycle, one augmentation at a time "
+            "across bases, until %d rows. Neither side borrows rows from the other."
+            % (official_n, int(ARCGEN_DRAW_TIMEOUT_SECONDS), arcgen_n)
+        ),
+        "prompt_tokens_note": (
+            "prompt_tokens and target_tokens are null because tokenization happens "
+            "on the Kaggle tokenizer."
+        ),
+        "elapsed_seconds": round(time.time() - started, 1),
+        "inputs": {
+            "challenges": _file_record(challenges_file),
+            "solutions": _file_record(solutions_file),
+            "split": _file_record(split_path),
+            "arcgen_root": str(arcgen_root.resolve()),
+        },
+        "python": sys.version.split()[0],
+    }
+    with manifest_path.open("w", encoding="utf-8", newline="\n") as handle:
+        json.dump(manifest, handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
+    print("official=%d arcgen=%d leak=%d" % (written["official"], written["arcgen"], leak_count))
+    print("family_counts=%s" % json.dumps(manifest["family_counts"], sort_keys=True))
+    print("geometry_counts=%s" % json.dumps(geometry_counts, sort_keys=True))
+    print("color_counts=%s" % json.dumps(color_counts, sort_keys=True))
+    print("query_kind_counts=%s" % json.dumps(query_kind_counts, sort_keys=True))
+    print("skip_reasons=%s" % json.dumps(manifest["skip_reasons"], sort_keys=True))
+    print("episodes_sha256=%s" % manifest["episodes_sha256"])
+    print("elapsed_seconds=%s" % manifest["elapsed_seconds"])
+    print("wrote %s" % episodes_path)
+    print("wrote %s" % manifest_path)
+    return manifest
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description="Build the 007 G1 split and episode pool.")
+    parser.add_argument("--challenges", required=True)
+    parser.add_argument("--solutions", required=True)
+    parser.add_argument("--out-dir", required=True)
+    parser.add_argument("--n-episodes", type=int, default=DEFAULT_N_EPISODES)
+    parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
+    parser.add_argument("--holdout-n", type=int, default=DEFAULT_HOLDOUT_N)
+    args = parser.parse_args(argv)
+    if args.n_episodes < 0:
+        parser.error("--n-episodes must be >= 0")
+    build(
+        args.challenges,
+        args.solutions,
+        args.out_dir,
+        args.n_episodes,
+        args.seed,
+        args.holdout_n,
+    )
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,8 @@
+# Large 007 artifacts stay on disk. Manifests record their hashes.
+# The adapter is also on Kaggle dataset ccjjllt/arc2-007-g1-adapter.
+experiments/007/raw/
+experiments/007/g1/episodes.jsonl
+experiments/007/g2/episodes.jsonl
+experiments/007/**/adapter_model.safetensors
+experiments/007/**/trainer_state.pt
+experiments/007/**/*.log
