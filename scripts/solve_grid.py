@@ -22,6 +22,22 @@ HOLDOUT_EVAL_LIMIT = 24
 PROMPT_MODE = "enable_thinking_false"
 PROMPT_TAIL_CHARS = 200
 
+# Inference output formatters. F0 is the original space-separated grid text;
+# F1 is the compact 009 §3.2 form (continuous single digits per row + newline,
+# full vocab, output cap such as 960 is a format upper bound, RLE not mainline).
+# F1 prompt-side compact serialization is owned by the data layer
+# (arc_episode_data.py); this file only parses outputs + reads the formatter.
+# Data-layer gap is tracked in experiments/008/code_gaps_followup.json,
+# not edited here.
+FORMATTER_F0 = "f0_space"
+FORMATTER_F1 = "f1_compact"
+FORMATTER_CHOICES = ("auto", FORMATTER_F0, FORMATTER_F1)
+FORMATTER_CONFIG_FILES = ("adapter_config.json", "run_config.json", "config.json")
+
+
+class FormatterMismatchError(ValueError):
+    """Formatter disagrees with the actual text shape. Loud fail, no fallback."""
+
 # Static / hybrid caches live on the module instance and are reset across generate()
 # calls. A fresh dynamic cache is built inside each generate(), which is what we want.
 _STATIC_CACHE_IMPLEMENTATIONS = frozenset(
@@ -114,6 +130,16 @@ def parse_args(argv=None):
             "none: original view only. transpose: extra greedy on the transposed task (all demos "
             "and query transposed), inverse-transposed before scoring, with dedup+stats vs the "
             "original view. Rotation/fixed-recolor views are deferred, not implemented here."
+        ),
+    )
+    parser.add_argument(
+        "--formatter",
+        default="auto",
+        choices=FORMATTER_CHOICES,
+        help=(
+            "auto: read formatter from the adapter dir (adapter_config.json, run_config.json, "
+            "config.json formatter field); no field falls back to f0_space and records "
+            "formatter_fallback=true. f0_space/f1_compact: force that output parser."
         ),
     )
     return parser.parse_args(argv)
@@ -346,6 +372,182 @@ def score_text(text, gold, text_to_grid):
     except TypeError:
         stored = None
     return parse, em, stored
+
+
+def parse_grid_f0_space(text, base_parser=None):
+    """F0 space parser. With base_parser, literally uses the original parser.
+
+    Raises FormatterMismatchError when the text is not exact space form.
+    Never falls back to compact parsing.
+    """
+    if base_parser is not None:
+        pred = base_parser(text)
+        if pred is None:
+            raise FormatterMismatchError(
+                "f0_space mismatch: text is not exact space-separated digits"
+            )
+        return pred
+    if not isinstance(text, str):
+        raise FormatterMismatchError("f0_space mismatch: not a string")
+    stripped = text.strip()
+    if stripped == "":
+        raise FormatterMismatchError("f0_space mismatch: empty text")
+    rows = []
+    width = None
+    for line in stripped.split("\n"):
+        if line == "" or line != line.strip():
+            raise FormatterMismatchError("f0_space mismatch: bad line padding")
+        cells = line.split(" ")
+        parsed = []
+        for cell in cells:
+            if len(cell) != 1 or cell < "0" or cell > "9":
+                raise FormatterMismatchError(
+                    "f0_space mismatch: cell %r is not one digit" % (cell,)
+                )
+            parsed.append(ord(cell) - 48)
+        if width is None:
+            width = len(parsed)
+        elif len(parsed) != width:
+            raise FormatterMismatchError("f0_space mismatch: ragged width")
+        rows.append(parsed)
+    if width is None or width < 1:
+        raise FormatterMismatchError("f0_space mismatch: no columns")
+    return rows
+
+
+def parse_grid_f1_compact(text):
+    """F1 compact parser: each row is continuous single digits, newline-split.
+
+    Any space in any row is a loud FormatterMismatchError, never silently
+    accepted. Returns the same list-of-lists int grid shape as F0, so the
+    outer submission JSON schema (task/query/answer grids) is unchanged.
+    """
+    if not isinstance(text, str):
+        raise FormatterMismatchError("f1_compact mismatch: not a string")
+    stripped = text.strip()
+    if stripped == "":
+        raise FormatterMismatchError("f1_compact mismatch: empty text")
+    rows = []
+    width = None
+    for line in stripped.split("\n"):
+        if line == "" or line != line.strip():
+            raise FormatterMismatchError("f1_compact mismatch: bad line padding")
+        if " " in line:
+            raise FormatterMismatchError(
+                "f1_compact mismatch: row contains a space"
+            )
+        parsed = []
+        for char in line:
+            if char < "0" or char > "9":
+                raise FormatterMismatchError(
+                    "f1_compact mismatch: char %r is not one digit" % (char,)
+                )
+            parsed.append(ord(char) - 48)
+        if not parsed:
+            raise FormatterMismatchError("f1_compact mismatch: empty row")
+        if width is None:
+            width = len(parsed)
+        elif len(parsed) != width:
+            raise FormatterMismatchError("f1_compact mismatch: ragged width")
+        rows.append(parsed)
+    if width is None or width < 1:
+        raise FormatterMismatchError("f1_compact mismatch: no columns")
+    return rows
+
+
+def parse_grid_for_formatter(text, formatter, f0_base_parser=None):
+    """Dispatch to exactly one parser. Never mixes, guesses, or falls back."""
+    if formatter == FORMATTER_F0:
+        return parse_grid_f0_space(text, base_parser=f0_base_parser)
+    if formatter == FORMATTER_F1:
+        return parse_grid_f1_compact(text)
+    raise FormatterMismatchError("unknown formatter: %r" % (formatter,))
+
+
+def score_text_with_formatter(text, gold, formatter, f0_base_parser=None):
+    """Formatter-aware parse. Returns (parse, em, grid, parse_error).
+
+    Mismatch raises inside the parser and lands here as parse FAIL plus an
+    explicit parse_error string. No cross-format retry.
+    """
+    try:
+        pred = parse_grid_for_formatter(text, formatter, f0_base_parser)
+    except Exception as exc:
+        em = False if gold is not None else None
+        return "FAIL", em, None, "%s: %s" % (type(exc).__name__, str(exc)[:300])
+    parse, em, stored = score_text_pred(pred, gold)
+    return parse, em, stored, None
+
+
+def score_text_pred(pred, gold):
+    parse = "OK"
+    em = grids_equal(pred, gold) if gold is not None else None
+    stored = pred
+    try:
+        json.dumps(pred)
+    except TypeError:
+        stored = None
+    return parse, em, stored
+
+
+def _normalize_formatter(value):
+    text = str(value).strip().lower().replace("-", "_")
+    if text in ("f0_space", "f0", "space"):
+        return FORMATTER_F0
+    if text in ("f1_compact", "f1", "compact"):
+        return FORMATTER_F1
+    raise UsageError("unknown formatter value: %r" % (value,))
+
+
+def _read_formatter_field(obj):
+    if isinstance(obj, dict):
+        direct = obj.get("formatter")
+        if isinstance(direct, str) and direct.strip():
+            return direct
+        for nested_key in ("data", "episode", "format", "training", "run"):
+            nested = obj.get(nested_key)
+            if isinstance(nested, dict):
+                inner = nested.get("formatter")
+                if isinstance(inner, str) and inner.strip():
+                    return inner
+    return None
+
+
+def _load_formatter_from_file(path):
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            obj = json.load(handle)
+    except (OSError, ValueError):
+        return None
+    found = _read_formatter_field(obj)
+    if found is None:
+        return None
+    return _normalize_formatter(found)
+
+
+def resolve_formatter(cli_value, adapter_dir):
+    """Resolve the output formatter. auto reads the checkpoint, else CLI wins.
+
+    Returns (formatter, source, fell_back). auto with no formatter field
+    falls back to f0_space and marks fell_back=True so the caller records
+    the fallback explicitly instead of silently assuming F0.
+    """
+    cli = str(cli_value or "auto").strip().lower().replace("-", "_")
+    if cli in ("f0_space", "f0", "space"):
+        return FORMATTER_F0, "cli", False
+    if cli in ("f1_compact", "f1", "compact"):
+        return FORMATTER_F1, "cli", False
+    if cli != "auto":
+        raise UsageError("--formatter must be auto, f0_space, or f1_compact")
+    adapter = (adapter_dir or "").strip()
+    if adapter:
+        for filename in FORMATTER_CONFIG_FILES:
+            candidate = os.path.join(adapter, filename)
+            if os.path.isfile(candidate):
+                found = _load_formatter_from_file(candidate)
+                if found is not None:
+                    return found, "adapter:" + filename, False
+    return FORMATTER_F0, "fallback_no_field", True
 
 
 def sample_seed(base, task_index, query_index, sample_index):
@@ -624,7 +826,7 @@ def _decode_new_text(tokenizer, sequences, prompt_len):
     return gen_tokens, text
 
 
-def _candidate_record(kind, prepare_s, generate_s, gen_tokens, truncated, parse, em, text, grid, error, sample_seed_value):
+def _candidate_record(kind, prepare_s, generate_s, gen_tokens, truncated, parse, em, text, grid, error, sample_seed_value, parse_error=None):
     record = {
         "kind": kind,
         "prepare_s": prepare_s,
@@ -641,6 +843,8 @@ def _candidate_record(kind, prepare_s, generate_s, gen_tokens, truncated, parse,
         record["sample_seed"] = sample_seed_value
     if error:
         record["error"] = error
+    if parse_error:
+        record["parse_error"] = parse_error
     return record
 
 
@@ -660,6 +864,7 @@ def _run_one_candidate(
     eos_id,
     pass_presence_penalty,
     force_dynamic_cache,
+    formatter=FORMATTER_F0,
 ):
     prepare_s = None
     generate_s = None
@@ -733,7 +938,9 @@ def _run_one_candidate(
     finally:
         _drop_cached_decode_state(model)
     truncated = bool(gen_tokens >= max_new_tokens)
-    parse, em, grid = score_text(text, gold, text_to_grid)
+    parse, em, grid, parse_error = score_text_with_formatter(
+        text, gold, formatter, f0_base_parser=text_to_grid
+    )
     if error and gold is None:
         em = None
     record = _candidate_record(
@@ -748,7 +955,9 @@ def _run_one_candidate(
         grid,
         error,
         seed_value if do_sample else None,
+        parse_error,
     )
+    record["formatter"] = formatter
     return record, prompt_len
 
 
@@ -776,6 +985,9 @@ def build_payload(
     env,
     sampling_note,
     task_ids,
+    formatter=FORMATTER_F0,
+    formatter_source="fallback_no_field",
+    formatter_fallback=True,
 ):
     payload = {
         "prompt_mode": PROMPT_MODE,
@@ -791,6 +1003,9 @@ def build_payload(
         "compare_mode": str(getattr(args, "compare_mode", "none")),
         "task_view_seed": bool(getattr(args, "task_view_seed", False)),
         "second_view": str(getattr(args, "second_view", "none")),
+        "formatter": formatter,
+        "formatter_source": formatter_source,
+        "formatter_fallback": bool(formatter_fallback),
         "time_guard": bool(time_guard),
         "elapsed_s": elapsed_s,
         "task_ids": task_ids,
@@ -849,6 +1064,9 @@ def main(argv=None):
         second_view = str(args.second_view)
         if second_view not in ("none", "transpose"):
             raise UsageError("--second-view must be none or transpose")
+        formatter_cli = str(getattr(args, "formatter", "auto"))
+        if formatter_cli not in FORMATTER_CHOICES:
+            raise UsageError("--formatter must be auto, f0_space, or f1_compact")
         if compare == "base_vs_adapter":
             if not adapter:
                 raise UsageError("--compare-mode base_vs_adapter requires --adapter")
@@ -870,6 +1088,14 @@ def main(argv=None):
             )
         if not callable(grid_to_text):
             raise UsageError("grid_to_text is not callable")
+        formatter, formatter_source, formatter_fallback = resolve_formatter(
+            formatter_cli, adapter
+        )
+        print(
+            "formatter=%s source=%s fallback=%s"
+            % (formatter, formatter_source, bool(formatter_fallback)),
+            flush=True,
+        )
         with open(args.challenges, "r", encoding="utf-8") as handle:
             challenges = as_challenge_map(json.load(handle))
         solutions = load_solutions(solutions_path)
@@ -968,6 +1194,9 @@ def main(argv=None):
             else None,
             "compare_mode": compare,
             "second_view": second_view,
+            "formatter": formatter,
+            "formatter_source": formatter_source,
+            "formatter_fallback": bool(formatter_fallback),
             "cache": "new DynamicCache per generate; not cropped across candidates",
         }
         try:
@@ -1136,6 +1365,7 @@ def main(argv=None):
                                 eos_id,
                                 pass_presence_penalty,
                                 force_dynamic_cache,
+                                formatter,
                             )
                             made["adapter_disabled"] = True
                             made["adapter_disabled_confirmed"] = bool(confirmed)
@@ -1157,6 +1387,7 @@ def main(argv=None):
                         eos_id,
                         pass_presence_penalty,
                         force_dynamic_cache,
+                        formatter,
                     )
                     return made, plen
 
@@ -1224,6 +1455,9 @@ def main(argv=None):
                     "gold_hw": gold_hw(gold),
                     "compare_mode": compare,
                     "second_view": second_view,
+                    "formatter": formatter,
+                    "formatter_source": formatter_source,
+                    "formatter_fallback": bool(formatter_fallback),
                     "candidates": candidates,
                 }
                 if compare == "base_vs_adapter":
@@ -1336,6 +1570,9 @@ def main(argv=None):
                 env,
                 sampling_note,
                 [tid for tid, _name in selected],
+                formatter,
+                formatter_source,
+                formatter_fallback,
             )
             write_json(args.out, payload)
         summary = summary_from(records, time_guard)

@@ -136,3 +136,11 @@ seed20260930，同一2947行子集；前两行800样本固定长度配额160/320
 未完成且未声称完成：F1模型推理/训练、全新合并池的采样结果、10条全部修复、全部448族规则验证、CPU通用符号求解器、G2/TTT/G3/Unsloth实验、任何新增公榜/私榜成绩。也没有修改008已有评价清单或把公共eval query答案引入研究。
 
 下一轮优先级：先按008完成原格式E0；据配对结果选初始化，再用相同数据的小对照研究F1及任务/base公平采样；示例消歧作为小数据质量分支。没有理由在GPU刷新前空等，也没有依据现在宣布这些CPU收益会带来金牌。
+
+## 8. 2026-10-01 CPU衔接补记（§4交接表实现，不含GPU）
+
+- `arc_episode_data.py`（+562行，`py_compile`+`--help`+dry-run已验）：`FORMATTER_F0/F1`、`serialize_grid/parse_grid_text`（F1逐字符成整数格，含空格返回None；已验`002`↔`[[0,0,2]]`双向还原）、`build_messages(...,formatter)`（F1换system+紧凑串，旧两参调用兼容走F0）；`_make_episode`默认`drop_suspect=False`标记保留（与上层一致），`build/build_g2`显式传True保复现；`materialize_episodes`（`--materialize --index/--newbases/--repair --formatter --materialize-tasks/--materialize-max-rows`）将D2索引、新base（按planned ident/rot90展开）、修复配对物化为训练器完整episode格式，53条`loo n_demos<2`旧行在新物化中排除计数（原文件只读），拒写已存在文件与`experiments/007`内。
+- `train_grid_sft.py`（`--sample-policy {legacy,fair_task_base}`，默认legacy行为不变；fair须联用`--length-mixture`，配额复用`apportion_mixture_targets`，桶内来源→task→base已选少者优先、无生成器非ARC1用official-only代理，40/60仅软目标并报告实际；`bucket_consumption`扩展`sources/independent_bases_consumed/tasks_covered`不删旧键；`--resume`精确恢复与互斥语义不动）。`--length-mixture`桶界与D2同界。
+- `solve_grid.py`（`--formatter {auto,f0_space,f1_compact}`，默认auto按adapter_config→run_config→config.json读formatter字段，无字段回退F0并记`formatter_fallback=true`，未知值`UsageError`；F1按字符解析，失配`FormatterMismatchError`记`parse=FAIL+parse_error`，不回退不混用；对外仍标准submission JSON网格）。
+- 缺口诚实记录于`code_gaps_followup.json`：fair消费与长度混合标“已实现（CPU，待GPU验证）”；`f1-train-consume`未实现（train侧默认仍空格，F1比较前需显式formatter透传）；GDN/DFS/旋转/TTT/程序仍未实现。
+- 合规：只改3脚本+followup；007池sha不变；e0清单未动；raw-eval仅题面；无测试文件/CI；无GPU/推理/提交。GPU刷新后仍先跑008原格式E0，再小对照验F1/公平采样/消歧。

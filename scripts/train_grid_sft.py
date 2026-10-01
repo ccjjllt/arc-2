@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import array
 import glob
+import hashlib
 import inspect
 import json
 import os
@@ -38,6 +39,14 @@ LENGTH_BUCKET_NAMES = ("<=1024", "1025-2048", "2049-4096", "4097-8192", ">8192")
 # Plan S5 suggested recipe only (pass explicitly to enable). The --length-mixture
 # code default is None = legacy max-len/overflow-len path, unchanged.
 DEFAULT_LENGTH_MIXTURE_STR = "20,40,40,0,0"
+# Final-consumption sampling policy. Default legacy keeps the old pool order exactly.
+SAMPLE_POLICIES = ("legacy", "fair_task_base")
+DEFAULT_SAMPLE_POLICY = "legacy"
+# Fair soft source cycle inside each length bucket: 2 official per 5 = 40/60 soft.
+# Soft only: a missing source falls back to remaining rows and reports the actual
+# ratio (e.g. 009 792-row prefix 159/317/316 buckets, 318/474 official/gen).
+# Never hard-filled, never claimed as exact 40/60.
+FAIR_SOURCE_CYCLE = ("official", "gen", "gen", "official", "gen")
 DEFAULT_ZERO_STEP_IDS = (
     "833966f4,6150a2bd,e9afcf9a,5582e5ca,d037b0a7,d631b094,66e6c45b,00576224"
 )
@@ -204,6 +213,20 @@ def parse_length_mixture(text):
     return values
 
 
+def parse_sample_policy(text):
+    """Validate --sample-policy. None/'' means legacy (default, behavior unchanged)."""
+    if text is None:
+        return "legacy"
+    cleaned = str(text).strip()
+    if not cleaned:
+        return "legacy"
+    if cleaned not in SAMPLE_POLICIES:
+        raise RuntimeError(
+            "sample-policy must be one of %s, got %r" % (",".join(SAMPLE_POLICIES), text)
+        )
+    return cleaned
+
+
 def apportion_mixture_targets(mixture, needed):
     """Deterministic largest-remainder split of `needed` over the 5 buckets."""
     needed = int(needed)
@@ -267,8 +290,221 @@ def select_pool_mixture(bucket_lists, mixture, needed, seed):
     return pool, stats
 
 
+def _fair_source_kind(source):
+    """Map Episode.source to official/gen/other for the soft 40/60 target."""
+    if source is None:
+        return "other"
+    text = str(source).strip().lower()
+    if not text or text == "none":
+        return "other"
+    if "official" in text:
+        return "official"
+    if "arcgen" in text or "gen" in text:
+        return "gen"
+    return "other:" + text
+
+
+def _fair_sha_hex(*parts):
+    hasher = hashlib.sha256()
+    for part in parts:
+        hasher.update(str(part).encode("utf-8"))
+        hasher.update(b"\x00")
+    return hasher.hexdigest()
+
+
+def select_pool_mixture_fair(bucket_lists, mixture, needed, seed, protected_task_ids=None):
+    """Fair consumption inside length-mixture quotas: source->task->base.
+
+    Quotas reuse apportion_mixture_targets, so e.g. 800 at 20,40,40,0,0 gives
+    160/320/320/0/0 exactly like legacy. Within each bucket, slots follow the
+    soft FAIR_SOURCE_CYCLE (official,gen,gen,official,gen = 40/60 soft target).
+    A slot prefers its source kind; when empty it falls back to remaining rows
+    (soft, never duplicated or borrowed across buckets) and reports the actual
+    ratio (e.g. 009 159/317/316 buckets with 318/474 official/gen, not exact
+    40/60). Task choice is least-selected global task first, then least-selected
+    source-task with SHA256(seed:bucket:want:task) tie; base choice is
+    least-selected family_id first (SHA tie on task:base); episode choice is
+    SHA(seed:bucket:episode_id). Yet-unseen protected tasks (explicit list when
+    given, else proxy official-only tasks with no gen rows in the pool, standing
+    in for无生成器非ARC1任务) win their source/length slot first. Round-robin
+    interleave matches legacy so early updates see the mixture.
+    """
+    needed = int(needed)
+    targets = apportion_mixture_targets(mixture, needed)
+    task_sources = {}
+    for name in LENGTH_BUCKET_NAMES:
+        for episode in (bucket_lists.get(name) or []):
+            task_sources.setdefault(str(episode.task_id), set()).add(
+                _fair_source_kind(getattr(episode, "source", None))
+            )
+    if protected_task_ids is None:
+        protected_set = {
+            task_id for task_id, kinds in task_sources.items() if kinds == {"official"}
+        }
+        protected_note = (
+            "proxy:official-only tasks (no gen rows in pool), standing in for "
+            "无生成器非ARC1任务; explicit protected-task list hook reserved "
+            "(select_pool_mixture_fair protected_task_ids)"
+        )
+    else:
+        protected_set = {str(item) for item in (protected_task_ids or [])}
+        protected_note = "explicit protected_task_ids list"
+    task_selected = {}
+    source_task_selected = {}
+    base_selected = {}
+    taken = {}
+    gaps = {}
+    ordered = []
+    per_source_actual = {}
+    kind_actual = {"official": 0, "gen": 0, "other": 0}
+    fallback_total = 0
+    fallback_by_bucket = {}
+    for index, name in enumerate(LENGTH_BUCKET_NAMES):
+        remaining = list(bucket_lists.get(name) or [])
+        quota = int(targets[index])
+        keep = []
+        bucket_fallback = 0
+        for slot in range(quota):
+            if not remaining:
+                break
+            want = FAIR_SOURCE_CYCLE[slot % len(FAIR_SOURCE_CYCLE)]
+            matching = [
+                episode
+                for episode in remaining
+                if _fair_source_kind(getattr(episode, "source", None)) == want
+            ]
+            if matching:
+                candidates = matching
+                used_fallback = False
+            else:
+                candidates = remaining
+                used_fallback = True
+                bucket_fallback += 1
+            present_tasks = {str(episode.task_id) for episode in candidates}
+            protected_unseen = [
+                task_id
+                for task_id in present_tasks
+                if task_id in protected_set and task_selected.get(task_id, 0) == 0
+            ]
+            task_pool = set(protected_unseen) if protected_unseen else present_tasks
+            best_task = None
+            best_key = None
+            for task_id in task_pool:
+                global_count = int(task_selected.get(task_id, 0))
+                source_task_count = int(source_task_selected.get((want, task_id), 0))
+                tie = _fair_sha_hex(seed, name, want, task_id)
+                key = (global_count, source_task_count, tie)
+                if best_key is None or key < best_key:
+                    best_key = key
+                    best_task = task_id
+            task_episodes = [
+                episode for episode in candidates if str(episode.task_id) == best_task
+            ]
+            present_bases = {str(episode.family_id) for episode in task_episodes}
+            best_base = None
+            best_base_key = None
+            for base_id in present_bases:
+                base_count = int(base_selected.get(base_id, 0))
+                tie = _fair_sha_hex(seed, name, best_task, base_id)
+                key = (base_count, tie)
+                if best_base_key is None or key < best_base_key:
+                    best_base_key = key
+                    best_base = base_id
+            base_episodes = [
+                episode
+                for episode in task_episodes
+                if str(episode.family_id) == best_base
+            ]
+            base_episodes.sort(
+                key=lambda episode: _fair_sha_hex(
+                    seed, name, str(getattr(episode, "episode_id", ""))
+                )
+            )
+            chosen = base_episodes[0]
+            keep.append(chosen)
+            remaining.remove(chosen)
+            task_selected[best_task] = int(task_selected.get(best_task, 0)) + 1
+            actual_kind = _fair_source_kind(getattr(chosen, "source", None))
+            source_task_selected[(actual_kind, best_task)] = int(
+                source_task_selected.get((actual_kind, best_task), 0)
+            ) + 1
+            base_selected[best_base] = int(base_selected.get(best_base, 0)) + 1
+            raw_source = str(getattr(chosen, "source", None))
+            per_source_actual[raw_source] = int(per_source_actual.get(raw_source, 0)) + 1
+            if actual_kind in kind_actual:
+                kind_actual[actual_kind] += 1
+            else:
+                kind_actual["other"] += 1
+            del used_fallback
+        taken[name] = len(keep)
+        gaps[name] = int(quota - len(keep))
+        fallback_by_bucket[name] = int(bucket_fallback)
+        fallback_total += int(bucket_fallback)
+        ordered.append(keep)
+    pool = []
+    position = 0
+    active = True
+    while active:
+        active = False
+        for keep in ordered:
+            if position < len(keep):
+                pool.append(keep[position])
+                active = True
+        position += 1
+    families = {str(episode.family_id) for episode in pool}
+    tasks = {str(episode.task_id) for episode in pool}
+    soft_targets = {}
+    for bucket_index, name in enumerate(LENGTH_BUCKET_NAMES):
+        quota = int(targets[bucket_index])
+        split = apportion_mixture_targets([40.0, 60.0], quota)
+        soft_targets[name] = {
+            "quota": quota,
+            "official_soft": int(split[0]),
+            "gen_soft": int(split[1]),
+        }
+    stats = {
+        "mixture_requested": list(mixture),
+        "mixture_targets": targets,
+        "mixture_taken": [taken[name] for name in LENGTH_BUCKET_NAMES],
+        "mixture_gaps": [gaps[name] for name in LENGTH_BUCKET_NAMES],
+        "mixture_gaps_by_bucket": {name: gaps[name] for name in LENGTH_BUCKET_NAMES},
+        "mixture_available": [len(bucket_lists.get(name) or []) for name in LENGTH_BUCKET_NAMES],
+        "sample_policy": "fair_task_base",
+        "fair_source_cycle": list(FAIR_SOURCE_CYCLE),
+        "fair_source_soft_targets_by_bucket": soft_targets,
+        "fair_source_actual_by_kind": dict(kind_actual),
+        "fair_source_actual_by_source": dict(per_source_actual),
+        "fair_fallback_slots": int(fallback_total),
+        "fair_fallback_by_bucket": dict(fallback_by_bucket),
+        "fair_protected_note": protected_note,
+        "fair_protected_pool_size": len(protected_set),
+        "fair_protected_covered": len({task for task in tasks if task in protected_set}),
+        "n_families_consumed": len(families),
+        "independent_bases_consumed": len(families),
+        "independent_base_ids": sorted(families),
+        "tasks_covered": len(tasks),
+        "tasks_covered_ids": sorted(tasks),
+        "pool_size": len(pool),
+        "needed_examples": needed,
+        "no_duplication": True,
+        "no_cross_bucket_borrowing": True,
+        "note": (
+            "fair_task_base keeps length quotas; official/gen 40/60 is a soft "
+            "target only, actual ratio reported (e.g. 009 159/317/316 with "
+            "318/474); short buckets keep a gap, never duplicated or borrowed"
+        ),
+    }
+    return pool, stats
+
+
 def bucket_consumption(episodes):
-    """Cumulative per-bucket consumption: samples, input/target tokens, base/task counts."""
+    """Cumulative per-bucket consumption: samples, input/target tokens, base/task counts.
+
+    Legacy keys (samples/input_tokens/target_tokens/bases/tasks/n_bases/n_tasks)
+    are unchanged. New keys extend the same structure: per-source actual counts
+    (sources/n_sources), independent_bases_consumed (= n_bases, family_id count),
+    and tasks_covered (= n_tasks). True token buckets reuse LENGTH_BUCKET_NAMES.
+    """
     out = {}
     for name in LENGTH_BUCKET_NAMES:
         out[name] = {
@@ -277,9 +513,11 @@ def bucket_consumption(episodes):
             "target_tokens": 0,
             "bases": [],
             "tasks": [],
+            "sources": {},
         }
     seen_base = {name: set() for name in LENGTH_BUCKET_NAMES}
     seen_task = {name: set() for name in LENGTH_BUCKET_NAMES}
+    seen_source = {name: {} for name in LENGTH_BUCKET_NAMES}
     for episode in episodes or []:
         name = _length_bucket_name(int(episode.full_len))
         entry = out[name]
@@ -288,11 +526,17 @@ def bucket_consumption(episodes):
         entry["target_tokens"] += int(episode.target_len)
         seen_base[name].add(str(episode.family_id))
         seen_task[name].add(str(episode.task_id))
+        source_key = str(getattr(episode, "source", None))
+        seen_source[name][source_key] = int(seen_source[name].get(source_key, 0)) + 1
     for name in LENGTH_BUCKET_NAMES:
         out[name]["n_bases"] = len(seen_base[name])
         out[name]["n_tasks"] = len(seen_task[name])
         out[name]["bases"] = sorted(seen_base[name])
         out[name]["tasks"] = sorted(seen_task[name])
+        out[name]["sources"] = dict(seen_source[name])
+        out[name]["n_sources"] = len(seen_source[name])
+        out[name]["independent_bases_consumed"] = len(seen_base[name])
+        out[name]["tasks_covered"] = len(seen_task[name])
     return out
 
 
@@ -398,6 +642,21 @@ def build_parser():
             "row tag when present (data-layer interface), else live full_len."
         ),
     )
+    parser.add_argument(
+        "--sample-policy",
+        default="legacy",
+        choices=("legacy", "fair_task_base"),
+        help=(
+            "Final-consumption selection inside length-mixture quotas. "
+            "legacy (default): old select_pool_mixture order, behavior fully unchanged. "
+            "fair_task_base: only with --length-mixture; same quotas via "
+            "apportion_mixture_targets (800 at 20,40,40,0,0 -> 160/320/320/0/0), "
+            "then source->task->base fair pick (least-selected task/base first, "
+            "unseen official-only proxy for无生成器非ARC1任务 wins its slot); "
+            "official/gen 40/60 is a soft target only with actual ratio reported "
+            "(e.g. 159/317/316 buckets, 318/474 official/gen), never hard-filled."
+        ),
+    )
     parser.add_argument("--lr", type=float, default=2e-5)
     parser.add_argument("--weight-decay", type=float, default=0.01)
     parser.add_argument("--warmup-updates", type=int, default=10)
@@ -485,6 +744,23 @@ def validate_args(args):
                 "--length-mixture cannot be combined with --resume: resume keeps the stored "
                 "pool/cursor order and never rebuilds buckets; start a new stage with "
                 "--init-adapter for a new mixture"
+            )
+    policy = parse_sample_policy(getattr(args, "sample_policy", "legacy"))
+    if getattr(args, "sample_policy", None) in (None, ""):
+        args.sample_policy = "legacy"
+    else:
+        args.sample_policy = policy
+    if args.sample_policy == "fair_task_base":
+        if getattr(args, "length_mixture", None) is None:
+            raise RuntimeError(
+                "--sample-policy fair_task_base needs --length-mixture: fair selection "
+                "runs inside length-mixture quotas only"
+            )
+        if args.resume:
+            raise RuntimeError(
+                "--sample-policy fair_task_base cannot be combined with --resume: resume "
+                "keeps the stored pool/cursor order and never rebuilds buckets; start a "
+                "new stage with --init-adapter for a fair mixture"
             )
 
 
@@ -942,9 +1218,16 @@ def encode_training_rows(tokenizer, rows, eos_id, args, diagnostic_ids):
             n_longer += 1
     needed = int(args.optimizer_updates) * int(args.grad_accum)
     if mixture is not None:
-        pool, stats = select_pool_mixture(
-            mixture_lists, mixture, needed, getattr(args, "seed", 0)
-        )
+        policy = parse_sample_policy(getattr(args, "sample_policy", "legacy"))
+        if policy == "fair_task_base":
+            pool, stats = select_pool_mixture_fair(
+                mixture_lists, mixture, needed, getattr(args, "seed", 0)
+            )
+        else:
+            pool, stats = select_pool_mixture(
+                mixture_lists, mixture, needed, getattr(args, "seed", 0)
+            )
+            stats["sample_policy"] = "legacy"
         stats["length_mixture"] = str(args.length_mixture)
         stats["length_buckets"] = list(LENGTH_BUCKET_NAMES)
         stats["n_bucket_from_row_tag"] = n_bucket_from_row_tag
@@ -1638,6 +1921,9 @@ def build_run_config(args, model_dir, versions, vocab, length_stats, targets, ex
         ),
         "length_mixture_default_recipe": DEFAULT_LENGTH_MIXTURE_STR,
         "length_buckets": list(LENGTH_BUCKET_NAMES),
+        "sample_policy": parse_sample_policy(getattr(args, "sample_policy", "legacy")),
+        "sample_policy_choices": list(SAMPLE_POLICIES),
+        "fair_source_cycle": list(FAIR_SOURCE_CYCLE),
         "lora": {
             "r": 8,
             "alpha": 32,
@@ -1981,6 +2267,17 @@ def execute(args, summary):
                 ),
                 flush=True,
             )
+            if length_stats.get("sample_policy") == "fair_task_base":
+                print(
+                    "sample_policy=fair_task_base tasks=%s bases=%s kind_actual=%s fallback=%s protected=%s" % (
+                        length_stats.get("tasks_covered"),
+                        length_stats.get("independent_bases_consumed"),
+                        length_stats.get("fair_source_actual_by_kind"),
+                        length_stats.get("fair_fallback_slots"),
+                        length_stats.get("fair_protected_covered"),
+                    ),
+                    flush=True,
+                )
         else:
             random.Random(int(args.seed)).shuffle(order)
             pool = order

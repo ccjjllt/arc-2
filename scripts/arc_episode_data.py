@@ -30,6 +30,29 @@ SYSTEM_PROMPT = (
     "single spaces. Put one row on each line. Do not write an explanation."
 )
 
+SYSTEM_PROMPT_COMPACT = (
+    "Output only the answer grid. Each row is digits 0-9 with no spaces. "
+    "Put one row on each line. Do not write an explanation."
+)
+
+# Formatter versions (009 plan 3.2). F0 keeps the original "0 0 2" space form;
+# F1 is compact: continuous single digits per row plus newline ("00222").
+# Full vocab, embeddings/head and chat control tokens are unchanged; the
+# tokenizer still sees one token per digit, so no new token ids are needed.
+FORMATTER_F0 = "space"
+FORMATTER_F1 = "compact"
+FORMATTERS = (FORMATTER_F0, FORMATTER_F1)
+
+
+def normalize_formatter(value) -> str:
+    """Map formatter aliases to 'space' or 'compact'. Raises on unknown."""
+    text = str(value or "").strip().lower().replace("-", "_")
+    if text in ("space", "f0", "f0_space"):
+        return FORMATTER_F0
+    if text in ("compact", "f1", "f1_compact"):
+        return FORMATTER_F1
+    raise ValueError("unknown formatter: %r" % (value,))
+
 SOURCE = "official_train"
 REVISION = "kaggle:arc-prize-2026-arc-agi-2"
 DEFAULT_SEED = 20260930
@@ -100,8 +123,56 @@ def text_to_grid(text) -> list | None:
     return rows
 
 
-def target_text(grid) -> str:
+def target_text(grid, formatter=FORMATTER_F0) -> str:
+    return serialize_grid(grid, formatter)
+
+
+def serialize_grid(grid, formatter=FORMATTER_F0) -> str:
+    """Serialize one grid under the given formatter. F0 keeps spaces, F1 is compact."""
+    formatter = normalize_formatter(formatter)
+    if formatter == FORMATTER_F1:
+        return "\n".join("".join(str(int(c)) for c in row) for row in grid)
     return grid_to_text(grid)
+
+
+def parse_grid_text(text, formatter=FORMATTER_F0):
+    """Parse one rectangle of single digits. None unless the stripped text is exact.
+
+    F0 is the original space form (delegates to text_to_grid). F1 is compact:
+    each row is continuous 0-9 chars and any space rejects the text. Every
+    char is one integer cell (multi-digit sequences split per char), matching
+    the tokenizer's one-token-per-digit behavior.
+    """
+    formatter = normalize_formatter(formatter)
+    if formatter == FORMATTER_F0:
+        return text_to_grid(text)
+    if not isinstance(text, str):
+        return None
+    stripped = text.strip()
+    if stripped == "":
+        return None
+    rows = []
+    width = None
+    for line in stripped.split("\n"):
+        if line == "" or line != line.strip():
+            return None
+        if " " in line:
+            return None
+        parsed = []
+        for char in line:
+            if char < "0" or char > "9":
+                return None
+            parsed.append(ord(char) - 48)
+        if not parsed:
+            return None
+        if width is None:
+            width = len(parsed)
+        elif len(parsed) != width:
+            return None
+        rows.append(parsed)
+    if width is None or width < 1:
+        return None
+    return rows
 
 
 def apply_geometry(grid, name) -> list:
@@ -134,16 +205,18 @@ def apply_color(grid, perm) -> list:
     return [[perm[c] for c in row] for row in grid]
 
 
-def build_messages(demos, query_input) -> list:
+def build_messages(demos, query_input, formatter=FORMATTER_F0) -> list:
     """demos is a list of {input, output} grids. One train pair may pass demos=[]."""
+    formatter = normalize_formatter(formatter)
+    system = SYSTEM_PROMPT if formatter == FORMATTER_F0 else SYSTEM_PROMPT_COMPACT
     parts = []
     for i, pair in enumerate(demos):
-        parts.append("[demo %d] in:\n%s" % (i, grid_to_text(pair["input"])))
-        parts.append("[demo %d] out:\n%s" % (i, grid_to_text(pair["output"])))
-    parts.append("[query] in:\n%s" % grid_to_text(query_input))
+        parts.append("[demo %d] in:\n%s" % (i, serialize_grid(pair["input"], formatter)))
+        parts.append("[demo %d] out:\n%s" % (i, serialize_grid(pair["output"], formatter)))
+    parts.append("[query] in:\n%s" % serialize_grid(query_input, formatter))
     parts.append("[query] out:")
     return [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": system},
         {"role": "user", "content": "\n".join(parts)},
     ]
 
@@ -430,8 +503,10 @@ def _color_tables(perms):
 
 
 def _make_episode(
-    task_id, base, geometry, color_name, perm, seed, source=SOURCE, revision=REVISION
+    task_id, base, geometry, color_name, perm, seed, source=SOURCE, revision=REVISION,
+    formatter=FORMATTER_F0, drop_suspect=False,
 ):
+    formatter = normalize_formatter(formatter)
     demos = []
     for pair in base["demos"]:
         demos.append(
@@ -442,16 +517,24 @@ def _make_episode(
         )
     query = apply_color(apply_geometry(base["query_input"], geometry), perm)
     target = apply_color(apply_geometry(base["target"], geometry), perm)
-    target_grid_text = target_text(target)
-    if text_to_grid(target_grid_text) != target:
+    target_grid_text = target_text(target, formatter)
+    if parse_grid_text(target_grid_text, formatter) != target:
         raise RuntimeError("target text did not round-trip: %s" % task_id)
-    messages = build_messages(demos, query)
+    messages = build_messages(demos, query, formatter)
     # Loo targets must not be shown as a remaining demo output. Test gold may match
     # a demo grid; that official item is kept and is not a prompt-construction leak.
+    # Unified suspect policy (009 plan S4 handoff): flag-only by default, the row is
+    # kept with suspect_same_as_demo=True. Only an explicit drop_suspect=True
+    # discards it (007 G1/G2 reproduction, which also drops upstream in
+    # collect_bases/_arcgen_instance, so the raise below is unreachable there).
+    suspect = bool(base.get("suspect_same_as_demo", False))
     if base["query_kind"] == "loo":
         for block in _demo_output_texts(messages[1]["content"]):
             if block == target_grid_text:
-                raise RuntimeError("loo target leaked into a demo output: %s" % task_id)
+                suspect = True
+                if drop_suspect:
+                    raise RuntimeError("loo target leaked into a demo output: %s" % task_id)
+                break
     return {
         "episode_id": "%s|%s|%d|%s|%s"
         % (task_id, base["query_kind"], base["query_index"], geometry, color_name),
@@ -462,6 +545,7 @@ def _make_episode(
         "source": source,
         "revision": revision,
         "seed": seed,
+        "formatter": formatter,
         "augmentation": "%s|%s" % (geometry, color_name),
         "query_kind": base["query_kind"],
         "query_index": base["query_index"],
@@ -470,7 +554,7 @@ def _make_episode(
             "base_instance_id",
             make_base_instance_id(task_id, base["query_kind"], base["query_index"]),
         ),
-        "suspect_same_as_demo": bool(base.get("suspect_same_as_demo", False)),
+        "suspect_same_as_demo": suspect,
         "target_isolated": bool(base.get("target_isolated", True)),
         "split": "train",
         "prompt_tokens": None,
@@ -499,7 +583,7 @@ def _interleaved_bases(bases):
     return primary, interleaved
 
 
-def iter_augmented(task_id, bases, color_tables, seed):
+def iter_augmented(task_id, bases, color_tables, seed, formatter=FORMATTER_F0, drop_suspect=False):
     # Front: each geometry with ident then perm1, on the first test and first loo only.
     # A 10k round-robin keeps ~12 episodes per task, so this prefix is what the file contains.
     primary, interleaved = _interleaved_bases(bases)
@@ -507,7 +591,8 @@ def iter_augmented(task_id, bases, color_tables, seed):
     seen = set()
 
     def emit(base, geometry, color_name):
-        episode = _make_episode(task_id, base, geometry, color_name, perm_by_name[color_name], seed)
+        episode = _make_episode(task_id, base, geometry, color_name, perm_by_name[color_name], seed,
+                                formatter=formatter, drop_suspect=drop_suspect)
         if episode["episode_id"] in seen:
             return None
         seen.add(episode["episode_id"])
@@ -550,11 +635,12 @@ def _demo_output_texts(user_text):
     return found
 
 
-def iter_round_robin(task_bases, color_tables, seed, limit):
+def iter_round_robin(task_bases, color_tables, seed, limit, formatter=FORMATTER_F0, drop_suspect=False):
     pending = deque()
     for task_id, bases in task_bases:
         if bases:
-            pending.append((task_id, iter_augmented(task_id, bases, color_tables, seed)))
+            pending.append((task_id, iter_augmented(task_id, bases, color_tables, seed,
+                                                    formatter=formatter, drop_suspect=drop_suspect)))
     seen = set()
     produced = 0
     while pending and produced < limit:
@@ -697,7 +783,8 @@ def build(challenges_path, solutions_path, out_dir, n_episodes, seed, holdout_n)
     used_families = set()
     written = 0
     with episodes_path.open("w", encoding="utf-8", newline="\n") as handle:
-        for episode in iter_round_robin(task_bases, color_tables, seed, n_episodes):
+        # 007 G1 reproduction: explicit drop keeps the old deletion rule end to end.
+        for episode in iter_round_robin(task_bases, color_tables, seed, n_episodes, drop_suspect=True):
             if episode["task_id"] in holdout_set or episode["task_id"] in diag_set:
                 raise RuntimeError("refusing to write held-out task %s" % episode["task_id"])
             handle.write(json.dumps(episode, ensure_ascii=False, separators=(",", ":")))
@@ -1094,7 +1181,7 @@ def _write_episode(handle, episode):
     handle.write("\n")
 
 
-def _iter_official_g2(task_bases, cycle, seed, limit, skipped):
+def _iter_official_g2(task_bases, cycle, seed, limit, skipped, formatter=FORMATTER_F0, drop_suspect=False):
     pending = deque()
     for task_id, bases in task_bases:
         if bases:
@@ -1106,7 +1193,8 @@ def _iter_official_g2(task_bases, cycle, seed, limit, skipped):
         base = bases[step // cycle_len]
         geometry, color_name, perm = cycle[step % cycle_len]
         try:
-            episode = _make_episode(task_id, base, geometry, color_name, perm, seed)
+            episode = _make_episode(task_id, base, geometry, color_name, perm, seed,
+                                    formatter=formatter, drop_suspect=drop_suspect)
         except RuntimeError as exc:
             _note_skip(skipped, "episode_build_failed", task_id, base["query_kind"], base["query_index"])
             if len(skipped["examples"].setdefault("episode_build_failed", [])) <= 8:
@@ -1227,7 +1315,8 @@ def build_g2(
         return True
 
     with episodes_path.open("w", encoding="utf-8", newline="\n") as handle:
-        for episode in _iter_official_g2(task_bases, cycle, seed, official_n, skipped_official):
+        # 007 G2 reproduction: explicit drop keeps the filed 30k-pool deletion rule.
+        for episode in _iter_official_g2(task_bases, cycle, seed, official_n, skipped_official, drop_suspect=True):
             if episode["source"] != SOURCE or episode["revision"] != REVISION:
                 raise RuntimeError("official row lost its source or revision")
             if accept(episode, SOURCE):
@@ -1305,6 +1394,7 @@ def build_g2(
                             seed,
                             source=ARCGEN_SOURCE,
                             revision=ARCGEN_REVISION,
+                            drop_suspect=True,
                         )
                     except Exception as exc:
                         _note_skip(
@@ -1732,8 +1822,428 @@ def d2_dry_run(
     }
 
 
+# ---- 009 handoff: materialize index + raw newbases + repair pair ----
+
+MATERIALIZE_DEFAULT_OUT = "experiments/008/data/d2_materialized_episodes.jsonl"
+
+
+def _parse_augmentation(aug):
+    geometry, sep, color_name = str(aug).partition("|")
+    if not sep or geometry not in GEOMETRIES:
+        raise ValueError("bad augmentation: %r" % (aug,))
+    return geometry, color_name
+
+
+def _demo_blocks(user_text):
+    """Yield (kind, text) for each [demo i] in/out grid block in user content."""
+    lines = user_text.split("\n")
+    index = 0
+    while index < len(lines):
+        line = lines[index]
+        if line.startswith("[demo ") and (line.endswith("] in:") or line.endswith("] out:")):
+            kind = "in" if line.endswith("] in:") else "out"
+            index += 1
+            block = []
+            while index < len(lines) and not (
+                lines[index].startswith("[demo ") or lines[index].startswith("[query] ")
+            ):
+                block.append(lines[index])
+                index += 1
+            yield kind, "\n".join(block)
+            continue
+        index += 1
+
+
+def _query_input_text(user_text):
+    if not isinstance(user_text, str):
+        return None
+    lines = user_text.split("\n")
+    for i, line in enumerate(lines):
+        if line == "[query] in:":
+            block = []
+            j = i + 1
+            while j < len(lines) and lines[j] != "[query] out:":
+                block.append(lines[j])
+                j += 1
+            if j >= len(lines):
+                return None
+            return "\n".join(block)
+    return None
+
+
+def verify_episode_texts(episode):
+    """Round-trip check: target, every demo block and the query input re-parse.
+
+    Uses the episode's own formatter field (default space). Raises
+    RuntimeError naming the first bad block; never guesses across formats.
+    """
+    formatter = normalize_formatter(episode.get("formatter", FORMATTER_F0))
+    if parse_grid_text(episode.get("target_grid_text", ""), formatter) is None:
+        raise RuntimeError("unparseable target_grid_text in %s" % episode.get("episode_id"))
+    msgs = episode.get("messages", [])
+    user_text = msgs[1].get("content", "") if len(msgs) > 1 else ""
+    for kind, text in _demo_blocks(user_text):
+        if parse_grid_text(text, formatter) is None:
+            raise RuntimeError("unparseable demo %s block in %s" % (kind, episode.get("episode_id")))
+    if parse_grid_text(_query_input_text(user_text) or "", formatter) is None:
+        raise RuntimeError("unparseable query input in %s" % episode.get("episode_id"))
+
+
+def convert_episode_formatter(episode, formatter):
+    """Rebuild messages/target_grid_text under another formatter.
+
+    Returns a new episode dict, or None when any grid block does not parse in
+    the source format (rows without a formatter field read as F0 space).
+    """
+    target_fmt = normalize_formatter(formatter)
+    src_fmt = normalize_formatter(episode.get("formatter", FORMATTER_F0))
+    if src_fmt == target_fmt:
+        out = dict(episode)
+        out["formatter"] = target_fmt
+        try:
+            verify_episode_texts(out)
+        except RuntimeError:
+            return None
+        return out
+    msgs = episode.get("messages", [])
+    user_text = msgs[1].get("content", "") if len(msgs) > 1 else ""
+    target_grid = parse_grid_text(episode.get("target_grid_text", ""), src_fmt)
+    query_grid = parse_grid_text(_query_input_text(user_text) or "", src_fmt)
+    if target_grid is None or query_grid is None:
+        return None
+    demos = []
+    pending_in = None
+    for kind, text in _demo_blocks(user_text):
+        grid = parse_grid_text(text, src_fmt)
+        if grid is None:
+            return None
+        if kind == "in":
+            pending_in = grid
+        else:
+            if pending_in is None:
+                return None
+            demos.append({"input": pending_in, "output": grid})
+            pending_in = None
+    if pending_in is not None:
+        return None
+    out = dict(episode)
+    out["messages"] = build_messages(demos, query_grid, target_fmt)
+    out["target_grid_text"] = serialize_grid(target_grid, target_fmt)
+    out["formatter"] = target_fmt
+    try:
+        verify_episode_texts(out)
+    except RuntimeError:
+        return None
+    return out
+
+
+def _materialize_count(summary, key, example=None):
+    summary["counts"][key] = summary["counts"].get(key, 0) + 1
+    if example is not None:
+        examples = summary["examples"].setdefault(key, [])
+        if len(examples) < 8:
+            examples.append(example)
+
+
+def materialize_episodes(
+    out_path,
+    challenges_path=None,
+    solutions_path=None,
+    index_path=None,
+    newbases_path=None,
+    repair_path=None,
+    g2_episodes_path=None,
+    formatter=FORMATTER_F0,
+    drop_suspect=False,
+    seed=DEFAULT_SEED,
+    first_n_tasks=None,
+    max_rows=None,
+    skip_index=False,
+    skip_newbases=False,
+    skip_repair=False,
+):
+    """Build trainer-ready episodes (messages/target_grid_text) from 008/009素材.
+
+    Sources: D2 index rows (official rebuilt from challenges/solutions, gen
+    resolved via ref_g2_episode_id in a G2 episodes file), raw newbases
+    (planned_enhances expanded per base), and the 009 repair pilot
+    (original + repaired). Index rows that violate the current
+    min_loo_demos=2 rule are excluded and counted; input files are only read.
+    Every emitted row passes verify_episode_texts. Never overwrites an
+    existing file and never writes inside experiments/007.
+    """
+    formatter = normalize_formatter(formatter)
+    out = Path(out_path)
+    if out.exists():
+        raise ValueError("refusing to overwrite existing file: %s (pass a new --out path)" % out)
+    parts = out.resolve().parts
+    if any(a == "experiments" and b == "007" for a, b in zip(parts, parts[1:])):
+        raise ValueError("refusing to write inside experiments/007: %s" % out)
+    perms = derive_color_perms(seed)
+    perm_by_name = {name: list(perm) for name, perm in _color_tables(perms)}
+    ident_perm = list(range(N_COLORS))
+    summary = {
+        "formatter": formatter,
+        "drop_suspect": bool(drop_suspect),
+        "seed": seed,
+        "out": str(out),
+        "counts": {},
+        "examples": {},
+        "inputs": {},
+        "note": "Token buckets not assigned here; true-token counting stays with the tokenizer owner.",
+    }
+
+    challenges, solutions = None, None
+    bases_cache = {}
+
+    def get_bases(task_id):
+        if task_id not in bases_cache:
+            skipped = {"n": 0, "reasons": {}, "examples": {}}
+            task = challenges.get(task_id) if isinstance(challenges, dict) else None
+            sol = solutions.get(task_id) if isinstance(solutions, dict) else None
+            bases_cache[task_id] = collect_bases(
+                task_id, task, sol, skipped,
+                drop_target_equals_demo=drop_suspect,
+                min_loo_demos=2,
+            )
+        return bases_cache[task_id]
+
+    emitted = []
+    seen_ids = set()
+    allow = None
+
+    def capped():
+        return max_rows is not None and len(emitted) >= max_rows
+
+    def accept(episode, example):
+        if episode["episode_id"] in seen_ids:
+            _materialize_count(summary, "duplicate_episode_id_skipped", example)
+            return False
+        try:
+            verify_episode_texts(episode)
+        except RuntimeError as exc:
+            _materialize_count(summary, "verify_failed", {"episode_id": example, "error": str(exc)[:200]})
+            return False
+        if drop_suspect and episode.get("suspect_same_as_demo"):
+            _materialize_count(summary, "suspect_dropped", example)
+            return False
+        seen_ids.add(episode["episode_id"])
+        emitted.append(episode)
+        if episode.get("suspect_same_as_demo"):
+            _materialize_count(summary, "suspect_kept", example)
+        return True
+
+    def base_to_episode(task_id, base, geometry, color_name, source, revision, example):
+        perm = perm_by_name.get(color_name, ident_perm)
+        try:
+            return _make_episode(task_id, base, geometry, color_name, perm, seed,
+                                 source=source, revision=revision,
+                                 formatter=formatter, drop_suspect=drop_suspect)
+        except RuntimeError as exc:
+            _materialize_count(summary, "suspect_dropped", {"episode_id": example, "error": str(exc)[:200]})
+            return None
+
+    # ---- D2 index rows ----
+    if not skip_index and index_path:
+        summary["inputs"]["index"] = str(index_path)
+        rows = [json.loads(line) for line in Path(index_path).read_text(encoding="utf-8").splitlines() if line.strip()]
+        if first_n_tasks is not None:
+            wanted = []
+            for row in rows:
+                tid = row.get("task_id")
+                if tid not in wanted:
+                    wanted.append(tid)
+                if len(wanted) >= first_n_tasks:
+                    break
+            allow = set(wanted)
+            summary["first_n_tasks"] = wanted
+        gen_need = {}
+        for row in rows:
+            if row.get("source") == "arcgen_v2" and (allow is None or row.get("task_id") in allow):
+                ref = row.get("ref_g2_episode_id") or "%s|%s|%d|%s|%s" % (
+                    row.get("task_id"), row.get("query_kind"), int(row.get("query_index", 0)),
+                    row.get("geometry"), row.get("color_name"))
+                gen_need.setdefault(ref, row)
+        g2_lookup = {}
+        if gen_need and g2_episodes_path:
+            summary["inputs"]["g2_episodes"] = str(g2_episodes_path)
+            with Path(g2_episodes_path).open("r", encoding="utf-8") as handle:
+                for line in handle:
+                    if not line.strip():
+                        continue
+                    try:
+                        ep = json.loads(line)
+                    except ValueError:
+                        continue
+                    eid = ep.get("episode_id")
+                    if eid in gen_need and eid not in g2_lookup:
+                        g2_lookup[eid] = ep
+                        if len(g2_lookup) >= len(gen_need):
+                            break
+        for row in rows:
+            if capped():
+                break
+            task_id = row.get("task_id")
+            if allow is not None and task_id not in allow:
+                continue
+            if row.get("source") == "arcgen_v2":
+                ref = row.get("ref_g2_episode_id") or "%s|%s|%d|%s|%s" % (
+                    task_id, row.get("query_kind"), int(row.get("query_index", 0)),
+                    row.get("geometry"), row.get("color_name"))
+                src = g2_lookup.get(ref)
+                if src is None:
+                    _materialize_count(summary, "gen_skipped_no_g2_lookup", row.get("sample_id"))
+                    continue
+                converted = convert_episode_formatter(src, formatter)
+                if converted is None:
+                    _materialize_count(summary, "gen_convert_unparseable", row.get("sample_id"))
+                    continue
+                if accept(converted, row.get("sample_id")):
+                    _materialize_count(summary, "index_gen_materialized")
+                continue
+            # Official rows are rebuilt from challenges/solutions under current rules.
+            if challenges is None:
+                challenges, _ = load_task_map(Path(challenges_path))
+                solutions, _ = load_task_map(Path(solutions_path))
+                summary["inputs"]["challenges"] = str(challenges_path)
+                summary["inputs"]["solutions"] = str(solutions_path)
+            bases = get_bases(task_id)
+            match = None
+            for base in bases:
+                if base["query_kind"] == row.get("query_kind") and base["query_index"] == int(row.get("query_index", -1)):
+                    match = base
+                    break
+            if match is None:
+                if row.get("query_kind") == "loo" and int(row.get("n_demos", 0) or 0) < 2:
+                    _materialize_count(summary, "loo_demos_lt2_excluded", row.get("sample_id"))
+                else:
+                    _materialize_count(summary, "index_official_base_missing", row.get("sample_id"))
+                continue
+            try:
+                geometry, color_name = _parse_augmentation(row.get("augmentation"))
+            except ValueError:
+                _materialize_count(summary, "index_official_base_missing", row.get("sample_id"))
+                continue
+            episode = base_to_episode(task_id, match, geometry, color_name, SOURCE, REVISION, row.get("sample_id"))
+            if episode is None:
+                continue
+            if accept(episode, row.get("sample_id")):
+                _materialize_count(summary, "index_official_materialized")
+
+    # ---- raw newbases: planned enhances expanded per base ----
+    if not skip_newbases and newbases_path and not capped():
+        summary["inputs"]["newbases"] = str(newbases_path)
+        for line in Path(newbases_path).read_text(encoding="utf-8").splitlines():
+            if capped():
+                break
+            if not line.strip():
+                continue
+            base = json.loads(line)
+            task_id = base.get("task_id")
+            if allow is not None and task_id not in allow:
+                continue
+            try:
+                instance = int(base.get("instance"))
+            except (TypeError, ValueError):
+                _materialize_count(summary, "newbase_bad_instance", base.get("base_instance_id"))
+                continue
+            enhances = base.get("planned_enhances") or ["ident|ident"]
+            for aug in enhances:
+                if capped():
+                    break
+                try:
+                    geometry, color_name = _parse_augmentation(aug)
+                except ValueError:
+                    _materialize_count(summary, "newbase_bad_augmentation", base.get("base_instance_id"))
+                    continue
+                episode_base = {
+                    "query_kind": "gen",
+                    "query_index": instance,
+                    "demos": base.get("demos", []),
+                    "query_input": base.get("query_input"),
+                    "target": base.get("target"),
+                    "origin": base.get("origin", "unknown"),
+                    "base_instance_id": base.get("base_instance_id", make_base_instance_id(task_id, "gen", instance)),
+                    "suspect_same_as_demo": bool(suspect_same_as_demo(base.get("target"), base.get("demos", []))),
+                    "target_isolated": True,
+                }
+                episode = base_to_episode(task_id, episode_base, geometry, color_name,
+                                          base.get("source", ARCGEN_SOURCE), base.get("revision", ARCGEN_REVISION),
+                                          base.get("base_instance_id"))
+                if episode is None:
+                    continue
+                if accept(episode, base.get("base_instance_id")):
+                    _materialize_count(summary, "newbase_materialized")
+
+    # ---- 009 repair pilot: original + repaired ----
+    if not skip_repair and repair_path and not capped():
+        summary["inputs"]["repair"] = str(repair_path)
+        for line in Path(repair_path).read_text(encoding="utf-8").splitlines():
+            if capped():
+                break
+            if not line.strip():
+                continue
+            pair = json.loads(line)
+            for side in ("original", "repaired"):
+                if capped():
+                    break
+                base = pair.get(side)
+                if not isinstance(base, dict):
+                    continue
+                task_id = base.get("task_id")
+                if allow is not None and task_id not in allow:
+                    continue
+                try:
+                    instance = int(base.get("instance"))
+                except (TypeError, ValueError):
+                    _materialize_count(summary, "repair_bad_instance", base.get("base_instance_id"))
+                    continue
+                enhances = base.get("planned_enhances") or ["ident|ident"]
+                for aug in enhances:
+                    if capped():
+                        break
+                    try:
+                        geometry, color_name = _parse_augmentation(aug)
+                    except ValueError:
+                        continue
+                    episode_base = {
+                        "query_kind": "gen",
+                        "query_index": instance,
+                        "demos": base.get("demos", []),
+                        "query_input": base.get("query_input"),
+                        "target": base.get("target"),
+                        "origin": base.get("origin", "unknown"),
+                        "base_instance_id": base.get("base_instance_id", make_base_instance_id(task_id, "gen", instance)),
+                        "suspect_same_as_demo": bool(suspect_same_as_demo(base.get("target"), base.get("demos", []))),
+                        "target_isolated": True,
+                    }
+                    episode = base_to_episode(task_id, episode_base, geometry, color_name,
+                                              base.get("source", ARCGEN_SOURCE), base.get("revision", ARCGEN_REVISION),
+                                              base.get("base_instance_id"))
+                    if episode is None:
+                        continue
+                    for extra in ("repair_status", "parent_base_instance_id"):
+                        if base.get(extra) is not None:
+                            episode[extra] = base[extra]
+                    if accept(episode, base.get("base_instance_id")):
+                        _materialize_count(summary, "repair_materialized_%s" % side)
+
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with out.open("w", encoding="utf-8", newline="\n") as handle:
+        for episode in emitted:
+            handle.write(json.dumps(episode, ensure_ascii=False, separators=(",", ":")))
+            handle.write("\n")
+    summary["counts"]["n_written"] = len(emitted)
+    summary["sha256"] = _sha256_file(out)
+    print("materialize formatter=%s written=%d out=%s" % (formatter, len(emitted), out))
+    print("materialize counts=%s" % json.dumps(summary["counts"], sort_keys=True))
+    print("materialize sha256=%s" % summary["sha256"])
+    print("wrote %s" % out)
+    return summary
+
+
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Build the 007 G1 split and episode pool; D2 index helpers for 008 S4.")
+    parser = argparse.ArgumentParser(description="Build the 007 G1 split and episode pool; D2 index helpers for 008 S4; --materialize builds trainer-ready episodes (009 handoff).")
     parser.add_argument("--challenges", required=True)
     parser.add_argument("--solutions", required=True)
     parser.add_argument("--out-dir", required=True)
@@ -1753,6 +2263,27 @@ def main(argv=None):
     parser.add_argument("--d2-dry-run", action="store_true",
                         help="Micro check on first N official tasks: index+bucket logic only, no model, no writes.")
     parser.add_argument("--d2-dry-run-tasks", type=int, default=3)
+    parser.add_argument("--materialize", action="store_true",
+                        help="009 handoff: materialize D2 index + raw newbases + repair pilot into trainer-ready episodes (messages/target_grid_text). Never overwrites; never writes inside experiments/007.")
+    parser.add_argument("--index", default="experiments/008/data/d2_sample_index.jsonl",
+                        help="D2 metadata index to materialize (read-only).")
+    parser.add_argument("--newbases", default="experiments/008/data/gen_newbases.jsonl",
+                        help="Raw new independent bases with planned_enhances (read-only).")
+    parser.add_argument("--repair", default="experiments/009/episode-repair-pilot.jsonl",
+                        help="Original/repaired episode pair (read-only).")
+    parser.add_argument("--g2-episodes", default=None,
+                        help="G2 episodes.jsonl for gen index rows via ref_g2_episode_id (read-only). Without it, gen rows are skipped and counted.")
+    parser.add_argument("--out", default=MATERIALIZE_DEFAULT_OUT,
+                        help="New output JSONL path (default under experiments/008/data/). Refuses to overwrite.")
+    parser.add_argument("--formatter", default=FORMATTER_F0,
+                        help="Episode grid format: space (F0) or compact (F1).")
+    parser.add_argument("--materialize-tasks", type=int, default=None,
+                        help="Dry-run cap: only the first N distinct tasks in index order.")
+    parser.add_argument("--materialize-max-rows", type=int, default=None,
+                        help="Dry-run cap: stop after N emitted episode rows.")
+    parser.add_argument("--skip-index", action="store_true", help="Materialize without D2 index rows.")
+    parser.add_argument("--skip-newbases", action="store_true", help="Materialize without raw newbases.")
+    parser.add_argument("--skip-repair", action="store_true", help="Materialize without the repair pilot.")
     args = parser.parse_args(argv)
     if args.n_episodes < 0:
         parser.error("--n-episodes must be >= 0")
@@ -1769,6 +2300,37 @@ def main(argv=None):
             arc1_eval_ids_path=args.arc1_eval_ids,
             seed=args.seed,
         )
+        print(json.dumps(summary, ensure_ascii=False, sort_keys=True, indent=2))
+        return summary
+    if args.materialize:
+        try:
+            formatter = normalize_formatter(args.formatter)
+        except ValueError:
+            parser.error("--formatter must be space (F0) or compact (F1)")
+        if args.materialize_tasks is not None and args.materialize_tasks < 1:
+            parser.error("--materialize-tasks must be >= 1")
+        if args.materialize_max_rows is not None and args.materialize_max_rows < 1:
+            parser.error("--materialize-max-rows must be >= 1")
+        try:
+            summary = materialize_episodes(
+                args.out,
+                challenges_path=args.challenges,
+                solutions_path=args.solutions,
+                index_path=None if args.skip_index else args.index,
+                newbases_path=None if args.skip_newbases else args.newbases,
+                repair_path=None if args.skip_repair else args.repair,
+                g2_episodes_path=args.g2_episodes,
+                formatter=formatter,
+                drop_suspect=args.drop_suspect,
+                seed=args.seed,
+                first_n_tasks=args.materialize_tasks,
+                max_rows=args.materialize_max_rows,
+                skip_index=args.skip_index,
+                skip_newbases=args.skip_newbases,
+                skip_repair=args.skip_repair,
+            )
+        except ValueError as exc:
+            parser.error(str(exc))
         print(json.dumps(summary, ensure_ascii=False, sort_keys=True, indent=2))
         return summary
     build(

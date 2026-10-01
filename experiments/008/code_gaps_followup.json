@@ -44,11 +44,25 @@
       "next_lines": "L37 LENGTH_BUCKET_NAMES, L40 DEFAULT_LENGTH_MIXTURE_STR, L183 parse_length_mixture, L207 apportion_mixture_targets, L219 select_pool_mixture, L384 --length-mixture, L481-485 resume互斥, L887-956 encode混合分支"
     },
     {
+      "id": "fair-task-base-consumption",
+      "status": "已实现（CPU，待GPU验证）",
+      "reason": "009 §3.3/§4最终消费公平采样：--sample-policy legacy(默认旧序不变)/fair_task_base(需--length-mixture，配额复用apportion_mixture_targets，800在20,40,40,0,0下160/320/320/0/0；桶内按来源→task→base，已选少者优先，官方only代理照顾无生成器非ARC1任务；官方/生成40/60仅软目标并报告实际如159/317/316与318/474，不硬凑；真实token桶复用旧界，bucket_consumption扩展sources/independent_bases_consumed/tasks_covered不删旧键；--resume/--init-adapter语义不动，fair需mixture且拒resume)。数据层只留行含d2_bucket即用接口，未改数据文件；完整D2预分桶索引与显式保护名单仍待物化",
+      "next_file": "scripts/train_grid_sft.py",
+      "next_lines": "L43 SAMPLE_POLICIES, L49 FAIR_SOURCE_CYCLE, L216 parse_sample_policy, L293 _fair_source_kind, L315 select_pool_mixture_fair, L500 bucket_consumption扩展, L646 --sample-policy, L748 validate fair需mixture/拒resume, L1221 encode分流, L1924 run_config记录"
+    },
+    {
       "id": "d2-gen-cross-slot-check",
       "status": "未实现",
       "reason": "D2生成base跨slot共享变量/validate()语义需ARC-GEN生成器配合判定可学习性；脚本仅留gen_validator锚点(_arcgen_instance/_collect_arcgen_bases)与--gen-cross-slot-check拒绝入口，不硬编码格子合法=可学习",
       "next_file": "scripts/arc_episode_data.py",
       "next_lines": "_arcgen_instance gen_validator anchor; _collect_arcgen_bases passthrough; main --gen-cross-slot-check"
+    },
+    {
+      "id": "f1-train-consume",
+      "status": "未实现",
+      "reason": "数据层已产出formatter字段(space/compact)与F1紧凑episode(arc_episode_data.serialize_grid/parse_grid_text/convert_episode_formatter/--materialize --formatter)；solve侧可直接消费(别名归一接受space/compact，parse_grid_f1_compact按字符解析)。train侧仍默认空格：build_messages两参调用走F0、zero-step text_to_grid核查仅F0、长度配比桶需按紧凑token重计。F1训练比较前需显式formatter透传，不静默混用",
+      "next_file": "scripts/train_grid_sft.py",
+      "next_lines": "L724 messages_for_test_query builder两参调用, L1318 zero-step text_to_grid核查, length-mixture桶边界"
     }
   ]
 }
