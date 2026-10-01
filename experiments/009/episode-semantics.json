@@ -1,0 +1,2035 @@
+{
+  "status": "CPU manual data/source audit; no model, GPU, official evaluation solutions, or heldout query outputs read",
+  "date": "2026-10-01",
+  "source": {
+    "path": "experiments/008/data/gen_newbases.jsonl",
+    "sha256": "539fe79657a1cdb3f7363ed07507092c2adaf508774e2e27d7a31d6f597a0605",
+    "arcgen_commit": "a15cbdb44c776610aeeb9f487a06af875d3d0878"
+  },
+  "hardware": "macOS-26.6.2-arm64-arm-64bit arm64",
+  "base_count": 2240,
+  "family_count": 448,
+  "pair_count": 8960,
+  "contradictions_same_family_identical_input_different_output": [],
+  "unique_family_input_count": 8884,
+  "aggregate_flags": {
+    "query_input_equals_demo": 7,
+    "query_output_equals_demo": 42,
+    "output_has_color_absent_from_all_visible_grids": 10
+  },
+  "query_input_duplicates": [
+    {
+      "line": 8,
+      "family": "0b17323b",
+      "instance": 100
+    },
+    {
+      "line": 405,
+      "family": "e6de6e8f",
+      "instance": 100
+    },
+    {
+      "line": 456,
+      "family": "0b17323b",
+      "instance": 101
+    },
+    {
+      "line": 904,
+      "family": "0b17323b",
+      "instance": 102
+    },
+    {
+      "line": 1136,
+      "family": "8a371977",
+      "instance": 102
+    },
+    {
+      "line": 1233,
+      "family": "be03b35f",
+      "instance": 102
+    },
+    {
+      "line": 1889,
+      "family": "332efdb3",
+      "instance": 104
+    }
+  ],
+  "six_families": {
+    "0b17323b": {
+      "pairs": 20,
+      "unique_inputs": 5,
+      "source_rule_matches": 20,
+      "source_rule_mismatches": [],
+      "bases": [
+        {
+          "instance": 100,
+          "line": 8,
+          "demo_features": [
+            {
+              "spacing": 3,
+              "start": 1
+            },
+            {
+              "spacing": 2,
+              "start": 1
+            },
+            {
+              "spacing": 4,
+              "start": 0
+            }
+          ],
+          "query_features": {
+            "spacing": 3,
+            "start": 1
+          },
+          "query_input_equals_a_demo": true,
+          "query_output_equals_a_demo": true
+        },
+        {
+          "instance": 101,
+          "line": 456,
+          "demo_features": [
+            {
+              "spacing": 4,
+              "start": 1
+            },
+            {
+              "spacing": 4,
+              "start": 0
+            },
+            {
+              "spacing": 2,
+              "start": 1
+            }
+          ],
+          "query_features": {
+            "spacing": 2,
+            "start": 1
+          },
+          "query_input_equals_a_demo": true,
+          "query_output_equals_a_demo": true
+        },
+        {
+          "instance": 102,
+          "line": 904,
+          "demo_features": [
+            {
+              "spacing": 4,
+              "start": 0
+            },
+            {
+              "spacing": 4,
+              "start": 1
+            },
+            {
+              "spacing": 2,
+              "start": 0
+            }
+          ],
+          "query_features": {
+            "spacing": 4,
+            "start": 1
+          },
+          "query_input_equals_a_demo": true,
+          "query_output_equals_a_demo": true
+        },
+        {
+          "instance": 103,
+          "line": 1352,
+          "demo_features": [
+            {
+              "spacing": 2,
+              "start": 1
+            },
+            {
+              "spacing": 2,
+              "start": 1
+            },
+            {
+              "spacing": 4,
+              "start": 0
+            }
+          ],
+          "query_features": {
+            "spacing": 3,
+            "start": 1
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": false
+        },
+        {
+          "instance": 104,
+          "line": 1800,
+          "demo_features": [
+            {
+              "spacing": 2,
+              "start": 1
+            },
+            {
+              "spacing": 2,
+              "start": 1
+            },
+            {
+              "spacing": 2,
+              "start": 0
+            }
+          ],
+          "query_features": {
+            "spacing": 4,
+            "start": 0
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": false
+        }
+      ]
+    },
+    "2072aba6": {
+      "pairs": 20,
+      "unique_inputs": 13,
+      "source_rule_matches": 20,
+      "source_rule_mismatches": [],
+      "bases": [
+        {
+          "instance": 100,
+          "line": 54,
+          "demo_features": [
+            {
+              "nonzero_positions": [
+                0,
+                1,
+                2
+              ],
+              "active_count": 3
+            },
+            {
+              "nonzero_positions": [
+                1,
+                2,
+                3
+              ],
+              "active_count": 3
+            },
+            {
+              "nonzero_positions": [
+                1,
+                3,
+                4
+              ],
+              "active_count": 3
+            }
+          ],
+          "query_features": {
+            "nonzero_positions": [
+              0,
+              2,
+              3
+            ],
+            "active_count": 3
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": false
+        },
+        {
+          "instance": 101,
+          "line": 502,
+          "demo_features": [
+            {
+              "nonzero_positions": [
+                1,
+                2,
+                3
+              ],
+              "active_count": 3
+            },
+            {
+              "nonzero_positions": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "active_count": 4
+            },
+            {
+              "nonzero_positions": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "active_count": 4
+            }
+          ],
+          "query_features": {
+            "nonzero_positions": [
+              0,
+              2,
+              3,
+              4
+            ],
+            "active_count": 4
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": false
+        },
+        {
+          "instance": 102,
+          "line": 950,
+          "demo_features": [
+            {
+              "nonzero_positions": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "active_count": 4
+            },
+            {
+              "nonzero_positions": [
+                0,
+                3,
+                4
+              ],
+              "active_count": 3
+            },
+            {
+              "nonzero_positions": [
+                0,
+                2,
+                3
+              ],
+              "active_count": 3
+            }
+          ],
+          "query_features": {
+            "nonzero_positions": [
+              0,
+              1,
+              2,
+              4
+            ],
+            "active_count": 4
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": false
+        },
+        {
+          "instance": 103,
+          "line": 1398,
+          "demo_features": [
+            {
+              "nonzero_positions": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "active_count": 4
+            },
+            {
+              "nonzero_positions": [
+                2,
+                3,
+                4
+              ],
+              "active_count": 3
+            },
+            {
+              "nonzero_positions": [
+                0,
+                3,
+                4
+              ],
+              "active_count": 3
+            }
+          ],
+          "query_features": {
+            "nonzero_positions": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "active_count": 5
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": false
+        },
+        {
+          "instance": 104,
+          "line": 1846,
+          "demo_features": [
+            {
+              "nonzero_positions": [
+                0,
+                1,
+                3,
+                4
+              ],
+              "active_count": 4
+            },
+            {
+              "nonzero_positions": [
+                1,
+                2,
+                4
+              ],
+              "active_count": 3
+            },
+            {
+              "nonzero_positions": [
+                0,
+                1,
+                2
+              ],
+              "active_count": 3
+            }
+          ],
+          "query_features": {
+            "nonzero_positions": [
+              2,
+              3,
+              4
+            ],
+            "active_count": 3
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": false
+        }
+      ]
+    },
+    "00dbd492": {
+      "pairs": 20,
+      "unique_inputs": 19,
+      "source_rule_matches": 20,
+      "source_rule_mismatches": [],
+      "bases": [
+        {
+          "instance": 100,
+          "line": 1,
+          "demo_features": [
+            {
+              "size": 17,
+              "thicknesses": [
+                1,
+                1,
+                2
+              ],
+              "box_count": 3
+            },
+            {
+              "size": 20,
+              "thicknesses": [
+                1,
+                1,
+                1,
+                2
+              ],
+              "box_count": 4
+            },
+            {
+              "size": 8,
+              "thicknesses": [
+                1
+              ],
+              "box_count": 1
+            }
+          ],
+          "query_features": {
+            "size": 10,
+            "thicknesses": [
+              1
+            ],
+            "box_count": 1
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": false,
+          "query_thickness_not_shown_in_demos": []
+        },
+        {
+          "instance": 101,
+          "line": 449,
+          "demo_features": [
+            {
+              "size": 15,
+              "thicknesses": [
+                1,
+                3
+              ],
+              "box_count": 2
+            },
+            {
+              "size": 18,
+              "thicknesses": [
+                1,
+                1,
+                2
+              ],
+              "box_count": 3
+            },
+            {
+              "size": 20,
+              "thicknesses": [
+                1,
+                1,
+                2,
+                3
+              ],
+              "box_count": 4
+            }
+          ],
+          "query_features": {
+            "size": 17,
+            "thicknesses": [
+              1,
+              1,
+              2
+            ],
+            "box_count": 3
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": false,
+          "query_thickness_not_shown_in_demos": []
+        },
+        {
+          "instance": 102,
+          "line": 897,
+          "demo_features": [
+            {
+              "size": 8,
+              "thicknesses": [
+                1
+              ],
+              "box_count": 1
+            },
+            {
+              "size": 9,
+              "thicknesses": [
+                3
+              ],
+              "box_count": 1
+            },
+            {
+              "size": 7,
+              "thicknesses": [],
+              "box_count": 0
+            }
+          ],
+          "query_features": {
+            "size": 8,
+            "thicknesses": [
+              2
+            ],
+            "box_count": 1
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": false,
+          "query_thickness_not_shown_in_demos": [
+            2
+          ]
+        },
+        {
+          "instance": 103,
+          "line": 1345,
+          "demo_features": [
+            {
+              "size": 10,
+              "thicknesses": [
+                1
+              ],
+              "box_count": 1
+            },
+            {
+              "size": 22,
+              "thicknesses": [
+                1,
+                1,
+                1,
+                3
+              ],
+              "box_count": 4
+            },
+            {
+              "size": 15,
+              "thicknesses": [
+                1,
+                2
+              ],
+              "box_count": 2
+            }
+          ],
+          "query_features": {
+            "size": 17,
+            "thicknesses": [
+              1,
+              1,
+              2
+            ],
+            "box_count": 3
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": false,
+          "query_thickness_not_shown_in_demos": []
+        },
+        {
+          "instance": 104,
+          "line": 1793,
+          "demo_features": [
+            {
+              "size": 8,
+              "thicknesses": [
+                2
+              ],
+              "box_count": 1
+            },
+            {
+              "size": 7,
+              "thicknesses": [],
+              "box_count": 0
+            },
+            {
+              "size": 16,
+              "thicknesses": [
+                1,
+                1,
+                2
+              ],
+              "box_count": 3
+            }
+          ],
+          "query_features": {
+            "size": 14,
+            "thicknesses": [
+              1,
+              1
+            ],
+            "box_count": 2
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": false,
+          "query_thickness_not_shown_in_demos": []
+        }
+      ]
+    },
+    "3b4c2228": {
+      "pairs": 20,
+      "unique_inputs": 20,
+      "source_rule_matches": 20,
+      "source_rule_mismatches": [],
+      "bases": [
+        {
+          "instance": 100,
+          "line": 109,
+          "demo_features": [
+            {
+              "green_large": 1,
+              "green_all": 2,
+              "red_large": 2,
+              "red_all": 3,
+              "all_large": 3
+            },
+            {
+              "green_large": 1,
+              "green_all": 3,
+              "red_large": 0,
+              "red_all": 3,
+              "all_large": 1
+            },
+            {
+              "green_large": 1,
+              "green_all": 1,
+              "red_large": 0,
+              "red_all": 2,
+              "all_large": 1
+            }
+          ],
+          "query_features": {
+            "green_large": 1,
+            "green_all": 3,
+            "red_large": 1,
+            "red_all": 3,
+            "all_large": 2
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": true,
+          "simple_rival_rules_fitting_demos_but_disagreeing_query": []
+        },
+        {
+          "instance": 101,
+          "line": 557,
+          "demo_features": [
+            {
+              "green_large": 1,
+              "green_all": 3,
+              "red_large": 2,
+              "red_all": 2,
+              "all_large": 3
+            },
+            {
+              "green_large": 1,
+              "green_all": 3,
+              "red_large": 1,
+              "red_all": 4,
+              "all_large": 2
+            },
+            {
+              "green_large": 1,
+              "green_all": 3,
+              "red_large": 0,
+              "red_all": 2,
+              "all_large": 1
+            }
+          ],
+          "query_features": {
+            "green_large": 1,
+            "green_all": 3,
+            "red_large": 0,
+            "red_all": 2,
+            "all_large": 1
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": true,
+          "simple_rival_rules_fitting_demos_but_disagreeing_query": []
+        },
+        {
+          "instance": 102,
+          "line": 1005,
+          "demo_features": [
+            {
+              "green_large": 1,
+              "green_all": 2,
+              "red_large": 1,
+              "red_all": 3,
+              "all_large": 2
+            },
+            {
+              "green_large": 1,
+              "green_all": 2,
+              "red_large": 0,
+              "red_all": 2,
+              "all_large": 1
+            },
+            {
+              "green_large": 2,
+              "green_all": 3,
+              "red_large": 0,
+              "red_all": 3,
+              "all_large": 2
+            }
+          ],
+          "query_features": {
+            "green_large": 2,
+            "green_all": 2,
+            "red_large": 1,
+            "red_all": 3,
+            "all_large": 3
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": true,
+          "simple_rival_rules_fitting_demos_but_disagreeing_query": []
+        },
+        {
+          "instance": 103,
+          "line": 1453,
+          "demo_features": [
+            {
+              "green_large": 2,
+              "green_all": 4,
+              "red_large": 1,
+              "red_all": 3,
+              "all_large": 3
+            },
+            {
+              "green_large": 1,
+              "green_all": 3,
+              "red_large": 1,
+              "red_all": 4,
+              "all_large": 2
+            },
+            {
+              "green_large": 2,
+              "green_all": 2,
+              "red_large": 0,
+              "red_all": 2,
+              "all_large": 2
+            }
+          ],
+          "query_features": {
+            "green_large": 2,
+            "green_all": 4,
+            "red_large": 3,
+            "red_all": 4,
+            "all_large": 5
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": true,
+          "simple_rival_rules_fitting_demos_but_disagreeing_query": []
+        },
+        {
+          "instance": 104,
+          "line": 1901,
+          "demo_features": [
+            {
+              "green_large": 1,
+              "green_all": 4,
+              "red_large": 1,
+              "red_all": 3,
+              "all_large": 2
+            },
+            {
+              "green_large": 1,
+              "green_all": 3,
+              "red_large": 0,
+              "red_all": 2,
+              "all_large": 1
+            },
+            {
+              "green_large": 1,
+              "green_all": 3,
+              "red_large": 1,
+              "red_all": 3,
+              "all_large": 2
+            }
+          ],
+          "query_features": {
+            "green_large": 1,
+            "green_all": 3,
+            "red_large": 0,
+            "red_all": 4,
+            "all_large": 1
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": true,
+          "simple_rival_rules_fitting_demos_but_disagreeing_query": []
+        }
+      ]
+    },
+    "8597cfd7": {
+      "pairs": 20,
+      "unique_inputs": 20,
+      "source_rule_matches": 20,
+      "source_rule_mismatches": [],
+      "bases": [
+        {
+          "instance": 100,
+          "line": 232,
+          "demo_features": [
+            {
+              "reds": [
+                2,
+                4
+              ],
+              "yellows": [
+                1,
+                2
+              ],
+              "delta_red": 2,
+              "delta_yellow": 1,
+              "winner": 2
+            },
+            {
+              "reds": [
+                4,
+                5
+              ],
+              "yellows": [
+                1,
+                3
+              ],
+              "delta_red": 1,
+              "delta_yellow": 2,
+              "winner": 4
+            },
+            {
+              "reds": [
+                2,
+                3
+              ],
+              "yellows": [
+                1,
+                4
+              ],
+              "delta_red": 1,
+              "delta_yellow": 3,
+              "winner": 4
+            }
+          ],
+          "query_features": {
+            "reds": [
+              2,
+              3
+            ],
+            "yellows": [
+              1,
+              3
+            ],
+            "delta_red": 1,
+            "delta_yellow": 2,
+            "winner": 4
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": true,
+          "simple_rival_rules_fitting_demos_but_disagreeing_query": [],
+          "both_winners_shown_in_demos": true
+        },
+        {
+          "instance": 101,
+          "line": 680,
+          "demo_features": [
+            {
+              "reds": [
+                1,
+                5
+              ],
+              "yellows": [
+                2,
+                3
+              ],
+              "delta_red": 4,
+              "delta_yellow": 1,
+              "winner": 2
+            },
+            {
+              "reds": [
+                2,
+                4
+              ],
+              "yellows": [
+                1,
+                4
+              ],
+              "delta_red": 2,
+              "delta_yellow": 3,
+              "winner": 4
+            },
+            {
+              "reds": [
+                3,
+                4
+              ],
+              "yellows": [
+                2,
+                4
+              ],
+              "delta_red": 1,
+              "delta_yellow": 2,
+              "winner": 4
+            }
+          ],
+          "query_features": {
+            "reds": [
+              2,
+              5
+            ],
+            "yellows": [
+              4,
+              5
+            ],
+            "delta_red": 3,
+            "delta_yellow": 1,
+            "winner": 2
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": true,
+          "simple_rival_rules_fitting_demos_but_disagreeing_query": [],
+          "both_winners_shown_in_demos": true
+        },
+        {
+          "instance": 102,
+          "line": 1128,
+          "demo_features": [
+            {
+              "reds": [
+                3,
+                4
+              ],
+              "yellows": [
+                3,
+                5
+              ],
+              "delta_red": 1,
+              "delta_yellow": 2,
+              "winner": 4
+            },
+            {
+              "reds": [
+                2,
+                3
+              ],
+              "yellows": [
+                2,
+                4
+              ],
+              "delta_red": 1,
+              "delta_yellow": 2,
+              "winner": 4
+            },
+            {
+              "reds": [
+                1,
+                4
+              ],
+              "yellows": [
+                1,
+                3
+              ],
+              "delta_red": 3,
+              "delta_yellow": 2,
+              "winner": 2
+            }
+          ],
+          "query_features": {
+            "reds": [
+              1,
+              5
+            ],
+            "yellows": [
+              2,
+              4
+            ],
+            "delta_red": 4,
+            "delta_yellow": 2,
+            "winner": 2
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": true,
+          "simple_rival_rules_fitting_demos_but_disagreeing_query": [],
+          "both_winners_shown_in_demos": true
+        },
+        {
+          "instance": 103,
+          "line": 1576,
+          "demo_features": [
+            {
+              "reds": [
+                3,
+                4
+              ],
+              "yellows": [
+                1,
+                4
+              ],
+              "delta_red": 1,
+              "delta_yellow": 3,
+              "winner": 4
+            },
+            {
+              "reds": [
+                1,
+                4
+              ],
+              "yellows": [
+                4,
+                5
+              ],
+              "delta_red": 3,
+              "delta_yellow": 1,
+              "winner": 2
+            },
+            {
+              "reds": [
+                2,
+                3
+              ],
+              "yellows": [
+                3,
+                5
+              ],
+              "delta_red": 1,
+              "delta_yellow": 2,
+              "winner": 4
+            }
+          ],
+          "query_features": {
+            "reds": [
+              1,
+              3
+            ],
+            "yellows": [
+              1,
+              4
+            ],
+            "delta_red": 2,
+            "delta_yellow": 3,
+            "winner": 4
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": true,
+          "simple_rival_rules_fitting_demos_but_disagreeing_query": [],
+          "both_winners_shown_in_demos": true
+        },
+        {
+          "instance": 104,
+          "line": 2024,
+          "demo_features": [
+            {
+              "reds": [
+                2,
+                4
+              ],
+              "yellows": [
+                4,
+                5
+              ],
+              "delta_red": 2,
+              "delta_yellow": 1,
+              "winner": 2
+            },
+            {
+              "reds": [
+                1,
+                4
+              ],
+              "yellows": [
+                3,
+                4
+              ],
+              "delta_red": 3,
+              "delta_yellow": 1,
+              "winner": 2
+            },
+            {
+              "reds": [
+                2,
+                4
+              ],
+              "yellows": [
+                1,
+                5
+              ],
+              "delta_red": 2,
+              "delta_yellow": 4,
+              "winner": 4
+            }
+          ],
+          "query_features": {
+            "reds": [
+              1,
+              2
+            ],
+            "yellows": [
+              3,
+              5
+            ],
+            "delta_red": 1,
+            "delta_yellow": 2,
+            "winner": 4
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": true,
+          "simple_rival_rules_fitting_demos_but_disagreeing_query": [],
+          "both_winners_shown_in_demos": true
+        }
+      ]
+    },
+    "c8b7cc0f": {
+      "pairs": 20,
+      "unique_inputs": 20,
+      "source_rule_matches": 20,
+      "source_rule_mismatches": [],
+      "bases": [
+        {
+          "instance": 100,
+          "line": 349,
+          "demo_features": [
+            {
+              "color": 7,
+              "inside_count": 3,
+              "all_count": 6,
+              "frame": [
+                0,
+                0,
+                3,
+                4
+              ]
+            },
+            {
+              "color": 7,
+              "inside_count": 3,
+              "all_count": 8,
+              "frame": [
+                2,
+                0,
+                8,
+                6
+              ]
+            },
+            {
+              "color": 4,
+              "inside_count": 3,
+              "all_count": 5,
+              "frame": [
+                0,
+                2,
+                6,
+                7
+              ]
+            }
+          ],
+          "query_features": {
+            "color": 3,
+            "inside_count": 3,
+            "all_count": 8,
+            "frame": [
+              2,
+              3,
+              8,
+              6
+            ]
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": false,
+          "query_color_absent_demos": true,
+          "query_count_absent_demos": false,
+          "constant_count_fits_demos_but_disagrees_query": false,
+          "total_count_fits_demos_but_disagrees_query": false
+        },
+        {
+          "instance": 101,
+          "line": 797,
+          "demo_features": [
+            {
+              "color": 7,
+              "inside_count": 3,
+              "all_count": 6,
+              "frame": [
+                0,
+                2,
+                4,
+                6
+              ]
+            },
+            {
+              "color": 2,
+              "inside_count": 3,
+              "all_count": 9,
+              "frame": [
+                2,
+                4,
+                8,
+                7
+              ]
+            },
+            {
+              "color": 2,
+              "inside_count": 3,
+              "all_count": 4,
+              "frame": [
+                2,
+                0,
+                5,
+                4
+              ]
+            }
+          ],
+          "query_features": {
+            "color": 7,
+            "inside_count": 3,
+            "all_count": 9,
+            "frame": [
+              1,
+              1,
+              5,
+              5
+            ]
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": true,
+          "query_color_absent_demos": false,
+          "query_count_absent_demos": false,
+          "constant_count_fits_demos_but_disagrees_query": false,
+          "total_count_fits_demos_but_disagrees_query": false
+        },
+        {
+          "instance": 102,
+          "line": 1245,
+          "demo_features": [
+            {
+              "color": 2,
+              "inside_count": 3,
+              "all_count": 4,
+              "frame": [
+                1,
+                2,
+                5,
+                6
+              ]
+            },
+            {
+              "color": 9,
+              "inside_count": 3,
+              "all_count": 9,
+              "frame": [
+                0,
+                1,
+                4,
+                4
+              ]
+            },
+            {
+              "color": 3,
+              "inside_count": 3,
+              "all_count": 7,
+              "frame": [
+                1,
+                0,
+                6,
+                5
+              ]
+            }
+          ],
+          "query_features": {
+            "color": 8,
+            "inside_count": 3,
+            "all_count": 7,
+            "frame": [
+              2,
+              1,
+              5,
+              5
+            ]
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": false,
+          "query_color_absent_demos": true,
+          "query_count_absent_demos": false,
+          "constant_count_fits_demos_but_disagrees_query": false,
+          "total_count_fits_demos_but_disagrees_query": false
+        },
+        {
+          "instance": 103,
+          "line": 1693,
+          "demo_features": [
+            {
+              "color": 8,
+              "inside_count": 3,
+              "all_count": 5,
+              "frame": [
+                1,
+                3,
+                5,
+                6
+              ]
+            },
+            {
+              "color": 8,
+              "inside_count": 3,
+              "all_count": 10,
+              "frame": [
+                1,
+                2,
+                5,
+                7
+              ]
+            },
+            {
+              "color": 2,
+              "inside_count": 4,
+              "all_count": 6,
+              "frame": [
+                1,
+                2,
+                7,
+                8
+              ]
+            }
+          ],
+          "query_features": {
+            "color": 3,
+            "inside_count": 3,
+            "all_count": 8,
+            "frame": [
+              0,
+              2,
+              3,
+              8
+            ]
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": false,
+          "query_color_absent_demos": true,
+          "query_count_absent_demos": false,
+          "constant_count_fits_demos_but_disagrees_query": false,
+          "total_count_fits_demos_but_disagrees_query": false
+        },
+        {
+          "instance": 104,
+          "line": 2141,
+          "demo_features": [
+            {
+              "color": 2,
+              "inside_count": 3,
+              "all_count": 4,
+              "frame": [
+                2,
+                0,
+                5,
+                4
+              ]
+            },
+            {
+              "color": 9,
+              "inside_count": 3,
+              "all_count": 9,
+              "frame": [
+                0,
+                1,
+                4,
+                5
+              ]
+            },
+            {
+              "color": 6,
+              "inside_count": 4,
+              "all_count": 9,
+              "frame": [
+                1,
+                1,
+                5,
+                5
+              ]
+            }
+          ],
+          "query_features": {
+            "color": 6,
+            "inside_count": 4,
+            "all_count": 7,
+            "frame": [
+              1,
+              1,
+              6,
+              6
+            ]
+          },
+          "query_input_equals_a_demo": false,
+          "query_output_equals_a_demo": true,
+          "query_color_absent_demos": false,
+          "query_count_absent_demos": false,
+          "constant_count_fits_demos_but_disagrees_query": false,
+          "total_count_fits_demos_but_disagrees_query": false
+        }
+      ]
+    }
+  },
+  "elapsed_seconds": 0.4586,
+  "color_mapping_or_interaction_flags": [
+    {
+      "line": 106,
+      "family": "37d3e8b2",
+      "instance": 100,
+      "output_colors_absent_from_visible_grids": [
+        3
+      ],
+      "query_categories_absent_demos": [
+        "hole_count:3"
+      ],
+      "classification": "unexposed_mapping_or_interaction; labels source-consistent, not proven contradictory",
+      "proposed_action": "quarantine original episode from clean in-context SFT slice; recompose demos from same allowed training family or keep explicit separate extrapolation slice",
+      "counterexample_witness": {
+        "source_label": 3,
+        "alternate_label": 4,
+        "both_labels_absent_visible_input_and_demos": true,
+        "hypothesis": "same generator transformation followed by swapping the two absent output labels; all current demos unchanged; query output differs",
+        "changed_query_cells": 39,
+        "alternate_target_sha256": "e30b3637e96491120dfc684fb4a2923acd114c69ebc8adb1090c0df275608ba0",
+        "qualification": "Demonstrates ambiguity within this explicit two-rule hypothesis class, not impossibility for a pretrained model with prior task memory; not a contradictory labeling claim."
+      }
+    },
+    {
+      "line": 422,
+      "family": "ed74f2f2",
+      "instance": 100,
+      "output_colors_absent_from_visible_grids": [
+        2
+      ],
+      "query_categories_absent_demos": [
+        "marker:550050055"
+      ],
+      "classification": "unexposed_mapping_or_interaction; labels source-consistent, not proven contradictory",
+      "proposed_action": "quarantine original episode from clean in-context SFT slice; recompose demos from same allowed training family or keep explicit separate extrapolation slice",
+      "counterexample_witness": {
+        "source_label": 2,
+        "alternate_label": 4,
+        "both_labels_absent_visible_input_and_demos": true,
+        "hypothesis": "same generator transformation followed by swapping the two absent output labels; all current demos unchanged; query output differs",
+        "changed_query_cells": 6,
+        "alternate_target_sha256": "7dbf88e49cabb0148e972f60d822036fe7d7648b171b2be613d80349593ca79f",
+        "qualification": "Demonstrates ambiguity within this explicit two-rule hypothesis class, not impossibility for a pretrained model with prior task memory; not a contradictory labeling claim."
+      }
+    },
+    {
+      "line": 897,
+      "family": "00dbd492",
+      "instance": 102,
+      "output_colors_absent_from_visible_grids": [
+        4
+      ],
+      "query_categories_absent_demos": [
+        "thick:2"
+      ],
+      "classification": "unexposed_mapping_or_interaction; labels source-consistent, not proven contradictory",
+      "proposed_action": "quarantine original episode from clean in-context SFT slice; recompose demos from same allowed training family or keep explicit separate extrapolation slice",
+      "counterexample_witness": {
+        "source_label": 4,
+        "alternate_label": 1,
+        "both_labels_absent_visible_input_and_demos": true,
+        "hypothesis": "same generator transformation followed by swapping the two absent output labels; all current demos unchanged; query output differs",
+        "changed_query_cells": 24,
+        "alternate_target_sha256": "31adb029ee206273361bbdf6f138a58d8a5a5fd57c157a752f403241565b2015",
+        "qualification": "Demonstrates ambiguity within this explicit two-rule hypothesis class, not impossibility for a pretrained model with prior task memory; not a contradictory labeling claim."
+      }
+    },
+    {
+      "line": 1002,
+      "family": "37d3e8b2",
+      "instance": 102,
+      "output_colors_absent_from_visible_grids": [
+        3,
+        7
+      ],
+      "query_categories_absent_demos": [
+        "hole_count:3",
+        "hole_count:4"
+      ],
+      "classification": "unexposed_mapping_or_interaction; labels source-consistent, not proven contradictory",
+      "proposed_action": "quarantine original episode from clean in-context SFT slice; recompose demos from same allowed training family or keep explicit separate extrapolation slice",
+      "counterexample_witness": {
+        "source_label": 3,
+        "alternate_label": 4,
+        "both_labels_absent_visible_input_and_demos": true,
+        "hypothesis": "same generator transformation followed by swapping the two absent output labels; all current demos unchanged; query output differs",
+        "changed_query_cells": 32,
+        "alternate_target_sha256": "aab29f496d0adb45847ed438c9cdafd803935b9db2aed3effe298d2e0cfc83d6",
+        "qualification": "Demonstrates ambiguity within this explicit two-rule hypothesis class, not impossibility for a pretrained model with prior task memory; not a contradictory labeling claim."
+      }
+    },
+    {
+      "line": 1199,
+      "family": "ac605cbb",
+      "instance": 102,
+      "output_colors_absent_from_visible_grids": [
+        4
+      ],
+      "query_categories_absent_demos": [
+        "join_branch"
+      ],
+      "classification": "unexposed_mapping_or_interaction; labels source-consistent, not proven contradictory",
+      "proposed_action": "quarantine original episode from clean in-context SFT slice; recompose demos from same allowed training family or keep explicit separate extrapolation slice",
+      "counterexample_witness": {
+        "source_label": 4,
+        "alternate_label": 2,
+        "both_labels_absent_visible_input_and_demos": true,
+        "hypothesis": "same generator transformation followed by swapping the two absent output labels; all current demos unchanged; query output differs",
+        "changed_query_cells": 7,
+        "alternate_target_sha256": "7aad80053cb58ce12ec491f653ca2589bb7d982e7801f849a97e416064a997f4",
+        "qualification": "Demonstrates ambiguity within this explicit two-rule hypothesis class, not impossibility for a pretrained model with prior task memory; not a contradictory labeling claim."
+      }
+    },
+    {
+      "line": 1318,
+      "family": "ed74f2f2",
+      "instance": 102,
+      "output_colors_absent_from_visible_grids": [
+        3
+      ],
+      "query_categories_absent_demos": [
+        "marker:055050550"
+      ],
+      "classification": "unexposed_mapping_or_interaction; labels source-consistent, not proven contradictory",
+      "proposed_action": "quarantine original episode from clean in-context SFT slice; recompose demos from same allowed training family or keep explicit separate extrapolation slice",
+      "counterexample_witness": {
+        "source_label": 3,
+        "alternate_label": 4,
+        "both_labels_absent_visible_input_and_demos": true,
+        "hypothesis": "same generator transformation followed by swapping the two absent output labels; all current demos unchanged; query output differs",
+        "changed_query_cells": 8,
+        "alternate_target_sha256": "630c1572488087489b75a40ee19daa6a4f3cd19660ec905426b9b1b91474398a",
+        "qualification": "Demonstrates ambiguity within this explicit two-rule hypothesis class, not impossibility for a pretrained model with prior task memory; not a contradictory labeling claim."
+      }
+    },
+    {
+      "line": 1540,
+      "family": "6ea4a07e",
+      "instance": 103,
+      "output_colors_absent_from_visible_grids": [
+        4
+      ],
+      "query_categories_absent_demos": [
+        "input_color:5"
+      ],
+      "classification": "unexposed_mapping_or_interaction; labels source-consistent, not proven contradictory",
+      "proposed_action": "quarantine original episode from clean in-context SFT slice; recompose demos from same allowed training family or keep explicit separate extrapolation slice",
+      "counterexample_witness": {
+        "source_label": 4,
+        "alternate_label": 1,
+        "both_labels_absent_visible_input_and_demos": true,
+        "hypothesis": "same generator transformation followed by swapping the two absent output labels; all current demos unchanged; query output differs",
+        "changed_query_cells": 2,
+        "alternate_target_sha256": "9f2b779c816d610405565537364dd3334ea43daf108015234fae05284494d9dd",
+        "qualification": "Demonstrates ambiguity within this explicit two-rule hypothesis class, not impossibility for a pretrained model with prior task memory; not a contradictory labeling claim."
+      }
+    },
+    {
+      "line": 1766,
+      "family": "ed74f2f2",
+      "instance": 103,
+      "output_colors_absent_from_visible_grids": [
+        2
+      ],
+      "query_categories_absent_demos": [
+        "marker:550050055"
+      ],
+      "classification": "unexposed_mapping_or_interaction; labels source-consistent, not proven contradictory",
+      "proposed_action": "quarantine original episode from clean in-context SFT slice; recompose demos from same allowed training family or keep explicit separate extrapolation slice",
+      "counterexample_witness": {
+        "source_label": 2,
+        "alternate_label": 4,
+        "both_labels_absent_visible_input_and_demos": true,
+        "hypothesis": "same generator transformation followed by swapping the two absent output labels; all current demos unchanged; query output differs",
+        "changed_query_cells": 6,
+        "alternate_target_sha256": "ed15d5dbecfe6697c67edd785b275f1c113baec91d29cd3c1680069c1c4ab91f",
+        "qualification": "Demonstrates ambiguity within this explicit two-rule hypothesis class, not impossibility for a pretrained model with prior task memory; not a contradictory labeling claim."
+      }
+    },
+    {
+      "line": 1825,
+      "family": "17cae0c1",
+      "instance": 104,
+      "output_colors_absent_from_visible_grids": [
+        3
+      ],
+      "query_categories_absent_demos": [
+        "shape:555505555"
+      ],
+      "classification": "unexposed_mapping_or_interaction; labels source-consistent, not proven contradictory",
+      "proposed_action": "quarantine original episode from clean in-context SFT slice; recompose demos from same allowed training family or keep explicit separate extrapolation slice",
+      "counterexample_witness": {
+        "source_label": 3,
+        "alternate_label": 2,
+        "both_labels_absent_visible_input_and_demos": true,
+        "hypothesis": "same generator transformation followed by swapping the two absent output labels; all current demos unchanged; query output differs",
+        "changed_query_cells": 9,
+        "alternate_target_sha256": "6d9ae246be4e6e99fbaa1e21f6baf7ea94dbee9959085daebfafc952f59cd588",
+        "qualification": "Demonstrates ambiguity within this explicit two-rule hypothesis class, not impossibility for a pretrained model with prior task memory; not a contradictory labeling claim."
+      }
+    },
+    {
+      "line": 1988,
+      "family": "6ea4a07e",
+      "instance": 104,
+      "output_colors_absent_from_visible_grids": [
+        1
+      ],
+      "query_categories_absent_demos": [
+        "input_color:3"
+      ],
+      "classification": "unexposed_mapping_or_interaction; labels source-consistent, not proven contradictory",
+      "proposed_action": "quarantine original episode from clean in-context SFT slice; recompose demos from same allowed training family or keep explicit separate extrapolation slice",
+      "counterexample_witness": {
+        "source_label": 1,
+        "alternate_label": 6,
+        "both_labels_absent_visible_input_and_demos": true,
+        "hypothesis": "same generator transformation followed by swapping the two absent output labels; all current demos unchanged; query output differs",
+        "changed_query_cells": 4,
+        "alternate_target_sha256": "2ee78a310519d9d0b52e1e23f8e0b14282f372e4978c18849ef6c2fa88420ec9",
+        "qualification": "Demonstrates ambiguity within this explicit two-rule hypothesis class, not impossibility for a pretrained model with prior task memory; not a contradictory labeling claim."
+      }
+    }
+  ],
+  "same_family_demo_repair_proposals": [
+    {
+      "base_line": 106,
+      "family": "37d3e8b2",
+      "instance": 100,
+      "remove_demo_slots": [
+        0
+      ],
+      "replacement_pairs": [
+        {
+          "line": 1002,
+          "instance": 102,
+          "slot": 3
+        }
+      ],
+      "changes": 1,
+      "remaining_query_missing_categories": [],
+      "status": "proposal only; materialization not performed; category coverage is not full identifiability proof"
+    },
+    {
+      "base_line": 422,
+      "family": "ed74f2f2",
+      "instance": 100,
+      "remove_demo_slots": [
+        0
+      ],
+      "replacement_pairs": [
+        {
+          "line": 1318,
+          "instance": 102,
+          "slot": 0
+        }
+      ],
+      "changes": 1,
+      "remaining_query_missing_categories": [],
+      "status": "proposal only; materialization not performed; category coverage is not full identifiability proof"
+    },
+    {
+      "base_line": 897,
+      "family": "00dbd492",
+      "instance": 102,
+      "remove_demo_slots": [
+        0
+      ],
+      "replacement_pairs": [
+        {
+          "line": 1,
+          "instance": 100,
+          "slot": 0
+        }
+      ],
+      "changes": 1,
+      "remaining_query_missing_categories": [],
+      "status": "proposal only; materialization not performed; category coverage is not full identifiability proof"
+    },
+    {
+      "base_line": 1002,
+      "family": "37d3e8b2",
+      "instance": 102,
+      "remove_demo_slots": [
+        0
+      ],
+      "replacement_pairs": [
+        {
+          "line": 1450,
+          "instance": 103,
+          "slot": 2
+        }
+      ],
+      "changes": 1,
+      "remaining_query_missing_categories": [],
+      "status": "proposal only; materialization not performed; category coverage is not full identifiability proof"
+    },
+    {
+      "base_line": 1199,
+      "family": "ac605cbb",
+      "instance": 102,
+      "remove_demo_slots": [
+        0
+      ],
+      "replacement_pairs": [
+        {
+          "line": 303,
+          "instance": 100,
+          "slot": 0
+        }
+      ],
+      "changes": 1,
+      "remaining_query_missing_categories": [],
+      "status": "proposal only; materialization not performed; category coverage is not full identifiability proof"
+    },
+    {
+      "base_line": 1318,
+      "family": "ed74f2f2",
+      "instance": 102,
+      "remove_demo_slots": [
+        0
+      ],
+      "replacement_pairs": [
+        {
+          "line": 422,
+          "instance": 100,
+          "slot": 0
+        }
+      ],
+      "changes": 1,
+      "remaining_query_missing_categories": [],
+      "status": "proposal only; materialization not performed; category coverage is not full identifiability proof"
+    },
+    {
+      "base_line": 1540,
+      "family": "6ea4a07e",
+      "instance": 103,
+      "remove_demo_slots": [
+        0
+      ],
+      "replacement_pairs": [
+        {
+          "line": 644,
+          "instance": 101,
+          "slot": 2
+        }
+      ],
+      "changes": 1,
+      "remaining_query_missing_categories": [],
+      "status": "proposal only; materialization not performed; category coverage is not full identifiability proof"
+    },
+    {
+      "base_line": 1766,
+      "family": "ed74f2f2",
+      "instance": 103,
+      "remove_demo_slots": [
+        0
+      ],
+      "replacement_pairs": [
+        {
+          "line": 422,
+          "instance": 100,
+          "slot": 3
+        }
+      ],
+      "changes": 1,
+      "remaining_query_missing_categories": [],
+      "status": "proposal only; materialization not performed; category coverage is not full identifiability proof"
+    },
+    {
+      "base_line": 1825,
+      "family": "17cae0c1",
+      "instance": 104,
+      "remove_demo_slots": [
+        0
+      ],
+      "replacement_pairs": [
+        {
+          "line": 33,
+          "instance": 100,
+          "slot": 0
+        }
+      ],
+      "changes": 1,
+      "remaining_query_missing_categories": [],
+      "status": "proposal only; materialization not performed; category coverage is not full identifiability proof"
+    },
+    {
+      "base_line": 1988,
+      "family": "6ea4a07e",
+      "instance": 104,
+      "remove_demo_slots": [
+        0
+      ],
+      "replacement_pairs": [
+        {
+          "line": 196,
+          "instance": 100,
+          "slot": 0
+        }
+      ],
+      "changes": 1,
+      "remaining_query_missing_categories": [],
+      "status": "proposal only; materialization not performed; category coverage is not full identifiability proof"
+    }
+  ],
+  "definitions": {
+    "contradiction": "Same family and exactly same full input assigned different output. Zero observed is finite-sample evidence only; it does not validate 448 whole generators.",
+    "underexposed_mapping": "A query activates a category/interaction whose label/output behavior is absent from demos; a source-consistent pair can still be unsuitable as a self-contained in-context episode.",
+    "distribution_shift": "Different visible parameters, counts, dimensions, or copied colors are not themselves semantic inconsistency.",
+    "new_color_probe": "Only a triage signal. Source review of flagged family determines whether arbitrary output mapping or new branch is unexposed. Do not reject colors that occur in query input and are copied to output.",
+    "rule_check": "Six hand-written input-to-output reconstructions used only for one-off CPU audit of already-generated training pairs; exact matches are not learned-model or competition scores.",
+    "repair": "Preserve query input and label; replace the minimum demos using same-family allowed generated training pairs with different query input. This is a proposal, not a claim the data file changed."
+  },
+  "source_references": {
+    "read_date": "2026-10-01",
+    "repository": "https://github.com/google/ARC-GEN/blob/a15cbdb44c776610aeeb9f487a06af875d3d0878/",
+    "validate_semantics": {
+      "path": "arc_gen.py",
+      "lines": "25-37",
+      "url": "https://github.com/google/ARC-GEN/blob/a15cbdb44c776610aeeb9f487a06af875d3d0878/arc_gen.py#L25-L37",
+      "finding": "CLI validator calls task-specific validate(), then compares entire fixed example set with original benchmark JSON; task-specific validate() is not a function that validates arbitrary new draws."
+    },
+    "families": {
+      "0b17323b": {
+        "path": "tasks/task_0b17323b.py",
+        "lines": "29-38",
+        "url": "https://github.com/google/ARC-GEN/blob/a15cbdb44c776610aeeb9f487a06af875d3d0878/tasks/task_0b17323b.py",
+        "finding": "Input blue diagonal points reveal start/spacing. Extend the arithmetic progression with color 2. No cross-slot shared spacing/start needed.",
+        "decision": "usable; avoid exact query-input copies; vary visible progression parameters"
+      },
+      "2072aba6": {
+        "path": "tasks/task_2072aba6.py",
+        "lines": "27-40",
+        "url": "https://github.com/google/ARC-GEN/blob/a15cbdb44c776610aeeb9f487a06af875d3d0878/tasks/task_2072aba6.py",
+        "finding": "Random branch has only five binary positions with >=3 active; output is local 2x2 motif. Positions 5..8 are never active in raw draws. validate() lines45-51 uses nine positions.",
+        "decision": "usable as narrow-distribution data; a separately recorded correction should sample all nine positions (e.g. 3..6 actives), without altering rule"
+      },
+      "00dbd492": {
+        "path": "tasks/task_00dbd492.py",
+        "lines": "30-54",
+        "url": "https://github.com/google/ARC-GEN/blob/a15cbdb44c776610aeeb9f487a06af875d3d0878/tasks/task_00dbd492.py",
+        "finding": "Thickness/color lookup is arbitrary and must be demonstrated for query thickness. num_boxes=size//4-1 yields zero boxes at size7.",
+        "decision": "quarantine line897 until demo recomposition; avoid all-empty demos where informative slots are scarce; query-thickness coverage"
+      },
+      "3b4c2228": {
+        "path": "tasks/task_3b4c2228.py",
+        "lines": "33-43,45-71",
+        "url": "https://github.com/google/ARC-GEN/blob/a15cbdb44c776610aeeb9f487a06af875d3d0878/tasks/task_3b4c2228.py",
+        "finding": "Count green(color3) 2x2 components; size/color observable. Internal blues variable names the OUTPUT blue count, not blue input. All 20 sampled counts are1/2, 15 are1.",
+        "decision": "usable but low count diversity; choose demos with >=2 green-large counts plus distractor variations; do not delete repeated outputs"
+      },
+      "8597cfd7": {
+        "path": "tasks/task_8597cfd7.py",
+        "lines": "29-53",
+        "url": "https://github.com/google/ARC-GEN/blob/a15cbdb44c776610aeeb9f487a06af875d3d0878/tasks/task_8597cfd7.py",
+        "finding": "Compare bottom-minus-top red/yellow counts, output winner color. All five current bases show both winner colors in demos.",
+        "decision": "usable; sample both ordering branches; include cases distinguishing increment comparison from bottom-height or total-count shortcuts"
+      },
+      "c8b7cc0f": {
+        "path": "tasks/task_c8b7cc0f.py",
+        "lines": "35-63",
+        "url": "https://github.com/google/ARC-GEN/blob/a15cbdb44c776610aeeb9f487a06af875d3d0878/tasks/task_c8b7cc0f.py",
+        "finding": "Count foreground pixels strictly inside blue frame and fill row-major output with same query foreground color. Three of five query colors absent demos are harmless input-visible copies.",
+        "decision": "usable; improve count diversity (17/20 count3,3/20 count4,none5/6); need multiple counts and outside distractors, not all output counts nor all colors"
+      },
+      "37d3e8b2": {
+        "path": "tasks/task_37d3e8b2.py",
+        "lines": "29-61",
+        "url": "https://github.com/google/ARC-GEN/blob/a15cbdb44c776610aeeb9f487a06af875d3d0878/tasks/task_37d3e8b2.py",
+        "finding": "Hole count maps to fixed colors {1:1,2:2,3:3,4:7}; missing query hole-count mapping is underexposed.",
+        "decision": "quarantine/recompose lines106,1002"
+      },
+      "ed74f2f2": {
+        "path": "tasks/task_ed74f2f2.py",
+        "lines": "28-44",
+        "url": "https://github.com/google/ARC-GEN/blob/a15cbdb44c776610aeeb9f487a06af875d3d0878/tasks/task_ed74f2f2.py",
+        "finding": "Left marker shape encodes fixed output color1/2/3; query marker category missing demos.",
+        "decision": "quarantine/recompose lines422,1318,1766"
+      },
+      "ac605cbb": {
+        "path": "tasks/task_ac605cbb.py",
+        "lines": "30-71,74-85",
+        "url": "https://github.com/google/ARC-GEN/blob/a15cbdb44c776610aeeb9f487a06af875d3d0878/tasks/task_ac605cbb.py",
+        "finding": "Fixed color-specific rays; when gray rays cross, novel yellow diagonal branch. Base102 demos contain no join.",
+        "decision": "quarantine/recompose line1199 to demonstrate join; preserve a no-join contrast"
+      },
+      "6ea4a07e": {
+        "path": "tasks/task_6ea4a07e.py",
+        "lines": "28-39",
+        "url": "https://github.com/google/ARC-GEN/blob/a15cbdb44c776610aeeb9f487a06af875d3d0878/tasks/task_6ea4a07e.py",
+        "finding": "Complemented mask recolored by fixed lookup{8:2,3:1,5:4}; unseen source color needs its mapping.",
+        "decision": "quarantine/recompose lines1540,1988"
+      },
+      "17cae0c1": {
+        "path": "tasks/task_17cae0c1.py",
+        "lines": "27-47",
+        "url": "https://github.com/google/ARC-GEN/blob/a15cbdb44c776610aeeb9f487a06af875d3d0878/tasks/task_17cae0c1.py",
+        "finding": "Five fixed 3x3 shapes map to fixed colors. Query shape leading to3 absent demos.",
+        "decision": "quarantine/recompose line1825"
+      }
+    }
+  },
+  "validate_correction": "008 correctly warned rectangular validate() output is not oracle, but its 60/60 wording should be read as constructibility checks. Never claim independent slots invalid merely because parameters differ.",
+  "recommended_training_slices": {
+    "unchanged_original": "retain raw2240 for reproducibility; do not silently delete",
+    "clean_provisional": "2223 bases after separately setting aside 10 source-reviewed underexposed mappings/interactions and 7 exact query-input repeats; this is an eligibility proposal, not all-family semantic certification; 10 can be repaired from existing raw pairs",
+    "repairable_count": 10,
+    "quarantined_source_error_count": 0,
+    "needs_independent_audit": "Other 437 families not source-reviewed in this audit; unseen-color probe misses underexposed behavior using already-visible output colors."
+  },
+  "small_sample_biases": {
+    "0b17323b": {
+      "unique_inputs": 5,
+      "pairs": 20,
+      "exact_query_demo_duplicates": 3,
+      "source_input_space": 6
+    },
+    "2072aba6": {
+      "random_input_space": 16,
+      "occupied_positions": "first5 of9"
+    },
+    "3b4c2228": {
+      "count_histogram": {
+        "1": 15,
+        "2": 5
+      },
+      "pairs": 20
+    },
+    "c8b7cc0f": {
+      "count_histogram": {
+        "3": 17,
+        "4": 3
+      },
+      "pairs": 20
+    },
+    "8597cfd7": {
+      "bases_with_both_branches_demonstrated": 5,
+      "bases": 5
+    }
+  },
+  "reproducibility": {
+    "manual_analysis_scripts": [
+      "/tmp/arc009-semantics-audit.py",
+      "/tmp/arc009-semantics-enrich.py",
+      "/tmp/arc009-semantics-extra.py",
+      "/tmp/arc009-episode-repair-pilot.py"
+    ],
+    "no_framework_or_test_files_added": true,
+    "input_unchanged": true,
+    "generated_input_only": true,
+    "scope": "Only generated training pairs at known committed ARC-GEN revision; no official evaluation JSON or split holdout query labels opened.",
+    "archived_manual_sources": [
+      {
+        "path": "experiments/009/analysis-source/arc009-semantics-audit.py",
+        "sha256": "fea74c3243183e02e44b45a94828e2ab81cc589fd428d202db4967ee076da5e6",
+        "original_executed_sha256": "fea74c3243183e02e44b45a94828e2ab81cc589fd428d202db4967ee076da5e6",
+        "only_edit": "temporary dependency path replaced by sibling archive path"
+      },
+      {
+        "path": "experiments/009/analysis-source/arc009-semantics-enrich.py",
+        "sha256": "ce91873f938789a2f9b855c4bc4eef6f5688405ced90cf1e9cc13d3b65e6e714",
+        "original_executed_sha256": "eef43d365cc288e85ebf534eb211d8a7b08f78ca21ec5fffd500e1cdc0c13ec2",
+        "only_edit": "temporary dependency path replaced by sibling archive path"
+      },
+      {
+        "path": "experiments/009/analysis-source/arc009-semantics-extra.py",
+        "sha256": "0883cd39778a8d823a0c483118eeda9166adf69abc81c474f9c06d0096e5d2d2",
+        "original_executed_sha256": "5ad2e82d49f1d02e8182424ba723e9af4714c5c71a2dd5d4bdf5e27339fa748c",
+        "only_edit": "temporary dependency path replaced by sibling archive path"
+      },
+      {
+        "path": "experiments/009/analysis-source/arc009-episode-repair-pilot.py",
+        "sha256": "32b4582bb6a70ba3b3326095c5905a0b6924aad6c9ccd3997c98f719386f7dad",
+        "original_executed_sha256": "b0d3711603af81205edb28ee271da686432db775bce651bfe17315b0e3af3b5d",
+        "only_edit": "temporary dependency path replaced by sibling archive path"
+      }
+    ]
+  },
+  "expanded_source_rule_reconstruction": {
+    "37d3e8b2": {
+      "pairs": 20,
+      "source_rule_matches": 20,
+      "source_rule_mismatches": []
+    },
+    "ed74f2f2": {
+      "pairs": 20,
+      "source_rule_matches": 20,
+      "source_rule_mismatches": []
+    },
+    "ac605cbb": {
+      "pairs": 20,
+      "source_rule_matches": 20,
+      "source_rule_mismatches": []
+    },
+    "6ea4a07e": {
+      "pairs": 20,
+      "source_rule_matches": 20,
+      "source_rule_mismatches": []
+    },
+    "17cae0c1": {
+      "pairs": 20,
+      "source_rule_matches": 20,
+      "source_rule_mismatches": []
+    }
+  },
+  "repair_pilot": {
+    "file": "experiments/009/episode-repair-pilot.jsonl",
+    "records": 1,
+    "original_line": 897,
+    "replaced_demo_slot": 2,
+    "replacement_source_line": 1793,
+    "replacement_source_slot": 0,
+    "selection_query_input_only": true,
+    "source_pair_matches": true,
+    "query_and_target_unchanged": true,
+    "note": "The materialized pilot uses blank demo slot2, preferable to the generic minimum-change proposal which had slot0. Other nine proposals unmaterialized."
+  }
+}

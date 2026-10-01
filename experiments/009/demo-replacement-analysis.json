@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-01",
+  "task_id": "00dbd492",
+  "instance": 102,
+  "hypothesis_class": "Injective mapping from frame side [5,7,9] to colors in [1,3,4,5,6,7,8,9]; 336 hypotheses. Fixed observed object color=2, background=0; each rule fills interior except center.",
+  "before_candidates": [
+    {
+      "5": 8,
+      "7": 1,
+      "9": 3
+    },
+    {
+      "5": 8,
+      "7": 4,
+      "9": 3
+    },
+    {
+      "5": 8,
+      "7": 5,
+      "9": 3
+    },
+    {
+      "5": 8,
+      "7": 6,
+      "9": 3
+    },
+    {
+      "5": 8,
+      "7": 7,
+      "9": 3
+    },
+    {
+      "5": 8,
+      "7": 9,
+      "9": 3
+    }
+  ],
+  "after_candidates": [
+    {
+      "5": 8,
+      "7": 4,
+      "9": 3
+    }
+  ],
+  "before_candidate_count": 6,
+  "after_candidate_count": 1,
+  "replacement": {
+    "old": "instance102/demo2 (blank)",
+    "new": "instance104/demo0",
+    "new_grid_side": 8,
+    "demo_count": 3,
+    "before_io_grid_cells": 388,
+    "after_io_grid_cells": 418,
+    "query_unchanged": true
+  },
+  "seconds": 0.12336108300000001,
+  "note": "Training synthetic family only; candidate filtering and donor selection read demos, not query target. This measures finite-hypothesis ambiguity reduction, not model accuracy."
+}

@@ -35,6 +35,12 @@ REVISION = "kaggle:arc-prize-2026-arc-agi-2"
 DEFAULT_SEED = 20260930
 DEFAULT_HOLDOUT_N = 100
 DEFAULT_N_EPISODES = 10000
+# D2 (008 plan S4) defaults. Sampling order source->task->base->query->aug.
+# source start 40% official / 60% gen is a starting point, not a fixed mixture.
+D2_DEFAULT_PER_BASE_K = 2
+D2_DEFAULT_OFFICIAL_FRAC = 0.4
+D2_TOKEN_BUCKET_NAMES = ("<=1024", "1025-2048", "2049-4096", "4097-8192", ">8192")
+ORIGIN_VALUES = ("arc1_train", "arc1_eval", "non_arc1")
 CREATED = "2026-09-30"
 ARCGEN_COMMIT = "a15cbdb44c776610aeeb9f487a06af875d3d0878"
 ARCGEN_SOURCE = "arcgen_v2"
@@ -177,6 +183,37 @@ def exclude_arcgen_families(generator_task_ids, holdout_ids, diag_ids):
     return [gid for gid in generator_task_ids if gid not in banned]
 
 
+def classify_origin(task_id, arc1_train_ids=None, arc1_eval_ids=None):
+    """Historical source label only; not a contamination claim.
+
+    Returns one of arc1_train / arc1_eval / non_arc1 when id sets are
+    given, else 'unknown' (caller did not supply ARC1 lists). V2 generator
+    version is not consulted here; V2 != new-task is stated in the coverage
+    report, not in this label.
+    """
+    if arc1_train_ids is not None and task_id in arc1_train_ids:
+        return "arc1_train"
+    if arc1_eval_ids is not None and task_id in arc1_eval_ids:
+        return "arc1_eval"
+    if arc1_train_ids is None and arc1_eval_ids is None:
+        return "unknown"
+    return "non_arc1"
+
+
+def suspect_same_as_demo(target, demos) -> bool:
+    """True when the target grid equals any demo output grid.
+
+    Flag only. Equality alone is not a leak proof: different inputs may
+    legally share an answer. Callers decide whether to drop (old opt-in
+    flag) or keep with this mark (D2 default).
+    """
+    return any(demo.get("output") == target for demo in demos)
+
+
+def make_base_instance_id(task_id, query_kind, query_index) -> str:
+    return "%s|%s|%d" % (task_id, query_kind, query_index)
+
+
 def task_order_key(task_id: str, seed: int) -> str:
     payload = ("%d:%s" % (seed, task_id)).encode("utf-8")
     return hashlib.sha256(payload).hexdigest()
@@ -267,9 +304,28 @@ def _pair_problem(pair) -> str | None:
     return grid_problem(pair.get("input")) or grid_problem(pair.get("output"))
 
 
-def collect_bases(task_id, task, solution, skipped):
-    """Valid base episodes for one train task. Grids are the loaded objects, not copies."""
+def collect_bases(
+    task_id,
+    task,
+    solution,
+    skipped,
+    drop_target_equals_demo=False,
+    min_loo_demos=2,
+    arc1_train_ids=None,
+    arc1_eval_ids=None,
+):
+    """Valid base episodes for one train task. Grids are the loaded objects, not copies.
+
+    D2 (008 plan S4): enumerates every test query plus every legal LOO
+    candidate. A LOO candidate is legal only when the remaining demo count
+    >= min_loo_demos (default 2). suspect_same_as_demo is flag-only; the
+    old 'drop when target equals a demo output' rule runs only when
+    drop_target_equals_demo=True (007 reproduction; D2 default False).
+    target_isolated=True records that the target pair is excluded from demos
+    by construction. origin/base_instance_id are stamped per base.
+    """
     bases = []
+    origin = classify_origin(task_id, arc1_train_ids, arc1_eval_ids)
     if not isinstance(task, dict):
         _note_skip(skipped, "task_not_object", task_id, "test", -1)
         return bases
@@ -307,6 +363,10 @@ def collect_bases(task_id, task, solution, skipped):
         # Keep the official test item even when its gold grid equals a demo output.
         # That answer is not copied into the prompt; dropping it would discard a real query.
         target = sols[index]
+        suspect = suspect_same_as_demo(target, demos)
+        if drop_target_equals_demo and suspect:
+            _note_skip(skipped, "target_equals_demo_output", task_id, "test", index)
+            continue
         bases.append(
             {
                 "query_kind": "test",
@@ -314,6 +374,10 @@ def collect_bases(task_id, task, solution, skipped):
                 "demos": demos,
                 "query_input": item["input"],
                 "target": target,
+                "origin": origin,
+                "base_instance_id": make_base_instance_id(task_id, "test", index),
+                "suspect_same_as_demo": bool(suspect),
+                "target_isolated": True,
             }
         )
 
@@ -334,8 +398,12 @@ def collect_bases(task_id, task, solution, skipped):
         if demo_reason:
             _note_skip(skipped, demo_reason, task_id, "loo", index)
             continue
+        if len(demos) < min_loo_demos:
+            _note_skip(skipped, "loo_demos_lt2", task_id, "loo", index)
+            continue
         target = pair["output"]
-        if any(demo["output"] == target for demo in demos):
+        suspect = suspect_same_as_demo(target, demos)
+        if drop_target_equals_demo and suspect:
             _note_skip(skipped, "target_equals_demo_output", task_id, "loo", index)
             continue
         bases.append(
@@ -345,6 +413,10 @@ def collect_bases(task_id, task, solution, skipped):
                 "demos": demos,
                 "query_input": pair["input"],
                 "target": target,
+                "origin": origin,
+                "base_instance_id": make_base_instance_id(task_id, "loo", index),
+                "suspect_same_as_demo": bool(suspect),
+                "target_isolated": True,
             }
         )
     return bases
@@ -384,6 +456,8 @@ def _make_episode(
         "episode_id": "%s|%s|%d|%s|%s"
         % (task_id, base["query_kind"], base["query_index"], geometry, color_name),
         "task_id": task_id,
+        # family_id == task_id is task-ID isolation only, not semantic
+        # rule dedup; base-model pretraining exposure is unknown.
         "family_id": task_id,
         "source": source,
         "revision": revision,
@@ -391,6 +465,13 @@ def _make_episode(
         "augmentation": "%s|%s" % (geometry, color_name),
         "query_kind": base["query_kind"],
         "query_index": base["query_index"],
+        "origin": base.get("origin", "unknown"),
+        "base_instance_id": base.get(
+            "base_instance_id",
+            make_base_instance_id(task_id, base["query_kind"], base["query_index"]),
+        ),
+        "suspect_same_as_demo": bool(base.get("suspect_same_as_demo", False)),
+        "target_isolated": bool(base.get("target_isolated", True)),
         "split": "train",
         "prompt_tokens": None,
         "target_tokens": None,
@@ -582,7 +663,12 @@ def build(challenges_path, solutions_path, out_dir, n_episodes, seed, holdout_n)
     valid_base = {"test": 0, "loo": 0}
     task_bases = []
     for task_id in train:
-        bases = collect_bases(task_id, challenges[task_id], solutions.get(task_id), skipped)
+        # 007 G1 semantics: keep the old deletion rule for reproducibility.
+        # D2 callers use the default drop_target_equals_demo=False (flag only).
+        bases = collect_bases(
+            task_id, challenges[task_id], solutions.get(task_id), skipped,
+            drop_target_equals_demo=True,
+        )
         for base in bases:
             valid_base[base["query_kind"]] += 1
         task_bases.append((task_id, bases))
@@ -838,8 +924,28 @@ def _draw_arcgen_pair(generate, task_id, instance, slot, attempt_reasons, stdout
     return None, last_reason
 
 
-def _arcgen_instance(generate, task_id, instance, skipped, attempt_reasons, stdout_families, throw_examples):
-    """Four seeded draws. Slots 0-2 are demos and slot 3 is the query."""
+def _arcgen_instance(
+    generate,
+    task_id,
+    instance,
+    skipped,
+    attempt_reasons,
+    stdout_families,
+    throw_examples,
+    drop_target_equals_demo=False,
+    arc1_train_ids=None,
+    arc1_eval_ids=None,
+    gen_validator=None,
+):
+    """Four seeded draws. Slots 0-2 are demos and slot 3 is the query.
+
+    D2 default keeps suspect bases with suspect_same_as_demo=True; pass
+    drop_target_equals_demo=True only to reproduce the 007 deletion rule.
+    gen_validator is an ARC-GEN-cooperation anchor: optional callable
+    pairs4 -> reason|None checking cross-slot shared vars / validate()
+    semantics. When None only grid-shape checks run; no grid cells are
+    hardcoded here (see code_gaps_followup.json).
+    """
     pairs = []
     for slot in range(4):
         pair, reason = _draw_arcgen_pair(
@@ -849,8 +955,17 @@ def _arcgen_instance(generate, task_id, instance, skipped, attempt_reasons, stdo
             _note_skip(skipped, reason or "slot_failed", task_id, "gen", instance)
             return None
         pairs.append(pair)
+    if gen_validator is not None:
+        try:
+            reason = gen_validator(pairs)
+        except Exception as exc:
+            reason = "gen_validator_throw:%s" % type(exc).__name__
+        if reason:
+            _note_skip(skipped, reason, task_id, "gen", instance)
+            return None
     target = pairs[3]["output"]
-    if any(pair["output"] == target for pair in pairs[:3]):
+    suspect = any(pair["output"] == target for pair in pairs[:3])
+    if drop_target_equals_demo and suspect:
         _note_skip(skipped, "target_equals_demo_output", task_id, "gen", instance)
         return None
     return {
@@ -859,10 +974,26 @@ def _arcgen_instance(generate, task_id, instance, skipped, attempt_reasons, stdo
         "demos": pairs[:3],
         "query_input": pairs[3]["input"],
         "target": target,
+        "origin": classify_origin(task_id, arc1_train_ids, arc1_eval_ids),
+        "base_instance_id": make_base_instance_id(task_id, "gen", instance),
+        "suspect_same_as_demo": bool(suspect),
+        "target_isolated": True,
     }
 
 
-def _collect_arcgen_bases(allowed, generators, need, skipped, attempt_reasons, stdout_families, throw_examples):
+def _collect_arcgen_bases(
+    allowed,
+    generators,
+    need,
+    skipped,
+    attempt_reasons,
+    stdout_families,
+    throw_examples,
+    drop_target_equals_demo=False,
+    arc1_train_ids=None,
+    arc1_eval_ids=None,
+    gen_validator=None,
+):
     """One kept base per family before any family receives a second."""
     state = {}
     usable = []
@@ -907,6 +1038,10 @@ def _collect_arcgen_bases(allowed, generators, need, skipped, attempt_reasons, s
                 attempt_reasons,
                 stdout_families,
                 throw_examples,
+                drop_target_equals_demo=drop_target_equals_demo,
+                arc1_train_ids=arc1_train_ids,
+                arc1_eval_ids=arc1_eval_ids,
+                gen_validator=gen_validator,
             )
             if base is None:
                 item["fails"] += 1
@@ -1041,11 +1176,13 @@ def build_g2(
     skipped_official = {"n": 0, "reasons": {}, "examples": {}}
     task_bases = []
     for task_id in train:
+        # 007 G2 semantics: old deletion rule on (reproduces filed 30k pool).
         bases = collect_bases(
             task_id,
             challenges.get(task_id),
             solutions.get(task_id),
             skipped_official,
+            drop_target_equals_demo=True,
         )
         task_bases.append((task_id, bases))
     families_with_base = sum(1 for _task_id, bases in task_bases if bases)
@@ -1139,6 +1276,7 @@ def build_g2(
                 attempt_reasons,
                 stdout_families,
                 throw_examples,
+                drop_target_equals_demo=True,
             )
             print(
                 "arcgen_bases_kept=%d elapsed=%.1f" % (len(kept), time.time() - started),
@@ -1338,17 +1476,301 @@ def build_g2(
     return manifest
 
 
+# ---- D2 (008 plan S4): independent-base-first index, true-token buckets, coverage ----
+
+def d2_first_k_augmentations(color_tables, k=D2_DEFAULT_PER_BASE_K):
+    """First K consistent augments of the shared 24-step cycle (008 S4.3).
+
+    Each entry applies one geometry+color to every demo, the query and the
+    target together. Default K=2. No per-task RNG; order is the fixed cycle.
+    """
+    if k < 1:
+        raise ValueError("per-base K must be >= 1")
+    return _geometry_color_cycle(color_tables)[:k]
+
+
+def d2_sort_key(row):
+    return (
+        str(row.get("task_id", "")),
+        str(row.get("base_instance_id", "")),
+        str(row.get("query_kind", "")),
+        int(row.get("query_index", 0)),
+        str(row.get("augmentation", "")),
+    )
+
+
+def d2_order_episodes(official_rows, gen_rows, official_frac=D2_DEFAULT_OFFICIAL_FRAC):
+    """Fixed order source -> task -> base -> query -> aug (008 S4.4).
+
+    Within each source, rows are sorted by task/base/query/aug. Sources are
+    interleaved by a deterministic 40/60 quota (default 2 official per 5
+    slots; configurable via official_frac). An exhausted side does not borrow
+    rows from the other side; the remainder of the live side is appended.
+    """
+    if not 0 < official_frac < 1:
+        raise ValueError("official_frac must be in (0,1)")
+    off = sorted(official_rows, key=d2_sort_key)
+    gen = sorted(gen_rows, key=d2_sort_key)
+    # Quota pattern over 20 slots keeps 0.4/0.6 exact without float drift.
+    n_off = round(official_frac * 20)
+    pattern = (["off"] * n_off + ["gen"] * (20 - n_off)) or ["off", "gen"]
+    out, io, ig, slot = [], 0, 0, 0
+    while io < len(off) or ig < len(gen):
+        want = pattern[slot % len(pattern)]
+        slot += 1
+        if want == "off" and io < len(off):
+            out.append(off[io])
+            io += 1
+        elif want == "gen" and ig < len(gen):
+            out.append(gen[ig])
+            ig += 1
+        elif io < len(off):
+            out.append(off[io])
+            io += 1
+        elif ig < len(gen):
+            out.append(gen[ig])
+            ig += 1
+    return out
+
+
+def _d2_bucket_name(n):
+    if n <= 1024:
+        return "<=1024"
+    if n <= 2048:
+        return "1025-2048"
+    if n <= 4096:
+        return "2049-4096"
+    if n <= 8192:
+        return "4097-8192"
+    return ">8192"
+
+
+def _d2_encode(tokenizer, text):
+    if hasattr(tokenizer, "encode") and callable(tokenizer.encode):
+        return tokenizer.encode(text)
+    if callable(tokenizer):
+        return tokenizer(text)
+    raise TypeError("tokenizer must expose encode(text) or be callable")
+
+
+def d2_token_buckets(episodes, tokenizer, all_task_ids=None):
+    """True-token buckets over full prompt+target+EOS (008 S4.7).
+
+    tokenizer is an external object (no weight download here). Each episode
+    counts len(enc(prompt_text)) + len(enc(target_text)) + 1 EOS. prompt_text
+    is system + user content; target_text is target_grid_text. No truncation:
+    >8192 rows are only reported, never cut to fill a long bucket, and this
+    function never reads max_len/overflow_len.
+    Returns per-bucket {tasks, independent_bases, supervised_tokens,
+    sources} plus lost_tasks (train ids with zero rows when all_task_ids
+    is given).
+    """
+    buckets = {
+        name: {"tasks": set(), "independent_bases": set(), "supervised_tokens": 0, "sources": {}}
+        for name in D2_TOKEN_BUCKET_NAMES
+    }
+    for ep in episodes:
+        msgs = ep.get("messages", [])
+        sys_text = msgs[0].get("content", "") if len(msgs) > 0 else ""
+        user_text = msgs[1].get("content", "") if len(msgs) > 1 else ""
+        prompt_text = "%s\n%s" % (sys_text, user_text)
+        target_text_ = ep.get("target_grid_text", "")
+        n = len(_d2_encode(tokenizer, prompt_text)) + len(_d2_encode(tokenizer, target_text_)) + 1
+        name = _d2_bucket_name(n)
+        b = buckets[name]
+        b["tasks"].add(ep.get("task_id"))
+        b["independent_bases"].add(ep.get("base_instance_id"))
+        b["supervised_tokens"] += n
+        src = ep.get("source", "?")
+        b["sources"][src] = b["sources"].get(src, 0) + 1
+    out = {}
+    for name in D2_TOKEN_BUCKET_NAMES:
+        b = buckets[name]
+        out[name] = {
+            "n_tasks": len(b["tasks"]),
+            "n_independent_bases": len(b["independent_bases"]),
+            "supervised_tokens": b["supervised_tokens"],
+            "sources": dict(b["sources"]),
+        }
+    covered = {ep.get("task_id") for ep in episodes}
+    lost = sorted(set(all_task_ids or []) - covered)
+    return {
+        "buckets": out,
+        "lost_tasks": lost,
+        "n_episodes": len(episodes),
+        "note": "Full prompt+target+EOS per episode; overlong only reported, never truncated to fake a long bucket.",
+    }
+
+
+def d2_coverage_report(
+    train_ids,
+    origin_of,
+    v2_allowed_ids,
+    official_query_cover,
+    indexed_task_ids,
+):
+    """Coverage gaps for 008 S4 (numbers computed, not hardcoded).
+
+    official_query_cover: {task_id: {'test': [idx...], 'loo': [idx...]}} as
+    enumerated by collect_bases (suspect kept). indexed_task_ids: tasks with
+    >=1 row in the first-round index. Returns non-ARC1 coverage, the no-V2
+    55-equivalent subset covered by official only, the V2-is-not-new-task
+    statement, and multi-query gaps (test1+ / loo beyond first base missing).
+    """
+    train_ids = list(train_ids)
+    v2_allowed = set(v2_allowed_ids or [])
+    indexed = set(indexed_task_ids or [])
+    non_arc1 = [t for t in train_ids if origin_of(t) == "non_arc1"]
+    non_arc1_in_index = [t for t in non_arc1 if t in indexed]
+    no_v2 = [t for t in non_arc1 if t not in v2_allowed]
+    no_v2_official_only = [t for t in no_v2 if t in indexed]
+    multi_gap = {}
+    for task_id, cov in (official_query_cover or {}).items():
+        tests = sorted((cov or {}).get("test", []))
+        loos = sorted((cov or {}).get("loo", []))
+        if len(tests) > 1 or len(loos) > 1:
+            multi_gap[task_id] = {
+                "n_test_queries": len(tests),
+                "n_loo_queries": len(loos),
+                "note": "First-round index takes the first base only; test1+ / later LOO are enumerated but not yet indexed.",
+            }
+    return {
+        "non_arc1_train": {
+            "n_total": len(non_arc1),
+            "n_in_index": len(non_arc1_in_index),
+            "missing": sorted(set(non_arc1) - indexed),
+        },
+        "non_arc1_without_v2_official_only": {
+            "n_total": len(no_v2),
+            "n_covered_by_official": len(no_v2_official_only),
+            "missing": sorted(set(no_v2) - indexed),
+            "gen_coverage": 0,
+        },
+        "v2_is_not_new_task": (
+            "ARC-GEN V2 is a generator-version label, not a new-task label. "
+            "Allowed V2 families are a subset of official train families; "
+            "unique families do not grow. V2 adds new instances, not unseen rules."
+        ),
+        "multi_query_gap": multi_gap,
+        "n_train": len(train_ids),
+        "n_indexed_tasks": len(indexed),
+    }
+
+
+def _load_id_set(path):
+    if not path:
+        return None
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    ids = data if isinstance(data, list) else data.get("ids", data)
+    return set(ids)
+
+
+class _D2DebugTokenizer:
+    """Whitespace proxy for --d2-dry-run interface check only; NOT true tokens."""
+
+    def encode(self, text):
+        return text.split()
+
+
+def d2_dry_run(
+    challenges_path,
+    solutions_path,
+    max_tasks=3,
+    per_base_k=D2_DEFAULT_PER_BASE_K,
+    official_frac=D2_DEFAULT_OFFICIAL_FRAC,
+    arc1_train_ids_path=None,
+    arc1_eval_ids_path=None,
+    seed=DEFAULT_SEED,
+):
+    """Micro index+bucket check on the first N official tasks (no model, no writes)."""
+    arc1_train = _load_id_set(arc1_train_ids_path)
+    arc1_eval = _load_id_set(arc1_eval_ids_path)
+    challenges, _ = load_task_map(Path(challenges_path))
+    solutions, _ = load_task_map(Path(solutions_path))
+    task_ids = sorted(challenges.keys())[:max(1, max_tasks)]
+    perms = derive_color_perms(seed)
+    color_tables = _color_tables(perms)
+    augs = d2_first_k_augmentations(color_tables, per_base_k)
+    skipped = {"n": 0, "reasons": {}, "examples": {}}
+    episodes, query_cover = [], {}
+    for task_id in task_ids:
+        bases = collect_bases(
+            task_id,
+            challenges[task_id],
+            solutions.get(task_id),
+            skipped,
+            drop_target_equals_demo=False,
+            min_loo_demos=2,
+            arc1_train_ids=arc1_train,
+            arc1_eval_ids=arc1_eval,
+        )
+        query_cover[task_id] = {
+            "test": sorted({b["query_index"] for b in bases if b["query_kind"] == "test"}),
+            "loo": sorted({b["query_index"] for b in bases if b["query_kind"] == "loo"}),
+        }
+        for base in bases[:2]:
+            for geometry, color_name, perm in augs:
+                episodes.append(_make_episode(task_id, base, geometry, color_name, perm, seed))
+    ordered = d2_order_episodes(episodes, [], official_frac=official_frac)
+    buckets = d2_token_buckets(ordered, _D2DebugTokenizer(), all_task_ids=task_ids)
+    coverage = d2_coverage_report(
+        task_ids,
+        lambda t: classify_origin(t, arc1_train, arc1_eval),
+        set(),
+        query_cover,
+        {ep["task_id"] for ep in ordered},
+    )
+    return {
+        "tasks": task_ids,
+        "n_bases": sum(len(v["test"]) + len(v["loo"]) for v in query_cover.values()),
+        "query_cover": query_cover,
+        "n_episodes": len(ordered),
+        "skip_reasons": skipped["reasons"],
+        "buckets_proxy_only": buckets,
+        "coverage_micro": coverage,
+        "tokenizer": "debug-whitespace-proxy (interface check; not 27B true tokens)",
+    }
+
+
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Build the 007 G1 split and episode pool.")
+    parser = argparse.ArgumentParser(description="Build the 007 G1 split and episode pool; D2 index helpers for 008 S4.")
     parser.add_argument("--challenges", required=True)
     parser.add_argument("--solutions", required=True)
     parser.add_argument("--out-dir", required=True)
     parser.add_argument("--n-episodes", type=int, default=DEFAULT_N_EPISODES)
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
     parser.add_argument("--holdout-n", type=int, default=DEFAULT_HOLDOUT_N)
+    parser.add_argument("--drop-suspect", action="store_true",
+                        help="007 reproduction only: drop loo/gen bases whose target equals a demo output. D2 default keeps with suspect flag.")
+    parser.add_argument("--per-base-k", type=int, default=D2_DEFAULT_PER_BASE_K,
+                        help="D2: first K consistent augments per independent base (default 2).")
+    parser.add_argument("--official-frac", type=float, default=D2_DEFAULT_OFFICIAL_FRAC,
+                        help="D2: source quota start, official share (default 0.4).")
+    parser.add_argument("--arc1-train-ids", default=None, help="JSON list of ARC1 train ids for origin labels.")
+    parser.add_argument("--arc1-eval-ids", default=None, help="JSON list of ARC1 eval ids for origin labels.")
+    parser.add_argument("--gen-cross-slot-check", action="store_true",
+                        help="Anchor only: request ARC-GEN cross-slot shared-vars/validate() check (needs generator cooperation; not implemented, recorded in code_gaps_followup.json).")
+    parser.add_argument("--d2-dry-run", action="store_true",
+                        help="Micro check on first N official tasks: index+bucket logic only, no model, no writes.")
+    parser.add_argument("--d2-dry-run-tasks", type=int, default=3)
     args = parser.parse_args(argv)
     if args.n_episodes < 0:
         parser.error("--n-episodes must be >= 0")
+    if args.gen_cross_slot_check:
+        parser.error("--gen-cross-slot-check is an anchor only; generator cooperation recorded in experiments/008/code_gaps_followup.json, not implemented here")
+    if args.d2_dry_run:
+        summary = d2_dry_run(
+            args.challenges,
+            args.solutions,
+            max_tasks=args.d2_dry_run_tasks,
+            per_base_k=args.per_base_k,
+            official_frac=args.official_frac,
+            arc1_train_ids_path=args.arc1_train_ids,
+            arc1_eval_ids_path=args.arc1_eval_ids,
+            seed=args.seed,
+        )
+        print(json.dumps(summary, ensure_ascii=False, sort_keys=True, indent=2))
+        return summary
     build(
         args.challenges,
         args.solutions,

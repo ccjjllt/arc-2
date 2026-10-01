@@ -1,1 +1,54 @@
-{"deferred_note":"008 §7/§10后续分支:需大改或GPU实测,本轮未硬写,仅留最小入口与行号锚点","items":[{"id":"GDN-targets-branch","status":"未实现","reason":"需新增in_proj_qkv/in_proj_z/out_proj独立分支:复制已有LoRA、新增B零初始化、重建optimizer并记录参数名/数;涉及目标模块语义与GDN fast path实测,非最小改动","next_file":"scripts/train_grid_sft.py","next_lines":"L32-33 GDN_TARGET_NAMES, L268 --extra-targets, L1389 branch_note"},{"id":"mixed-cache-DFS-port","status":"未实现","reason":"计划§6.1明确不移植未验证的混合cache DFS;本轮切换权重仅清空cache(solve_grid._drop_cached_decode_state),未做跨候选cache复用","next_file":"scripts/solve_grid.py","next_lines":"L552 _drop_cached_decode_state, L1121/L1143切换清空"},{"id":"rotation-recolor-views","status":"未实现","reason":"计划§6.1要求先只做transpose逆变换去重+统计,旋转/固定换色留待后续;--second-view choices暂仅none/transpose","next_file":"scripts/solve_grid.py","next_lines":"L110 --second-view, L372 transpose_grid"},{"id":"ttt-entry","status":"未实现","reason":"0/8步TTT需同checkpoint、逐题重置、demo/LOO训练与等墙钟对照,属后续小实验入口,本轮不写","next_file":"scripts/train_grid_sft.py","next_lines":"后续新建求解路径,不复用本轮行号"},{"id":"program-branch","status":"未实现","reason":"同一27B程序互补分支需执行沙箱与示例反馈,仅在网格分支停滞时启动,本轮不写","next_file":"scripts/solve_grid.py","next_lines":"后续新建求解路径,不复用本轮行号"},{"id":"explicit-length-mixture-cli","status":"未实现","reason":"G2a长度桶混合(20/40/40)需D2池统计先行,训练侧暂保持max-len/overflow-len原语义,混合比例在数据层确定后再加CLI","next_file":"scripts/train_grid_sft.py","next_lines":"L229-233 max-len/overflow-len/save-every defaults"}]}
+{
+  "deferred_note": "008 §7/§10后续分支:需大改或GPU实测,本轮未硬写,仅留最小入口与行号锚点",
+  "items": [
+    {
+      "id": "GDN-targets-branch",
+      "status": "未实现",
+      "reason": "需新增in_proj_qkv/in_proj_z/out_proj独立分支:复制已有LoRA、新增B零初始化、重建optimizer并记录参数名/数;涉及目标模块语义与GDN fast path实测,非最小改动",
+      "next_file": "scripts/train_grid_sft.py",
+      "next_lines": "L32-33 GDN_TARGET_NAMES, L268 --extra-targets, L1389 branch_note"
+    },
+    {
+      "id": "mixed-cache-DFS-port",
+      "status": "未实现",
+      "reason": "计划§6.1明确不移植未验证的混合cache DFS;本轮切换权重仅清空cache(solve_grid._drop_cached_decode_state),未做跨候选cache复用",
+      "next_file": "scripts/solve_grid.py",
+      "next_lines": "L552 _drop_cached_decode_state, L1121/L1143切换清空"
+    },
+    {
+      "id": "rotation-recolor-views",
+      "status": "未实现",
+      "reason": "计划§6.1要求先只做transpose逆变换去重+统计,旋转/固定换色留待后续;--second-view choices暂仅none/transpose",
+      "next_file": "scripts/solve_grid.py",
+      "next_lines": "L110 --second-view, L372 transpose_grid"
+    },
+    {
+      "id": "ttt-entry",
+      "status": "未实现",
+      "reason": "0/8步TTT需同checkpoint、逐题重置、demo/LOO训练与等墙钟对照,属后续小实验入口,本轮不写",
+      "next_file": "scripts/train_grid_sft.py",
+      "next_lines": "后续新建求解路径,不复用本轮行号"
+    },
+    {
+      "id": "program-branch",
+      "status": "未实现",
+      "reason": "同一27B程序互补分支需执行沙箱与示例反馈,仅在网格分支停滞时启动,本轮不写",
+      "next_file": "scripts/solve_grid.py",
+      "next_lines": "后续新建求解路径,不复用本轮行号"
+    },
+    {
+      "id": "explicit-length-mixture-cli",
+      "status": "已实现（CPU，待GPU验证）",
+      "reason": "D2真token统计已确认后加CLI：--length-mixture五桶百分比，默认None走传统路径，推荐'20,40,40,0,0'（>4096默认未覆盖）；设值后按桶配比抽样、缺桶报缺口不硬凑、checkpoint记分桶消费；与--resume联用拒绝（新配比走--init-adapter新阶段）",
+      "next_file": "scripts/train_grid_sft.py",
+      "next_lines": "L37 LENGTH_BUCKET_NAMES, L40 DEFAULT_LENGTH_MIXTURE_STR, L183 parse_length_mixture, L207 apportion_mixture_targets, L219 select_pool_mixture, L384 --length-mixture, L481-485 resume互斥, L887-956 encode混合分支"
+    },
+    {
+      "id": "d2-gen-cross-slot-check",
+      "status": "未实现",
+      "reason": "D2生成base跨slot共享变量/validate()语义需ARC-GEN生成器配合判定可学习性；脚本仅留gen_validator锚点(_arcgen_instance/_collect_arcgen_bases)与--gen-cross-slot-check拒绝入口，不硬编码格子合法=可学习",
+      "next_file": "scripts/arc_episode_data.py",
+      "next_lines": "_arcgen_instance gen_validator anchor; _collect_arcgen_bases passthrough; main --gen-cross-slot-check"
+    }
+  ]
+}

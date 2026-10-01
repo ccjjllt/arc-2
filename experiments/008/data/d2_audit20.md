@@ -28,3 +28,20 @@
 | 20 | `c8b7cc0f` gen instance0 | arc1_eval / V2生成 | 生成 / size/rows/cols/wide/tall/brow/bcol/color多参 | 未确认：多参独立随机，query所需变化在demos是否出现过未验证 | 参数最多一档；`validate()` 未运行；G2 manifest对该族无throw记录不等于语义已核对；需后续小批人工看格子 |
 
 **共性结论（不做训练推断）：** 官方14个中4个suspect标记保留（9,10,11,12,14其一），G2旧规则下11,12两LOO会被删除，D2已改标记；3号、14号暴露多query仅首query覆盖；2,4,5号证实55任务只能靠官方。生成6个共同问题是4 slots独立种子、无跨slot参数共享，`validate()` 均未运行，不能当oracle；矩形/数值合法已由G2生成时检查，但示例是否足以推断query规则6个均为存疑/未确认，需后续小批看格子再定约束。长题7个真token桶均为未确认（本地无27B权重），不用 `overflow_len` 假装。
+
+## 附录A（2026-10-01，CPU源码语义复核 + validate()抽样；原20条保留）
+
+- ARC-GEN可用：`/tmp/arc007-arcgen` HEAD=`a15cbdb44c776610aeeb9f487a06af875d3d0878`，与`scripts/arc_episode_data.py:39`期望一致；pip无arc-gen包，调用为源码导入。G2池未动（30000行）。
+- 新base：`experiments/008/data/gen_newbases.jsonl` 2240行（instance 100–104 × 448族），与G2的750合计2990≈3000；每base规划一致增强2个（ident|ident、rot90|ident，未展开为episode行）。base级失败0/2240；attempt级重试有（G2口径：generate_timeout / ValueError / IndexError / 非矩形含draw()->None），跨分片全量计数未保留、仅base级0失败为完整口径。
+- validate()抽样：旧族30 + 新族30（含6存疑族），60/60返回矩形train/test（旧30/30、新30/30），失败0。结论：validate()传固定参数、绕过`if X is None`随机分支，不练跨slot独立性、不走draw()->None重试路径；2072aba6的validate用9元colors而随机分支只抽5元（见下），属分布外。因此validate()只能证“手选示例可构造”，不能当规则oracle。
+
+| 族 | generate()语义（行号） | 示例是否足以暴露query变化 | 依据 |
+|---|---|---|---|
+| 0b17323b | L28随机`spacing∈2..4,start∈0..1`每slot独立；L29-36对角规则；validate L41-50固定(4,0),(2,1),(3,0) | 存疑 | 6种组合demos 3个覆盖不全；validate只盖3种且不管跨slot一致性 |
+| 2072aba6 | L26-28随机只抽5元colors（`range(5)`）且和3..5，L30-39只动前5格/2x2块；validate L43-52用9元colors | 存疑（9格全规则接近不足；随机分布内5格仍存疑） | 后4格随机路径恒0，validate示例分布外；16种5元组合demos难盖全 |
+| 00dbd492 | L32-40随机size 7..23/thicks/rows/cols+overlaps guard；L33 size<9时max_thick=2；validate L58-70固定size 15/9/13/7 | 存疑 | 小尺寸demos见不到thick=3（color 3）映射；query尺寸可与demos全不同 |
+| 3b4c2228 | L32 sizes全等拒收，L40 blues计数1..3否则None（→非矩形重试）；L47-72随机宽高/红绿盒；validate L77-103全固定参数 | 存疑 | 输出对角1数=blues计数，3个demos未必盖1..3；validate不走随机搜索/拒收路径 |
+| 8597cfd7 | L32-34要求reds/yellows递增且差值不等、bgcolor取大差方；L48-54随机height 9/11；validate L56-67固定5组 | 存疑 | query差值 ordering 可翻转bgcolor（2↔4），demos未必含两侧；官方同族test本身suspect叠加 |
+| c8b7cc0f | L46内部count须3..6否则None（→重试）；L57-64随机size 7/9、color≠1、10%像素点、矩形框；validate L66-83固定点集 | 存疑（接近不足） | 输出=计数3..6上色，3个demos难盖query计数；validate绕过密度搜索 |
+
+共性维持：6族仍无“足以”，矩形合法≠可学习；新2240 bases未改变该结论，只把待审查实例从750扩至2990。

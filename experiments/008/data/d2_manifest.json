@@ -281,5 +281,49 @@
     "d2_gen_independent_bases": 750
   },
   "first_round_scope": "CPU index 3000 rows (1200+1800) only; full 3000-independent-base materialization and 30K training pool NOT done in this round; no grids fabricated; no GPU/training/inference.",
-  "sha_note": "G1/G2 pools unchanged; D2 writes only experiments/008/data/."
+  "sha_note": "G1/G2 pools unchanged; D2 writes only experiments/008/data/.",
+  "newbases_2240": {
+    "status": "CPU new independent bases materialized 2026-10-01; G2 pool untouched (30000 rows)",
+    "commit": "a15cbdb44c776610aeeb9f487a06af875d3d0878",
+    "seed_scheme": "same as G2 scripts/arc_episode_data.py sha256(20260930:task:instance:slot)[:8]LE + :attempt retries, draw timeout 10s, <=20 attempts/slot; instance>=100 disjoint from G2 used 0..6",
+    "new_rows": 2240,
+    "instances": [
+      100,
+      101,
+      102,
+      103,
+      104
+    ],
+    "families": 448,
+    "total_independent_gen_bases": 2990,
+    "file": "experiments/008/data/gen_newbases.jsonl",
+    "sha256": "539fe79657a1cdb3f7363ed07507092c2adaf508774e2e27d7a31d6f597a0605",
+    "per_row": [
+      "task_id",
+      "family_id",
+      "instance",
+      "base_instance_id",
+      "source=arcgen_v2",
+      "revision",
+      "seed_note",
+      "demos[3]",
+      "query_input",
+      "target",
+      "elapsed_ms",
+      "planned_enhances=[ident|ident,rot90|ident]"
+    ],
+    "planned_enhances_per_base": 2,
+    "planned_new_rows_from_newbases": 4480,
+    "timing_ms": {
+      "mean": 490.4,
+      "p95": 452.0,
+      "max": 47017.9,
+      "note": "per-base 4 slots; max ~47s is timeout-retry base, kept"
+    },
+    "failures_base_level": "0 failed bases / 2240 attempts (FAIL=0 in resume logs; round-100 448/448 kept)",
+    "failures_attempt_level": "retries observed, G2-manifest口径: generate_timeout notices 20 (round100) +16 (101-102) +22 (103-104, attempt==0 prints only, undercount); generate_throw:ValueError 2 + generate_throw:IndexError 1 seen in round100/probe; not_rectangular is grid_problem retry path incl. draw()->None (3b4c2228/c8b7cc0f/8597cfd7); full cross-chunk attempt aggregation not preserved, only base-level 0-fail is complete",
+    "validate_sampling": "30 old-family + 30 new-family validate() runs, all returned rectangular train/test (60/60 constructible); fixed-param semantics only, NOT rule oracle (see d2_audit20 appendix)",
+    "g2_untouched": "experiments/007/g2/episodes.jsonl still 30000 rows, not overwritten"
+  },
+  "first_round_scope_update": "D2 CPU index was 3000 rows over 750 gen bases; 2240 new independent gen bases now stored raw (2990 total gen bases ~3000 target); 1-2 consistent enhances per new base planned (ident|ident, rot90|ident) not yet materialized into episode rows; no GPU/training/inference; no grids fabricated (failures skipped, 0 skips occurred)"
 }

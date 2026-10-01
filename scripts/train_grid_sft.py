@@ -31,6 +31,13 @@ DEFAULT_TARGETS = (
 )
 # Not part of the G1 default. Only added when --extra-targets names them.
 GDN_TARGET_NAMES = ("in_proj_qkv", "in_proj_z", "out_proj", "in_proj_a", "in_proj_b")
+# Fixed D2 true-token buckets (008 S4.7/S5): full prompt+target+EOS length.
+# Reuses scripts/arc_episode_data.py D2_TOKEN_BUCKET_NAMES/_d2_bucket_name
+# thresholds; do not invent new bounds here.
+LENGTH_BUCKET_NAMES = ("<=1024", "1025-2048", "2049-4096", "4097-8192", ">8192")
+# Plan S5 suggested recipe only (pass explicitly to enable). The --length-mixture
+# code default is None = legacy max-len/overflow-len path, unchanged.
+DEFAULT_LENGTH_MIXTURE_STR = "20,40,40,0,0"
 DEFAULT_ZERO_STEP_IDS = (
     "833966f4,6150a2bd,e9afcf9a,5582e5ca,d037b0a7,d631b094,66e6c45b,00576224"
 )
@@ -159,6 +166,148 @@ def select_pool(short, overflow, n_longer, needed):
     return pool, stats
 
 
+def _length_bucket_name(n):
+    """Fixed D2 bucket for a full prompt+target+EOS length. Same bounds as _d2_bucket_name."""
+    n = int(n)
+    if n <= 1024:
+        return "<=1024"
+    if n <= 2048:
+        return "1025-2048"
+    if n <= 4096:
+        return "2049-4096"
+    if n <= 8192:
+        return "4097-8192"
+    return ">8192"
+
+
+def parse_length_mixture(text):
+    """Parse 'a,b,c,d,e' percentages for LENGTH_BUCKET_NAMES order. None/'' means legacy path."""
+    if text is None:
+        return None
+    cleaned = str(text).strip()
+    if not cleaned:
+        return None
+    parts = [part.strip() for part in cleaned.split(",")]
+    if len(parts) != len(LENGTH_BUCKET_NAMES):
+        raise RuntimeError(
+            "length-mixture needs 5 comma-separated percentages for %s, got %r"
+            % (",".join(LENGTH_BUCKET_NAMES), text)
+        )
+    try:
+        values = [float(part) for part in parts]
+    except ValueError:
+        raise RuntimeError("length-mixture values must be numbers, got %r" % text)
+    if any(value < 0 for value in values):
+        raise RuntimeError("length-mixture values must be >= 0, got %r" % text)
+    if abs(sum(values) - 100.0) > 1e-6:
+        raise RuntimeError("length-mixture values must sum to 100, got %r" % text)
+    return values
+
+
+def apportion_mixture_targets(mixture, needed):
+    """Deterministic largest-remainder split of `needed` over the 5 buckets."""
+    needed = int(needed)
+    raw = [float(value) / 100.0 * needed for value in mixture]
+    base = [int(value // 1) for value in raw]
+    remainder = needed - sum(base)
+    order = sorted(range(len(raw)), key=lambda i: (-(raw[i] - base[i]), i))
+    for index in order[: max(0, remainder)]:
+        base[index] += 1
+    return base
+
+
+def select_pool_mixture(bucket_lists, mixture, needed, seed):
+    """Take per-bucket quotas without duplication or cross-bucket borrowing.
+
+    Each bucket keeps at most its quota; a short bucket reports its gap and the
+    total pool may end below `needed`. Within a bucket the order is a seeded
+    shuffle of episode_id order; across buckets the pool interleaves round-robin
+    so early updates see the mixture instead of one length block.
+    """
+    needed = int(needed)
+    targets = apportion_mixture_targets(mixture, needed)
+    taken = {}
+    gaps = {}
+    ordered = []
+    for index, name in enumerate(LENGTH_BUCKET_NAMES):
+        episodes = list(bucket_lists.get(name) or [])
+        episodes.sort(key=lambda ep: (str(ep.family_id), str(ep.episode_id)))
+        shuffled = list(episodes)
+        random.Random(int(seed) + index).shuffle(shuffled)
+        quota = targets[index]
+        keep = shuffled[: min(quota, len(shuffled))]
+        taken[name] = len(keep)
+        gaps[name] = int(quota - len(keep))
+        ordered.append(keep)
+    pool = []
+    position = 0
+    active = True
+    while active:
+        active = False
+        for keep in ordered:
+            if position < len(keep):
+                pool.append(keep[position])
+                active = True
+        position += 1
+    families = {str(ep.family_id) for ep in pool}
+    stats = {
+        "mixture_requested": list(mixture),
+        "mixture_targets": targets,
+        "mixture_taken": [taken[name] for name in LENGTH_BUCKET_NAMES],
+        "mixture_gaps": [gaps[name] for name in LENGTH_BUCKET_NAMES],
+        "mixture_gaps_by_bucket": {name: gaps[name] for name in LENGTH_BUCKET_NAMES},
+        "mixture_available": [len(bucket_lists.get(name) or []) for name in LENGTH_BUCKET_NAMES],
+        "n_families_consumed": len(families),
+        "pool_size": len(pool),
+        "needed_examples": needed,
+        "no_duplication": True,
+        "no_cross_bucket_borrowing": True,
+        "note": "short buckets keep a gap; never duplicated or silently truncated",
+    }
+    return pool, stats
+
+
+def bucket_consumption(episodes):
+    """Cumulative per-bucket consumption: samples, input/target tokens, base/task counts."""
+    out = {}
+    for name in LENGTH_BUCKET_NAMES:
+        out[name] = {
+            "samples": 0,
+            "input_tokens": 0,
+            "target_tokens": 0,
+            "bases": [],
+            "tasks": [],
+        }
+    seen_base = {name: set() for name in LENGTH_BUCKET_NAMES}
+    seen_task = {name: set() for name in LENGTH_BUCKET_NAMES}
+    for episode in episodes or []:
+        name = _length_bucket_name(int(episode.full_len))
+        entry = out[name]
+        entry["samples"] += 1
+        entry["input_tokens"] += int(episode.prompt_len)
+        entry["target_tokens"] += int(episode.target_len)
+        seen_base[name].add(str(episode.family_id))
+        seen_task[name].add(str(episode.task_id))
+    for name in LENGTH_BUCKET_NAMES:
+        out[name]["n_bases"] = len(seen_base[name])
+        out[name]["n_tasks"] = len(seen_task[name])
+        out[name]["bases"] = sorted(seen_base[name])
+        out[name]["tasks"] = sorted(seen_task[name])
+    return out
+
+
+def refresh_bucket_consumption(bundle, pool):
+    """Stamp cumulative bucket consumption of pool[:cursor] into run_config. Mixture only."""
+    try:
+        cursor = int(bundle.get("cursor", 0))
+    except (TypeError, ValueError):
+        return
+    consumed = bucket_consumption((pool or [])[: max(0, cursor)])
+    run_config = bundle.get("run_config")
+    if isinstance(run_config, dict):
+        run_config["bucket_consumption"] = consumed
+
+
 def grids_equal(left, right):
     if not isinstance(left, list) or not isinstance(right, list) or len(left) != len(right):
         return False
@@ -231,6 +380,24 @@ def build_parser():
     parser.add_argument("--max-len", type=int, default=1024)
     parser.add_argument("--overflow-len", type=int, default=2048)
     parser.add_argument("--save-every", type=int, default=25)
+    parser.add_argument(
+        "--length-mixture",
+        default=None,
+        help=(
+            "Five comma-separated percentages for fixed true-token buckets "
+            "<=1024,1025-2048,2049-4096,4097-8192,>8192 "
+            "(full prompt+target+EOS length; same bounds as D2 d2_token_buckets). "
+            "Plan 008 S5 recipe: '20,40,40,0,0' = 20%% <=1024, 40%% 1025-2048, "
+            "40%% 2049-4096, 0%% 4097-8192, 0%% >8192, so buckets >4096 are "
+            "explicitly uncovered by default. Pass e.g. '20,30,30,10,10' to "
+            "explicitly include 4K/8K rows. Not passed (default None): legacy "
+            "max-len/overflow-len pool path, behavior fully unchanged. When set: "
+            "max-len/overflow-len are recorded but do not filter; short buckets "
+            "report gaps, never duplicate minority families or borrow across "
+            "buckets, and may end below needed. Needs a pre-bucketed 'd2_bucket' "
+            "row tag when present (data-layer interface), else live full_len."
+        ),
+    )
     parser.add_argument("--lr", type=float, default=2e-5)
     parser.add_argument("--weight-decay", type=float, default=0.01)
     parser.add_argument("--warmup-updates", type=int, default=10)
@@ -311,6 +478,14 @@ def validate_args(args):
         )
     if getattr(args, "init_adapter", None):
         resolve_init_adapter_dir(args.init_adapter)
+    if getattr(args, "length_mixture", None) is not None:
+        parse_length_mixture(args.length_mixture)
+        if args.resume:
+            raise RuntimeError(
+                "--length-mixture cannot be combined with --resume: resume keeps the stored "
+                "pool/cursor order and never rebuilds buckets; start a new stage with "
+                "--init-adapter for a new mixture"
+            )
 
 
 def resolve_resume_paths(resume_dir):
@@ -709,6 +884,10 @@ def encode_training_rows(tokenizer, rows, eos_id, args, diagnostic_ids):
     overflow = []
     n_longer = 0
     seen_ids = {}
+    mixture_lists = {name: [] for name in LENGTH_BUCKET_NAMES}
+    n_bucket_from_row_tag = 0
+    n_bucket_from_full_len = 0
+    mixture = parse_length_mixture(getattr(args, "length_mixture", None))
     for row in rows:
         keep, reason = row_is_trainable(row, diagnostic_ids)
         if not keep:
@@ -744,6 +923,17 @@ def encode_training_rows(tokenizer, rows, eos_id, args, diagnostic_ids):
         if episode.episode_id in seen_ids:
             raise RuntimeError("duplicate episode_id %s" % episode.episode_id)
         seen_ids[episode.episode_id] = True
+        if mixture is not None:
+            # Data-layer interface: a pre-bucketed D2 pool may carry d2_bucket;
+            # otherwise fall back to the live full prompt+target+EOS length.
+            tag = row.get("d2_bucket")
+            if tag in LENGTH_BUCKET_NAMES:
+                mixture_lists[tag].append(episode)
+                n_bucket_from_row_tag += 1
+            else:
+                mixture_lists[_length_bucket_name(int(episode.full_len))].append(episode)
+                n_bucket_from_full_len += 1
+            continue
         if episode.full_len <= args.max_len:
             short.append(episode)
         elif episode.full_len <= args.overflow_len:
@@ -751,7 +941,23 @@ def encode_training_rows(tokenizer, rows, eos_id, args, diagnostic_ids):
         else:
             n_longer += 1
     needed = int(args.optimizer_updates) * int(args.grad_accum)
-    pool, stats = select_pool(short, overflow, n_longer, needed)
+    if mixture is not None:
+        pool, stats = select_pool_mixture(
+            mixture_lists, mixture, needed, getattr(args, "seed", 0)
+        )
+        stats["length_mixture"] = str(args.length_mixture)
+        stats["length_buckets"] = list(LENGTH_BUCKET_NAMES)
+        stats["n_bucket_from_row_tag"] = n_bucket_from_row_tag
+        stats["n_bucket_from_full_len"] = n_bucket_from_full_len
+        stats["bucket_interface"] = (
+            "row d2_bucket tag when present (D2 pre-index); else live full_len. "
+            "Full D2 pre-bucketed index still pending; see code_gaps_followup.json "
+            "explicit-length-mixture-cli."
+        )
+        stats["max_len_recorded_only"] = int(args.max_len)
+        stats["overflow_len_recorded_only"] = int(args.overflow_len)
+    else:
+        pool, stats = select_pool(short, overflow, n_longer, needed)
     stats.update(counts)
     stats["max_len"] = int(args.max_len)
     stats["overflow_len"] = int(args.overflow_len)
@@ -1426,6 +1632,12 @@ def build_run_config(args, model_dir, versions, vocab, length_stats, targets, ex
         "max_len": int(args.max_len),
         "overflow_len": int(args.overflow_len),
         "save_every": int(args.save_every),
+        "length_mixture": (
+            None if getattr(args, "length_mixture", None) is None
+            else str(args.length_mixture)
+        ),
+        "length_mixture_default_recipe": DEFAULT_LENGTH_MIXTURE_STR,
+        "length_buckets": list(LENGTH_BUCKET_NAMES),
         "lora": {
             "r": 8,
             "alpha": 32,
@@ -1502,6 +1714,8 @@ def train_loop(
         family_ids = []
         prompt_counts = []
         target_counts = []
+        bucket_names = []
+        mixture_on = getattr(args, "length_mixture", None) is not None
         torch_module.cuda.synchronize()
         tick = time.perf_counter()
         oom_this_update = False
@@ -1545,6 +1759,7 @@ def train_loop(
             seen_families.add(episode.family_id)
             prompt_counts.append(int(episode.prompt_len))
             target_counts.append(int(episode.target_len))
+            bucket_names.append(_length_bucket_name(int(episode.full_len)))
             del scaled, output, input_ids, labels, attention
         if oom_this_update:
             # Partial accumulation must not step or advance the schedule.
@@ -1600,6 +1815,7 @@ def train_loop(
             "family_ids": family_ids,
             "prompt_token_count": prompt_counts,
             "target_token_count": target_counts,
+            "length_bucket": bucket_names,
             "seconds": round(seconds, 4),
             "loss_divided_by_grad_accum": True,
         }
@@ -1613,6 +1829,9 @@ def train_loop(
         summary["last_mean_loss"] = mean_loss
         summary["completed_updates"] = int(schedule.completed)
         if update % int(args.save_every) == 0:
+            if mixture_on:
+                refresh_bucket_consumption(bundle, pool)
+                summary["bucket_consumption"] = bundle["run_config"].get("bucket_consumption")
             save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch_module)
             summary["last_saved_update"] = int(schedule.completed)
             summary["saved_this_run"] = True
@@ -1620,6 +1839,8 @@ def train_loop(
             print("saved update %d" % update, flush=True)
     summary["n_families_seen"] = len(seen_families)
     summary["completed_microsteps"] = micro_total
+    if getattr(args, "length_mixture", None) is not None:
+        summary["bucket_consumption"] = bucket_consumption(pool[:cursor])
     expected_cursor = target * int(args.grad_accum)
     if int(schedule.completed) < target or cursor < expected_cursor:
         if summary.get("oom_stop"):
@@ -1720,6 +1941,17 @@ def execute(args, summary):
         summary["length_policy"] = length_stats
         if not pool:
             detail = length_stats.get("last_encode_error") or ""
+            if getattr(args, "length_mixture", None) is not None:
+                raise RuntimeError(
+                    "FAILED_NO_DATA: no trainable episodes for length-mixture %s "
+                    "(available=%s encode_errors=%s). %s"
+                    % (
+                        args.length_mixture,
+                        length_stats.get("mixture_available"),
+                        length_stats.get("n_encode_error"),
+                        detail,
+                    )
+                )
             raise RuntimeError(
                 "FAILED_NO_DATA: no trainable episodes at or under overflow-len %d "
                 "(kept_le_max=%s longer=%s encode_errors=%s). %s"
@@ -1732,23 +1964,41 @@ def execute(args, summary):
                 )
             )
         order = list(pool)
-        random.Random(int(args.seed)).shuffle(order)
-        pool = order
-        print(
-            "length_policy kept_le_%d=%d added_le_%d=%d longer_than_%d=%d families=%d pool=%d needed=%d"
-            % (
-                args.max_len,
-                length_stats["n_kept_le_max_len"],
-                args.overflow_len,
-                length_stats["n_added_le_overflow"],
-                args.overflow_len,
-                length_stats["n_longer_than_overflow"],
-                length_stats["n_families_consumed"],
-                length_stats["pool_size"],
-                length_stats["needed_examples"],
-            ),
-            flush=True,
-        )
+        if getattr(args, "length_mixture", None) is not None:
+            # Mixture pool already carries per-bucket seeded order + round-robin
+            # interleave; keep it so early updates see the mixture.
+            pool = order
+            print(
+                "length_mixture=%s buckets=%s available=%s targets=%s taken=%s gaps=%s pool=%d needed=%d" % (
+                    length_stats.get("length_mixture"),
+                    ",".join(LENGTH_BUCKET_NAMES),
+                    length_stats.get("mixture_available"),
+                    length_stats.get("mixture_targets"),
+                    length_stats.get("mixture_taken"),
+                    length_stats.get("mixture_gaps_by_bucket"),
+                    length_stats.get("pool_size"),
+                    length_stats.get("needed_examples"),
+                ),
+                flush=True,
+            )
+        else:
+            random.Random(int(args.seed)).shuffle(order)
+            pool = order
+            print(
+                "length_policy kept_le_%d=%d added_le_%d=%d longer_than_%d=%d families=%d pool=%d needed=%d"
+                % (
+                    args.max_len,
+                    length_stats["n_kept_le_max_len"],
+                    args.overflow_len,
+                    length_stats["n_added_le_overflow"],
+                    args.overflow_len,
+                    length_stats["n_longer_than_overflow"],
+                    length_stats["n_families_consumed"],
+                    length_stats["pool_size"],
+                    length_stats["needed_examples"],
+                ),
+                flush=True,
+            )
 
     if length_stats.get("n_excluded_diagnostic"):
         print(
@@ -2000,6 +2250,8 @@ def execute(args, summary):
         "rng": capture_rng(torch, numpy),
         "numpy_module": numpy,
     }
+    if getattr(args, "length_mixture", None) is not None:
+        refresh_bucket_consumption(bundle, pool)
     save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch)
     summary["saved_this_run"] = True
     summary["checkpoint_saved"] = True
@@ -2084,6 +2336,9 @@ def execute(args, summary):
     bundle["rng"] = capture_rng(torch, numpy)
     bundle["run_config"]["completed_updates"] = int(schedule.completed)
     bundle["run_config"]["cursor"] = int(_cursor)
+    if getattr(args, "length_mixture", None) is not None:
+        refresh_bucket_consumption(bundle, pool)
+        summary["bucket_consumption"] = bundle["run_config"].get("bucket_consumption")
     save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch)
     summary["saved_this_run"] = True
     summary["checkpoint_saved"] = True
