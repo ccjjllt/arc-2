@@ -8,6 +8,7 @@ search a chain-of-thought for a later grid, and it does not keep only a text pre
 from __future__ import annotations
 
 import argparse
+import contextlib
 import hashlib
 import json
 import os
@@ -84,6 +85,37 @@ def parse_args(argv=None):
         help="Sampled candidates after greedy. Default 1.",
     )
     parser.add_argument("--seed", type=int, default=20260930)
+    parser.add_argument(
+        "--compare-mode",
+        default="none",
+        choices=("none", "base_vs_adapter"),
+        help=(
+            "none: single-arm run (base when --adapter empty, else adapter). "
+            "base_vs_adapter: one model load, per query first base greedy (LoRA disabled) then "
+            "adapter greedy; no per-question reload. Switching arms drops cached decode state and "
+            "confirms the LoRA is disabled (recorded per candidate). Requires --adapter plus "
+            "--max-new-tokens 2048 and --n-sample 0 (greedy only, full prompt, BF16, original "
+            "template, thinking=False)."
+        ),
+    )
+    parser.add_argument(
+        "--task-view-seed",
+        action="store_true",
+        help=(
+            "Derive sample seeds from stable sha256(task_id,query_index,view,sample_index), not "
+            "from process hash or run order. No effect on greedy candidates."
+        ),
+    )
+    parser.add_argument(
+        "--second-view",
+        default="none",
+        choices=("none", "transpose"),
+        help=(
+            "none: original view only. transpose: extra greedy on the transposed task (all demos "
+            "and query transposed), inverse-transposed before scoring, with dedup+stats vs the "
+            "original view. Rotation/fixed-recolor views are deferred, not implemented here."
+        ),
+    )
     return parser.parse_args(argv)
 
 
@@ -328,6 +360,92 @@ def sample_seed(base, task_index, query_index, sample_index):
 
 def text_sha256(text):
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def task_view_seed(base, task_id, query_index, view, sample_index):
+    """Stable sha256 seed from task/query/view. Never uses process hash()."""
+    key = "%s|%s|%d|%s|%d" % (int(base), str(task_id), int(query_index), str(view), int(sample_index))
+    digest = hashlib.sha256(key.encode("utf-8")).digest()
+    return int.from_bytes(digest[:8], "big") & 0x7FFFFFFFFFFFFFFF
+
+
+def transpose_grid(grid):
+    if not isinstance(grid, list) or not grid or not all(isinstance(row, list) for row in grid):
+        raise UsageError("transpose needs a rectangular list-of-lists grid")
+    width = len(grid[0])
+    if any(len(row) != width for row in grid):
+        raise UsageError("transpose needs a rectangular grid")
+    return [list(row) for row in zip(*grid)]
+
+
+def pair_category(base_em, adapter_em):
+    if base_em is None or adapter_em is None:
+        return None
+    if base_em and adapter_em:
+        return "both"
+    if base_em:
+        return "base_only"
+    if adapter_em:
+        return "adapter_only"
+    return "neither"
+
+
+def size_ok(pred_grid, gold):
+    if pred_grid is None or gold is None:
+        return None
+    try:
+        return [len(pred_grid), len(pred_grid[0])] == [len(gold), len(gold[0])]
+    except (TypeError, IndexError):
+        return False
+
+
+def pair_aggregate(records):
+    out = {
+        "n_queries": 0,
+        "both": 0,
+        "base_only": 0,
+        "adapter_only": 0,
+        "neither": 0,
+        "n_unscored": 0,
+        "base_em": 0,
+        "adapter_em": 0,
+        "base_parse_ok": 0,
+        "adapter_parse_ok": 0,
+        "base_truncated": 0,
+        "adapter_truncated": 0,
+    }
+    for row in records:
+        pair = row.get("pair") or {}
+        category = pair.get("category")
+        out["n_queries"] += 1
+        if category in ("both", "base_only", "adapter_only", "neither"):
+            out[category] += 1
+        else:
+            out["n_unscored"] += 1
+        if pair.get("base_em") is True:
+            out["base_em"] += 1
+        if pair.get("adapter_em") is True:
+            out["adapter_em"] += 1
+        if pair.get("base_parse") == "OK":
+            out["base_parse_ok"] += 1
+        if pair.get("adapter_parse") == "OK":
+            out["adapter_parse_ok"] += 1
+        if pair.get("base_truncated"):
+            out["base_truncated"] += 1
+        if pair.get("adapter_truncated"):
+            out["adapter_truncated"] += 1
+    return out
+
+
+@contextlib.contextmanager
+def _base_view(model):
+    """Disable the LoRA for one base-arm generate. Yields True when confirmed disabled."""
+    disabler = getattr(model, "disable_adapter", None)
+    if callable(disabler):
+        with disabler():
+            yield True
+        return
+    yield False
 
 
 def empty_bucket():
@@ -659,7 +777,7 @@ def build_payload(
     sampling_note,
     task_ids,
 ):
-    return {
+    payload = {
         "prompt_mode": PROMPT_MODE,
         "prompt_tail": prompt_tail,
         "prompt_tail_from": prompt_tail_from,
@@ -670,6 +788,9 @@ def build_payload(
         "max_new_tokens": args.max_new_tokens,
         "n_sample": args.n_sample,
         "seed": args.seed,
+        "compare_mode": str(getattr(args, "compare_mode", "none")),
+        "task_view_seed": bool(getattr(args, "task_view_seed", False)),
+        "second_view": str(getattr(args, "second_view", "none")),
         "time_guard": bool(time_guard),
         "elapsed_s": elapsed_s,
         "task_ids": task_ids,
@@ -678,16 +799,22 @@ def build_payload(
         "aggregates": aggregate(records),
         "queries": records,
     }
+    if any(isinstance(row, dict) and "pair" in row for row in records):
+        payload["pair_aggregates"] = pair_aggregate(records)
+    return payload
 
 
 def summary_from(records, time_guard):
     buckets = aggregate(records)
-    return {
+    summary = {
         "time_guard": bool(time_guard),
         "diag": buckets["diag"],
         "holdout": buckets["holdout"],
         "other": buckets["other"],
     }
+    if any(isinstance(row, dict) and "pair" in row for row in records):
+        summary["pair"] = pair_aggregate(records)
+    return summary
 
 
 def main(argv=None):
@@ -716,6 +843,24 @@ def main(argv=None):
             _require_file(split_path, "split file")
         if not args.task_ids.strip() and not split_path:
             raise UsageError("pass --task-ids or --split-file")
+        compare = str(args.compare_mode)
+        if compare not in ("none", "base_vs_adapter"):
+            raise UsageError("--compare-mode must be none or base_vs_adapter")
+        second_view = str(args.second_view)
+        if second_view not in ("none", "transpose"):
+            raise UsageError("--second-view must be none or transpose")
+        if compare == "base_vs_adapter":
+            if not adapter:
+                raise UsageError("--compare-mode base_vs_adapter requires --adapter")
+            if int(args.max_new_tokens) != 2048:
+                raise UsageError(
+                    "--compare-mode base_vs_adapter requires --max-new-tokens 2048 "
+                    "(unified cap, full prompt)"
+                )
+            if int(args.n_sample) != 0:
+                raise UsageError(
+                    "--compare-mode base_vs_adapter requires --n-sample 0 (greedy pair only)"
+                )
 
         try:
             system_prompt, build_messages, grid_to_text, text_to_grid = import_episode_api()
@@ -817,6 +962,12 @@ def main(argv=None):
             "inherited_top_k": inherited_top_k,
             "inherited_no_repeat_ngram_size": inherited_ngram,
             "seed_key": "{seed},{task_index},{query_index}",
+            "task_view_seed": bool(args.task_view_seed),
+            "task_view_seed_key": "{seed}|{task_id}|{query_index}|{view}|{sample_index} sha256"
+            if args.task_view_seed
+            else None,
+            "compare_mode": compare,
+            "second_view": second_view,
             "cache": "new DynamicCache per generate; not cropped across candidates",
         }
         try:
@@ -942,24 +1093,64 @@ def main(argv=None):
                     prompt_tail_from = {"task_id": task_id, "query_index": query_index}
                 candidates = []
                 prompt_tokens = None
-                plan = [("greedy", False, None)]
-                for sample_index in range(args.n_sample):
-                    plan.append(("sample", True, sample_index))
-                # Budget is checked before the query. Both candidates still run.
-                for kind, do_sample, sample_index in plan:
-                    seed_value = None
-                    if do_sample:
-                        seed_value = sample_seed(args.seed, task_index, query_index, sample_index)
-                    record, prompt_len = _run_one_candidate(
+                prompt_text_t = None
+                transpose_error = None
+                if second_view == "transpose":
+                    # Same template/thinking=False/full prompt; every demo and the query share
+                    # one transposed view. Rotation/recolor views are deferred.
+                    try:
+                        t_demos = [
+                            {
+                                "input": transpose_grid(demo.get("input")),
+                                "output": transpose_grid(demo.get("output")),
+                            }
+                            for demo in demos
+                        ]
+                        t_messages = build_messages(t_demos, transpose_grid(query_input))
+                        prompt_text_t = tokenizer.apply_chat_template(
+                            t_messages,
+                            tokenize=False,
+                            add_generation_prompt=True,
+                            enable_thinking=False,
+                        )
+                    except Exception as exc:
+                        transpose_error = "%s: %s" % (type(exc).__name__, str(exc)[:300])
+
+                def _gen(prompt, kind, do_sample, seed_value, gold_ref, use_base):
+                    if use_base:
+                        _drop_cached_decode_state(model)
+                        with _base_view(model) as confirmed:
+                            made, plen = _run_one_candidate(
+                                model,
+                                tokenizer,
+                                torch,
+                                prompt,
+                                kind,
+                                do_sample,
+                                args.max_new_tokens,
+                                seed_value,
+                                gold_ref,
+                                text_to_grid,
+                                in_dev,
+                                pad_id,
+                                eos_id,
+                                pass_presence_penalty,
+                                force_dynamic_cache,
+                            )
+                            made["adapter_disabled"] = True
+                            made["adapter_disabled_confirmed"] = bool(confirmed)
+                            return made, plen
+                    _drop_cached_decode_state(model)
+                    made, plen = _run_one_candidate(
                         model,
                         tokenizer,
                         torch,
-                        prompt_text,
+                        prompt,
                         kind,
                         do_sample,
                         args.max_new_tokens,
                         seed_value,
-                        gold,
+                        gold_ref,
                         text_to_grid,
                         in_dev,
                         pad_id,
@@ -967,9 +1158,9 @@ def main(argv=None):
                         pass_presence_penalty,
                         force_dynamic_cache,
                     )
-                    if prompt_tokens is None and prompt_len is not None:
-                        prompt_tokens = prompt_len
-                    candidates.append(record)
+                    return made, plen
+
+                def _log(kind, record):
                     print(
                         "  q%d %s gen_tok=%s trunc=%s parse=%s em=%s prepare=%s generate=%s"
                         % (
@@ -984,16 +1175,155 @@ def main(argv=None):
                         ),
                         flush=True,
                     )
-                records.append(
-                    {
-                        "task_id": task_id,
-                        "query_index": query_index,
-                        "split": split_name,
-                        "prompt_tokens": prompt_tokens,
-                        "gold_hw": gold_hw(gold),
-                        "candidates": candidates,
+
+                def _transpose_candidate(orig_grid, prompt_t, kind, use_base):
+                    if prompt_t is None:
+                        return _candidate_record(
+                            kind,
+                            None,
+                            None,
+                            0,
+                            False,
+                            "FAIL",
+                            False if gold is not None else None,
+                            "",
+                            None,
+                            transpose_error or "transpose prompt failed",
+                            None,
+                        ), None
+                    made, plen = _gen(prompt_t, kind, False, None, None, use_base)
+                    inv = None
+                    try:
+                        if made.get("grid") is not None:
+                            inv = transpose_grid(made["grid"])
+                    except UsageError:
+                        inv = None
+                    if inv is None and made.get("parse") == "OK":
+                        made["parse"] = "FAIL"
+                    made["grid"] = inv
+                    made["em"] = grids_equal(inv, gold) if (gold is not None and inv is not None) else (
+                        False if gold is not None else None
+                    )
+                    made["view"] = "transpose"
+                    made["inverse_applied"] = True
+                    try:
+                        made["dedupe_equal_to_orig"] = (
+                            _norm_grid(inv) == _norm_grid(orig_grid)
+                            if (inv is not None and orig_grid is not None)
+                            else None
+                        )
+                    except (TypeError, ValueError):
+                        made["dedupe_equal_to_orig"] = (inv == orig_grid)
+                    return made, plen
+
+                row = {
+                    "task_id": task_id,
+                    "query_index": query_index,
+                    "split": split_name,
+                    "prompt_tokens": None,
+                    "gold_hw": gold_hw(gold),
+                    "compare_mode": compare,
+                    "second_view": second_view,
+                    "candidates": candidates,
+                }
+                if compare == "base_vs_adapter":
+                    # Budget is checked before the query. Both arms still run.
+                    for kind, use_base in (("base_greedy", True), ("adapter_greedy", False)):
+                        record, prompt_len = _gen(
+                            prompt_text, kind, False, None, gold, use_base
+                        )
+                        record["view"] = "original"
+                        if prompt_tokens is None and prompt_len is not None:
+                            prompt_tokens = prompt_len
+                        candidates.append(record)
+                        _log(kind, record)
+                    by_kind = {item.get("kind"): item for item in candidates}
+                    if second_view == "transpose":
+                        for kind, use_base in (
+                            ("base_greedy_transpose", True),
+                            ("adapter_greedy_transpose", False),
+                        ):
+                            orig_grid = (by_kind.get(kind.replace("_transpose", "")) or {}).get("grid")
+                            record, _plen = _transpose_candidate(
+                                orig_grid, prompt_text_t, kind, use_base
+                            )
+                            candidates.append(record)
+                            _log(kind, record)
+                    base_rec = by_kind.get("base_greedy", {})
+                    adapter_rec = by_kind.get("adapter_greedy", {})
+                    row["prompt_tokens"] = prompt_tokens
+                    row["pair"] = {
+                        "category": pair_category(base_rec.get("em"), adapter_rec.get("em")),
+                        "base_em": base_rec.get("em"),
+                        "adapter_em": adapter_rec.get("em"),
+                        "base_parse": base_rec.get("parse"),
+                        "adapter_parse": adapter_rec.get("parse"),
+                        "base_size_ok": size_ok(base_rec.get("grid"), gold),
+                        "adapter_size_ok": size_ok(adapter_rec.get("grid"), gold),
+                        "base_truncated": base_rec.get("truncated"),
+                        "adapter_truncated": adapter_rec.get("truncated"),
+                        "base_gen_tokens": base_rec.get("gen_tokens"),
+                        "adapter_gen_tokens": adapter_rec.get("gen_tokens"),
+                        "base_prepare_s": base_rec.get("prepare_s"),
+                        "base_generate_s": base_rec.get("generate_s"),
+                        "adapter_prepare_s": adapter_rec.get("prepare_s"),
+                        "adapter_generate_s": adapter_rec.get("generate_s"),
                     }
-                )
+                else:
+                    plan = [("greedy", False, None, "original")]
+                    for sample_index in range(args.n_sample):
+                        plan.append(("sample", True, sample_index, "original"))
+                    # Budget is checked before the query. All candidates still run.
+                    for kind, do_sample, sample_index, _view in plan:
+                        seed_value = None
+                        if do_sample:
+                            if args.task_view_seed:
+                                seed_value = task_view_seed(
+                                    args.seed, task_id, query_index, "original", sample_index
+                                )
+                            else:
+                                seed_value = sample_seed(
+                                    args.seed, task_index, query_index, sample_index
+                                )
+                        record, prompt_len = _gen(
+                            prompt_text, kind, do_sample, seed_value, gold, False
+                        )
+                        record["view"] = "original"
+                        if prompt_tokens is None and prompt_len is not None:
+                            prompt_tokens = prompt_len
+                        candidates.append(record)
+                        _log(kind, record)
+                    if second_view == "transpose":
+                        record, _plen = _transpose_candidate(
+                            (candidates[0] if candidates else {}).get("grid"),
+                            prompt_text_t,
+                            "greedy_transpose",
+                            False,
+                        )
+                        candidates.append(record)
+                        _log("greedy_transpose", record)
+                    row["prompt_tokens"] = prompt_tokens
+                if second_view == "transpose":
+                    seen = set()
+                    for item in candidates:
+                        grid = item.get("grid")
+                        if grid is None:
+                            continue
+                        try:
+                            seen.add(_norm_grid(grid))
+                        except (TypeError, ValueError):
+                            seen.add(repr(grid))
+                    row["view_stats"] = {
+                        "n_candidates": len(candidates),
+                        "n_unique_grids": len(seen),
+                        "oracle_em": any(item.get("em") is True for item in candidates),
+                        "transpose_dedupe_equal": [
+                            item.get("dedupe_equal_to_orig")
+                            for item in candidates
+                            if item.get("view") == "transpose"
+                        ],
+                    }
+                records.append(row)
             payload = build_payload(
                 args,
                 records,

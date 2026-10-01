@@ -1,0 +1,285 @@
+{
+  "dataset": "D2 first-round CPU correction (no training, no inference)",
+  "seed": 20260930,
+  "created": "2026-10-01",
+  "partition_inherited": {
+    "train": 892,
+    "holdout": 100,
+    "diag": 8,
+    "seed": 20260930,
+    "ordering_rule": "Eligible task ids are present in both challenges and solutions and are not in diag. Order eligible by sha256(utf-8 of '20260930:'+task_id) hex digest ascending, ties broken by task_id. holdout is the first 100 of that order, then sorted lexicographically in this file. train is the remaining eligible ids, sorted lexicographically. diag is the fixed 006 exclusion list in its given order, excluded from the train pool and the holdout. family_id = task_id for official tasks. Round-robin sampling walks lexicographically sorted train ids, one episode per task per turn. Within a task, test bases stay in test-index order and loo bases stay in train-index order. The primary pair is the first test base, if any, then the first loo base, if any. Front augmentations are geometry outer (ident, rot90, rot180, rot270, flipud, fliplr) and color inner (ident, then perm1). For each front augmentation, yield each primary base once. After that prefix, yield every remaining geometry, color (ident, perm1, perm2, perm3), and interleaved base (test0, loo0, test1, loo1, ...), skipping episode ids already yielded. A 10k cap therefore mixes ident and perm1 on test0 and loo0 before later geometries, perm2, or perm3.",
+    "train_origin_breakdown": {
+      "arc1_train": 347,
+      "arc1_eval": 339,
+      "non_arc1": 206
+    },
+    "holdout_origin_breakdown": {
+      "arc1_train": 39,
+      "arc1_eval": 35,
+      "non_arc1": 26
+    },
+    "diag_ids": [
+      "833966f4",
+      "6150a2bd",
+      "e9afcf9a",
+      "5582e5ca",
+      "d037b0a7",
+      "d631b094",
+      "66e6c45b",
+      "00576224"
+    ],
+    "note": "family_id=task_id is ID isolation only, not semantic dedup; base-model pretraining exposure unknown."
+  },
+  "exclude_arcgen_families": {
+    "rule": "V2 import order after '# V2 Tasks' in task_list.py, minus diag and holdout via exclude_arcgen_families (family_id==task_id). Input order kept.",
+    "v2_total": 500,
+    "allowed": 448,
+    "excluded": 52,
+    "excluded_in_diag": [
+      "00576224",
+      "66e6c45b",
+      "833966f4"
+    ],
+    "excluded_in_holdout_count": 49,
+    "excluded_ids": [
+      "00576224",
+      "12eac192",
+      "17b80ad2",
+      "2b01abd0",
+      "342dd610",
+      "3d31c5b3",
+      "3f23242b",
+      "516b51b7",
+      "52df9849",
+      "52fd389e",
+      "54db823b",
+      "58c02a16",
+      "66e6c45b",
+      "66f2d22f",
+      "68bc2e87",
+      "6bcdb01e",
+      "6f473927",
+      "7e4d4f7c",
+      "833966f4",
+      "84f2aca1",
+      "8719f442",
+      "8886d717",
+      "9344f635",
+      "9772c176",
+      "9841fdad",
+      "9b2a60aa",
+      "9c1e755f",
+      "9c56f360",
+      "9f27f097",
+      "a416fc5b",
+      "a644e277",
+      "aaef0977",
+      "ac0c5833",
+      "ad173014",
+      "b7fb29bc",
+      "b942fd60",
+      "c074846d",
+      "c1990cce",
+      "c62e2108",
+      "c7d4e6ad",
+      "ce039d91",
+      "db118e2a",
+      "dce56571",
+      "df9fd884",
+      "e1d2900e",
+      "e3f79277",
+      "e45ef808",
+      "e9ac8c9e",
+      "ed98d772",
+      "f0afb749",
+      "fc4aaf52",
+      "ff2825db"
+    ],
+    "allowed_origins": {
+      "arc1_train": 0,
+      "arc1_eval": 297,
+      "non_arc1": 151
+    },
+    "note": "V2 is generator-version label, not new-task label. All 448 allowed families are inside official train 892, so unique families stay 892."
+  },
+  "sampling_rules": {
+    "order": "source -> task -> base -> query -> enhancement (fixed lexicographic; seed only for color perms and documented ordering, no RNG sampling)",
+    "source_start_ratio": "40% official_train / 60% arcgen_v2 (starting point, not fixed training mixture)",
+    "official": "round-robin over split train file order; bases in test-index then loo-index; suspect_same_as_demo flagged not deleted; first-round: turn0 first base ident|ident for all 892 tasks, turn1 second base ident|ident for first 308 tasks with >=2 bases =1200 rows",
+    "generated": "reuse G2 750 kept bases (no new grids fabricated for index); per-base priority 1-2 consistent enhances first: pass1 ident|ident 750, pass2 rot90|ident 750, pass3 rot180|ident first 300 in (task_id,instance) order =1800 rows; max 3 per base in first round, not 24",
+    "augmentation_cycle": "color outer (ident,perm1,perm2,perm3) x geometry inner (ident,rot90,rot180,rot270,flipud,fliplr); first-round uses only ident color + ident/rot90/rot180 geometry",
+    "color_perms_seed": 20260930,
+    "color_perms": {
+      "ident": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "perm1": [
+        1,
+        8,
+        0,
+        9,
+        4,
+        2,
+        5,
+        3,
+        6,
+        7
+      ],
+      "perm2": [
+        2,
+        1,
+        5,
+        0,
+        3,
+        8,
+        6,
+        7,
+        4,
+        9
+      ],
+      "perm3": [
+        4,
+        7,
+        9,
+        6,
+        8,
+        3,
+        0,
+        5,
+        2,
+        1
+      ]
+    },
+    "guarantee": "all 892 train tasks incl. 206 non_arc1 have >=1 official row in first-round index; 55 non_arc1 without V2 generator covered by official only",
+    "family_note": "family_id=task_id; no semantic dedup claimed"
+  },
+  "fields_per_row": [
+    "sample_id",
+    "source",
+    "task_id",
+    "family_id",
+    "origin(arc1_train/arc1_eval/non_arc1)",
+    "base_instance_id(test:i/loo:i/gen_instance:i)",
+    "query_kind(test/loo/gen)",
+    "query_index",
+    "geometry",
+    "color_name",
+    "augmentation",
+    "suspect_same_as_demo",
+    "has_V2_generator",
+    "in_55_noV2_nonarc1",
+    "prompt_chars_ident_proxy",
+    "target_cells",
+    "token_source",
+    "token_bucket_true"
+  ],
+  "tokenizer": {
+    "status": "tokenizer_missing_no_local_27B_weights",
+    "hf_cache": "no ~/.cache/huggingface",
+    "action": "no true-token bucketing for D2; rows carry prompt_chars proxy + token_bucket_true=unconfirmed; true-token reference below is from Kaggle-measured logs only, not assigned to D2 rows",
+    "true_token_reference": {
+      "g1_consumed_800_microsteps_flat": {
+        "n": 800,
+        "prompt_sum": 458556,
+        "target_sum": 62808,
+        "prompt_buckets": {
+          "<=1024": 800
+        }
+      },
+      "solve_33_queries_prompt_buckets": {
+        "2049-4096": 12,
+        "1025-2048": 6,
+        "<=1024": 13,
+        "4097-8192": 2
+      },
+      "g1_length_policy": {
+        "n_kept_le_max_len": 2514,
+        "n_added_le_overflow": 0,
+        "n_longer_than_overflow": 4490,
+        "n_families_consumed": 286,
+        "pool_size": 2514,
+        "needed_examples": 800,
+        "overflow_fill": "not_needed",
+        "kept_all_episodes_le_max_len": true,
+        "n_rows": 10000,
+        "n_excluded_split": 0,
+        "n_excluded_diagnostic": 0,
+        "n_bad_messages": 0,
+        "n_bad_target": 0,
+        "n_empty_prompt": 0,
+        "n_empty_target_tokens": 0,
+        "n_empty": 0,
+        "n_family_filled_from_task": 0,
+        "n_encode_error": 0,
+        "max_len": 1024,
+        "overflow_len": 2048,
+        "effective_batch": 4,
+        "effective_batch_note": "microbatch * grad_accum; not multiplied by GPU count"
+      },
+      "note": "G1 kept_le_1024=2514, longer_than_2048=4490 are pool stats with max_len 1024/overflow 2048; overflow is short-pool fill, not length curriculum; do not use overflow_len to claim long-bucket training."
+    }
+  },
+  "sources": {
+    "challenges": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/007/raw/arc-prize-2026/arc-agi_training_challenges.json",
+      "bytes": 4010050,
+      "sha256": "779eaba89790ebad9af02514a7efc0aefaf2cf8236f046a31bbf8b9ec48f20f5"
+    },
+    "solutions": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/007/raw/arc-prize-2026/arc-agi_training_solutions.json",
+      "bytes": 658743,
+      "sha256": "9f07a38bd25af5e83aa5bf85c5cb1a1fefdb30f6a755256fa65429e697ca97f9"
+    },
+    "split": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/007/g1/split.json",
+      "bytes": 17303,
+      "sha256": "094089459c4b05f7f0cf67a3f4ad98f79f3f48c78a7dcad6675866a897e476d8"
+    },
+    "g1_episodes": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/007/g1/episodes.jsonl",
+      "sha256": "42765f3b078484a85e8c7d256e51d5a88c404da83b9e4fe6995d9eefa40568e3",
+      "note": "read-only, not overwritten"
+    },
+    "g2_episodes": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/007/g2/episodes.jsonl",
+      "sha256": "d09dd0dec76adf9604394d893ef42ceb32bf8eead1b3b63b46175201bba3ca74",
+      "note": "read-only, not overwritten; G2 problems: official 12000 all test|0 no loo, each of 892 bases 13-14 rows; generated 750 bases each 24 rows"
+    },
+    "arcgen_root": "/tmp/arc007-arcgen",
+    "arcgen_commit": "a15cbdb44c776610aeeb9f487a06af875d3d0878",
+    "arcgen_commit_expected": "a15cbdb44c776610aeeb9f487a06af875d3d0878",
+    "arcgen_commit_match": true,
+    "arcgen_task_list_sha256": "98aa515236a096bc75c013bd60cbe0a62d3b823b92c6bc754fdf3148d6748d0d",
+    "arc1_revision": "399030444e0ab0cc8b4e199870fb20b863846f34"
+  },
+  "counts": {
+    "official_bases_total_no_deletion": 3853,
+    "official_test_bases": 962,
+    "official_loo_total": 2891,
+    "official_test_suspect": 25,
+    "official_loo_suspect": 72,
+    "official_loo_legal": 2819,
+    "g2_official_bases": 892,
+    "g2_official_rows": 12000,
+    "g2_gen_bases": 750,
+    "g2_gen_rows": 18000,
+    "d2_index_rows": 3000,
+    "d2_official_rows": 1200,
+    "d2_gen_rows": 1800,
+    "d2_official_tasks": 892,
+    "d2_gen_tasks": 448,
+    "d2_official_independent_bases": 1200,
+    "d2_gen_independent_bases": 750
+  },
+  "first_round_scope": "CPU index 3000 rows (1200+1800) only; full 3000-independent-base materialization and 30K training pool NOT done in this round; no grids fabricated; no GPU/training/inference.",
+  "sha_note": "G1/G2 pools unchanged; D2 writes only experiments/008/data/."
+}

@@ -241,7 +241,28 @@ def build_parser():
     parser.add_argument(
         "--resume",
         default=None,
-        help="Previous out-dir with adapter/ and trainer_state.pt. Continues the update counter.",
+        help=(
+            "Previous out-dir with adapter/ and trainer_state.pt. Exact resume only: pool order, "
+            "cursor, optimizer, scheduler, and RNG continue the update counter. "
+            "Never combined with --init-adapter."
+        ),
+    )
+    parser.add_argument(
+        "--init-adapter",
+        default=None,
+        help=(
+            "Weights-only inheritance for a new stage (008 G2a): an adapter dir, or a previous "
+            "out-dir holding adapter/ (+ optional trainer_state.pt/run_config.json for stage "
+            "accounting). Pool, cursor, optimizer, and scheduler always restart from zero; old "
+            "optimizer/scheduler/cursor are never reused. Same-structure adapters load directly; "
+            "changed target modules build a fresh LoRA and copy only intersecting shape-matched "
+            "LoRA tensors, leaving new modules at zero-init. Mutually exclusive with --resume "
+            "(exact resume keeps old pool/cursor/optimizer/scheduler/RNG). Stage switch records "
+            "old vs new training volume in run_config.json. Periodic saves also write immutable "
+            "adapter_step_{N} snapshots and never overwrite an existing snapshot "
+            "(adapter/ stays the latest pointer for --resume). G1 defaults unchanged: r8/alpha32, "
+            "q/k/v/o+MLP targets, BF16, answer-only mask, thinking=False, microbatch=1, accum=4."
+        ),
     )
     parser.add_argument(
         "--extra-targets",
@@ -283,6 +304,13 @@ def validate_args(args):
         raise RuntimeError("solutions file not found: %s" % args.solutions)
     if args.resume:
         resolve_resume_paths(args.resume)
+    if getattr(args, "init_adapter", None) and args.resume:
+        raise RuntimeError(
+            "--init-adapter and --resume are mutually exclusive: weights-only new stage "
+            "vs exact resume of pool/cursor/optimizer/scheduler/RNG"
+        )
+    if getattr(args, "init_adapter", None):
+        resolve_init_adapter_dir(args.init_adapter)
 
 
 def resolve_resume_paths(resume_dir):
@@ -295,6 +323,137 @@ def resolve_resume_paths(resume_dir):
     if not os.path.isfile(state):
         raise RuntimeError("resume trainer_state.pt missing under %s" % resume_dir)
     return adapter, state
+
+
+def resolve_init_adapter_dir(path):
+    """Accept an adapter dir or a previous out-dir holding adapter/."""
+    if not path:
+        raise RuntimeError("init-adapter path is empty")
+    direct = os.path.join(path, "adapter_config.json")
+    if os.path.isfile(direct):
+        return os.path.abspath(path)
+    nested = os.path.join(path, "adapter", "adapter_config.json")
+    if os.path.isfile(nested):
+        return os.path.abspath(os.path.join(path, "adapter"))
+    raise RuntimeError(
+        "init-adapter has no adapter_config.json as %s nor %s" % (direct, nested)
+    )
+
+
+def read_adapter_targets(adapter_dir):
+    try:
+        with open(os.path.join(adapter_dir, "adapter_config.json"), "r", encoding="utf-8") as handle:
+            config = json.load(handle)
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RuntimeError("cannot read init-adapter config: %s" % exc)
+    targets = config.get("target_modules")
+    if isinstance(targets, dict):
+        targets = list(targets.keys())
+    return [str(name) for name in (targets or [])]
+
+
+def load_init_adapter_weights(model, adapter_dir, torch_module):
+    """Copy intersecting shape-matched LoRA tensors; never touches base weights or optimizer."""
+    names = os.listdir(adapter_dir)
+    weight_file = None
+    for candidate in ("adapter_model.safetensors", "adapter_model.safetensor"):
+        if candidate in names:
+            weight_file = os.path.join(adapter_dir, candidate)
+            break
+    if weight_file is None:
+        for name in sorted(names):
+            if name.endswith(".safetensors"):
+                weight_file = os.path.join(adapter_dir, name)
+                break
+    use_torch_bin = False
+    if weight_file is None:
+        for candidate in ("adapter_model.bin", "adapter_model.pytorch_bin"):
+            if candidate in names:
+                weight_file = os.path.join(adapter_dir, candidate)
+                use_torch_bin = True
+                break
+    if weight_file is None:
+        raise RuntimeError("init-adapter has no .safetensors/.bin weights under %s" % adapter_dir)
+    if use_torch_bin:
+        old_sd = torch_module.load(weight_file, map_location="cpu", weights_only=True)
+    else:
+        try:
+            from safetensors.torch import load_file as _load_file
+        except ImportError as exc:
+            raise RuntimeError("need safetensors to read init-adapter %s (%s)" % (weight_file, exc))
+        old_sd = _load_file(weight_file, device="cpu")
+    current = model.state_dict()
+    copied = 0
+    shape_mismatch = []
+    not_in_new = []
+    with torch_module.no_grad():
+        for key, value in old_sd.items():
+            if "lora_" not in key:
+                continue
+            if key not in current:
+                not_in_new.append(key)
+                continue
+            if tuple(value.shape) != tuple(current[key].shape):
+                shape_mismatch.append(key)
+                continue
+            current[key].copy_(value)
+            copied += 1
+    try:
+        model.load_state_dict(current, strict=False)
+    except TypeError:
+        pass
+    return {
+        "weight_file": os.path.basename(weight_file),
+        "copied_lora_tensors": copied,
+        "shape_mismatch": shape_mismatch[:16],
+        "n_shape_mismatch": len(shape_mismatch),
+        "not_in_new": not_in_new[:16],
+        "n_not_in_new": len(not_in_new),
+    }
+
+
+def old_stage_amount(adapter_dir):
+    """Best-effort old training volume from JSON sidecars (torch-free)."""
+    parent = os.path.dirname(os.path.abspath(adapter_dir))
+    info = {"run_config_path": None, "completed_updates": None, "cursor": None}
+    for name in ("run_config.json", "SUMMARY.json"):
+        path = os.path.join(parent, name)
+        if not os.path.isfile(path):
+            continue
+        try:
+            with open(path, "r", encoding="utf-8") as handle:
+                data = json.load(handle)
+        except (OSError, json.JSONDecodeError):
+            continue
+        if info["run_config_path"] is None:
+            info["run_config_path"] = path
+        for key in ("completed_updates", "cursor"):
+            if info[key] is None and isinstance(data, dict) and data.get(key) is not None:
+                try:
+                    info[key] = int(data[key])
+                except (TypeError, ValueError):
+                    pass
+        inner = data.get("run_config") if isinstance(data, dict) else None
+        if isinstance(inner, dict):
+            for key in ("completed_updates", "cursor"):
+                if info[key] is None and inner.get(key) is not None:
+                    try:
+                        info[key] = int(inner[key])
+                    except (TypeError, ValueError):
+                        pass
+    return info
+
+
+def save_adapter_snapshot(model, out_dir, completed):
+    """Immutable per-step adapter dir. Never overwrites an existing snapshot."""
+    snapshot = os.path.join(out_dir, "adapter_step_%d" % int(completed))
+    if adapter_files_present(snapshot):
+        return snapshot
+    os.makedirs(snapshot, exist_ok=True)
+    model.save_pretrained(snapshot)
+    if not adapter_files_present(snapshot):
+        raise RuntimeError("snapshot save did not write adapter files: %s" % snapshot)
+    return snapshot
 
 
 def find_model_dir(explicit):
@@ -1180,6 +1339,15 @@ def save_checkpoint(model, optimizer, schedule, bundle, out_dir, torch_module):
     dump_json(os.path.join(out_dir, "run_config.json"), bundle["run_config"], one_line=False)
     if not adapter_files_present(adapter_dir):
         raise RuntimeError("save_pretrained did not write adapter config and weights")
+    completed = int(bundle.get("completed_updates", 0))
+    if completed > 0:
+        # Immutable per-step snapshot; an existing snapshot is never overwritten, so a
+        # resumed re-save of the same update keeps the original directory intact.
+        snapshot = os.path.join(out_dir, "adapter_step_%d" % completed)
+        if not adapter_files_present(snapshot):
+            model.save_pretrained(snapshot)
+            if not adapter_files_present(snapshot):
+                raise RuntimeError("snapshot save did not write adapter files: %s" % snapshot)
     return adapter_dir
 
 
@@ -1602,12 +1770,66 @@ def execute(args, summary):
     set_use_cache(base, False)
     summary["grad_ckpt"] = True if ckpt_ok and not ckpt_errors else {"enabled": ckpt_ok, "errors": ckpt_errors}
 
+    init_info = None
     if args.resume:
         adapter_path, _state_path = resolve_resume_paths(args.resume)
         try:
             model = PeftModel.from_pretrained(base, adapter_path, is_trainable=True)
         except TypeError:
             model = PeftModel.from_pretrained(base, adapter_path)
+        init_info = None
+    elif getattr(args, "init_adapter", None):
+        # Weights-only new stage: fresh LoRA, then copy intersecting old LoRA tensors.
+        # Optimizer/scheduler below are rebuilt; old ones are never loaded.
+        init_adapter_dir = resolve_init_adapter_dir(args.init_adapter)
+        init_old_targets = read_adapter_targets(init_adapter_dir)
+        missing_targets = [name for name in targets if name not in module_leaf_names(base)]
+        if missing_targets:
+            raise RuntimeError("LoRA target modules not found: %s" % missing_targets)
+        lora = LoraConfig(
+            r=8,
+            lora_alpha=32,
+            lora_dropout=0.0,
+            bias="none",
+            task_type="CAUSAL_LM",
+            target_modules=targets,
+            inference_mode=False,
+        )
+        model = get_peft_model(base, lora)
+        init_stats = load_init_adapter_weights(model, init_adapter_dir, torch)
+        init_old_amount = old_stage_amount(init_adapter_dir)
+        try:
+            _parent = os.path.dirname(os.path.abspath(init_adapter_dir))
+            _old_state_path = os.path.join(_parent, "trainer_state.pt")
+            if os.path.isfile(_old_state_path):
+                _old_state = torch.load(_old_state_path, map_location="cpu", weights_only=False)
+                if init_old_amount.get("completed_updates") is None:
+                    init_old_amount["completed_updates"] = int(
+                        _old_state.get("completed_updates", 0)
+                    )
+                if init_old_amount.get("cursor") is None:
+                    init_old_amount["cursor"] = int(_old_state.get("cursor", 0))
+        except Exception as exc:
+            init_old_amount["state_read_error"] = str(exc)[:200]
+        init_info = {
+            "source_adapter": os.path.abspath(init_adapter_dir),
+            "old_targets": init_old_targets,
+            "new_targets": list(targets),
+            "targets_changed": set(init_old_targets) != set(targets),
+            "old_completed_updates": init_old_amount.get("completed_updates"),
+            "old_cursor": init_old_amount.get("cursor"),
+            "new_optimizer_updates": int(args.optimizer_updates),
+            "copy": init_stats,
+        }
+        print(
+            "init-adapter copied=%d mismatch=%d not_in_new=%d targets_changed=%s" % (
+                init_stats["copied_lora_tensors"],
+                init_stats["n_shape_mismatch"],
+                init_stats["n_not_in_new"],
+                set(init_old_targets) != set(targets),
+            ),
+            flush=True,
+        )
     else:
         missing_targets = [name for name in targets if name not in module_leaf_names(base)]
         if missing_targets:
@@ -1662,6 +1884,24 @@ def execute(args, summary):
     if int(args.warmup_updates) >= int(args.optimizer_updates):
         run_config["schedule_warning"] = "warmup_updates >= optimizer_updates; decay interval is empty"
         print("WARNING", run_config["schedule_warning"], flush=True)
+    if init_info is not None:
+        # New-stage accounting: old volume is reference only; the new run restarts at update 0
+        # with a fresh pool, cursor, optimizer, and scheduler.
+        run_config["init_adapter"] = init_info
+        run_config["stage"] = {
+            "mode": "init_adapter",
+            "old_completed_updates": init_info["old_completed_updates"],
+            "old_cursor": init_info["old_cursor"],
+            "new_optimizer_updates": int(args.optimizer_updates),
+            "note": "weights-only inheritance; not a continuation of the old loss curve",
+        }
+        summary["init_adapter"] = {
+            "source_adapter": init_info["source_adapter"],
+            "targets_changed": init_info["targets_changed"],
+            "copied_lora_tensors": init_info["copy"]["copied_lora_tensors"],
+            "old_completed_updates": init_info["old_completed_updates"],
+            "new_optimizer_updates": int(args.optimizer_updates),
+        }
 
     cursor = 0
     if resume_state is not None:

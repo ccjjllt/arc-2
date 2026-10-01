@@ -1,0 +1,142 @@
+{
+  "true_token_buckets": {
+    "status": "unconfirmed_tokenizer_missing",
+    "<=1024": "unconfirmed",
+    "1025-2048": "unconfirmed",
+    "2049-4096": "unconfirmed",
+    "4097-8192": "unconfirmed",
+    ">8192": "unconfirmed",
+    "note": "No local 27B tokenizer weights; no true-token bucketing for D2. Do not use overflow_len to claim long-bucket training. Reference only: G1 consumed true-token prompt buckets {'<=1024': 800}; solve 33q prompt buckets {'2049-4096': 12, '1025-2048': 6, '<=1024': 13, '4097-8192': 2}."
+  },
+  "proxy_by_prompt_chars_ident": {
+    "note": "proxy only (len of user text with ident geometry); NOT true tokens; for sampling balance inspection only",
+    "counts": {
+      "proxy_chars<=2000": 1513,
+      "proxy_chars2001-4000": 873,
+      "proxy_chars4001-8000": 502,
+      "proxy_chars8001-16000": 111,
+      "proxy_chars>16000": 1
+    }
+  },
+  "per_source_in_index": {
+    "official_train": {
+      "rows": 1200,
+      "tasks": 892,
+      "independent_bases": 1200,
+      "origins": {
+        "arc1_train": 459,
+        "arc1_eval": 458,
+        "non_arc1": 283
+      },
+      "target_cells_proxy_sum": 222307,
+      "supervised_true_tokens": "unconfirmed"
+    },
+    "arcgen_v2": {
+      "rows": 1800,
+      "tasks": 448,
+      "independent_bases": 750,
+      "origins": {
+        "arc1_eval": 1166,
+        "non_arc1": 634
+      },
+      "target_cells_proxy_sum": "unconfirmed (gen grids reused from G2, cells not recomputed here)",
+      "supervised_true_tokens": "unconfirmed"
+    }
+  },
+  "official_base_pool_no_deletion": {
+    "total": 3853,
+    "test": 962,
+    "loo_total": 2891,
+    "test_suspect_same_as_demo_base_level": 25,
+    "loo_suspect_base_level": 72,
+    "loo_legal": 2819,
+    "note": "G1/G2 deleted 72 loo suspect bases; D2 keeps all 3853 with suspect flag. Test suspect 25 kept in all versions. Row-level suspect after augmentation differs (G2 official 187 rows); base-level 25 is pre-augmentation."
+  },
+  "g2_current_problems_confirmed": {
+    "official_12000": "all test|0 (892 bases each 13-14 rows), no loo, no test1+; perm3 0, perm2 1296; truncated by 24-step cycle at cap",
+    "generated_18000": "750 bases each exactly 24 rows; 441 instance0 +302 instance1 +7 higher; 448 tasks (302 with 2 bases, 146 with 1)",
+    "content_dedup_note": "episode_id unique does not mean content unique (official messages+target unique 11873, gen 17800 per 008 audit); mostly symmetry/augmentation equivalence"
+  },
+  "lost_tasks": {
+    "excluded_by_design": {
+      "holdout": 100,
+      "diag": 8,
+      "note": "never in training index"
+    },
+    "not_in_first_round_index": {
+      "official_bases_not_indexed": 2653,
+      "gen_bases_not_indexed": "750 total kept bases, 750 in index; full 3000-base expansion not materialized",
+      "train_tasks_missing_from_index": [],
+      "note": "All 892 train tasks ARE in first-round index via official; no train task silently lost. Bases not indexed are listed as counts, not silently truncated."
+    }
+  },
+  "V2_is_not_new_task": "ARC-GEN V2 is generator-version label. All 448 allowed V2 families lie inside official train 892 (297 arc1_eval +151 non_arc1); unique families stay 892. V2 adds new instances, not new unseen rules. 003 conclusion that V2 maps to current ARC2 training retained; do not label V2 as all-new rules.",
+  "non_arc1_206_and_55": {
+    "train_non_arc1_total": 206,
+    "train_non_arc1_with_V2": 151,
+    "train_non_arc1_without_V2_55": [
+      "17829a00",
+      "1b59e163",
+      "25c199f5",
+      "2ccd9fef",
+      "2de01db2",
+      "2f767503",
+      "320afe60",
+      "396d80d7",
+      "3ad05f52",
+      "3d588dc9",
+      "4df5b0ae",
+      "52364a65",
+      "5587a8d0",
+      "5623160b",
+      "5a719d11",
+      "5adee1b2",
+      "6165ea8f",
+      "6350f1f4",
+      "66ac4c3b",
+      "753ea09b",
+      "7acdf6d3",
+      "825aa9e9",
+      "83eb0a57",
+      "880c1354",
+      "8a6d367c",
+      "902510d5",
+      "9720b24f",
+      "97c75046",
+      "98c475bf",
+      "9b5080bb",
+      "9ba4a9aa",
+      "9f669b64",
+      "a09f6c25",
+      "a6953f00",
+      "aaecdb9a",
+      "ad3b40cf",
+      "b71a7747",
+      "b74ca5d1",
+      "bc93ec48",
+      "c4d1a9ae",
+      "c6141b15",
+      "c9680e90",
+      "d6542281",
+      "da6e95e5",
+      "db615bd4",
+      "df978a02",
+      "e4888269",
+      "e729b7be",
+      "e9fc42f2",
+      "ecb67b6d",
+      "f0100645",
+      "f18ec8cc",
+      "f341894c",
+      "f8f52ecc",
+      "fe45cba4"
+    ],
+    "in_first_round_index": {
+      "non_arc1_tasks_in_official_index": 206,
+      "non_arc1_tasks_in_gen_index": 151,
+      "all_55_in_official_index": true,
+      "conclusion": "206 non-ARC1 train tasks all have official sampling chance (206/206 in official index); 55 without V2 generator rely on official coverage (55/55 in official index, 0/55 in gen index by construction)."
+    }
+  },
+  "length_coverage_claim": "No true-token length coverage claimed for D2 (>4096 buckets unconfirmed/uncovered for training). G1 true training was <=1024 only (2514 pool, 800 consumed median 648 max 1024). D2 first-round does not claim long-bucket training."
+}

@@ -1,0 +1,522 @@
+{
+  "meta": {
+    "date": "2026-10-01",
+    "kind": "Hnew_holdout12",
+    "seed": 20260808,
+    "maps_to": {
+      "plan": "docs/plan/008-generalization-adaptation.md 3.1 H-new",
+      "progress": "docs/progress/008-generalization-adaptation.md 3"
+    },
+    "sources": [
+      {
+        "path": "experiments/007/g1/split.json",
+        "sha256": "094089459c4b05f7f0cf67a3f4ad98f79f3f48c78a7dcad6675866a897e476d8",
+        "role": "holdout100 universe"
+      },
+      {
+        "path": "experiments/007/raw/arc-prize-2026/arc-agi_training_challenges.json",
+        "sha256": "779eaba89790ebad9af02514a7efc0aefaf2cf8236f046a31bbf8b9ec48f20f5",
+        "role": "INPUT-SIDE ONLY: demo/test input grids (never demo output, never solutions)"
+      }
+    ],
+    "method": "sort 26 non-ARC1 holdout tasks by total_input_cells asc; tiers S=smallest 9, M=middle 9, L=largest 8; random.Random(20260808).sample(4) per tier by task_id order -> 12 selected, 14 reserve. No answers, no correctness info used.",
+    "tier_bounds": {
+      "S_cells": [
+        108,
+        407
+      ],
+      "M_cells": [
+        432,
+        656
+      ],
+      "L_cells": [
+        737,
+        3225
+      ]
+    },
+    "seen_note": "342dd610 is the only already-evaluated non-ARC1 holdout query (H25 cap2048, miss); seen_before=true wherever it lands, MUST NOT be reported as blind. Selected tasks must not join training or its generators.",
+    "fields": {
+      "task_id": "official id",
+      "seen_before": "true only for 342dd610",
+      "n_demo": "len(train) demos (input count)",
+      "n_test_queries": "len(test) queries (answers untouched)",
+      "total_input_cells": "sum HxW over demo inputs + test inputs; prompt-size proxy",
+      "max_side": "max input grid side",
+      "tier": "S/M/L by total_input_cells"
+    }
+  },
+  "universe26_sorted": [
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 108,
+      "max_side": 6,
+      "task_id": "e3f79277",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 138,
+      "max_side": 8,
+      "task_id": "6bcdb01e",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 192,
+      "max_side": 8,
+      "task_id": "aaef0977",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 272,
+      "max_side": 9,
+      "task_id": "db118e2a",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 288,
+      "max_side": 9,
+      "task_id": "cc9053aa",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 290,
+      "max_side": 9,
+      "task_id": "df9fd884",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 294,
+      "max_side": 10,
+      "task_id": "9344f635",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 330,
+      "max_side": 16,
+      "task_id": "aa62e3f4",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 407,
+      "max_side": 13,
+      "task_id": "7e4d4f7c",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 432,
+      "max_side": 12,
+      "task_id": "e45ef808",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 456,
+      "max_side": 13,
+      "task_id": "54dc2872",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 482,
+      "max_side": 16,
+      "task_id": "58c02a16",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 484,
+      "max_side": 11,
+      "task_id": "a416fc5b",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 489,
+      "max_side": 17,
+      "task_id": "984d8a3e",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 498,
+      "max_side": 13,
+      "task_id": "8886d717",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 500,
+      "max_side": 10,
+      "task_id": "ff2825db",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 570,
+      "max_side": 28,
+      "task_id": "dce56571",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 656,
+      "max_side": 16,
+      "task_id": "342dd610",
+      "seen_before": true,
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 737,
+      "max_side": 16,
+      "task_id": "878187ab",
+      "seen_before": false,
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 768,
+      "max_side": 16,
+      "task_id": "fc4aaf52",
+      "seen_before": false,
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 904,
+      "max_side": 26,
+      "task_id": "9841fdad",
+      "seen_before": false,
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 1024,
+      "max_side": 16,
+      "task_id": "52df9849",
+      "seen_before": false,
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 1133,
+      "max_side": 22,
+      "task_id": "a644e277",
+      "seen_before": false,
+      "tier": "L"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 1710,
+      "max_side": 19,
+      "task_id": "68bc2e87",
+      "seen_before": false,
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2307,
+      "max_side": 27,
+      "task_id": "ad173014",
+      "seen_before": false,
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 3225,
+      "max_side": 30,
+      "task_id": "c3fa4749",
+      "seen_before": false,
+      "tier": "L"
+    }
+  ],
+  "selected12": [
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 656,
+      "max_side": 16,
+      "task_id": "342dd610",
+      "seen_before": true,
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 1024,
+      "max_side": 16,
+      "task_id": "52df9849",
+      "seen_before": false,
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 456,
+      "max_side": 13,
+      "task_id": "54dc2872",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 482,
+      "max_side": 16,
+      "task_id": "58c02a16",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 1710,
+      "max_side": 19,
+      "task_id": "68bc2e87",
+      "seen_before": false,
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 138,
+      "max_side": 8,
+      "task_id": "6bcdb01e",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 294,
+      "max_side": 10,
+      "task_id": "9344f635",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 484,
+      "max_side": 11,
+      "task_id": "a416fc5b",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 1133,
+      "max_side": 22,
+      "task_id": "a644e277",
+      "seen_before": false,
+      "tier": "L"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 272,
+      "max_side": 9,
+      "task_id": "db118e2a",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 108,
+      "max_side": 6,
+      "task_id": "e3f79277",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 768,
+      "max_side": 16,
+      "task_id": "fc4aaf52",
+      "seen_before": false,
+      "tier": "L"
+    }
+  ],
+  "reserve14": [
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 192,
+      "max_side": 8,
+      "task_id": "aaef0977",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 288,
+      "max_side": 9,
+      "task_id": "cc9053aa",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 290,
+      "max_side": 9,
+      "task_id": "df9fd884",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 330,
+      "max_side": 16,
+      "task_id": "aa62e3f4",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 407,
+      "max_side": 13,
+      "task_id": "7e4d4f7c",
+      "seen_before": false,
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 432,
+      "max_side": 12,
+      "task_id": "e45ef808",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 489,
+      "max_side": 17,
+      "task_id": "984d8a3e",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 498,
+      "max_side": 13,
+      "task_id": "8886d717",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 500,
+      "max_side": 10,
+      "task_id": "ff2825db",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 570,
+      "max_side": 28,
+      "task_id": "dce56571",
+      "seen_before": false,
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 737,
+      "max_side": 16,
+      "task_id": "878187ab",
+      "seen_before": false,
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 904,
+      "max_side": 26,
+      "task_id": "9841fdad",
+      "seen_before": false,
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2307,
+      "max_side": 27,
+      "task_id": "ad173014",
+      "seen_before": false,
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 3225,
+      "max_side": 30,
+      "task_id": "c3fa4749",
+      "seen_before": false,
+      "tier": "L"
+    }
+  ]
+}

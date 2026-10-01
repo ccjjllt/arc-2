@@ -1,0 +1,20 @@
+{
+  "status": "selected",
+  "date": "2026-10-01",
+  "seed": 20260808,
+  "maps_to": {
+    "plan": "docs/plan/008-generalization-adaptation.md 3.1 E24",
+    "progress": "docs/progress/008-generalization-adaptation.md 8"
+  },
+  "locate": "kaggle competitions files (read-only) listed arc-agi_evaluation_challenges.json; downloaded CHALLENGES ONLY read-only to experiments/008/raw-eval/; solutions never downloaded/viewed; no push, no GPU session",
+  "source_file": {
+    "path": "experiments/008/raw-eval/arc-agi_evaluation_challenges.json",
+    "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+    "n_tasks": 120
+  },
+  "list_file": "experiments/008/e0_e24_24.json",
+  "selected_tasks": 24,
+  "selected_queries": 36,
+  "reserve_tasks": 96,
+  "scoring": "NOT SCORED this round; scoring allowed only after list saved"
+}

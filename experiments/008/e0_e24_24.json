@@ -1,0 +1,1006 @@
+{
+  "meta": {
+    "date": "2026-10-01",
+    "kind": "E24_public_eval_slice",
+    "seed": 20260808,
+    "maps_to": {
+      "plan": "docs/plan/008-generalization-adaptation.md 3.1 E24",
+      "progress": "docs/progress/008-generalization-adaptation.md 8"
+    },
+    "sources": [
+      {
+        "path": "experiments/008/raw-eval/arc-agi_evaluation_challenges.json",
+        "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+        "role": "INPUT-SIDE ONLY: official 120-task public-eval challenges; solutions NEVER downloaded/viewed"
+      }
+    ],
+    "method": "sort 120 eval tasks by total_input_cells asc; tiers S/M/L = 40/40/40; random.Random(20260808).sample(8) per tier -> 24 selected, 96 reserve. Prompt-side metadata only; no scoring this round.",
+    "tier_bounds": {
+      "S_cells": [
+        144,
+        1168
+      ],
+      "M_cells": [
+        1173,
+        2095
+      ],
+      "L_cells": [
+        2100,
+        4620
+      ]
+    },
+    "total_queries_selected": 36,
+    "fields": {
+      "task_id": "official eval id",
+      "n_demo": "len(train)",
+      "n_test_queries": "len(test) queries",
+      "total_input_cells": "input-side size proxy",
+      "max_side": "max input side",
+      "tier": "S/M/L"
+    }
+  },
+  "selected24": [
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 771,
+      "max_side": 21,
+      "task_id": "16de56c4",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1003,
+      "max_side": 22,
+      "task_id": "1818057f",
+      "tier": "S"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 2,
+      "total_input_cells": 1994,
+      "max_side": 30,
+      "task_id": "21897d95",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1173,
+      "max_side": 26,
+      "task_id": "271d71e2",
+      "tier": "M"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 880,
+      "max_side": 28,
+      "task_id": "291dc1e1",
+      "tier": "S"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 2372,
+      "max_side": 24,
+      "task_id": "2ba387bc",
+      "tier": "L"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 2,
+      "total_input_cells": 2890,
+      "max_side": 25,
+      "task_id": "2d0172a1",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1390,
+      "max_side": 21,
+      "task_id": "35ab12c3",
+      "tier": "M"
+    },
+    {
+      "n_demo": 6,
+      "n_test_queries": 2,
+      "total_input_cells": 2102,
+      "max_side": 30,
+      "task_id": "36a08778",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1024,
+      "max_side": 16,
+      "task_id": "409aa875",
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 640,
+      "max_side": 20,
+      "task_id": "4c3d4a41",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1829,
+      "max_side": 23,
+      "task_id": "4c416de3",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 527,
+      "max_side": 23,
+      "task_id": "78332cb0",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2880,
+      "max_side": 30,
+      "task_id": "7c66cb00",
+      "tier": "L"
+    },
+    {
+      "n_demo": 5,
+      "n_test_queries": 2,
+      "total_input_cells": 1876,
+      "max_side": 27,
+      "task_id": "88bcf3b4",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 3600,
+      "max_side": 30,
+      "task_id": "9aaea919",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 3000,
+      "max_side": 30,
+      "task_id": "a25697e4",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 3600,
+      "max_side": 30,
+      "task_id": "a32d8b75",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2062,
+      "max_side": 26,
+      "task_id": "a47bf94d",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2221,
+      "max_side": 28,
+      "task_id": "aa4ec2a5",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1936,
+      "max_side": 22,
+      "task_id": "b5ca7ac4",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 3,
+      "total_input_cells": 600,
+      "max_side": 10,
+      "task_id": "d35bdbdc",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 605,
+      "max_side": 11,
+      "task_id": "dd6b8c4b",
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 1958,
+      "max_side": 30,
+      "task_id": "edb79dae",
+      "tier": "M"
+    }
+  ],
+  "reserve96": [
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 144,
+      "max_side": 6,
+      "task_id": "eee78d87",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 400,
+      "max_side": 10,
+      "task_id": "28a6681f",
+      "tier": "S"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 2,
+      "total_input_cells": 437,
+      "max_side": 13,
+      "task_id": "20270e3b",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 473,
+      "max_side": 15,
+      "task_id": "dbff022c",
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 506,
+      "max_side": 14,
+      "task_id": "45a5af55",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 544,
+      "max_side": 13,
+      "task_id": "3dc255db",
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 563,
+      "max_side": 15,
+      "task_id": "e8686506",
+      "tier": "S"
+    },
+    {
+      "n_demo": 5,
+      "n_test_queries": 2,
+      "total_input_cells": 592,
+      "max_side": 16,
+      "task_id": "f931b4a8",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 600,
+      "max_side": 20,
+      "task_id": "97d7923e",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 674,
+      "max_side": 17,
+      "task_id": "bf45cf4b",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 732,
+      "max_side": 17,
+      "task_id": "31f7f899",
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 746,
+      "max_side": 19,
+      "task_id": "2b83f449",
+      "tier": "S"
+    },
+    {
+      "n_demo": 5,
+      "n_test_queries": 2,
+      "total_input_cells": 754,
+      "max_side": 16,
+      "task_id": "269e22fb",
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 768,
+      "max_side": 16,
+      "task_id": "7666fa5d",
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 768,
+      "max_side": 16,
+      "task_id": "7b5033c1",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 780,
+      "max_side": 19,
+      "task_id": "136b0064",
+      "tier": "S"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 2,
+      "total_input_cells": 826,
+      "max_side": 29,
+      "task_id": "b0039139",
+      "tier": "S"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 875,
+      "max_side": 25,
+      "task_id": "7491f3cf",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 900,
+      "max_side": 20,
+      "task_id": "8f3a5a89",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 916,
+      "max_side": 25,
+      "task_id": "6e453dd6",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 918,
+      "max_side": 19,
+      "task_id": "b9e38dc0",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 976,
+      "max_side": 20,
+      "task_id": "faa9f03d",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 3,
+      "total_input_cells": 987,
+      "max_side": 20,
+      "task_id": "1ae2feb7",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1001,
+      "max_side": 27,
+      "task_id": "5545f144",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 1022,
+      "max_side": 20,
+      "task_id": "247ef758",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1024,
+      "max_side": 16,
+      "task_id": "d59b0160",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1024,
+      "max_side": 16,
+      "task_id": "e376de54",
+      "tier": "S"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 1085,
+      "max_side": 25,
+      "task_id": "53fb4810",
+      "tier": "S"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 1096,
+      "max_side": 20,
+      "task_id": "332f06d7",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 1118,
+      "max_side": 22,
+      "task_id": "581f7754",
+      "tier": "S"
+    },
+    {
+      "n_demo": 5,
+      "n_test_queries": 3,
+      "total_input_cells": 1152,
+      "max_side": 12,
+      "task_id": "b6f77b65",
+      "tier": "S"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 2,
+      "total_input_cells": 1168,
+      "max_side": 19,
+      "task_id": "9385bd28",
+      "tier": "S"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 1178,
+      "max_side": 30,
+      "task_id": "65b59efc",
+      "tier": "M"
+    },
+    {
+      "n_demo": 5,
+      "n_test_queries": 1,
+      "total_input_cells": 1222,
+      "max_side": 25,
+      "task_id": "db695cfb",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1230,
+      "max_side": 19,
+      "task_id": "db0c5428",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1293,
+      "max_side": 23,
+      "task_id": "9bbf930d",
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 1368,
+      "max_side": 29,
+      "task_id": "135a2760",
+      "tier": "M"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 1400,
+      "max_side": 20,
+      "task_id": "dfadab01",
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 1416,
+      "max_side": 26,
+      "task_id": "446ef5d2",
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 1432,
+      "max_side": 28,
+      "task_id": "c7f57c3e",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 1433,
+      "max_side": 19,
+      "task_id": "71e489b6",
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 1462,
+      "max_side": 30,
+      "task_id": "80a900e0",
+      "tier": "M"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 2,
+      "total_input_cells": 1514,
+      "max_side": 20,
+      "task_id": "abc82100",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1560,
+      "max_side": 26,
+      "task_id": "da515329",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1596,
+      "max_side": 23,
+      "task_id": "58f5dbd5",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1600,
+      "max_side": 20,
+      "task_id": "6ffbe589",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1600,
+      "max_side": 20,
+      "task_id": "7b3084d4",
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 1645,
+      "max_side": 30,
+      "task_id": "7b80bb43",
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 1650,
+      "max_side": 25,
+      "task_id": "5dbc8537",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1656,
+      "max_side": 30,
+      "task_id": "800d221b",
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 1700,
+      "max_side": 30,
+      "task_id": "de809cff",
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 1756,
+      "max_side": 28,
+      "task_id": "7ed72f31",
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 1770,
+      "max_side": 30,
+      "task_id": "898e7135",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 1813,
+      "max_side": 21,
+      "task_id": "4a21e3da",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 1828,
+      "max_side": 20,
+      "task_id": "142ca369",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1849,
+      "max_side": 30,
+      "task_id": "7b0280bc",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1875,
+      "max_side": 27,
+      "task_id": "8b9c3697",
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 1936,
+      "max_side": 22,
+      "task_id": "8e5c0c38",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1936,
+      "max_side": 22,
+      "task_id": "a395ee82",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1939,
+      "max_side": 25,
+      "task_id": "58490d8a",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1962,
+      "max_side": 26,
+      "task_id": "2c181942",
+      "tier": "M"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 2,
+      "total_input_cells": 1987,
+      "max_side": 29,
+      "task_id": "cb2d8a2c",
+      "tier": "M"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 2000,
+      "max_side": 20,
+      "task_id": "88e364bc",
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 2095,
+      "max_side": 30,
+      "task_id": "4e34c42c",
+      "tier": "M"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 2100,
+      "max_side": 30,
+      "task_id": "8698868d",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2139,
+      "max_side": 27,
+      "task_id": "8f215267",
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 2162,
+      "max_side": 29,
+      "task_id": "64efde09",
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 2187,
+      "max_side": 27,
+      "task_id": "b10624e5",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2293,
+      "max_side": 29,
+      "task_id": "fc7cae8d",
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 2302,
+      "max_side": 29,
+      "task_id": "38007db0",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2316,
+      "max_side": 27,
+      "task_id": "c4d067a0",
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 2320,
+      "max_side": 26,
+      "task_id": "cbebaa4b",
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 2334,
+      "max_side": 30,
+      "task_id": "6e4f6532",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2360,
+      "max_side": 30,
+      "task_id": "a6f40cea",
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 2376,
+      "max_side": 30,
+      "task_id": "f560132c",
+      "tier": "L"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 2511,
+      "max_side": 27,
+      "task_id": "5961cc34",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2520,
+      "max_side": 30,
+      "task_id": "e87109e9",
+      "tier": "L"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 2,
+      "total_input_cells": 2528,
+      "max_side": 30,
+      "task_id": "8b7bacbf",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2542,
+      "max_side": 30,
+      "task_id": "89565ca0",
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 2589,
+      "max_side": 30,
+      "task_id": "62593bfd",
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 2652,
+      "max_side": 30,
+      "task_id": "3a25b0d8",
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 2700,
+      "max_side": 30,
+      "task_id": "16b78196",
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 2700,
+      "max_side": 30,
+      "task_id": "67e490f4",
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 2700,
+      "max_side": 30,
+      "task_id": "a251c730",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 2730,
+      "max_side": 30,
+      "task_id": "13e47133",
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 2801,
+      "max_side": 30,
+      "task_id": "221dfab4",
+      "tier": "L"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 2,
+      "total_input_cells": 2984,
+      "max_side": 30,
+      "task_id": "e12f9a14",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 3130,
+      "max_side": 30,
+      "task_id": "3e6067c3",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 3364,
+      "max_side": 29,
+      "task_id": "b99e7126",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 3450,
+      "max_side": 30,
+      "task_id": "195c6913",
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 3600,
+      "max_side": 30,
+      "task_id": "4c7dc4dd",
+      "tier": "L"
+    },
+    {
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 3600,
+      "max_side": 30,
+      "task_id": "e3721c99",
+      "tier": "L"
+    },
+    {
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 4382,
+      "max_side": 30,
+      "task_id": "20a9e565",
+      "tier": "L"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 4500,
+      "max_side": 30,
+      "task_id": "0934a4d8",
+      "tier": "L"
+    },
+    {
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 4500,
+      "max_side": 30,
+      "task_id": "981571dc",
+      "tier": "L"
+    },
+    {
+      "n_demo": 5,
+      "n_test_queries": 2,
+      "total_input_cells": 4620,
+      "max_side": 30,
+      "task_id": "d8e07eb2",
+      "tier": "L"
+    }
+  ]
+}

@@ -148,3 +148,23 @@ Kaggle MCP 查询记录时间 `2026-10-01T12:56:13Z`，北京时间 20:56。API 
 本轮新增008计划、008研究结果、两份证据JSON，更新README和007的后续研究指向。没有修改G1/G2原数据、adapter或算法脚本，没有新模型成绩。
 
 仍未运行：配对底座留出评价、代表性公共evaluation、G2训练、GDN新增模块训练、G3真实转换和训练、TTT、TTA/PoE新对照、程序互补、Unsloth对照、使用本轮权重的竞赛提交。历史30.14保持为未修改公开Notebook的复制试提交。
+
+## 10. 2026-10-01 CPU执行补记（E0清单+D2索引+代码缺口，不含GPU）
+
+本节记录008计划§3/§4/§5-6交接后的本地CPU执行；没有启动GPU训练/推理/提交，没有新模型成绩，没有修改G1/G2原池与adapter权重。
+
+- E0清单（`experiments/008/e0_*.json`，seed统一`20260808`，输入侧分层）：
+  - `e0_h25_bridge.json`：25条/24task重建，口径不合并（cap960 0/5，cap2048 greedy 6/sample 4/oracle 6），seed=null注明重建无抽样。
+  - `e0_hnew_12.json`：26选12（S/M/L各4）+reserve14，只用输入格元数据；`342dd610`命中选中组并标`seen_before=true`，其余false；不得加入训练/生成器。
+  - `e0_e24_24.json`+`e0_e24_STATUS.json`：官方120题题面（`raw-eval/arc-agi_evaluation_challenges.json`，sha `e7c62a4b…`）按输入格分层S/M/L各40抽8，得24task/36query+reserve96；solutions从未下载查看；本轮`NOT SCORED`。
+- D2索引（`experiments/008/data/`，007原池sha不变）：
+  - `d2_manifest.json`（seed 20260930，892/100/8继承，52排除，来源→task→base→query→增强，40/60起点，suspect标记不删）。
+  - `d2_sample_index.jsonl` 3000行（官方1200：turn0全892+turn1前308；生成1800：复用G2已保留750base，pass1 ident750+pass2 rot90750+pass3 rot180前300，每base至多3行；未新造格子）。
+  - `d2_coverage_report.json`：本地无27B tokenizer，真token五桶均为`unconfirmed`，>4096明确未覆盖；206非ARC1官方覆盖206/206，55无V2靠官方55/55、生成侧0/55；多query仅首query进首轮，test1等记为未覆盖。
+  - `d2_audit20.md`：20 base人工初查（长7/非ARC1 6/多色9/重复5/LOO3/生成6）；生成侧4 slots独立种子、无跨slot共享、`validate()`未运行，6例均为存疑/未确认；11/12两LOO在旧规则下会被删，D2已改标记保留。
+  - 偏差说明：首轮每base至多3行，略宽于计划“1–2个一致增强”，远少于G2的24；3000为CPU索引目标，非GPU训完承诺。
+- 代码缺口最小实现（仅`scripts/`，`py_compile`与`--help`已验，未跑模型）：
+  - `train_grid_sft.py`新增`--init-adapter`（与`--resume`互斥；新建LoRA仅复制交集shape一致的`lora_*`，新模块零初始化；池/cursor/optimizer/scheduler/RNG全重启；`run_config.init_adapter/stage`记旧新训练量；`adapter_step_{N}`immutable快照，`adapter/`仅作最新指针）；`--resume`原精确恢复语义未动。
+  - `solve_grid.py`新增`--compare-mode base_vs_adapter`（单次加载，先base greedy经`disable_adapter`确认再adapter greedy，切换清cache；要求`--adapter`+2048+`--n-sample 0`）、`--task-view-seed`（sha256(task|query|view|sample)，默认关闭时沿用旧`sample_seed`）、`--second-view transpose`（全demo+query转置、逆变换重评、去重/oracle统计）；逐query四类+合法/尺寸/截断/EM/时间/tokens。
+  - 未实现记入`experiments/008/code_gaps_followup.json`：GDN独立分支、混合cache DFS移植、旋转/换色视角、TTT入口、程序分支、显式长度混合CLI。
+- 合规：无测试文件/CI新增；G1/G2 episodes sha复核不变；raw-eval仅题面；GPU配额未动用（仍0.7874h，刷新10-03 08:00北京）。下一步仍按008：先跑E0配对评价，再定G2初始化与小规模TTT/TTA。
