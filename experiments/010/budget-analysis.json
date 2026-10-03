@@ -1,0 +1,506 @@
+{
+  "date": "2026-10-03",
+  "status": "CPU research design only; no GPU launched, no new model outcomes",
+  "provenance": {
+    "experiments/008/local-audit.json": "4697ce3e7d69bf33ae62937b4c98d341ed46e59d7f10dcf707962978e3b12a3e",
+    "experiments/008/e0_hnew_12.json": "a732ba3c8191df16671e5792af9843fd3665f217ff2ed01ca1ca9a299178627f",
+    "experiments/008/e0_e24_24.json": "12d817bbe91735ad8f308cef9702ef52a0635cade76159869a6aae5932ce97d3",
+    "experiments/007/g1/kaggle-v1/007-g1/train_log.jsonl": "8e12456d678e7cfc0459bddbb1c19ffd8dc392c721079a42be2e9cc257a5a6fa",
+    "docs/progress/007-grid-specialist-sft.md": "95294c9c13f382dff4c01d450f5d28264a18c247590eb8dac1b2a1b54d2b235c"
+  },
+  "quota_input": {
+    "source": "Parent agent reports current Kaggle tool read; this subagent did not independently call quota API",
+    "used_seconds": 0,
+    "reserved_seconds": 0,
+    "total_seconds": 108000,
+    "next_reset_utc": "2026-10-10T00:00:00Z",
+    "planning_multiplier": 2,
+    "wall_hours_at_planning_multiplier": 15,
+    "warning": "Read actual charge before/after every session. Historical account delta is not explained by logged wall and the stated 2x multiplier."
+  },
+  "historical_timing": {
+    "g1_update_seconds": {
+      "n": 200,
+      "sum": 4567.775200000002,
+      "mean": 22.838876,
+      "median": 22.5376,
+      "min": 15.7539,
+      "max": 31.7946,
+      "p90_nearest_rank": 26.7082
+    },
+    "g1_full_train_tokens": 521364,
+    "g1_answer_eos_tokens": 62808,
+    "g1_actual_optimizer_update_count": 200,
+    "g1_last_update_lr": 0,
+    "g1_notebook_max_log_clock_s": 5045,
+    "g1_account_quota_delta_s": 22198.43,
+    "account_delta_over_logged_wall": 4.400085232903865,
+    "inference_runs": [
+      {
+        "path": "experiments/007/g1/kaggle-eval-rest-v1/007-g1-eval-rest/solve.json",
+        "cap": 2048,
+        "load_s": 535.183,
+        "elapsed_s": 2003.459,
+        "generate_s": 1447.8538,
+        "generated_tokens": 6140,
+        "n_queries": 9
+      },
+      {
+        "path": "experiments/007/g1/kaggle-eval-rest2-v1/007-g1-eval-rest2/solve.json",
+        "cap": 2048,
+        "load_s": 291.333,
+        "elapsed_s": 1611.743,
+        "generate_s": 1300.9169000000002,
+        "generated_tokens": 5516,
+        "n_queries": 11
+      },
+      {
+        "path": "experiments/007/g1/kaggle-eval-v1/007-g1-eval/solve.json",
+        "cap": 960,
+        "load_s": 611.137,
+        "elapsed_s": 2002.441,
+        "generate_s": 1371.0714999999998,
+        "generated_tokens": 5752,
+        "n_queries": 13
+      }
+    ],
+    "greedy_cap2048_20query_seconds": {
+      "n": 20,
+      "sum": 1374.7179,
+      "mean": 68.735895,
+      "median": 61.790949999999995,
+      "min": 0.8677,
+      "max": 148.1374,
+      "p90_nearest_rank": 121.1785
+    },
+    "greedy_cap2048_generated_tokens": 5828,
+    "sample_cap2048_20query_seconds": {
+      "n": 20,
+      "sum": 1374.0528,
+      "mean": 68.70264,
+      "median": 61.87535,
+      "min": 0.8656,
+      "max": 148.3506,
+      "p90_nearest_rank": 121.3157
+    },
+    "sample_added_query_hits": 0,
+    "warning": "Historical inference tasks are mostly old ARC1 and generally easier/shorter. Timing includes prefill but excludes model load. No extrapolation here is a prediction of ARC2 performance."
+  },
+  "budget_caps_not_predictions": [
+    {
+      "phase": "S0: shared load, target-only head <=20min probe, E0 and formatter step0",
+      "wall_hours_cap": 2.5,
+      "quota_hours_at_2x": 5.0
+    },
+    {
+      "phase": "Matched F0/F1 training at 25/50 and probe",
+      "wall_hours_cap": 4.5,
+      "quota_hours_at_2x": 9.0
+    },
+    {
+      "phase": "One conditional continuation toward 100",
+      "wall_hours_cap": 1.0,
+      "quota_hours_at_2x": 2.0
+    },
+    {
+      "phase": "A1 extra candidate and bounded TTT",
+      "wall_hours_cap": 2.0,
+      "quota_hours_at_2x": 4.0
+    },
+    {
+      "phase": "Frozen confirmation",
+      "wall_hours_cap": 1.5,
+      "quota_hours_at_2x": 3.0
+    },
+    {
+      "phase": "Uncommitted billing/save/recovery reserve",
+      "wall_hours_cap": 3.5,
+      "quota_hours_at_2x": 7.0
+    }
+  ],
+  "budget_total_wall_hours": 15.0,
+  "selection_rule": "Within each existing S/M/L input-side tier, rank sha256(20261003|group|tier|task_id), take 2. TTT pilot takes first 1. Uses only existing manifest metadata, no solutions or result selection. Original 008 manifests unchanged.",
+  "probe_P12": {
+    "H_new": {
+      "n_tasks": 6,
+      "n_queries": 7,
+      "entries": [
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 272,
+          "max_side": 9,
+          "task_id": "db118e2a",
+          "seen_before": false,
+          "tier": "S",
+          "manifest_group": "probe_h"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 1,
+          "total_input_cells": 108,
+          "max_side": 6,
+          "task_id": "e3f79277",
+          "seen_before": false,
+          "tier": "S",
+          "manifest_group": "probe_h"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 482,
+          "max_side": 16,
+          "task_id": "58c02a16",
+          "seen_before": false,
+          "tier": "M",
+          "manifest_group": "probe_h"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 656,
+          "max_side": 16,
+          "task_id": "342dd610",
+          "seen_before": true,
+          "tier": "M",
+          "manifest_group": "probe_h"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 1,
+          "total_input_cells": 768,
+          "max_side": 16,
+          "task_id": "fc4aaf52",
+          "seen_before": false,
+          "tier": "L",
+          "manifest_group": "probe_h"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 2,
+          "total_input_cells": 1024,
+          "max_side": 16,
+          "task_id": "52df9849",
+          "seen_before": false,
+          "tier": "L",
+          "manifest_group": "probe_h"
+        }
+      ]
+    },
+    "E24": {
+      "n_tasks": 6,
+      "n_queries": 7,
+      "entries": [
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 880,
+          "max_side": 28,
+          "task_id": "291dc1e1",
+          "tier": "S",
+          "manifest_group": "probe_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 1003,
+          "max_side": 22,
+          "task_id": "1818057f",
+          "tier": "S",
+          "manifest_group": "probe_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 1829,
+          "max_side": 23,
+          "task_id": "4c416de3",
+          "tier": "M",
+          "manifest_group": "probe_e"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 2,
+          "total_input_cells": 1994,
+          "max_side": 30,
+          "task_id": "21897d95",
+          "tier": "M",
+          "manifest_group": "probe_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 2221,
+          "max_side": 28,
+          "task_id": "aa4ec2a5",
+          "tier": "L",
+          "manifest_group": "probe_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 3600,
+          "max_side": 30,
+          "task_id": "9aaea919",
+          "tier": "L",
+          "manifest_group": "probe_e"
+        }
+      ]
+    },
+    "total_tasks": 12,
+    "total_queries": 14,
+    "use": "Repeated model/checkpoint/view development; never called untouched confirmation. Includes seen 342dd610."
+  },
+  "confirmation_C12": {
+    "H_reserve": {
+      "n_tasks": 6,
+      "n_queries": 7,
+      "entries": [
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 290,
+          "max_side": 9,
+          "task_id": "df9fd884",
+          "seen_before": false,
+          "tier": "S",
+          "manifest_group": "confirm_h"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 407,
+          "max_side": 13,
+          "task_id": "7e4d4f7c",
+          "seen_before": false,
+          "tier": "S",
+          "manifest_group": "confirm_h"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 1,
+          "total_input_cells": 432,
+          "max_side": 12,
+          "task_id": "e45ef808",
+          "seen_before": false,
+          "tier": "M",
+          "manifest_group": "confirm_h"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 570,
+          "max_side": 28,
+          "task_id": "dce56571",
+          "seen_before": false,
+          "tier": "M",
+          "manifest_group": "confirm_h"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 1,
+          "total_input_cells": 737,
+          "max_side": 16,
+          "task_id": "878187ab",
+          "seen_before": false,
+          "tier": "L",
+          "manifest_group": "confirm_h"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 2,
+          "total_input_cells": 3225,
+          "max_side": 30,
+          "task_id": "c3fa4749",
+          "seen_before": false,
+          "tier": "L",
+          "manifest_group": "confirm_h"
+        }
+      ]
+    },
+    "E_reserve": {
+      "n_tasks": 6,
+      "n_queries": 9,
+      "entries": [
+        {
+          "n_demo": 4,
+          "n_test_queries": 2,
+          "total_input_cells": 437,
+          "max_side": 13,
+          "task_id": "20270e3b",
+          "tier": "S",
+          "manifest_group": "confirm_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 2,
+          "total_input_cells": 1118,
+          "max_side": 22,
+          "task_id": "581f7754",
+          "tier": "S",
+          "manifest_group": "confirm_e"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 1400,
+          "max_side": 20,
+          "task_id": "dfadab01",
+          "tier": "M",
+          "manifest_group": "confirm_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 1230,
+          "max_side": 19,
+          "task_id": "db0c5428",
+          "tier": "M",
+          "manifest_group": "confirm_e"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 2,
+          "total_input_cells": 2302,
+          "max_side": 29,
+          "task_id": "38007db0",
+          "tier": "L",
+          "manifest_group": "confirm_e"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 4500,
+          "max_side": 30,
+          "task_id": "981571dc",
+          "tier": "L",
+          "manifest_group": "confirm_e"
+        }
+      ]
+    },
+    "total_tasks": 12,
+    "total_queries": 16,
+    "use": "No scores inspected until initialization/format/checkpoint/decoding frozen. One confirmation, no tuning on this result; then mark it used."
+  },
+  "TTT_P6": {
+    "H_new": {
+      "n_tasks": 3,
+      "n_queries": 3,
+      "entries": [
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 272,
+          "max_side": 9,
+          "task_id": "db118e2a",
+          "seen_before": false,
+          "tier": "S",
+          "manifest_group": "probe_h"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 482,
+          "max_side": 16,
+          "task_id": "58c02a16",
+          "seen_before": false,
+          "tier": "M",
+          "manifest_group": "probe_h"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 1,
+          "total_input_cells": 768,
+          "max_side": 16,
+          "task_id": "fc4aaf52",
+          "seen_before": false,
+          "tier": "L",
+          "manifest_group": "probe_h"
+        }
+      ]
+    },
+    "E24": {
+      "n_tasks": 3,
+      "n_queries": 3,
+      "entries": [
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 880,
+          "max_side": 28,
+          "task_id": "291dc1e1",
+          "tier": "S",
+          "manifest_group": "probe_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 1829,
+          "max_side": 23,
+          "task_id": "4c416de3",
+          "tier": "M",
+          "manifest_group": "probe_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 2221,
+          "max_side": 28,
+          "task_id": "aa4ec2a5",
+          "tier": "L",
+          "manifest_group": "probe_e"
+        }
+      ]
+    },
+    "total_tasks": 6,
+    "total_queries": 6,
+    "conditional_microsteps_if_8_updates_accum4": 192,
+    "warning": "Tiny pilot; do not infer general benefit from one task. Per-task reset from same checkpoint; no query gold in adaptation."
+  },
+  "E0_counts": {
+    "H_new_tasks": 12,
+    "H_new_queries": 13,
+    "E24_tasks": 24,
+    "E24_queries": 36,
+    "base_G1_F0_generations_if_all": 98,
+    "F1_step0_on_P12_generations": 14,
+    "total_primary_generations_if_all": 112,
+    "old_mean_only_scenario_hours_excluding_load": 2.1384500666666666,
+    "scenario_warning": "Scenario arithmetic using old query cost, NOT runtime prediction. Long new tasks may exceed this. End with explicit incomplete manifest, do not drop demos.",
+    "order": "Complete all P12 base/G1 pairs first (H and E tier-interleaved); then remaining H-new/E24 in predeclared tier-interleaved order. 2.5h cap does not promise all 98 pairs-of-arm generations. Record unfinished tasks explicitly."
+  },
+  "matched_training_protocol": {
+    "init": "Same weight checkpoint selected after E0; same fresh optimizer/RNG; no F0->F1 sequential inheritance",
+    "raw_order": "Parent prepares and freezes 400 common raw episodes from CPU materialization, excluding repair-pair ID collisions; F0<=4096 and F1<=4096. Two formats preserve same raw id/order, demos/query/target/augmentation. Trainer legacy without length-mixture, max_len=overflow_len=4096, identical seed and identical candidate pool order must produce same actual shuffle and consumption prefix. Verify consumed IDs exactly; do not depend on current fair-task-base grouping bug. No independent per-format bucket selection.",
+    "schedule": "Both runs have lr2e-5,warmup10,horizon100,save25/50/100. Pause at25/50 without changing schedule horizon. Exact resume for continuation; never restart schedule from50.",
+    "selection": "F0 vs F1 at matched checkpoints answers representation under same examples, not fair-vs-legacy or extra-F1-coverage benefit. Only one conditional branch gets100. Compare equal-update and equal-wall separately.",
+    "evaluation": "F0/F1 step0 before training; repeated P12 at25/50; inspect health/loss at25, do not treat one-query difference as decisive. Pick one final checkpoint then confirm once.",
+    "all_shortfall": "If a cap/OOM prevents matched checkpoints, compare only last common checkpoint and consumed raw prefix; record remaining work as unrun."
+  },
+  "minimum_decisions": [
+    "Whether original G1 has positive/negative paired evidence on H-new/E24 vs base",
+    "Whether F1 preserves/retrieves solved tasks while reducing actual training/inference cost on identical raw episodes",
+    "Whether a second transformed candidate adds useful solves beyond same-view sample, and whether bounded task-local adaptation merits further budget"
+  ],
+  "stop_conditions": [
+    "On OOM/NaN/schema mismatch, stop affected arm and save logs; do not silently truncate/rewrite episodes or silently fallback format",
+    "Do not start a new task/update unless the remaining phase and quota budget includes measured p90 work plus save time",
+    "No improvement at format50 and no complementary solves: do not auto-expand both arms to100",
+    "A1 no new solves: skip 4view/16step/NLL rerank expansion; TTT no signal: keep as negative pilot",
+    "Quota multiplier anomaly: reconcile active sessions and conservatively reduce following job. Reserve is not free funding until actual accounting is known",
+    "Do not train on public evaluation query answers, confirmation query answers, or original H holdout families"
+  ],
+  "resource_reuse": [
+    "One base load per coherent session; adapter states around160MB can be CPU saved/restored between arms, optimizer states separate",
+    "No repeat model load per query or per checkpoint; invalidate cache across adapter/formatter changes",
+    "Prepare wheels/tokenizer/materialized pools/manifests on CPU before enabling accelerator; record actual startup after accelerator allocation",
+    "Reuse exact matching E0 greedy outputs as A1 baseline; generate only new sample/transform/TTT candidates",
+    "H25 history bridge is low priority after new representative questions; reuse prior20 G1 greedy only under matching model/code/formatter/generation settings"
+  ],
+  "target_only_head_probe": {
+    "wall_minutes_cap": 20,
+    "contained_in": "S0 2.5h, not extra budget",
+    "status": "No model execution by this subagent; implementation/review delegated elsewhere",
+    "purpose": "Measure fixed short/medium/long examples; verify numerical consistency and throughput/memory before changing main training stack."
+  }
+}

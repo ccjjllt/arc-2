@@ -21,6 +21,172 @@ import time
 import traceback
 
 FORMATTER_NAME = "space_digits_v1"
+# Canonical training formatters (solve-compatible). Legacy space_digits_v1
+# aliases to F0. Data rows carry space/compact; CLI/sidecar use
+# f0_space/f1_compact; both normalize here. Mixed-formatter input is rejected.
+FORMATTER_F0 = "f0_space"
+FORMATTER_F1 = "f1_compact"
+FORMATTER_CHOICES = ("auto", FORMATTER_F0, FORMATTER_F1)
+FORMATTER_SIDECAR = "formatter.json"
+
+
+def _normalize_train_formatter(value):
+    """Map formatter aliases to f0_space/f1_compact. Legacy space_digits_v1 -> F0."""
+    text = str(value or "").strip().lower().replace("-", "_")
+    if text in ("f0_space", "f0", "space", "space_digits_v1", "space_digits"):
+        return FORMATTER_F0
+    if text in ("f1_compact", "f1", "compact"):
+        return FORMATTER_F1
+    raise RuntimeError("unknown formatter value: %r" % (value,))
+
+
+def _row_formatter(row):
+    """Normalized formatter for one JSONL row. Missing/empty reads as F0 legacy."""
+    raw = row.get("formatter") if isinstance(row, dict) else None
+    if raw is None or (isinstance(raw, str) and not raw.strip()):
+        return FORMATTER_F0
+    return _normalize_train_formatter(raw)
+
+
+def resolve_train_formatter(cli_value, rows):
+    """Data/CLI two-choice unified formatter. Rejects mixed-formatter input.
+
+    auto: formatter comes from data rows (missing reads as F0); mixed rows
+    raise. Explicit CLI: all rows must match the CLI value, else raise.
+    Returns canonical f0_space/f1_compact.
+    """
+    cli_text = str(cli_value if cli_value is not None else "auto").strip().lower().replace("-", "_")
+    cli_norm = None
+    if cli_text not in ("auto", ""):
+        cli_norm = _normalize_train_formatter(cli_text)
+    seen = []
+    for row in (rows or []):
+        fmt = _row_formatter(row)
+        if fmt not in seen:
+            seen.append(fmt)
+    if len(seen) > 1:
+        raise RuntimeError(
+            "mixed-formatter input: rows carry %s; refusing to mix F0/F1 in one run" % (seen,)
+        )
+    data_fmt = seen[0] if seen else FORMATTER_F0
+    if cli_norm is None:
+        return data_fmt
+    if cli_norm != data_fmt:
+        raise RuntimeError(
+            "mixed-formatter input: --formatter %s disagrees with data %s; refusing to mix"
+            % (cli_norm, data_fmt)
+        )
+    return cli_norm
+
+
+def _read_train_formatter_field(obj):
+    if isinstance(obj, dict):
+        direct = obj.get("formatter")
+        if isinstance(direct, str) and direct.strip():
+            return direct
+        for nested_key in ("data", "episode", "format", "training", "run"):
+            nested = obj.get(nested_key)
+            if isinstance(nested, dict):
+                inner = nested.get("formatter")
+                if isinstance(inner, str) and inner.strip():
+                    return inner
+    return None
+
+
+def _load_train_formatter_from_file(path):
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            obj = json.load(handle)
+    except (OSError, ValueError):
+        return None
+    found = _read_train_formatter_field(obj)
+    if found is None:
+        return None
+    return _normalize_train_formatter(found)
+
+
+def read_adapter_formatter(adapter_dir):
+    """Best-effort formatter for an adapter dir; checks parent run_config.
+
+    Searches adapter-dir formatter.json/adapter_config.json/run_config.json/
+    config.json, then parent formatter.json/run_config.json (out-dir/adapter
+    layout). Legacy space_digits_v1 normalizes to F0. Returns None when no
+    field is present. Never writes.
+    """
+    if not adapter_dir:
+        return None
+    for filename in (FORMATTER_SIDECAR, "adapter_config.json", "run_config.json", "config.json"):
+        candidate = os.path.join(adapter_dir, filename)
+        if os.path.isfile(candidate):
+            try:
+                found = _load_train_formatter_from_file(candidate)
+            except RuntimeError:
+                continue
+            if found is not None:
+                return found
+    parent = os.path.dirname(os.path.abspath(adapter_dir))
+    for filename in (FORMATTER_SIDECAR, "run_config.json"):
+        candidate = os.path.join(parent, filename)
+        if os.path.isfile(candidate):
+            try:
+                found = _load_train_formatter_from_file(candidate)
+            except RuntimeError:
+                continue
+            if found is not None:
+                return found
+    return None
+
+
+def write_formatter_sidecar(dir_path, formatter, source="train"):
+    """Write independent formatter sidecar. Never touches PEFT adapter_config.json."""
+    payload = {"formatter": formatter, "formatter_source": source}
+    dump_json(os.path.join(dir_path, FORMATTER_SIDECAR), payload, one_line=False)
+    return os.path.join(dir_path, FORMATTER_SIDECAR)
+
+
+def _train_parse_grid(text, formatter, module=None):
+    """Formatter-aware strict parse for training diagnostics. No cross-format retry."""
+    parser = getattr(module, "parse_grid_text", None) if module is not None else None
+    if callable(parser):
+        data_fmt = "compact" if formatter == FORMATTER_F1 else "space"
+        try:
+            return parser(text, data_fmt)
+        except Exception:
+            return None
+    if formatter == FORMATTER_F1:
+        if not isinstance(text, str):
+            return None
+        stripped = text.strip()
+        if not stripped:
+            return None
+        rows = []
+        width = None
+        for line in stripped.split("\n"):
+            if line == "" or line != line.strip() or " " in line:
+                return None
+            parsed = []
+            for char in line:
+                if char < "0" or char > "9":
+                    return None
+                parsed.append(ord(char) - 48)
+            if width is None:
+                width = len(parsed)
+            elif len(parsed) != width:
+                return None
+            rows.append(parsed)
+        return rows if rows and width else None
+    return parse_strict_grid(text)
+
+
+def _train_target_text(grid, formatter, module=None):
+    """Formatter-aware target text. F0 space-separated, F1 compact."""
+    serializer = getattr(module, "serialize_grid", None) if module is not None else None
+    if callable(serializer):
+        data_fmt = "compact" if formatter == FORMATTER_F1 else "space"
+        return serializer(grid, data_fmt)
+    if formatter == FORMATTER_F1:
+        return "\n".join("".join(str(int(cell)) for cell in row) for row in grid)
+    return "\n".join(" ".join(str(int(cell)) for cell in row) for row in grid)
 DEFAULT_TARGETS = (
     "q_proj",
     "k_proj",
@@ -66,6 +232,27 @@ LR_FORMULA = (
     "else (total-u)/(total-warmup). Update `total` uses learning rate 0."
 )
 _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+# Process-start wall clock (010 §5 S0-S4口径: setup/load/JIT/save included).
+# Set at import so the limit covers model load and episode encoding, not just
+# optimizer updates. Checked only at complete-update boundaries, never mid-step.
+_PROCESS_START = time.perf_counter()
+WALL_CLOCK_STOP_REASON = "wall_clock_limit"
+STOP_AFTER_UPDATE_STOP_REASON = "stop_after_update"
+
+
+def wall_clock_status(args):
+    """Return (limited, exceeded, elapsed_s) for --wall-clock-limit (torch-free)."""
+    limit = getattr(args, "wall_clock_limit", None)
+    if limit is None:
+        return False, False, round(time.perf_counter() - _PROCESS_START, 3)
+    try:
+        limit_value = float(limit)
+    except (TypeError, ValueError):
+        return False, False, round(time.perf_counter() - _PROCESS_START, 3)
+    if not (limit_value > 0):
+        return False, False, round(time.perf_counter() - _PROCESS_START, 3)
+    elapsed = time.perf_counter() - _PROCESS_START
+    return True, elapsed >= limit_value, round(elapsed, 3)
 
 
 class SkipRun(RuntimeError):
@@ -619,6 +806,27 @@ def build_parser():
     parser.add_argument("--episodes", required=True, help="Training episodes JSONL.")
     parser.add_argument("--out-dir", required=True, help="Checkpoint and log directory.")
     parser.add_argument("--optimizer-updates", type=int, default=200)
+    parser.add_argument(
+        "--scheduler-horizon",
+        type=int,
+        default=None,
+        help=(
+            "LR scheduler total horizon (010 §4: fixed 100 while stopping at 25/50). "
+            "Default None = --optimizer-updates. LR decay anchor is this horizon "
+            "(update `horizon` uses LR 0); --optimizer-updates only caps how many "
+            "updates this process runs. Resume must match the checkpoint record."
+        ),
+    )
+    parser.add_argument(
+        "--stop-after-update",
+        type=int,
+        default=None,
+        help=(
+            "Early stop at this completed-update boundary (010 §8). Saves adapter/ + "
+            "trainer_state.pt + adapter_step_N snapshot + run_config with stop_reason "
+            "and exits 0. Coexists with --wall-clock-limit; whoever hits first wins."
+        ),
+    )
     parser.add_argument("--grad-accum", type=int, default=4)
     parser.add_argument("--microbatch", type=int, default=1)
     parser.add_argument("--max-len", type=int, default=1024)
@@ -680,9 +888,15 @@ def build_parser():
             "Weights-only inheritance for a new stage (008 G2a): an adapter dir, or a previous "
             "out-dir holding adapter/ (+ optional trainer_state.pt/run_config.json for stage "
             "accounting). Pool, cursor, optimizer, and scheduler always restart from zero; old "
-            "optimizer/scheduler/cursor are never reused. Same-structure adapters load directly; "
-            "changed target modules build a fresh LoRA and copy only intersecting shape-matched "
-            "LoRA tensors, leaving new modules at zero-init. Mutually exclusive with --resume "
+            "optimizer/scheduler/cursor are never reused. Same target_modules prefer the "
+            "verified PeftModel.from_pretrained(..., is_trainable=True) path, then strictly "
+            "verify all expected inherited tensors (G1: 512/512) with per-tensor value equality "
+            "against the weight file. Changed targets build a fresh LoRA and copy via the PEFT "
+            "public state-mapping rule (peft.utils.save_and_load.set_peft_model_state_dict "
+            "adapter-name normalization, ...lora_A.weight -> ...lora_A.default.weight); literal "
+            "saved-key intersection is never treated as success (G1 literal is 0). Copying 0 "
+            "tensors or any unexpected missing/shape/value mismatch aborts immediately instead "
+            "of training a fresh LoRA as inherited G1. Mutually exclusive with --resume "
             "(exact resume keeps old pool/cursor/optimizer/scheduler/RNG). Stage switch records "
             "old vs new training volume in run_config.json. Periodic saves also write immutable "
             "adapter_step_{N} snapshots and never overwrite an existing snapshot "
@@ -697,7 +911,60 @@ def build_parser():
     )
     parser.add_argument("--challenges", default=None, help="Optional ARC challenges JSON for zero-step.")
     parser.add_argument("--solutions", default=None, help="Optional ARC solutions JSON for zero-step exact match.")
+    parser.add_argument(
+        "--formatter",
+        default="auto",
+        help=(
+            "Unified training formatter. auto: take it from data rows (missing reads as "
+            "f0_space legacy); f0_space/f1_compact: require every row to match. "
+            "Mixed-formatter input is rejected. Legacy space_digits_v1 aliases to f0_space."
+        ),
+    )
+    parser.add_argument(
+        "--wall-clock-limit",
+        type=float,
+        default=None,
+        help=(
+            "Wall-clock budget in seconds since process start (010 §5: covers "
+            "setup/load/JIT/save, not just updates). Checked only at complete "
+            "optimizer-update boundaries: an in-flight optimizer.step is never "
+            "killed mid-step; instead the run saves adapter/ + trainer_state.pt + "
+            "adapter_step_N snapshot + run_config (with stop_reason) and exits. "
+            "Single-process primitive only: S0-S4 Notebook orchestration across "
+            "stages stays with the user (010 §8 runner). Default None = no limit."
+        ),
+    )
     return parser
+
+
+def read_saved_scheduler_horizon(resume_dir):
+    """Torch-free saved horizon for --resume consistency (reads run_config.json only)."""
+    path = os.path.join(resume_dir, "run_config.json")
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except (OSError, ValueError):
+        return None
+    if isinstance(data, dict):
+        for key in ("scheduler_horizon", "scheduler_total", "horizon"):
+            if data.get(key) is not None:
+                try:
+                    return int(data[key])
+                except (TypeError, ValueError):
+                    return None
+        if data.get("optimizer_updates") is not None:
+            try:
+                return int(data["optimizer_updates"])
+            except (TypeError, ValueError):
+                return None
+    return None
+
+
+def resolve_scheduler_horizon_value(args):
+    raw = getattr(args, "scheduler_horizon", None)
+    if raw is None:
+        return int(args.optimizer_updates)
+    return int(raw)
 
 
 def validate_args(args):
@@ -710,6 +977,33 @@ def validate_args(args):
         raise RuntimeError("grad-accum must be >= 1")
     if args.optimizer_updates < 1:
         raise RuntimeError("optimizer-updates must be >= 1")
+    if getattr(args, "scheduler_horizon", None) is None:
+        args.scheduler_horizon = int(args.optimizer_updates)
+    else:
+        try:
+            args.scheduler_horizon = int(args.scheduler_horizon)
+        except (TypeError, ValueError):
+            raise RuntimeError("--scheduler-horizon must be an int >= 1")
+        if int(args.scheduler_horizon) < 1:
+            raise RuntimeError("--scheduler-horizon must be an int >= 1")
+        if int(args.scheduler_horizon) < int(args.optimizer_updates):
+            raise RuntimeError(
+                "--scheduler-horizon (%d) must be >= --optimizer-updates (%d); "
+                "010 §4 fixes horizon=100 while stopping at 25/50, never shrinks it"
+                % (int(args.scheduler_horizon), int(args.optimizer_updates))
+            )
+    if getattr(args, "stop_after_update", None) is not None:
+        try:
+            args.stop_after_update = int(args.stop_after_update)
+        except (TypeError, ValueError):
+            raise RuntimeError("--stop-after-update must be an int >= 1")
+        if int(args.stop_after_update) < 1:
+            raise RuntimeError("--stop-after-update must be an int >= 1")
+        if int(args.stop_after_update) > int(args.optimizer_updates):
+            raise RuntimeError(
+                "--stop-after-update (%d) must be <= --optimizer-updates (%d)"
+                % (int(args.stop_after_update), int(args.optimizer_updates))
+            )
     if args.max_len < 1 or args.overflow_len < args.max_len:
         raise RuntimeError("require 1 <= max-len <= overflow-len")
     if args.save_every < 1:
@@ -722,6 +1016,14 @@ def validate_args(args):
         raise RuntimeError("clip-norm must be > 0")
     if args.zero_step_max_new < 1:
         raise RuntimeError("zero-step-max-new must be >= 1")
+    if getattr(args, "wall_clock_limit", None) is not None:
+        try:
+            limit_value = float(args.wall_clock_limit)
+        except (TypeError, ValueError):
+            raise RuntimeError("--wall-clock-limit must be seconds > 0")
+        if not (limit_value > 0):
+            raise RuntimeError("--wall-clock-limit must be seconds > 0")
+        args.wall_clock_limit = limit_value
     if not os.path.isfile(args.episodes):
         raise RuntimeError("episodes file not found: %s" % args.episodes)
     if args.challenges and not os.path.isfile(args.challenges):
@@ -730,6 +1032,13 @@ def validate_args(args):
         raise RuntimeError("solutions file not found: %s" % args.solutions)
     if args.resume:
         resolve_resume_paths(args.resume)
+        saved_horizon = read_saved_scheduler_horizon(args.resume)
+        if saved_horizon is not None and int(saved_horizon) != int(args.scheduler_horizon):
+            raise ResumeMismatch(
+                "refusing resume because --scheduler-horizon differs "
+                "(checkpoint %d vs current %d); pass the same horizon, never silently changed"
+                % (int(saved_horizon), int(args.scheduler_horizon))
+            )
     if getattr(args, "init_adapter", None) and args.resume:
         raise RuntimeError(
             "--init-adapter and --resume are mutually exclusive: weights-only new stage "
@@ -762,6 +1071,9 @@ def validate_args(args):
                 "keeps the stored pool/cursor order and never rebuilds buckets; start a "
                 "new stage with --init-adapter for a fair mixture"
             )
+    cli_fmt = str(getattr(args, "formatter", "auto") or "auto").strip().lower().replace("-", "_")
+    if cli_fmt not in ("auto", ""):
+        _normalize_train_formatter(cli_fmt)
 
 
 def resolve_resume_paths(resume_dir):
@@ -803,8 +1115,37 @@ def read_adapter_targets(adapter_dir):
     return [str(name) for name in (targets or [])]
 
 
-def load_init_adapter_weights(model, adapter_dir, torch_module):
-    """Copy intersecting shape-matched LoRA tensors; never touches base weights or optimizer."""
+def map_saved_lora_key_to_trainable(saved_key, adapter_name="default"):
+    """Map a saved PEFT LoRA key to its live trainable state_dict key.
+
+    PEFT strips the adapter name on save (``...lora_A.weight``) while the live
+    trainable state keeps it (``...lora_A.default.weight``). This is the same
+    adapter-name rule used by the public API
+    ``peft.utils.save_and_load.set_peft_model_state_dict``. Never rely on the
+    literal ``saved_key in model_state`` check: for G1 that intersection is 0
+    and would silently yield a fresh LoRA masquerading as inheritance.
+    """
+    if not isinstance(saved_key, str):
+        return saved_key
+    tag = ".%s." % str(adapter_name)
+    if tag in saved_key:
+        return saved_key
+    mapped = saved_key
+    for marker in (
+        "lora_embedding_A",
+        "lora_embedding_B",
+        "lora_magnitude_vector",
+        "lora_A",
+        "lora_B",
+    ):
+        needle = ".%s." % marker
+        if needle in mapped:
+            mapped = mapped.replace(needle, ".%s.%s." % (marker, adapter_name))
+    return mapped
+
+
+def _read_saved_adapter_state(adapter_dir, torch_module):
+    """Locate and CPU-load the saved adapter weights (no model, no optimizer)."""
     names = os.listdir(adapter_dir)
     weight_file = None
     for candidate in ("adapter_model.safetensors", "adapter_model.safetensor"):
@@ -833,26 +1174,185 @@ def load_init_adapter_weights(model, adapter_dir, torch_module):
         except ImportError as exc:
             raise RuntimeError("need safetensors to read init-adapter %s (%s)" % (weight_file, exc))
         old_sd = _load_file(weight_file, device="cpu")
+    return weight_file, old_sd
+
+
+def verify_from_pretrained_weights(model, adapter_dir, torch_module, adapter_name="default"):
+    """Strict check for the same-targets from_pretrained inheritance path.
+
+    Loads the saved file on CPU, maps each saved LoRA key with adapter-name
+    normalization, and requires every saved tensor to exist in the live model
+    with identical shape and exact values. Raises on 0 copied or any missing /
+    shape / value mismatch instead of continuing as fresh-LoRA-as-G1.
+    """
+    weight_file, old_sd = _read_saved_adapter_state(adapter_dir, torch_module)
     current = model.state_dict()
+    saved_lora = [key for key in old_sd.keys() if "lora_" in key]
+    if not saved_lora:
+        raise RuntimeError("init-adapter %s has no lora_ tensors; refusing inheritance" % weight_file)
+    literal_hits = sum(1 for key in saved_lora if key in current)
+    verified = 0
+    not_in_new = []
+    shape_mismatch = []
+    value_mismatch = []
+    for saved_key in saved_lora:
+        mapped = map_saved_lora_key_to_trainable(saved_key, adapter_name)
+        if mapped not in current:
+            not_in_new.append("%s -> %s" % (saved_key, mapped))
+            continue
+        saved_value = old_sd[saved_key]
+        live_value = current[mapped]
+        if tuple(saved_value.shape) != tuple(live_value.shape):
+            shape_mismatch.append(mapped)
+            continue
+        try:
+            equal = bool(torch_module.equal(live_value.cpu(), saved_value.cpu()))
+        except Exception:
+            equal = False
+        if not equal:
+            value_mismatch.append(mapped)
+            continue
+        verified += 1
+    n_model_lora = sum(1 for key in current.keys() if "lora_" in key)
+    if verified == 0:
+        raise RuntimeError(
+            "init-adapter inheritance failed: verified 0/%d (literal intersection %d, "
+            "mapped %d); refusing to continue as fresh LoRA: %s"
+            % (len(saved_lora), literal_hits, len(saved_lora) - len(not_in_new), weight_file)
+        )
+    if not_in_new or shape_mismatch or value_mismatch or verified != len(saved_lora):
+        raise RuntimeError(
+            "init-adapter inheritance incomplete: verified %d/%d not_in_new=%d "
+            "shape_mismatch=%d value_mismatch=%d e.g. %s" % (
+                verified, len(saved_lora), len(not_in_new),
+                len(shape_mismatch), len(value_mismatch),
+                (not_in_new + shape_mismatch + value_mismatch)[:4],
+            )
+        )
+    if verified != n_model_lora:
+        raise RuntimeError(
+            "init-adapter inheritance size mismatch: verified %d but live model has %d "
+            "lora tensors; refusing partial inheritance" % (verified, n_model_lora)
+        )
+    return {
+        "weight_file": os.path.basename(weight_file),
+        "copied_lora_tensors": verified,
+        "shape_mismatch": shape_mismatch[:16],
+        "n_shape_mismatch": len(shape_mismatch),
+        "not_in_new": not_in_new[:16],
+        "n_not_in_new": len(not_in_new),
+        "literal_intersection": literal_hits,
+        "mapped_intersection": verified,
+        "n_value_mismatch": len(value_mismatch),
+        "peft_api_used": True,
+        "path": "from_pretrained",
+    }
+
+
+def load_init_adapter_weights(model, adapter_dir, torch_module, old_targets=None, new_targets=None, adapter_name="default"):
+    """Manual adapter-name-normalized copy for changed targets; strict, never literal.
+
+    Uses the PEFT public state-mapping rule (``set_peft_model_state_dict``
+    adapter-name insertion, ``...lora_A.weight`` -> ``...lora_A.default.weight``)
+    for every key. The literal ``saved_key in model_state`` intersection is
+    computed for diagnostics only (G1: 0) and never treated as success. After
+    the copy each tensor is value-checked against the file; 0 copied or any
+    unexpected missing/shape/value mismatch raises. Never touches base weights
+    or optimizer; optimizer/scheduler/cursor are rebuilt by the caller.
+    """
+    weight_file, old_sd = _read_saved_adapter_state(adapter_dir, torch_module)
+    if old_targets is not None and new_targets is not None:
+        targets_changed = set(old_targets) != set(new_targets)
+    else:
+        targets_changed = False
+    current = model.state_dict()
+    saved_lora = [key for key in old_sd.keys() if "lora_" in key]
+    if not saved_lora:
+        raise RuntimeError("init-adapter %s has no lora_ tensors; refusing inheritance" % weight_file)
+    literal_hits = sum(1 for key in saved_lora if key in current)
+    peft_api_used = False
+    peft_api_error = None
+    try:
+        from peft.utils.save_and_load import set_peft_model_state_dict as _set_peft_sd
+    except Exception as exc:
+        _set_peft_sd = None
+        peft_api_error = "%s: %s" % (type(exc).__name__, exc)
+    if _set_peft_sd is not None:
+        try:
+            _set_peft_sd(model, old_sd, adapter_name=adapter_name)
+            peft_api_used = True
+            current = model.state_dict()
+        except Exception as exc:
+            peft_api_error = "%s: %s" % (type(exc).__name__, exc)
+    if not peft_api_used:
+        with torch_module.no_grad():
+            for saved_key in saved_lora:
+                mapped = map_saved_lora_key_to_trainable(saved_key, adapter_name)
+                if mapped not in current:
+                    continue
+                if tuple(old_sd[saved_key].shape) != tuple(current[mapped].shape):
+                    continue
+                current[mapped].copy_(old_sd[saved_key])
+        try:
+            model.load_state_dict(current, strict=False)
+        except TypeError:
+            pass
+        current = model.state_dict()
     copied = 0
     shape_mismatch = []
     not_in_new = []
-    with torch_module.no_grad():
-        for key, value in old_sd.items():
-            if "lora_" not in key:
-                continue
-            if key not in current:
-                not_in_new.append(key)
-                continue
-            if tuple(value.shape) != tuple(current[key].shape):
-                shape_mismatch.append(key)
-                continue
-            current[key].copy_(value)
-            copied += 1
-    try:
-        model.load_state_dict(current, strict=False)
-    except TypeError:
-        pass
+    value_mismatch = []
+    for saved_key in saved_lora:
+        mapped = map_saved_lora_key_to_trainable(saved_key, adapter_name)
+        if mapped not in current:
+            not_in_new.append("%s -> %s" % (saved_key, mapped))
+            continue
+        if tuple(old_sd[saved_key].shape) != tuple(current[mapped].shape):
+            shape_mismatch.append(mapped)
+            continue
+        try:
+            equal = bool(torch_module.equal(current[mapped].cpu(), old_sd[saved_key].cpu()))
+        except Exception:
+            equal = False
+        if not equal:
+            value_mismatch.append(mapped)
+            continue
+        copied += 1
+    if copied == 0:
+        raise RuntimeError(
+            "init-adapter inheritance failed: copied 0/%d (literal intersection %d, "
+            "mapped candidates %d); refusing fresh LoRA masquerading as inheritance: %s" % (
+                len(saved_lora), literal_hits, len(saved_lora) - len(not_in_new), weight_file,
+            )
+        )
+    if shape_mismatch or value_mismatch:
+        raise RuntimeError(
+            "init-adapter inheritance failed value/shape check: copied %d/%d "
+            "shape_mismatch=%d value_mismatch=%d e.g. %s" % (
+                copied, len(saved_lora), len(shape_mismatch), len(value_mismatch),
+                (shape_mismatch + value_mismatch)[:4],
+            )
+        )
+    if not targets_changed:
+        if not_in_new or copied != len(saved_lora):
+            raise RuntimeError(
+                "init-adapter inheritance incomplete for unchanged targets: copied %d/%d "
+                "not_in_new=%d e.g. %s" % (
+                    copied, len(saved_lora), len(not_in_new), not_in_new[:4],
+                )
+            )
+        n_model_lora = sum(1 for key in current.keys() if "lora_" in key)
+        if copied != n_model_lora:
+            raise RuntimeError(
+                "init-adapter inheritance size mismatch: copied %d but live model has %d "
+                "lora tensors; refusing partial inheritance" % (copied, n_model_lora)
+            )
+    else:
+        if copied != len(saved_lora) - len(not_in_new):
+            raise RuntimeError(
+                "init-adapter changed-targets copy inconsistent: copied %d saved=%d "
+                "not_in_new=%d" % (copied, len(saved_lora), len(not_in_new))
+            )
     return {
         "weight_file": os.path.basename(weight_file),
         "copied_lora_tensors": copied,
@@ -860,6 +1360,13 @@ def load_init_adapter_weights(model, adapter_dir, torch_module):
         "n_shape_mismatch": len(shape_mismatch),
         "not_in_new": not_in_new[:16],
         "n_not_in_new": len(not_in_new),
+        "literal_intersection": literal_hits,
+        "mapped_intersection": copied + len(value_mismatch),
+        "n_value_mismatch": len(value_mismatch),
+        "peft_api_used": peft_api_used,
+        "peft_api_error": peft_api_error,
+        "targets_changed": bool(targets_changed),
+        "path": "manual_mapped_copy",
     }
 
 
@@ -895,15 +1402,23 @@ def old_stage_amount(adapter_dir):
     return info
 
 
-def save_adapter_snapshot(model, out_dir, completed):
+def save_adapter_snapshot(model, out_dir, completed, formatter=FORMATTER_F0):
     """Immutable per-step adapter dir. Never overwrites an existing snapshot."""
+    formatter = _normalize_train_formatter(formatter)
     snapshot = os.path.join(out_dir, "adapter_step_%d" % int(completed))
     if adapter_files_present(snapshot):
+        # Snapshot exists (resume re-save): still ensure its format sidecar is present.
+        try:
+            write_formatter_sidecar(snapshot, formatter, source="train")
+        except OSError:
+            pass
         return snapshot
     os.makedirs(snapshot, exist_ok=True)
     model.save_pretrained(snapshot)
     if not adapter_files_present(snapshot):
         raise RuntimeError("snapshot save did not write adapter files: %s" % snapshot)
+    # Independent sidecar; never writes custom fields into PEFT adapter_config.json.
+    write_formatter_sidecar(snapshot, formatter, source="train")
     return snapshot
 
 
@@ -991,16 +1506,21 @@ def coerce_messages(result, system_prompt):
     raise RuntimeError("build_messages returned %s; expected chat messages" % type(result).__name__)
 
 
-def messages_for_test_query(module, tokenizer, task_id, task, solutions):
+def messages_for_test_query(module, tokenizer, task_id, task, solutions, formatter=FORMATTER_F0):
     """Official test query 0. Train pairs are demos. The answer is not in the prompt.
 
     ``tokenizer`` and ``solutions`` are unused here. Exact match reads solutions later.
+    formatter is explicit (resolved unified formatter); never relies on F0 default.
     """
     del tokenizer, solutions
     builder = getattr(module, "build_messages", None)
     if not callable(builder):
         raise RuntimeError("arc_episode_data message builder is missing")
+    formatter = _normalize_train_formatter(formatter)
+    data_fmt = "compact" if formatter == FORMATTER_F1 else "space"
     system_prompt = getattr(module, "SYSTEM_PROMPT", None)
+    if formatter == FORMATTER_F1:
+        system_prompt = getattr(module, "SYSTEM_PROMPT_COMPACT", system_prompt)
     if not isinstance(task, dict):
         raise RuntimeError("task %s is not an object" % task_id)
     train_pairs = task.get("train")
@@ -1015,7 +1535,7 @@ def messages_for_test_query(module, tokenizer, task_id, task, solutions):
         if not isinstance(pair, dict) or "input" not in pair or "output" not in pair:
             raise RuntimeError("task %s has a train pair without input and output" % task_id)
         demos.append({"input": pair["input"], "output": pair["output"]})
-    return coerce_messages(builder(demos, query["input"]), system_prompt)
+    return coerce_messages(builder(demos, query["input"], data_fmt), system_prompt)
 
 
 def render_prompt(tokenizer, messages):
@@ -1531,9 +2051,9 @@ def think_probe_facts(prompt_text, chat_template):
     }
 
 
-def write_template_probe(path, prompt_text, facts, episode):
+def write_template_probe(path, prompt_text, facts, episode, formatter=FORMATTER_F0):
     lines = [
-        "formatter=%s" % FORMATTER_NAME,
+        "formatter=%s" % _normalize_train_formatter(formatter),
         "episode_id=%s" % episode.episode_id,
         "task_id=%s" % episode.task_id,
         "assert_applied=%s" % facts["assert_applied"],
@@ -1562,12 +2082,14 @@ def generate_supported(model, name):
     return name in signature.parameters
 
 
-def run_zero_step(model, tokenizer, args, module, in_dev, eos_id, torch_module):
+def run_zero_step(model, tokenizer, args, module, in_dev, eos_id, torch_module, formatter=FORMATTER_F0):
     """Greedy base-behavior generations. Diagnostic ids are not taken from the train JSONL."""
+    formatter = _normalize_train_formatter(formatter)
     started = time.perf_counter()
     report = {
         "skipped": False,
         "reason": None,
+        "formatter": formatter,
         "time_guard": False,
         "time_guard_s": ZERO_STEP_TIME_GUARD_S,
         "max_new_tokens": int(args.zero_step_max_new),
@@ -1645,7 +2167,7 @@ def run_zero_step(model, tokenizer, args, module, in_dev, eos_id, torch_module):
             report["tasks"].append(record)
             continue
         try:
-            messages = messages_for_test_query(module, tokenizer, task_id, task, solutions)
+            messages = messages_for_test_query(module, tokenizer, task_id, task, solutions, formatter)
             prompt_text = render_prompt(tokenizer, messages)
             torch_module.cuda.synchronize()
             prep0 = time.perf_counter()
@@ -1702,7 +2224,7 @@ def run_zero_step(model, tokenizer, args, module, in_dev, eos_id, torch_module):
                 parse_ids = parse_ids[:-1]
                 dropped_eos = True
             parse_text = tokenizer.decode(parse_ids, skip_special_tokens=False)
-            grid = parse_strict_grid(parse_text)
+            grid = _train_parse_grid(parse_text, formatter, module)
             truth = solution_grid(solutions, task_id) if solutions is not None else None
             exact = None
             if truth is not None and grid is not None:
@@ -1710,15 +2232,19 @@ def run_zero_step(model, tokenizer, args, module, in_dev, eos_id, torch_module):
             agrees = None
             if grid is not None and callable(text_to_grid):
                 try:
-                    other = text_to_grid(parse_text.strip())
+                    if formatter == FORMATTER_F1:
+                        other = _train_parse_grid(parse_text.strip(), formatter, None)
+                    else:
+                        other = text_to_grid(parse_text.strip())
                     agrees = bool(other == grid)
                 except Exception as exc:
                     agrees = "error:%s" % str(exc)[:120]
             target_text = None
             if truth is not None:
-                target_text = "\n".join(" ".join(str(int(cell)) for cell in row) for row in truth)
+                target_text = _train_target_text(truth, formatter, module)
             record.update({
                 "status": "generated",
+                "formatter": formatter,
                 "decoded_text": decoded,
                 "parse_text": parse_text,
                 "parse": "ok" if grid is not None else "parse_failure",
@@ -1803,12 +2329,16 @@ def append_jsonl(path, record):
         handle.flush()
 
 
-def save_checkpoint(model, optimizer, schedule, bundle, out_dir, torch_module):
+def save_checkpoint(model, optimizer, schedule, bundle, out_dir, torch_module, formatter=None):
     adapter_dir = os.path.join(out_dir, "adapter")
     os.makedirs(out_dir, exist_ok=True)
     model.save_pretrained(adapter_dir)
+    run_cfg = bundle.get("run_config") if isinstance(bundle.get("run_config"), dict) else {}
+    actual = _normalize_train_formatter(
+        formatter if formatter is not None else run_cfg.get("formatter", FORMATTER_F0)
+    )
     payload = {
-        "formatter": FORMATTER_NAME,
+        "formatter": actual,
         "completed_updates": int(bundle["completed_updates"]),
         "cursor": int(bundle["cursor"]),
         "pool_episode_ids": list(bundle["pool_episode_ids"]),
@@ -1826,17 +2356,25 @@ def save_checkpoint(model, optimizer, schedule, bundle, out_dir, torch_module):
     torch_module.save(payload, temporary)
     os.replace(temporary, os.path.join(out_dir, "trainer_state.pt"))
     dump_json(os.path.join(out_dir, "run_config.json"), bundle["run_config"], one_line=False)
+    # Independent sidecars; never writes custom fields into PEFT adapter_config.json.
+    write_formatter_sidecar(out_dir, actual, source="train")
+    write_formatter_sidecar(adapter_dir, actual, source="train")
     if not adapter_files_present(adapter_dir):
         raise RuntimeError("save_pretrained did not write adapter config and weights")
     completed = int(bundle.get("completed_updates", 0))
     if completed > 0:
         # Immutable per-step snapshot; an existing snapshot is never overwritten, so a
         # resumed re-save of the same update keeps the original directory intact.
+        # Each adapter_step_N carries its own format sidecar.
         snapshot = os.path.join(out_dir, "adapter_step_%d" % completed)
         if not adapter_files_present(snapshot):
             model.save_pretrained(snapshot)
             if not adapter_files_present(snapshot):
                 raise RuntimeError("snapshot save did not write adapter files: %s" % snapshot)
+        try:
+            write_formatter_sidecar(snapshot, actual, source="train")
+        except OSError:
+            pass
     return adapter_dir
 
 
@@ -1894,9 +2432,16 @@ def branch_note(extras, resumed):
     return note
 
 
-def build_run_config(args, model_dir, versions, vocab, length_stats, targets, extras, devices, trainable, resumed_from):
+def build_run_config(args, model_dir, versions, vocab, length_stats, targets, extras, devices, trainable, resumed_from, formatter=None):
+    # execute() passes the resolved unified formatter explicitly. Fall back to CLI normalization.
+    try:
+        cli_text = str(getattr(args, "formatter", "auto") or "auto").strip().lower().replace("-", "_")
+        cli_default = FORMATTER_F0 if cli_text in ("auto", "") else _normalize_train_formatter(cli_text)
+    except RuntimeError:
+        cli_default = FORMATTER_F0
+    actual = _normalize_train_formatter(formatter) if formatter is not None else cli_default
     return {
-        "formatter": FORMATTER_NAME,
+        "formatter": actual,
         "argv": list(sys.argv),
         "seed": int(args.seed),
         "model_dir": model_dir,
@@ -1907,6 +2452,15 @@ def build_run_config(args, model_dir, versions, vocab, length_stats, targets, ex
         "weight_decay": float(args.weight_decay),
         "warmup_updates": int(args.warmup_updates),
         "optimizer_updates": int(args.optimizer_updates),
+        "scheduler_horizon": int(getattr(args, "scheduler_horizon", None) or args.optimizer_updates),
+        "scheduler_note": (
+            "LR decay anchor is scheduler_horizon (update `horizon` uses LR 0); "
+            "--optimizer-updates only caps updates this process runs (010 §4)"
+        ),
+        "stop_after_update": (
+            None if getattr(args, "stop_after_update", None) is None
+            else int(args.stop_after_update)
+        ),
         "clip_norm": float(args.clip_norm),
         "grad_accum": int(args.grad_accum),
         "microbatch": int(args.microbatch),
@@ -1915,6 +2469,15 @@ def build_run_config(args, model_dir, versions, vocab, length_stats, targets, ex
         "max_len": int(args.max_len),
         "overflow_len": int(args.overflow_len),
         "save_every": int(args.save_every),
+        "wall_clock_limit_s": (
+            None if getattr(args, "wall_clock_limit", None) is None
+            else float(args.wall_clock_limit)
+        ),
+        "wall_clock_note": (
+            "seconds since process start incl. setup/load/JIT/save (010 §5); "
+            "checked only at complete optimizer-update boundaries, never mid-step"
+        ),
+        "stop_reason": None,
         "length_mixture": (
             None if getattr(args, "length_mixture", None) is None
             else str(args.length_mixture)
@@ -1981,13 +2544,74 @@ def train_loop(
     seen_families = set()
     micro_total = 0
     pool_exhausted = False
+    wall_clock_hit = False
+    stop_after_raw = getattr(args, "stop_after_update", None)
+    stop_after = int(stop_after_raw) if stop_after_raw is not None else None
+    stop_after_hit = False
+    if stop_after is not None and start >= stop_after:
+        bundle["run_config"]["stop_reason"] = STOP_AFTER_UPDATE_STOP_REASON
+        bundle["run_config"]["stop_after_update"] = int(stop_after)
+        summary["note"] = "already reached stop-after-update; no further updates"
+        summary["stop_after_stop"] = True
+        summary["n_families_seen"] = 0
+        summary["completed_microsteps"] = 0
+        return cursor, True
     if start >= target:
         summary["note"] = "resume already reached optimizer-updates; no further updates"
         summary["n_families_seen"] = 0
         summary["completed_microsteps"] = 0
         return cursor, False
 
+    def _stop_after_exit():
+        # Integer-update boundary early save: adapter/ + trainer_state.pt +
+        # run_config plus the immutable adapter_step_N snapshot via
+        # save_checkpoint. Coexists with --wall-clock-limit; whoever hits first wins.
+        bundle["run_config"]["stop_reason"] = STOP_AFTER_UPDATE_STOP_REASON
+        bundle["run_config"]["stop_after_update"] = int(stop_after)
+        if getattr(args, "length_mixture", None) is not None:
+            refresh_bucket_consumption(bundle, pool)
+            summary["bucket_consumption"] = bundle["run_config"].get("bucket_consumption")
+        save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch_module)
+        summary["stop_after_stop"] = True
+        summary["last_saved_update"] = int(schedule.completed)
+        summary["saved_this_run"] = True
+        summary["checkpoint_saved"] = True
+        print(
+            "stop-after-update %d reached; saved update %d and stopping"
+            % (int(stop_after), int(schedule.completed)),
+            flush=True,
+        )
+
+    def _wall_clock_exit(note):
+        # Boundary-only early save: adapter/ + trainer_state.pt + run_config plus
+        # the immutable adapter_step_N snapshot via save_checkpoint. Never called
+        # mid-update, so optimizer.step is never killed halfway.
+        _limited, _exceeded, _elapsed = wall_clock_status(args)
+        bundle["run_config"]["stop_reason"] = WALL_CLOCK_STOP_REASON
+        bundle["run_config"]["wall_clock_elapsed_s"] = _elapsed
+        bundle["run_config"]["wall_clock_limit_s"] = float(args.wall_clock_limit)
+        bundle["run_config"]["wall_clock_note"] = note
+        if getattr(args, "length_mixture", None) is not None:
+            refresh_bucket_consumption(bundle, pool)
+            summary["bucket_consumption"] = bundle["run_config"].get("bucket_consumption")
+        save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch_module)
+        summary["wall_clock_stop"] = True
+        summary["last_saved_update"] = int(schedule.completed)
+        summary["saved_this_run"] = True
+        summary["checkpoint_saved"] = True
+        print(
+            "wall-clock limit reached (elapsed %.1fs >= %.1fs); saved update %d and stopping (%s)"
+            % (_elapsed, float(args.wall_clock_limit), int(schedule.completed), note),
+            flush=True,
+        )
+
     for update in range(start + 1, target + 1):
+        _limited, _exceeded, _elapsed = wall_clock_status(args)
+        if _limited and _exceeded:
+            # Next update not started: the last completed update is already saved.
+            wall_clock_hit = True
+            _wall_clock_exit("boundary before update %d" % update)
+            break
         if cursor >= len(pool):
             pool_exhausted = True
             break
@@ -2057,6 +2681,12 @@ def train_loop(
             oom_count = int(summary.get("oom_count") or 0) + 1
             summary["oom_count"] = oom_count
             oom_record = {"status": "oom", "update": update}
+            try:
+                oom_record["formatter"] = _normalize_train_formatter(
+                    (bundle.get("run_config") or {}).get("formatter", FORMATTER_F0)
+                )
+            except RuntimeError:
+                oom_record["formatter"] = (bundle.get("run_config") or {}).get("formatter")
             if oom_episode_id is not None:
                 oom_record["episode_id"] = oom_episode_id
             append_jsonl(log_path, oom_record)
@@ -2092,8 +2722,14 @@ def train_loop(
         seconds = time.perf_counter() - tick
         mean_loss = sum(losses) / float(len(losses))
         micro_total += len(losses)
+        run_fmt = (bundle.get("run_config") or {}).get("formatter", FORMATTER_F0)
+        try:
+            run_fmt = _normalize_train_formatter(run_fmt)
+        except RuntimeError:
+            pass
         record = {
             "update": update,
+            "formatter": run_fmt,
             "lr": lr,
             "mean_loss": mean_loss,
             "microsteps": len(losses),
@@ -2123,13 +2759,30 @@ def train_loop(
             summary["saved_this_run"] = True
             summary["checkpoint_saved"] = True
             print("saved update %d" % update, flush=True)
+        _limited, _exceeded, _elapsed = wall_clock_status(args)
+        if _limited and _exceeded:
+            # Completed-update boundary: this update (incl. its snapshot when due)
+            # is fully saved; do not start the next one.
+            wall_clock_hit = True
+            _wall_clock_exit("boundary after update %d" % update)
+            break
+        if stop_after is not None and int(update) >= int(stop_after):
+            # Stop-after wins at its own boundary; wall-clock already checked above
+            # for the same boundary (stop wins when both hit together).
+            stop_after_hit = True
+            _stop_after_exit()
+            break
     summary["n_families_seen"] = len(seen_families)
     summary["completed_microsteps"] = micro_total
     if getattr(args, "length_mixture", None) is not None:
         summary["bucket_consumption"] = bucket_consumption(pool[:cursor])
     expected_cursor = target * int(args.grad_accum)
     if int(schedule.completed) < target or cursor < expected_cursor:
-        if summary.get("oom_stop"):
+        if stop_after_hit or summary.get("stop_after_stop"):
+            shortfall_reason = "stop_after_update"
+        elif wall_clock_hit or summary.get("wall_clock_stop"):
+            shortfall_reason = "wall_clock_limit"
+        elif summary.get("oom_stop"):
             shortfall_reason = "oom_stop"
         elif pool_exhausted or cursor >= len(pool):
             shortfall_reason = "filtered pool exhausted"
@@ -2181,6 +2834,14 @@ def execute(args, summary):
 
     print("encoding episodes", flush=True)
     rows = load_jsonl_rows(args.episodes)
+    # Unified formatter: data/CLI two-choice, mixed-formatter input rejected here
+    # (CPU-fast, before model load). Missing row field reads as F0 legacy.
+    train_formatter = resolve_train_formatter(getattr(args, "formatter", "auto"), rows)
+    summary["formatter"] = train_formatter
+    print("formatter=%s source=%s" % (
+        train_formatter,
+        "cli" if str(getattr(args, "formatter", "auto") or "auto").strip().lower().replace("-", "_") not in ("auto", "") else "data",
+    ), flush=True)
     by_id_rows = {}
     for row in rows:
         if row.get("episode_id") is not None:
@@ -2306,6 +2967,8 @@ def execute(args, summary):
 
     seed_everything(args.seed, torch, numpy)
     print("loading model", flush=True)
+    print("LOAD_START base model_dir=%s" % model_dir, flush=True)
+    _t_base_load = time.perf_counter()
     base = AutoModelForCausalLM.from_pretrained(
         model_dir,
         dtype=torch.bfloat16,
@@ -2313,6 +2976,7 @@ def execute(args, summary):
         low_cpu_mem_usage=True,
         trust_remote_code=False,
     )
+    print("LOAD_DONE base %.1fs" % (time.perf_counter() - _t_base_load), flush=True)
     ckpt_ok, ckpt_errors = enable_checkpointing(base)
     set_use_cache(base, False)
     summary["grad_ckpt"] = True if ckpt_ok and not ckpt_errors else {"enabled": ckpt_ok, "errors": ckpt_errors}
@@ -2320,30 +2984,50 @@ def execute(args, summary):
     init_info = None
     if args.resume:
         adapter_path, _state_path = resolve_resume_paths(args.resume)
+        print("ADAPTER_LOAD_START resume %s" % adapter_path, flush=True)
+        _t_adapter_load = time.perf_counter()
         try:
             model = PeftModel.from_pretrained(base, adapter_path, is_trainable=True)
         except TypeError:
             model = PeftModel.from_pretrained(base, adapter_path)
+        print("ADAPTER_LOAD_DONE resume %.1fs" % (time.perf_counter() - _t_adapter_load), flush=True)
         init_info = None
     elif getattr(args, "init_adapter", None):
-        # Weights-only new stage: fresh LoRA, then copy intersecting old LoRA tensors.
-        # Optimizer/scheduler below are rebuilt; old ones are never loaded.
+        # Weights-only new stage. Optimizer/scheduler/cursor below are rebuilt; old ones never loaded.
+        # Same targets: preferred verified PeftModel.from_pretrained(..., is_trainable=True) path
+        # with strict 512/512 value verification. Changed targets: fresh LoRA + PEFT
+        # adapter-name-normalized manual copy (never literal intersection); 0 or any
+        # unexpected missing aborts instead of silent fresh-LoRA-as-G1.
         init_adapter_dir = resolve_init_adapter_dir(args.init_adapter)
         init_old_targets = read_adapter_targets(init_adapter_dir)
+        targets_changed = set(init_old_targets) != set(targets)
         missing_targets = [name for name in targets if name not in module_leaf_names(base)]
         if missing_targets:
             raise RuntimeError("LoRA target modules not found: %s" % missing_targets)
-        lora = LoraConfig(
-            r=8,
-            lora_alpha=32,
-            lora_dropout=0.0,
-            bias="none",
-            task_type="CAUSAL_LM",
-            target_modules=targets,
-            inference_mode=False,
-        )
-        model = get_peft_model(base, lora)
-        init_stats = load_init_adapter_weights(model, init_adapter_dir, torch)
+        if not targets_changed:
+            print("ADAPTER_LOAD_START init_adapter %s" % init_adapter_dir, flush=True)
+            _t_adapter_load = time.perf_counter()
+            try:
+                model = PeftModel.from_pretrained(base, init_adapter_dir, is_trainable=True)
+            except TypeError:
+                model = PeftModel.from_pretrained(base, init_adapter_dir)
+            print("ADAPTER_LOAD_DONE init_adapter %.1fs" % (time.perf_counter() - _t_adapter_load), flush=True)
+            init_stats = verify_from_pretrained_weights(model, init_adapter_dir, torch)
+        else:
+            lora = LoraConfig(
+                r=8,
+                lora_alpha=32,
+                lora_dropout=0.0,
+                bias="none",
+                task_type="CAUSAL_LM",
+                target_modules=targets,
+                inference_mode=False,
+            )
+            model = get_peft_model(base, lora)
+            init_stats = load_init_adapter_weights(
+                model, init_adapter_dir, torch,
+                old_targets=init_old_targets, new_targets=targets,
+            )
         init_old_amount = old_stage_amount(init_adapter_dir)
         try:
             _parent = os.path.dirname(os.path.abspath(init_adapter_dir))
@@ -2412,7 +3096,8 @@ def execute(args, summary):
         raise RuntimeError("input embedding or lm_head is not on CUDA: %s %s" % (in_dev, lm_dev))
 
     optimizer = torch.optim.AdamW(params, lr=float(args.lr), weight_decay=float(args.weight_decay))
-    schedule = UpdateSchedule(optimizer, float(args.lr), int(args.warmup_updates), int(args.optimizer_updates))
+    _horizon = int(getattr(args, "scheduler_horizon", None) or args.optimizer_updates)
+    schedule = UpdateSchedule(optimizer, float(args.lr), int(args.warmup_updates), _horizon)
     vocab = vocab_report(model, tokenizer, raw_config)
     print("vocab:", json.dumps(vocab, ensure_ascii=False, default=str), flush=True)
     devices = {"input": str(in_dev), "lm_head": str(lm_dev), "gpu_count": gpu_count}
@@ -2427,13 +3112,30 @@ def execute(args, summary):
         devices,
         trainable,
         os.path.abspath(args.resume) if args.resume else None,
+        train_formatter,
     )
-    if int(args.warmup_updates) >= int(args.optimizer_updates):
-        run_config["schedule_warning"] = "warmup_updates >= optimizer_updates; decay interval is empty"
+    if int(args.warmup_updates) >= _horizon:
+        run_config["schedule_warning"] = "warmup_updates >= scheduler_horizon; decay interval is empty"
         print("WARNING", run_config["schedule_warning"], flush=True)
+    print(
+        "scheduler_horizon=%d optimizer_updates=%d warmup=%d" % (_horizon, int(args.optimizer_updates), int(args.warmup_updates)),
+        flush=True,
+    )
     if init_info is not None:
         # New-stage accounting: old volume is reference only; the new run restarts at update 0
         # with a fresh pool, cursor, optimizer, and scheduler.
+        try:
+            init_old_formatter = read_adapter_formatter(init_info["source_adapter"])
+        except Exception:
+            init_old_formatter = None
+        init_info["old_formatter"] = init_old_formatter
+        init_info["new_formatter"] = train_formatter
+        if init_old_formatter is not None and init_old_formatter != train_formatter:
+            print(
+                "init-adapter formatter %s differs from new run %s; new run uses data/CLI unified %s"
+                % (init_old_formatter, train_formatter, train_formatter),
+                flush=True,
+            )
         run_config["init_adapter"] = init_info
         run_config["stage"] = {
             "mode": "init_adapter",
@@ -2471,17 +3173,45 @@ def execute(args, summary):
                 "refusing resume because trainable names or LoRA targets differ "
                 "(names_differ=%s targets_differ=%s)." % (names_differ, targets_differ)
             )
+        saved_fmt_raw = resume_state.get("formatter")
+        if saved_fmt_raw is None:
+            saved_run = resume_state.get("run_config") or {}
+            saved_fmt_raw = saved_run.get("formatter") if isinstance(saved_run, dict) else None
+        if saved_fmt_raw is None:
+            # Legacy checkpoint without formatter field reads as F0.
+            saved_fmt = FORMATTER_F0
+        else:
+            try:
+                saved_fmt = _normalize_train_formatter(saved_fmt_raw)
+            except RuntimeError:
+                raise ResumeMismatch("resume checkpoint has unknown formatter %r" % (saved_fmt_raw,))
+        if saved_fmt != train_formatter:
+            raise ResumeMismatch(
+                "refusing resume because formatter differs (checkpoint %s vs current %s); "
+                "start a new stage with --init-adapter" % (saved_fmt, train_formatter)
+            )
+        run_config["formatter"] = train_formatter
         optimizer.load_state_dict(resume_state["optimizer"])
         move_optimizer_state(optimizer, torch)
         if resume_state.get("scheduler"):
             saved_sched = resume_state["scheduler"]
             schedule.completed = int(saved_sched.get("completed", resume_state.get("completed_updates", 0)))
-            if int(saved_sched.get("total", args.optimizer_updates)) != int(args.optimizer_updates) or float(
-                saved_sched.get("base_lr", args.lr)
-            ) != float(args.lr):
+            saved_total = saved_sched.get("total")
+            if saved_total is None:
+                saved_run_cfg = resume_state.get("run_config") or {}
+                saved_total = saved_run_cfg.get("scheduler_horizon", saved_run_cfg.get("optimizer_updates"))
+            if saved_total is not None and int(saved_total) != int(_horizon):
+                raise ResumeMismatch(
+                    "refusing resume because --scheduler-horizon differs "
+                    "(checkpoint %d vs current %d); pass the same horizon, never silently changed"
+                    % (int(saved_total), int(_horizon))
+                )
+            if float(saved_sched.get("base_lr", args.lr)) != float(args.lr) or int(
+                saved_sched.get("warmup", args.warmup_updates)
+            ) != int(args.warmup_updates):
                 run_config["schedule_warning"] = (
-                    "CLI schedule differs from trainer_state; continuing the update counter "
-                    "on the CLI lr/warmup/total curve."
+                    "CLI lr/warmup differs from trainer_state; continuing the update counter "
+                    "on the saved scheduler horizon %d." % int(_horizon)
                 )
                 print("WARNING", run_config["schedule_warning"], flush=True)
         else:
@@ -2510,7 +3240,7 @@ def execute(args, summary):
         raise RuntimeError("FAILED_NO_DATA: training pool is empty")
     facts = think_probe_facts(probe_episode.prompt_text, read_chat_template(tokenizer, model_dir))
     probe_path = os.path.join(args.out_dir, "template_probe.txt")
-    write_template_probe(probe_path, probe_episode.prompt_text, facts, probe_episode)
+    write_template_probe(probe_path, probe_episode.prompt_text, facts, probe_episode, train_formatter)
     print(facts["tail_400"], flush=True)
     print(
         "template_probe assert_applied=%s assert_ok=%s has_empty_think_block=%s"
@@ -2549,7 +3279,7 @@ def execute(args, summary):
     }
     if getattr(args, "length_mixture", None) is not None:
         refresh_bucket_consumption(bundle, pool)
-    save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch)
+    save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch, train_formatter)
     summary["saved_this_run"] = True
     summary["checkpoint_saved"] = True
     summary["last_saved_update"] = int(schedule.completed)
@@ -2559,16 +3289,18 @@ def execute(args, summary):
     if args.resume:
         zero = {
             "skipped": True,
+            "formatter": train_formatter,
             "reason": "resume: adapter is not step-0 base behavior, so zero-step was not run",
             "time_guard": False,
             "tasks": [],
         }
     else:
         try:
-            zero = run_zero_step(model, tokenizer, args, module, in_dev, eos_id, torch)
+            zero = run_zero_step(model, tokenizer, args, module, in_dev, eos_id, torch, train_formatter)
         except Exception as exc:
             zero = {
                 "skipped": False,
+                "formatter": train_formatter,
                 "reason": "zero-step failed; training still starts",
                 "error": str(exc)[:500],
                 "time_guard": False,
@@ -2596,7 +3328,8 @@ def execute(args, summary):
     bundle["rng"] = capture_rng(torch, numpy)
     bundle["run_config"]["zero_step_skipped"] = summary["zero_step_skipped"]
     bundle["run_config"]["zero_step_reason"] = summary["zero_step_reason"]
-    save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch)
+    bundle["run_config"]["formatter"] = train_formatter
+    save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch, train_formatter)
     summary["saved_this_run"] = True
 
     inside_step = [False]
@@ -2621,7 +3354,7 @@ def execute(args, summary):
         if not inside_step[0]:
             try:
                 bundle["rng"] = capture_rng(torch, numpy)
-                save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch)
+                save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch, train_formatter)
                 summary["saved_this_run"] = True
                 summary["saved_on_failure"] = True
                 summary["last_saved_update"] = int(bundle.get("completed_updates", 0))
@@ -2636,7 +3369,8 @@ def execute(args, summary):
     if getattr(args, "length_mixture", None) is not None:
         refresh_bucket_consumption(bundle, pool)
         summary["bucket_consumption"] = bundle["run_config"].get("bucket_consumption")
-    save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch)
+    bundle["run_config"]["formatter"] = train_formatter
+    save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch, train_formatter)
     summary["saved_this_run"] = True
     summary["checkpoint_saved"] = True
     summary["last_saved_update"] = int(schedule.completed)

@@ -32,7 +32,9 @@ PROMPT_TAIL_CHARS = 200
 FORMATTER_F0 = "f0_space"
 FORMATTER_F1 = "f1_compact"
 FORMATTER_CHOICES = ("auto", FORMATTER_F0, FORMATTER_F1)
-FORMATTER_CONFIG_FILES = ("adapter_config.json", "run_config.json", "config.json")
+# formatter.json is the independent sidecar (never writes into PEFT
+# adapter_config.json). Parent run_config.json covers out-dir/adapter layout.
+FORMATTER_CONFIG_FILES = ("formatter.json", "adapter_config.json", "run_config.json", "config.json")
 
 
 class FormatterMismatchError(ValueError):
@@ -61,7 +63,10 @@ def parse_args(argv=None):
     parser = argparse.ArgumentParser(
         description=(
             "Score a G1 adapter (or the base model) on ARC tasks. "
-            "Needs 4 GPUs; otherwise prints SKIP_GPU_COUNT and exits."
+            "Needs 4 GPUs; otherwise prints SKIP_GPU_COUNT and exits. "
+            "Single-process budget/persist primitive only: S0-S4 Notebook "
+            "orchestration stays with the user (010 §8 runner); this process "
+            "covers one loaded model, per-query persist, and budget guard."
         )
     )
     parser.add_argument("--model-dir", required=True, help="Base model directory.")
@@ -79,12 +84,47 @@ def parse_args(argv=None):
     parser.add_argument(
         "--task-ids",
         default="",
-        help="Comma-separated task ids. If omitted, use --split-file.",
+        help="Comma-separated task ids. If omitted, use --split-file or --query-file.",
     )
     parser.add_argument(
         "--split-file",
         default="",
-        help="JSON with diag and holdout id lists.",
+        help=(
+            "JSON with diag and holdout id lists. Do NOT pass 008/010 custom "
+            "manifests (e.g. evaluation-manifest.json) or e0-p12-source-map.json "
+            "directly here: their schema is not a split file and is left unchanged. "
+            "Convert externally to task_id+query_index rows for --query-file, e.g. "
+            "jq -r '.p12[]|[.task_id,.query_index]|@tsv' manifest > queries.tsv."
+        ),
+    )
+    parser.add_argument(
+        "--query-file",
+        default="",
+        help=(
+            "Explicit query manifest: one task_id+query_index per row. Accepted: "
+            "JSONL (one {\"task_id\":...,\"query_index\":...} per line), JSON "
+            "array, or CSV/TSV/TXT with task_id,query_index columns (header "
+            "optional, '#'-comments skipped). 008/010 manifest/e0-p12-source-map "
+            "are external manifest sources only (schema unchanged); convert them "
+            "to this row format first. Overrides --task-ids/--split-file query "
+            "expansion; split labels still come from --split-file when given."
+        ),
+    )
+    parser.add_argument(
+        "--checkpoint-out",
+        default="",
+        help=(
+            "Incremental per-query JSONL checkpoint. Each line is one query row "
+            "with its candidates, dedup_key, checkpoint_hash, config_hash, and "
+            "status (completed|budget_interrupted). Appended after every query; "
+            "a rerun skips rows whose dedup_key matches (completed only) without "
+            "recomputing. Default: <out>.queries.jsonl when --out is given."
+        ),
+    )
+    parser.add_argument(
+        "--no-resume",
+        action="store_true",
+        help="Do not skip queries already completed in --checkpoint-out.",
     )
     parser.add_argument("--out", required=True, help="Per-query JSON output path.")
     parser.add_argument("--max-new-tokens", type=int, default=960)
@@ -92,7 +132,12 @@ def parse_args(argv=None):
         "--time-budget",
         type=int,
         default=TIME_BUDGET_S,
-        help="Stop before the next query once this many seconds have passed since startup, including model load. Default 3600.",
+        help=(
+            "Stop starting new work once this many seconds have passed since "
+            "startup, including setup/model load/JIT/save (010 §5 S0-S4口径). "
+            "Checked before each query and each candidate. Budget stops get "
+            "status=budget_interrupted, never a model error. Default 3600."
+        ),
     )
     parser.add_argument(
         "--n-sample",
@@ -295,6 +340,185 @@ def select_tasks(challenges, task_ids_arg, split_path):
     return labeled
 
 
+STATUS_COMPLETED = "completed"
+STATUS_BUDGET = "budget_interrupted"
+
+
+def parse_query_file(path):
+    """Parse an explicit task_id+query_index row file (torch-free).
+
+    Accepts JSONL (one object per line), a JSON array/object, or
+    CSV/TSV/TXT with task_id,query_index columns (header optional).
+    Returns [(task_id, query_index)] in file order, deduped.
+    """
+    with open(path, "r", encoding="utf-8") as handle:
+        raw = handle.read()
+    text = raw.strip()
+    if not text:
+        raise UsageError("query file is empty: %s" % path)
+    rows = []
+    if path.endswith(".jsonl") or ("\n" in text and text.split("\n")[0].strip().startswith("{")):
+        for line_no, line in enumerate(raw.split("\n"), 1):
+            stripped = line.strip()
+            if not stripped or stripped.startswith("#"):
+                continue
+            try:
+                obj = json.loads(stripped)
+            except ValueError:
+                pass
+            else:
+                tid = _id_from_item(obj)
+                if tid is not None and "query_index" in obj:
+                    try:
+                        qidx = int(obj["query_index"])
+                    except (TypeError, ValueError):
+                        raise UsageError("query file line %d has bad query_index" % line_no)
+                    rows.append((tid, qidx))
+                    continue
+            parts = stripped.replace("\t", ",").replace(" ", ",").split(",")
+            parts = [part.strip() for part in parts if part.strip() != ""]
+            if len(parts) >= 2 and parts[0].lower() not in ("task_id", "tid", "id"):
+                try:
+                    rows.append((parts[0], int(parts[1])))
+                    continue
+                except ValueError:
+                    pass
+            raise UsageError("query file line %d is not task_id+query_index: %s" % (line_no, path))
+        return _dedupe_pairs(rows)
+    try:
+        data = json.loads(raw)
+    except ValueError:
+        data = None
+    if data is not None:
+        items = data if isinstance(data, list) else data.get("queries", data.get("tasks", []))
+        if isinstance(items, list):
+            for item in items:
+                tid = _id_from_item(item)
+                if isinstance(item, dict) and tid is not None and "query_index" in item:
+                    rows.append((tid, int(item["query_index"])))
+            if rows:
+                return _dedupe_pairs(rows)
+        raise UsageError("query JSON has no task_id+query_index rows: %s" % path)
+    for line_no, line in enumerate(raw.split("\n"), 1):
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        parts = stripped.replace("\t", ",").split(",")
+        parts = [part.strip() for part in parts if part.strip() != ""]
+        if len(parts) >= 2 and parts[0].lower() in ("task_id", "tid", "id") and parts[1].lower() in ("query_index", "qidx", "query"):
+            continue
+        if len(parts) < 2:
+            raise UsageError("query file line %d is not task_id+query_index: %s" % (line_no, path))
+        try:
+            rows.append((parts[0], int(parts[1])))
+        except ValueError:
+            raise UsageError("query file line %d has bad query_index: %s" % (line_no, path))
+    if not rows:
+        raise UsageError("query file has no rows: %s" % path)
+    return _dedupe_pairs(rows)
+
+
+def _dedupe_pairs(rows):
+    seen = set()
+    out = []
+    for tid, qidx in rows:
+        key = (str(tid), int(qidx))
+        if key not in seen:
+            seen.add(key)
+            out.append(key)
+    return out
+
+
+def checkpoint_fingerprint(adapter_dir, model_dir):
+    """Short torch-free checkpoint hash for dedup (010 §8.6).
+
+    Adapter: sha256 of adapter_config.json content when present, else the
+    absolute path. Base (no adapter): hash of the model dir path. Different
+    checkpoints never reuse each other's rows.
+    """
+    hasher = hashlib.sha256()
+    adapter = (adapter_dir or "").strip()
+    if adapter:
+        config = os.path.join(adapter, "adapter_config.json")
+        hasher.update(b"adapter:")
+        hasher.update(os.path.abspath(adapter).encode("utf-8"))
+        try:
+            with open(config, "rb") as handle:
+                hasher.update(handle.read())
+        except OSError:
+            pass
+    else:
+        hasher.update(b"base:")
+        hasher.update(os.path.abspath(model_dir or "").encode("utf-8"))
+    return hasher.hexdigest()[:16]
+
+
+def run_config_hash(max_new_tokens, n_sample, compare_mode, second_view, seed, task_view_seed, formatter):
+    canonical = json.dumps(
+        {
+            "max_new_tokens": int(max_new_tokens),
+            "n_sample": int(n_sample),
+            "compare_mode": str(compare_mode),
+            "second_view": str(second_view),
+            "seed": int(seed),
+            "task_view_seed": bool(task_view_seed),
+            "formatter": str(formatter),
+        },
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:16]
+
+
+def query_dedup_key(checkpoint_hash, formatter, task_id, query_index, config_hash):
+    raw = "%s|%s|%s|%d|%s" % (checkpoint_hash, formatter, str(task_id), int(query_index), config_hash)
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
+
+
+def load_completed_queries(path):
+    """Load checkpoint JSONL dedup_key -> row for status=completed rows only.
+
+    Legacy rows without status but with candidates count as completed.
+    budget_interrupted rows are returned separately so the caller retries them.
+    Malformed lines are skipped, never fatal.
+    """
+    done = {}
+    interrupted = 0
+    if not path or not os.path.isfile(path):
+        return done, interrupted
+    with open(path, "r", encoding="utf-8") as handle:
+        for line in handle:
+            stripped = line.strip()
+            if not stripped:
+                continue
+            try:
+                row = json.loads(stripped)
+            except ValueError:
+                continue
+            if not isinstance(row, dict) or "dedup_key" not in row:
+                continue
+            status = row.get("status", STATUS_COMPLETED)
+            if status == STATUS_BUDGET:
+                interrupted += 1
+                continue
+            if status in (STATUS_COMPLETED, "done"):
+                done[str(row["dedup_key"])] = row
+    return done, interrupted
+
+
+def append_query_jsonl(path, row):
+    parent = os.path.dirname(os.path.abspath(path))
+    if parent:
+        os.makedirs(parent, exist_ok=True)
+    with open(path, "a", encoding="utf-8") as handle:
+        handle.write(json.dumps(row, ensure_ascii=False) + "\n")
+        handle.flush()
+
+
+def budget_exceeded(t_start, budget_s):
+    return (time.perf_counter() - t_start) >= float(budget_s)
+
+
 def as_challenge_map(obj):
     if isinstance(obj, dict):
         if "train" in obj and "test" in obj and "task_id" not in obj:
@@ -492,7 +716,7 @@ def score_text_pred(pred, gold):
 
 def _normalize_formatter(value):
     text = str(value).strip().lower().replace("-", "_")
-    if text in ("f0_space", "f0", "space"):
+    if text in ("f0_space", "f0", "space", "space_digits_v1", "space_digits"):
         return FORMATTER_F0
     if text in ("f1_compact", "f1", "compact"):
         return FORMATTER_F1
@@ -531,9 +755,14 @@ def resolve_formatter(cli_value, adapter_dir):
     Returns (formatter, source, fell_back). auto with no formatter field
     falls back to f0_space and marks fell_back=True so the caller records
     the fallback explicitly instead of silently assuming F0.
+    auto searches the adapter dir first (formatter.json sidecar,
+    adapter_config.json, run_config.json, config.json); when the adapter dir
+    carries no formatter field, the parent dir formatter.json/run_config.json
+    is checked (out-dir/adapter layout where run_config lives in the parent).
+    Legacy space_digits_v1 normalizes to f0_space.
     """
     cli = str(cli_value or "auto").strip().lower().replace("-", "_")
-    if cli in ("f0_space", "f0", "space"):
+    if cli in ("f0_space", "f0", "space", "space_digits_v1", "space_digits"):
         return FORMATTER_F0, "cli", False
     if cli in ("f1_compact", "f1", "compact"):
         return FORMATTER_F1, "cli", False
@@ -547,6 +776,13 @@ def resolve_formatter(cli_value, adapter_dir):
                 found = _load_formatter_from_file(candidate)
                 if found is not None:
                     return found, "adapter:" + filename, False
+        parent = os.path.dirname(os.path.abspath(adapter))
+        for filename in ("formatter.json", "run_config.json"):
+            candidate = os.path.join(parent, filename)
+            if os.path.isfile(candidate):
+                found = _load_formatter_from_file(candidate)
+                if found is not None:
+                    return found, "parent:" + filename, False
     return FORMATTER_F0, "fallback_no_field", True
 
 
@@ -713,6 +949,7 @@ def import_episode_api():
         sys.path.insert(0, script_dir)
     from arc_episode_data import (  # noqa: WPS433
         SYSTEM_PROMPT,
+        SYSTEM_PROMPT_COMPACT,
         build_messages,
         grid_to_text,
         text_to_grid,
@@ -720,10 +957,12 @@ def import_episode_api():
 
     if not isinstance(SYSTEM_PROMPT, str) or not SYSTEM_PROMPT.strip():
         raise UsageError("SYSTEM_PROMPT must be a non-empty str")
+    if not isinstance(SYSTEM_PROMPT_COMPACT, str) or not SYSTEM_PROMPT_COMPACT.strip():
+        raise UsageError("SYSTEM_PROMPT_COMPACT must be a non-empty str")
     for fn in (build_messages, grid_to_text, text_to_grid):
         if not callable(fn):
             raise UsageError("arc_episode_data formatter is not callable")
-    return SYSTEM_PROMPT, build_messages, grid_to_text, text_to_grid
+    return SYSTEM_PROMPT, SYSTEM_PROMPT_COMPACT, build_messages, grid_to_text, text_to_grid
 
 
 def _require_file(path, label):
@@ -1056,8 +1295,11 @@ def main(argv=None):
         split_path = args.split_file.strip()
         if split_path:
             _require_file(split_path, "split file")
-        if not args.task_ids.strip() and not split_path:
-            raise UsageError("pass --task-ids or --split-file")
+        query_path = str(getattr(args, "query_file", "") or "").strip()
+        if query_path:
+            _require_file(query_path, "query file")
+        if not args.task_ids.strip() and not split_path and not query_path:
+            raise UsageError("pass --task-ids, --split-file, or --query-file")
         compare = str(args.compare_mode)
         if compare not in ("none", "base_vs_adapter"):
             raise UsageError("--compare-mode must be none or base_vs_adapter")
@@ -1081,7 +1323,7 @@ def main(argv=None):
                 )
 
         try:
-            system_prompt, build_messages, grid_to_text, text_to_grid = import_episode_api()
+            system_prompt_f0, system_prompt_f1, build_messages, grid_to_text, text_to_grid = import_episode_api()
         except ImportError as exc:
             raise UsageError(
                 "cannot import arc_episode_data (%s). Prompts are not formatted here." % exc
@@ -1091,6 +1333,7 @@ def main(argv=None):
         formatter, formatter_source, formatter_fallback = resolve_formatter(
             formatter_cli, adapter
         )
+        system_prompt = system_prompt_f1 if formatter == FORMATTER_F1 else system_prompt_f0
         print(
             "formatter=%s source=%s fallback=%s"
             % (formatter, formatter_source, bool(formatter_fallback)),
@@ -1099,14 +1342,56 @@ def main(argv=None):
         with open(args.challenges, "r", encoding="utf-8") as handle:
             challenges = as_challenge_map(json.load(handle))
         solutions = load_solutions(solutions_path)
-        selected = select_tasks(challenges, args.task_ids, split_path)
-        n_queries = 0
-        for task_id, _split_name in selected:
-            tests = challenges[task_id].get("test") or []
-            n_queries += len(tests) if isinstance(tests, list) else 0
+        ckpt_hash = checkpoint_fingerprint(adapter, args.model_dir)
+        cfg_hash = run_config_hash(
+            args.max_new_tokens,
+            args.n_sample,
+            str(args.compare_mode),
+            str(args.second_view),
+            args.seed,
+            bool(args.task_view_seed),
+            formatter,
+        )
+        # Explicit query manifest overrides task-level expansion. Split labels
+        # still come from --split-file when given; otherwise "other".
+        if query_path:
+            query_rows = parse_query_file(query_path)
+            split_of = {}
+            if split_path:
+                _diag, _hold = load_split(split_path)
+                for tid in _diag:
+                    split_of[tid] = "diag"
+                for tid in _hold:
+                    if tid not in split_of:
+                        split_of[tid] = "holdout"
+            selected = []
+            seen_tasks = set()
+            for tid, _qidx in query_rows:
+                if tid not in challenges:
+                    raise UsageError("query file task not in challenges: %s" % tid)
+                if tid not in seen_tasks:
+                    seen_tasks.add(tid)
+                    selected.append((tid, split_of.get(tid, "other")))
+            planned = []
+            task_pos = {tid: pos for pos, (tid, _s) in enumerate(selected)}
+            for tid, qidx in query_rows:
+                tests = challenges[tid].get("test") or []
+                if not isinstance(tests, list) or qidx < 0 or qidx >= len(tests):
+                    raise UsageError("query index %d out of range for task %s" % (qidx, tid))
+                item = tests[qidx]
+                qinput = item.get("input") if isinstance(item, dict) and "input" in item else None
+                planned.append((task_pos[tid], tid, split_of.get(tid, "other"), qidx, qinput))
+            n_queries = len(planned)
+        else:
+            selected = select_tasks(challenges, args.task_ids, split_path)
+            planned = []
+            for task_pos, (tid, split_name) in enumerate(selected):
+                for qidx, qinput in _query_jobs(challenges[tid].get("test") or []):
+                    planned.append((task_pos, tid, split_name, qidx, qinput))
+            n_queries = len(planned)
         print(
-            "tasks=%d queries=%d adapter=%s"
-            % (len(selected), n_queries, adapter or "none"),
+            "tasks=%d queries=%d adapter=%s query_file=%s"
+            % (len(selected), n_queries, adapter or "none", query_path or "none"),
             flush=True,
         )
 
@@ -1132,7 +1417,9 @@ def main(argv=None):
             peft_model_cls = PeftModel
         pass_presence_penalty = _generation_config_has("presence_penalty")
         tokenizer = AutoTokenizer.from_pretrained(args.model_dir, trust_remote_code=True)
+        print("LOAD_START base model_dir=%s" % args.model_dir, flush=True)
         t_load = time.perf_counter()
+        _t_base_load = t_load
         model = AutoModelForCausalLM.from_pretrained(
             args.model_dir,
             dtype=torch.bfloat16,
@@ -1140,9 +1427,13 @@ def main(argv=None):
             low_cpu_mem_usage=True,
             trust_remote_code=False,
         )
+        print("LOAD_DONE base %.1fs" % (time.perf_counter() - _t_base_load), flush=True)
         adapter_path = None
         if adapter:
+            print("ADAPTER_LOAD_START %s" % adapter, flush=True)
+            _t_adapter_load = time.perf_counter()
             model = peft_model_cls.from_pretrained(model, adapter)
+            print("ADAPTER_LOAD_DONE %.1fs" % (time.perf_counter() - _t_adapter_load), flush=True)
             adapter_path = os.path.abspath(adapter)
         model.eval()
         _sync_cuda(torch)
@@ -1220,34 +1511,77 @@ def main(argv=None):
             except Exception:
                 env["peft"] = None
 
+        checkpoint_path = str(getattr(args, "checkpoint_out", "") or "").strip()
+        if not checkpoint_path:
+            checkpoint_path = str(args.out) + ".queries.jsonl"
+        want_resume = not bool(getattr(args, "no_resume", False))
+        completed_map, prev_interrupted = load_completed_queries(
+            checkpoint_path if want_resume else ""
+        )
+        print(
+            "checkpoint_out=%s resume=%s previously_completed=%d previously_interrupted=%d"
+            % (checkpoint_path, want_resume, len(completed_map), prev_interrupted),
+            flush=True,
+        )
+
+        def _store_query_row(row, status):
+            row["status"] = status
+            row["checkpoint_hash"] = ckpt_hash
+            row["config_hash"] = cfg_hash
+            row["dedup_key"] = query_dedup_key(
+                ckpt_hash, formatter, row["task_id"], row["query_index"], cfg_hash
+            )
+            records.append(row)
+            append_query_jsonl(checkpoint_path, row)
+            return row
+
+        def _budget_row(task_id, split_name, query_index, gold):
+            return {
+                "task_id": task_id,
+                "query_index": query_index,
+                "split": split_name,
+                "prompt_tokens": None,
+                "gold_hw": gold_hw(gold),
+                "candidates": [],
+                "budget_s": int(args.time_budget),
+                "elapsed_s": round(time.perf_counter() - t_start, 3),
+            }
+
         records = []
         prompt_tail = None
         prompt_tail_from = None
         time_guard = False
         stopped = False
-        for task_index, (task_id, split_name) in enumerate(selected):
-            if stopped:
-                break
-            task = challenges[task_id]
-            demos = task.get("train") or []
-            jobs = _query_jobs(task.get("test") or [])
-            elapsed = time.perf_counter() - t_start
-            print(
-                "-- task %d/%d %s split=%s queries=%d elapsed=%.1fs"
-                % (task_index + 1, len(selected), task_id, split_name, len(jobs), elapsed),
-                flush=True,
-            )
-            for query_index, query_input in jobs:
-                if time.perf_counter() - t_start >= args.time_budget:
-                    time_guard = True
-                    stopped = True
-                    print(
-                        "TIME_GUARD elapsed %.1fs >= %ds; not starting %s query %d"
-                        % (time.perf_counter() - t_start, args.time_budget, task_id, query_index),
-                        flush=True,
-                    )
-                    break
-                gold = gold_for(solutions, task_id, query_index)
+        n_skipped = 0
+        last_task = None
+        for plan_pos, (task_index, task_id, split_name, query_index, query_input) in enumerate(planned):
+            if task_id != last_task:
+                last_task = task_id
+                print(
+                    "-- query %d/%d task %s split=%s q=%d elapsed=%.1fs"
+                    % (plan_pos + 1, len(planned), task_id, split_name, query_index, time.perf_counter() - t_start),
+                    flush=True,
+                )
+            gold = gold_for(solutions, task_id, query_index)
+            if stopped or budget_exceeded(t_start, args.time_budget):
+                time_guard = True
+                stopped = True
+                print(
+                    "TIME_GUARD elapsed %.1fs >= %ds; not starting %s query %d"
+                    % (time.perf_counter() - t_start, args.time_budget, task_id, query_index),
+                    flush=True,
+                )
+                # Budget stop is not a model error: status + no error field.
+                _store_query_row(_budget_row(task_id, split_name, query_index, gold), STATUS_BUDGET)
+                continue
+            key = query_dedup_key(ckpt_hash, formatter, task_id, query_index, cfg_hash)
+            if want_resume and key in completed_map:
+                records.append(completed_map[key])
+                n_skipped += 1
+                continue
+            if True:
+                task = challenges[task_id]
+                demos = task.get("train") or []
                 if query_input is None:
                     candidates = [
                         _candidate_record(
@@ -1264,7 +1598,7 @@ def main(argv=None):
                             None,
                         )
                     ]
-                    records.append(
+                    _store_query_row(
                         {
                             "task_id": task_id,
                             "query_index": query_index,
@@ -1272,11 +1606,12 @@ def main(argv=None):
                             "prompt_tokens": None,
                             "gold_hw": gold_hw(gold),
                             "candidates": candidates,
-                        }
+                        },
+                        STATUS_COMPLETED,
                     )
                     continue
                 try:
-                    messages = build_messages(demos, query_input)
+                    messages = build_messages(demos, query_input, formatter)
                     prompt_text = tokenizer.apply_chat_template(
                         messages,
                         tokenize=False,
@@ -1292,7 +1627,7 @@ def main(argv=None):
                     if prompt_error is None:
                         prompt_error = "apply_chat_template did not return a string"
                     print("  q%d PROMPT_FAIL %s" % (query_index, prompt_error), flush=True)
-                    records.append(
+                    _store_query_row(
                         {
                             "task_id": task_id,
                             "query_index": query_index,
@@ -1314,7 +1649,8 @@ def main(argv=None):
                                     None,
                                 )
                             ],
-                        }
+                        },
+                        STATUS_COMPLETED,
                     )
                     continue
                 if prompt_tail is None:
@@ -1335,7 +1671,7 @@ def main(argv=None):
                             }
                             for demo in demos
                         ]
-                        t_messages = build_messages(t_demos, transpose_grid(query_input))
+                        t_messages = build_messages(t_demos, transpose_grid(query_input), formatter)
                         prompt_text_t = tokenizer.apply_chat_template(
                             t_messages,
                             tokenize=False,
@@ -1460,9 +1796,25 @@ def main(argv=None):
                     "formatter_fallback": bool(formatter_fallback),
                     "candidates": candidates,
                 }
+                row_budget_hit = False
+
+                def _candidate_guard(kind):
+                    if budget_exceeded(t_start, args.time_budget):
+                        print(
+                            "TIME_GUARD elapsed %.1fs >= %ds; not starting candidate %s (%s query %d)"
+                            % (time.perf_counter() - t_start, args.time_budget, kind, task_id, query_index),
+                            flush=True,
+                        )
+                        return True
+                    return False
+
                 if compare == "base_vs_adapter":
-                    # Budget is checked before the query. Both arms still run.
+                    # Budget is checked before each candidate. A mid-query hit
+                    # keeps partial candidates and marks the row budget_interrupted.
                     for kind, use_base in (("base_greedy", True), ("adapter_greedy", False)):
+                        if _candidate_guard(kind):
+                            row_budget_hit = True
+                            break
                         record, prompt_len = _gen(
                             prompt_text, kind, False, None, gold, use_base
                         )
@@ -1472,11 +1824,14 @@ def main(argv=None):
                         candidates.append(record)
                         _log(kind, record)
                     by_kind = {item.get("kind"): item for item in candidates}
-                    if second_view == "transpose":
+                    if second_view == "transpose" and not row_budget_hit:
                         for kind, use_base in (
                             ("base_greedy_transpose", True),
                             ("adapter_greedy_transpose", False),
                         ):
+                            if _candidate_guard(kind):
+                                row_budget_hit = True
+                                break
                             orig_grid = (by_kind.get(kind.replace("_transpose", "")) or {}).get("grid")
                             record, _plen = _transpose_candidate(
                                 orig_grid, prompt_text_t, kind, use_base
@@ -1507,8 +1862,12 @@ def main(argv=None):
                     plan = [("greedy", False, None, "original")]
                     for sample_index in range(args.n_sample):
                         plan.append(("sample", True, sample_index, "original"))
-                    # Budget is checked before the query. All candidates still run.
+                    # Budget is checked before each candidate. A mid-query hit
+                    # keeps partial candidates and marks the row budget_interrupted.
                     for kind, do_sample, sample_index, _view in plan:
+                        if _candidate_guard(kind):
+                            row_budget_hit = True
+                            break
                         seed_value = None
                         if do_sample:
                             if args.task_view_seed:
@@ -1527,15 +1886,18 @@ def main(argv=None):
                             prompt_tokens = prompt_len
                         candidates.append(record)
                         _log(kind, record)
-                    if second_view == "transpose":
-                        record, _plen = _transpose_candidate(
-                            (candidates[0] if candidates else {}).get("grid"),
-                            prompt_text_t,
-                            "greedy_transpose",
-                            False,
-                        )
-                        candidates.append(record)
-                        _log("greedy_transpose", record)
+                    if second_view == "transpose" and not row_budget_hit:
+                        if _candidate_guard("greedy_transpose"):
+                            row_budget_hit = True
+                        else:
+                            record, _plen = _transpose_candidate(
+                                (candidates[0] if candidates else {}).get("grid"),
+                                prompt_text_t,
+                                "greedy_transpose",
+                                False,
+                            )
+                            candidates.append(record)
+                            _log("greedy_transpose", record)
                     row["prompt_tokens"] = prompt_tokens
                 if second_view == "transpose":
                     seen = set()
@@ -1557,25 +1919,47 @@ def main(argv=None):
                             if item.get("view") == "transpose"
                         ],
                     }
-                records.append(row)
-            payload = build_payload(
-                args,
-                records,
-                prompt_tail,
-                prompt_tail_from,
-                time_guard,
-                round(time.perf_counter() - t_start, 3),
-                system_prompt,
-                adapter_path,
-                env,
-                sampling_note,
-                [tid for tid, _name in selected],
-                formatter,
-                formatter_source,
-                formatter_fallback,
-            )
-            write_json(args.out, payload)
+                if row_budget_hit:
+                    time_guard = True
+                    stopped = True
+                    # Partial candidates are kept; the stop is a budget status,
+                    # never a model error (no error field is added here).
+                    _store_query_row(row, STATUS_BUDGET)
+                    continue
+                _store_query_row(row, STATUS_COMPLETED)
+        payload = build_payload(
+            args,
+            records,
+            prompt_tail,
+            prompt_tail_from,
+            time_guard,
+            round(time.perf_counter() - t_start, 3),
+            system_prompt,
+            adapter_path,
+            env,
+            sampling_note,
+            [tid for tid, _name in selected],
+            formatter,
+            formatter_source,
+            formatter_fallback,
+        )
+        payload["checkpoint"] = {
+            "checkpoint_out": checkpoint_path,
+            "checkpoint_hash": ckpt_hash,
+            "config_hash": cfg_hash,
+            "dedup": "checkpoint_hash/formatter/task_id/query_index/config_hash; "
+            "config covers max_new_tokens/n_sample/compare_mode/second_view/seed/task_view_seed; "
+            "different checkpoints never reuse rows",
+            "skipped_completed": n_skipped,
+            "n_budget_interrupted": sum(1 for row in records if row.get("status") == STATUS_BUDGET),
+            "status_values": [STATUS_COMPLETED, STATUS_BUDGET],
+        }
+        write_json(args.out, payload)
         summary = summary_from(records, time_guard)
+        summary["skipped_completed"] = n_skipped
+        summary["n_budget_interrupted"] = sum(
+            1 for row in records if row.get("status") == STATUS_BUDGET
+        )
         print(
             "SOLVE_SUMMARY=" + json.dumps(summary, ensure_ascii=False, separators=(",", ":")),
             flush=True,

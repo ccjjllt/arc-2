@@ -1,0 +1,7430 @@
+{
+  "date": "2026-10-03",
+  "status": "CPU_PREPARED_NOT_GPU_VALIDATED",
+  "seed": 20261003,
+  "selection": "Same raw episodes for F0/F1. F0 full-length buckets 80/160/160. Approximate40/60 source target, least-seen task/base and explicit55-task protection. Then existing legacy shuffle, same seed in both arms.",
+  "paired_comparison": "same examples/targets/order, NOT equal tokens or equal wall-clock",
+  "quality_scope": "Only17 known flagged new bases removed; remaining pool is not fully semantic-certified. Repair pilot deliberately excluded.",
+  "input_rows": 7427,
+  "excluded": {
+    "outside_common_4k_domain": 1946,
+    "known_009_flagged_newbase_rows": 34
+  },
+  "protected_task_count": 55,
+  "protected_task_ids": [
+    "17829a00",
+    "1b59e163",
+    "25c199f5",
+    "2ccd9fef",
+    "2de01db2",
+    "2f767503",
+    "320afe60",
+    "396d80d7",
+    "3ad05f52",
+    "3d588dc9",
+    "4df5b0ae",
+    "52364a65",
+    "5587a8d0",
+    "5623160b",
+    "5a719d11",
+    "5adee1b2",
+    "6165ea8f",
+    "6350f1f4",
+    "66ac4c3b",
+    "753ea09b",
+    "7acdf6d3",
+    "825aa9e9",
+    "83eb0a57",
+    "880c1354",
+    "8a6d367c",
+    "902510d5",
+    "9720b24f",
+    "97c75046",
+    "98c475bf",
+    "9b5080bb",
+    "9ba4a9aa",
+    "9f669b64",
+    "a09f6c25",
+    "a6953f00",
+    "aaecdb9a",
+    "ad3b40cf",
+    "b71a7747",
+    "b74ca5d1",
+    "bc93ec48",
+    "c4d1a9ae",
+    "c6141b15",
+    "c9680e90",
+    "d6542281",
+    "da6e95e5",
+    "db615bd4",
+    "df978a02",
+    "e4888269",
+    "e729b7be",
+    "e9fc42f2",
+    "ecb67b6d",
+    "f0100645",
+    "f18ec8cc",
+    "f341894c",
+    "f8f52ecc",
+    "fe45cba4"
+  ],
+  "stats": {
+    "rows": 400,
+    "tasks": 400,
+    "bases": 400,
+    "sources": {
+      "arcgen_v2": 240,
+      "official_train": 160
+    },
+    "origins": {
+      "arc1_eval": 201,
+      "non_arc1": 130,
+      "arc1_train": 69
+    },
+    "protected_tasks": 32,
+    "f0_reference_buckets": {
+      "1": 160,
+      "2": 160,
+      "0": 80
+    },
+    "tokens": {
+      "f0": {
+        "prompt": 669710,
+        "target_eos": 90562,
+        "full": 760272
+      },
+      "f1": {
+        "prompt": 383265,
+        "target_eos": 49209,
+        "full": 432474
+      }
+    }
+  },
+  "prefix_by_optimizer_update": {
+    "25": {
+      "rows": 100,
+      "tasks": 100,
+      "bases": 100,
+      "sources": {
+        "arcgen_v2": 62,
+        "official_train": 38
+      },
+      "origins": {
+        "arc1_eval": 52,
+        "non_arc1": 33,
+        "arc1_train": 15
+      },
+      "protected_tasks": 7,
+      "f0_reference_buckets": {
+        "0": 20,
+        "2": 44,
+        "1": 36
+      },
+      "tokens": {
+        "f0": {
+          "prompt": 165898,
+          "target_eos": 23572,
+          "full": 189470
+        },
+        "f1": {
+          "prompt": 95142,
+          "target_eos": 12844,
+          "full": 107986
+        }
+      }
+    },
+    "50": {
+      "rows": 200,
+      "tasks": 200,
+      "bases": 200,
+      "sources": {
+        "arcgen_v2": 116,
+        "official_train": 84
+      },
+      "origins": {
+        "arc1_eval": 100,
+        "non_arc1": 63,
+        "arc1_train": 37
+      },
+      "protected_tasks": 14,
+      "f0_reference_buckets": {
+        "0": 39,
+        "2": 85,
+        "1": 76
+      },
+      "tokens": {
+        "f0": {
+          "prompt": 343748,
+          "target_eos": 46238,
+          "full": 389986
+        },
+        "f1": {
+          "prompt": 196392,
+          "target_eos": 25145,
+          "full": 221537
+        }
+      }
+    },
+    "100": {
+      "rows": 400,
+      "tasks": 400,
+      "bases": 400,
+      "sources": {
+        "arcgen_v2": 240,
+        "official_train": 160
+      },
+      "origins": {
+        "arc1_eval": 201,
+        "non_arc1": 130,
+        "arc1_train": 69
+      },
+      "protected_tasks": 32,
+      "f0_reference_buckets": {
+        "0": 80,
+        "2": 160,
+        "1": 160
+      },
+      "tokens": {
+        "f0": {
+          "prompt": 669710,
+          "target_eos": 90562,
+          "full": 760272
+        },
+        "f1": {
+          "prompt": 383265,
+          "target_eos": 49209,
+          "full": 432474
+        }
+      }
+    }
+  },
+  "expected_legacy_consumption_order": [
+    "a59b95c0|gen|1|ident|ident",
+    "2ccd9fef|test|0|ident|ident",
+    "d93c6891|gen|104|ident|ident",
+    "332efdb3|test|0|ident|ident",
+    "8e301a54|gen|104|ident|ident",
+    "85b81ff1|gen|104|rot90|ident",
+    "fe45cba4|test|0|ident|ident",
+    "928ad970|test|0|ident|ident",
+    "22a4bbc2|gen|104|ident|ident",
+    "60b61512|test|0|ident|ident",
+    "456873bc|loo|0|ident|ident",
+    "140c817e|gen|1|ident|ident",
+    "9f669b64|test|0|ident|ident",
+    "c658a4bd|test|0|ident|ident",
+    "8618d23e|gen|103|ident|ident",
+    "87ab05b8|gen|102|ident|ident",
+    "e133d23d|gen|100|ident|ident",
+    "f0100645|test|0|ident|ident",
+    "2601afb7|gen|0|rot90|ident",
+    "baf41dbf|gen|101|ident|ident",
+    "5034a0b5|gen|104|rot90|ident",
+    "b5bb5719|gen|0|ident|ident",
+    "e345f17b|gen|104|rot90|ident",
+    "4c177718|gen|101|rot90|ident",
+    "5af49b42|test|0|ident|ident",
+    "09629e4f|test|0|ident|ident",
+    "e7b06bea|gen|0|ident|ident",
+    "a8610ef7|gen|102|rot90|ident",
+    "e7a25a18|gen|101|ident|ident",
+    "15660dd6|gen|102|rot90|ident",
+    "36d67576|loo|0|ident|ident",
+    "d017b73f|gen|103|rot90|ident",
+    "834ec97d|test|0|ident|ident",
+    "5792cb4d|gen|104|ident|ident",
+    "cad67732|gen|103|rot90|ident",
+    "782b5218|gen|103|rot90|ident",
+    "52364a65|test|0|ident|ident",
+    "9a4bb226|gen|103|ident|ident",
+    "1b8318e3|loo|0|ident|ident",
+    "9356391f|test|0|ident|ident",
+    "817e6c09|gen|103|rot90|ident",
+    "5e6bbc0b|gen|1|rot90|ident",
+    "af24b4cc|gen|103|ident|ident",
+    "2753e76c|gen|102|ident|ident",
+    "84551f4c|gen|103|rot90|ident",
+    "a934301b|gen|0|rot90|ident",
+    "3979b1a8|gen|1|rot180|ident",
+    "2072aba6|gen|102|ident|ident",
+    "c803e39c|test|0|ident|ident",
+    "aaecdb9a|test|0|ident|ident",
+    "f25fbde4|test|0|ident|ident",
+    "d37a1ef5|gen|101|rot90|ident",
+    "2f767503|test|0|ident|ident",
+    "bc4146bd|gen|103|rot90|ident",
+    "48f8583b|gen|100|rot90|ident",
+    "2697da3f|test|0|ident|ident",
+    "59341089|gen|102|ident|ident",
+    "29700607|gen|104|ident|ident",
+    "758abdf0|gen|103|rot90|ident",
+    "321b1fc6|test|0|ident|ident",
+    "90347967|test|0|ident|ident",
+    "00dbd492|gen|104|ident|ident",
+    "5783df64|gen|100|ident|ident",
+    "178fcbfb|loo|0|ident|ident",
+    "0a2355a6|loo|0|ident|ident",
+    "ce602527|test|0|ident|ident",
+    "ba9d41b8|gen|101|ident|ident",
+    "fb791726|gen|101|ident|ident",
+    "e9b4f6fc|gen|104|ident|ident",
+    "67c52801|gen|103|ident|ident",
+    "b745798f|gen|104|rot90|ident",
+    "5ad8a7c0|gen|104|rot90|ident",
+    "22806e14|loo|0|ident|ident",
+    "17b866bd|test|1|ident|ident",
+    "1d398264|gen|100|ident|ident",
+    "25e02866|gen|0|rot90|ident",
+    "575b1a71|gen|102|rot90|ident",
+    "ae3edfdc|test|0|ident|ident",
+    "3befdf3e|test|0|ident|ident",
+    "a834deea|gen|101|rot90|ident",
+    "0ca9ddb6|test|0|ident|ident",
+    "c8b7cc0f|gen|102|ident|ident",
+    "34b99a2b|gen|0|rot90|ident",
+    "4a1cacc2|gen|103|ident|ident",
+    "0e671a1a|loo|0|ident|ident",
+    "b7955b3c|gen|104|ident|ident",
+    "dc46ea44|gen|100|ident|ident",
+    "ba26e723|test|0|ident|ident",
+    "af726779|gen|101|rot90|ident",
+    "c48954c1|gen|104|rot90|ident",
+    "b7cb93ac|test|0|ident|ident",
+    "642248e4|gen|1|ident|ident",
+    "9b4c17c4|gen|1|ident|ident",
+    "cf5fd0ad|gen|0|ident|ident",
+    "13f06aa5|loo|0|ident|ident",
+    "e0fb7511|test|0|ident|ident",
+    "d282b262|gen|100|ident|ident",
+    "272f95fa|test|0|ident|ident",
+    "da2b0fe3|gen|102|ident|ident",
+    "d6ad076f|test|0|ident|ident",
+    "8ee62060|gen|0|rot90|ident",
+    "8fbca751|gen|101|ident|ident",
+    "3d588dc9|test|0|ident|ident",
+    "a1570a43|test|0|ident|ident",
+    "1190e5a7|loo|0|ident|ident",
+    "228f6490|test|0|ident|ident",
+    "bae5c565|test|0|ident|ident",
+    "45bbe264|test|0|ident|ident",
+    "ac605cbb|test|0|ident|ident",
+    "72207abc|test|0|ident|ident",
+    "2281f1f4|loo|0|ident|ident",
+    "a1aa0c1e|gen|102|ident|ident",
+    "1990f7a8|gen|101|ident|ident",
+    "ce8d95cc|gen|101|rot90|ident",
+    "aa300dc3|gen|0|ident|ident",
+    "759f3fd3|test|0|ident|ident",
+    "5ffb2104|gen|1|ident|ident",
+    "f8f52ecc|test|0|ident|ident",
+    "c64f1187|gen|100|rot90|ident",
+    "6e19193c|test|0|ident|ident",
+    "2faf500b|gen|100|ident|ident",
+    "27a77e38|gen|100|ident|ident",
+    "712bf12e|gen|103|ident|ident",
+    "79cce52d|gen|104|ident|ident",
+    "50aad11f|gen|103|rot90|ident",
+    "1190bc91|gen|1|rot90|ident",
+    "c35c1b4c|gen|100|rot90|ident",
+    "e9bb6954|gen|100|ident|ident",
+    "5623160b|test|0|ident|ident",
+    "e6de6e8f|gen|0|rot90|ident",
+    "97999447|test|0|ident|ident",
+    "f1bcbc2c|gen|0|rot90|ident",
+    "be03b35f|gen|104|rot90|ident",
+    "996ec1f3|gen|103|rot90|ident",
+    "7039b2d7|gen|103|ident|ident",
+    "4347f46a|loo|0|ident|ident",
+    "3b4c2228|gen|103|rot90|ident",
+    "dc2aa30b|gen|100|rot90|ident",
+    "137f0df0|loo|0|ident|ident",
+    "73c3b0d8|gen|102|ident|ident",
+    "bb43febb|test|0|ident|ident",
+    "17829a00|test|0|ident|ident",
+    "e1baa8a4|gen|103|rot90|ident",
+    "44d8ac46|test|0|ident|ident",
+    "2685904e|gen|100|ident|ident",
+    "ad7e01d0|gen|102|ident|ident",
+    "11dc524f|test|0|ident|ident",
+    "1b60fb0c|loo|0|ident|ident",
+    "9f8de559|gen|103|rot90|ident",
+    "9720b24f|test|0|ident|ident",
+    "37ce87bb|gen|101|rot90|ident",
+    "1c02dbbe|gen|0|rot180|ident",
+    "d749d46f|gen|0|ident|ident",
+    "72a961c9|gen|102|ident|ident",
+    "7ee1c6ea|gen|103|rot90|ident",
+    "95755ff2|test|0|ident|ident",
+    "3bd67248|loo|0|ident|ident",
+    "f0f8a26d|test|0|ident|ident",
+    "0becf7df|gen|103|ident|ident",
+    "58743b76|gen|101|rot90|ident",
+    "973e499e|gen|103|ident|ident",
+    "20981f0e|loo|0|ident|ident",
+    "4852f2fa|gen|0|ident|ident",
+    "f0df5ff0|test|0|ident|ident",
+    "4258a5f9|test|0|ident|ident",
+    "e74e1818|gen|0|rot90|ident",
+    "337b420f|gen|101|rot90|ident",
+    "5d2a5c43|gen|104|ident|ident",
+    "bd5af378|test|0|ident|ident",
+    "d2abd087|test|0|ident|ident",
+    "62b74c02|gen|104|ident|ident",
+    "770cc55f|gen|1|rot90|ident",
+    "9caf5b84|gen|103|ident|ident",
+    "6a11f6da|gen|101|ident|ident",
+    "d22278a0|test|0|ident|ident",
+    "505fff84|loo|0|ident|ident",
+    "6d1d5c90|gen|103|rot90|ident",
+    "69889d6e|test|0|ident|ident",
+    "9473c6fb|test|0|ident|ident",
+    "ac0c2ac3|gen|1|rot90|ident",
+    "ba1aa698|gen|100|rot90|ident",
+    "3de23699|test|0|ident|ident",
+    "caa06a1f|test|0|ident|ident",
+    "b0722778|gen|0|rot90|ident",
+    "4290ef0e|test|0|ident|ident",
+    "e9fc42f2|test|0|ident|ident",
+    "1b59e163|test|0|ident|ident",
+    "12997ef3|test|0|ident|ident",
+    "469497ad|test|0|ident|ident",
+    "8eb1be9a|test|0|ident|ident",
+    "195ba7dc|gen|101|rot90|ident",
+    "e8dc4411|test|0|ident|ident",
+    "e21a174a|gen|102|rot90|ident",
+    "60d73be6|gen|104|rot90|ident",
+    "81c0276b|test|0|ident|ident",
+    "fc754716|gen|104|ident|ident",
+    "b27ca6d3|test|0|ident|ident",
+    "e50d258f|test|0|ident|ident",
+    "992798f6|gen|102|rot90|ident",
+    "8abad3cf|gen|0|ident|ident",
+    "15696249|gen|103|rot90|ident",
+    "3eda0437|loo|0|ident|ident",
+    "2bcee788|test|0|ident|ident",
+    "5ecac7f7|gen|100|rot90|ident",
+    "e2092e0c|gen|102|ident|ident",
+    "e9614598|test|0|ident|ident",
+    "46c35fc7|gen|0|rot90|ident",
+    "fafd9572|test|0|ident|ident",
+    "705a3229|gen|0|rot90|ident",
+    "673ef223|test|0|ident|ident",
+    "1caeab9d|test|0|ident|ident",
+    "1f876c06|loo|0|ident|ident",
+    "9bebae7a|test|0|ident|ident",
+    "cf133acc|gen|103|ident|ident",
+    "dd2401ed|gen|103|ident|ident",
+    "68b67ca3|gen|103|ident|ident",
+    "7468f01a|test|0|ident|ident",
+    "18286ef8|gen|0|rot180|ident",
+    "c92b942c|gen|0|ident|ident",
+    "3bd292e8|gen|101|rot90|ident",
+    "668eec9a|gen|103|rot90|ident",
+    "626c0bcc|gen|100|ident|ident",
+    "c61be7dc|gen|103|ident|ident",
+    "1c0d0a4b|gen|0|ident|ident",
+    "6ea4a07e|gen|0|ident|ident",
+    "1be83260|test|0|ident|ident",
+    "7953d61e|gen|102|rot90|ident",
+    "fd02da9e|gen|100|ident|ident",
+    "d19f7514|gen|0|ident|ident",
+    "91413438|test|0|ident|ident",
+    "21f83797|test|0|ident|ident",
+    "ca8de6ea|gen|100|rot90|ident",
+    "55059096|loo|0|ident|ident",
+    "1a6449f1|gen|100|rot90|ident",
+    "c87289bb|gen|0|rot90|ident",
+    "99caaf76|test|0|ident|ident",
+    "2a28add5|gen|102|rot90|ident",
+    "f341894c|test|0|ident|ident",
+    "32e9702f|gen|101|rot90|ident",
+    "67636eac|gen|0|rot90|ident",
+    "93b4f4b3|gen|1|rot90|ident",
+    "b25e450b|gen|103|rot90|ident",
+    "1c56ad9f|gen|0|rot90|ident",
+    "6350f1f4|test|0|ident|ident",
+    "358ba94e|gen|1|ident|ident",
+    "4612dd53|test|0|ident|ident",
+    "7d18a6fb|gen|100|rot90|ident",
+    "03560426|gen|104|ident|ident",
+    "1e81d6f9|test|0|ident|ident",
+    "d5c634a2|gen|102|ident|ident",
+    "bbb1b8b6|gen|101|ident|ident",
+    "9110e3c5|gen|3|ident|ident",
+    "825aa9e9|test|0|ident|ident",
+    "14b8e18c|test|0|ident|ident",
+    "b60334d2|test|0|ident|ident",
+    "ad3b40cf|test|0|ident|ident",
+    "8dab14c2|gen|104|rot90|ident",
+    "ed74f2f2|gen|101|rot90|ident",
+    "d43fd935|test|0|ident|ident",
+    "cbded52d|test|0|ident|ident",
+    "150deff5|loo|0|ident|ident",
+    "252143c9|gen|102|rot90|ident",
+    "d4b1c2b1|gen|101|ident|ident",
+    "4093f84a|loo|0|ident|ident",
+    "e69241bd|gen|102|ident|ident",
+    "0c9aba6e|gen|103|rot90|ident",
+    "363442ee|loo|0|ident|ident",
+    "ac2e8ecf|test|0|ident|ident",
+    "13713586|gen|100|rot90|ident",
+    "50a16a69|loo|0|ident|ident",
+    "c6141b15|test|0|ident|ident",
+    "5d588b4d|gen|101|ident|ident",
+    "281123b4|gen|103|ident|ident",
+    "23b5c85d|loo|0|ident|ident",
+    "f3e14006|gen|100|ident|ident",
+    "25d487eb|test|0|ident|ident",
+    "ecaa0ec1|gen|102|ident|ident",
+    "12422b43|gen|104|rot90|ident",
+    "11e1fe23|gen|101|ident|ident",
+    "25c199f5|test|0|ident|ident",
+    "27f8ce4f|gen|104|ident|ident",
+    "ac6f9922|gen|1|ident|ident",
+    "470c91de|gen|102|ident|ident",
+    "9ddd00f0|gen|101|ident|ident",
+    "230f2e48|gen|100|rot90|ident",
+    "5207a7b5|gen|104|rot90|ident",
+    "396d80d7|test|0|ident|ident",
+    "494ef9d7|gen|1|rot90|ident",
+    "5117e062|loo|0|ident|ident",
+    "ddf7fa4f|test|0|ident|ident",
+    "ba97ae07|test|0|ident|ident",
+    "41ace6b5|gen|100|ident|ident",
+    "2c737e39|test|0|ident|ident",
+    "4df5b0ae|loo|0|ident|ident",
+    "31d5ba1a|gen|1|ident|ident",
+    "aa18de87|gen|0|ident|ident",
+    "e048c9ed|test|0|ident|ident",
+    "d9fac9be|test|0|ident|ident",
+    "7ddcd7ec|test|0|ident|ident",
+    "f8ff0b80|test|0|ident|ident",
+    "ad38a9d0|test|0|ident|ident",
+    "17cae0c1|gen|1|rot180|ident",
+    "e78887d1|gen|102|rot90|ident",
+    "692cd3b6|test|0|ident|ident",
+    "c9680e90|test|0|ident|ident",
+    "1a2e2828|gen|103|rot90|ident",
+    "7ec998c9|gen|102|ident|ident",
+    "8ba14f53|gen|1|ident|ident",
+    "310f3251|gen|1|rot180|ident",
+    "32597951|loo|0|ident|ident",
+    "cb227835|gen|0|rot90|ident",
+    "62ab2642|gen|102|rot90|ident",
+    "7c8af763|gen|104|ident|ident",
+    "543a7ed5|test|0|ident|ident",
+    "e4941b18|test|0|ident|ident",
+    "8e2edd66|gen|0|ident|ident",
+    "412b6263|gen|100|ident|ident",
+    "f18ec8cc|test|0|ident|ident",
+    "e7dd8335|gen|0|rot90|ident",
+    "7acdf6d3|test|0|ident|ident",
+    "3e980e27|loo|0|ident|ident",
+    "22425bda|gen|102|ident|ident",
+    "c920a713|gen|101|rot90|ident",
+    "9b30e358|gen|100|rot90|ident",
+    "0bb8deee|gen|101|ident|ident",
+    "652646ff|gen|104|rot90|ident",
+    "e3fe1151|gen|103|ident|ident",
+    "84db8fc4|gen|102|rot90|ident",
+    "48131b3c|gen|0|ident|ident",
+    "d2acf2cb|gen|104|rot90|ident",
+    "cfb2ce5a|gen|104|rot90|ident",
+    "8fff9e47|gen|103|ident|ident",
+    "8f2ea7aa|test|0|ident|ident",
+    "ae58858e|gen|103|rot90|ident",
+    "ecb67b6d|test|0|ident|ident",
+    "5751f35e|test|0|ident|ident",
+    "b1fc8b8e|gen|102|ident|ident",
+    "7d7772cc|gen|100|rot90|ident",
+    "3d6c6e23|test|0|ident|ident",
+    "6ad5bdfd|test|0|ident|ident",
+    "506d28a5|gen|100|rot90|ident",
+    "695367ec|gen|100|ident|ident",
+    "6e82a1ae|test|0|ident|ident",
+    "8b28cd80|gen|104|ident|ident",
+    "1478ab18|gen|0|rot180|ident",
+    "ea9794b1|gen|103|ident|ident",
+    "0b17323b|gen|2|rot90|ident",
+    "94414823|gen|0|ident|ident",
+    "aab50785|gen|104|rot90|ident",
+    "7e02026e|gen|102|rot90|ident",
+    "19bb5feb|test|0|ident|ident",
+    "8597cfd7|gen|101|ident|ident",
+    "31adaf00|gen|103|rot90|ident",
+    "ec883f72|test|0|ident|ident",
+    "c4d1a9ae|test|0|ident|ident",
+    "60c09cac|gen|104|rot90|ident",
+    "9ba4a9aa|test|0|ident|ident",
+    "2f0c5170|gen|1|rot180|ident",
+    "f3e62deb|test|0|ident|ident",
+    "292dd178|loo|0|ident|ident",
+    "b7999b51|gen|101|ident|ident",
+    "af902bf9|test|0|ident|ident",
+    "465b7d93|gen|103|rot90|ident",
+    "a680ac02|gen|104|ident|ident",
+    "85fa5666|gen|100|ident|ident",
+    "880c1354|test|0|ident|ident",
+    "f3cdc58f|gen|104|ident|ident",
+    "db7260a4|gen|103|ident|ident",
+    "fe9372f3|gen|100|rot90|ident",
+    "833dafe3|gen|100|rot90|ident",
+    "3428a4f5|test|0|ident|ident",
+    "e5790162|gen|104|ident|ident",
+    "42f14c03|test|0|ident|ident",
+    "0692e18c|gen|103|ident|ident",
+    "2a5f8217|gen|101|rot90|ident",
+    "d968ffd4|gen|0|ident|ident",
+    "18447a8d|gen|1|rot180|ident",
+    "15663ba9|test|0|ident|ident",
+    "e57337a4|gen|0|ident|ident",
+    "e5c44e8f|gen|101|rot90|ident",
+    "60a26a3e|gen|104|ident|ident",
+    "97c75046|test|0|ident|ident",
+    "9968a131|gen|0|ident|ident",
+    "4e469f39|loo|0|ident|ident",
+    "b0f4d537|gen|103|rot90|ident",
+    "e7639916|gen|100|rot90|ident",
+    "902510d5|test|0|ident|ident",
+    "b7256dcd|gen|104|rot90|ident",
+    "4e7e0eb9|gen|103|rot90|ident",
+    "b2bc3ffd|test|0|ident|ident",
+    "e633a9e5|gen|101|ident|ident",
+    "1efba499|gen|100|ident|ident",
+    "aba27056|test|0|ident|ident",
+    "30f42897|gen|103|ident|ident",
+    "20818e16|gen|100|ident|ident",
+    "bc93ec48|test|0|ident|ident",
+    "73182012|test|0|ident|ident",
+    "4cd1b7b2|gen|100|ident|ident",
+    "3cd86f4f|gen|1|rot180|ident",
+    "78e78cff|gen|104|rot90|ident"
+  ],
+  "rows": [
+    {
+      "episode_id": "22a4bbc2|gen|104|ident|ident",
+      "task_id": "22a4bbc2",
+      "base_instance_id": "arcgen_v2|22a4bbc2|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 1216,
+          "target_eos": 152,
+          "full": 1368
+        },
+        "f1": {
+          "prompt": 790,
+          "target_eos": 95,
+          "full": 885
+        }
+      }
+    },
+    {
+      "episode_id": "6350f1f4|test|0|ident|ident",
+      "task_id": "6350f1f4",
+      "base_instance_id": "official_train|6350f1f4|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2014,
+          "target_eos": 722,
+          "full": 2736
+        },
+        "f1": {
+          "prompt": 1151,
+          "target_eos": 380,
+          "full": 1531
+        }
+      }
+    },
+    {
+      "episode_id": "4cd1b7b2|gen|100|ident|ident",
+      "task_id": "4cd1b7b2",
+      "base_instance_id": "arcgen_v2|4cd1b7b2|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 332,
+          "target_eos": 32,
+          "full": 364
+        },
+        "f1": {
+          "prompt": 247,
+          "target_eos": 20,
+          "full": 267
+        }
+      }
+    },
+    {
+      "episode_id": "52364a65|test|0|ident|ident",
+      "task_id": "52364a65",
+      "base_instance_id": "official_train|52364a65|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1028,
+          "target_eos": 128,
+          "full": 1156
+        },
+        "f1": {
+          "prompt": 607,
+          "target_eos": 72,
+          "full": 679
+        }
+      }
+    },
+    {
+      "episode_id": "652646ff|gen|104|rot90|ident",
+      "task_id": "652646ff",
+      "base_instance_id": "arcgen_v2|652646ff|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 2564,
+          "target_eos": 288,
+          "full": 2852
+        },
+        "f1": {
+          "prompt": 1413,
+          "target_eos": 150,
+          "full": 1563
+        }
+      }
+    },
+    {
+      "episode_id": "d4b1c2b1|gen|101|ident|ident",
+      "task_id": "d4b1c2b1",
+      "base_instance_id": "arcgen_v2|d4b1c2b1|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 990,
+          "target_eos": 450,
+          "full": 1440
+        },
+        "f1": {
+          "prompt": 593,
+          "target_eos": 240,
+          "full": 833
+        }
+      }
+    },
+    {
+      "episode_id": "2f767503|test|0|ident|ident",
+      "task_id": "2f767503",
+      "base_instance_id": "official_train|2f767503|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1898,
+          "target_eos": 198,
+          "full": 2096
+        },
+        "f1": {
+          "prompt": 1079,
+          "target_eos": 108,
+          "full": 1187
+        }
+      }
+    },
+    {
+      "episode_id": "e6de6e8f|gen|0|rot90|ident",
+      "task_id": "e6de6e8f",
+      "base_instance_id": "arcgen_v2|e6de6e8f|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 636,
+          "target_eos": 112,
+          "full": 748
+        },
+        "f1": {
+          "prompt": 440,
+          "target_eos": 63,
+          "full": 503
+        }
+      }
+    },
+    {
+      "episode_id": "c9680e90|test|0|ident|ident",
+      "task_id": "c9680e90",
+      "base_instance_id": "official_train|c9680e90|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1194,
+          "target_eos": 242,
+          "full": 1436
+        },
+        "f1": {
+          "prompt": 711,
+          "target_eos": 132,
+          "full": 843
+        }
+      }
+    },
+    {
+      "episode_id": "e7639916|gen|100|rot90|ident",
+      "task_id": "e7639916",
+      "base_instance_id": "arcgen_v2|e7639916|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 2608,
+          "target_eos": 544,
+          "full": 3152
+        },
+        "f1": {
+          "prompt": 1451,
+          "target_eos": 288,
+          "full": 1739
+        }
+      }
+    },
+    {
+      "episode_id": "2685904e|gen|100|ident|ident",
+      "task_id": "2685904e",
+      "base_instance_id": "arcgen_v2|2685904e|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "3d588dc9|test|0|ident|ident",
+      "task_id": "3d588dc9",
+      "base_instance_id": "official_train|3d588dc9|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2652,
+          "target_eos": 512,
+          "full": 3164
+        },
+        "f1": {
+          "prompt": 1451,
+          "target_eos": 272,
+          "full": 1723
+        }
+      }
+    },
+    {
+      "episode_id": "0c9aba6e|gen|103|rot90|ident",
+      "task_id": "0c9aba6e",
+      "base_instance_id": "arcgen_v2|0c9aba6e|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 668,
+          "target_eos": 48,
+          "full": 716
+        },
+        "f1": {
+          "prompt": 415,
+          "target_eos": 28,
+          "full": 443
+        }
+      }
+    },
+    {
+      "episode_id": "e9fc42f2|test|0|ident|ident",
+      "task_id": "e9fc42f2",
+      "base_instance_id": "official_train|e9fc42f2|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1796,
+          "target_eos": 154,
+          "full": 1950
+        },
+        "f1": {
+          "prompt": 1027,
+          "target_eos": 88,
+          "full": 1115
+        }
+      }
+    },
+    {
+      "episode_id": "78e78cff|gen|104|rot90|ident",
+      "task_id": "78e78cff",
+      "base_instance_id": "arcgen_v2|78e78cff|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 2076,
+          "target_eos": 288,
+          "full": 2364
+        },
+        "f1": {
+          "prompt": 1175,
+          "target_eos": 156,
+          "full": 1331
+        }
+      }
+    },
+    {
+      "episode_id": "9b30e358|gen|100|rot90|ident",
+      "task_id": "9b30e358",
+      "base_instance_id": "arcgen_v2|9b30e358|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 1008,
+          "target_eos": 100,
+          "full": 1108
+        },
+        "f1": {
+          "prompt": 602,
+          "target_eos": 55,
+          "full": 657
+        }
+      }
+    },
+    {
+      "episode_id": "9ba4a9aa|test|0|ident|ident",
+      "task_id": "9ba4a9aa",
+      "base_instance_id": "official_train|9ba4a9aa|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 4034,
+          "target_eos": 18,
+          "full": 4052
+        },
+        "f1": {
+          "prompt": 2167,
+          "target_eos": 12,
+          "full": 2179
+        }
+      }
+    },
+    {
+      "episode_id": "9caf5b84|gen|103|ident|ident",
+      "task_id": "9caf5b84",
+      "base_instance_id": "arcgen_v2|9caf5b84|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 412,
+          "target_eos": 48,
+          "full": 460
+        },
+        "f1": {
+          "prompt": 297,
+          "target_eos": 30,
+          "full": 327
+        }
+      }
+    },
+    {
+      "episode_id": "880c1354|test|0|ident|ident",
+      "task_id": "880c1354",
+      "base_instance_id": "official_train|880c1354|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1004,
+          "target_eos": 128,
+          "full": 1132
+        },
+        "f1": {
+          "prompt": 611,
+          "target_eos": 72,
+          "full": 683
+        }
+      }
+    },
+    {
+      "episode_id": "b7999b51|gen|101|ident|ident",
+      "task_id": "b7999b51",
+      "base_instance_id": "arcgen_v2|b7999b51|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 2154,
+          "target_eos": 16,
+          "full": 2170
+        },
+        "f1": {
+          "prompt": 1206,
+          "target_eos": 12,
+          "full": 1218
+        }
+      }
+    },
+    {
+      "episode_id": "da2b0fe3|gen|102|ident|ident",
+      "task_id": "da2b0fe3",
+      "base_instance_id": "arcgen_v2|da2b0fe3|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "f18ec8cc|test|0|ident|ident",
+      "task_id": "f18ec8cc",
+      "base_instance_id": "official_train|f18ec8cc|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1908,
+          "target_eos": 208,
+          "full": 2116
+        },
+        "f1": {
+          "prompt": 1087,
+          "target_eos": 112,
+          "full": 1199
+        }
+      }
+    },
+    {
+      "episode_id": "34b99a2b|gen|0|rot90|ident",
+      "task_id": "34b99a2b",
+      "base_instance_id": "arcgen_v2|34b99a2b|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 588,
+          "target_eos": 40,
+          "full": 628
+        },
+        "f1": {
+          "prompt": 395,
+          "target_eos": 24,
+          "full": 419
+        }
+      }
+    },
+    {
+      "episode_id": "9f669b64|test|0|ident|ident",
+      "task_id": "9f669b64",
+      "base_instance_id": "official_train|9f669b64|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "8dab14c2|gen|104|rot90|ident",
+      "task_id": "8dab14c2",
+      "base_instance_id": "arcgen_v2|8dab14c2|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 3076,
+          "target_eos": 540,
+          "full": 3616
+        },
+        "f1": {
+          "prompt": 1695,
+          "target_eos": 288,
+          "full": 1983
+        }
+      }
+    },
+    {
+      "episode_id": "e78887d1|gen|102|rot90|ident",
+      "task_id": "e78887d1",
+      "base_instance_id": "arcgen_v2|e78887d1|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 1186,
+          "target_eos": 66,
+          "full": 1252
+        },
+        "f1": {
+          "prompt": 723,
+          "target_eos": 44,
+          "full": 767
+        }
+      }
+    },
+    {
+      "episode_id": "902510d5|test|0|ident|ident",
+      "task_id": "902510d5",
+      "base_instance_id": "official_train|902510d5|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2328,
+          "target_eos": 264,
+          "full": 2592
+        },
+        "f1": {
+          "prompt": 1321,
+          "target_eos": 144,
+          "full": 1465
+        }
+      }
+    },
+    {
+      "episode_id": "c8b7cc0f|gen|102|ident|ident",
+      "task_id": "c8b7cc0f",
+      "base_instance_id": "arcgen_v2|c8b7cc0f|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 618,
+          "target_eos": 18,
+          "full": 636
+        },
+        "f1": {
+          "prompt": 401,
+          "target_eos": 12,
+          "full": 413
+        }
+      }
+    },
+    {
+      "episode_id": "25c199f5|test|0|ident|ident",
+      "task_id": "25c199f5",
+      "base_instance_id": "official_train|25c199f5|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1410,
+          "target_eos": 50,
+          "full": 1460
+        },
+        "f1": {
+          "prompt": 829,
+          "target_eos": 30,
+          "full": 859
+        }
+      }
+    },
+    {
+      "episode_id": "18447a8d|gen|1|rot180|ident",
+      "task_id": "18447a8d",
+      "base_instance_id": "arcgen_v2|18447a8d|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 2198,
+          "target_eos": 374,
+          "full": 2572
+        },
+        "f1": {
+          "prompt": 1247,
+          "target_eos": 204,
+          "full": 1451
+        }
+      }
+    },
+    {
+      "episode_id": "cf5fd0ad|gen|0|ident|ident",
+      "task_id": "cf5fd0ad",
+      "base_instance_id": "arcgen_v2|cf5fd0ad|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1044,
+          "target_eos": 288,
+          "full": 1332
+        },
+        "f1": {
+          "prompt": 623,
+          "target_eos": 156,
+          "full": 779
+        }
+      }
+    },
+    {
+      "episode_id": "1b59e163|test|0|ident|ident",
+      "task_id": "1b59e163",
+      "base_instance_id": "official_train|1b59e163|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 3332,
+          "target_eos": 648,
+          "full": 3980
+        },
+        "f1": {
+          "prompt": 1801,
+          "target_eos": 342,
+          "full": 2143
+        }
+      }
+    },
+    {
+      "episode_id": "62b74c02|gen|104|ident|ident",
+      "task_id": "62b74c02",
+      "base_instance_id": "arcgen_v2|62b74c02|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 652,
+          "target_eos": 96,
+          "full": 748
+        },
+        "f1": {
+          "prompt": 403,
+          "target_eos": 52,
+          "full": 455
+        }
+      }
+    },
+    {
+      "episode_id": "f8f52ecc|test|0|ident|ident",
+      "task_id": "f8f52ecc",
+      "base_instance_id": "official_train|f8f52ecc|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1644,
+          "target_eos": 160,
+          "full": 1804
+        },
+        "f1": {
+          "prompt": 947,
+          "target_eos": 88,
+          "full": 1035
+        }
+      }
+    },
+    {
+      "episode_id": "58743b76|gen|101|rot90|ident",
+      "task_id": "58743b76",
+      "base_instance_id": "arcgen_v2|58743b76|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 2068,
+          "target_eos": 200,
+          "full": 2268
+        },
+        "f1": {
+          "prompt": 1169,
+          "target_eos": 110,
+          "full": 1279
+        }
+      }
+    },
+    {
+      "episode_id": "03560426|gen|104|ident|ident",
+      "task_id": "03560426",
+      "base_instance_id": "arcgen_v2|03560426|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "9720b24f|test|0|ident|ident",
+      "task_id": "9720b24f",
+      "base_instance_id": "official_train|9720b24f|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2340,
+          "target_eos": 312,
+          "full": 2652
+        },
+        "f1": {
+          "prompt": 1324,
+          "target_eos": 169,
+          "full": 1493
+        }
+      }
+    },
+    {
+      "episode_id": "494ef9d7|gen|1|rot90|ident",
+      "task_id": "494ef9d7",
+      "base_instance_id": "arcgen_v2|494ef9d7|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 764,
+          "target_eos": 60,
+          "full": 824
+        },
+        "f1": {
+          "prompt": 483,
+          "target_eos": 40,
+          "full": 523
+        }
+      }
+    },
+    {
+      "episode_id": "aaecdb9a|test|0|ident|ident",
+      "task_id": "aaecdb9a",
+      "base_instance_id": "official_train|aaecdb9a|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1008,
+          "target_eos": 60,
+          "full": 1068
+        },
+        "f1": {
+          "prompt": 607,
+          "target_eos": 36,
+          "full": 643
+        }
+      }
+    },
+    {
+      "episode_id": "140c817e|gen|1|ident|ident",
+      "task_id": "140c817e",
+      "base_instance_id": "arcgen_v2|140c817e|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 1762,
+          "target_eos": 338,
+          "full": 2100
+        },
+        "f1": {
+          "prompt": 1009,
+          "target_eos": 182,
+          "full": 1191
+        }
+      }
+    },
+    {
+      "episode_id": "d2acf2cb|gen|104|rot90|ident",
+      "task_id": "d2acf2cb",
+      "base_instance_id": "arcgen_v2|d2acf2cb|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 1024,
+          "target_eos": 200,
+          "full": 1224
+        },
+        "f1": {
+          "prompt": 619,
+          "target_eos": 110,
+          "full": 729
+        }
+      }
+    },
+    {
+      "episode_id": "ad3b40cf|test|0|ident|ident",
+      "task_id": "ad3b40cf",
+      "base_instance_id": "official_train|ad3b40cf|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2934,
+          "target_eos": 578,
+          "full": 3512
+        },
+        "f1": {
+          "prompt": 1617,
+          "target_eos": 306,
+          "full": 1923
+        }
+      }
+    },
+    {
+      "episode_id": "fc754716|gen|104|ident|ident",
+      "task_id": "fc754716",
+      "base_instance_id": "arcgen_v2|fc754716|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 598,
+          "target_eos": 70,
+          "full": 668
+        },
+        "f1": {
+          "prompt": 395,
+          "target_eos": 40,
+          "full": 435
+        }
+      }
+    },
+    {
+      "episode_id": "c4d1a9ae|test|0|ident|ident",
+      "task_id": "c4d1a9ae",
+      "base_instance_id": "official_train|c4d1a9ae|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 892,
+          "target_eos": 160,
+          "full": 1052
+        },
+        "f1": {
+          "prompt": 541,
+          "target_eos": 90,
+          "full": 631
+        }
+      }
+    },
+    {
+      "episode_id": "85b81ff1|gen|104|rot90|ident",
+      "task_id": "85b81ff1",
+      "base_instance_id": "arcgen_v2|85b81ff1|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 2656,
+          "target_eos": 364,
+          "full": 3020
+        },
+        "f1": {
+          "prompt": 1479,
+          "target_eos": 196,
+          "full": 1675
+        }
+      }
+    },
+    {
+      "episode_id": "67c52801|gen|103|ident|ident",
+      "task_id": "67c52801",
+      "base_instance_id": "arcgen_v2|67c52801|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1700,
+          "target_eos": 200,
+          "full": 1900
+        },
+        "f1": {
+          "prompt": 969,
+          "target_eos": 110,
+          "full": 1079
+        }
+      }
+    },
+    {
+      "episode_id": "7acdf6d3|test|0|ident|ident",
+      "task_id": "7acdf6d3",
+      "base_instance_id": "official_train|7acdf6d3|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2242,
+          "target_eos": 450,
+          "full": 2692
+        },
+        "f1": {
+          "prompt": 1239,
+          "target_eos": 240,
+          "full": 1479
+        }
+      }
+    },
+    {
+      "episode_id": "7ec998c9|gen|102|ident|ident",
+      "task_id": "7ec998c9",
+      "base_instance_id": "arcgen_v2|7ec998c9|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 594,
+          "target_eos": 98,
+          "full": 692
+        },
+        "f1": {
+          "prompt": 391,
+          "target_eos": 56,
+          "full": 447
+        }
+      }
+    },
+    {
+      "episode_id": "fe45cba4|test|0|ident|ident",
+      "task_id": "fe45cba4",
+      "base_instance_id": "official_train|fe45cba4|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1116,
+          "target_eos": 512,
+          "full": 1628
+        },
+        "f1": {
+          "prompt": 651,
+          "target_eos": 272,
+          "full": 923
+        }
+      }
+    },
+    {
+      "episode_id": "84551f4c|gen|103|rot90|ident",
+      "task_id": "84551f4c",
+      "base_instance_id": "arcgen_v2|84551f4c|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1708,
+          "target_eos": 432,
+          "full": 2140
+        },
+        "f1": {
+          "prompt": 1026,
+          "target_eos": 243,
+          "full": 1269
+        }
+      }
+    },
+    {
+      "episode_id": "5792cb4d|gen|104|ident|ident",
+      "task_id": "5792cb4d",
+      "base_instance_id": "arcgen_v2|5792cb4d|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "5623160b|test|0|ident|ident",
+      "task_id": "5623160b",
+      "base_instance_id": "official_train|5623160b|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1920,
+          "target_eos": 512,
+          "full": 2432
+        },
+        "f1": {
+          "prompt": 1091,
+          "target_eos": 272,
+          "full": 1363
+        }
+      }
+    },
+    {
+      "episode_id": "8618d23e|gen|103|ident|ident",
+      "task_id": "8618d23e",
+      "base_instance_id": "arcgen_v2|8618d23e|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 574,
+          "target_eos": 84,
+          "full": 658
+        },
+        "f1": {
+          "prompt": 393,
+          "target_eos": 49,
+          "full": 442
+        }
+      }
+    },
+    {
+      "episode_id": "4df5b0ae|loo|0|ident|ident",
+      "task_id": "4df5b0ae",
+      "base_instance_id": "official_train|4df5b0ae|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1092,
+          "target_eos": 200,
+          "full": 1292
+        },
+        "f1": {
+          "prompt": 641,
+          "target_eos": 110,
+          "full": 751
+        }
+      }
+    },
+    {
+      "episode_id": "1efba499|gen|100|ident|ident",
+      "task_id": "1efba499",
+      "base_instance_id": "arcgen_v2|1efba499|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 2476,
+          "target_eos": 336,
+          "full": 2812
+        },
+        "f1": {
+          "prompt": 1383,
+          "target_eos": 180,
+          "full": 1563
+        }
+      }
+    },
+    {
+      "episode_id": "e7b06bea|gen|0|ident|ident",
+      "task_id": "e7b06bea",
+      "base_instance_id": "arcgen_v2|e7b06bea|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1776,
+          "target_eos": 108,
+          "full": 1884
+        },
+        "f1": {
+          "prompt": 1054,
+          "target_eos": 63,
+          "full": 1117
+        }
+      }
+    },
+    {
+      "episode_id": "f341894c|test|0|ident|ident",
+      "task_id": "f341894c",
+      "base_instance_id": "official_train|f341894c|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2196,
+          "target_eos": 648,
+          "full": 2844
+        },
+        "f1": {
+          "prompt": 1233,
+          "target_eos": 342,
+          "full": 1575
+        }
+      }
+    },
+    {
+      "episode_id": "6a11f6da|gen|101|ident|ident",
+      "task_id": "6a11f6da",
+      "base_instance_id": "arcgen_v2|6a11f6da|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 858,
+          "target_eos": 50,
+          "full": 908
+        },
+        "f1": {
+          "prompt": 557,
+          "target_eos": 30,
+          "full": 587
+        }
+      }
+    },
+    {
+      "episode_id": "825aa9e9|test|0|ident|ident",
+      "task_id": "825aa9e9",
+      "base_instance_id": "official_train|825aa9e9|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1436,
+          "target_eos": 400,
+          "full": 1836
+        },
+        "f1": {
+          "prompt": 839,
+          "target_eos": 210,
+          "full": 1049
+        }
+      }
+    },
+    {
+      "episode_id": "d749d46f|gen|0|ident|ident",
+      "task_id": "d749d46f",
+      "base_instance_id": "arcgen_v2|d749d46f|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1998,
+          "target_eos": 480,
+          "full": 2478
+        },
+        "f1": {
+          "prompt": 1105,
+          "target_eos": 250,
+          "full": 1355
+        }
+      }
+    },
+    {
+      "episode_id": "b745798f|gen|104|rot90|ident",
+      "task_id": "b745798f",
+      "base_instance_id": "arcgen_v2|b745798f|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 1274,
+          "target_eos": 98,
+          "full": 1372
+        },
+        "f1": {
+          "prompt": 751,
+          "target_eos": 56,
+          "full": 807
+        }
+      }
+    },
+    {
+      "episode_id": "ecb67b6d|test|0|ident|ident",
+      "task_id": "ecb67b6d",
+      "base_instance_id": "official_train|ecb67b6d|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1516,
+          "target_eos": 608,
+          "full": 2124
+        },
+        "f1": {
+          "prompt": 871,
+          "target_eos": 320,
+          "full": 1191
+        }
+      }
+    },
+    {
+      "episode_id": "5ad8a7c0|gen|104|rot90|ident",
+      "task_id": "5ad8a7c0",
+      "base_instance_id": "arcgen_v2|5ad8a7c0|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 444,
+          "target_eos": 48,
+          "full": 492
+        },
+        "f1": {
+          "prompt": 317,
+          "target_eos": 30,
+          "full": 347
+        }
+      }
+    },
+    {
+      "episode_id": "97c75046|test|0|ident|ident",
+      "task_id": "97c75046",
+      "base_instance_id": "official_train|97c75046|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1244,
+          "target_eos": 320,
+          "full": 1564
+        },
+        "f1": {
+          "prompt": 741,
+          "target_eos": 170,
+          "full": 911
+        }
+      }
+    },
+    {
+      "episode_id": "0b17323b|gen|2|rot90|ident",
+      "task_id": "0b17323b",
+      "base_instance_id": "arcgen_v2|0b17323b|gen|2",
+      "lengths": {
+        "f0": {
+          "prompt": 3258,
+          "target_eos": 450,
+          "full": 3708
+        },
+        "f1": {
+          "prompt": 1787,
+          "target_eos": 240,
+          "full": 2027
+        }
+      }
+    },
+    {
+      "episode_id": "e5c44e8f|gen|101|rot90|ident",
+      "task_id": "e5c44e8f",
+      "base_instance_id": "arcgen_v2|e5c44e8f|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 1802,
+          "target_eos": 242,
+          "full": 2044
+        },
+        "f1": {
+          "prompt": 1031,
+          "target_eos": 132,
+          "full": 1163
+        }
+      }
+    },
+    {
+      "episode_id": "396d80d7|test|0|ident|ident",
+      "task_id": "396d80d7",
+      "base_instance_id": "official_train|396d80d7|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2652,
+          "target_eos": 512,
+          "full": 3164
+        },
+        "f1": {
+          "prompt": 1451,
+          "target_eos": 272,
+          "full": 1723
+        }
+      }
+    },
+    {
+      "episode_id": "5e6bbc0b|gen|1|rot90|ident",
+      "task_id": "5e6bbc0b",
+      "base_instance_id": "arcgen_v2|5e6bbc0b|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 488,
+          "target_eos": 36,
+          "full": 524
+        },
+        "f1": {
+          "prompt": 341,
+          "target_eos": 24,
+          "full": 365
+        }
+      }
+    },
+    {
+      "episode_id": "f0100645|test|0|ident|ident",
+      "task_id": "f0100645",
+      "base_instance_id": "official_train|f0100645|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 978,
+          "target_eos": 162,
+          "full": 1140
+        },
+        "f1": {
+          "prompt": 581,
+          "target_eos": 90,
+          "full": 671
+        }
+      }
+    },
+    {
+      "episode_id": "e2092e0c|gen|102|ident|ident",
+      "task_id": "e2092e0c",
+      "base_instance_id": "arcgen_v2|e2092e0c|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 3258,
+          "target_eos": 450,
+          "full": 3708
+        },
+        "f1": {
+          "prompt": 1787,
+          "target_eos": 240,
+          "full": 2027
+        }
+      }
+    },
+    {
+      "episode_id": "72a961c9|gen|102|ident|ident",
+      "task_id": "72a961c9",
+      "base_instance_id": "arcgen_v2|72a961c9|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 1604,
+          "target_eos": 320,
+          "full": 1924
+        },
+        "f1": {
+          "prompt": 931,
+          "target_eos": 170,
+          "full": 1101
+        }
+      }
+    },
+    {
+      "episode_id": "c6141b15|test|0|ident|ident",
+      "task_id": "c6141b15",
+      "base_instance_id": "official_train|c6141b15|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 3152,
+          "target_eos": 512,
+          "full": 3664
+        },
+        "f1": {
+          "prompt": 1731,
+          "target_eos": 272,
+          "full": 2003
+        }
+      }
+    },
+    {
+      "episode_id": "73c3b0d8|gen|102|ident|ident",
+      "task_id": "73c3b0d8",
+      "base_instance_id": "arcgen_v2|73c3b0d8|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 828,
+          "target_eos": 80,
+          "full": 908
+        },
+        "f1": {
+          "prompt": 531,
+          "target_eos": 48,
+          "full": 579
+        }
+      }
+    },
+    {
+      "episode_id": "bc93ec48|test|0|ident|ident",
+      "task_id": "bc93ec48",
+      "base_instance_id": "official_train|bc93ec48|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1532,
+          "target_eos": 512,
+          "full": 2044
+        },
+        "f1": {
+          "prompt": 887,
+          "target_eos": 272,
+          "full": 1159
+        }
+      }
+    },
+    {
+      "episode_id": "13713586|gen|100|rot90|ident",
+      "task_id": "13713586",
+      "base_instance_id": "arcgen_v2|13713586|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 3544,
+          "target_eos": 420,
+          "full": 3964
+        },
+        "f1": {
+          "prompt": 1937,
+          "target_eos": 224,
+          "full": 2161
+        }
+      }
+    },
+    {
+      "episode_id": "695367ec|gen|100|ident|ident",
+      "task_id": "695367ec",
+      "base_instance_id": "arcgen_v2|695367ec|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 1552,
+          "target_eos": 450,
+          "full": 2002
+        },
+        "f1": {
+          "prompt": 887,
+          "target_eos": 240,
+          "full": 1127
+        }
+      }
+    },
+    {
+      "episode_id": "17829a00|test|0|ident|ident",
+      "task_id": "17829a00",
+      "base_instance_id": "official_train|17829a00|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2652,
+          "target_eos": 512,
+          "full": 3164
+        },
+        "f1": {
+          "prompt": 1451,
+          "target_eos": 272,
+          "full": 1723
+        }
+      }
+    },
+    {
+      "episode_id": "b5bb5719|gen|0|ident|ident",
+      "task_id": "b5bb5719",
+      "base_instance_id": "arcgen_v2|b5bb5719|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 552,
+          "target_eos": 36,
+          "full": 588
+        },
+        "f1": {
+          "prompt": 356,
+          "target_eos": 21,
+          "full": 377
+        }
+      }
+    },
+    {
+      "episode_id": "14b8e18c|test|0|ident|ident",
+      "task_id": "14b8e18c",
+      "base_instance_id": "official_train|14b8e18c|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "cad67732|gen|103|rot90|ident",
+      "task_id": "cad67732",
+      "base_instance_id": "arcgen_v2|cad67732|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 2158,
+          "target_eos": 200,
+          "full": 2358
+        },
+        "f1": {
+          "prompt": 1209,
+          "target_eos": 110,
+          "full": 1319
+        }
+      }
+    },
+    {
+      "episode_id": "5034a0b5|gen|104|rot90|ident",
+      "task_id": "5034a0b5",
+      "base_instance_id": "arcgen_v2|5034a0b5|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 1496,
+          "target_eos": 200,
+          "full": 1696
+        },
+        "f1": {
+          "prompt": 869,
+          "target_eos": 110,
+          "full": 979
+        }
+      }
+    },
+    {
+      "episode_id": "2ccd9fef|test|0|ident|ident",
+      "task_id": "2ccd9fef",
+      "base_instance_id": "official_train|2ccd9fef|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1962,
+          "target_eos": 110,
+          "full": 2072
+        },
+        "f1": {
+          "prompt": 1097,
+          "target_eos": 66,
+          "full": 1163
+        }
+      }
+    },
+    {
+      "episode_id": "3b4c2228|gen|103|rot90|ident",
+      "task_id": "3b4c2228",
+      "base_instance_id": "arcgen_v2|3b4c2228|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 566,
+          "target_eos": 18,
+          "full": 584
+        },
+        "f1": {
+          "prompt": 375,
+          "target_eos": 12,
+          "full": 387
+        }
+      }
+    },
+    {
+      "episode_id": "95755ff2|test|0|ident|ident",
+      "task_id": "95755ff2",
+      "base_instance_id": "official_train|95755ff2|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1802,
+          "target_eos": 242,
+          "full": 2044
+        },
+        "f1": {
+          "prompt": 1031,
+          "target_eos": 132,
+          "full": 1163
+        }
+      }
+    },
+    {
+      "episode_id": "ba1aa698|gen|100|rot90|ident",
+      "task_id": "ba1aa698",
+      "base_instance_id": "arcgen_v2|ba1aa698|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 3052,
+          "target_eos": 192,
+          "full": 3244
+        },
+        "f1": {
+          "prompt": 1671,
+          "target_eos": 102,
+          "full": 1773
+        }
+      }
+    },
+    {
+      "episode_id": "c35c1b4c|gen|100|rot90|ident",
+      "task_id": "c35c1b4c",
+      "base_instance_id": "arcgen_v2|c35c1b4c|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "1b8318e3|loo|0|ident|ident",
+      "task_id": "1b8318e3",
+      "base_instance_id": "official_train|1b8318e3|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1842,
+          "target_eos": 450,
+          "full": 2292
+        },
+        "f1": {
+          "prompt": 1031,
+          "target_eos": 240,
+          "full": 1271
+        }
+      }
+    },
+    {
+      "episode_id": "1a2e2828|gen|103|rot90|ident",
+      "task_id": "1a2e2828",
+      "base_instance_id": "arcgen_v2|1a2e2828|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 558,
+          "target_eos": 2,
+          "full": 560
+        },
+        "f1": {
+          "prompt": 362,
+          "target_eos": 2,
+          "full": 364
+        }
+      }
+    },
+    {
+      "episode_id": "1f876c06|loo|0|ident|ident",
+      "task_id": "1f876c06",
+      "base_instance_id": "official_train|1f876c06|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1092,
+          "target_eos": 200,
+          "full": 1292
+        },
+        "f1": {
+          "prompt": 641,
+          "target_eos": 110,
+          "full": 751
+        }
+      }
+    },
+    {
+      "episode_id": "7039b2d7|gen|103|ident|ident",
+      "task_id": "7039b2d7",
+      "base_instance_id": "arcgen_v2|7039b2d7|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 3258,
+          "target_eos": 12,
+          "full": 3270
+        },
+        "f1": {
+          "prompt": 1775,
+          "target_eos": 8,
+          "full": 1783
+        }
+      }
+    },
+    {
+      "episode_id": "84db8fc4|gen|102|rot90|ident",
+      "task_id": "84db8fc4",
+      "base_instance_id": "arcgen_v2|84db8fc4|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "5af49b42|test|0|ident|ident",
+      "task_id": "5af49b42",
+      "base_instance_id": "official_train|5af49b42|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2848,
+          "target_eos": 612,
+          "full": 3460
+        },
+        "f1": {
+          "prompt": 1570,
+          "target_eos": 323,
+          "full": 1893
+        }
+      }
+    },
+    {
+      "episode_id": "bc4146bd|gen|103|rot90|ident",
+      "task_id": "bc4146bd",
+      "base_instance_id": "arcgen_v2|bc4146bd|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 716,
+          "target_eos": 160,
+          "full": 876
+        },
+        "f1": {
+          "prompt": 487,
+          "target_eos": 100,
+          "full": 587
+        }
+      }
+    },
+    {
+      "episode_id": "5751f35e|test|0|ident|ident",
+      "task_id": "5751f35e",
+      "base_instance_id": "official_train|5751f35e|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1180,
+          "target_eos": 288,
+          "full": 1468
+        },
+        "f1": {
+          "prompt": 687,
+          "target_eos": 156,
+          "full": 843
+        }
+      }
+    },
+    {
+      "episode_id": "a680ac02|gen|104|ident|ident",
+      "task_id": "a680ac02",
+      "base_instance_id": "arcgen_v2|a680ac02|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 3736,
+          "target_eos": 96,
+          "full": 3832
+        },
+        "f1": {
+          "prompt": 2033,
+          "target_eos": 52,
+          "full": 2085
+        }
+      }
+    },
+    {
+      "episode_id": "5207a7b5|gen|104|rot90|ident",
+      "task_id": "5207a7b5",
+      "base_instance_id": "arcgen_v2|5207a7b5|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 1330,
+          "target_eos": 198,
+          "full": 1528
+        },
+        "f1": {
+          "prompt": 767,
+          "target_eos": 108,
+          "full": 875
+        }
+      }
+    },
+    {
+      "episode_id": "81c0276b|test|0|ident|ident",
+      "task_id": "81c0276b",
+      "base_instance_id": "official_train|81c0276b|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2542,
+          "target_eos": 32,
+          "full": 2574
+        },
+        "f1": {
+          "prompt": 1402,
+          "target_eos": 20,
+          "full": 1422
+        }
+      }
+    },
+    {
+      "episode_id": "60c09cac|gen|104|rot90|ident",
+      "task_id": "60c09cac",
+      "base_instance_id": "arcgen_v2|60c09cac|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 588,
+          "target_eos": 200,
+          "full": 788
+        },
+        "f1": {
+          "prompt": 385,
+          "target_eos": 110,
+          "full": 495
+        }
+      }
+    },
+    {
+      "episode_id": "f0f8a26d|test|0|ident|ident",
+      "task_id": "f0f8a26d",
+      "base_instance_id": "official_train|f0f8a26d|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1578,
+          "target_eos": 338,
+          "full": 1916
+        },
+        "f1": {
+          "prompt": 913,
+          "target_eos": 182,
+          "full": 1095
+        }
+      }
+    },
+    {
+      "episode_id": "992798f6|gen|102|rot90|ident",
+      "task_id": "992798f6",
+      "base_instance_id": "arcgen_v2|992798f6|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 2752,
+          "target_eos": 392,
+          "full": 3144
+        },
+        "f1": {
+          "prompt": 1525,
+          "target_eos": 210,
+          "full": 1735
+        }
+      }
+    },
+    {
+      "episode_id": "2a28add5|gen|102|rot90|ident",
+      "task_id": "2a28add5",
+      "base_instance_id": "arcgen_v2|2a28add5|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "3d6c6e23|test|0|ident|ident",
+      "task_id": "3d6c6e23",
+      "base_instance_id": "official_train|3d6c6e23|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 3000,
+          "target_eos": 600,
+          "full": 3600
+        },
+        "f1": {
+          "prompt": 1689,
+          "target_eos": 330,
+          "full": 2019
+        }
+      }
+    },
+    {
+      "episode_id": "27f8ce4f|gen|104|ident|ident",
+      "task_id": "27f8ce4f",
+      "base_instance_id": "arcgen_v2|27f8ce4f|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 666,
+          "target_eos": 162,
+          "full": 828
+        },
+        "f1": {
+          "prompt": 425,
+          "target_eos": 90,
+          "full": 515
+        }
+      }
+    },
+    {
+      "episode_id": "f8ff0b80|test|0|ident|ident",
+      "task_id": "f8ff0b80",
+      "base_instance_id": "official_train|f8ff0b80|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1278,
+          "target_eos": 6,
+          "full": 1284
+        },
+        "f1": {
+          "prompt": 749,
+          "target_eos": 6,
+          "full": 755
+        }
+      }
+    },
+    {
+      "episode_id": "2753e76c|gen|102|ident|ident",
+      "task_id": "2753e76c",
+      "base_instance_id": "arcgen_v2|2753e76c|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 2210,
+          "target_eos": 32,
+          "full": 2242
+        },
+        "f1": {
+          "prompt": 1231,
+          "target_eos": 20,
+          "full": 1251
+        }
+      }
+    },
+    {
+      "episode_id": "ce8d95cc|gen|101|rot90|ident",
+      "task_id": "ce8d95cc",
+      "base_instance_id": "arcgen_v2|ce8d95cc|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 1184,
+          "target_eos": 70,
+          "full": 1254
+        },
+        "f1": {
+          "prompt": 704,
+          "target_eos": 42,
+          "full": 746
+        }
+      }
+    },
+    {
+      "episode_id": "4093f84a|loo|0|ident|ident",
+      "task_id": "4093f84a",
+      "base_instance_id": "official_train|4093f84a|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2052,
+          "target_eos": 392,
+          "full": 2444
+        },
+        "f1": {
+          "prompt": 1141,
+          "target_eos": 210,
+          "full": 1351
+        }
+      }
+    },
+    {
+      "episode_id": "46c35fc7|gen|0|rot90|ident",
+      "task_id": "46c35fc7",
+      "base_instance_id": "arcgen_v2|46c35fc7|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 794,
+          "target_eos": 98,
+          "full": 892
+        },
+        "f1": {
+          "prompt": 499,
+          "target_eos": 56,
+          "full": 555
+        }
+      }
+    },
+    {
+      "episode_id": "cbded52d|test|0|ident|ident",
+      "task_id": "cbded52d",
+      "base_instance_id": "official_train|cbded52d|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1004,
+          "target_eos": 128,
+          "full": 1132
+        },
+        "f1": {
+          "prompt": 611,
+          "target_eos": 72,
+          "full": 683
+        }
+      }
+    },
+    {
+      "episode_id": "af726779|gen|101|rot90|ident",
+      "task_id": "af726779",
+      "base_instance_id": "arcgen_v2|af726779|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 3620,
+          "target_eos": 224,
+          "full": 3844
+        },
+        "f1": {
+          "prompt": 1981,
+          "target_eos": 126,
+          "full": 2107
+        }
+      }
+    },
+    {
+      "episode_id": "94414823|gen|0|ident|ident",
+      "task_id": "94414823",
+      "base_instance_id": "arcgen_v2|94414823|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "b27ca6d3|test|0|ident|ident",
+      "task_id": "b27ca6d3",
+      "base_instance_id": "official_train|b27ca6d3|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2676,
+          "target_eos": 544,
+          "full": 3220
+        },
+        "f1": {
+          "prompt": 1460,
+          "target_eos": 289,
+          "full": 1749
+        }
+      }
+    },
+    {
+      "episode_id": "195ba7dc|gen|101|rot90|ident",
+      "task_id": "195ba7dc",
+      "base_instance_id": "arcgen_v2|195ba7dc|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 808,
+          "target_eos": 60,
+          "full": 868
+        },
+        "f1": {
+          "prompt": 527,
+          "target_eos": 36,
+          "full": 563
+        }
+      }
+    },
+    {
+      "episode_id": "ba26e723|test|0|ident|ident",
+      "task_id": "ba26e723",
+      "base_instance_id": "official_train|ba26e723|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 950,
+          "target_eos": 102,
+          "full": 1052
+        },
+        "f1": {
+          "prompt": 577,
+          "target_eos": 54,
+          "full": 631
+        }
+      }
+    },
+    {
+      "episode_id": "67636eac|gen|0|rot90|ident",
+      "task_id": "67636eac",
+      "base_instance_id": "arcgen_v2|67636eac|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2408,
+          "target_eos": 54,
+          "full": 2462
+        },
+        "f1": {
+          "prompt": 1352,
+          "target_eos": 36,
+          "full": 1388
+        }
+      }
+    },
+    {
+      "episode_id": "2a5f8217|gen|101|rot90|ident",
+      "task_id": "2a5f8217",
+      "base_instance_id": "arcgen_v2|2a5f8217|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 1862,
+          "target_eos": 98,
+          "full": 1960
+        },
+        "f1": {
+          "prompt": 1059,
+          "target_eos": 56,
+          "full": 1115
+        }
+      }
+    },
+    {
+      "episode_id": "759f3fd3|test|0|ident|ident",
+      "task_id": "759f3fd3",
+      "base_instance_id": "official_train|759f3fd3|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2380,
+          "target_eos": 288,
+          "full": 2668
+        },
+        "f1": {
+          "prompt": 1307,
+          "target_eos": 156,
+          "full": 1463
+        }
+      }
+    },
+    {
+      "episode_id": "ed74f2f2|gen|101|rot90|ident",
+      "task_id": "ed74f2f2",
+      "base_instance_id": "arcgen_v2|ed74f2f2|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 522,
+          "target_eos": 18,
+          "full": 540
+        },
+        "f1": {
+          "prompt": 359,
+          "target_eos": 12,
+          "full": 371
+        }
+      }
+    },
+    {
+      "episode_id": "3428a4f5|test|0|ident|ident",
+      "task_id": "3428a4f5",
+      "base_instance_id": "official_train|3428a4f5|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1014,
+          "target_eos": 60,
+          "full": 1074
+        },
+        "f1": {
+          "prompt": 657,
+          "target_eos": 36,
+          "full": 693
+        }
+      }
+    },
+    {
+      "episode_id": "1990f7a8|gen|101|ident|ident",
+      "task_id": "1990f7a8",
+      "base_instance_id": "arcgen_v2|1990f7a8|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 3756,
+          "target_eos": 98,
+          "full": 3854
+        },
+        "f1": {
+          "prompt": 2035,
+          "target_eos": 56,
+          "full": 2091
+        }
+      }
+    },
+    {
+      "episode_id": "e1baa8a4|gen|103|rot90|ident",
+      "task_id": "e1baa8a4",
+      "base_instance_id": "arcgen_v2|e1baa8a4|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1750,
+          "target_eos": 40,
+          "full": 1790
+        },
+        "f1": {
+          "prompt": 996,
+          "target_eos": 24,
+          "full": 1020
+        }
+      }
+    },
+    {
+      "episode_id": "25d487eb|test|0|ident|ident",
+      "task_id": "25d487eb",
+      "base_instance_id": "official_train|25d487eb|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2356,
+          "target_eos": 352,
+          "full": 2708
+        },
+        "f1": {
+          "prompt": 1321,
+          "target_eos": 192,
+          "full": 1513
+        }
+      }
+    },
+    {
+      "episode_id": "22425bda|gen|102|ident|ident",
+      "task_id": "22425bda",
+      "base_instance_id": "arcgen_v2|22425bda|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 902,
+          "target_eos": 8,
+          "full": 910
+        },
+        "f1": {
+          "prompt": 546,
+          "target_eos": 5,
+          "full": 551
+        }
+      }
+    },
+    {
+      "episode_id": "3befdf3e|test|0|ident|ident",
+      "task_id": "3befdf3e",
+      "base_instance_id": "official_train|3befdf3e|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1596,
+          "target_eos": 288,
+          "full": 1884
+        },
+        "f1": {
+          "prompt": 923,
+          "target_eos": 156,
+          "full": 1079
+        }
+      }
+    },
+    {
+      "episode_id": "11e1fe23|gen|101|ident|ident",
+      "task_id": "11e1fe23",
+      "base_instance_id": "arcgen_v2|11e1fe23|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 2376,
+          "target_eos": 392,
+          "full": 2768
+        },
+        "f1": {
+          "prompt": 1329,
+          "target_eos": 210,
+          "full": 1539
+        }
+      }
+    },
+    {
+      "episode_id": "7c8af763|gen|104|ident|ident",
+      "task_id": "7c8af763",
+      "base_instance_id": "arcgen_v2|7c8af763|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "55059096|loo|0|ident|ident",
+      "task_id": "55059096",
+      "base_instance_id": "official_train|55059096|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1724,
+          "target_eos": 448,
+          "full": 2172
+        },
+        "f1": {
+          "prompt": 973,
+          "target_eos": 238,
+          "full": 1211
+        }
+      }
+    },
+    {
+      "episode_id": "b1fc8b8e|gen|102|ident|ident",
+      "task_id": "b1fc8b8e",
+      "base_instance_id": "arcgen_v2|b1fc8b8e|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 546,
+          "target_eos": 50,
+          "full": 596
+        },
+        "f1": {
+          "prompt": 365,
+          "target_eos": 30,
+          "full": 395
+        }
+      }
+    },
+    {
+      "episode_id": "90347967|test|0|ident|ident",
+      "task_id": "90347967",
+      "base_instance_id": "official_train|90347967|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 882,
+          "target_eos": 162,
+          "full": 1044
+        },
+        "f1": {
+          "prompt": 541,
+          "target_eos": 90,
+          "full": 631
+        }
+      }
+    },
+    {
+      "episode_id": "85fa5666|gen|100|ident|ident",
+      "task_id": "85fa5666",
+      "base_instance_id": "arcgen_v2|85fa5666|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 1872,
+          "target_eos": 288,
+          "full": 2160
+        },
+        "f1": {
+          "prompt": 1067,
+          "target_eos": 156,
+          "full": 1223
+        }
+      }
+    },
+    {
+      "episode_id": "817e6c09|gen|103|rot90|ident",
+      "task_id": "817e6c09",
+      "base_instance_id": "arcgen_v2|817e6c09|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1172,
+          "target_eos": 112,
+          "full": 1284
+        },
+        "f1": {
+          "prompt": 715,
+          "target_eos": 64,
+          "full": 779
+        }
+      }
+    },
+    {
+      "episode_id": "d22278a0|test|0|ident|ident",
+      "task_id": "d22278a0",
+      "base_instance_id": "official_train|d22278a0|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2550,
+          "target_eos": 578,
+          "full": 3128
+        },
+        "f1": {
+          "prompt": 1437,
+          "target_eos": 306,
+          "full": 1743
+        }
+      }
+    },
+    {
+      "episode_id": "8ba14f53|gen|1|ident|ident",
+      "task_id": "8ba14f53",
+      "base_instance_id": "arcgen_v2|8ba14f53|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 450,
+          "target_eos": 18,
+          "full": 468
+        },
+        "f1": {
+          "prompt": 303,
+          "target_eos": 12,
+          "full": 315
+        }
+      }
+    },
+    {
+      "episode_id": "2c737e39|test|0|ident|ident",
+      "task_id": "2c737e39",
+      "base_instance_id": "official_train|2c737e39|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1744,
+          "target_eos": 220,
+          "full": 1964
+        },
+        "f1": {
+          "prompt": 1002,
+          "target_eos": 121,
+          "full": 1123
+        }
+      }
+    },
+    {
+      "episode_id": "e74e1818|gen|0|rot90|ident",
+      "task_id": "e74e1818",
+      "base_instance_id": "arcgen_v2|e74e1818|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2218,
+          "target_eos": 242,
+          "full": 2460
+        },
+        "f1": {
+          "prompt": 1247,
+          "target_eos": 132,
+          "full": 1379
+        }
+      }
+    },
+    {
+      "episode_id": "a834deea|gen|101|rot90|ident",
+      "task_id": "a834deea",
+      "base_instance_id": "arcgen_v2|a834deea|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 1632,
+          "target_eos": 128,
+          "full": 1760
+        },
+        "f1": {
+          "prompt": 939,
+          "target_eos": 72,
+          "full": 1011
+        }
+      }
+    },
+    {
+      "episode_id": "1190e5a7|loo|0|ident|ident",
+      "task_id": "1190e5a7",
+      "base_instance_id": "official_train|1190e5a7|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2318,
+          "target_eos": 12,
+          "full": 2330
+        },
+        "f1": {
+          "prompt": 1265,
+          "target_eos": 9,
+          "full": 1274
+        }
+      }
+    },
+    {
+      "episode_id": "be03b35f|gen|104|rot90|ident",
+      "task_id": "be03b35f",
+      "base_instance_id": "arcgen_v2|be03b35f|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 332,
+          "target_eos": 8,
+          "full": 340
+        },
+        "f1": {
+          "prompt": 245,
+          "target_eos": 6,
+          "full": 251
+        }
+      }
+    },
+    {
+      "episode_id": "72207abc|test|0|ident|ident",
+      "task_id": "72207abc",
+      "base_instance_id": "official_train|72207abc|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1086,
+          "target_eos": 174,
+          "full": 1260
+        },
+        "f1": {
+          "prompt": 617,
+          "target_eos": 90,
+          "full": 707
+        }
+      }
+    },
+    {
+      "episode_id": "b25e450b|gen|103|rot90|ident",
+      "task_id": "b25e450b",
+      "base_instance_id": "arcgen_v2|b25e450b|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 2852,
+          "target_eos": 648,
+          "full": 3500
+        },
+        "f1": {
+          "prompt": 1577,
+          "target_eos": 342,
+          "full": 1919
+        }
+      }
+    },
+    {
+      "episode_id": "8fbca751|gen|101|ident|ident",
+      "task_id": "8fbca751",
+      "base_instance_id": "arcgen_v2|8fbca751|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 1170,
+          "target_eos": 98,
+          "full": 1268
+        },
+        "f1": {
+          "prompt": 691,
+          "target_eos": 56,
+          "full": 747
+        }
+      }
+    },
+    {
+      "episode_id": "272f95fa|test|0|ident|ident",
+      "task_id": "272f95fa",
+      "base_instance_id": "official_train|272f95fa|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2642,
+          "target_eos": 510,
+          "full": 3152
+        },
+        "f1": {
+          "prompt": 1443,
+          "target_eos": 272,
+          "full": 1715
+        }
+      }
+    },
+    {
+      "episode_id": "d19f7514|gen|0|ident|ident",
+      "task_id": "d19f7514",
+      "base_instance_id": "arcgen_v2|d19f7514|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 636,
+          "target_eos": 48,
+          "full": 684
+        },
+        "f1": {
+          "prompt": 437,
+          "target_eos": 30,
+          "full": 467
+        }
+      }
+    },
+    {
+      "episode_id": "f25fbde4|test|0|ident|ident",
+      "task_id": "f25fbde4",
+      "base_instance_id": "official_train|f25fbde4|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1020,
+          "target_eos": 120,
+          "full": 1140
+        },
+        "f1": {
+          "prompt": 619,
+          "target_eos": 66,
+          "full": 685
+        }
+      }
+    },
+    {
+      "episode_id": "15660dd6|gen|102|rot90|ident",
+      "task_id": "15660dd6",
+      "base_instance_id": "arcgen_v2|15660dd6|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 3048,
+          "target_eos": 112,
+          "full": 3160
+        },
+        "f1": {
+          "prompt": 1701,
+          "target_eos": 70,
+          "full": 1771
+        }
+      }
+    },
+    {
+      "episode_id": "5d588b4d|gen|101|ident|ident",
+      "task_id": "5d588b4d",
+      "base_instance_id": "arcgen_v2|5d588b4d|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 1746,
+          "target_eos": 20,
+          "full": 1766
+        },
+        "f1": {
+          "prompt": 986,
+          "target_eos": 12,
+          "full": 998
+        }
+      }
+    },
+    {
+      "episode_id": "13f06aa5|loo|0|ident|ident",
+      "task_id": "13f06aa5",
+      "base_instance_id": "official_train|13f06aa5|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1720,
+          "target_eos": 336,
+          "full": 2056
+        },
+        "f1": {
+          "prompt": 969,
+          "target_eos": 180,
+          "full": 1149
+        }
+      }
+    },
+    {
+      "episode_id": "30f42897|gen|103|ident|ident",
+      "task_id": "30f42897",
+      "base_instance_id": "arcgen_v2|30f42897|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 748,
+          "target_eos": 224,
+          "full": 972
+        },
+        "f1": {
+          "prompt": 457,
+          "target_eos": 120,
+          "full": 577
+        }
+      }
+    },
+    {
+      "episode_id": "19bb5feb|test|0|ident|ident",
+      "task_id": "19bb5feb",
+      "base_instance_id": "official_train|19bb5feb|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1870,
+          "target_eos": 8,
+          "full": 1878
+        },
+        "f1": {
+          "prompt": 1051,
+          "target_eos": 6,
+          "full": 1057
+        }
+      }
+    },
+    {
+      "episode_id": "d37a1ef5|gen|101|rot90|ident",
+      "task_id": "d37a1ef5",
+      "base_instance_id": "arcgen_v2|d37a1ef5|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 1878,
+          "target_eos": 234,
+          "full": 2112
+        },
+        "f1": {
+          "prompt": 1071,
+          "target_eos": 126,
+          "full": 1197
+        }
+      }
+    },
+    {
+      "episode_id": "1c0d0a4b|gen|0|ident|ident",
+      "task_id": "1c0d0a4b",
+      "base_instance_id": "arcgen_v2|1c0d0a4b|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 938,
+          "target_eos": 130,
+          "full": 1068
+        },
+        "f1": {
+          "prompt": 573,
+          "target_eos": 70,
+          "full": 643
+        }
+      }
+    },
+    {
+      "episode_id": "11dc524f|test|0|ident|ident",
+      "task_id": "11dc524f",
+      "base_instance_id": "official_train|11dc524f|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2474,
+          "target_eos": 338,
+          "full": 2812
+        },
+        "f1": {
+          "prompt": 1381,
+          "target_eos": 182,
+          "full": 1563
+        }
+      }
+    },
+    {
+      "episode_id": "b7256dcd|gen|104|rot90|ident",
+      "task_id": "b7256dcd",
+      "base_instance_id": "arcgen_v2|b7256dcd|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 310,
+          "target_eos": 50,
+          "full": 360
+        },
+        "f1": {
+          "prompt": 235,
+          "target_eos": 30,
+          "full": 265
+        }
+      }
+    },
+    {
+      "episode_id": "2281f1f4|loo|0|ident|ident",
+      "task_id": "2281f1f4",
+      "base_instance_id": "official_train|2281f1f4|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1092,
+          "target_eos": 200,
+          "full": 1292
+        },
+        "f1": {
+          "prompt": 641,
+          "target_eos": 110,
+          "full": 751
+        }
+      }
+    },
+    {
+      "episode_id": "7e02026e|gen|102|rot90|ident",
+      "task_id": "7e02026e",
+      "base_instance_id": "arcgen_v2|7e02026e|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 2124,
+          "target_eos": 288,
+          "full": 2412
+        },
+        "f1": {
+          "prompt": 1199,
+          "target_eos": 156,
+          "full": 1355
+        }
+      }
+    },
+    {
+      "episode_id": "833dafe3|gen|100|rot90|ident",
+      "task_id": "833dafe3",
+      "base_instance_id": "arcgen_v2|833dafe3|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 1426,
+          "target_eos": 392,
+          "full": 1818
+        },
+        "f1": {
+          "prompt": 827,
+          "target_eos": 210,
+          "full": 1037
+        }
+      }
+    },
+    {
+      "episode_id": "ae3edfdc|test|0|ident|ident",
+      "task_id": "ae3edfdc",
+      "base_instance_id": "official_train|ae3edfdc|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 3258,
+          "target_eos": 450,
+          "full": 3708
+        },
+        "f1": {
+          "prompt": 1787,
+          "target_eos": 240,
+          "full": 2027
+        }
+      }
+    },
+    {
+      "episode_id": "506d28a5|gen|100|rot90|ident",
+      "task_id": "506d28a5",
+      "base_instance_id": "arcgen_v2|506d28a5|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 588,
+          "target_eos": 40,
+          "full": 628
+        },
+        "f1": {
+          "prompt": 382,
+          "target_eos": 25,
+          "full": 407
+        }
+      }
+    },
+    {
+      "episode_id": "0ca9ddb6|test|0|ident|ident",
+      "task_id": "0ca9ddb6",
+      "base_instance_id": "official_train|0ca9ddb6|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1242,
+          "target_eos": 162,
+          "full": 1404
+        },
+        "f1": {
+          "prompt": 737,
+          "target_eos": 90,
+          "full": 827
+        }
+      }
+    },
+    {
+      "episode_id": "7d7772cc|gen|100|rot90|ident",
+      "task_id": "7d7772cc",
+      "base_instance_id": "arcgen_v2|7d7772cc|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 2924,
+          "target_eos": 512,
+          "full": 3436
+        },
+        "f1": {
+          "prompt": 1611,
+          "target_eos": 272,
+          "full": 1883
+        }
+      }
+    },
+    {
+      "episode_id": "1478ab18|gen|0|rot180|ident",
+      "task_id": "1478ab18",
+      "base_instance_id": "arcgen_v2|1478ab18|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1004,
+          "target_eos": 128,
+          "full": 1132
+        },
+        "f1": {
+          "prompt": 611,
+          "target_eos": 72,
+          "full": 683
+        }
+      }
+    },
+    {
+      "episode_id": "50a16a69|loo|0|ident|ident",
+      "task_id": "50a16a69",
+      "base_instance_id": "official_train|50a16a69|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1472,
+          "target_eos": 800,
+          "full": 2272
+        },
+        "f1": {
+          "prompt": 835,
+          "target_eos": 420,
+          "full": 1255
+        }
+      }
+    },
+    {
+      "episode_id": "252143c9|gen|102|rot90|ident",
+      "task_id": "252143c9",
+      "base_instance_id": "arcgen_v2|252143c9|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 506,
+          "target_eos": 98,
+          "full": 604
+        },
+        "f1": {
+          "prompt": 343,
+          "target_eos": 56,
+          "full": 399
+        }
+      }
+    },
+    {
+      "episode_id": "292dd178|loo|0|ident|ident",
+      "task_id": "292dd178",
+      "base_instance_id": "official_train|292dd178|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1054,
+          "target_eos": 126,
+          "full": 1180
+        },
+        "f1": {
+          "prompt": 623,
+          "target_eos": 70,
+          "full": 693
+        }
+      }
+    },
+    {
+      "episode_id": "baf41dbf|gen|101|ident|ident",
+      "task_id": "baf41dbf",
+      "base_instance_id": "arcgen_v2|baf41dbf|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 2664,
+          "target_eos": 288,
+          "full": 2952
+        },
+        "f1": {
+          "prompt": 1471,
+          "target_eos": 156,
+          "full": 1627
+        }
+      }
+    },
+    {
+      "episode_id": "31adaf00|gen|103|rot90|ident",
+      "task_id": "31adaf00",
+      "base_instance_id": "arcgen_v2|31adaf00|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "692cd3b6|test|0|ident|ident",
+      "task_id": "692cd3b6",
+      "base_instance_id": "official_train|692cd3b6|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 3258,
+          "target_eos": 450,
+          "full": 3708
+        },
+        "f1": {
+          "prompt": 1787,
+          "target_eos": 240,
+          "full": 2027
+        }
+      }
+    },
+    {
+      "episode_id": "6d1d5c90|gen|103|rot90|ident",
+      "task_id": "6d1d5c90",
+      "base_instance_id": "arcgen_v2|6d1d5c90|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 660,
+          "target_eos": 72,
+          "full": 732
+        },
+        "f1": {
+          "prompt": 429,
+          "target_eos": 42,
+          "full": 471
+        }
+      }
+    },
+    {
+      "episode_id": "bae5c565|test|0|ident|ident",
+      "task_id": "bae5c565",
+      "base_instance_id": "official_train|bae5c565|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1334,
+          "target_eos": 242,
+          "full": 1576
+        },
+        "f1": {
+          "prompt": 767,
+          "target_eos": 132,
+          "full": 899
+        }
+      }
+    },
+    {
+      "episode_id": "cb227835|gen|0|rot90|ident",
+      "task_id": "cb227835",
+      "base_instance_id": "arcgen_v2|cb227835|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2292,
+          "target_eos": 260,
+          "full": 2552
+        },
+        "f1": {
+          "prompt": 1286,
+          "target_eos": 143,
+          "full": 1429
+        }
+      }
+    },
+    {
+      "episode_id": "f3cdc58f|gen|104|ident|ident",
+      "task_id": "f3cdc58f",
+      "base_instance_id": "arcgen_v2|f3cdc58f|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "2bcee788|test|0|ident|ident",
+      "task_id": "2bcee788",
+      "base_instance_id": "official_train|2bcee788|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1924,
+          "target_eos": 200,
+          "full": 2124
+        },
+        "f1": {
+          "prompt": 1113,
+          "target_eos": 110,
+          "full": 1223
+        }
+      }
+    },
+    {
+      "episode_id": "4a1cacc2|gen|103|ident|ident",
+      "task_id": "4a1cacc2",
+      "base_instance_id": "arcgen_v2|4a1cacc2|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 492,
+          "target_eos": 64,
+          "full": 556
+        },
+        "f1": {
+          "prompt": 347,
+          "target_eos": 40,
+          "full": 387
+        }
+      }
+    },
+    {
+      "episode_id": "73182012|test|0|ident|ident",
+      "task_id": "73182012",
+      "base_instance_id": "official_train|73182012|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1356,
+          "target_eos": 32,
+          "full": 1388
+        },
+        "f1": {
+          "prompt": 791,
+          "target_eos": 20,
+          "full": 811
+        }
+      }
+    },
+    {
+      "episode_id": "fe9372f3|gen|100|rot90|ident",
+      "task_id": "fe9372f3",
+      "base_instance_id": "arcgen_v2|fe9372f3|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 3044,
+          "target_eos": 140,
+          "full": 3184
+        },
+        "f1": {
+          "prompt": 1682,
+          "target_eos": 77,
+          "full": 1759
+        }
+      }
+    },
+    {
+      "episode_id": "e69241bd|gen|102|ident|ident",
+      "task_id": "e69241bd",
+      "base_instance_id": "arcgen_v2|e69241bd|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 1106,
+          "target_eos": 162,
+          "full": 1268
+        },
+        "f1": {
+          "prompt": 665,
+          "target_eos": 90,
+          "full": 755
+        }
+      }
+    },
+    {
+      "episode_id": "fafd9572|test|0|ident|ident",
+      "task_id": "fafd9572",
+      "base_instance_id": "official_train|fafd9572|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1772,
+          "target_eos": 336,
+          "full": 2108
+        },
+        "f1": {
+          "prompt": 989,
+          "target_eos": 182,
+          "full": 1171
+        }
+      }
+    },
+    {
+      "episode_id": "a8610ef7|gen|102|rot90|ident",
+      "task_id": "a8610ef7",
+      "base_instance_id": "arcgen_v2|a8610ef7|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 612,
+          "target_eos": 72,
+          "full": 684
+        },
+        "f1": {
+          "prompt": 401,
+          "target_eos": 42,
+          "full": 443
+        }
+      }
+    },
+    {
+      "episode_id": "228f6490|test|0|ident|ident",
+      "task_id": "228f6490",
+      "base_instance_id": "official_train|228f6490|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "1c56ad9f|gen|0|rot90|ident",
+      "task_id": "1c56ad9f",
+      "base_instance_id": "arcgen_v2|1c56ad9f|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 3078,
+          "target_eos": 390,
+          "full": 3468
+        },
+        "f1": {
+          "prompt": 1693,
+          "target_eos": 210,
+          "full": 1903
+        }
+      }
+    },
+    {
+      "episode_id": "ecaa0ec1|gen|102|ident|ident",
+      "task_id": "ecaa0ec1",
+      "base_instance_id": "arcgen_v2|ecaa0ec1|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 1816,
+          "target_eos": 220,
+          "full": 2036
+        },
+        "f1": {
+          "prompt": 1041,
+          "target_eos": 120,
+          "full": 1161
+        }
+      }
+    },
+    {
+      "episode_id": "20981f0e|loo|0|ident|ident",
+      "task_id": "20981f0e",
+      "base_instance_id": "official_train|20981f0e|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2208,
+          "target_eos": 448,
+          "full": 2656
+        },
+        "f1": {
+          "prompt": 1223,
+          "target_eos": 238,
+          "full": 1461
+        }
+      }
+    },
+    {
+      "episode_id": "bbb1b8b6|gen|101|ident|ident",
+      "task_id": "bbb1b8b6",
+      "base_instance_id": "arcgen_v2|bbb1b8b6|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 492,
+          "target_eos": 32,
+          "full": 524
+        },
+        "f1": {
+          "prompt": 327,
+          "target_eos": 20,
+          "full": 347
+        }
+      }
+    },
+    {
+      "episode_id": "1b60fb0c|loo|0|ident|ident",
+      "task_id": "1b60fb0c",
+      "base_instance_id": "official_train|1b60fb0c|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1092,
+          "target_eos": 200,
+          "full": 1292
+        },
+        "f1": {
+          "prompt": 641,
+          "target_eos": 110,
+          "full": 751
+        }
+      }
+    },
+    {
+      "episode_id": "2f0c5170|gen|1|rot180|ident",
+      "task_id": "2f0c5170",
+      "base_instance_id": "arcgen_v2|2f0c5170|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 3770,
+          "target_eos": 100,
+          "full": 3870
+        },
+        "f1": {
+          "prompt": 2041,
+          "target_eos": 55,
+          "full": 2096
+        }
+      }
+    },
+    {
+      "episode_id": "f1bcbc2c|gen|0|rot90|ident",
+      "task_id": "f1bcbc2c",
+      "base_instance_id": "arcgen_v2|f1bcbc2c|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "1e81d6f9|test|0|ident|ident",
+      "task_id": "1e81d6f9",
+      "base_instance_id": "official_train|1e81d6f9|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 3258,
+          "target_eos": 450,
+          "full": 3708
+        },
+        "f1": {
+          "prompt": 1787,
+          "target_eos": 240,
+          "full": 2027
+        }
+      }
+    },
+    {
+      "episode_id": "c48954c1|gen|104|rot90|ident",
+      "task_id": "c48954c1",
+      "base_instance_id": "arcgen_v2|c48954c1|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 666,
+          "target_eos": 162,
+          "full": 828
+        },
+        "f1": {
+          "prompt": 425,
+          "target_eos": 90,
+          "full": 515
+        }
+      }
+    },
+    {
+      "episode_id": "834ec97d|test|0|ident|ident",
+      "task_id": "834ec97d",
+      "base_instance_id": "official_train|834ec97d|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 856,
+          "target_eos": 288,
+          "full": 1144
+        },
+        "f1": {
+          "prompt": 527,
+          "target_eos": 156,
+          "full": 683
+        }
+      }
+    },
+    {
+      "episode_id": "642248e4|gen|1|ident|ident",
+      "task_id": "642248e4",
+      "base_instance_id": "arcgen_v2|642248e4|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 2564,
+          "target_eos": 432,
+          "full": 2996
+        },
+        "f1": {
+          "prompt": 1441,
+          "target_eos": 228,
+          "full": 1669
+        }
+      }
+    },
+    {
+      "episode_id": "2601afb7|gen|0|rot90|ident",
+      "task_id": "2601afb7",
+      "base_instance_id": "arcgen_v2|2601afb7|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1402,
+          "target_eos": 162,
+          "full": 1564
+        },
+        "f1": {
+          "prompt": 821,
+          "target_eos": 90,
+          "full": 911
+        }
+      }
+    },
+    {
+      "episode_id": "21f83797|test|0|ident|ident",
+      "task_id": "21f83797",
+      "base_instance_id": "official_train|21f83797|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1782,
+          "target_eos": 338,
+          "full": 2120
+        },
+        "f1": {
+          "prompt": 1001,
+          "target_eos": 182,
+          "full": 1183
+        }
+      }
+    },
+    {
+      "episode_id": "9968a131|gen|0|ident|ident",
+      "task_id": "9968a131",
+      "base_instance_id": "arcgen_v2|9968a131|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 448,
+          "target_eos": 32,
+          "full": 480
+        },
+        "f1": {
+          "prompt": 311,
+          "target_eos": 20,
+          "full": 331
+        }
+      }
+    },
+    {
+      "episode_id": "9473c6fb|test|0|ident|ident",
+      "task_id": "9473c6fb",
+      "base_instance_id": "official_train|9473c6fb|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1060,
+          "target_eos": 216,
+          "full": 1276
+        },
+        "f1": {
+          "prompt": 632,
+          "target_eos": 117,
+          "full": 749
+        }
+      }
+    },
+    {
+      "episode_id": "1d398264|gen|100|ident|ident",
+      "task_id": "1d398264",
+      "base_instance_id": "arcgen_v2|1d398264|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 3074,
+          "target_eos": 450,
+          "full": 3524
+        },
+        "f1": {
+          "prompt": 1691,
+          "target_eos": 240,
+          "full": 1931
+        }
+      }
+    },
+    {
+      "episode_id": "dc2aa30b|gen|100|rot90|ident",
+      "task_id": "dc2aa30b",
+      "base_instance_id": "arcgen_v2|dc2aa30b|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 1802,
+          "target_eos": 242,
+          "full": 2044
+        },
+        "f1": {
+          "prompt": 1031,
+          "target_eos": 132,
+          "full": 1163
+        }
+      }
+    },
+    {
+      "episode_id": "8eb1be9a|test|0|ident|ident",
+      "task_id": "8eb1be9a",
+      "base_instance_id": "official_train|8eb1be9a|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2076,
+          "target_eos": 364,
+          "full": 2440
+        },
+        "f1": {
+          "prompt": 1147,
+          "target_eos": 196,
+          "full": 1343
+        }
+      }
+    },
+    {
+      "episode_id": "4852f2fa|gen|0|ident|ident",
+      "task_id": "4852f2fa",
+      "base_instance_id": "arcgen_v2|4852f2fa|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 864,
+          "target_eos": 54,
+          "full": 918
+        },
+        "f1": {
+          "prompt": 530,
+          "target_eos": 30,
+          "full": 560
+        }
+      }
+    },
+    {
+      "episode_id": "b2bc3ffd|test|0|ident|ident",
+      "task_id": "b2bc3ffd",
+      "base_instance_id": "official_train|b2bc3ffd|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1004,
+          "target_eos": 128,
+          "full": 1132
+        },
+        "f1": {
+          "prompt": 611,
+          "target_eos": 72,
+          "full": 683
+        }
+      }
+    },
+    {
+      "episode_id": "18286ef8|gen|0|rot180|ident",
+      "task_id": "18286ef8",
+      "base_instance_id": "arcgen_v2|18286ef8|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2832,
+          "target_eos": 240,
+          "full": 3072
+        },
+        "f1": {
+          "prompt": 1547,
+          "target_eos": 132,
+          "full": 1679
+        }
+      }
+    },
+    {
+      "episode_id": "470c91de|gen|102|ident|ident",
+      "task_id": "470c91de",
+      "base_instance_id": "arcgen_v2|470c91de|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 1718,
+          "target_eos": 242,
+          "full": 1960
+        },
+        "f1": {
+          "prompt": 987,
+          "target_eos": 132,
+          "full": 1119
+        }
+      }
+    },
+    {
+      "episode_id": "69889d6e|test|0|ident|ident",
+      "task_id": "69889d6e",
+      "base_instance_id": "official_train|69889d6e|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1924,
+          "target_eos": 200,
+          "full": 2124
+        },
+        "f1": {
+          "prompt": 1113,
+          "target_eos": 110,
+          "full": 1223
+        }
+      }
+    },
+    {
+      "episode_id": "337b420f|gen|101|rot90|ident",
+      "task_id": "337b420f",
+      "base_instance_id": "arcgen_v2|337b420f|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 938,
+          "target_eos": 50,
+          "full": 988
+        },
+        "f1": {
+          "prompt": 605,
+          "target_eos": 30,
+          "full": 635
+        }
+      }
+    },
+    {
+      "episode_id": "12997ef3|test|0|ident|ident",
+      "task_id": "12997ef3",
+      "base_instance_id": "official_train|12997ef3|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1470,
+          "target_eos": 72,
+          "full": 1542
+        },
+        "f1": {
+          "prompt": 870,
+          "target_eos": 48,
+          "full": 918
+        }
+      }
+    },
+    {
+      "episode_id": "1c02dbbe|gen|0|rot180|ident",
+      "task_id": "1c02dbbe",
+      "base_instance_id": "arcgen_v2|1c02dbbe|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 3258,
+          "target_eos": 450,
+          "full": 3708
+        },
+        "f1": {
+          "prompt": 1787,
+          "target_eos": 240,
+          "full": 2027
+        }
+      }
+    },
+    {
+      "episode_id": "7d18a6fb|gen|100|rot90|ident",
+      "task_id": "7d18a6fb",
+      "base_instance_id": "arcgen_v2|7d18a6fb|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 1894,
+          "target_eos": 98,
+          "full": 1992
+        },
+        "f1": {
+          "prompt": 1081,
+          "target_eos": 56,
+          "full": 1137
+        }
+      }
+    },
+    {
+      "episode_id": "36d67576|loo|0|ident|ident",
+      "task_id": "36d67576",
+      "base_instance_id": "official_train|36d67576|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1782,
+          "target_eos": 338,
+          "full": 2120
+        },
+        "f1": {
+          "prompt": 1001,
+          "target_eos": 182,
+          "full": 1183
+        }
+      }
+    },
+    {
+      "episode_id": "8b28cd80|gen|104|ident|ident",
+      "task_id": "8b28cd80",
+      "base_instance_id": "arcgen_v2|8b28cd80|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 666,
+          "target_eos": 162,
+          "full": 828
+        },
+        "f1": {
+          "prompt": 425,
+          "target_eos": 90,
+          "full": 515
+        }
+      }
+    },
+    {
+      "episode_id": "1caeab9d|test|0|ident|ident",
+      "task_id": "1caeab9d",
+      "base_instance_id": "official_train|1caeab9d|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1108,
+          "target_eos": 200,
+          "full": 1308
+        },
+        "f1": {
+          "prompt": 657,
+          "target_eos": 110,
+          "full": 767
+        }
+      }
+    },
+    {
+      "episode_id": "9b4c17c4|gen|1|ident|ident",
+      "task_id": "9b4c17c4",
+      "base_instance_id": "arcgen_v2|9b4c17c4|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 1880,
+          "target_eos": 320,
+          "full": 2200
+        },
+        "f1": {
+          "prompt": 1069,
+          "target_eos": 170,
+          "full": 1239
+        }
+      }
+    },
+    {
+      "episode_id": "412b6263|gen|100|ident|ident",
+      "task_id": "412b6263",
+      "base_instance_id": "arcgen_v2|412b6263|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 1470,
+          "target_eos": 270,
+          "full": 1740
+        },
+        "f1": {
+          "prompt": 868,
+          "target_eos": 150,
+          "full": 1018
+        }
+      }
+    },
+    {
+      "episode_id": "456873bc|loo|0|ident|ident",
+      "task_id": "456873bc",
+      "base_instance_id": "official_train|456873bc|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2262,
+          "target_eos": 242,
+          "full": 2504
+        },
+        "f1": {
+          "prompt": 1247,
+          "target_eos": 132,
+          "full": 1379
+        }
+      }
+    },
+    {
+      "episode_id": "1190bc91|gen|1|rot90|ident",
+      "task_id": "1190bc91",
+      "base_instance_id": "arcgen_v2|1190bc91|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 734,
+          "target_eos": 162,
+          "full": 896
+        },
+        "f1": {
+          "prompt": 465,
+          "target_eos": 90,
+          "full": 555
+        }
+      }
+    },
+    {
+      "episode_id": "7ddcd7ec|test|0|ident|ident",
+      "task_id": "7ddcd7ec",
+      "base_instance_id": "official_train|7ddcd7ec|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "1a6449f1|gen|100|rot90|ident",
+      "task_id": "1a6449f1",
+      "base_instance_id": "arcgen_v2|1a6449f1|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 3524,
+          "target_eos": 70,
+          "full": 3594
+        },
+        "f1": {
+          "prompt": 1924,
+          "target_eos": 40,
+          "full": 1964
+        }
+      }
+    },
+    {
+      "episode_id": "310f3251|gen|1|rot180|ident",
+      "task_id": "310f3251",
+      "base_instance_id": "arcgen_v2|310f3251|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 1026,
+          "target_eos": 162,
+          "full": 1188
+        },
+        "f1": {
+          "prompt": 613,
+          "target_eos": 90,
+          "full": 703
+        }
+      }
+    },
+    {
+      "episode_id": "1be83260|test|0|ident|ident",
+      "task_id": "1be83260",
+      "base_instance_id": "official_train|1be83260|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 3096,
+          "target_eos": 506,
+          "full": 3602
+        },
+        "f1": {
+          "prompt": 1687,
+          "target_eos": 264,
+          "full": 1951
+        }
+      }
+    },
+    {
+      "episode_id": "e3fe1151|gen|103|ident|ident",
+      "task_id": "e3fe1151",
+      "base_instance_id": "arcgen_v2|e3fe1151|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 458,
+          "target_eos": 50,
+          "full": 508
+        },
+        "f1": {
+          "prompt": 317,
+          "target_eos": 30,
+          "full": 347
+        }
+      }
+    },
+    {
+      "episode_id": "178fcbfb|loo|0|ident|ident",
+      "task_id": "178fcbfb",
+      "base_instance_id": "official_train|178fcbfb|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1016,
+          "target_eos": 160,
+          "full": 1176
+        },
+        "f1": {
+          "prompt": 601,
+          "target_eos": 90,
+          "full": 691
+        }
+      }
+    },
+    {
+      "episode_id": "9f8de559|gen|103|rot90|ident",
+      "task_id": "9f8de559",
+      "base_instance_id": "arcgen_v2|9f8de559|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 2852,
+          "target_eos": 392,
+          "full": 3244
+        },
+        "f1": {
+          "prompt": 1577,
+          "target_eos": 210,
+          "full": 1787
+        }
+      }
+    },
+    {
+      "episode_id": "782b5218|gen|103|rot90|ident",
+      "task_id": "782b5218",
+      "base_instance_id": "arcgen_v2|782b5218|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "4290ef0e|test|0|ident|ident",
+      "task_id": "4290ef0e",
+      "base_instance_id": "official_train|4290ef0e|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 3006,
+          "target_eos": 242,
+          "full": 3248
+        },
+        "f1": {
+          "prompt": 1649,
+          "target_eos": 132,
+          "full": 1781
+        }
+      }
+    },
+    {
+      "episode_id": "770cc55f|gen|1|rot90|ident",
+      "task_id": "770cc55f",
+      "base_instance_id": "arcgen_v2|770cc55f|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 860,
+          "target_eos": 108,
+          "full": 968
+        },
+        "f1": {
+          "prompt": 519,
+          "target_eos": 60,
+          "full": 579
+        }
+      }
+    },
+    {
+      "episode_id": "6e19193c|test|0|ident|ident",
+      "task_id": "6e19193c",
+      "base_instance_id": "official_train|6e19193c|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1092,
+          "target_eos": 200,
+          "full": 1292
+        },
+        "f1": {
+          "prompt": 641,
+          "target_eos": 110,
+          "full": 751
+        }
+      }
+    },
+    {
+      "episode_id": "e9bb6954|gen|100|ident|ident",
+      "task_id": "e9bb6954",
+      "base_instance_id": "arcgen_v2|e9bb6954|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 3482,
+          "target_eos": 578,
+          "full": 4060
+        },
+        "f1": {
+          "prompt": 1905,
+          "target_eos": 306,
+          "full": 2211
+        }
+      }
+    },
+    {
+      "episode_id": "32e9702f|gen|101|rot90|ident",
+      "task_id": "32e9702f",
+      "base_instance_id": "arcgen_v2|32e9702f|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 914,
+          "target_eos": 162,
+          "full": 1076
+        },
+        "f1": {
+          "prompt": 561,
+          "target_eos": 90,
+          "full": 651
+        }
+      }
+    },
+    {
+      "episode_id": "673ef223|test|0|ident|ident",
+      "task_id": "673ef223",
+      "base_instance_id": "official_train|673ef223|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2820,
+          "target_eos": 504,
+          "full": 3324
+        },
+        "f1": {
+          "prompt": 1602,
+          "target_eos": 273,
+          "full": 1875
+        }
+      }
+    },
+    {
+      "episode_id": "aa18de87|gen|0|ident|ident",
+      "task_id": "aa18de87",
+      "base_instance_id": "arcgen_v2|aa18de87|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 726,
+          "target_eos": 110,
+          "full": 836
+        },
+        "f1": {
+          "prompt": 447,
+          "target_eos": 60,
+          "full": 507
+        }
+      }
+    },
+    {
+      "episode_id": "4258a5f9|test|0|ident|ident",
+      "task_id": "4258a5f9",
+      "base_instance_id": "official_train|4258a5f9|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 902,
+          "target_eos": 162,
+          "full": 1064
+        },
+        "f1": {
+          "prompt": 541,
+          "target_eos": 90,
+          "full": 631
+        }
+      }
+    },
+    {
+      "episode_id": "758abdf0|gen|103|rot90|ident",
+      "task_id": "758abdf0",
+      "base_instance_id": "arcgen_v2|758abdf0|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1900,
+          "target_eos": 256,
+          "full": 2156
+        },
+        "f1": {
+          "prompt": 1091,
+          "target_eos": 136,
+          "full": 1227
+        }
+      }
+    },
+    {
+      "episode_id": "0becf7df|gen|103|ident|ident",
+      "task_id": "0becf7df",
+      "base_instance_id": "arcgen_v2|0becf7df|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "f3e62deb|test|0|ident|ident",
+      "task_id": "f3e62deb",
+      "base_instance_id": "official_train|f3e62deb|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2756,
+          "target_eos": 200,
+          "full": 2956
+        },
+        "f1": {
+          "prompt": 1585,
+          "target_eos": 110,
+          "full": 1695
+        }
+      }
+    },
+    {
+      "episode_id": "2072aba6|gen|102|ident|ident",
+      "task_id": "2072aba6",
+      "base_instance_id": "arcgen_v2|2072aba6|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 396,
+          "target_eos": 72,
+          "full": 468
+        },
+        "f1": {
+          "prompt": 281,
+          "target_eos": 42,
+          "full": 323
+        }
+      }
+    },
+    {
+      "episode_id": "d2abd087|test|0|ident|ident",
+      "task_id": "d2abd087",
+      "base_instance_id": "official_train|d2abd087|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "aab50785|gen|104|rot90|ident",
+      "task_id": "aab50785",
+      "base_instance_id": "arcgen_v2|aab50785|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 2112,
+          "target_eos": 40,
+          "full": 2152
+        },
+        "f1": {
+          "prompt": 1184,
+          "target_eos": 25,
+          "full": 1209
+        }
+      }
+    },
+    {
+      "episode_id": "dc46ea44|gen|100|ident|ident",
+      "task_id": "dc46ea44",
+      "base_instance_id": "arcgen_v2|dc46ea44|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 1802,
+          "target_eos": 242,
+          "full": 2044
+        },
+        "f1": {
+          "prompt": 1031,
+          "target_eos": 132,
+          "full": 1163
+        }
+      }
+    },
+    {
+      "episode_id": "c658a4bd|test|0|ident|ident",
+      "task_id": "c658a4bd",
+      "base_instance_id": "official_train|c658a4bd|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1954,
+          "target_eos": 200,
+          "full": 2154
+        },
+        "f1": {
+          "prompt": 1087,
+          "target_eos": 110,
+          "full": 1197
+        }
+      }
+    },
+    {
+      "episode_id": "ca8de6ea|gen|100|rot90|ident",
+      "task_id": "ca8de6ea",
+      "base_instance_id": "arcgen_v2|ca8de6ea|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 362,
+          "target_eos": 18,
+          "full": 380
+        },
+        "f1": {
+          "prompt": 263,
+          "target_eos": 12,
+          "full": 275
+        }
+      }
+    },
+    {
+      "episode_id": "d43fd935|test|0|ident|ident",
+      "task_id": "d43fd935",
+      "base_instance_id": "official_train|d43fd935|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "358ba94e|gen|1|ident|ident",
+      "task_id": "358ba94e",
+      "base_instance_id": "arcgen_v2|358ba94e|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 2560,
+          "target_eos": 50,
+          "full": 2610
+        },
+        "f1": {
+          "prompt": 1411,
+          "target_eos": 30,
+          "full": 1441
+        }
+      }
+    },
+    {
+      "episode_id": "8e301a54|gen|104|ident|ident",
+      "task_id": "8e301a54",
+      "base_instance_id": "arcgen_v2|8e301a54|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "caa06a1f|test|0|ident|ident",
+      "task_id": "caa06a1f",
+      "base_instance_id": "official_train|caa06a1f|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1640,
+          "target_eos": 648,
+          "full": 2288
+        },
+        "f1": {
+          "prompt": 941,
+          "target_eos": 342,
+          "full": 1283
+        }
+      }
+    },
+    {
+      "episode_id": "59341089|gen|102|ident|ident",
+      "task_id": "59341089",
+      "base_instance_id": "arcgen_v2|59341089|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 396,
+          "target_eos": 72,
+          "full": 468
+        },
+        "f1": {
+          "prompt": 272,
+          "target_eos": 39,
+          "full": 311
+        }
+      }
+    },
+    {
+      "episode_id": "4e469f39|loo|0|ident|ident",
+      "task_id": "4e469f39",
+      "base_instance_id": "official_train|4e469f39|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1092,
+          "target_eos": 200,
+          "full": 1292
+        },
+        "f1": {
+          "prompt": 641,
+          "target_eos": 110,
+          "full": 751
+        }
+      }
+    },
+    {
+      "episode_id": "ad7e01d0|gen|102|ident|ident",
+      "task_id": "ad7e01d0",
+      "base_instance_id": "arcgen_v2|ad7e01d0|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 2514,
+          "target_eos": 162,
+          "full": 2676
+        },
+        "f1": {
+          "prompt": 1383,
+          "target_eos": 90,
+          "full": 1473
+        }
+      }
+    },
+    {
+      "episode_id": "ac0c2ac3|gen|1|rot90|ident",
+      "task_id": "ac0c2ac3",
+      "base_instance_id": "arcgen_v2|ac0c2ac3|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 1546,
+          "target_eos": 338,
+          "full": 1884
+        },
+        "f1": {
+          "prompt": 893,
+          "target_eos": 182,
+          "full": 1075
+        }
+      }
+    },
+    {
+      "episode_id": "17b866bd|test|1|ident|ident",
+      "task_id": "17b866bd",
+      "base_instance_id": "official_train|17b866bd|test|1",
+      "lengths": {
+        "f0": {
+          "prompt": 2972,
+          "target_eos": 512,
+          "full": 3484
+        },
+        "f1": {
+          "prompt": 1611,
+          "target_eos": 272,
+          "full": 1883
+        }
+      }
+    },
+    {
+      "episode_id": "d5c634a2|gen|102|ident|ident",
+      "task_id": "d5c634a2",
+      "base_instance_id": "arcgen_v2|d5c634a2|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 850,
+          "target_eos": 36,
+          "full": 886
+        },
+        "f1": {
+          "prompt": 518,
+          "target_eos": 21,
+          "full": 539
+        }
+      }
+    },
+    {
+      "episode_id": "3eda0437|loo|0|ident|ident",
+      "task_id": "3eda0437",
+      "base_instance_id": "official_train|3eda0437|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1188,
+          "target_eos": 80,
+          "full": 1268
+        },
+        "f1": {
+          "prompt": 671,
+          "target_eos": 42,
+          "full": 713
+        }
+      }
+    },
+    {
+      "episode_id": "37ce87bb|gen|101|rot90|ident",
+      "task_id": "37ce87bb",
+      "base_instance_id": "arcgen_v2|37ce87bb|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 1842,
+          "target_eos": 234,
+          "full": 2076
+        },
+        "f1": {
+          "prompt": 1069,
+          "target_eos": 130,
+          "full": 1199
+        }
+      }
+    },
+    {
+      "episode_id": "dd2401ed|gen|103|ident|ident",
+      "task_id": "dd2401ed",
+      "base_instance_id": "arcgen_v2|dd2401ed|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1578,
+          "target_eos": 210,
+          "full": 1788
+        },
+        "f1": {
+          "prompt": 891,
+          "target_eos": 112,
+          "full": 1003
+        }
+      }
+    },
+    {
+      "episode_id": "42f14c03|test|0|ident|ident",
+      "task_id": "42f14c03",
+      "base_instance_id": "official_train|42f14c03|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2278,
+          "target_eos": 56,
+          "full": 2334
+        },
+        "f1": {
+          "prompt": 1268,
+          "target_eos": 35,
+          "full": 1303
+        }
+      }
+    },
+    {
+      "episode_id": "8e2edd66|gen|0|ident|ident",
+      "task_id": "8e2edd66",
+      "base_instance_id": "arcgen_v2|8e2edd66|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 666,
+          "target_eos": 162,
+          "full": 828
+        },
+        "f1": {
+          "prompt": 425,
+          "target_eos": 90,
+          "full": 515
+        }
+      }
+    },
+    {
+      "episode_id": "363442ee|loo|0|ident|ident",
+      "task_id": "363442ee",
+      "base_instance_id": "official_train|363442ee|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1262,
+          "target_eos": 234,
+          "full": 1496
+        },
+        "f1": {
+          "prompt": 721,
+          "target_eos": 126,
+          "full": 847
+        }
+      }
+    },
+    {
+      "episode_id": "20818e16|gen|100|ident|ident",
+      "task_id": "20818e16",
+      "base_instance_id": "arcgen_v2|20818e16|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 2180,
+          "target_eos": 40,
+          "full": 2220
+        },
+        "f1": {
+          "prompt": 1227,
+          "target_eos": 22,
+          "full": 1249
+        }
+      }
+    },
+    {
+      "episode_id": "e7dd8335|gen|0|rot90|ident",
+      "task_id": "e7dd8335",
+      "base_instance_id": "arcgen_v2|e7dd8335|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1184,
+          "target_eos": 108,
+          "full": 1292
+        },
+        "f1": {
+          "prompt": 703,
+          "target_eos": 60,
+          "full": 763
+        }
+      }
+    },
+    {
+      "episode_id": "e4941b18|test|0|ident|ident",
+      "task_id": "e4941b18",
+      "base_instance_id": "official_train|e4941b18|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1834,
+          "target_eos": 722,
+          "full": 2556
+        },
+        "f1": {
+          "prompt": 1043,
+          "target_eos": 380,
+          "full": 1423
+        }
+      }
+    },
+    {
+      "episode_id": "8abad3cf|gen|0|ident|ident",
+      "task_id": "8abad3cf",
+      "base_instance_id": "arcgen_v2|8abad3cf|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 468,
+          "target_eos": 36,
+          "full": 504
+        },
+        "f1": {
+          "prompt": 319,
+          "target_eos": 21,
+          "full": 340
+        }
+      }
+    },
+    {
+      "episode_id": "ddf7fa4f|test|0|ident|ident",
+      "task_id": "ddf7fa4f",
+      "base_instance_id": "official_train|ddf7fa4f|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "c64f1187|gen|100|rot90|ident",
+      "task_id": "c64f1187",
+      "base_instance_id": "arcgen_v2|c64f1187|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 3242,
+          "target_eos": 176,
+          "full": 3418
+        },
+        "f1": {
+          "prompt": 1787,
+          "target_eos": 99,
+          "full": 1886
+        }
+      }
+    },
+    {
+      "episode_id": "465b7d93|gen|103|rot90|ident",
+      "task_id": "465b7d93",
+      "base_instance_id": "arcgen_v2|465b7d93|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "15663ba9|test|0|ident|ident",
+      "task_id": "15663ba9",
+      "base_instance_id": "official_train|15663ba9|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2880,
+          "target_eos": 480,
+          "full": 3360
+        },
+        "f1": {
+          "prompt": 1586,
+          "target_eos": 255,
+          "full": 1841
+        }
+      }
+    },
+    {
+      "episode_id": "48131b3c|gen|0|ident|ident",
+      "task_id": "48131b3c",
+      "base_instance_id": "arcgen_v2|48131b3c|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 296,
+          "target_eos": 72,
+          "full": 368
+        },
+        "f1": {
+          "prompt": 225,
+          "target_eos": 42,
+          "full": 267
+        }
+      }
+    },
+    {
+      "episode_id": "321b1fc6|test|0|ident|ident",
+      "task_id": "321b1fc6",
+      "base_instance_id": "official_train|321b1fc6|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1092,
+          "target_eos": 200,
+          "full": 1292
+        },
+        "f1": {
+          "prompt": 641,
+          "target_eos": 110,
+          "full": 751
+        }
+      }
+    },
+    {
+      "episode_id": "4e7e0eb9|gen|103|rot90|ident",
+      "task_id": "4e7e0eb9",
+      "base_instance_id": "arcgen_v2|4e7e0eb9|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 3222,
+          "target_eos": 342,
+          "full": 3564
+        },
+        "f1": {
+          "prompt": 1797,
+          "target_eos": 190,
+          "full": 1987
+        }
+      }
+    },
+    {
+      "episode_id": "ea9794b1|gen|103|ident|ident",
+      "task_id": "ea9794b1",
+      "base_instance_id": "arcgen_v2|ea9794b1|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1058,
+          "target_eos": 50,
+          "full": 1108
+        },
+        "f1": {
+          "prompt": 637,
+          "target_eos": 30,
+          "full": 667
+        }
+      }
+    },
+    {
+      "episode_id": "543a7ed5|test|0|ident|ident",
+      "task_id": "543a7ed5",
+      "base_instance_id": "official_train|543a7ed5|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2342,
+          "target_eos": 450,
+          "full": 2792
+        },
+        "f1": {
+          "prompt": 1291,
+          "target_eos": 240,
+          "full": 1531
+        }
+      }
+    },
+    {
+      "episode_id": "9ddd00f0|gen|101|ident|ident",
+      "task_id": "9ddd00f0",
+      "base_instance_id": "arcgen_v2|9ddd00f0|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 842,
+          "target_eos": 50,
+          "full": 892
+        },
+        "f1": {
+          "prompt": 521,
+          "target_eos": 30,
+          "full": 551
+        }
+      }
+    },
+    {
+      "episode_id": "aba27056|test|0|ident|ident",
+      "task_id": "aba27056",
+      "base_instance_id": "official_train|aba27056|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 972,
+          "target_eos": 200,
+          "full": 1172
+        },
+        "f1": {
+          "prompt": 593,
+          "target_eos": 110,
+          "full": 703
+        }
+      }
+    },
+    {
+      "episode_id": "cf133acc|gen|103|ident|ident",
+      "task_id": "cf133acc",
+      "base_instance_id": "arcgen_v2|cf133acc|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 3258,
+          "target_eos": 450,
+          "full": 3708
+        },
+        "f1": {
+          "prompt": 1787,
+          "target_eos": 240,
+          "full": 2027
+        }
+      }
+    },
+    {
+      "episode_id": "62ab2642|gen|102|rot90|ident",
+      "task_id": "62ab2642",
+      "base_instance_id": "arcgen_v2|62ab2642|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 1380,
+          "target_eos": 96,
+          "full": 1476
+        },
+        "f1": {
+          "prompt": 809,
+          "target_eos": 54,
+          "full": 863
+        }
+      }
+    },
+    {
+      "episode_id": "ce602527|test|0|ident|ident",
+      "task_id": "ce602527",
+      "base_instance_id": "official_train|ce602527|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 3294,
+          "target_eos": 24,
+          "full": 3318
+        },
+        "f1": {
+          "prompt": 1813,
+          "target_eos": 16,
+          "full": 1829
+        }
+      }
+    },
+    {
+      "episode_id": "a59b95c0|gen|1|ident|ident",
+      "task_id": "a59b95c0",
+      "base_instance_id": "arcgen_v2|a59b95c0|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 702,
+          "target_eos": 288,
+          "full": 990
+        },
+        "f1": {
+          "prompt": 443,
+          "target_eos": 156,
+          "full": 599
+        }
+      }
+    },
+    {
+      "episode_id": "5117e062|loo|0|ident|ident",
+      "task_id": "5117e062",
+      "base_instance_id": "official_train|5117e062|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1142,
+          "target_eos": 18,
+          "full": 1160
+        },
+        "f1": {
+          "prompt": 661,
+          "target_eos": 12,
+          "full": 673
+        }
+      }
+    },
+    {
+      "episode_id": "e7a25a18|gen|101|ident|ident",
+      "task_id": "e7a25a18",
+      "base_instance_id": "arcgen_v2|e7a25a18|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 2020,
+          "target_eos": 72,
+          "full": 2092
+        },
+        "f1": {
+          "prompt": 1141,
+          "target_eos": 42,
+          "full": 1183
+        }
+      }
+    },
+    {
+      "episode_id": "8ee62060|gen|0|rot90|ident",
+      "task_id": "8ee62060",
+      "base_instance_id": "arcgen_v2|8ee62060|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1148,
+          "target_eos": 128,
+          "full": 1276
+        },
+        "f1": {
+          "prompt": 687,
+          "target_eos": 72,
+          "full": 759
+        }
+      }
+    },
+    {
+      "episode_id": "f0df5ff0|test|0|ident|ident",
+      "task_id": "f0df5ff0",
+      "base_instance_id": "official_train|f0df5ff0|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 3258,
+          "target_eos": 450,
+          "full": 3708
+        },
+        "f1": {
+          "prompt": 1787,
+          "target_eos": 240,
+          "full": 2027
+        }
+      }
+    },
+    {
+      "episode_id": "e345f17b|gen|104|rot90|ident",
+      "task_id": "e345f17b",
+      "base_instance_id": "arcgen_v2|e345f17b|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 460,
+          "target_eos": 32,
+          "full": 492
+        },
+        "f1": {
+          "prompt": 327,
+          "target_eos": 20,
+          "full": 347
+        }
+      }
+    },
+    {
+      "episode_id": "8f2ea7aa|test|0|ident|ident",
+      "task_id": "8f2ea7aa",
+      "base_instance_id": "official_train|8f2ea7aa|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1242,
+          "target_eos": 162,
+          "full": 1404
+        },
+        "f1": {
+          "prompt": 737,
+          "target_eos": 90,
+          "full": 827
+        }
+      }
+    },
+    {
+      "episode_id": "c61be7dc|gen|103|ident|ident",
+      "task_id": "c61be7dc",
+      "base_instance_id": "arcgen_v2|c61be7dc|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 3002,
+          "target_eos": 578,
+          "full": 3580
+        },
+        "f1": {
+          "prompt": 1653,
+          "target_eos": 306,
+          "full": 1959
+        }
+      }
+    },
+    {
+      "episode_id": "cfb2ce5a|gen|104|rot90|ident",
+      "task_id": "cfb2ce5a",
+      "base_instance_id": "arcgen_v2|cfb2ce5a|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "3e980e27|loo|0|ident|ident",
+      "task_id": "3e980e27",
+      "base_instance_id": "official_train|3e980e27|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2474,
+          "target_eos": 338,
+          "full": 2812
+        },
+        "f1": {
+          "prompt": 1381,
+          "target_eos": 182,
+          "full": 1563
+        }
+      }
+    },
+    {
+      "episode_id": "48f8583b|gen|100|rot90|ident",
+      "task_id": "48f8583b",
+      "base_instance_id": "arcgen_v2|48f8583b|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 666,
+          "target_eos": 162,
+          "full": 828
+        },
+        "f1": {
+          "prompt": 425,
+          "target_eos": 90,
+          "full": 515
+        }
+      }
+    },
+    {
+      "episode_id": "4347f46a|loo|0|ident|ident",
+      "task_id": "4347f46a",
+      "base_instance_id": "official_train|4347f46a|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1884,
+          "target_eos": 112,
+          "full": 1996
+        },
+        "f1": {
+          "prompt": 1053,
+          "target_eos": 64,
+          "full": 1117
+        }
+      }
+    },
+    {
+      "episode_id": "705a3229|gen|0|rot90|ident",
+      "task_id": "705a3229",
+      "base_instance_id": "arcgen_v2|705a3229|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2056,
+          "target_eos": 252,
+          "full": 2308
+        },
+        "f1": {
+          "prompt": 1157,
+          "target_eos": 140,
+          "full": 1297
+        }
+      }
+    },
+    {
+      "episode_id": "fd02da9e|gen|100|ident|ident",
+      "task_id": "fd02da9e",
+      "base_instance_id": "arcgen_v2|fd02da9e|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 1004,
+          "target_eos": 128,
+          "full": 1132
+        },
+        "f1": {
+          "prompt": 611,
+          "target_eos": 72,
+          "full": 683
+        }
+      }
+    },
+    {
+      "episode_id": "09629e4f|test|0|ident|ident",
+      "task_id": "09629e4f",
+      "base_instance_id": "official_train|09629e4f|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2302,
+          "target_eos": 242,
+          "full": 2544
+        },
+        "f1": {
+          "prompt": 1311,
+          "target_eos": 132,
+          "full": 1443
+        }
+      }
+    },
+    {
+      "episode_id": "0692e18c|gen|103|ident|ident",
+      "task_id": "0692e18c",
+      "base_instance_id": "arcgen_v2|0692e18c|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 666,
+          "target_eos": 162,
+          "full": 828
+        },
+        "f1": {
+          "prompt": 425,
+          "target_eos": 90,
+          "full": 515
+        }
+      }
+    },
+    {
+      "episode_id": "e9614598|test|0|ident|ident",
+      "task_id": "e9614598",
+      "base_instance_id": "official_train|e9614598|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1012,
+          "target_eos": 120,
+          "full": 1132
+        },
+        "f1": {
+          "prompt": 601,
+          "target_eos": 70,
+          "full": 671
+        }
+      }
+    },
+    {
+      "episode_id": "a934301b|gen|0|rot90|ident",
+      "task_id": "a934301b",
+      "base_instance_id": "arcgen_v2|a934301b|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2842,
+          "target_eos": 390,
+          "full": 3232
+        },
+        "f1": {
+          "prompt": 1571,
+          "target_eos": 208,
+          "full": 1779
+        }
+      }
+    },
+    {
+      "episode_id": "3bd292e8|gen|101|rot90|ident",
+      "task_id": "3bd292e8",
+      "base_instance_id": "arcgen_v2|3bd292e8|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 960,
+          "target_eos": 128,
+          "full": 1088
+        },
+        "f1": {
+          "prompt": 587,
+          "target_eos": 72,
+          "full": 659
+        }
+      }
+    },
+    {
+      "episode_id": "0e671a1a|loo|0|ident|ident",
+      "task_id": "0e671a1a",
+      "base_instance_id": "official_train|0e671a1a|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2474,
+          "target_eos": 338,
+          "full": 2812
+        },
+        "f1": {
+          "prompt": 1381,
+          "target_eos": 182,
+          "full": 1563
+        }
+      }
+    },
+    {
+      "episode_id": "9110e3c5|gen|3|ident|ident",
+      "task_id": "9110e3c5",
+      "base_instance_id": "arcgen_v2|9110e3c5|gen|3",
+      "lengths": {
+        "f0": {
+          "prompt": 554,
+          "target_eos": 18,
+          "full": 572
+        },
+        "f1": {
+          "prompt": 367,
+          "target_eos": 12,
+          "full": 379
+        }
+      }
+    },
+    {
+      "episode_id": "bb43febb|test|0|ident|ident",
+      "task_id": "bb43febb",
+      "base_instance_id": "official_train|bb43febb|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1092,
+          "target_eos": 200,
+          "full": 1292
+        },
+        "f1": {
+          "prompt": 641,
+          "target_eos": 110,
+          "full": 751
+        }
+      }
+    },
+    {
+      "episode_id": "ac6f9922|gen|1|ident|ident",
+      "task_id": "ac6f9922",
+      "base_instance_id": "arcgen_v2|ac6f9922|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 3764,
+          "target_eos": 18,
+          "full": 3782
+        },
+        "f1": {
+          "prompt": 2027,
+          "target_eos": 12,
+          "full": 2039
+        }
+      }
+    },
+    {
+      "episode_id": "5ffb2104|gen|1|ident|ident",
+      "task_id": "5ffb2104",
+      "base_instance_id": "arcgen_v2|5ffb2104|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 1588,
+          "target_eos": 120,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 919,
+          "target_eos": 70,
+          "full": 989
+        }
+      }
+    },
+    {
+      "episode_id": "23b5c85d|loo|0|ident|ident",
+      "task_id": "23b5c85d",
+      "base_instance_id": "official_train|23b5c85d|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2404,
+          "target_eos": 24,
+          "full": 2428
+        },
+        "f1": {
+          "prompt": 1344,
+          "target_eos": 15,
+          "full": 1359
+        }
+      }
+    },
+    {
+      "episode_id": "5d2a5c43|gen|104|ident|ident",
+      "task_id": "5d2a5c43",
+      "base_instance_id": "arcgen_v2|5d2a5c43|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 684,
+          "target_eos": 48,
+          "full": 732
+        },
+        "f1": {
+          "prompt": 437,
+          "target_eos": 30,
+          "full": 467
+        }
+      }
+    },
+    {
+      "episode_id": "97999447|test|0|ident|ident",
+      "task_id": "97999447",
+      "base_instance_id": "official_train|97999447|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1276,
+          "target_eos": 144,
+          "full": 1420
+        },
+        "f1": {
+          "prompt": 754,
+          "target_eos": 81,
+          "full": 835
+        }
+      }
+    },
+    {
+      "episode_id": "f3e14006|gen|100|ident|ident",
+      "task_id": "f3e14006",
+      "base_instance_id": "arcgen_v2|f3e14006|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 2136,
+          "target_eos": 200,
+          "full": 2336
+        },
+        "f1": {
+          "prompt": 1205,
+          "target_eos": 110,
+          "full": 1315
+        }
+      }
+    },
+    {
+      "episode_id": "aa300dc3|gen|0|ident|ident",
+      "task_id": "aa300dc3",
+      "base_instance_id": "arcgen_v2|aa300dc3|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "32597951|loo|0|ident|ident",
+      "task_id": "32597951",
+      "base_instance_id": "official_train|32597951|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2982,
+          "target_eos": 578,
+          "full": 3560
+        },
+        "f1": {
+          "prompt": 1621,
+          "target_eos": 306,
+          "full": 1927
+        }
+      }
+    },
+    {
+      "episode_id": "8597cfd7|gen|101|ident|ident",
+      "task_id": "8597cfd7",
+      "base_instance_id": "arcgen_v2|8597cfd7|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 852,
+          "target_eos": 8,
+          "full": 860
+        },
+        "f1": {
+          "prompt": 525,
+          "target_eos": 6,
+          "full": 531
+        }
+      }
+    },
+    {
+      "episode_id": "b60334d2|test|0|ident|ident",
+      "task_id": "b60334d2",
+      "base_instance_id": "official_train|b60334d2|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 902,
+          "target_eos": 162,
+          "full": 1064
+        },
+        "f1": {
+          "prompt": 541,
+          "target_eos": 90,
+          "full": 631
+        }
+      }
+    },
+    {
+      "episode_id": "41ace6b5|gen|100|ident|ident",
+      "task_id": "41ace6b5",
+      "base_instance_id": "arcgen_v2|41ace6b5|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 1914,
+          "target_eos": 450,
+          "full": 2364
+        },
+        "f1": {
+          "prompt": 1087,
+          "target_eos": 240,
+          "full": 1327
+        }
+      }
+    },
+    {
+      "episode_id": "3979b1a8|gen|1|rot180|ident",
+      "task_id": "3979b1a8",
+      "base_instance_id": "arcgen_v2|3979b1a8|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 908,
+          "target_eos": 200,
+          "full": 1108
+        },
+        "f1": {
+          "prompt": 557,
+          "target_eos": 110,
+          "full": 667
+        }
+      }
+    },
+    {
+      "episode_id": "ac2e8ecf|test|0|ident|ident",
+      "task_id": "ac2e8ecf",
+      "base_instance_id": "official_train|ac2e8ecf|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 3184,
+          "target_eos": 480,
+          "full": 3664
+        },
+        "f1": {
+          "prompt": 1745,
+          "target_eos": 256,
+          "full": 2001
+        }
+      }
+    },
+    {
+      "episode_id": "15696249|gen|103|rot90|ident",
+      "task_id": "15696249",
+      "base_instance_id": "arcgen_v2|15696249|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 666,
+          "target_eos": 162,
+          "full": 828
+        },
+        "f1": {
+          "prompt": 425,
+          "target_eos": 90,
+          "full": 515
+        }
+      }
+    },
+    {
+      "episode_id": "ba97ae07|test|0|ident|ident",
+      "task_id": "ba97ae07",
+      "base_instance_id": "official_train|ba97ae07|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1600,
+          "target_eos": 132,
+          "full": 1732
+        },
+        "f1": {
+          "prompt": 944,
+          "target_eos": 77,
+          "full": 1021
+        }
+      }
+    },
+    {
+      "episode_id": "25e02866|gen|0|rot90|ident",
+      "task_id": "25e02866",
+      "base_instance_id": "arcgen_v2|25e02866|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2600,
+          "target_eos": 72,
+          "full": 2672
+        },
+        "f1": {
+          "prompt": 1437,
+          "target_eos": 42,
+          "full": 1479
+        }
+      }
+    },
+    {
+      "episode_id": "12422b43|gen|104|rot90|ident",
+      "task_id": "12422b43",
+      "base_instance_id": "arcgen_v2|12422b43|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 892,
+          "target_eos": 168,
+          "full": 1060
+        },
+        "f1": {
+          "prompt": 540,
+          "target_eos": 91,
+          "full": 631
+        }
+      }
+    },
+    {
+      "episode_id": "e8dc4411|test|0|ident|ident",
+      "task_id": "e8dc4411",
+      "base_instance_id": "official_train|e8dc4411|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2904,
+          "target_eos": 576,
+          "full": 3480
+        },
+        "f1": {
+          "prompt": 1597,
+          "target_eos": 306,
+          "full": 1903
+        }
+      }
+    },
+    {
+      "episode_id": "3cd86f4f|gen|1|rot180|ident",
+      "task_id": "3cd86f4f",
+      "base_instance_id": "arcgen_v2|3cd86f4f|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 962,
+          "target_eos": 42,
+          "full": 1004
+        },
+        "f1": {
+          "prompt": 577,
+          "target_eos": 24,
+          "full": 601
+        }
+      }
+    },
+    {
+      "episode_id": "e50d258f|test|0|ident|ident",
+      "task_id": "e50d258f",
+      "base_instance_id": "official_train|e50d258f|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1014,
+          "target_eos": 36,
+          "full": 1050
+        },
+        "f1": {
+          "prompt": 614,
+          "target_eos": 24,
+          "full": 638
+        }
+      }
+    },
+    {
+      "episode_id": "b7955b3c|gen|104|ident|ident",
+      "task_id": "b7955b3c",
+      "base_instance_id": "arcgen_v2|b7955b3c|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 2816,
+          "target_eos": 520,
+          "full": 3336
+        },
+        "f1": {
+          "prompt": 1551,
+          "target_eos": 286,
+          "full": 1837
+        }
+      }
+    },
+    {
+      "episode_id": "e9b4f6fc|gen|104|ident|ident",
+      "task_id": "e9b4f6fc",
+      "base_instance_id": "arcgen_v2|e9b4f6fc|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 1662,
+          "target_eos": 56,
+          "full": 1718
+        },
+        "f1": {
+          "prompt": 951,
+          "target_eos": 35,
+          "full": 986
+        }
+      }
+    },
+    {
+      "episode_id": "45bbe264|test|0|ident|ident",
+      "task_id": "45bbe264",
+      "base_instance_id": "official_train|45bbe264|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 3042,
+          "target_eos": 450,
+          "full": 3492
+        },
+        "f1": {
+          "prompt": 1675,
+          "target_eos": 240,
+          "full": 1915
+        }
+      }
+    },
+    {
+      "episode_id": "e633a9e5|gen|101|ident|ident",
+      "task_id": "e633a9e5",
+      "base_instance_id": "arcgen_v2|e633a9e5|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 330,
+          "target_eos": 50,
+          "full": 380
+        },
+        "f1": {
+          "prompt": 245,
+          "target_eos": 30,
+          "full": 275
+        }
+      }
+    },
+    {
+      "episode_id": "ad38a9d0|test|0|ident|ident",
+      "task_id": "ad38a9d0",
+      "base_instance_id": "official_train|ad38a9d0|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 902,
+          "target_eos": 162,
+          "full": 1064
+        },
+        "f1": {
+          "prompt": 541,
+          "target_eos": 90,
+          "full": 631
+        }
+      }
+    },
+    {
+      "episode_id": "996ec1f3|gen|103|rot90|ident",
+      "task_id": "996ec1f3",
+      "base_instance_id": "arcgen_v2|996ec1f3|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 3050,
+          "target_eos": 18,
+          "full": 3068
+        },
+        "f1": {
+          "prompt": 1663,
+          "target_eos": 12,
+          "full": 1675
+        }
+      }
+    },
+    {
+      "episode_id": "50aad11f|gen|103|rot90|ident",
+      "task_id": "50aad11f",
+      "base_instance_id": "arcgen_v2|50aad11f|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1544,
+          "target_eos": 96,
+          "full": 1640
+        },
+        "f1": {
+          "prompt": 899,
+          "target_eos": 60,
+          "full": 959
+        }
+      }
+    },
+    {
+      "episode_id": "9bebae7a|test|0|ident|ident",
+      "task_id": "9bebae7a",
+      "base_instance_id": "official_train|9bebae7a|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2536,
+          "target_eos": 264,
+          "full": 2800
+        },
+        "f1": {
+          "prompt": 1448,
+          "target_eos": 143,
+          "full": 1591
+        }
+      }
+    },
+    {
+      "episode_id": "17cae0c1|gen|1|rot180|ident",
+      "task_id": "17cae0c1",
+      "base_instance_id": "arcgen_v2|17cae0c1|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 486,
+          "target_eos": 54,
+          "full": 540
+        },
+        "f1": {
+          "prompt": 317,
+          "target_eos": 30,
+          "full": 347
+        }
+      }
+    },
+    {
+      "episode_id": "150deff5|loo|0|ident|ident",
+      "task_id": "150deff5",
+      "base_instance_id": "official_train|150deff5|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 936,
+          "target_eos": 160,
+          "full": 1096
+        },
+        "f1": {
+          "prompt": 555,
+          "target_eos": 88,
+          "full": 643
+        }
+      }
+    },
+    {
+      "episode_id": "60a26a3e|gen|104|ident|ident",
+      "task_id": "60a26a3e",
+      "base_instance_id": "arcgen_v2|60a26a3e|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 2686,
+          "target_eos": 330,
+          "full": 3016
+        },
+        "f1": {
+          "prompt": 1479,
+          "target_eos": 176,
+          "full": 1655
+        }
+      }
+    },
+    {
+      "episode_id": "7ee1c6ea|gen|103|rot90|ident",
+      "task_id": "7ee1c6ea",
+      "base_instance_id": "arcgen_v2|7ee1c6ea|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "91413438|test|0|ident|ident",
+      "task_id": "91413438",
+      "base_instance_id": "official_train|91413438|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1762,
+          "target_eos": 882,
+          "full": 2644
+        },
+        "f1": {
+          "prompt": 1011,
+          "target_eos": 462,
+          "full": 1473
+        }
+      }
+    },
+    {
+      "episode_id": "d017b73f|gen|103|rot90|ident",
+      "task_id": "d017b73f",
+      "base_instance_id": "arcgen_v2|d017b73f|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 630,
+          "target_eos": 60,
+          "full": 690
+        },
+        "f1": {
+          "prompt": 455,
+          "target_eos": 40,
+          "full": 495
+        }
+      }
+    },
+    {
+      "episode_id": "a1570a43|test|0|ident|ident",
+      "task_id": "a1570a43",
+      "base_instance_id": "official_train|a1570a43|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1452,
+          "target_eos": 160,
+          "full": 1612
+        },
+        "f1": {
+          "prompt": 865,
+          "target_eos": 90,
+          "full": 955
+        }
+      }
+    },
+    {
+      "episode_id": "712bf12e|gen|103|ident|ident",
+      "task_id": "712bf12e",
+      "base_instance_id": "arcgen_v2|712bf12e|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 2738,
+          "target_eos": 390,
+          "full": 3128
+        },
+        "f1": {
+          "prompt": 1519,
+          "target_eos": 208,
+          "full": 1727
+        }
+      }
+    },
+    {
+      "episode_id": "db7260a4|gen|103|ident|ident",
+      "task_id": "db7260a4",
+      "base_instance_id": "arcgen_v2|db7260a4|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "0a2355a6|loo|0|ident|ident",
+      "task_id": "0a2355a6",
+      "base_instance_id": "official_train|0a2355a6|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2352,
+          "target_eos": 392,
+          "full": 2744
+        },
+        "f1": {
+          "prompt": 1319,
+          "target_eos": 210,
+          "full": 1529
+        }
+      }
+    },
+    {
+      "episode_id": "68b67ca3|gen|103|ident|ident",
+      "task_id": "68b67ca3",
+      "base_instance_id": "arcgen_v2|68b67ca3|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 450,
+          "target_eos": 18,
+          "full": 468
+        },
+        "f1": {
+          "prompt": 311,
+          "target_eos": 12,
+          "full": 323
+        }
+      }
+    },
+    {
+      "episode_id": "3bd67248|loo|0|ident|ident",
+      "task_id": "3bd67248",
+      "base_instance_id": "official_train|3bd67248|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1206,
+          "target_eos": 18,
+          "full": 1224
+        },
+        "f1": {
+          "prompt": 695,
+          "target_eos": 12,
+          "full": 707
+        }
+      }
+    },
+    {
+      "episode_id": "d282b262|gen|100|ident|ident",
+      "task_id": "d282b262",
+      "base_instance_id": "arcgen_v2|d282b262|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 3258,
+          "target_eos": 450,
+          "full": 3708
+        },
+        "f1": {
+          "prompt": 1787,
+          "target_eos": 240,
+          "full": 2027
+        }
+      }
+    },
+    {
+      "episode_id": "c92b942c|gen|0|ident|ident",
+      "task_id": "c92b942c",
+      "base_instance_id": "arcgen_v2|c92b942c|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1358,
+          "target_eos": 450,
+          "full": 1808
+        },
+        "f1": {
+          "prompt": 785,
+          "target_eos": 240,
+          "full": 1025
+        }
+      }
+    },
+    {
+      "episode_id": "99caaf76|test|0|ident|ident",
+      "task_id": "99caaf76",
+      "base_instance_id": "official_train|99caaf76|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1604,
+          "target_eos": 612,
+          "full": 2216
+        },
+        "f1": {
+          "prompt": 923,
+          "target_eos": 324,
+          "full": 1247
+        }
+      }
+    },
+    {
+      "episode_id": "b0722778|gen|0|rot90|ident",
+      "task_id": "b0722778",
+      "base_instance_id": "arcgen_v2|b0722778|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 978,
+          "target_eos": 32,
+          "full": 1010
+        },
+        "f1": {
+          "prompt": 584,
+          "target_eos": 18,
+          "full": 602
+        }
+      }
+    },
+    {
+      "episode_id": "6e82a1ae|test|0|ident|ident",
+      "task_id": "6e82a1ae",
+      "base_instance_id": "official_train|6e82a1ae|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "c87289bb|gen|0|rot90|ident",
+      "task_id": "c87289bb",
+      "base_instance_id": "arcgen_v2|c87289bb|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2016,
+          "target_eos": 300,
+          "full": 2316
+        },
+        "f1": {
+          "prompt": 1162,
+          "target_eos": 165,
+          "full": 1327
+        }
+      }
+    },
+    {
+      "episode_id": "b0f4d537|gen|103|rot90|ident",
+      "task_id": "b0f4d537",
+      "base_instance_id": "arcgen_v2|b0f4d537|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1302,
+          "target_eos": 126,
+          "full": 1428
+        },
+        "f1": {
+          "prompt": 773,
+          "target_eos": 70,
+          "full": 843
+        }
+      }
+    },
+    {
+      "episode_id": "928ad970|test|0|ident|ident",
+      "task_id": "928ad970",
+      "base_instance_id": "official_train|928ad970|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2802,
+          "target_eos": 450,
+          "full": 3252
+        },
+        "f1": {
+          "prompt": 1553,
+          "target_eos": 240,
+          "full": 1793
+        }
+      }
+    },
+    {
+      "episode_id": "626c0bcc|gen|100|ident|ident",
+      "task_id": "626c0bcc",
+      "base_instance_id": "arcgen_v2|626c0bcc|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 794,
+          "target_eos": 98,
+          "full": 892
+        },
+        "f1": {
+          "prompt": 499,
+          "target_eos": 56,
+          "full": 555
+        }
+      }
+    },
+    {
+      "episode_id": "bd5af378|test|0|ident|ident",
+      "task_id": "bd5af378",
+      "base_instance_id": "official_train|bd5af378|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1156,
+          "target_eos": 160,
+          "full": 1316
+        },
+        "f1": {
+          "prompt": 705,
+          "target_eos": 90,
+          "full": 795
+        }
+      }
+    },
+    {
+      "episode_id": "668eec9a|gen|103|rot90|ident",
+      "task_id": "668eec9a",
+      "base_instance_id": "arcgen_v2|668eec9a|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 2246,
+          "target_eos": 30,
+          "full": 2276
+        },
+        "f1": {
+          "prompt": 1249,
+          "target_eos": 18,
+          "full": 1267
+        }
+      }
+    },
+    {
+      "episode_id": "d968ffd4|gen|0|ident|ident",
+      "task_id": "d968ffd4",
+      "base_instance_id": "arcgen_v2|d968ffd4|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1218,
+          "target_eos": 190,
+          "full": 1408
+        },
+        "f1": {
+          "prompt": 709,
+          "target_eos": 100,
+          "full": 809
+        }
+      }
+    },
+    {
+      "episode_id": "9356391f|test|0|ident|ident",
+      "task_id": "9356391f",
+      "base_instance_id": "official_train|9356391f|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2652,
+          "target_eos": 512,
+          "full": 3164
+        },
+        "f1": {
+          "prompt": 1451,
+          "target_eos": 272,
+          "full": 1723
+        }
+      }
+    },
+    {
+      "episode_id": "79cce52d|gen|104|ident|ident",
+      "task_id": "79cce52d",
+      "base_instance_id": "arcgen_v2|79cce52d|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 716,
+          "target_eos": 72,
+          "full": 788
+        },
+        "f1": {
+          "prompt": 457,
+          "target_eos": 42,
+          "full": 499
+        }
+      }
+    },
+    {
+      "episode_id": "ec883f72|test|0|ident|ident",
+      "task_id": "ec883f72",
+      "base_instance_id": "official_train|ec883f72|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1712,
+          "target_eos": 288,
+          "full": 2000
+        },
+        "f1": {
+          "prompt": 999,
+          "target_eos": 156,
+          "full": 1155
+        }
+      }
+    },
+    {
+      "episode_id": "60d73be6|gen|104|rot90|ident",
+      "task_id": "60d73be6",
+      "base_instance_id": "arcgen_v2|60d73be6|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 3436,
+          "target_eos": 360,
+          "full": 3796
+        },
+        "f1": {
+          "prompt": 1891,
+          "target_eos": 192,
+          "full": 2083
+        }
+      }
+    },
+    {
+      "episode_id": "fb791726|gen|101|ident|ident",
+      "task_id": "fb791726",
+      "base_instance_id": "arcgen_v2|fb791726|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 1190,
+          "target_eos": 288,
+          "full": 1478
+        },
+        "f1": {
+          "prompt": 705,
+          "target_eos": 156,
+          "full": 861
+        }
+      }
+    },
+    {
+      "episode_id": "4612dd53|test|0|ident|ident",
+      "task_id": "4612dd53",
+      "base_instance_id": "official_train|4612dd53|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2162,
+          "target_eos": 338,
+          "full": 2500
+        },
+        "f1": {
+          "prompt": 1213,
+          "target_eos": 182,
+          "full": 1395
+        }
+      }
+    },
+    {
+      "episode_id": "281123b4|gen|103|ident|ident",
+      "task_id": "281123b4",
+      "base_instance_id": "arcgen_v2|281123b4|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 812,
+          "target_eos": 32,
+          "full": 844
+        },
+        "f1": {
+          "prompt": 487,
+          "target_eos": 20,
+          "full": 507
+        }
+      }
+    },
+    {
+      "episode_id": "af902bf9|test|0|ident|ident",
+      "task_id": "af902bf9",
+      "base_instance_id": "official_train|af902bf9|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "230f2e48|gen|100|rot90|ident",
+      "task_id": "230f2e48",
+      "base_instance_id": "arcgen_v2|230f2e48|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 2588,
+          "target_eos": 512,
+          "full": 3100
+        },
+        "f1": {
+          "prompt": 1439,
+          "target_eos": 272,
+          "full": 1711
+        }
+      }
+    },
+    {
+      "episode_id": "93b4f4b3|gen|1|rot90|ident",
+      "task_id": "93b4f4b3",
+      "base_instance_id": "arcgen_v2|93b4f4b3|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 1710,
+          "target_eos": 156,
+          "full": 1866
+        },
+        "f1": {
+          "prompt": 965,
+          "target_eos": 84,
+          "full": 1049
+        }
+      }
+    },
+    {
+      "episode_id": "c803e39c|test|0|ident|ident",
+      "task_id": "c803e39c",
+      "base_instance_id": "official_train|c803e39c|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2148,
+          "target_eos": 1250,
+          "full": 3398
+        },
+        "f1": {
+          "prompt": 1184,
+          "target_eos": 650,
+          "full": 1834
+        }
+      }
+    },
+    {
+      "episode_id": "7953d61e|gen|102|rot90|ident",
+      "task_id": "7953d61e",
+      "base_instance_id": "arcgen_v2|7953d61e|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 620,
+          "target_eos": 128,
+          "full": 748
+        },
+        "f1": {
+          "prompt": 403,
+          "target_eos": 72,
+          "full": 475
+        }
+      }
+    },
+    {
+      "episode_id": "505fff84|loo|0|ident|ident",
+      "task_id": "505fff84",
+      "base_instance_id": "official_train|505fff84|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1068,
+          "target_eos": 24,
+          "full": 1092
+        },
+        "f1": {
+          "prompt": 643,
+          "target_eos": 15,
+          "full": 658
+        }
+      }
+    },
+    {
+      "episode_id": "4c177718|gen|101|rot90|ident",
+      "task_id": "4c177718",
+      "base_instance_id": "arcgen_v2|4c177718|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 2718,
+          "target_eos": 270,
+          "full": 2988
+        },
+        "f1": {
+          "prompt": 1517,
+          "target_eos": 150,
+          "full": 1667
+        }
+      }
+    },
+    {
+      "episode_id": "8fff9e47|gen|103|ident|ident",
+      "task_id": "8fff9e47",
+      "base_instance_id": "arcgen_v2|8fff9e47|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1164,
+          "target_eos": 288,
+          "full": 1452
+        },
+        "f1": {
+          "prompt": 693,
+          "target_eos": 156,
+          "full": 849
+        }
+      }
+    },
+    {
+      "episode_id": "469497ad|test|0|ident|ident",
+      "task_id": "469497ad",
+      "base_instance_id": "official_train|469497ad|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1758,
+          "target_eos": 1250,
+          "full": 3008
+        },
+        "f1": {
+          "prompt": 997,
+          "target_eos": 650,
+          "full": 1647
+        }
+      }
+    },
+    {
+      "episode_id": "5ecac7f7|gen|100|rot90|ident",
+      "task_id": "5ecac7f7",
+      "base_instance_id": "arcgen_v2|5ecac7f7|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 938,
+          "target_eos": 50,
+          "full": 988
+        },
+        "f1": {
+          "prompt": 605,
+          "target_eos": 30,
+          "full": 635
+        }
+      }
+    },
+    {
+      "episode_id": "e048c9ed|test|0|ident|ident",
+      "task_id": "e048c9ed",
+      "base_instance_id": "official_train|e048c9ed|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1308,
+          "target_eos": 240,
+          "full": 1548
+        },
+        "f1": {
+          "prompt": 781,
+          "target_eos": 130,
+          "full": 911
+        }
+      }
+    },
+    {
+      "episode_id": "d93c6891|gen|104|ident|ident",
+      "task_id": "d93c6891",
+      "base_instance_id": "arcgen_v2|d93c6891|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 3068,
+          "target_eos": 448,
+          "full": 3516
+        },
+        "f1": {
+          "prompt": 1695,
+          "target_eos": 240,
+          "full": 1935
+        }
+      }
+    },
+    {
+      "episode_id": "973e499e|gen|103|ident|ident",
+      "task_id": "973e499e",
+      "base_instance_id": "arcgen_v2|973e499e|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1408,
+          "target_eos": 512,
+          "full": 1920
+        },
+        "f1": {
+          "prompt": 813,
+          "target_eos": 272,
+          "full": 1085
+        }
+      }
+    },
+    {
+      "episode_id": "44d8ac46|test|0|ident|ident",
+      "task_id": "44d8ac46",
+      "base_instance_id": "official_train|44d8ac46|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2716,
+          "target_eos": 288,
+          "full": 3004
+        },
+        "f1": {
+          "prompt": 1527,
+          "target_eos": 156,
+          "full": 1683
+        }
+      }
+    },
+    {
+      "episode_id": "e133d23d|gen|100|ident|ident",
+      "task_id": "e133d23d",
+      "base_instance_id": "arcgen_v2|e133d23d|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 330,
+          "target_eos": 18,
+          "full": 348
+        },
+        "f1": {
+          "prompt": 239,
+          "target_eos": 12,
+          "full": 251
+        }
+      }
+    },
+    {
+      "episode_id": "d6ad076f|test|0|ident|ident",
+      "task_id": "d6ad076f",
+      "base_instance_id": "official_train|d6ad076f|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "29700607|gen|104|ident|ident",
+      "task_id": "29700607",
+      "base_instance_id": "arcgen_v2|29700607|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 2184,
+          "target_eos": 200,
+          "full": 2384
+        },
+        "f1": {
+          "prompt": 1229,
+          "target_eos": 110,
+          "full": 1339
+        }
+      }
+    },
+    {
+      "episode_id": "575b1a71|gen|102|rot90|ident",
+      "task_id": "575b1a71",
+      "base_instance_id": "arcgen_v2|575b1a71|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 1508,
+          "target_eos": 200,
+          "full": 1708
+        },
+        "f1": {
+          "prompt": 877,
+          "target_eos": 110,
+          "full": 987
+        }
+      }
+    },
+    {
+      "episode_id": "ac605cbb|test|0|ident|ident",
+      "task_id": "ac605cbb",
+      "base_instance_id": "official_train|ac605cbb|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2890,
+          "target_eos": 242,
+          "full": 3132
+        },
+        "f1": {
+          "prompt": 1655,
+          "target_eos": 132,
+          "full": 1787
+        }
+      }
+    },
+    {
+      "episode_id": "31d5ba1a|gen|1|ident|ident",
+      "task_id": "31d5ba1a",
+      "base_instance_id": "arcgen_v2|31d5ba1a|gen|1",
+      "lengths": {
+        "f0": {
+          "prompt": 438,
+          "target_eos": 30,
+          "full": 468
+        },
+        "f1": {
+          "prompt": 305,
+          "target_eos": 18,
+          "full": 323
+        }
+      }
+    },
+    {
+      "episode_id": "332efdb3|test|0|ident|ident",
+      "task_id": "332efdb3",
+      "base_instance_id": "official_train|332efdb3|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 970,
+          "target_eos": 242,
+          "full": 1212
+        },
+        "f1": {
+          "prompt": 591,
+          "target_eos": 132,
+          "full": 723
+        }
+      }
+    },
+    {
+      "episode_id": "c920a713|gen|101|rot90|ident",
+      "task_id": "c920a713",
+      "base_instance_id": "arcgen_v2|c920a713|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 2908,
+          "target_eos": 50,
+          "full": 2958
+        },
+        "f1": {
+          "prompt": 1593,
+          "target_eos": 30,
+          "full": 1623
+        }
+      }
+    },
+    {
+      "episode_id": "ae58858e|gen|103|rot90|ident",
+      "task_id": "ae58858e",
+      "base_instance_id": "arcgen_v2|ae58858e|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 952,
+          "target_eos": 140,
+          "full": 1092
+        },
+        "f1": {
+          "prompt": 587,
+          "target_eos": 80,
+          "full": 667
+        }
+      }
+    },
+    {
+      "episode_id": "22806e14|loo|0|ident|ident",
+      "task_id": "22806e14",
+      "base_instance_id": "official_train|22806e14|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2652,
+          "target_eos": 512,
+          "full": 3164
+        },
+        "f1": {
+          "prompt": 1451,
+          "target_eos": 272,
+          "full": 1723
+        }
+      }
+    },
+    {
+      "episode_id": "27a77e38|gen|100|ident|ident",
+      "task_id": "27a77e38",
+      "base_instance_id": "arcgen_v2|27a77e38|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 618,
+          "target_eos": 50,
+          "full": 668
+        },
+        "f1": {
+          "prompt": 401,
+          "target_eos": 30,
+          "full": 431
+        }
+      }
+    },
+    {
+      "episode_id": "b7cb93ac|test|0|ident|ident",
+      "task_id": "b7cb93ac",
+      "base_instance_id": "official_train|b7cb93ac|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1100,
+          "target_eos": 24,
+          "full": 1124
+        },
+        "f1": {
+          "prompt": 652,
+          "target_eos": 15,
+          "full": 667
+        }
+      }
+    },
+    {
+      "episode_id": "00dbd492|gen|104|ident|ident",
+      "task_id": "00dbd492",
+      "base_instance_id": "arcgen_v2|00dbd492|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 1976,
+          "target_eos": 392,
+          "full": 2368
+        },
+        "f1": {
+          "prompt": 1117,
+          "target_eos": 210,
+          "full": 1327
+        }
+      }
+    },
+    {
+      "episode_id": "e21a174a|gen|102|rot90|ident",
+      "task_id": "e21a174a",
+      "base_instance_id": "arcgen_v2|e21a174a|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 1712,
+          "target_eos": 288,
+          "full": 2000
+        },
+        "f1": {
+          "prompt": 987,
+          "target_eos": 156,
+          "full": 1143
+        }
+      }
+    },
+    {
+      "episode_id": "2697da3f|test|0|ident|ident",
+      "task_id": "2697da3f",
+      "base_instance_id": "official_train|2697da3f|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2132,
+          "target_eos": 578,
+          "full": 2710
+        },
+        "f1": {
+          "prompt": 1218,
+          "target_eos": 306,
+          "full": 1524
+        }
+      }
+    },
+    {
+      "episode_id": "5783df64|gen|100|ident|ident",
+      "task_id": "5783df64",
+      "base_instance_id": "arcgen_v2|5783df64|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 630,
+          "target_eos": 18,
+          "full": 648
+        },
+        "f1": {
+          "prompt": 407,
+          "target_eos": 12,
+          "full": 419
+        }
+      }
+    },
+    {
+      "episode_id": "137f0df0|loo|0|ident|ident",
+      "task_id": "137f0df0",
+      "base_instance_id": "official_train|137f0df0|loo|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1092,
+          "target_eos": 200,
+          "full": 1292
+        },
+        "f1": {
+          "prompt": 641,
+          "target_eos": 110,
+          "full": 751
+        }
+      }
+    },
+    {
+      "episode_id": "0bb8deee|gen|101|ident|ident",
+      "task_id": "0bb8deee",
+      "base_instance_id": "arcgen_v2|0bb8deee|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 2070,
+          "target_eos": 72,
+          "full": 2142
+        },
+        "f1": {
+          "prompt": 1167,
+          "target_eos": 42,
+          "full": 1209
+        }
+      }
+    },
+    {
+      "episode_id": "9a4bb226|gen|103|ident|ident",
+      "task_id": "9a4bb226",
+      "base_instance_id": "arcgen_v2|9a4bb226|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 1962,
+          "target_eos": 18,
+          "full": 1980
+        },
+        "f1": {
+          "prompt": 1103,
+          "target_eos": 12,
+          "full": 1115
+        }
+      }
+    },
+    {
+      "episode_id": "e0fb7511|test|0|ident|ident",
+      "task_id": "e0fb7511",
+      "base_instance_id": "official_train|e0fb7511|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2474,
+          "target_eos": 338,
+          "full": 2812
+        },
+        "f1": {
+          "prompt": 1381,
+          "target_eos": 182,
+          "full": 1563
+        }
+      }
+    },
+    {
+      "episode_id": "87ab05b8|gen|102|ident|ident",
+      "task_id": "87ab05b8",
+      "base_instance_id": "arcgen_v2|87ab05b8|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 332,
+          "target_eos": 32,
+          "full": 364
+        },
+        "f1": {
+          "prompt": 247,
+          "target_eos": 20,
+          "full": 267
+        }
+      }
+    },
+    {
+      "episode_id": "6ad5bdfd|test|0|ident|ident",
+      "task_id": "6ad5bdfd",
+      "base_instance_id": "official_train|6ad5bdfd|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 968,
+          "target_eos": 200,
+          "full": 1168
+        },
+        "f1": {
+          "prompt": 587,
+          "target_eos": 110,
+          "full": 697
+        }
+      }
+    },
+    {
+      "episode_id": "2faf500b|gen|100|ident|ident",
+      "task_id": "2faf500b",
+      "base_instance_id": "arcgen_v2|2faf500b|gen|100",
+      "lengths": {
+        "f0": {
+          "prompt": 2398,
+          "target_eos": 162,
+          "full": 2560
+        },
+        "f1": {
+          "prompt": 1337,
+          "target_eos": 90,
+          "full": 1427
+        }
+      }
+    },
+    {
+      "episode_id": "e57337a4|gen|0|ident|ident",
+      "task_id": "e57337a4",
+      "base_instance_id": "arcgen_v2|e57337a4|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1962,
+          "target_eos": 18,
+          "full": 1980
+        },
+        "f1": {
+          "prompt": 1103,
+          "target_eos": 12,
+          "full": 1115
+        }
+      }
+    },
+    {
+      "episode_id": "3de23699|test|0|ident|ident",
+      "task_id": "3de23699",
+      "base_instance_id": "official_train|3de23699|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2034,
+          "target_eos": 160,
+          "full": 2194
+        },
+        "f1": {
+          "prompt": 1153,
+          "target_eos": 88,
+          "full": 1241
+        }
+      }
+    },
+    {
+      "episode_id": "af24b4cc|gen|103|ident|ident",
+      "task_id": "af24b4cc",
+      "base_instance_id": "arcgen_v2|af24b4cc|gen|103",
+      "lengths": {
+        "f0": {
+          "prompt": 948,
+          "target_eos": 40,
+          "full": 988
+        },
+        "f1": {
+          "prompt": 575,
+          "target_eos": 24,
+          "full": 599
+        }
+      }
+    },
+    {
+      "episode_id": "60b61512|test|0|ident|ident",
+      "task_id": "60b61512",
+      "base_instance_id": "official_train|60b61512|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 902,
+          "target_eos": 162,
+          "full": 1064
+        },
+        "f1": {
+          "prompt": 541,
+          "target_eos": 90,
+          "full": 631
+        }
+      }
+    },
+    {
+      "episode_id": "ba9d41b8|gen|101|ident|ident",
+      "task_id": "ba9d41b8",
+      "base_instance_id": "arcgen_v2|ba9d41b8|gen|101",
+      "lengths": {
+        "f0": {
+          "prompt": 3084,
+          "target_eos": 544,
+          "full": 3628
+        },
+        "f1": {
+          "prompt": 1696,
+          "target_eos": 289,
+          "full": 1985
+        }
+      }
+    },
+    {
+      "episode_id": "e5790162|gen|104|ident|ident",
+      "task_id": "e5790162",
+      "base_instance_id": "arcgen_v2|e5790162|gen|104",
+      "lengths": {
+        "f0": {
+          "prompt": 1184,
+          "target_eos": 132,
+          "full": 1316
+        },
+        "f1": {
+          "prompt": 707,
+          "target_eos": 72,
+          "full": 779
+        }
+      }
+    },
+    {
+      "episode_id": "7468f01a|test|0|ident|ident",
+      "task_id": "7468f01a",
+      "base_instance_id": "official_train|7468f01a|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 2042,
+          "target_eos": 112,
+          "full": 2154
+        },
+        "f1": {
+          "prompt": 1141,
+          "target_eos": 63,
+          "full": 1204
+        }
+      }
+    },
+    {
+      "episode_id": "6ea4a07e|gen|0|ident|ident",
+      "task_id": "6ea4a07e",
+      "base_instance_id": "arcgen_v2|6ea4a07e|gen|0",
+      "lengths": {
+        "f0": {
+          "prompt": 234,
+          "target_eos": 18,
+          "full": 252
+        },
+        "f1": {
+          "prompt": 191,
+          "target_eos": 12,
+          "full": 203
+        }
+      }
+    },
+    {
+      "episode_id": "d9fac9be|test|0|ident|ident",
+      "task_id": "d9fac9be",
+      "base_instance_id": "official_train|d9fac9be|test|0",
+      "lengths": {
+        "f0": {
+          "prompt": 1098,
+          "target_eos": 2,
+          "full": 1100
+        },
+        "f1": {
+          "prompt": 660,
+          "target_eos": 2,
+          "full": 662
+        }
+      }
+    },
+    {
+      "episode_id": "a1aa0c1e|gen|102|ident|ident",
+      "task_id": "a1aa0c1e",
+      "base_instance_id": "arcgen_v2|a1aa0c1e|gen|102",
+      "lengths": {
+        "f0": {
+          "prompt": 3726,
+          "target_eos": 30,
+          "full": 3756
+        },
+        "f1": {
+          "prompt": 2009,
+          "target_eos": 18,
+          "full": 2027
+        }
+      }
+    }
+  ],
+  "required_training_flags": {
+    "sample_policy": "legacy",
+    "length_mixture": null,
+    "max_len": 4096,
+    "overflow_len": 4096,
+    "seed": 20261003,
+    "grad_accum": 4,
+    "lr_horizon_updates": 100
+  },
+  "warning": "Do not independently resample by F1 token buckets. Fix init-adapter and formatter/metadata paths before GPU training. Max time and shared-model runner are not implemented by this preparation.",
+  "input_sha256": {
+    "/tmp/arc010-materialized/f0.jsonl": "72a4ff920fe22289db2fc31e87cf2abd00628e8a4f9cc525b04c6cb7ed6ce037",
+    "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/007/g1/split.json": "094089459c4b05f7f0cf67a3f4ad98f79f3f48c78a7dcad6675866a897e476d8",
+    "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/008/local-audit.json": "4697ce3e7d69bf33ae62937b4c98d341ed46e59d7f10dcf707962978e3b12a3e",
+    "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/009/episode-semantics.json": "9c1c4db28af92699f666ac9154d162f672ed3e07edd8b9dd999b41c7cfdee557",
+    "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/008/data/gen_newbases.jsonl": "539fe79657a1cdb3f7363ed07507092c2adaf508774e2e27d7a31d6f597a0605"
+  },
+  "output_sha256": {
+    "paired-f0-400.jsonl": "d40602244bee2c3fedd871e85ad65cea5f8ee6c499daa3963c6b420b87387f7e",
+    "paired-f1-400.jsonl": "9911b52f6ad428c3d31c33c1e9f14a743afdcb326a1f495a80363eccc3f5732b"
+  },
+  "code_sha256": {
+    "/Users/zhaohuaxiang/ccjjllt/arc-2/scripts/arc_episode_data.py": "7c672182a1bff3654231f9e60da2ba503ae94124b215d04857cb20345d93c864"
+  },
+  "elapsed_seconds": 26.587329667000002
+}

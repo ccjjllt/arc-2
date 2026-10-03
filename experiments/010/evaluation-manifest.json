@@ -1,0 +1,395 @@
+{
+  "date": "2026-10-03",
+  "status": "Frozen input-side selections; never evaluated in this CPU run",
+  "selection_rule": "Within each existing S/M/L input-side tier, rank sha256(20261003|group|tier|task_id), take 2. TTT pilot takes first 1. Uses only existing manifest metadata, no solutions or result selection. Original 008 manifests unchanged.",
+  "sources": {
+    "experiments/008/e0_hnew_12.json": "a732ba3c8191df16671e5792af9843fd3665f217ff2ed01ca1ca9a299178627f",
+    "experiments/008/e0_e24_24.json": "12d817bbe91735ad8f308cef9702ef52a0635cade76159869a6aae5932ce97d3"
+  },
+  "probe_P12": {
+    "H_new": {
+      "n_tasks": 6,
+      "n_queries": 7,
+      "entries": [
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 272,
+          "max_side": 9,
+          "task_id": "db118e2a",
+          "seen_before": false,
+          "tier": "S",
+          "manifest_group": "probe_h"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 1,
+          "total_input_cells": 108,
+          "max_side": 6,
+          "task_id": "e3f79277",
+          "seen_before": false,
+          "tier": "S",
+          "manifest_group": "probe_h"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 482,
+          "max_side": 16,
+          "task_id": "58c02a16",
+          "seen_before": false,
+          "tier": "M",
+          "manifest_group": "probe_h"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 656,
+          "max_side": 16,
+          "task_id": "342dd610",
+          "seen_before": true,
+          "tier": "M",
+          "manifest_group": "probe_h"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 1,
+          "total_input_cells": 768,
+          "max_side": 16,
+          "task_id": "fc4aaf52",
+          "seen_before": false,
+          "tier": "L",
+          "manifest_group": "probe_h"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 2,
+          "total_input_cells": 1024,
+          "max_side": 16,
+          "task_id": "52df9849",
+          "seen_before": false,
+          "tier": "L",
+          "manifest_group": "probe_h"
+        }
+      ],
+      "task_ids": [
+        "db118e2a",
+        "e3f79277",
+        "58c02a16",
+        "342dd610",
+        "fc4aaf52",
+        "52df9849"
+      ],
+      "task_ids_cli": "db118e2a,e3f79277,58c02a16,342dd610,fc4aaf52,52df9849"
+    },
+    "E24": {
+      "n_tasks": 6,
+      "n_queries": 7,
+      "entries": [
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 880,
+          "max_side": 28,
+          "task_id": "291dc1e1",
+          "tier": "S",
+          "manifest_group": "probe_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 1003,
+          "max_side": 22,
+          "task_id": "1818057f",
+          "tier": "S",
+          "manifest_group": "probe_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 1829,
+          "max_side": 23,
+          "task_id": "4c416de3",
+          "tier": "M",
+          "manifest_group": "probe_e"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 2,
+          "total_input_cells": 1994,
+          "max_side": 30,
+          "task_id": "21897d95",
+          "tier": "M",
+          "manifest_group": "probe_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 2221,
+          "max_side": 28,
+          "task_id": "aa4ec2a5",
+          "tier": "L",
+          "manifest_group": "probe_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 3600,
+          "max_side": 30,
+          "task_id": "9aaea919",
+          "tier": "L",
+          "manifest_group": "probe_e"
+        }
+      ],
+      "task_ids": [
+        "291dc1e1",
+        "1818057f",
+        "4c416de3",
+        "21897d95",
+        "aa4ec2a5",
+        "9aaea919"
+      ],
+      "task_ids_cli": "291dc1e1,1818057f,4c416de3,21897d95,aa4ec2a5,9aaea919"
+    },
+    "total_tasks": 12,
+    "total_queries": 14,
+    "use": "Repeated model/checkpoint/view development; never called untouched confirmation. Includes seen 342dd610."
+  },
+  "confirmation_C12": {
+    "H_reserve": {
+      "n_tasks": 6,
+      "n_queries": 7,
+      "entries": [
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 290,
+          "max_side": 9,
+          "task_id": "df9fd884",
+          "seen_before": false,
+          "tier": "S",
+          "manifest_group": "confirm_h"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 407,
+          "max_side": 13,
+          "task_id": "7e4d4f7c",
+          "seen_before": false,
+          "tier": "S",
+          "manifest_group": "confirm_h"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 1,
+          "total_input_cells": 432,
+          "max_side": 12,
+          "task_id": "e45ef808",
+          "seen_before": false,
+          "tier": "M",
+          "manifest_group": "confirm_h"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 570,
+          "max_side": 28,
+          "task_id": "dce56571",
+          "seen_before": false,
+          "tier": "M",
+          "manifest_group": "confirm_h"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 1,
+          "total_input_cells": 737,
+          "max_side": 16,
+          "task_id": "878187ab",
+          "seen_before": false,
+          "tier": "L",
+          "manifest_group": "confirm_h"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 2,
+          "total_input_cells": 3225,
+          "max_side": 30,
+          "task_id": "c3fa4749",
+          "seen_before": false,
+          "tier": "L",
+          "manifest_group": "confirm_h"
+        }
+      ],
+      "task_ids": [
+        "df9fd884",
+        "7e4d4f7c",
+        "e45ef808",
+        "dce56571",
+        "878187ab",
+        "c3fa4749"
+      ],
+      "task_ids_cli": "df9fd884,7e4d4f7c,e45ef808,dce56571,878187ab,c3fa4749"
+    },
+    "E_reserve": {
+      "n_tasks": 6,
+      "n_queries": 9,
+      "entries": [
+        {
+          "n_demo": 4,
+          "n_test_queries": 2,
+          "total_input_cells": 437,
+          "max_side": 13,
+          "task_id": "20270e3b",
+          "tier": "S",
+          "manifest_group": "confirm_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 2,
+          "total_input_cells": 1118,
+          "max_side": 22,
+          "task_id": "581f7754",
+          "tier": "S",
+          "manifest_group": "confirm_e"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 1400,
+          "max_side": 20,
+          "task_id": "dfadab01",
+          "tier": "M",
+          "manifest_group": "confirm_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 1230,
+          "max_side": 19,
+          "task_id": "db0c5428",
+          "tier": "M",
+          "manifest_group": "confirm_e"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 2,
+          "total_input_cells": 2302,
+          "max_side": 29,
+          "task_id": "38007db0",
+          "tier": "L",
+          "manifest_group": "confirm_e"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 4500,
+          "max_side": 30,
+          "task_id": "981571dc",
+          "tier": "L",
+          "manifest_group": "confirm_e"
+        }
+      ],
+      "task_ids": [
+        "20270e3b",
+        "581f7754",
+        "dfadab01",
+        "db0c5428",
+        "38007db0",
+        "981571dc"
+      ],
+      "task_ids_cli": "20270e3b,581f7754,dfadab01,db0c5428,38007db0,981571dc"
+    },
+    "total_tasks": 12,
+    "total_queries": 16,
+    "use": "No scores inspected until initialization/format/checkpoint/decoding frozen. One confirmation, no tuning on this result; then mark it used."
+  },
+  "TTT_P6": {
+    "H_new": {
+      "n_tasks": 3,
+      "n_queries": 3,
+      "entries": [
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 272,
+          "max_side": 9,
+          "task_id": "db118e2a",
+          "seen_before": false,
+          "tier": "S",
+          "manifest_group": "probe_h"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 482,
+          "max_side": 16,
+          "task_id": "58c02a16",
+          "seen_before": false,
+          "tier": "M",
+          "manifest_group": "probe_h"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 1,
+          "total_input_cells": 768,
+          "max_side": 16,
+          "task_id": "fc4aaf52",
+          "seen_before": false,
+          "tier": "L",
+          "manifest_group": "probe_h"
+        }
+      ],
+      "task_ids": [
+        "db118e2a",
+        "58c02a16",
+        "fc4aaf52"
+      ],
+      "task_ids_cli": "db118e2a,58c02a16,fc4aaf52"
+    },
+    "E24": {
+      "n_tasks": 3,
+      "n_queries": 3,
+      "entries": [
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 880,
+          "max_side": 28,
+          "task_id": "291dc1e1",
+          "tier": "S",
+          "manifest_group": "probe_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 1829,
+          "max_side": 23,
+          "task_id": "4c416de3",
+          "tier": "M",
+          "manifest_group": "probe_e"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 2221,
+          "max_side": 28,
+          "task_id": "aa4ec2a5",
+          "tier": "L",
+          "manifest_group": "probe_e"
+        }
+      ],
+      "task_ids": [
+        "291dc1e1",
+        "4c416de3",
+        "aa4ec2a5"
+      ],
+      "task_ids_cli": "291dc1e1,4c416de3,aa4ec2a5"
+    },
+    "total_tasks": 6,
+    "total_queries": 6,
+    "conditional_microsteps_if_8_updates_accum4": 192,
+    "warning": "Tiny pilot; do not infer general benefit from one task. Per-task reset from same checkpoint; no query gold in adaptation."
+  },
+  "original_manifests_modified": false
+}

@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-03",
+  "method": "safetensors JSON header and pickle opcodes only; no pickle deserialization, no model",
+  "saved_keys": 512,
+  "recorded_trainable_keys": 512,
+  "literal_intersection": 0,
+  "default_name_mapped_intersection": 512,
+  "sample_saved_key": "base_model.model.model.layers.0.mlp.down_proj.lora_A.weight",
+  "sample_recorded_key": "base_model.model.model.layers.0.mlp.down_proj.lora_A.default.weight",
+  "code_sha256": {
+    "scripts/train_grid_sft.py": "9a2bd79b71fb2737ba17b39c27659e43e3e4dbd3d8e566af3415c976c70ac54d",
+    "scripts/solve_grid.py": "c05e9ff4b10ef480c6890231ebd6d15b490b9108fe99bfdf3e463160869574e3",
+    "scripts/arc_episode_data.py": "7c672182a1bff3654231f9e60da2ba503ae94124b215d04857cb20345d93c864",
+    "scripts/r0_qwen38_lora_feasibility.py": "55a291d34084dd9fd94800b41d9e4bd237d6a3b1b219294a92aec6d0a1b07df9",
+    "scripts/convert_grid_vocab.py": "9dd0bca7e8d02e66e0ba640834a4af98ac8e716096c68311e0383eeb09de4cd9"
+  }
+}

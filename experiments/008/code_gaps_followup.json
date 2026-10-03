@@ -59,10 +59,17 @@
     },
     {
       "id": "f1-train-consume",
-      "status": "未实现",
-      "reason": "数据层已产出formatter字段(space/compact)与F1紧凑episode(arc_episode_data.serialize_grid/parse_grid_text/convert_episode_formatter/--materialize --formatter)；solve侧可直接消费(别名归一接受space/compact，parse_grid_f1_compact按字符解析)。train侧仍默认空格：build_messages两参调用走F0、zero-step text_to_grid核查仅F0、长度配比桶需按紧凑token重计。F1训练比较前需显式formatter透传，不静默混用",
+      "status": "已实现（CPU，待GPU验证）",
+      "reason": "010表B行贯通：solve原/转置build_messages均显式传resolved formatter（无F0默认回退），解析已F1感知不动，system按格式选择；训练--formatter auto/显式二选一、mixed-formatter直接报错，zero-step/解析/target_text/模板探针/日志/run_config/sidecar全写实际格式；auto兼容旧space_digits_v1，adapter无字段向上查父目录formatter.json/run_config.json；每个adapter_step_N独立formatter.json sidecar，不碰PEFT adapter_config.json。CPU已验py_compile/双--help/F0/F1显式prompt/混用拒/sidecar+父查",
+      "next_file": "scripts/solve_grid.py, scripts/train_grid_sft.py",
+      "next_lines": "solve L717 _normalize_formatter(space_digits_v1), L752 resolve_formatter(父查), L1608原视角显式, L1668转置视角显式; train L30 sidecar, L51 resolve_train_formatter拒混用, L1999 zero-step显式, L2246 save_checkpoint sidecar, L2349 run_config实际格式"
+    },
+    {
+      "id": "g1-init-adapter-inheritance",
+      "status": "已实现（CPU，待GPU验证）",
+      "reason": "010表A行：load_init_adapter_weights字面相交对G1为0，会静默fresh-LoRA冒充继承G1。已改：同targets走PeftModel.from_pretrained(...,is_trainable=True)后逐张量验值；异targets用PEFT公开映射set_peft_model_state_dict规则做.default规范化手动拷贝，字面交集只作诊断不用作成功；复制0或任何非预期缺失/shape/value不一致立即抛错终止；optimizer/scheduler/cursor仍按新阶段重建。CPU已验真实G1头512键新映射512/512、旧字面0（复现010审计），py_compile与--help通过；GPU继承值确认未运行",
       "next_file": "scripts/train_grid_sft.py",
-      "next_lines": "L724 messages_for_test_query builder两参调用, L1318 zero-step text_to_grid核查, length-mixture桶边界"
+      "next_lines": "L990 map_saved_lora_key_to_trainable, L1019 _read_saved_adapter_state, L1052 verify_from_pretrained_weights, L1124 load_init_adapter_weights, L2720 targets_changed分支, --init-adapter help"
     }
   ]
 }
