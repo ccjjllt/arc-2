@@ -238,6 +238,173 @@ _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 _PROCESS_START = time.perf_counter()
 WALL_CLOCK_STOP_REASON = "wall_clock_limit"
 STOP_AFTER_UPDATE_STOP_REASON = "stop_after_update"
+# 010 §6.1 suffix-logits probe. Default full path is byte-identical to old behavior.
+LOGITS_MODES = ("full", "suffix")
+DEFAULT_LOGITS_MODE = "full"
+# Probe bucket tokens -> fixed full-length (prompt+target+EOS) buckets.
+PROBE_BUCKET_TOKENS = {
+    "short": "<=1024",
+    "2k": "1025-2048",
+    "2K": "1025-2048",
+    "4k": "2049-4096",
+    "4K": "2049-4096",
+}
+
+
+def parse_logits_mode(text):
+    """Torch-free --logits-mode. None/'' reads as full (default, unchanged)."""
+    if text is None:
+        return "full"
+    cleaned = str(text).strip().lower()
+    if not cleaned:
+        return "full"
+    if cleaned not in LOGITS_MODES:
+        raise RuntimeError(
+            "logits-mode must be one of %s, got %r" % (",".join(LOGITS_MODES), text)
+        )
+    return cleaned
+
+
+def suffix_slice_for_episode(prompt_len, target_len, full_len):
+    """Torch-free (P, T, label_start, logits_to_keep) for 010 §6.1.
+
+    L=P+T, prompt labels are [-100]*P, answer+EOS supervised length T.
+    Hidden positions kept are P-1..L-1, so labels slice starts at P-1 and
+    logits_to_keep=T+1. HF does the single causal shift; caller must not
+    shift again. Returns (P, T, label_start, logits_to_keep).
+    """
+    prompt_len = int(prompt_len)
+    target_len = int(target_len)
+    full_len = int(full_len)
+    if prompt_len < 1:
+        raise RuntimeError(
+            "suffix-contract refused: prompt_len=%d < 1" % prompt_len
+        )
+    if target_len < 1:
+        raise RuntimeError(
+            "suffix-contract refused: target_len=%d < 1 (needs at least EOS)" % target_len
+        )
+    if full_len != prompt_len + target_len:
+        raise RuntimeError(
+            "suffix-contract refused: full_len=%d != prompt_len=%d + target_len=%d"
+            % (full_len, prompt_len, target_len)
+        )
+    return prompt_len, target_len, prompt_len - 1, target_len + 1
+
+
+def validate_suffix_contract(labels, prompt_len, target_len, microbatch):
+    """Torch-free suffix contract. Raises, never silently falls back.
+
+    Bans (010 §6.1): no manual shift, no sliced-logits with full-length labels,
+    no detached prompt, no vocab cut, non-suffix input is an error, probe never
+    steps the optimizer, thresholds never auto-switch.
+    Requires microbatch==1 and labels == [-100]*P + supervised(T, no -100).
+    """
+    if int(microbatch) != 1:
+        raise RuntimeError(
+            "suffix-contract refused: microbatch=%s != 1; refusing, not falling back"
+            % (microbatch,)
+        )
+    prompt_len = int(prompt_len)
+    target_len = int(target_len)
+    if hasattr(labels, "tolist"):
+        label_list = list(labels.tolist())
+    elif isinstance(labels, array.array):
+        label_list = labels.tolist()
+    else:
+        label_list = list(labels)
+    if len(label_list) != prompt_len + target_len:
+        raise RuntimeError(
+            "suffix-contract refused: len(labels)=%d != P=%d + T=%d"
+            % (len(label_list), prompt_len, target_len)
+        )
+    if label_list[:prompt_len] != ([-100] * prompt_len):
+        raise RuntimeError(
+            "suffix-contract refused: first P=%d labels are not all -100; "
+            "answer supervision is not a continuous suffix" % prompt_len
+        )
+    tail = label_list[prompt_len:]
+    if not tail or any(int(token) == -100 for token in tail):
+        raise RuntimeError(
+            "suffix-contract refused: answer tail P..L-1 contains -100 "
+            "(len=%d); suffix path needs a continuous supervised suffix incl EOS" % len(tail)
+        )
+    suffix_slice_for_episode(prompt_len, target_len, len(label_list))
+    return True
+
+
+def parse_probe_selector(text):
+    """Torch-free --probe-suffix-logits selector. Comma-separated tokens.
+
+    Recognized bucket tokens: short (<=1024), 2k (1025-2048), 4k (2049-4096)
+    each pick one episode. Any other token is an explicit episode_id.
+    Empty/None means no probe. Never invents episodes.
+    """
+    if text is None:
+        return None
+    cleaned = str(text).strip()
+    if not cleaned:
+        return None
+    tokens = [part.strip() for part in cleaned.split(",") if part.strip()]
+    if not tokens:
+        return None
+    return tokens
+
+
+def select_probe_episodes(pool, tokens):
+    """Torch-free probe planning: bucket token -> first pool match, else episode_id.
+
+    Raises when a token has no match instead of substituting another episode.
+    Preserves selector order, deduplicates repeated tokens.
+    """
+    if not tokens:
+        raise RuntimeError("probe selector is empty")
+    by_id = {}
+    for episode in pool or []:
+        by_id.setdefault(str(getattr(episode, "episode_id", "")), episode)
+    chosen = []
+    seen = set()
+    for token in tokens:
+        bucket = PROBE_BUCKET_TOKENS.get(token, PROBE_BUCKET_TOKENS.get(str(token).lower()))
+        if bucket is not None:
+            match = None
+            for episode in pool or []:
+                if _length_bucket_name(int(episode.full_len)) == bucket:
+                    if str(episode.episode_id) not in seen:
+                        match = episode
+                        break
+            if match is None:
+                raise RuntimeError(
+                    "probe selector token %r (bucket %s) has no episode in pool; refusing substitution"
+                    % (token, bucket)
+                )
+            if str(match.episode_id) not in seen:
+                chosen.append(match)
+                seen.add(str(match.episode_id))
+        else:
+            episode = by_id.get(str(token))
+            if episode is None:
+                raise RuntimeError(
+                    "probe episode_id %r not in pool; refusing substitution" % (token,)
+                )
+            if str(token) not in seen:
+                chosen.append(episode)
+                seen.add(str(token))
+    return chosen
+
+
+def plan_probe_selection_text(tokens):
+    """Torch-free one-line probe plan for CPU dry-run (no model load)."""
+    if not tokens:
+        return "probe plan: none"
+    parts = []
+    for token in tokens:
+        bucket = PROBE_BUCKET_TOKENS.get(token, PROBE_BUCKET_TOKENS.get(str(token).lower()))
+        if bucket is not None:
+            parts.append("%s->bucket %s x1" % (token, bucket))
+        else:
+            parts.append("%s->episode_id" % token)
+    return "probe plan: " + ", ".join(parts)
 
 
 def wall_clock_status(args):
@@ -934,6 +1101,34 @@ def build_parser():
             "stages stays with the user (010 §8 runner). Default None = no limit."
         ),
     )
+    parser.add_argument(
+        "--logits-mode",
+        default="full",
+        choices=("full", "suffix"),
+        help=(
+            "010 §6.1 answer-suffix logits. full (default): old full-vocab-head path, "
+            "behavior fully unchanged. suffix: only when microbatch==1 and answer "
+            "supervision is a continuous suffix incl EOS; calls "
+            "model(input_ids=input_ids, attention_mask=attention, "
+            "labels=labels[:, P-1:], logits_to_keep=T+1, use_cache=False), keeps full "
+            "input backbone grad, HF shifts once, last logit stays ignore. Non-suffix "
+            "labels raise instead of silent fallback. No manual shift/detach/vocab cut."
+        ),
+    )
+    parser.add_argument(
+        "--probe-suffix-logits",
+        default=None,
+        help=(
+            "010 §6.1 probe selector, no training when set. Comma-separated: bucket "
+            "tokens short (<=1024) / 2k (1025-2048) / 4k (2049-4096) each pick one pool "
+            "episode, or explicit episode_id values. Same adapter + same episode, no "
+            "weight update (needs >=1 G1 non-zero LoRA case). Writes suffix_probe.json "
+            "with full/suffix loss, all-LoRA-grad rel-error/cosine, same-path repeat "
+            "noise, then time + per-GPU allocated/reserved (logits/grad cleaned, all-GPU "
+            "sync, JIT/warmup split). Thresholds recorded only; notebook decides adopt "
+            "vs keep full. E.g. --probe-suffix-logits short,2k,4k."
+        ),
+    )
     return parser
 
 
@@ -1074,6 +1269,22 @@ def validate_args(args):
     cli_fmt = str(getattr(args, "formatter", "auto") or "auto").strip().lower().replace("-", "_")
     if cli_fmt not in ("auto", ""):
         _normalize_train_formatter(cli_fmt)
+    logits_mode = parse_logits_mode(getattr(args, "logits_mode", "full"))
+    args.logits_mode = logits_mode
+    if logits_mode == "suffix" and int(args.microbatch) != 1:
+        raise RuntimeError(
+            "--logits-mode suffix requires --microbatch 1 (got %s); refusing, not falling back"
+            % (args.microbatch,)
+        )
+    probe_raw = getattr(args, "probe_suffix_logits", None)
+    if probe_raw is not None:
+        tokens = parse_probe_selector(probe_raw)
+        if not tokens:
+            raise RuntimeError("--probe-suffix-logits needs tokens like short,2k,4k or episode IDs")
+        args.probe_suffix_logits = ",".join(tokens)
+        args.probe_selector_tokens = tokens
+    else:
+        args.probe_selector_tokens = None
 
 
 def resolve_resume_paths(resume_dir):
@@ -2005,6 +2216,251 @@ def ids_to_tensor(torch_module, values, device):
     return torch_module.tensor([list(values)], dtype=torch_module.long).to(device)
 
 
+def suffix_forward(model, input_ids, attention, labels, prompt_len, target_len):
+    """010 §6.1 suffix path. Keeps full input_ids and backbone gradients.
+
+    output = model(input_ids=input_ids, attention_mask=attention,
+                   labels=labels[:, P-1:], logits_to_keep=T+1, use_cache=False).
+    Keeps hidden P-1..L-1; HF shift supervises first answer token and EOS,
+    last logit stays ignore. No manual shift, no full-length labels, no prompt
+    detach, no vocab cut.
+    """
+    prompt_len, target_len, label_start, keep = suffix_slice_for_episode(
+        prompt_len, target_len, int(labels.shape[1])
+    )
+    return model(
+        input_ids=input_ids,
+        attention_mask=attention,
+        labels=labels[:, label_start:],
+        logits_to_keep=keep,
+        use_cache=False,
+    )
+
+
+def _lora_grad_snapshot(model, torch_module):
+    """Clone current LoRA grads to CPU. Caller owns zero_grad before/after."""
+    snapshot = {}
+    for name, param in model.named_parameters():
+        if param.requires_grad and param.grad is not None and "lora_" in name:
+            try:
+                snapshot[name] = param.grad.detach().float().cpu().clone()
+            except Exception:
+                snapshot[name] = param.grad.detach().cpu().clone()
+    return snapshot
+
+
+def _grad_rel_cos(full_grad, suffix_grad):
+    """Per-tensor relative error and cosine. Zero/zero is masked, not success."""
+    try:
+        import math
+
+        full_flat = full_grad.reshape(-1).double()
+        suffix_flat = suffix_grad.reshape(-1).double()
+        full_norm = float(full_flat.norm().item())
+        suffix_norm = float(suffix_flat.norm().item())
+        diff_norm = float((full_flat - suffix_flat).norm().item())
+        denom = full_norm if full_norm > 0 else 0.0
+        rel = (diff_norm / denom) if denom > 0 else (0.0 if diff_norm == 0 else float("inf"))
+        if full_norm == 0 and suffix_norm == 0:
+            return rel, 1.0, full_norm, suffix_norm, True
+        dot = float((full_flat * suffix_flat).sum().item())
+        cos = dot / (full_norm * suffix_norm) if full_norm * suffix_norm > 0 else 0.0
+        if cos > 1.0:
+            cos = 1.0
+        if cos < -1.0:
+            cos = -1.0
+        if math.isnan(cos) or math.isinf(cos):
+            cos = 0.0
+        return rel, cos, full_norm, suffix_norm, False
+    except Exception:
+        return float("inf"), 0.0, 0.0, 0.0, False
+
+
+def _sync_all_gpus(torch_module):
+    try:
+        for index in range(torch_module.cuda.device_count()):
+            torch_module.cuda.synchronize(index)
+    except Exception:
+        torch_module.cuda.synchronize()
+
+
+def _probe_single_backward(model, torch_module, input_ids, attention, labels, episode, mode):
+    """One forward+backward without optimizer step. Returns (loss, grads, seconds)."""
+    model.zero_grad(set_to_none=True)
+    torch_module.cuda.empty_cache()
+    _sync_all_gpus(torch_module)
+    tick = time.perf_counter()
+    if mode == "suffix":
+        output = suffix_forward(
+            model, input_ids, attention, labels, int(episode.prompt_len), int(episode.target_len)
+        )
+    else:
+        output = model(input_ids=input_ids, attention_mask=attention, labels=labels, use_cache=False)
+    if output.loss is None:
+        raise RuntimeError("probe %s path returned loss=None" % mode)
+    loss_value = float(output.loss.detach().float().item())
+    output.loss.backward()
+    _sync_all_gpus(torch_module)
+    seconds = time.perf_counter() - tick
+    grads = _lora_grad_snapshot(model, torch_module)
+    del output
+    model.zero_grad(set_to_none=True)
+    torch_module.cuda.empty_cache()
+    return loss_value, grads, seconds
+
+
+def run_suffix_logits_probe(model, pool, tokens, torch_module, in_dev, lm_dev, adapter_label=None):
+    """010 §6.1 probe: same adapter + same episode, no weight update.
+
+    For each selected episode compares full vs suffix loss, all-LoRA-grad
+    relative error/cosine, and same-path repeat noise; then wall time and
+    per-GPU allocated/reserved with old logits/grad cleaned, all-GPU sync,
+    and JIT/warmup reported separately from measured runs. Never calls
+    optimizer.step; thresholds are recorded only, never auto-switch.
+    Caller (notebook) decides from this JSON whether to adopt suffix.
+    """
+    episodes = select_probe_episodes(pool, tokens)
+    if not episodes:
+        raise RuntimeError("probe selected no episodes")
+    was_training = bool(getattr(model, "training", False))
+    model.train()
+    torch_module.set_grad_enabled(True)
+    results = []
+    for episode in episodes:
+        label_list = episode.labels.tolist()
+        validate_suffix_contract(label_list, int(episode.prompt_len), int(episode.target_len), 1)
+        prompt_len, target_len, label_start, keep = suffix_slice_for_episode(
+            int(episode.prompt_len), int(episode.target_len), int(episode.full_len)
+        )
+        input_ids = ids_to_tensor(torch_module, episode.input_ids, in_dev)
+        labels = torch_module.tensor([label_list], dtype=torch_module.long).to(lm_dev)
+        attention = torch_module.ones_like(input_ids)
+        # Warmup (JIT) runs, discarded from timing/noise, reported separately.
+        for index in range(torch_module.cuda.device_count()):
+            torch_module.cuda.reset_peak_memory_stats(index)
+        warm_full_loss, _, warm_full_s = _probe_single_backward(
+            model, torch_module, input_ids, attention, labels, episode, "full"
+        )
+        warm_suffix_loss, _, warm_suffix_s = _probe_single_backward(
+            model, torch_module, input_ids, attention, labels, episode, "suffix"
+        )
+        for index in range(torch_module.cuda.device_count()):
+            torch_module.cuda.reset_peak_memory_stats(index)
+        full_loss_1, full_grads_1, full_s_1 = _probe_single_backward(
+            model, torch_module, input_ids, attention, labels, episode, "full"
+        )
+        full_loss_2, full_grads_2, full_s_2 = _probe_single_backward(
+            model, torch_module, input_ids, attention, labels, episode, "full"
+        )
+        suffix_loss_1, suffix_grads_1, suffix_s_1 = _probe_single_backward(
+            model, torch_module, input_ids, attention, labels, episode, "suffix"
+        )
+        suffix_loss_2, suffix_grads_2, suffix_s_2 = _probe_single_backward(
+            model, torch_module, input_ids, attention, labels, episode, "suffix"
+        )
+        _sync_all_gpus(torch_module)
+        allocated, reserved = memory_peaks(torch_module)
+        per_tensor = {}
+        rel_values = []
+        cos_values = []
+        n_masked = 0
+        names = sorted(set(full_grads_1) | set(suffix_grads_1))
+        if not names:
+            raise RuntimeError(
+                "probe found no LoRA grads for episode %s; refusing masked comparison"
+                % episode.episode_id
+            )
+        for name in names:
+            grad_full = full_grads_1.get(name)
+            grad_suffix = suffix_grads_1.get(name)
+            if grad_full is None or grad_suffix is None:
+                per_tensor[name] = {"present_full": grad_full is not None, "present_suffix": grad_suffix is not None,
+                                    "rel_error": float("inf"), "cosine": 0.0, "masked_zero": False,
+                                    "missing_side": True}
+                rel_values.append(float("inf"))
+                cos_values.append(0.0)
+                continue
+            rel, cos, full_norm, suffix_norm, masked = _grad_rel_cos(grad_full, grad_suffix)
+            per_tensor[name] = {"rel_error": rel, "cosine": cos, "full_norm": full_norm,
+                                "suffix_norm": suffix_norm, "masked_zero": masked, "missing_side": False}
+            if masked:
+                n_masked += 1
+            if rel != float("inf"):
+                rel_values.append(rel)
+            cos_values.append(cos)
+        # Same-path repeat noise baseline (full run1 vs run2, suffix run1 vs run2).
+        noise_rels = []
+        noise_cos = []
+        for store_a, store_b in ((full_grads_1, full_grads_2), (suffix_grads_1, suffix_grads_2)):
+            for name in sorted(set(store_a) & set(store_b)):
+                rel, cos, _, _, _ = _grad_rel_cos(store_a[name], store_b[name])
+                if rel != float("inf"):
+                    noise_rels.append(rel)
+                noise_cos.append(cos)
+        finite_rel = [value for value in rel_values if value != float("inf")]
+        entry = {
+            "episode_id": str(episode.episode_id),
+            "prompt_len_P": prompt_len,
+            "target_len_T": target_len,
+            "full_len_L": prompt_len + target_len,
+            "label_start_P_minus_1": label_start,
+            "logits_to_keep_T_plus_1": keep,
+            "adapter_label": adapter_label,
+            "contract": {"microbatch": 1, "continuous_suffix_incl_eos": True, "full_input_grad_kept": True},
+            "loss": {
+                "full_1": full_loss_1, "full_2": full_loss_2,
+                "suffix_1": suffix_loss_1, "suffix_2": suffix_loss_2,
+                "abs_diff_1": abs(full_loss_1 - suffix_loss_1),
+                "repeat_noise_full_abs": abs(full_loss_1 - full_loss_2),
+                "repeat_noise_suffix_abs": abs(suffix_loss_1 - suffix_loss_2),
+            },
+            "lora_grad": {
+                "n_tensors": len(names),
+                "n_masked_zero": n_masked,
+                "masked_all_zero": bool(n_masked == len(names)),
+                "max_rel_error": max(finite_rel) if finite_rel else float("inf"),
+                "mean_rel_error": (sum(finite_rel) / len(finite_rel)) if finite_rel else float("inf"),
+                "min_cosine": min(cos_values) if cos_values else 0.0,
+                "mean_cosine": (sum(cos_values) / len(cos_values)) if cos_values else 0.0,
+                "repeat_noise_max_rel": max(noise_rels) if noise_rels else 0.0,
+                "repeat_noise_min_cos": min(noise_cos) if noise_cos else 1.0,
+                "per_tensor": per_tensor,
+            },
+            "time_s": {
+                "warmup_full_JIT": round(warm_full_s, 4),
+                "warmup_suffix_JIT": round(warm_suffix_s, 4),
+                "measured_full_1": round(full_s_1, 4),
+                "measured_full_2": round(full_s_2, 4),
+                "measured_suffix_1": round(suffix_s_1, 4),
+                "measured_suffix_2": round(suffix_s_2, 4),
+                "warmup_note": "JIT/warmup discarded; measured runs only after sync+cache clean",
+            },
+            "memory_gb": {"allocated": allocated, "reserved": reserved, "unit": "1e9_bytes",
+                          "note": "peaks after sync; old logits/grad deleted and cache emptied between runs"},
+        }
+        results.append(entry)
+        del input_ids, labels, attention
+        model.zero_grad(set_to_none=True)
+        torch_module.cuda.empty_cache()
+    model.zero_grad(set_to_none=True)
+    try:
+        torch_module.cuda.empty_cache()
+    except Exception:
+        pass
+    if was_training:
+        model.train()
+    else:
+        model.eval()
+    return {
+        "logits_probe": "suffix_vs_full",
+        "auto_switch": False,
+        "decision_note": "thresholds recorded only; notebook decides adopt vs keep full on GPU",
+        "adopt_thresholds_recorded": {"max_rel_error": None, "min_cosine": None, "note": "no auto-switch in trainer"},
+        "system_diff_policy": "any unexplained systematic loss/grad diff keeps the old full path",
+        "episodes": results,
+    }
+
+
 def move_optimizer_state(optimizer, torch_module):
     for group in optimizer.param_groups:
         for param in group["params"]:
@@ -2506,6 +2962,13 @@ def build_run_config(args, model_dir, versions, vocab, length_stats, targets, ex
             "backward_divisor": "grad_accum",
             "logged_loss": "mean of unscaled microstep losses",
             "target_token_count": "supervised tokens, including the eos id",
+            "logits_mode": parse_logits_mode(getattr(args, "logits_mode", "full")),
+            "logits_suffix_call": (
+                "model(input_ids=input_ids, attention_mask=attention, "
+                "labels=labels[:, P-1:], logits_to_keep=T+1, use_cache=False); "
+                "full input kept, hidden P-1..L-1, no manual shift/detach/vocab cut"
+            ),
+            "probe_selector": getattr(args, "probe_suffix_logits", None),
         },
         "lr_formula": LR_FORMULA,
         "versions": versions,
@@ -2640,7 +3103,19 @@ def train_loop(
                 label_list = episode.labels.tolist()
                 labels = torch_module.tensor([label_list], dtype=torch_module.long).to(lm_dev)
                 attention = torch_module.ones_like(input_ids)
-                output = model(input_ids=input_ids, attention_mask=attention, labels=labels)
+                logits_mode = parse_logits_mode(getattr(args, "logits_mode", "full"))
+                if logits_mode == "full":
+                    output = model(input_ids=input_ids, attention_mask=attention, labels=labels)
+                else:
+                    # 010 §6.1 suffix: contract checked first, explicit error, no fallback.
+                    validate_suffix_contract(
+                        label_list, int(episode.prompt_len), int(episode.target_len),
+                        int(args.microbatch),
+                    )
+                    output = suffix_forward(
+                        model, input_ids, attention, labels,
+                        int(episode.prompt_len), int(episode.target_len),
+                    )
                 if output.loss is None:
                     raise RuntimeError("model returned loss=None at update %d" % update)
                 loss_value = float(output.loss.detach().float().item())
@@ -2730,6 +3205,7 @@ def train_loop(
         record = {
             "update": update,
             "formatter": run_fmt,
+            "logits_mode": parse_logits_mode(getattr(args, "logits_mode", "full")),
             "lr": lr,
             "mean_loss": mean_loss,
             "microsteps": len(losses),
@@ -3095,8 +3571,49 @@ def execute(args, summary):
     if getattr(in_dev, "type", None) != "cuda" or getattr(lm_dev, "type", None) != "cuda":
         raise RuntimeError("input embedding or lm_head is not on CUDA: %s %s" % (in_dev, lm_dev))
 
-    optimizer = torch.optim.AdamW(params, lr=float(args.lr), weight_decay=float(args.weight_decay))
     _horizon = int(getattr(args, "scheduler_horizon", None) or args.optimizer_updates)
+    probe_tokens = getattr(args, "probe_selector_tokens", None)
+    if getattr(args, "probe_suffix_logits", None) is not None:
+        # 010 §6.1 probe-only: same adapter + same episode, never optimizer.step.
+        # Training-equivalent runtime (grad ckpt on, use_cache False) but no update.
+        if not probe_tokens:
+            raise RuntimeError("--probe-suffix-logits needs tokens like short,2k,4k or episode IDs")
+        print(plan_probe_selection_text(probe_tokens), flush=True)
+        enable_checkpointing(model)
+        set_use_cache(model, False)
+        model.train()
+        torch.set_grad_enabled(True)
+        torch.cuda.empty_cache()
+        adapter_label = None
+        try:
+            if getattr(args, "init_adapter", None):
+                adapter_label = os.path.abspath(resolve_init_adapter_dir(args.init_adapter))
+            elif args.resume:
+                adapter_label = os.path.abspath(args.resume)
+        except Exception:
+            adapter_label = None
+        probe_report = run_suffix_logits_probe(
+            model, pool, probe_tokens, torch, in_dev, lm_dev, adapter_label=adapter_label
+        )
+        probe_report["selector"] = ",".join(probe_tokens)
+        probe_report["formatter"] = train_formatter
+        probe_report["logits_mode_requested"] = parse_logits_mode(getattr(args, "logits_mode", "full"))
+        probe_report["model_dir"] = model_dir
+        os.makedirs(args.out_dir, exist_ok=True)
+        dump_json(os.path.join(args.out_dir, "suffix_probe.json"), probe_report, one_line=False)
+        summary["final"] = "PROBE_OK"
+        summary["probe_selector"] = ",".join(probe_tokens)
+        summary["probe_episodes"] = [entry["episode_id"] for entry in probe_report.get("episodes", [])]
+        summary["probe_path"] = os.path.join(os.path.abspath(args.out_dir), "suffix_probe.json")
+        summary["formatter"] = train_formatter
+        summary["logits_mode"] = parse_logits_mode(getattr(args, "logits_mode", "full"))
+        summary["weights_updated"] = False
+        allocated, reserved = memory_peaks(torch)
+        summary["max_memory_allocated_gb"] = allocated
+        summary["max_memory_reserved_gb"] = reserved
+        summary["memory_unit"] = "1e9_bytes"
+        return summary
+    optimizer = torch.optim.AdamW(params, lr=float(args.lr), weight_decay=float(args.weight_decay))
     schedule = UpdateSchedule(optimizer, float(args.lr), int(args.warmup_updates), _horizon)
     vocab = vocab_report(model, tokenizer, raw_config)
     print("vocab:", json.dumps(vocab, ensure_ascii=False, default=str), flush=True)
@@ -3443,6 +3960,8 @@ def run(args):
         if summary.get("final") == "SHORTFALL":
             code = 0
         elif summary.get("final") == "OK":
+            code = 0
+        elif summary.get("final") == "PROBE_OK":
             code = 0
         elif str(summary.get("final", "")).startswith("SKIP"):
             code = 2
