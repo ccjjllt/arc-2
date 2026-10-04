@@ -146,3 +146,11 @@ G1真实token算术显示，head位置可减少约87.8%；新400例F0则从76027
 - F0训练：`FAILED_OOM`，8次OOM后停机，仅完成4更新（52–82s/更新，loss 0.066–0.098）；OOM集中于gen|104等3–4K长episode，短/中正常。`adapter_step_4`已保存可续，但4更新无比较价值，F0-25判失败。F1臂与双臂评价未执行。
 - 结论：现HF栈+BF16在4×L4上装不下4K完整episode（与§5预判分支一致），不回退到只挑短题。下一步：CPU实现`--logits-mode suffix`+`--probe-suffix-logits`（只改train，默认full不变，非后缀契约拒收，探针输出loss/全LoRA梯度/时间/显存JSON且不自动切换）；GPU先15–20分钟探针（G1非零LoRA一例），通过后再定F0重试，F1-25（最长2211tok）先行。
 - 本轮账差4602s=1.28h。累计used 50892s=14.14h，剩余57108s=15.86h。
+
+## 12. 探针+F1-25会话（`ccjjllt/s1-probe-f1-010` COMPLETE）
+
+- 探针FAILED（正确拒收）：调用漏传4096上限，池按默认1024/2048构建，`4k`桶无样→`refusing substitution`。实现按设计拒绝静默替代；suffix数值验证仍未完成。下次调用补`--max-len/--overflow-len 4096`。
+- F1-25：`SHORTFALL`（stop-25命中）25/25更新、**零OOM**、loss 0.027–0.473；P12评价14 query、13 OK+1 FAIL、em 0/14。F1在现栈上可训。
+- 对比现状：F0-25缺失（4更新OOM版不可比），F1-25完成但0/14。格式比较仍无结论，需F0侧有效checkpoint。
+- 本轮账差6690s=1.86h。累计used 57582s=16h，剩余50418s=14h。
+- 下会话分支（阈值现定）：探针max rel_err≤1e-3且min cosine≥0.999且loss差≤2倍噪声→F0-suffix-25+评价；否则F1-50 fresh重训+评价（F1可训，S2条件续跑）。判定阈值记录于此，不在会话内臨時改。

@@ -1,0 +1,15 @@
+{
+  "skipped": true,
+  "reason": "challenges path not provided. Diagnostic task ids are not in the train pool, so zero-step generation was not run.",
+  "formatter": "f1_compact",
+  "time_guard": false,
+  "time_guard_s": 1200,
+  "max_new_tokens": 960,
+  "do_sample": false,
+  "repetition_penalty": 1.0,
+  "top_k": 0,
+  "no_repeat_ngram_size": 0,
+  "presence_penalty": null,
+  "tasks": [],
+  "elapsed_s": 0.0
+}
