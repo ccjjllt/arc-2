@@ -1,0 +1,16 @@
+{
+  "episode_id": "a59b95c0|gen|1|ident|ident",
+  "prompt_len": 702,
+  "target_len": 288,
+  "supervised_text": "4 9 1 4 9 1 4 9 1 4 9 1\n1 9 5 1 9 5 1 9 5 1 9 5\n4 9 4 4 9 4 4 9 4 4 9 4\n4 9 1 4 9 1 4 9 1 4 9 1\n1 9 5 1 9 5 1 9 5 1 9 5\n4 9 4 4 9 4 4 9 4 4 9 4\n4 9 1 4 9 1 4 9 1 4 9 1\n1 9 5 1 9 5 1 9 5 1 9 5\n4 9 4 4 9 4 4 9 4 4 9 4\n4 9 1 4 9 1 4 9 1 4 9 1\n1 9 5 1 9 5 1 9 5 1 9 5\n4 9 4 4 9 4 4 9 4 4 9 4<|im_end|>",
+  "target_grid_text": "4 9 1 4 9 1 4 9 1 4 9 1\n1 9 5 1 9 5 1 9 5 1 9 5\n4 9 4 4 9 4 4 9 4 4 9 4\n4 9 1 4 9 1 4 9 1 4 9 1\n1 9 5 1 9 5 1 9 5 1 9 5\n4 9 4 4 9 4 4 9 4 4 9 4\n4 9 1 4 9 1 4 9 1 4 9 1\n1 9 5 1 9 5 1 9 5 1 9 5\n4 9 4 4 9 4 4 9 4 4 9 4\n4 9 1 4 9 1 4 9 1 4 9 1\n1 9 5 1 9 5 1 9 5 1 9 5\n4 9 4 4 9 4 4 9 4 4 9 4",
+  "eos_piece": "<|im_end|>",
+  "target_plus_eos_piece": "4 9 1 4 9 1 4 9 1 4 9 1\n1 9 5 1 9 5 1 9 5 1 9 5\n4 9 4 4 9 4 4 9 4 4 9 4\n4 9 1 4 9 1 4 9 1 4 9 1\n1 9 5 1 9 5 1 9 5 1 9 5\n4 9 4 4 9 4 4 9 4 4 9 4\n4 9 1 4 9 1 4 9 1 4 9 1\n1 9 5 1 9 5 1 9 5 1 9 5\n4 9 4 4 9 4 4 9 4 4 9 4\n4 9 1 4 9 1 4 9 1 4 9 1\n1 9 5 1 9 5 1 9 5 1 9 5\n4 9 4 4 9 4 4 9 4 4 9 4<|im_end|>",
+  "supervised_text_equals_target_plus_eos": true,
+  "supervised_ids_equal_target_plus_eos": true,
+  "prompt_labels_all_ignored": true,
+  "n_supervised": 288,
+  "n_ignored": 702,
+  "target_in_prompt_text": false,
+  "label_shift": "none_hf_shifts_once"
+}
