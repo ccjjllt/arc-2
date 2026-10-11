@@ -1,0 +1,94 @@
+{
+  "archived_at_utc": "2026-10-11T07:08:07.802261+00:00",
+  "notebook": "ccjjllt/arc2-011-s1-pilots",
+  "version": 1,
+  "url": "https://www.kaggle.com/code/ccjjllt/arc2-011-s1-pilots",
+  "pre_run_decision": "experiments/011/execution/pre-s1-pilots-decision.json",
+  "frozen_notebook_sha256": "50b2a72b7a580ebc1c58d342ad8024a5d8479205e9e0b17a6337b98b21757564",
+  "core_manifest_sha256": "bbc9b83fc24f7b216878695cf7ca41fec83af15ab94bbb8af640047e2896a97e",
+  "core_checks": {
+    "arc_episode_data.py": {
+      "frozen_sha256": "7c672182a1bff3654231f9e60da2ba503ae94124b215d04857cb20345d93c864",
+      "downloaded_sha256": "7c672182a1bff3654231f9e60da2ba503ae94124b215d04857cb20345d93c864",
+      "local_sha256": "7c672182a1bff3654231f9e60da2ba503ae94124b215d04857cb20345d93c864"
+    },
+    "grid_runtime.py": {
+      "frozen_sha256": "54b519deb5876f0f9f90008da69151b6ec4aa35b808b7c80d7d624f385c7d20f",
+      "downloaded_sha256": "54b519deb5876f0f9f90008da69151b6ec4aa35b808b7c80d7d624f385c7d20f",
+      "local_sha256": "54b519deb5876f0f9f90008da69151b6ec4aa35b808b7c80d7d624f385c7d20f"
+    },
+    "run_budgeted_grid_experiment.py": {
+      "frozen_sha256": "af5ae4f2baca3f1c670f9b50fc94b98dc46c04eaeea1cf55ec34ea0497107e23",
+      "downloaded_sha256": "af5ae4f2baca3f1c670f9b50fc94b98dc46c04eaeea1cf55ec34ea0497107e23",
+      "local_sha256": "af5ae4f2baca3f1c670f9b50fc94b98dc46c04eaeea1cf55ec34ea0497107e23"
+    },
+    "solve_grid.py": {
+      "frozen_sha256": "c29c428d87873c32be29fd394b8d06cdcee37da694723d49a677d25f699ca190",
+      "downloaded_sha256": "c29c428d87873c32be29fd394b8d06cdcee37da694723d49a677d25f699ca190",
+      "local_sha256": "c29c428d87873c32be29fd394b8d06cdcee37da694723d49a677d25f699ca190"
+    },
+    "solve_program.py": {
+      "frozen_sha256": "bb500aef69a90b9613f74e0e33b44895f7d3b9771138481b500ba836605bb54d",
+      "downloaded_sha256": "bb500aef69a90b9613f74e0e33b44895f7d3b9771138481b500ba836605bb54d",
+      "local_sha256": "bb500aef69a90b9613f74e0e33b44895f7d3b9771138481b500ba836605bb54d"
+    },
+    "train_grid_sft.py": {
+      "frozen_sha256": "2e4ccb40b7acee2c3b5659eff9a6afa4bcd57fa65ee78f5a1ee6e1dda285f044",
+      "downloaded_sha256": "2e4ccb40b7acee2c3b5659eff9a6afa4bcd57fa65ee78f5a1ee6e1dda285f044",
+      "local_sha256": "2e4ccb40b7acee2c3b5659eff9a6afa4bcd57fa65ee78f5a1ee6e1dda285f044"
+    },
+    "ttt_per_task.py": {
+      "frozen_sha256": "17d32077cc788457ae6943de6c4944453c280d4ef515220915920321a42d7229",
+      "downloaded_sha256": "17d32077cc788457ae6943de6c4944453c280d4ef515220915920321a42d7229",
+      "local_sha256": "17d32077cc788457ae6943de6c4944453c280d4ef515220915920321a42d7229"
+    }
+  },
+  "all_core_bytes_match": true,
+  "result_directory": "experiments/011/kaggle-s1-pilots-v1/011/s1-pilots",
+  "supervisor": {
+    "status": "complete",
+    "reason": null,
+    "worker_exit_code": 0,
+    "load_completed": true,
+    "elapsed_s": 2453.935816447,
+    "time_budget_s": 7200,
+    "load_limit_s": 1200.0,
+    "no_retry": true
+  },
+  "load_elapsed_s": 352.118,
+  "kernel_environment": {
+    "torch_cuda": "12.8",
+    "cxx11_abi": true,
+    "triton": "3.6.0",
+    "accelerator_kernel_probe_run": false
+  },
+  "versions": {
+    "torch": "2.10.0+cu128",
+    "transformers": "5.8.0",
+    "accelerate": "1.13.0"
+  },
+  "cuda_devices": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "offload_observed": false,
+  "model_source": "kaggle:ugvfpdcuwfnh/qwen3-8-27b/Transformers/transformers-bf16/1",
+  "full_base_weight_sha_computed_here": false,
+  "c6_read_or_run": false,
+  "competition_submission": false,
+  "source_sha256": {
+    "experiments/011/kaggle-s1-pilots-v1/arc2-011-s1-pilots.log": "b01b98274c924c0b2f70608a5e7374e7ac1b92b87f888fb78a153aeee2c79c1e",
+    "experiments/011/kaggle-s1-pilots-v1/011/s1-pilots/supervisor.json": "35d1642c28c430cc8804e95abb080bbd2b47bfe2e3d532d2ec2f9ee61d30fa69",
+    "experiments/011/kaggle-s1-pilots-v1/011/s1-pilots/SUMMARY.json": "2e02a1047ab88a8fa1b8aba734e5727cb2850e8bcd9947549f35178ba8266784",
+    "experiments/011/kaggle-s1-pilots-v1/011/s1-pilots/scoring.json": "0c30187afde06d24f8fee1604b8164924f9be0683808cccd9f58378335940f5b",
+    "experiments/011/kaggle-s1-pilots-v1/011/s1-pilots/candidates.jsonl": "b1cc13bd36061620d8b8bc04e38a779433029b7e1fbc4f36d30827ae9f3f3f2a",
+    "experiments/011/kaggle-s1-pilots-v1/011/s1-pilots/s1_base_f1_ttt_p2.json": "510fe834388a81ab0e825bc0947cdc070602f7266dff7d0779c8b85c1af8fe54",
+    "experiments/011/kaggle-s1-pilots-v1/011/s1-pilots/s1_base_f1_ttt_p2-updates.jsonl": "544a2ab2dae0cfc12d2b2d54344b939bc53a6da948e54e6ee5a133ad4f39e7f8",
+    "experiments/011/kaggle-s1-pilots-v1/011/s1-pilots/s2_base_program_p2.json": "34d592b5860141051d8945b668ab3f32521c5201947b4690c2df763ece8434f7",
+    "experiments/011/kaggle-s1-pilots-v1/011/s1-pilots/s2_base_program_p2-events.jsonl": "4c4834902befa2617e1d941c5c9319fdd8be9bc5ff4631a13445bc4d7db3818f",
+    "experiments/011/kaggle-s1-pilots-v1/011/pilot-code/p2-scoring.json": "2efbc9bf7437fd332521571aa582fc2126b30b9ff8658280a8d31c331ed08daf"
+  },
+  "interpretation": "Policy work complete does not establish completed program feedback comparison; actual repair calls are zero."
+}

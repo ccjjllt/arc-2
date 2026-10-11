@@ -1,0 +1,58 @@
+{
+  "status": "prepared_decision_only_not_launched",
+  "date": "2026-10-11",
+  "tasks": [
+    "db118e2a",
+    "291dc1e1"
+  ],
+  "selection": "Frozen program P2 and first H/E pair of frozen P6; not chosen by S0 scores",
+  "proposed_shared_session": true,
+  "base": "Qwen/Qwen3.8-27B BF16 fixed Kaggle source v1",
+  "initialization_decision": "Wait for S0 F0 comparison; default tied/no-signal choice is base f1_compact for efficient mechanism pilot",
+  "ttt": {
+    "updates": [
+      0,
+      4
+    ],
+    "views": [
+      "original",
+      "transpose"
+    ],
+    "grad_accum": 4,
+    "max_new_tokens": 960,
+    "max_len": 4096,
+    "same_initial_adapter_per_task": true,
+    "equal_actual_time_control_implemented": false,
+    "interpretation": "feasibility and fixed-candidate adaptation only"
+  },
+  "program": {
+    "physical_calls": [
+      "p0",
+      "restart",
+      "repair"
+    ],
+    "logical_pairs": [
+      "p0+restart",
+      "p0+repair"
+    ],
+    "max_new_tokens": 1536,
+    "max_prompt_tokens": 8192,
+    "max_call_seconds": 360,
+    "max_task_seconds": 1080,
+    "prompt_tokens_without_generated_history": {
+      "db118e2a": 2586,
+      "291dc1e1": 2602
+    }
+  },
+  "notebook_limit_s": 7200,
+  "load_limit_s": 1200,
+  "save_window_s": 300,
+  "conditions": [
+    "S0 collected and account quota rechecked",
+    "At least six quota hours remain after worst-case new session allowance",
+    "Current TTT/program scoring and stage completion fixes reviewed",
+    "Frozen core code hashes recorded before push"
+  ],
+  "no_auto_expand_to_P6_or_A8": true,
+  "no_competition_submission": true
+}

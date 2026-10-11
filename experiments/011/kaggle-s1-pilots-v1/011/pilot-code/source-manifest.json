@@ -1,0 +1,13 @@
+{
+  "arc_episode_data.py": "7c672182a1bff3654231f9e60da2ba503ae94124b215d04857cb20345d93c864",
+  "grid_runtime.py": "54b519deb5876f0f9f90008da69151b6ec4aa35b808b7c80d7d624f385c7d20f",
+  "p2-challenges.json": "abef4b67006970e7a899e9a15f661d65ec56b6f3f4264bf5c667717f916804d3",
+  "p2-queries.json": "6379a22f3581b32411b7547f187c57403dbd6ba07fa22875d3b6e4a63dbd8b61",
+  "p2-scoring.json": "2efbc9bf7437fd332521571aa582fc2126b30b9ff8658280a8d31c331ed08daf",
+  "pilot-info.json": "ec6cea27c88abe4808b94c751c231e6b69b699fcf44dbd8d844d821833f7842b",
+  "run_budgeted_grid_experiment.py": "af5ae4f2baca3f1c670f9b50fc94b98dc46c04eaeea1cf55ec34ea0497107e23",
+  "solve_grid.py": "c29c428d87873c32be29fd394b8d06cdcee37da694723d49a677d25f699ca190",
+  "solve_program.py": "bb500aef69a90b9613f74e0e33b44895f7d3b9771138481b500ba836605bb54d",
+  "train_grid_sft.py": "2e4ccb40b7acee2c3b5659eff9a6afa4bcd57fa65ee78f5a1ee6e1dda285f044",
+  "ttt_per_task.py": "17d32077cc788457ae6943de6c4944453c280d4ef515220915920321a42d7229"
+}

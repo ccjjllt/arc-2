@@ -6,6 +6,10 @@
 
 历史试提交：[用户指定 Notebook 版本 314617319](https://www.kaggle.com/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319)。用户说明 30.14 分来自未修改的公开方案复制提交，不作为自主研究效果，也不限定后续方向。
 
+**当前入口（2026-10-11）**：[012实施交接](docs/plan/012-kernel-program-completion.md)，由用户实现并操作；代码与实验均未开始。下一轮只安排≤30分钟内核探针和≤75分钟原P2程序完成性对照，两臂统一3072 token/720秒上限，合计按保守系数预留4.025配额小时，不自动追加TTT或反馈实验。
+
+[011实际进展](docs/progress/011-budget-efficient-adaptation.md)记录已完成结果：F0-25 P12为0/14，多视角完整配对0/5；TTT每题4次真实更新后，A0/A4仍均0/2。程序4次均耗尽1536 token、未产出代码，repair实际0次。10月11日15:00北京时间账户快照剩15.23138配额小时、reserved=0；未来开机前重查，保留至少6小时。无新比赛分数，C6/C12确认未运行；首GPU v1的取消原因和成本保留。
+
 ## 研究文档
 
 | 轮次 | 计划 | 实际进展 |
@@ -19,7 +23,9 @@
 | 007 正式网格微调与NVARC专用化 | [plan/007-grid-specialist-sft.md](docs/plan/007-grid-specialist-sft.md) | [progress/007-grid-specialist-sft.md](docs/progress/007-grid-specialist-sft.md)；诊断 7/8，留出 960 下 0/5、2048 下 6/20；G2 的 3 万条池已生成、未训练 |
 | 008 泛化证据、数据覆盖与逐题适配 | [plan/008-generalization-adaptation.md](docs/plan/008-generalization-adaptation.md) | [progress/008-generalization-adaptation.md](docs/progress/008-generalization-adaptation.md)；研究复核完成，GPU实验未运行；先补代表性配对评价，再研究修正后的G2与TTT/TTA |
 | 009 有效episode：表示、采样与消歧 | [plan/009-efficient-episodes.md](docs/plan/009-efficient-episodes.md) | [progress/009-efficient-episodes.md](docs/progress/009-efficient-episodes.md)；CPU研究完成：紧凑格式约省45% token，同预算覆盖改善，一例demo替换消歧；模型效果未运行 |
-| 010 配额刷新后的GPU实验 | [plan/010-gpu-budget-experiments.md](docs/plan/010-gpu-budget-experiments.md) | [progress/010-gpu-budget-experiments.md](docs/progress/010-gpu-budget-experiments.md)；30配额小时按约15小时L4规划；同400例F0/F1数据与P12/C12清单已准备，继承/格式接口待修，GPU未运行 |
+| 010 配额刷新后的GPU实验 | [plan/010-gpu-budget-experiments.md](docs/plan/010-gpu-budget-experiments.md) | [progress/010-gpu-budget-experiments.md](docs/progress/010-gpu-budget-experiments.md)；E0及F1-25/50 P12均0/14，F0-suffix-25随后在011评完0/14；记录纠错见011 |
+| 011 有效预算与适配研究 | [plan/011-budget-efficient-adaptation.md](docs/plan/011-budget-efficient-adaptation.md) | [progress/011-budget-efficient-adaptation.md](docs/progress/011-budget-efficient-adaptation.md)；两GPU会话完成，无新增解；TTT 0/2、程序输出截断未进入反馈；停止扩算并保存预算 |
+| 012 GDN推理提速与程序完成性 | [plan/012-kernel-program-completion.md](docs/plan/012-kernel-program-completion.md) | 实施交接已写，由用户实现；未运行，暂无progress文件 |
 
 ## Kaggle 操作链（2026-09-29 实测结论）
 
@@ -28,6 +34,8 @@ Notebook 发布与数据源挂载三条路只通两条，按稳定性排序：
 1. **Kaggle CLI push（最稳）**：`kaggle kernels push -p <dir>`，`kernel-metadata.json` 中 `competition_sources` / `model_sources` / `dataset_sources` 声明数据源。注册与运行均验证过（A0-smoke 嵌套 worker 与 v3 扁平 worker 文件均到位）。认证用 access token（`KAGGLE_API_TOKEN`，本机 SDK 1.7.4.5 已验证主 API 接受 Bearer），不需要 `kaggle.json`。
 2. **官方 SDK SaveAndRunAll**：`KernelsApiClient.save_kernel`（`ApiSaveKernelRequest` 带 `competition_data_sources` + `model_data_sources`），回读元数据三项齐全；注意 worker 布局差异（扁平 vs 嵌套）会影响挂载路径判断，见 006 进展。
 3. **MCP save_notebook（不通）**：数据源字段 6 种组合实测，存出的 Notebook 元数据里始终没有 sources，运行时 `/kaggle/input` 为空。只用它建/跑/查/取日志，不用它挂数据。
+
+10月11日补记：运行中实时日志使用 `kaggle kernels logs <owner/slug> --follow`；输出列表在作业未完成时可能为空。以CLI push返回的真实slug为准，标题不匹配会生成不同slug。取消需要精确session ID（可由该版本输出下载地址的`/kf/<id>/`核对），取消后确认状态和GPU reserved释放；不要把Notebook元数据id当session ID。
 
 ## 项目原则
 
@@ -41,4 +49,4 @@ Notebook 发布与数据源挂载三条路只通两条，按稳定性排序：
 
 008后续CPU实现已补评价清单、token统计、weights-only初始化和新base等，具体状态见其progress后续补记。009继续完成不需GPU的研究：保留原词表去空格，在相同官方完整episode上省44.98% token；4K可容纳任务694→837。离线公平采样在同800行下覆盖446→601task；11族220pair规则重算一致，并对一例欠定episode实际替换demo。上述均为CPU数据/表示证据，没有模型提分。下一轮仍先做008原格式E0，再比较009提出的F1紧凑格式、采样及示例质量候选。
 
-2026-10-03的010研究已核实GPU配额刷新为30小时（L4×4两倍扣额）。新增同400例、同顺序F0/F1训练文件，冻结P12开发/C12确认和30小时上限分配。真实权重键核对发现`--init-adapter`当前会漏载G1；F1推理提示尚未透传formatter，fair的base身份与repair ID也有缺口。010计划给出最小修正与共享模型会话交接，并优先比较原生答案后缀logits以减少无监督位置的输出头开销。现有脚本未在本轮改动，GPU实验未启动。
+010随后完成多轮GPU先导：F0底座/G1的P12均0/14，F1-25/50也均0/14；F0完整logits路径OOM，suffix路径完成25步且保存权重。011完成共享runner、TTT和程序入口，并实际运行有限先导。两次加载为5–6分钟，共享加载已生效，但无同条件A/B来归因于某个开关，四卡利用率仍低。F0-25 P12也为0/14，TTT P2无新增，程序分支尚未产出代码。成本、旧记录纠错、配额和后续止损顺序统一见011。

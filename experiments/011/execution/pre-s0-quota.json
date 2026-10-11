@@ -1,0 +1,13 @@
+{
+  "checked_at_utc": "2026-10-11T04:32:40.535133+00:00",
+  "time_used_s": 36778.3559275,
+  "time_reserved_s": 0,
+  "total_time_allowed_s": 108000,
+  "remaining_quota_h": 19.783790020138888,
+  "quota_refresh_time": "2026-10-17T00:00:00Z",
+  "first_gpu_notebook_wall_limit_s": 7200,
+  "load_limit_s": 1200,
+  "minimum_quota_reserve_h": 6,
+  "max_new_quota_h": 13.783790020138888,
+  "note": "Account usage changed during CPU-only work; do not attribute account delta to CPU preflight."
+}

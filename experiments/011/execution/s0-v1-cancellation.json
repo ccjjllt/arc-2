@@ -1,0 +1,20 @@
+{
+  "notebook_ref": "ccjjllt/arc2-011-s0-shared-model",
+  "version": 1,
+  "kernel_session_id": 357234485,
+  "status": "CANCEL_ACKNOWLEDGED",
+  "cancel_reason": "CPU full-candidate manual probe discovered event(kind, **job) argument collision; stop before knowingly reaching a failed first generation.",
+  "model_load_completed_in_available_log": false,
+  "candidate_generation_started_in_available_log": false,
+  "last_logged_notebook_elapsed_s": 226.5,
+  "last_logged_weight_items": "385/851",
+  "before_used_quota_s": 36778.3559275,
+  "after_used_quota_s": 38728.299665,
+  "after_reserved_quota_s": 0,
+  "account_delta_quota_h": 0.541651038194444,
+  "remaining_quota_h": 19.242138981944445,
+  "account_delta_attribution": "Account-level delta, not a clean per-job GPU metering measurement; record fully rather than pretending the run was free.",
+  "known_valid_results": "none; not a 0/14 model score",
+  "next_action": "Fix logging signature and run full CPU candidate wrapper diagnostics before one corrected GPU publication; preserve v1 as cancelled history.",
+  "live_log": "experiments/011/execution/s0-live.log"
+}

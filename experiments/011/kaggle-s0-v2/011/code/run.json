@@ -1,0 +1,58 @@
+{
+  "model_dir": "/kaggle/input/models/ugvfpdcuwfnh/qwen3-8-27b/transformers/transformers-bf16/1",
+  "challenges": "/kaggle/working/011/code/p12-challenges.json",
+  "solutions": "/kaggle/working/011/code/p12-scoring.json",
+  "out_dir": "/kaggle/working/011/s0-shared",
+  "time_budget_s": 7200,
+  "load_limit_s": 1200,
+  "notebook_start_monotonic": 366.763689469,
+  "runtime": {
+    "base_source": "kaggle:ugvfpdcuwfnh/qwen3-8-27b/Transformers/transformers-bf16/1",
+    "deactivate_async_load": true,
+    "save_window_s": 300
+  },
+  "stages": [
+    {
+      "type": "grid",
+      "name": "s0_f0_25_p12",
+      "adapter": "/kaggle/input/notebooks/ccjjllt/s4-f0-train-010/010/s4-f0/adapter_step_25",
+      "formatter": "f0_space",
+      "query_file": "/kaggle/working/011/code/p12-queries.json",
+      "max_new_tokens": 2048,
+      "max_time_s": 600,
+      "estimate_s": 240,
+      "candidates": [
+        {
+          "view": "original",
+          "do_sample": false
+        }
+      ]
+    },
+    {
+      "type": "grid",
+      "name": "s1_base_f1_p6",
+      "adapter": null,
+      "formatter": "f1_compact",
+      "query_file": "/kaggle/working/011/code/p6-queries.json",
+      "max_new_tokens": 960,
+      "time_budget_s": 1200,
+      "max_time_s": 300,
+      "estimate_s": 120,
+      "candidates": [
+        {
+          "view": "original",
+          "do_sample": false
+        },
+        {
+          "view": "original",
+          "do_sample": true,
+          "sample_index": 1
+        },
+        {
+          "view": "transpose",
+          "do_sample": false
+        }
+      ]
+    }
+  ]
+}

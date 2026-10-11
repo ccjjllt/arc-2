@@ -1,0 +1,13 @@
+{
+  "checked_at_utc": "2026-10-11T04:51:50.673227+00:00",
+  "time_used_s": 39547.0437552,
+  "time_reserved_s": 0,
+  "total_time_allowed_s": 108000,
+  "remaining_quota_h": 19.014710068000003,
+  "min_reserve_h": 6,
+  "session_max_wall_s": 7200,
+  "planning_allowance_quota_h": 4.6,
+  "preflight_ref": "ccjjllt/arc2-011-cpu-pilot-preflight/1",
+  "core_manifest_sha256": "bbc9b83fc24f7b216878695cf7ca41fec83af15ab94bbb8af640047e2896a97e",
+  "warning": "Quota accounting moved after cancellation during CPU-only preflight; use current balance, do not assert a clean per-job multiplier."
+}

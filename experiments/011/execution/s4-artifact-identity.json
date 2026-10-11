@@ -1,0 +1,58 @@
+{
+  "retrieved_date": "2026-10-11",
+  "source": "ccjjllt/s4-f0-train-010/1",
+  "output_kernel_version_id": 355735798,
+  "local_root": "experiments/011/recovered-s4-v1/010/s4-f0",
+  "files": {
+    "SUMMARY.json": {
+      "size": 1633,
+      "sha256": "8e2791c9742d032bcad221d1beeca457b702555156a0f082429f012aa5651ad2"
+    },
+    "train_log.jsonl": {
+      "size": 14047,
+      "sha256": "b6cf071a3ee766d63258c03e6ecaf978bc57f2885b96acdabcccf7f1ab7df030"
+    },
+    "run_config.json": {
+      "size": 6527,
+      "sha256": "eedcc7f30cfa26d67d72d89190513fcb598a2020011b46034dddcb826cc439f6"
+    },
+    "adapter_step_25/adapter_model.safetensors": {
+      "size": 159451232,
+      "sha256": "9282c46cbce02923afbea3ad041614f0bc6ff3d7bd97c5174adfa3dd3e485ff9"
+    },
+    "adapter_step_25/formatter.json": {
+      "size": 61,
+      "sha256": "79243f5c2c488635faee3261b445e88017e1b2f8af07bb04552088a246a98cb8"
+    },
+    "adapter_step_25/README.md": {
+      "size": 5310,
+      "sha256": "188fe2b0ac10f590167c08599dce1d846cfd1b525fbb4d06055a1caca5b10648"
+    },
+    "adapter_step_25/adapter_config.json": {
+      "size": 1155,
+      "sha256": "cdc862d6ee97ffe00acbac5494b9feff76fef838cc535451da3b6585c53d8edc"
+    }
+  },
+  "comparisons_to_original_archive": {
+    "SUMMARY.json": {
+      "byte_equal": true,
+      "object_equal": true
+    },
+    "run_config.json": {
+      "byte_equal": true,
+      "object_equal": true
+    },
+    "train_log.jsonl": {
+      "byte_equal": true,
+      "object_equal": true
+    }
+  },
+  "safetensors_header_only": {
+    "n_tensors": 512,
+    "dtype_counts": {
+      "F32": 512
+    }
+  },
+  "weights_loaded": false,
+  "status": "downloaded_and_identity_verified"
+}

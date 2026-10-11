@@ -1,0 +1,61 @@
+{
+  "source": "experiments/010/kaggle-s1-v1/010/s1_f1_at0.json",
+  "source_sha256": "fa93077db625fd2d8db44440961b239fc10bed1f372a3584375fb5cee1f0484e",
+  "comparison": "Base F1 original greedy after disabling the S4 adapter vs historical base F1",
+  "rows": [
+    {
+      "task_id": "db118e2a",
+      "query_index": 0,
+      "current_status": "complete",
+      "same_text": true,
+      "same_grid": true,
+      "old_gen_tokens": 240,
+      "new_gen_tokens": 240
+    },
+    {
+      "task_id": "291dc1e1",
+      "query_index": 0,
+      "current_status": "complete",
+      "same_text": true,
+      "same_grid": true,
+      "old_gen_tokens": 130,
+      "new_gen_tokens": 130
+    },
+    {
+      "task_id": "58c02a16",
+      "query_index": 0,
+      "current_status": "complete",
+      "same_text": true,
+      "same_grid": true,
+      "old_gen_tokens": 272,
+      "new_gen_tokens": 272
+    },
+    {
+      "task_id": "4c416de3",
+      "query_index": 0,
+      "current_status": "complete",
+      "same_text": true,
+      "same_grid": true,
+      "old_gen_tokens": 437,
+      "new_gen_tokens": 437
+    },
+    {
+      "task_id": "fc4aaf52",
+      "query_index": 0,
+      "current_status": "complete",
+      "same_text": true,
+      "same_grid": true,
+      "old_gen_tokens": 272,
+      "new_gen_tokens": 272
+    },
+    {
+      "task_id": "aa4ec2a5",
+      "query_index": 0,
+      "current_status": "complete",
+      "same_text": true,
+      "same_grid": true,
+      "old_gen_tokens": 756,
+      "new_gen_tokens": 756
+    }
+  ]
+}

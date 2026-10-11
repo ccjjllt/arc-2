@@ -1,0 +1,26 @@
+{
+  "id": "ccjjllt/arc2-011-s0-shared-model",
+  "title": "ARC2 011 S0 shared model",
+  "code_file": "arc2-011-s0-shared-model.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "competition_sources": [
+    "arc-prize-2026-arc-agi-2"
+  ],
+  "dataset_sources": [
+    "ccjjllt/qwen38-wheelhouse-py312"
+  ],
+  "model_sources": [
+    "ugvfpdcuwfnh/qwen3-8-27b/Transformers/transformers-bf16/1"
+  ],
+  "kernel_sources": [
+    "ccjjllt/s4-f0-train-010/1",
+    "ccjjllt/arc2-011-cpu-pilot-preflight/1"
+  ],
+  "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+  "machine_shape": "NvidiaL4"
+}

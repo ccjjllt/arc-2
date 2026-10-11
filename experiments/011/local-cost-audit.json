@@ -1,0 +1,2642 @@
+{
+  "audit_version": 1,
+  "created_at_utc": "2026-10-10T01:38:20.730837+00:00",
+  "scope": "Local read-only stdlib CPU audit of saved 010 artifacts. No GPU, no model weight loading, no remote state checks. The only created file is this report.",
+  "measurement_contract": {
+    "update_seconds": "Per successful update timer includes grad_accum forwards/backwards, clipping, optimizer.step and synchronize; excludes initial model/data setup, checkpoint saves, inter-update work, failed OOM attempts. Only current CUDA device is explicitly synchronized in snapshot code, so not a separately profiled four-device kernel timeline.",
+    "generation_seconds": "model.generate call timing, includes prefill and decode together; effective token/s is aggregate generated tokens divided by generate_s, NOT isolated decode throughput.",
+    "load_seconds": "solve env.load_s; cached reload and first load are separate observations; trainer load times mostly absent from locally downloaded summaries.",
+    "memory": "Decimal GB=1e9 bytes, process/device peak allocated and reserved as recorded; per-arm inference peaks unavailable.",
+    "status": "SHORTFALL with stop_after_update is planned horizon100 pause, not a failed update. Missing evaluations are unrun, not 0/14.",
+    "hardware": "Kernel metadata requested NvidiaL4, run summaries record gpu_count=4 and device_map=balanced single process; no DDP/FSDP/TP.",
+    "source_hash_limits": "Hashes below are currently saved local source bytes. Exact remote runtime code version/initial adapter tensor equality was not independently established."
+  },
+  "training": {
+    "f0_full_failed": {
+      "source_dir": "experiments/010/kaggle-s1-v1/010/s1-f0",
+      "final": "FAILED_OOM",
+      "stop_reason": "oom_stop",
+      "completed_updates": 4,
+      "cursor": 35,
+      "successful_microsteps": 16,
+      "oom_count": 8,
+      "update_seconds": {
+        "count": 4,
+        "sum": 269.6012,
+        "min": 52.1343,
+        "median": 67.75139999999999,
+        "mean": 67.4003,
+        "p90_nearest_rank": 81.9641,
+        "max": 81.9641
+      },
+      "prompt_tokens": 21996,
+      "target_including_eos_tokens": 2790,
+      "full_tokens": 24786,
+      "consumed_full_lengths": {
+        "count": 16,
+        "sum": 24786,
+        "min": 364,
+        "median": 1708.0,
+        "mean": 1549.125,
+        "p90_nearest_rank": 2504,
+        "max": 2544
+      },
+      "loss": {
+        "count": 4,
+        "sum": 0.327427,
+        "min": 0.06651762151159346,
+        "median": 0.08153585248510353,
+        "mean": 0.081857,
+        "p90_nearest_rank": 0.0978375542908907,
+        "max": 0.0978375542908907
+      },
+      "last_loss": 0.0978375542908907,
+      "consumed_ids_sha256": "ac95174b2a2275f4f5f30074caae08b1b761060060aa5849c046983021d7bc4d",
+      "peak_allocated_decimal_gb": {
+        "gpu0": 16.3368,
+        "gpu1": 17.3114,
+        "gpu2": 17.2621,
+        "gpu3": 22.8821
+      },
+      "peak_reserved_decimal_gb": {
+        "gpu0": 17.0415,
+        "gpu1": 18.1592,
+        "gpu2": 18.0229,
+        "gpu3": 23.2658
+      },
+      "wall_clock_elapsed_s_available": null,
+      "recorded_started_at_utc": "2026-10-03T20:09:31Z",
+      "recorded_checkpoint_saved": true,
+      "last_saved_update": 4,
+      "local_checkpoint_dir_present": true
+    },
+    "f1_full_25": {
+      "source_dir": "experiments/010/kaggle-s1probe-v1/010/s1-f1",
+      "final": "SHORTFALL",
+      "stop_reason": "stop_after_update",
+      "completed_updates": 25,
+      "cursor": 100,
+      "successful_microsteps": 100,
+      "oom_count": 0,
+      "update_seconds": {
+        "count": 25,
+        "sum": 1044.5261,
+        "min": 19.7518,
+        "median": 41.6687,
+        "mean": 41.781044,
+        "p90_nearest_rank": 57.2097,
+        "max": 74.6555
+      },
+      "prompt_tokens": 95142,
+      "target_including_eos_tokens": 12844,
+      "full_tokens": 107986,
+      "consumed_full_lengths": {
+        "count": 100,
+        "sum": 107986,
+        "min": 251,
+        "median": 999.0,
+        "mean": 1079.86,
+        "p90_nearest_rank": 1829,
+        "max": 2107
+      },
+      "loss": {
+        "count": 25,
+        "sum": 4.145083,
+        "min": 0.026898978743702173,
+        "median": 0.15801798179745674,
+        "mean": 0.165803,
+        "p90_nearest_rank": 0.2850883398205042,
+        "max": 0.472852086648345
+      },
+      "last_loss": 0.026898978743702173,
+      "consumed_ids_sha256": "5b97482d2dda0413db992a98a93c7ec51d54a64669e04f257fd8da1ed2b3ce0a",
+      "peak_allocated_decimal_gb": {
+        "gpu0": 15.5549,
+        "gpu1": 16.7117,
+        "gpu2": 16.6718,
+        "gpu3": 21.5022
+      },
+      "peak_reserved_decimal_gb": {
+        "gpu0": 18.5451,
+        "gpu1": 17.8048,
+        "gpu2": 17.8027,
+        "gpu3": 22.8422
+      },
+      "wall_clock_elapsed_s_available": null,
+      "recorded_started_at_utc": "2026-10-04T11:27:26Z",
+      "recorded_checkpoint_saved": true,
+      "last_saved_update": 25,
+      "local_checkpoint_dir_present": false,
+      "kaggle_notebook_from_metadata": "ccjjllt/s1-probe-f1-010",
+      "requested_machine_shape": "NvidiaL4"
+    },
+    "f1_full_50": {
+      "source_dir": "experiments/010/kaggle-s2-v1/010/s2-f1-50",
+      "final": "SHORTFALL",
+      "stop_reason": "stop_after_update",
+      "completed_updates": 50,
+      "cursor": 200,
+      "successful_microsteps": 200,
+      "oom_count": 0,
+      "update_seconds": {
+        "count": 50,
+        "sum": 2131.4799,
+        "min": 19.4148,
+        "median": 43.988150000000005,
+        "mean": 42.629598,
+        "p90_nearest_rank": 54.3706,
+        "max": 74.5423
+      },
+      "prompt_tokens": 196392,
+      "target_including_eos_tokens": 25145,
+      "full_tokens": 221537,
+      "consumed_full_lengths": {
+        "count": 200,
+        "sum": 221537,
+        "min": 251,
+        "median": 1027.5,
+        "mean": 1107.685,
+        "p90_nearest_rank": 1829,
+        "max": 2211
+      },
+      "loss": {
+        "count": 50,
+        "sum": 9.202076,
+        "min": 0.0266296174377203,
+        "median": 0.17963615339249372,
+        "mean": 0.184042,
+        "p90_nearest_rank": 0.2873065061867237,
+        "max": 0.5848425403237343
+      },
+      "last_loss": 0.1950568174943328,
+      "consumed_ids_sha256": "0e85c8e208f4f4bd811a192f527b07145bc0c7c2a3c62172f5104d094d1e5796",
+      "peak_allocated_decimal_gb": {
+        "gpu0": 15.7826,
+        "gpu1": 16.9109,
+        "gpu2": 16.8743,
+        "gpu3": 21.8698
+      },
+      "peak_reserved_decimal_gb": {
+        "gpu0": 19.6503,
+        "gpu1": 18.1215,
+        "gpu2": 18.1194,
+        "gpu3": 23.163
+      },
+      "wall_clock_elapsed_s_available": null,
+      "recorded_started_at_utc": "2026-10-04T18:04:41Z",
+      "recorded_checkpoint_saved": true,
+      "last_saved_update": 50,
+      "local_checkpoint_dir_present": false,
+      "kaggle_notebook_from_metadata": "ccjjllt/s2-branch-010",
+      "requested_machine_shape": "NvidiaL4"
+    },
+    "f0_suffix_17": {
+      "source_dir": "experiments/010/kaggle-s3-v1/010/s3-f0",
+      "final": "SHORTFALL",
+      "stop_reason": "wall_clock_limit",
+      "completed_updates": 17,
+      "cursor": 68,
+      "successful_microsteps": 68,
+      "oom_count": 0,
+      "update_seconds": {
+        "count": 17,
+        "sum": 1432.105,
+        "min": 51.3547,
+        "median": 76.5966,
+        "mean": 84.241471,
+        "p90_nearest_rank": 120.3173,
+        "max": 149.5612
+      },
+      "prompt_tokens": 106560,
+      "target_including_eos_tokens": 15588,
+      "full_tokens": 122148,
+      "consumed_full_lengths": {
+        "count": 68,
+        "sum": 122148,
+        "min": 348,
+        "median": 1708.0,
+        "mean": 1796.294118,
+        "p90_nearest_rank": 3232,
+        "max": 3628
+      },
+      "loss": {
+        "count": 17,
+        "sum": 1.540867,
+        "min": 0.012010639984509908,
+        "median": 0.07882273569703102,
+        "mean": 0.090639,
+        "p90_nearest_rank": 0.16403831541538239,
+        "max": 0.2533938460983336
+      },
+      "last_loss": 0.11763142083145794,
+      "consumed_ids_sha256": "adac2ef9144157e55b7eff5712982398474678ba29a4f1614f9038a2978d6e39",
+      "peak_allocated_decimal_gb": {
+        "gpu0": 16.8228,
+        "gpu1": 18.8146,
+        "gpu2": 18.758,
+        "gpu3": 19.6832
+      },
+      "peak_reserved_decimal_gb": {
+        "gpu0": 18.2012,
+        "gpu1": 20.248,
+        "gpu2": 19.8558,
+        "gpu3": 23.0624
+      },
+      "wall_clock_elapsed_s_available": 5425.17,
+      "recorded_started_at_utc": "2026-10-05T18:08:44Z",
+      "recorded_checkpoint_saved": true,
+      "last_saved_update": 17,
+      "local_checkpoint_dir_present": false,
+      "kaggle_notebook_from_metadata": "ccjjllt/s3-f0suffix-010",
+      "requested_machine_shape": "NvidiaL4",
+      "unattributed_process_wall_seconds": 3993.065,
+      "unattributed_process_wall_note": "Includes model/data setup, load and save/inter-update overhead; cannot isolate loading without full raw log."
+    },
+    "f0_suffix_25": {
+      "source_dir": "experiments/010/kaggle-s4-v1/010/s4-f0",
+      "final": "SHORTFALL",
+      "stop_reason": "stop_after_update",
+      "completed_updates": 25,
+      "cursor": 100,
+      "successful_microsteps": 100,
+      "oom_count": 0,
+      "update_seconds": {
+        "count": 25,
+        "sum": 2257.5843,
+        "min": 27.1839,
+        "median": 91.4529,
+        "mean": 90.303372,
+        "p90_nearest_rank": 132.8974,
+        "max": 179.809
+      },
+      "prompt_tokens": 165898,
+      "target_including_eos_tokens": 23572,
+      "full_tokens": 189470,
+      "consumed_full_lengths": {
+        "count": 100,
+        "sum": 189470,
+        "min": 348,
+        "median": 1739.0,
+        "mean": 1894.7,
+        "p90_nearest_rank": 3318,
+        "max": 3844
+      },
+      "loss": {
+        "count": 25,
+        "sum": 2.253577,
+        "min": 0.012383610210235929,
+        "median": 0.07925973390229046,
+        "mean": 0.090143,
+        "p90_nearest_rank": 0.1558518805541098,
+        "max": 0.2585575017146766
+      },
+      "last_loss": 0.020209558919304982,
+      "consumed_ids_sha256": "5b97482d2dda0413db992a98a93c7ec51d54a64669e04f257fd8da1ed2b3ce0a",
+      "peak_allocated_decimal_gb": {
+        "gpu0": 16.8841,
+        "gpu1": 19.0939,
+        "gpu2": 19.027,
+        "gpu3": 19.9551
+      },
+      "peak_reserved_decimal_gb": {
+        "gpu0": 18.2159,
+        "gpu1": 21.3176,
+        "gpu2": 20.9254,
+        "gpu3": 23.0603
+      },
+      "wall_clock_elapsed_s_available": null,
+      "recorded_started_at_utc": "2026-10-06T19:00:04Z",
+      "recorded_checkpoint_saved": true,
+      "last_saved_update": 25,
+      "local_checkpoint_dir_present": false,
+      "kaggle_notebook_from_metadata": "ccjjllt/s4-f0train-010",
+      "requested_machine_shape": "NvidiaL4"
+    }
+  },
+  "paired_comparison": {
+    "configuration_fields_equal": {
+      "seed": true,
+      "resumed_from": true,
+      "model_dir": true,
+      "lr": true,
+      "weight_decay": true,
+      "warmup_updates": true,
+      "scheduler_horizon": true,
+      "optimizer_updates": true,
+      "stop_after_update": true,
+      "grad_accum": true,
+      "microbatch": true,
+      "max_len": true,
+      "overflow_len": true,
+      "sample_policy": true,
+      "length_mixture": true,
+      "lora": true,
+      "versions": true
+    },
+    "f1_25_vs_f0_25_actual_100_ids_identical": true,
+    "both_actual_100_ids_match_manifest": true,
+    "f1_50_actual_200_ids_match_manifest": true,
+    "fresh_init_claim_scope": "resumed_from=null and no --init-adapter in both argv; same seed/config. Initial tensors and remote code revision were not compared.",
+    "both_argv_without_init_adapter": true,
+    "shared_training_prefix_manifest": {
+      "rows": 100,
+      "tasks": 100,
+      "bases": 100,
+      "sources": {
+        "arcgen_v2": 62,
+        "official_train": 38
+      },
+      "origins": {
+        "arc1_eval": 52,
+        "non_arc1": 33,
+        "arc1_train": 15
+      },
+      "protected_tasks": 7,
+      "f0_reference_buckets": {
+        "0": 20,
+        "2": 44,
+        "1": 36
+      },
+      "tokens": {
+        "f0": {
+          "prompt": 165898,
+          "target_eos": 23572,
+          "full": 189470
+        },
+        "f1": {
+          "prompt": 95142,
+          "target_eos": 12844,
+          "full": 107986
+        }
+      }
+    },
+    "f0_update_seconds_over_f1": 2.161347906959912,
+    "f0_full_tokens_over_f1": 1.7545792973163188,
+    "controlled_format_comparison_limits": [
+      "F0 uses suffix logits, F1 uses full logits; limited probe supports similar loss/gradient within repeat noise but not identical arithmetic.",
+      "Training is same raw examples/order and updates, not same token count or wall time.",
+      "F0-25 P12 evaluation is absent locally; no observed format accuracy winner.",
+      "F0 successful 25-update prefix longest observed sequence is 3844, not all 400 rows through 4060."
+    ]
+  },
+  "evaluations": {
+    "f0_e0_pair": {
+      "count": 27,
+      "generate_seconds": {
+        "count": 27,
+        "sum": 5349.9211,
+        "min": 76.8366,
+        "median": 119.37,
+        "mean": 198.145226,
+        "p90_nearest_rank": 399.6955,
+        "max": 431.622
+      },
+      "generated_tokens": {
+        "count": 27,
+        "sum": 23324,
+        "min": 336,
+        "median": 512,
+        "mean": 863.851852,
+        "p90_nearest_rank": 1800,
+        "max": 1800
+      },
+      "effective_tokens_per_generate_second": 4.359690463472442,
+      "prepare_seconds_sum": 0.239,
+      "parse_ok": 25,
+      "truncated": 0,
+      "exact_matches": 0,
+      "n_with_em_boolean": 27,
+      "source": "experiments/010/kaggle-e0-v1/010/e0_f0_pair.json",
+      "process_elapsed_s": 5684.178,
+      "recorded_model_load_s": 312.678,
+      "environment": {
+        "python": "3.12.13",
+        "torch": "2.10.0+cu128",
+        "transformers": "5.8.0",
+        "gpu_count": 4,
+        "load_s": 312.678,
+        "peft": "0.19.1"
+      },
+      "max_new_tokens": 2048,
+      "checkpoint": {
+        "checkpoint_out": "/kaggle/working/010/e0_f0_pair.json.queries.jsonl",
+        "checkpoint_hash": "bb5d0104075a5ba5",
+        "config_hash": "e3f2364dc9ecd471",
+        "dedup": "checkpoint_hash/formatter/task_id/query_index/config_hash; config covers max_new_tokens/n_sample/compare_mode/second_view/seed/task_view_seed; different checkpoints never reuse rows",
+        "skipped_completed": 0,
+        "n_budget_interrupted": 1,
+        "status_values": [
+          "completed",
+          "budget_interrupted"
+        ]
+      },
+      "formatter": "f0_space",
+      "n_queries": 14,
+      "interrupted_queries": 1,
+      "unattributed_process_seconds": 21.3399,
+      "queries": [
+        {
+          "task_id": "db118e2a",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 2468,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "base_greedy",
+              "prepare_s": 0.0173,
+              "generate_s": 102.7901,
+              "gen_tokens": 450,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "f61caf0d3f53b82a633d1aefe75fe04cac954f3af95f47b9be07d20df615afdc"
+            },
+            {
+              "kind": "adapter_greedy",
+              "prepare_s": 0.0057,
+              "generate_s": 118.6123,
+              "gen_tokens": 510,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "fe56f2a115dde1f08ef47fd06b43cdadd9bb8aec0bfc603de90c3b410360892d"
+            }
+          ]
+        },
+        {
+          "task_id": "291dc1e1",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 2484,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "base_greedy",
+              "prepare_s": 0.0056,
+              "generate_s": 76.8366,
+              "gen_tokens": 336,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "9aefebb41e7bbcf93632eed31e7d15173bf3865a7faa509499bceec926903239"
+            },
+            {
+              "kind": "adapter_greedy",
+              "prepare_s": 0.0059,
+              "generate_s": 392.1141,
+              "gen_tokens": 1732,
+              "truncated": false,
+              "parse": "FAIL",
+              "em": false,
+              "text_sha256": "99d495de1bc9c7fe405d02001a5e4c84867da2afc4882faacf9617c46510eed0"
+            }
+          ]
+        },
+        {
+          "task_id": "58c02a16",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 1524,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "base_greedy",
+              "prepare_s": 0.0042,
+              "generate_s": 113.0492,
+              "gen_tokens": 512,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "350790fcf1ac4d5090f958ec81f2d7682211a50a80c182f9dec4dfad9dc4d671"
+            },
+            {
+              "kind": "adapter_greedy",
+              "prepare_s": 0.004,
+              "generate_s": 116.6334,
+              "gen_tokens": 512,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "350790fcf1ac4d5090f958ec81f2d7682211a50a80c182f9dec4dfad9dc4d671"
+            }
+          ]
+        },
+        {
+          "task_id": "4c416de3",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 6588,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "base_greedy",
+              "prepare_s": 0.0142,
+              "generate_s": 195.1978,
+              "gen_tokens": 836,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "f50cb6e3a663b0e49e28875a21dec7f42a126ba9a51509ccedc0abcbf64cc2ab"
+            },
+            {
+              "kind": "adapter_greedy",
+              "prepare_s": 0.0144,
+              "generate_s": 202.5036,
+              "gen_tokens": 836,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "4e5e1147bdc28ffe29deab18aa21d1061e5334e7daefe30210de98d96b54c2ba"
+            }
+          ]
+        },
+        {
+          "task_id": "fc4aaf52",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 2652,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "base_greedy",
+              "prepare_s": 0.0064,
+              "generate_s": 115.2293,
+              "gen_tokens": 512,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "ed4258fb0ee6462407d6d47a7637230be4b794c21a43a88c3f87e0a8338da701"
+            },
+            {
+              "kind": "adapter_greedy",
+              "prepare_s": 0.0064,
+              "generate_s": 119.3715,
+              "gen_tokens": 512,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "ed4258fb0ee6462407d6d47a7637230be4b794c21a43a88c3f87e0a8338da701"
+            }
+          ]
+        },
+        {
+          "task_id": "aa4ec2a5",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 7588,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "base_greedy",
+              "prepare_s": 0.016,
+              "generate_s": 330.2765,
+              "gen_tokens": 1436,
+              "truncated": false,
+              "parse": "FAIL",
+              "em": false,
+              "text_sha256": "78c08013d2ae7f37005b3437c54394f734b3a137afa968d97c238a028ccc0521"
+            },
+            {
+              "kind": "adapter_greedy",
+              "prepare_s": 0.0169,
+              "generate_s": 334.5326,
+              "gen_tokens": 1404,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "a56da4c6f1492ff520e0ed73b9eff2be2034cfef506b7dbbcd6e958564c4403a"
+            }
+          ]
+        },
+        {
+          "task_id": "e3f79277",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 1332,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "base_greedy",
+              "prepare_s": 0.0037,
+              "generate_s": 112.5019,
+              "gen_tokens": 512,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "d9a2aa82f0f615c06066cc47fe56f49e4b278fdcf066c66f161f1cfda0b90b94"
+            },
+            {
+              "kind": "adapter_greedy",
+              "prepare_s": 0.0037,
+              "generate_s": 116.0282,
+              "gen_tokens": 512,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "1cf07d50b3127d24787599e55541dfce99db2da766ccd2c100ca97495146a8fa"
+            }
+          ]
+        },
+        {
+          "task_id": "1818057f",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 3152,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "base_greedy",
+              "prepare_s": 0.0075,
+              "generate_s": 215.6503,
+              "gen_tokens": 968,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "9dbf4c0dc14c2594b3d71330b2fb13ba4f868d943953c70b8970bc6b9327bc4f"
+            },
+            {
+              "kind": "adapter_greedy",
+              "prepare_s": 0.0075,
+              "generate_s": 222.6986,
+              "gen_tokens": 968,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "348999226bb141105de828bda76ad11f24c3ee9e52cffa88da0c1b922bd09f32"
+            }
+          ]
+        },
+        {
+          "task_id": "342dd610",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 2236,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "base_greedy",
+              "prepare_s": 0.0059,
+              "generate_s": 114.3749,
+              "gen_tokens": 512,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "144be50447a208184385f1d7dc51b93fcf1d76f7ebf325b60079b289a524f5af"
+            },
+            {
+              "kind": "adapter_greedy",
+              "prepare_s": 0.0058,
+              "generate_s": 118.333,
+              "gen_tokens": 512,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "ed4258fb0ee6462407d6d47a7637230be4b794c21a43a88c3f87e0a8338da701"
+            }
+          ]
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 3996,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "base_greedy",
+              "prepare_s": 0.0095,
+              "generate_s": 399.6955,
+              "gen_tokens": 1800,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "63e92bdfd2b4a0ea55670244f8d87d2c77c7f01c3c8ff4a3e461e78cdf080ded"
+            },
+            {
+              "kind": "adapter_greedy",
+              "prepare_s": 0.0094,
+              "generate_s": 411.7754,
+              "gen_tokens": 1800,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "63e92bdfd2b4a0ea55670244f8d87d2c77c7f01c3c8ff4a3e461e78cdf080ded"
+            }
+          ]
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 1,
+          "group": "E24",
+          "prompt_tokens": 3348,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "base_greedy",
+              "prepare_s": 0.0083,
+              "generate_s": 256.2948,
+              "gen_tokens": 1152,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "340281ef5f60914b9458597147de60a426c9cc76695de1b101938c9dd2e365b2"
+            },
+            {
+              "kind": "adapter_greedy",
+              "prepare_s": 0.0081,
+              "generate_s": 264.6048,
+              "gen_tokens": 1152,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "340281ef5f60914b9458597147de60a426c9cc76695de1b101938c9dd2e365b2"
+            }
+          ]
+        },
+        {
+          "task_id": "52df9849",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 2652,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "base_greedy",
+              "prepare_s": 0.0065,
+              "generate_s": 115.2287,
+              "gen_tokens": 512,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "6bc7e3f3230d7b0a9b0095f447e501e06f2b7f00fcca3b6410588be40481abb7"
+            },
+            {
+              "kind": "adapter_greedy",
+              "prepare_s": 0.0066,
+              "generate_s": 119.37,
+              "gen_tokens": 512,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "6bc7e3f3230d7b0a9b0095f447e501e06f2b7f00fcca3b6410588be40481abb7"
+            }
+          ]
+        },
+        {
+          "task_id": "52df9849",
+          "query_index": 1,
+          "group": "H_new",
+          "prompt_tokens": 2652,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "base_greedy",
+              "prepare_s": 0.0066,
+              "generate_s": 115.2304,
+              "gen_tokens": 512,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "df7ffd293e35f5ebd9129e46708c3f882fcddc0098465f3211c602682c985cb2"
+            },
+            {
+              "kind": "adapter_greedy",
+              "prepare_s": 0.0067,
+              "generate_s": 119.3656,
+              "gen_tokens": 512,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "df7ffd293e35f5ebd9129e46708c3f882fcddc0098465f3211c602682c985cb2"
+            }
+          ]
+        },
+        {
+          "task_id": "9aaea919",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 12708,
+          "status": "budget_interrupted",
+          "candidates": [
+            {
+              "kind": "base_greedy",
+              "prepare_s": 0.0262,
+              "generate_s": 431.622,
+              "gen_tokens": 1800,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "b240426259edcffc527aa56adf7a260d318afeb16400b44854fa6844dd67235a"
+            }
+          ]
+        }
+      ]
+    },
+    "f0_e0_missing_g1_fill": {
+      "count": 1,
+      "generate_seconds": {
+        "count": 1,
+        "sum": 450.4466,
+        "min": 450.4466,
+        "median": 450.4466,
+        "mean": 450.4466,
+        "p90_nearest_rank": 450.4466,
+        "max": 450.4466
+      },
+      "generated_tokens": {
+        "count": 1,
+        "sum": 1800,
+        "min": 1800,
+        "median": 1800,
+        "mean": 1800,
+        "p90_nearest_rank": 1800,
+        "max": 1800
+      },
+      "effective_tokens_per_generate_second": 3.9960341580999836,
+      "prepare_seconds_sum": 0.0595,
+      "parse_ok": 1,
+      "truncated": 0,
+      "exact_matches": 0,
+      "n_with_em_boolean": 1,
+      "source": "experiments/010/kaggle-e0fill-v1/010/e0_f0_fill.json",
+      "process_elapsed_s": 487.129,
+      "recorded_model_load_s": 26.165,
+      "environment": {
+        "python": "3.12.13",
+        "torch": "2.10.0+cu128",
+        "transformers": "5.8.0",
+        "gpu_count": 4,
+        "load_s": 26.165,
+        "peft": "0.19.1"
+      },
+      "max_new_tokens": 2048,
+      "checkpoint": {
+        "checkpoint_out": "/kaggle/working/010/e0_f0_fill.json.queries.jsonl",
+        "checkpoint_hash": "bb5d0104075a5ba5",
+        "config_hash": "53f7ef68b74cd4b8",
+        "dedup": "checkpoint_hash/formatter/task_id/query_index/config_hash; config covers max_new_tokens/n_sample/compare_mode/second_view/seed/task_view_seed; different checkpoints never reuse rows",
+        "skipped_completed": 0,
+        "n_budget_interrupted": 0,
+        "status_values": [
+          "completed",
+          "budget_interrupted"
+        ]
+      },
+      "formatter": "f0_space",
+      "n_queries": 1,
+      "interrupted_queries": 0,
+      "unattributed_process_seconds": 10.4579,
+      "queries": [
+        {
+          "task_id": "9aaea919",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 12708,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0595,
+              "generate_s": 450.4466,
+              "gen_tokens": 1800,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "ac7d4d03f5cdc5cc4c032528d14f47d984b5e110037b65805412dde11f9773e8"
+            }
+          ]
+        }
+      ]
+    },
+    "f1_zero_load_timeout": {
+      "count": 0,
+      "generate_seconds": null,
+      "generated_tokens": null,
+      "effective_tokens_per_generate_second": null,
+      "prepare_seconds_sum": 0,
+      "parse_ok": 0,
+      "truncated": 0,
+      "exact_matches": 0,
+      "n_with_em_boolean": 0,
+      "source": "experiments/010/kaggle-e0fill-v1/010/e0_f1_at0.json",
+      "process_elapsed_s": 6613.412,
+      "recorded_model_load_s": 6583.952,
+      "environment": {
+        "python": "3.12.13",
+        "torch": "2.10.0+cu128",
+        "transformers": "5.8.0",
+        "gpu_count": 4,
+        "load_s": 6583.952
+      },
+      "max_new_tokens": 960,
+      "checkpoint": {
+        "checkpoint_out": "/kaggle/working/010/e0_f1_at0.json.queries.jsonl",
+        "checkpoint_hash": "6e290a348593a526",
+        "config_hash": "adf0f9aa361c577b",
+        "dedup": "checkpoint_hash/formatter/task_id/query_index/config_hash; config covers max_new_tokens/n_sample/compare_mode/second_view/seed/task_view_seed; different checkpoints never reuse rows",
+        "skipped_completed": 0,
+        "n_budget_interrupted": 14,
+        "status_values": [
+          "completed",
+          "budget_interrupted"
+        ]
+      },
+      "formatter": "f1_compact",
+      "n_queries": 14,
+      "interrupted_queries": 14,
+      "unattributed_process_seconds": 29.46,
+      "queries": [
+        {
+          "task_id": "db118e2a",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": null,
+          "status": "budget_interrupted",
+          "candidates": []
+        },
+        {
+          "task_id": "291dc1e1",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": null,
+          "status": "budget_interrupted",
+          "candidates": []
+        },
+        {
+          "task_id": "58c02a16",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": null,
+          "status": "budget_interrupted",
+          "candidates": []
+        },
+        {
+          "task_id": "4c416de3",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": null,
+          "status": "budget_interrupted",
+          "candidates": []
+        },
+        {
+          "task_id": "fc4aaf52",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": null,
+          "status": "budget_interrupted",
+          "candidates": []
+        },
+        {
+          "task_id": "aa4ec2a5",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": null,
+          "status": "budget_interrupted",
+          "candidates": []
+        },
+        {
+          "task_id": "e3f79277",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": null,
+          "status": "budget_interrupted",
+          "candidates": []
+        },
+        {
+          "task_id": "1818057f",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": null,
+          "status": "budget_interrupted",
+          "candidates": []
+        },
+        {
+          "task_id": "342dd610",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": null,
+          "status": "budget_interrupted",
+          "candidates": []
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": null,
+          "status": "budget_interrupted",
+          "candidates": []
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 1,
+          "group": "E24",
+          "prompt_tokens": null,
+          "status": "budget_interrupted",
+          "candidates": []
+        },
+        {
+          "task_id": "52df9849",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": null,
+          "status": "budget_interrupted",
+          "candidates": []
+        },
+        {
+          "task_id": "52df9849",
+          "query_index": 1,
+          "group": "H_new",
+          "prompt_tokens": null,
+          "status": "budget_interrupted",
+          "candidates": []
+        },
+        {
+          "task_id": "9aaea919",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": null,
+          "status": "budget_interrupted",
+          "candidates": []
+        }
+      ]
+    },
+    "f1_zero_completed": {
+      "count": 14,
+      "generate_seconds": {
+        "count": 14,
+        "sum": 1372.5084,
+        "min": 30.1305,
+        "median": 60.938649999999996,
+        "mean": 98.036314,
+        "p90_nearest_rank": 211.7867,
+        "max": 216.2163
+      },
+      "generated_tokens": {
+        "count": 14,
+        "sum": 6091,
+        "min": 130,
+        "median": 272.0,
+        "mean": 435.071429,
+        "p90_nearest_rank": 930,
+        "max": 960
+      },
+      "effective_tokens_per_generate_second": 4.43785990672261,
+      "prepare_seconds_sum": 0.0794,
+      "parse_ok": 14,
+      "truncated": 1,
+      "exact_matches": 0,
+      "n_with_em_boolean": 14,
+      "source": "experiments/010/kaggle-s1-v1/010/s1_f1_at0.json",
+      "process_elapsed_s": 1683.95,
+      "recorded_model_load_s": 291.213,
+      "environment": {
+        "python": "3.12.13",
+        "torch": "2.10.0+cu128",
+        "transformers": "5.8.0",
+        "gpu_count": 4,
+        "load_s": 291.213
+      },
+      "max_new_tokens": 960,
+      "checkpoint": {
+        "checkpoint_out": "/kaggle/working/010/s1_f1_at0.json.queries.jsonl",
+        "checkpoint_hash": "6e290a348593a526",
+        "config_hash": "adf0f9aa361c577b",
+        "dedup": "checkpoint_hash/formatter/task_id/query_index/config_hash; config covers max_new_tokens/n_sample/compare_mode/second_view/seed/task_view_seed; different checkpoints never reuse rows",
+        "skipped_completed": 0,
+        "n_budget_interrupted": 0,
+        "status_values": [
+          "completed",
+          "budget_interrupted"
+        ]
+      },
+      "formatter": "f1_compact",
+      "n_queries": 14,
+      "interrupted_queries": 0,
+      "unattributed_process_seconds": 20.1492,
+      "queries": [
+        {
+          "task_id": "db118e2a",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 1392,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0154,
+              "generate_s": 55.1645,
+              "gen_tokens": 240,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "793546950a48c17ab028908014eaa3bd55d7a71063b614b4b5063ee64ff3843e"
+            }
+          ]
+        },
+        {
+          "task_id": "291dc1e1",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 1423,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0035,
+              "generate_s": 30.1305,
+              "gen_tokens": 130,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "99e6d68353bdae48a85e319ee64d3173c02ac57599f03b555bddf4dcae2a57fa"
+            }
+          ]
+        },
+        {
+          "task_id": "58c02a16",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 887,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0024,
+              "generate_s": 59.935,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "16ce1551247f2e09d5d2f74478581fdc2607dbffbd161fec40bdf86b7100ad2c"
+            }
+          ]
+        },
+        {
+          "task_id": "4c416de3",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 3496,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0075,
+              "generate_s": 100.9984,
+              "gen_tokens": 437,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "0fabea09f9b8da3dfd7e050a294f6f07ce5dd53d29e3e0b09a04ff614222f8bb"
+            }
+          ]
+        },
+        {
+          "task_id": "fc4aaf52",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 1451,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0036,
+              "generate_s": 60.939,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "9b781716d5fd1814ca36b62335560447c0c448ffe5d856b2058e68185448b846"
+            }
+          ]
+        },
+        {
+          "task_id": "aa4ec2a5",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 4015,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0085,
+              "generate_s": 171.8019,
+              "gen_tokens": 756,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "edc471d2722e8ddf4197edcb69b2b033fe4d6d2d0b1495fa6ffd54492ff1d9e5"
+            }
+          ]
+        },
+        {
+          "task_id": "e3f79277",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 761,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0022,
+              "generate_s": 59.7693,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "63957071b5a6d2b0c25bcf61a839d223f22320770b27983fd40550896a2bd690"
+            }
+          ]
+        },
+        {
+          "task_id": "1818057f",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 1725,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.004,
+              "generate_s": 112.1299,
+              "gen_tokens": 506,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "c655f56c5f5f1ecd6b5e4c9ec01b6926baa121438fb054d458cf4d4aef241d89"
+            }
+          ]
+        },
+        {
+          "task_id": "342dd610",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 1275,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0032,
+              "generate_s": 60.593,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "9b781716d5fd1814ca36b62335560447c0c448ffe5d856b2058e68185448b846"
+            }
+          ]
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 2180,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0049,
+              "generate_s": 211.7867,
+              "gen_tokens": 960,
+              "truncated": true,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "f7d469049b84e1ce2ac1ec00fc64a575bdb37530280d5831a3b8b059fbfada7c"
+            }
+          ]
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 1,
+          "group": "E24",
+          "prompt_tokens": 1850,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0041,
+              "generate_s": 111.17,
+              "gen_tokens": 500,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "dbf2daf7af9b7e064ab9d38a1015c8bb1992fda8a63cbdb81defa77e947fb9f2"
+            }
+          ]
+        },
+        {
+          "task_id": "52df9849",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 1451,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0034,
+              "generate_s": 60.9383,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "479ab91a289442368601b6d8d2f9a48100d8888be63758c98cf85145c5ed57f3"
+            }
+          ]
+        },
+        {
+          "task_id": "52df9849",
+          "query_index": 1,
+          "group": "H_new",
+          "prompt_tokens": 1451,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0034,
+              "generate_s": 60.9356,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "2378d311862bc715627ae941535f3f9c6cbcd30c061f2bd482fd327030fecbfb"
+            }
+          ]
+        },
+        {
+          "task_id": "9aaea919",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 6617,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0133,
+              "generate_s": 216.2163,
+              "gen_tokens": 930,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "d74cfc4bf6ee33dcd74f077675ddf9d7fb7ad082af214afceef95fbdec2f8390"
+            }
+          ]
+        }
+      ]
+    },
+    "f1_25": {
+      "count": 14,
+      "generate_seconds": {
+        "count": 14,
+        "sum": 1456.2734,
+        "min": 29.2186,
+        "median": 63.073049999999995,
+        "mean": 104.019529,
+        "p90_nearest_rank": 218.3754,
+        "max": 224.1112
+      },
+      "generated_tokens": {
+        "count": 14,
+        "sum": 6257,
+        "min": 120,
+        "median": 272.0,
+        "mean": 446.928571,
+        "p90_nearest_rank": 930,
+        "max": 960
+      },
+      "effective_tokens_per_generate_second": 4.296583320137551,
+      "prepare_seconds_sum": 0.0701,
+      "parse_ok": 13,
+      "truncated": 1,
+      "exact_matches": 0,
+      "n_with_em_boolean": 14,
+      "source": "experiments/010/kaggle-s1probe-v1/010/s1_f1_25_eval.json",
+      "process_elapsed_s": 1479.829,
+      "recorded_model_load_s": 14.373,
+      "environment": {
+        "python": "3.12.13",
+        "torch": "2.10.0+cu128",
+        "transformers": "5.8.0",
+        "gpu_count": 4,
+        "load_s": 14.373,
+        "peft": "0.19.1"
+      },
+      "max_new_tokens": 960,
+      "checkpoint": {
+        "checkpoint_out": "/kaggle/working/010/s1_f1_25_eval.json.queries.jsonl",
+        "checkpoint_hash": "0b7b3b49befa17c0",
+        "config_hash": "adf0f9aa361c577b",
+        "dedup": "checkpoint_hash/formatter/task_id/query_index/config_hash; config covers max_new_tokens/n_sample/compare_mode/second_view/seed/task_view_seed; different checkpoints never reuse rows",
+        "skipped_completed": 0,
+        "n_budget_interrupted": 0,
+        "status_values": [
+          "completed",
+          "budget_interrupted"
+        ]
+      },
+      "formatter": "f1_compact",
+      "n_queries": 14,
+      "interrupted_queries": 0,
+      "unattributed_process_seconds": 9.1125,
+      "queries": [
+        {
+          "task_id": "db118e2a",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 1392,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0054,
+              "generate_s": 60.2285,
+              "gen_tokens": 256,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "b59666d5756b6ea8340e9c7c66b4b44c17d77e9666cf3a9792d5c3e96c3fd739"
+            }
+          ]
+        },
+        {
+          "task_id": "291dc1e1",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 1423,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0033,
+              "generate_s": 29.2186,
+              "gen_tokens": 120,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "539e63c1934402116022fb408ff78ce40a58acf786647a527bb4d3d14756278e"
+            }
+          ]
+        },
+        {
+          "task_id": "58c02a16",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 887,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0024,
+              "generate_s": 61.8429,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "16ce1551247f2e09d5d2f74478581fdc2607dbffbd161fec40bdf86b7100ad2c"
+            }
+          ]
+        },
+        {
+          "task_id": "4c416de3",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 3496,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0074,
+              "generate_s": 104.9186,
+              "gen_tokens": 437,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "bbb570b3c9231e86455f3ea4d2db3a5cb8accfd0a865170331a2136c9c9ddc82"
+            }
+          ]
+        },
+        {
+          "task_id": "fc4aaf52",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 1451,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0036,
+              "generate_s": 63.0757,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "9b781716d5fd1814ca36b62335560447c0c448ffe5d856b2058e68185448b846"
+            }
+          ]
+        },
+        {
+          "task_id": "aa4ec2a5",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 4015,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0088,
+              "generate_s": 191.1723,
+              "gen_tokens": 816,
+              "truncated": false,
+              "parse": "FAIL",
+              "em": false,
+              "text_sha256": "72b6e4a5121c878c159a1b941b1f9faf715cf6cca25cb36665eb595d9886bcd5"
+            }
+          ]
+        },
+        {
+          "task_id": "e3f79277",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 761,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0021,
+              "generate_s": 61.6085,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "7533970856c7e5e58909cbf6608f3ee5ff1c5819f52242a410de555e79ca39d2"
+            }
+          ]
+        },
+        {
+          "task_id": "1818057f",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 1725,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0041,
+              "generate_s": 115.8128,
+              "gen_tokens": 506,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "c655f56c5f5f1ecd6b5e4c9ec01b6926baa121438fb054d458cf4d4aef241d89"
+            }
+          ]
+        },
+        {
+          "task_id": "342dd610",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 1275,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0033,
+              "generate_s": 62.6415,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "9b781716d5fd1814ca36b62335560447c0c448ffe5d856b2058e68185448b846"
+            }
+          ]
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 2180,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.005,
+              "generate_s": 218.3754,
+              "gen_tokens": 960,
+              "truncated": true,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "f7d469049b84e1ce2ac1ec00fc64a575bdb37530280d5831a3b8b059fbfada7c"
+            }
+          ]
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 1,
+          "group": "E24",
+          "prompt_tokens": 1850,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0045,
+              "generate_s": 137.1299,
+              "gen_tokens": 600,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "33e18c36bd88ee2740715092a3de2334828c5762ea7aa0c1feae4c5efe98e983"
+            }
+          ]
+        },
+        {
+          "task_id": "52df9849",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 1451,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0035,
+              "generate_s": 63.0671,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "479ab91a289442368601b6d8d2f9a48100d8888be63758c98cf85145c5ed57f3"
+            }
+          ]
+        },
+        {
+          "task_id": "52df9849",
+          "query_index": 1,
+          "group": "H_new",
+          "prompt_tokens": 1451,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0035,
+              "generate_s": 63.0704,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "2378d311862bc715627ae941535f3f9c6cbcd30c061f2bd482fd327030fecbfb"
+            }
+          ]
+        },
+        {
+          "task_id": "9aaea919",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 6617,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0132,
+              "generate_s": 224.1112,
+              "gen_tokens": 930,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "d74cfc4bf6ee33dcd74f077675ddf9d7fb7ad082af214afceef95fbdec2f8390"
+            }
+          ]
+        }
+      ]
+    },
+    "f1_50": {
+      "count": 14,
+      "generate_seconds": {
+        "count": 14,
+        "sum": 1450.9167,
+        "min": 29.2337,
+        "median": 63.1342,
+        "mean": 103.636907,
+        "p90_nearest_rank": 218.5987,
+        "max": 224.2912
+      },
+      "generated_tokens": {
+        "count": 14,
+        "sum": 6227,
+        "min": 120,
+        "median": 272.0,
+        "mean": 444.785714,
+        "p90_nearest_rank": 930,
+        "max": 960
+      },
+      "effective_tokens_per_generate_second": 4.291769472361853,
+      "prepare_seconds_sum": 0.0707,
+      "parse_ok": 13,
+      "truncated": 1,
+      "exact_matches": 0,
+      "n_with_em_boolean": 14,
+      "source": "experiments/010/kaggle-s2-v1/010/s2_f1_50_eval.json",
+      "process_elapsed_s": 1474.604,
+      "recorded_model_load_s": 14.38,
+      "environment": {
+        "python": "3.12.13",
+        "torch": "2.10.0+cu128",
+        "transformers": "5.8.0",
+        "gpu_count": 4,
+        "load_s": 14.38,
+        "peft": "0.19.1"
+      },
+      "max_new_tokens": 960,
+      "checkpoint": {
+        "checkpoint_out": "/kaggle/working/010/s2_f1_50_eval.json.queries.jsonl",
+        "checkpoint_hash": "d35d4f2359ce0eb0",
+        "config_hash": "adf0f9aa361c577b",
+        "dedup": "checkpoint_hash/formatter/task_id/query_index/config_hash; config covers max_new_tokens/n_sample/compare_mode/second_view/seed/task_view_seed; different checkpoints never reuse rows",
+        "skipped_completed": 0,
+        "n_budget_interrupted": 0,
+        "status_values": [
+          "completed",
+          "budget_interrupted"
+        ]
+      },
+      "formatter": "f1_compact",
+      "n_queries": 14,
+      "interrupted_queries": 0,
+      "unattributed_process_seconds": 9.2366,
+      "queries": [
+        {
+          "task_id": "db118e2a",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 1392,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0056,
+              "generate_s": 60.2717,
+              "gen_tokens": 256,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "b59666d5756b6ea8340e9c7c66b4b44c17d77e9666cf3a9792d5c3e96c3fd739"
+            }
+          ]
+        },
+        {
+          "task_id": "291dc1e1",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 1423,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0034,
+              "generate_s": 29.2337,
+              "gen_tokens": 120,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "539e63c1934402116022fb408ff78ce40a58acf786647a527bb4d3d14756278e"
+            }
+          ]
+        },
+        {
+          "task_id": "58c02a16",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 887,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0024,
+              "generate_s": 61.9123,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "16ce1551247f2e09d5d2f74478581fdc2607dbffbd161fec40bdf86b7100ad2c"
+            }
+          ]
+        },
+        {
+          "task_id": "4c416de3",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 3496,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0076,
+              "generate_s": 104.9991,
+              "gen_tokens": 437,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "343a829585fe3e0de577f7fc6d7ab98a171fec5c26d3fe27f144fa61b3133416"
+            }
+          ]
+        },
+        {
+          "task_id": "fc4aaf52",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 1451,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0038,
+              "generate_s": 63.1249,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "9b781716d5fd1814ca36b62335560447c0c448ffe5d856b2058e68185448b846"
+            }
+          ]
+        },
+        {
+          "task_id": "aa4ec2a5",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 4015,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0085,
+              "generate_s": 184.6606,
+              "gen_tokens": 786,
+              "truncated": false,
+              "parse": "FAIL",
+              "em": false,
+              "text_sha256": "122d9a137268b0ce12702a5bba4566b9a31d5139a04d11fa9b09c02ddce3d994"
+            }
+          ]
+        },
+        {
+          "task_id": "e3f79277",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 761,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0021,
+              "generate_s": 61.6639,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "7533970856c7e5e58909cbf6608f3ee5ff1c5819f52242a410de555e79ca39d2"
+            }
+          ]
+        },
+        {
+          "task_id": "1818057f",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 1725,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0041,
+              "generate_s": 115.9087,
+              "gen_tokens": 506,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "c655f56c5f5f1ecd6b5e4c9ec01b6926baa121438fb054d458cf4d4aef241d89"
+            }
+          ]
+        },
+        {
+          "task_id": "342dd610",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 1275,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0033,
+              "generate_s": 62.7006,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "9b781716d5fd1814ca36b62335560447c0c448ffe5d856b2058e68185448b846"
+            }
+          ]
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 2180,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0051,
+              "generate_s": 218.5987,
+              "gen_tokens": 960,
+              "truncated": true,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "f7d469049b84e1ce2ac1ec00fc64a575bdb37530280d5831a3b8b059fbfada7c"
+            }
+          ]
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 1,
+          "group": "E24",
+          "prompt_tokens": 1850,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0044,
+              "generate_s": 137.2829,
+              "gen_tokens": 600,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "1e988f0017ed35bbfc298d4e00ca2cef60afd6789977e6f06d4c26ea702d3feb"
+            }
+          ]
+        },
+        {
+          "task_id": "52df9849",
+          "query_index": 0,
+          "group": "H_new",
+          "prompt_tokens": 1451,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0035,
+              "generate_s": 63.1372,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "479ab91a289442368601b6d8d2f9a48100d8888be63758c98cf85145c5ed57f3"
+            }
+          ]
+        },
+        {
+          "task_id": "52df9849",
+          "query_index": 1,
+          "group": "H_new",
+          "prompt_tokens": 1451,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0035,
+              "generate_s": 63.1312,
+              "gen_tokens": 272,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "2378d311862bc715627ae941535f3f9c6cbcd30c061f2bd482fd327030fecbfb"
+            }
+          ]
+        },
+        {
+          "task_id": "9aaea919",
+          "query_index": 0,
+          "group": "E24",
+          "prompt_tokens": 6617,
+          "status": "completed",
+          "candidates": [
+            {
+              "kind": "greedy",
+              "prepare_s": 0.0134,
+              "generate_s": 224.2912,
+              "gen_tokens": 930,
+              "truncated": false,
+              "parse": "OK",
+              "em": false,
+              "text_sha256": "d74cfc4bf6ee33dcd74f077675ddf9d7fb7ad082af214afceef95fbdec2f8390"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "f0_e0_complete_merged_candidates": {
+    "base_greedy": {
+      "count": 14,
+      "generate_seconds": {
+        "count": 14,
+        "sum": 2693.978,
+        "min": 76.8366,
+        "median": 115.22985,
+        "mean": 192.427,
+        "p90_nearest_rank": 399.6955,
+        "max": 431.622
+      },
+      "generated_tokens": {
+        "count": 14,
+        "sum": 11850,
+        "min": 336,
+        "median": 512.0,
+        "mean": 846.428571,
+        "p90_nearest_rank": 1800,
+        "max": 1800
+      },
+      "effective_tokens_per_generate_second": 4.398699618185449,
+      "prepare_seconds_sum": 0.1379,
+      "parse_ok": 13,
+      "truncated": 0,
+      "exact_matches": 0,
+      "n_with_em_boolean": 14
+    },
+    "adapter_greedy": {
+      "count": 14,
+      "generate_seconds": {
+        "count": 14,
+        "sum": 3106.3897,
+        "min": 116.0282,
+        "median": 160.93755,
+        "mean": 221.884979,
+        "p90_nearest_rank": 411.7754,
+        "max": 450.4466
+      },
+      "generated_tokens": {
+        "count": 14,
+        "sum": 13274,
+        "min": 510,
+        "median": 674.0,
+        "mean": 948.142857,
+        "p90_nearest_rank": 1800,
+        "max": 1800
+      },
+      "effective_tokens_per_generate_second": 4.2731277405407315,
+      "prepare_seconds_sum": 0.1606,
+      "parse_ok": 13,
+      "truncated": 0,
+      "exact_matches": 0,
+      "n_with_em_boolean": 14
+    }
+  },
+  "prediction_text_changes": {
+    "f1_zero_to_25": {
+      "same": 8,
+      "total": 14,
+      "changed_queries": [
+        {
+          "task_id": "db118e2a",
+          "query_index": 0
+        },
+        {
+          "task_id": "291dc1e1",
+          "query_index": 0
+        },
+        {
+          "task_id": "4c416de3",
+          "query_index": 0
+        },
+        {
+          "task_id": "aa4ec2a5",
+          "query_index": 0
+        },
+        {
+          "task_id": "e3f79277",
+          "query_index": 0
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 1
+        }
+      ]
+    },
+    "f1_25_to_50": {
+      "same": 11,
+      "total": 14,
+      "changed_queries": [
+        {
+          "task_id": "4c416de3",
+          "query_index": 0
+        },
+        {
+          "task_id": "aa4ec2a5",
+          "query_index": 0
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 1
+        }
+      ]
+    }
+  },
+  "suffix_probe": [
+    {
+      "episode_id": "a59b95c0|gen|1|ident|ident",
+      "full_len": 990,
+      "prompt_len": 702,
+      "target_len": 288,
+      "loss": {
+        "full_1": 0.006367324851453304,
+        "full_2": 0.006367324851453304,
+        "suffix_1": 0.006367324851453304,
+        "suffix_2": 0.006367324851453304,
+        "abs_diff_1": 0.0,
+        "repeat_noise_full_abs": 0.0,
+        "repeat_noise_suffix_abs": 0.0
+      },
+      "gradient_summary": {
+        "n_tensors": 512,
+        "n_masked_zero": 0,
+        "masked_all_zero": false,
+        "max_rel_error": 0.04407406980287441,
+        "mean_rel_error": 0.011730525950957653,
+        "min_cosine": 0.999497326335178,
+        "mean_cosine": 0.999912622254071,
+        "repeat_noise_max_rel": 0.04364841111889912,
+        "repeat_noise_min_cos": 0.9991526011614793
+      },
+      "time_s": {
+        "warmup_full_JIT": 9.7632,
+        "warmup_suffix_JIT": 7.9206,
+        "measured_full_1": 8.2446,
+        "measured_full_2": 8.2838,
+        "measured_suffix_1": 8.1693,
+        "measured_suffix_2": 8.0291,
+        "warmup_note": "JIT/warmup discarded; measured runs only after sync+cache clean"
+      },
+      "memory_gb": {
+        "allocated": {
+          "gpu0": 13.5246,
+          "gpu1": 15.1437,
+          "gpu2": 15.1139,
+          "gpu3": 17.9024
+        },
+        "reserved": {
+          "gpu0": 13.6755,
+          "gpu1": 15.3344,
+          "gpu2": 15.2757,
+          "gpu3": 18.9184
+        },
+        "unit": "1e9_bytes",
+        "note": "peaks after sync; old logits/grad deleted and cache emptied between runs"
+      }
+    },
+    {
+      "episode_id": "332efdb3|test|0|ident|ident",
+      "full_len": 1212,
+      "prompt_len": 970,
+      "target_len": 242,
+      "loss": {
+        "full_1": 1.0057290637632832e-05,
+        "full_2": 1.0057290637632832e-05,
+        "suffix_1": 1.0057290637632832e-05,
+        "suffix_2": 1.0057290637632832e-05,
+        "abs_diff_1": 0.0,
+        "repeat_noise_full_abs": 0.0,
+        "repeat_noise_suffix_abs": 0.0
+      },
+      "gradient_summary": {
+        "n_tensors": 512,
+        "n_masked_zero": 0,
+        "masked_all_zero": false,
+        "max_rel_error": 0.19650481824873278,
+        "mean_rel_error": 0.015173480581362702,
+        "min_cosine": 0.9872509504392912,
+        "mean_cosine": 0.9998358277001572,
+        "repeat_noise_max_rel": 0.21989686725763238,
+        "repeat_noise_min_cos": 0.9877491520156133
+      },
+      "time_s": {
+        "warmup_full_JIT": 10.6672,
+        "warmup_suffix_JIT": 10.4619,
+        "measured_full_1": 10.6015,
+        "measured_full_2": 10.5984,
+        "measured_suffix_1": 10.4643,
+        "measured_suffix_2": 10.4754,
+        "warmup_note": "JIT/warmup discarded; measured runs only after sync+cache clean"
+      },
+      "memory_gb": {
+        "allocated": {
+          "gpu0": 13.8948,
+          "gpu1": 15.4187,
+          "gpu2": 15.3851,
+          "gpu3": 18.6006
+        },
+        "reserved": {
+          "gpu0": 14.0719,
+          "gpu1": 15.6133,
+          "gpu2": 15.6112,
+          "gpu3": 19.8726
+        },
+        "unit": "1e9_bytes",
+        "note": "peaks after sync; old logits/grad deleted and cache emptied between runs"
+      }
+    },
+    {
+      "episode_id": "2ccd9fef|test|0|ident|ident",
+      "full_len": 2072,
+      "prompt_len": 1962,
+      "target_len": 110,
+      "loss": {
+        "full_1": 0.14988850057125092,
+        "full_2": 0.14988850057125092,
+        "suffix_1": 0.14988850057125092,
+        "suffix_2": 0.14988850057125092,
+        "abs_diff_1": 0.0,
+        "repeat_noise_full_abs": 0.0,
+        "repeat_noise_suffix_abs": 0.0
+      },
+      "gradient_summary": {
+        "n_tensors": 512,
+        "n_masked_zero": 0,
+        "masked_all_zero": false,
+        "max_rel_error": 0.10280008390080882,
+        "mean_rel_error": 0.012147097413789125,
+        "min_cosine": 0.9950605375613688,
+        "mean_cosine": 0.9998974521476233,
+        "repeat_noise_max_rel": 0.11476892577436656,
+        "repeat_noise_min_cos": 0.9939823461242489
+      },
+      "time_s": {
+        "warmup_full_JIT": 23.9057,
+        "warmup_suffix_JIT": 23.5271,
+        "measured_full_1": 24.0204,
+        "measured_full_2": 23.8943,
+        "measured_suffix_1": 23.5003,
+        "measured_suffix_2": 23.4828,
+        "warmup_note": "JIT/warmup discarded; measured runs only after sync+cache clean"
+      },
+      "memory_gb": {
+        "allocated": {
+          "gpu0": 15.4541,
+          "gpu1": 16.6024,
+          "gpu2": 16.5577,
+          "gpu3": 21.3118
+        },
+        "reserved": {
+          "gpu0": 15.7622,
+          "gpu1": 16.9387,
+          "gpu2": 16.8401,
+          "gpu3": 23.3937
+        },
+        "unit": "1e9_bytes",
+        "note": "peaks after sync; old logits/grad deleted and cache emptied between runs"
+      }
+    }
+  ],
+  "raw_log_loading_evidence": {
+    "kaggle-e0-v1/e0-f0-pair-010.log": {
+      "last_log_timestamp_s": 5729.06875297,
+      "first_log_timestamp_s": 5.933439822,
+      "deduplicated_model_load_messages": [
+        {
+          "log_time_s": 367.125562731,
+          "text": "model loaded in 312.7s base_merged=false"
+        }
+      ],
+      "scope": "log-relative timestamps, NOT complete billed session duration; duplicated stdout is deduplicated"
+    },
+    "kaggle-e0fill-v1/e0-fill-f1at0-010.log": {
+      "last_log_timestamp_s": 7168.066581902,
+      "first_log_timestamp_s": 9.692347392,
+      "deduplicated_model_load_messages": [
+        {
+          "log_time_s": 6664.614096194,
+          "text": "model loaded in 6584.0s base_merged=false"
+        },
+        {
+          "log_time_s": 6708.339900512,
+          "text": "model loaded in 26.2s base_merged=false"
+        }
+      ],
+      "scope": "log-relative timestamps, NOT complete billed session duration; duplicated stdout is deduplicated"
+    }
+  },
+  "corrections": [
+    {
+      "claim": "progress §15 suffix 93 updates zero OOM",
+      "evidence": "S3 17 + S4 25 = 42 successful optimizer updates; S4 is fresh, so longest unique consumption prefix is 100 episodes/25 updates.",
+      "source": "training.f0_suffix_17 and training.f0_suffix_25"
+    },
+    {
+      "claim": "progress §15 F0 suffix loss 0.012–0.146",
+      "evidence": "S4 max 0.2585575017146766 at update 11; min 0.012383610210235929; last 0.020209558919304982.",
+      "source": "experiments/010/kaggle-s4-v1/010/s4-f0/train_log.jsonl:11"
+    },
+    {
+      "claim": "progress §10 and §15 E0 also had ~6600s load stall; zero stderr",
+      "evidence": "E0 env.load_s=312.678 and raw log agrees. Only fill-session first F1 load is 6583.952s, with many stderr Loading weights events. Cold storage is a hypothesis, not established root cause.",
+      "source": "evaluations / raw_log_loading_evidence"
+    },
+    {
+      "claim": "progress §15 S3 quota 1.28h",
+      "evidence": "Earlier §14 records 11000s=3.0556h; §15 omits F1-25/probe-attempt session 6690s=1.8583h. No raw before/after account snapshots were found here, so claimed billing is not independently verified.",
+      "source": "docs/progress/010-gpu-budget-experiments.md:155,168,176"
+    },
+    {
+      "claim": "probe actual sample lengths short/2K/4K imply around 1K/2K/4K",
+      "evidence": "Actual lengths are 990, 1212, 2072. Labels refer to length bins. Same-path gradient noise is sizable; all cross-path metrics are not literally below every repeat-noise maximum.",
+      "source": "suffix_probe"
+    },
+    {
+      "claim": "probe memory shows no full/suffix separation",
+      "evidence": "JSON has one memory peak dictionary per episode rather than separate full/suffix peaks. It cannot quantify paired memory savings. Training peak memory and OOM outcomes are distinct evidence.",
+      "source": "suffix_probe"
+    },
+    {
+      "claim": "F1@0 fully legal without qualification",
+      "evidence": "14 parses OK but 21897d95 q0 is truncated at 960 tokens; same truncation at F1-25/50. Parsed rectangle does not imply finished response.",
+      "source": "evaluations"
+    },
+    {
+      "claim": "2.2x quota conversion now established",
+      "evidence": "Old claimed account differences/log runtime do not establish a stable billable multiplier, and E0 mismatch remains unexplained. Use current official rate/live account checks from root audit; 2.2x is only a provisional planning allowance.",
+      "source": "raw_log_loading_evidence"
+    },
+    {
+      "claim": "S4 slug s4-f0-train-010 / S3 s3-f0-suffix-010",
+      "evidence": "Local prepared metadata uses no-hyphen slugs. Parent can access ccjjllt/s4-f0-train-010 but no-hyphen S4 object is denied. Allowed log matches local SUMMARY and printed update metrics; retain identity discrepancy rather than declaring progress slug wrong.",
+      "source": "training.*.kaggle_notebook_from_metadata"
+    },
+    {
+      "claim": "progress §15 S3/S4 did not have loading stall",
+      "evidence": "Accessible S4 log records LOAD_DONE base 3308.9s (~55.1min), versus 2257.6s successful training. Root cause remains unconfirmed. S3 full log unavailable here.",
+      "source": "experiments/011/s4-accessible-notebook.log"
+    }
+  ],
+  "reuse_and_skip": {
+    "reuse_after_remote_artifact_verification": [
+      "S4 F0 suffix step25 for pending P12 evaluation; do not retrain.",
+      "F1 step25 and step50 existing P12 outputs; reuse immutable results with checkpoint/config identity.",
+      "Complete merged F0 base/G1 E0 14-query outputs; reuse reference outputs when decode/evaluation conditions are unchanged.",
+      "Existing paired 400-row data and fixed consumption prefix.",
+      "Existing suffix probe and failure analysis; no broad reprobe without new implementation/kernel/dtype."
+    ],
+    "do_not_treat_as_valid_comparison": [
+      "S1 F0 full step4 consumed a different/OOM-skipped prefix.",
+      "S3 step17 is superseded by S4 fresh step25 and has no P12 result.",
+      "F1 load-timeout evaluation has zero candidates and n_scored=0."
+    ],
+    "do_not_spend_again": [
+      "Fresh F1-25 or fresh F1-50 with unchanged data/config.",
+      "Fresh F0-25 with unchanged data/config.",
+      "Complete repeated base/G1 P12 under unchanged setup.",
+      "Full-logits F0 4K retry on unchanged stack.",
+      "Repeated 25-to50 F1 merely because loss decreases; observed P12 remains zero and 11/14 prediction text hashes match."
+    ]
+  },
+  "budget_primitives": {
+    "status": "Planning projections only; parent must combine with live quota and actual checkpoint inventory. All stated session caps include a bounded setup/save allowance, not a guarantee against >1h loading anomalies.",
+    "recommended_initial_committed_quota_hours": 23,
+    "recommended_uncommitted_quota_hours": 6,
+    "provisional_planning_charge_per_wall_hour": 2.3,
+    "nominal_official_charge_from_old_record": 2,
+    "committed_wall_hours_at_provisional_rate": 10.0,
+    "f0_p12_one_arm": {
+      "observed_generate_s_range": [
+        2693.978,
+        3106.3897
+      ],
+      "suggested_session_cap_wall_h": 1.25,
+      "provisional_quota_cap_h": 2.875,
+      "note": "Unmeasured F0-25 output lengths may differ; do not assume correctness or completion from old candidate timing."
+    },
+    "f1_p12_one_arm": {
+      "observed_generate_s_range": [
+        1372.5084,
+        1456.2734
+      ],
+      "suggested_session_cap_wall_h": 0.75,
+      "provisional_quota_cap_h": 1.7249999999999999
+    },
+    "f0_25_updates": {
+      "observed_successful_update_s": 2257.5843,
+      "suggested_session_cap_wall_h_if_loading_normal": 1,
+      "note": "Already completed; shown only as cost primitive, not recommended rerun."
+    },
+    "f1_25_updates": {
+      "observed_successful_update_s": 1044.5261,
+      "suggested_session_cap_wall_h_if_loading_normal": 0.5,
+      "note": "Already completed; use existing checkpoint or verified state resume."
+    },
+    "extra_p12_candidate_one_view": {
+      "f0_generate_wall_h_range": [
+        0.7483272222222223,
+        0.8628860277777778
+      ],
+      "f1_generate_wall_h_range": [
+        0.3812523333333333,
+        0.4045203888888889
+      ],
+      "note": "Only if old direct-grid sequence lengths transfer; cannot project this to long-reasoning/program agents."
+    },
+    "admission_rules": [
+      "Inspect actual quota before and after one isolated session; do not charge multiple simultaneous jobs while calibrating.",
+      "Prefer one loaded model with arm/adapter switching; explicit output identity prevents stale-output reuse.",
+      "Reserve save time plus one observed p90/max query before starting a query; no hard mid-update termination.",
+      "Use per-stage caps and exit immediately after staged outputs are saved, avoiding idle GPU while humans decide.",
+      "If loading is anomalously slow, record heartbeat and abort/replan within a pre-agreed session allowance; do not silently consume the 6h reserve.",
+      "New reasoning/program-agent cost cannot be inferred from 4.3 token/s short grid decode; establish a small token/time cap pilot before expanding."
+    ],
+    "note_about_live_quota": "Parent runtime-evidence.json checked 29.3855211h remaining at 2026-10-10 09:34:59 Beijing; 23+6=29h leaves a further 0.3855h. Planning coefficient 2.3 is conservative, not a measured billing rate."
+  },
+  "source_sha256": {
+    "experiments/010/kaggle-s1-v1/010/s1-f0/train_log.jsonl": {
+      "sha256": "302c9b172369f39de65c15f917ecc07a0bd59e04c34d20ec3b4b10beb9523d85",
+      "bytes": 2938
+    },
+    "experiments/010/kaggle-s1-v1/010/s1-f0/run_config.json": {
+      "sha256": "965cf0a24932f228fd99244a9f90abf60aedc80a8733265bcec2cdfb12281007",
+      "bytes": 6207
+    },
+    "experiments/010/kaggle-s1-v1/010/s1-f0/SUMMARY.json": {
+      "sha256": "e6d1c2d753b61ab9ab7ce8b8b49f261388e887bf5d28e7fd82801779745aa3a4",
+      "bytes": 1623
+    },
+    "experiments/010/kaggle-s1probe-v1/010/s1-f1/train_log.jsonl": {
+      "sha256": "05facbf0aed424997e44b59d31877ac0072654fc758b992fcbf3e30c8c5e132c",
+      "bytes": 13898
+    },
+    "experiments/010/kaggle-s1probe-v1/010/s1-f1/run_config.json": {
+      "sha256": "d8b569aafa6517c9c8c818fedfc400197053bc292806262802dceccd612ed93e",
+      "bytes": 6494
+    },
+    "experiments/010/kaggle-s1probe-v1/010/s1-f1/SUMMARY.json": {
+      "sha256": "aefb546cf8048818d983e83e67b00f2de3289944126cacf810fcf2e8fd34b44c",
+      "bytes": 1636
+    },
+    "experiments/010/kaggle-s2-v1/010/s2-f1-50/train_log.jsonl": {
+      "sha256": "7204b69a4ef3b80715731dfff9ca9b812f69766e4a04e7cddc5f0d033b6088cb",
+      "bytes": 27857
+    },
+    "experiments/010/kaggle-s2-v1/010/s2-f1-50/run_config.json": {
+      "sha256": "173c97972dd8181f48abe65c88e0df994a9a89330f571e693c0777a61d2d27a9",
+      "bytes": 6500
+    },
+    "experiments/010/kaggle-s2-v1/010/s2-f1-50/SUMMARY.json": {
+      "sha256": "84a5ba785d80a9b40946752c12064f9de117aedb748a2c6d561f7ad49942d5b9",
+      "bytes": 1636
+    },
+    "experiments/010/kaggle-s3-v1/010/s3-f0/train_log.jsonl": {
+      "sha256": "d8d925566984132eaed0a65ce3cccab7bc43dded4c57995228090cb6e32f927a",
+      "bytes": 9525
+    },
+    "experiments/010/kaggle-s3-v1/010/s3-f0/run_config.json": {
+      "sha256": "1311b6655f769b69ea2b17e2183e3da0f58de6993077ad73dc7f22c256e545b3",
+      "bytes": 6451
+    },
+    "experiments/010/kaggle-s3-v1/010/s3-f0/SUMMARY.json": {
+      "sha256": "08b6a67ccf9c1f9882dd8857cbb27707ea210af89ec13a8dbabb7cfbeeb51b5e",
+      "bytes": 1625
+    },
+    "experiments/010/kaggle-s4-v1/010/s4-f0/train_log.jsonl": {
+      "sha256": "b6cf071a3ee766d63258c03e6ecaf978bc57f2885b96acdabcccf7f1ab7df030",
+      "bytes": 14047
+    },
+    "experiments/010/kaggle-s4-v1/010/s4-f0/run_config.json": {
+      "sha256": "eedcc7f30cfa26d67d72d89190513fcb598a2020011b46034dddcb826cc439f6",
+      "bytes": 6527
+    },
+    "experiments/010/kaggle-s4-v1/010/s4-f0/SUMMARY.json": {
+      "sha256": "8e2791c9742d032bcad221d1beeca457b702555156a0f082429f012aa5651ad2",
+      "bytes": 1633
+    },
+    "experiments/010/paired-pilot-manifest.json": {
+      "sha256": "2827a768d781e4019f5a07b0e00a45d7e50e5573230e1e215a3f99aecfe9d53c",
+      "bytes": 173487
+    },
+    "experiments/010/e0-p12-source-map.json": {
+      "sha256": "d4224365e69765776bb42092d6ff55170bfbf803c7d182fb9c8b8e547b299cf1",
+      "bytes": 3230
+    },
+    "experiments/010/kaggle-e0-v1/010/e0_f0_pair.json": {
+      "sha256": "ba8fe9300c6f84f4fe890bb9659cb6a6977b471ff41967fbbb1871d11eec142e",
+      "bytes": 240763
+    },
+    "experiments/010/kaggle-e0fill-v1/010/e0_f0_fill.json": {
+      "sha256": "5e549bf7c460858c2c851d7e432ddd11bef625f6cfe9c5ea338cac8e7c004a19",
+      "bytes": 22127
+    },
+    "experiments/010/kaggle-e0fill-v1/010/e0_f1_at0.json": {
+      "sha256": "da533cc9b862d87ece9f7879fe87c7946dc4ecb3f66d76d73591f03a023bfdd5",
+      "bytes": 8888
+    },
+    "experiments/010/kaggle-s1-v1/010/s1_f1_at0.json": {
+      "sha256": "fa93077db625fd2d8db44440961b239fc10bed1f372a3584375fb5cee1f0484e",
+      "bytes": 129729
+    },
+    "experiments/010/kaggle-s1probe-v1/010/s1_f1_25_eval.json": {
+      "sha256": "010463468635e7b62e445999e871a7e529f69fa7bc040411108d7ff1256103ce",
+      "bytes": 118735
+    },
+    "experiments/010/kaggle-s2-v1/010/s2_f1_50_eval.json": {
+      "sha256": "43fbf8a3487d86029c8c50ace6caa4a9d9e439c872bbcae1e1ed5abc5a5475cc",
+      "bytes": 118707
+    },
+    "experiments/010/kaggle-s2-v1/010/probe/suffix_probe.json": {
+      "sha256": "e0f16f8b76f5a4a34f3240e373edc49a1ba78b19ba001ba1f4ebabca200aa4fd",
+      "bytes": 545563
+    },
+    "experiments/010/kaggle-e0-v1/e0-f0-pair-010.log": {
+      "sha256": "37e956448abf92231dedfd360e1de66fb944f44f8e0b3ff0391553d20561b40d",
+      "bytes": 127919
+    },
+    "experiments/010/kaggle-e0fill-v1/e0-fill-f1at0-010.log": {
+      "sha256": "47a012dde077f39a56c31edfef3e5c2727cd65087a360a2c4a3e1b2766c9f35e",
+      "bytes": 178474
+    },
+    "experiments/010/kaggle/s1-probe-f1/kernel-metadata.json": {
+      "sha256": "68e49ed934edf64dc9634f554c06193345e61f1bf4c19d23bc7c74ccb9f0528e",
+      "bytes": 659
+    },
+    "experiments/010/kaggle/s2-branch/kernel-metadata.json": {
+      "sha256": "f370111c176c23aba0a002745b1de9493306370dee2495d4876a0d720627bd37",
+      "bytes": 653
+    },
+    "experiments/010/kaggle/s3-f0suffix/kernel-metadata.json": {
+      "sha256": "e50cd432b6a6b9a0b15ddf5788bff390c0a97ba2d016fe545c74d33aa86f1c5b",
+      "bytes": 629
+    },
+    "experiments/010/kaggle/s4-f0train/kernel-metadata.json": {
+      "sha256": "00df9d34e5c11467fc0042fa5c375cfa415b8481b476d2b2652b6b2341b1b5f1",
+      "bytes": 626
+    },
+    "experiments/010/paired-f0-400.jsonl": {
+      "sha256": "d40602244bee2c3fedd871e85ad65cea5f8ee6c499daa3963c6b420b87387f7e",
+      "bytes": 1081086
+    },
+    "experiments/010/paired-f1-400.jsonl": {
+      "sha256": "9911b52f6ad428c3d31c33c1e9f14a743afdcb326a1f495a80363eccc3f5732b",
+      "bytes": 749481
+    },
+    "experiments/010/kaggle/s1-data/train_grid_sft.py": {
+      "sha256": "2e4ccb40b7acee2c3b5659eff9a6afa4bcd57fa65ee78f5a1ee6e1dda285f044",
+      "bytes": 171583
+    },
+    "experiments/010/kaggle/s1-data/solve_grid.py": {
+      "sha256": "c29c428d87873c32be29fd394b8d06cdcee37da694723d49a677d25f699ca190",
+      "bytes": 76593
+    },
+    "experiments/010/kaggle/s3-f0suffix/run_cell.py": {
+      "sha256": "3e21f0877cb50bc6ed47f32f678974b4c0d2e986769baa0edeadfecf7c4ea1b7",
+      "bytes": 4055
+    },
+    "experiments/010/kaggle/s4-f0train/run_cell.py": {
+      "sha256": "4de38576777b197225a3842e61537cb72ab63efe44f5f784b0907cc7d880991c",
+      "bytes": 2344
+    },
+    "docs/progress/010-gpu-budget-experiments.md": {
+      "sha256": "c68e64ef237e603a4f52fff376361e65aa480ba21265ea5792d24afcb781b8d3",
+      "bytes": 20760
+    },
+    "experiments/011/s4-accessible-notebook.log": {
+      "sha256": "71cea6cc5a027a2197ed81efdf00059c83257c60a18b3b5e67ded92bbc94c1fd",
+      "bytes": 154804
+    },
+    "experiments/011/runtime-evidence.json": {
+      "sha256": "181f84d085f18cfe2407a0873f96814e1a8a96d0287806664bc0f284c9097179",
+      "bytes": 5215
+    }
+  },
+  "accessible_s4_log_comparison": {
+    "source": "experiments/011/s4-accessible-notebook.log",
+    "sha256": "71cea6cc5a027a2197ed81efdf00059c83257c60a18b3b5e67ded92bbc94c1fd",
+    "accessible_slug_from_parent": "ccjjllt/s4-f0-train-010",
+    "metadata_snapshot_slug": "ccjjllt/s4-f0train-010",
+    "summary_matches_local_object_exactly": true,
+    "unique_printed_update_records": 25,
+    "all_25_lr_loss_seconds_microsteps_match_at_printed_precision": true,
+    "episode_ids_in_stdout_log": false,
+    "episode_id_comparison_status": "awaiting actual downloadable train_log.jsonl; stdout omits episode IDs",
+    "recorded_base_load_s": 3308.9,
+    "recorded_s4_done_log_timestamp_s": 5666.043615569,
+    "last_log_timestamp_s": 5673.449514254,
+    "recorded_snapshot_step25_exists": true,
+    "remote_weights_byte_hash_verified": false,
+    "interpretation": "SUMMARY and rounded per-update printed values match local archive. Slugs differ; do not silently identify both remote objects. No request to denied object was made by this audit."
+  },
+  "repeated_fresh_training_prefix_cost": {
+    "f1_50_rerun_first_25_update_seconds": 1039.8228,
+    "f0_25_rerun_first_17_update_seconds": 1425.267,
+    "total_repeated_update_seconds": 2465.0898,
+    "total_repeated_update_minutes": 41.084830000000004,
+    "scope": "Same initial seed/config and already consumed episode prefix were rerun fresh, not resumed. Measures duplicate update work only; excludes repeated loading/setup. This does not prove exact tensor equality or that resuming would be numerically identical."
+  },
+  "live_quota_from_parent_record": {
+    "queried_at_utc": "2026-10-10 01:34:59 UTC",
+    "queried_at_beijing": "2026-10-10 09:34:59",
+    "remaining_quota_seconds": 105787.876,
+    "remaining_quota_hours": 29.385521111111114,
+    "official_l4_multiplier": 2,
+    "conservative_planning_multiplier": 2.3,
+    "conservative_remaining_l4_wall_hours": 12.776313526570048,
+    "note": "2.3 is a planning coefficient, not a measured or official charging rate; unexplained historical account deltas remain."
+  }
+}

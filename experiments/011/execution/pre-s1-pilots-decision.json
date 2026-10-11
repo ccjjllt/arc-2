@@ -1,0 +1,24 @@
+{
+  "decision_time_utc": "2026-10-11T06:07:06.215131+00:00",
+  "before_used_quota_s": 48222.422,
+  "before_reserved_quota_s": 0,
+  "remaining_quota_h": 16.604882777777778,
+  "minimum_reserve_h": 6,
+  "maximum_session_wall_s": 7200,
+  "provisional_charge_allowance_h": 4.6,
+  "remaining_after_allowance_h": 12.004882777777778,
+  "tasks": [
+    "db118e2a",
+    "291dc1e1"
+  ],
+  "initialization": "base f1_compact",
+  "basis": "S0 F0-25 P12 0/14; earlier base/F1 SFT 0/14. No SFT gain, choose cheaper base F1 for fixed-candidate A0/A4 pilot. P2 selection was frozen before scoring.",
+  "stages": [
+    "P2 A0/A4 O+T",
+    "P2 native program p0/restart/repair"
+  ],
+  "c6_read_or_run": false,
+  "core_manifest_sha256": "bbc9b83fc24f7b216878695cf7ca41fec83af15ab94bbb8af640047e2896a97e",
+  "notebook_sha256": "50b2a72b7a580ebc1c58d342ad8024a5d8479205e9e0b17a6337b98b21757564",
+  "extra_outer_metadata": "Print Torch CUDA/CXX ABI/Triton for later kernel research; no accelerator kernel packages installed."
+}

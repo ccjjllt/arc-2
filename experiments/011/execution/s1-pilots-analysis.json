@@ -1,0 +1,1129 @@
+{
+  "session_dir": "experiments/011/kaggle-s1-pilots-v1/011/s1-pilots",
+  "candidate_journal": {
+    "files": [
+      "experiments/011/kaggle-s1-pilots-v1/011/s1-pilots/candidates.jsonl"
+    ],
+    "exact_duplicate_records_ignored": 0,
+    "all_attempts": {
+      "records": 12,
+      "status_counts": {
+        "complete": 8,
+        "invalid_output": 4
+      },
+      "journal_cache_hit_records": 0,
+      "physical_elapsed_s": 1695.583469,
+      "physical_output_tokens": 7584,
+      "elapsed_s": {
+        "n": 12,
+        "mean": 141.29862241666666,
+        "median": 52.1644825,
+        "max": 338.836253
+      },
+      "generate_s": {
+        "n": 8,
+        "mean": 42.5829,
+        "median": 41.8082,
+        "max": 57.0786
+      }
+    },
+    "latest_identity_statuses": {
+      "complete": 8,
+      "invalid_output": 4
+    },
+    "by_phase": {
+      "s1_base_f1_ttt_p2/A0": {
+        "records": 4,
+        "status_counts": {
+          "complete": 4
+        },
+        "journal_cache_hit_records": 0,
+        "physical_elapsed_s": 172.077351,
+        "physical_output_tokens": 725,
+        "elapsed_s": {
+          "n": 4,
+          "mean": 43.01933775,
+          "median": 41.795376000000005,
+          "max": 57.082598
+        },
+        "generate_s": {
+          "n": 4,
+          "mean": 43.01535,
+          "median": 41.7915,
+          "max": 57.0786
+        }
+      },
+      "s1_base_f1_ttt_p2/A4": {
+        "records": 4,
+        "status_counts": {
+          "complete": 4
+        },
+        "journal_cache_hit_records": 0,
+        "physical_elapsed_s": 168.618268,
+        "physical_output_tokens": 715,
+        "elapsed_s": {
+          "n": 4,
+          "mean": 42.154567,
+          "median": 41.836600000000004,
+          "max": 55.719939
+        },
+        "generate_s": {
+          "n": 4,
+          "mean": 42.15045,
+          "median": 41.832499999999996,
+          "max": 55.7158
+        }
+      },
+      "unclassified_program/p0": {
+        "records": 2,
+        "status_counts": {
+          "invalid_output": 2
+        },
+        "journal_cache_hit_records": 0,
+        "physical_elapsed_s": 677.543682,
+        "physical_output_tokens": 3072,
+        "elapsed_s": {
+          "n": 2,
+          "mean": 338.771841,
+          "median": 338.771841,
+          "max": 338.836253
+        },
+        "generate_s": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "max": null
+        }
+      },
+      "unclassified_program/restart": {
+        "records": 2,
+        "status_counts": {
+          "invalid_output": 2
+        },
+        "journal_cache_hit_records": 0,
+        "physical_elapsed_s": 677.344168,
+        "physical_output_tokens": 3072,
+        "elapsed_s": {
+          "n": 2,
+          "mean": 338.672084,
+          "median": 338.672084,
+          "max": 338.690411
+        },
+        "generate_s": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "max": null
+        }
+      }
+    }
+  },
+  "stage_coverage": [
+    {
+      "stage": "s1_base_f1_ttt_p2",
+      "type": "ttt",
+      "declared_planned_queries": 2,
+      "declared_planned_candidates": null,
+      "returned_query_rows": 0,
+      "returned_tasks": 2,
+      "returned_grid_candidate_statuses": {}
+    },
+    {
+      "stage": "s2_base_program_p2",
+      "type": "program",
+      "declared_planned_queries": 2,
+      "declared_planned_candidates": null,
+      "returned_query_rows": 0,
+      "returned_tasks": 2,
+      "returned_grid_candidate_statuses": {}
+    }
+  ],
+  "cached_stage_references": {
+    "count": 0,
+    "physical_elapsed_s": 0,
+    "historical_logical_elapsed_s": 0
+  },
+  "telemetry": {
+    "naive_timestamp_timezone_assumption": "UTC",
+    "interval_rule": "[recorded_unix_s - elapsed_s, recorded_unix_s], non-cache journal records only",
+    "aggregation": "sample-weighted means; utilization percent, memory MiB, power W; not continuous-time measurements",
+    "per_gpu": {
+      "0": {
+        "all": {
+          "samples": 81,
+          "utilization.gpu": {
+            "n": 81,
+            "mean": 13.012345679012345,
+            "median": 0.0,
+            "max": 39.0
+          },
+          "utilization.memory": {
+            "n": 81,
+            "mean": 14.506172839506172,
+            "median": 0.0,
+            "max": 44.0
+          },
+          "memory.used": {
+            "n": 81,
+            "mean": 12386.345679012345,
+            "median": 12712.0,
+            "max": 13452.0
+          },
+          "memory.total": {
+            "n": 81,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 81,
+            "mean": 39.10469135802469,
+            "median": 41.56,
+            "max": 45.76
+          }
+        },
+        "s1_base_f1_ttt_p2/A0": {
+          "samples": 6,
+          "utilization.gpu": {
+            "n": 6,
+            "mean": 16.833333333333332,
+            "median": 11.5,
+            "max": 39.0
+          },
+          "utilization.memory": {
+            "n": 6,
+            "mean": 18.666666666666668,
+            "median": 13.0,
+            "max": 43.0
+          },
+          "memory.used": {
+            "n": 6,
+            "mean": 12282.0,
+            "median": 12254.0,
+            "max": 12338.0
+          },
+          "memory.total": {
+            "n": 6,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 6,
+            "mean": 43.004999999999995,
+            "median": 42.815,
+            "max": 45.76
+          }
+        },
+        "s1_base_f1_ttt_p2/A4": {
+          "samples": 7,
+          "utilization.gpu": {
+            "n": 7,
+            "mean": 15.857142857142858,
+            "median": 18.0,
+            "max": 39.0
+          },
+          "utilization.memory": {
+            "n": 7,
+            "mean": 17.571428571428573,
+            "median": 20.0,
+            "max": 43.0
+          },
+          "memory.used": {
+            "n": 7,
+            "mean": 12295.714285714286,
+            "median": 12264.0,
+            "max": 12338.0
+          },
+          "memory.total": {
+            "n": 7,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 7,
+            "mean": 41.37,
+            "median": 42.88,
+            "max": 43.66
+          }
+        },
+        "unclassified_interval": {
+          "samples": 23,
+          "utilization.gpu": {
+            "n": 23,
+            "mean": 0.13043478260869565,
+            "median": 0.0,
+            "max": 1.0
+          },
+          "utilization.memory": {
+            "n": 23,
+            "mean": 0.0,
+            "median": 0.0,
+            "max": 0.0
+          },
+          "memory.used": {
+            "n": 23,
+            "mean": 11804.0,
+            "median": 11338.0,
+            "max": 13452.0
+          },
+          "memory.total": {
+            "n": 23,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 23,
+            "mean": 31.90826086956522,
+            "median": 33.16,
+            "max": 34.15
+          }
+        },
+        "unclassified_program/p0": {
+          "samples": 22,
+          "utilization.gpu": {
+            "n": 22,
+            "mean": 24.318181818181817,
+            "median": 34.5,
+            "max": 39.0
+          },
+          "utilization.memory": {
+            "n": 22,
+            "mean": 27.318181818181817,
+            "median": 39.0,
+            "max": 44.0
+          },
+          "memory.used": {
+            "n": 22,
+            "mean": 12712.0,
+            "median": 12712.0,
+            "max": 12712.0
+          },
+          "memory.total": {
+            "n": 22,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 22,
+            "mean": 42.195,
+            "median": 42.375,
+            "max": 43.28
+          }
+        },
+        "unclassified_program/restart": {
+          "samples": 23,
+          "utilization.gpu": {
+            "n": 23,
+            "mean": 13.217391304347826,
+            "median": 3.0,
+            "max": 39.0
+          },
+          "utilization.memory": {
+            "n": 23,
+            "mean": 14.73913043478261,
+            "median": 2.0,
+            "max": 44.0
+          },
+          "memory.used": {
+            "n": 23,
+            "mean": 12712.0,
+            "median": 12712.0,
+            "max": 12712.0
+          },
+          "memory.total": {
+            "n": 23,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 23,
+            "mean": 41.638260869565215,
+            "median": 42.07,
+            "max": 43.55
+          }
+        }
+      },
+      "1": {
+        "all": {
+          "samples": 81,
+          "utilization.gpu": {
+            "n": 81,
+            "mean": 24.45679012345679,
+            "median": 11.0,
+            "max": 100.0
+          },
+          "utilization.memory": {
+            "n": 81,
+            "mean": 26.19753086419753,
+            "median": 13.0,
+            "max": 100.0
+          },
+          "memory.used": {
+            "n": 81,
+            "mean": 14327.58024691358,
+            "median": 14676.0,
+            "max": 15426.0
+          },
+          "memory.total": {
+            "n": 81,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 81,
+            "mean": 44.99382716049383,
+            "median": 47.05,
+            "max": 72.04
+          }
+        },
+        "s1_base_f1_ttt_p2/A0": {
+          "samples": 6,
+          "utilization.gpu": {
+            "n": 6,
+            "mean": 14.333333333333334,
+            "median": 5.5,
+            "max": 58.0
+          },
+          "utilization.memory": {
+            "n": 6,
+            "mean": 16.0,
+            "median": 6.0,
+            "max": 65.0
+          },
+          "memory.used": {
+            "n": 6,
+            "mean": 14238.0,
+            "median": 14206.0,
+            "max": 14302.0
+          },
+          "memory.total": {
+            "n": 6,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 6,
+            "mean": 47.335,
+            "median": 47.59,
+            "max": 48.44
+          }
+        },
+        "s1_base_f1_ttt_p2/A4": {
+          "samples": 7,
+          "utilization.gpu": {
+            "n": 7,
+            "mean": 4.857142857142857,
+            "median": 1.0,
+            "max": 19.0
+          },
+          "utilization.memory": {
+            "n": 7,
+            "mean": 5.571428571428571,
+            "median": 1.0,
+            "max": 22.0
+          },
+          "memory.used": {
+            "n": 7,
+            "mean": 14265.42857142857,
+            "median": 14238.0,
+            "max": 14302.0
+          },
+          "memory.total": {
+            "n": 7,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 7,
+            "mean": 45.611428571428576,
+            "median": 46.56,
+            "max": 49.56
+          }
+        },
+        "unclassified_interval": {
+          "samples": 23,
+          "utilization.gpu": {
+            "n": 23,
+            "mean": 21.869565217391305,
+            "median": 0.0,
+            "max": 100.0
+          },
+          "utilization.memory": {
+            "n": 23,
+            "mean": 20.956521739130434,
+            "median": 0.0,
+            "max": 100.0
+          },
+          "memory.used": {
+            "n": 23,
+            "mean": 13688.173913043478,
+            "median": 13284.0,
+            "max": 15426.0
+          },
+          "memory.total": {
+            "n": 23,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 23,
+            "mean": 37.447391304347825,
+            "median": 34.37,
+            "max": 71.28
+          }
+        },
+        "unclassified_program/p0": {
+          "samples": 22,
+          "utilization.gpu": {
+            "n": 22,
+            "mean": 18.59090909090909,
+            "median": 13.5,
+            "max": 57.0
+          },
+          "utilization.memory": {
+            "n": 22,
+            "mean": 21.318181818181817,
+            "median": 15.5,
+            "max": 65.0
+          },
+          "memory.used": {
+            "n": 22,
+            "mean": 14676.0,
+            "median": 14676.0,
+            "max": 14676.0
+          },
+          "memory.total": {
+            "n": 22,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 22,
+            "mean": 47.79954545454545,
+            "median": 47.945,
+            "max": 49.19
+          }
+        },
+        "unclassified_program/restart": {
+          "samples": 23,
+          "utilization.gpu": {
+            "n": 23,
+            "mean": 41.26086956521739,
+            "median": 40.0,
+            "max": 100.0
+          },
+          "utilization.memory": {
+            "n": 23,
+            "mean": 45.04347826086956,
+            "median": 46.0,
+            "max": 67.0
+          },
+          "memory.used": {
+            "n": 23,
+            "mean": 14676.0,
+            "median": 14676.0,
+            "max": 14676.0
+          },
+          "memory.total": {
+            "n": 23,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 23,
+            "mean": 49.057826086956524,
+            "median": 48.36,
+            "max": 72.04
+          }
+        }
+      },
+      "2": {
+        "all": {
+          "samples": 81,
+          "utilization.gpu": {
+            "n": 81,
+            "mean": 21.80246913580247,
+            "median": 5.0,
+            "max": 100.0
+          },
+          "utilization.memory": {
+            "n": 81,
+            "mean": 23.691358024691358,
+            "median": 6.0,
+            "max": 100.0
+          },
+          "memory.used": {
+            "n": 81,
+            "mean": 14309.555555555555,
+            "median": 14662.0,
+            "max": 15392.0
+          },
+          "memory.total": {
+            "n": 81,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 81,
+            "mean": 43.900493827160496,
+            "median": 45.29,
+            "max": 72.57
+          }
+        },
+        "s1_base_f1_ttt_p2/A0": {
+          "samples": 6,
+          "utilization.gpu": {
+            "n": 6,
+            "mean": 16.833333333333332,
+            "median": 13.5,
+            "max": 43.0
+          },
+          "utilization.memory": {
+            "n": 6,
+            "mean": 18.5,
+            "median": 14.5,
+            "max": 48.0
+          },
+          "memory.used": {
+            "n": 6,
+            "mean": 14223.333333333334,
+            "median": 14190.0,
+            "max": 14290.0
+          },
+          "memory.total": {
+            "n": 6,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 6,
+            "mean": 46.644999999999996,
+            "median": 46.785,
+            "max": 47.65
+          }
+        },
+        "s1_base_f1_ttt_p2/A4": {
+          "samples": 7,
+          "utilization.gpu": {
+            "n": 7,
+            "mean": 29.285714285714285,
+            "median": 15.0,
+            "max": 58.0
+          },
+          "utilization.memory": {
+            "n": 7,
+            "mean": 32.857142857142854,
+            "median": 17.0,
+            "max": 65.0
+          },
+          "memory.used": {
+            "n": 7,
+            "mean": 14247.714285714286,
+            "median": 14216.0,
+            "max": 14290.0
+          },
+          "memory.total": {
+            "n": 7,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 7,
+            "mean": 45.73571428571429,
+            "median": 46.93,
+            "max": 47.37
+          }
+        },
+        "unclassified_interval": {
+          "samples": 23,
+          "utilization.gpu": {
+            "n": 23,
+            "mean": 16.565217391304348,
+            "median": 0.0,
+            "max": 100.0
+          },
+          "utilization.memory": {
+            "n": 23,
+            "mean": 15.08695652173913,
+            "median": 0.0,
+            "max": 100.0
+          },
+          "memory.used": {
+            "n": 23,
+            "mean": 13661.304347826086,
+            "median": 13260.0,
+            "max": 15392.0
+          },
+          "memory.total": {
+            "n": 23,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 23,
+            "mean": 39.737826086956524,
+            "median": 33.32,
+            "max": 72.57
+          }
+        },
+        "unclassified_program/p0": {
+          "samples": 22,
+          "utilization.gpu": {
+            "n": 22,
+            "mean": 32.45454545454545,
+            "median": 38.0,
+            "max": 57.0
+          },
+          "utilization.memory": {
+            "n": 22,
+            "mean": 37.13636363636363,
+            "median": 43.5,
+            "max": 66.0
+          },
+          "memory.used": {
+            "n": 22,
+            "mean": 14662.0,
+            "median": 14662.0,
+            "max": 14662.0
+          },
+          "memory.total": {
+            "n": 22,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 22,
+            "mean": 45.63181818181818,
+            "median": 45.370000000000005,
+            "max": 47.64
+          }
+        },
+        "unclassified_program/restart": {
+          "samples": 23,
+          "utilization.gpu": {
+            "n": 23,
+            "mean": 15.869565217391305,
+            "median": 14.0,
+            "max": 53.0
+          },
+          "utilization.memory": {
+            "n": 23,
+            "mean": 18.0,
+            "median": 16.0,
+            "max": 60.0
+          },
+          "memory.used": {
+            "n": 23,
+            "mean": 14662.0,
+            "median": 14662.0,
+            "max": 14662.0
+          },
+          "memory.total": {
+            "n": 23,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 23,
+            "mean": 45.13260869565217,
+            "median": 45.21,
+            "max": 47.45
+          }
+        }
+      },
+      "3": {
+        "all": {
+          "samples": 81,
+          "utilization.gpu": {
+            "n": 81,
+            "mean": 24.901234567901234,
+            "median": 19.0,
+            "max": 100.0
+          },
+          "utilization.memory": {
+            "n": 81,
+            "mean": 27.65432098765432,
+            "median": 20.0,
+            "max": 100.0
+          },
+          "memory.used": {
+            "n": 81,
+            "mean": 15252.098765432098,
+            "median": 15620.0,
+            "max": 16336.0
+          },
+          "memory.total": {
+            "n": 81,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 81,
+            "mean": 46.39333333333333,
+            "median": 48.85,
+            "max": 68.62
+          }
+        },
+        "s1_base_f1_ttt_p2/A0": {
+          "samples": 6,
+          "utilization.gpu": {
+            "n": 6,
+            "mean": 56.0,
+            "median": 57.5,
+            "max": 62.0
+          },
+          "utilization.memory": {
+            "n": 6,
+            "mean": 63.333333333333336,
+            "median": 65.0,
+            "max": 70.0
+          },
+          "memory.used": {
+            "n": 6,
+            "mean": 15194.0,
+            "median": 15168.0,
+            "max": 15246.0
+          },
+          "memory.total": {
+            "n": 6,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 6,
+            "mean": 49.305,
+            "median": 49.255,
+            "max": 51.05
+          }
+        },
+        "s1_base_f1_ttt_p2/A4": {
+          "samples": 7,
+          "utilization.gpu": {
+            "n": 7,
+            "mean": 46.57142857142857,
+            "median": 60.0,
+            "max": 62.0
+          },
+          "utilization.memory": {
+            "n": 7,
+            "mean": 52.285714285714285,
+            "median": 68.0,
+            "max": 70.0
+          },
+          "memory.used": {
+            "n": 7,
+            "mean": 15215.142857142857,
+            "median": 15192.0,
+            "max": 15246.0
+          },
+          "memory.total": {
+            "n": 7,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 7,
+            "mean": 51.21857142857143,
+            "median": 48.85,
+            "max": 65.44
+          }
+        },
+        "unclassified_interval": {
+          "samples": 23,
+          "utilization.gpu": {
+            "n": 23,
+            "mean": 9.782608695652174,
+            "median": 0.0,
+            "max": 100.0
+          },
+          "utilization.memory": {
+            "n": 23,
+            "mean": 8.521739130434783,
+            "median": 0.0,
+            "max": 100.0
+          },
+          "memory.used": {
+            "n": 23,
+            "mean": 14558.695652173914,
+            "median": 14240.0,
+            "max": 16336.0
+          },
+          "memory.total": {
+            "n": 23,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 23,
+            "mean": 38.09434782608696,
+            "median": 36.16,
+            "max": 68.62
+          }
+        },
+        "unclassified_program/p0": {
+          "samples": 22,
+          "utilization.gpu": {
+            "n": 22,
+            "mean": 27.318181818181817,
+            "median": 24.0,
+            "max": 61.0
+          },
+          "utilization.memory": {
+            "n": 22,
+            "mean": 31.40909090909091,
+            "median": 27.0,
+            "max": 71.0
+          },
+          "memory.used": {
+            "n": 22,
+            "mean": 15620.0,
+            "median": 15620.0,
+            "max": 15620.0
+          },
+          "memory.total": {
+            "n": 22,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 22,
+            "mean": 49.91954545454546,
+            "median": 50.25,
+            "max": 51.06
+          }
+        },
+        "unclassified_program/restart": {
+          "samples": 23,
+          "utilization.gpu": {
+            "n": 23,
+            "mean": 23.0,
+            "median": 22.0,
+            "max": 61.0
+          },
+          "utilization.memory": {
+            "n": 23,
+            "mean": 26.391304347826086,
+            "median": 25.0,
+            "max": 70.0
+          },
+          "memory.used": {
+            "n": 23,
+            "mean": 15620.0,
+            "median": 15620.0,
+            "max": 15620.0
+          },
+          "memory.total": {
+            "n": 23,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 23,
+            "mean": 49.09130434782609,
+            "median": 49.83,
+            "max": 51.5
+          }
+        }
+      }
+    }
+  },
+  "program_scoring": [
+    {
+      "stage": "s2_base_program_p2",
+      "query_rows": [
+        {
+          "task_id": "db118e2a",
+          "query_index": 0,
+          "gold_available": true,
+          "arms": {
+            "p0+restart": {
+              "status": "complete",
+              "em": false,
+              "partial_or_complete_hit": false
+            },
+            "p0+repair": {
+              "status": "complete",
+              "em": false,
+              "partial_or_complete_hit": false
+            }
+          },
+          "feedback_mechanism_comparable": false
+        },
+        {
+          "task_id": "291dc1e1",
+          "query_index": 0,
+          "gold_available": true,
+          "arms": {
+            "p0+restart": {
+              "status": "complete",
+              "em": false,
+              "partial_or_complete_hit": false
+            },
+            "p0+repair": {
+              "status": "complete",
+              "em": false,
+              "partial_or_complete_hit": false
+            }
+          },
+          "feedback_mechanism_comparable": false
+        }
+      ],
+      "n_query_rows": 2,
+      "declared_planned_queries": 2,
+      "tasks_with_unknown_query_denominator": [],
+      "score_scope": "fixed-budget policy @2; skipped repair is a policy fallback, not feedback-vs-restart mechanism evidence",
+      "policy_paired_complete_scored": 2,
+      "policy_paired_categories": {
+        "both_wrong": 2
+      },
+      "feedback_mechanism_paired_complete_scored": 0,
+      "feedback_mechanism_categories": {},
+      "feedback_mechanism_definition": "P0 has final code and demo feedback; restart and repair generation both actually available with terminal model outcomes; both policy arms completely scored on the same query",
+      "physical_generation_calls": 4,
+      "physical_generation_calls_per_arm": {
+        "p0": 2,
+        "restart": 2,
+        "repair": 0
+      },
+      "repair_invoked_count": 0,
+      "proposal_diagnostics": [
+        {
+          "task_id": "db118e2a",
+          "proposal": "p0",
+          "proposal_status": "incomplete_thinking",
+          "generation_status": "invalid_output",
+          "finish_reason": "max_new_tokens",
+          "gen_tokens": 1536,
+          "generation_available": true,
+          "cache_hit": false,
+          "physically_invoked": true
+        },
+        {
+          "task_id": "db118e2a",
+          "proposal": "restart",
+          "proposal_status": "incomplete_thinking",
+          "generation_status": "invalid_output",
+          "finish_reason": "max_new_tokens",
+          "gen_tokens": 1536,
+          "generation_available": true,
+          "cache_hit": false,
+          "physically_invoked": true
+        },
+        {
+          "task_id": "db118e2a",
+          "proposal": "repair",
+          "proposal_status": "ineligible_no_complete_p0",
+          "generation_status": null,
+          "finish_reason": "not_invoked",
+          "gen_tokens": 0,
+          "generation_available": false,
+          "cache_hit": false,
+          "physically_invoked": false
+        },
+        {
+          "task_id": "291dc1e1",
+          "proposal": "p0",
+          "proposal_status": "incomplete_thinking",
+          "generation_status": "invalid_output",
+          "finish_reason": "max_new_tokens",
+          "gen_tokens": 1536,
+          "generation_available": true,
+          "cache_hit": false,
+          "physically_invoked": true
+        },
+        {
+          "task_id": "291dc1e1",
+          "proposal": "restart",
+          "proposal_status": "incomplete_thinking",
+          "generation_status": "invalid_output",
+          "finish_reason": "max_new_tokens",
+          "gen_tokens": 1536,
+          "generation_available": true,
+          "cache_hit": false,
+          "physically_invoked": true
+        },
+        {
+          "task_id": "291dc1e1",
+          "proposal": "repair",
+          "proposal_status": "ineligible_no_complete_p0",
+          "generation_status": null,
+          "finish_reason": "not_invoked",
+          "gen_tokens": 0,
+          "generation_available": false,
+          "cache_hit": false,
+          "physically_invoked": false
+        }
+      ],
+      "proposal_status_counts_per_arm": {
+        "p0": {
+          "incomplete_thinking": 2
+        },
+        "restart": {
+          "incomplete_thinking": 2
+        },
+        "repair": {
+          "ineligible_no_complete_p0": 2
+        }
+      },
+      "finish_reason_counts_per_arm": {
+        "p0": {
+          "max_new_tokens": 2
+        },
+        "restart": {
+          "max_new_tokens": 2
+        },
+        "repair": {
+          "not_invoked": 2
+        }
+      },
+      "arms": {
+        "p0+restart": {
+          "status_denominators": {
+            "complete": 2
+          },
+          "n_scored_complete": 2,
+          "exact_match_complete": 0
+        },
+        "p0+repair": {
+          "status_denominators": {
+            "complete": 2
+          },
+          "n_scored_complete": 2,
+          "exact_match_complete": 0
+        }
+      }
+    }
+  ],
+  "solutions_explicitly_provided": "experiments/011/kaggle-s1-pilots-v1/011/pilot-code/p2-scoring.json",
+  "parse_errors": [],
+  "limitations": [
+    "SUMMARY/scoring file presence or status is not evidence of completed candidate coverage.",
+    "Telemetry outside candidate intervals is unclassified: it may be loading, training, execution, saving or idle.",
+    "Candidate elapsed includes preparation/generation overhead; sparse telemetry cannot isolate pure decode or GPU duty cycle.",
+    "No journal means no reliable generation cost; a process killed before journaling leaves unmeasured work.",
+    "Program tasks absent from both stage artifacts and event journals have unknown per-query denominators."
+  ]
+}

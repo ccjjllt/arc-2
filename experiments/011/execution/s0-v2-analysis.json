@@ -1,0 +1,669 @@
+{
+  "session_dir": "experiments/011/kaggle-s0-v2",
+  "candidate_journal": {
+    "files": [
+      "experiments/011/kaggle-s0-v2/011/s0-shared/candidates.jsonl"
+    ],
+    "exact_duplicate_records_ignored": 0,
+    "all_attempts": {
+      "records": 32,
+      "status_counts": {
+        "complete": 28,
+        "invalid_output": 2,
+        "budget_interrupted": 2
+      },
+      "journal_cache_hit_records": 0,
+      "physical_elapsed_s": 3899.5858209999997,
+      "physical_output_tokens": 16773,
+      "elapsed_s": {
+        "n": 32,
+        "mean": 121.86205690625,
+        "median": 100.8634215,
+        "max": 447.451119
+      },
+      "generate_s": {
+        "n": 30,
+        "mean": 129.95488,
+        "median": 101.1523,
+        "max": 447.4236
+      }
+    },
+    "latest_identity_statuses": {
+      "complete": 28,
+      "invalid_output": 2,
+      "budget_interrupted": 2
+    },
+    "by_phase": {
+      "s0_f0_25_p12": {
+        "records": 14,
+        "status_counts": {
+          "complete": 13,
+          "invalid_output": 1
+        },
+        "journal_cache_hit_records": 0,
+        "physical_elapsed_s": 2791.6183369999994,
+        "physical_output_tokens": 11876,
+        "elapsed_s": {
+          "n": 14,
+          "mean": 199.4013097857143,
+          "median": 119.36649249999999,
+          "max": 447.451119
+        },
+        "generate_s": {
+          "n": 14,
+          "mean": 199.39144285714286,
+          "median": 119.35945000000001,
+          "max": 447.4236
+        }
+      },
+      "s1_base_f1_p6": {
+        "records": 18,
+        "status_counts": {
+          "complete": 15,
+          "invalid_output": 1,
+          "budget_interrupted": 2
+        },
+        "journal_cache_hit_records": 0,
+        "physical_elapsed_s": 1107.967484,
+        "physical_output_tokens": 4897,
+        "elapsed_s": {
+          "n": 18,
+          "mean": 61.55374911111111,
+          "median": 59.883992,
+          "max": 171.605906
+        },
+        "generate_s": {
+          "n": 16,
+          "mean": 69.1978875,
+          "median": 59.8863,
+          "max": 171.5528
+        }
+      }
+    }
+  },
+  "stage_coverage": [
+    {
+      "stage": "s0_f0_25_p12",
+      "type": "grid",
+      "declared_planned_queries": 14,
+      "declared_planned_candidates": 14,
+      "returned_query_rows": 14,
+      "returned_tasks": 0,
+      "returned_grid_candidate_statuses": {
+        "complete": 13,
+        "invalid_output": 1
+      }
+    },
+    {
+      "stage": "s1_base_f1_p6",
+      "type": "grid",
+      "declared_planned_queries": 6,
+      "declared_planned_candidates": 18,
+      "returned_query_rows": 6,
+      "returned_tasks": 0,
+      "returned_grid_candidate_statuses": {
+        "complete": 15,
+        "invalid_output": 1,
+        "budget_interrupted": 2
+      }
+    }
+  ],
+  "cached_stage_references": {
+    "count": 0,
+    "physical_elapsed_s": 0,
+    "historical_logical_elapsed_s": 0
+  },
+  "telemetry": {
+    "naive_timestamp_timezone_assumption": "UTC",
+    "interval_rule": "[recorded_unix_s - elapsed_s, recorded_unix_s], non-cache journal records only",
+    "aggregation": "sample-weighted means; utilization percent, memory MiB, power W; not continuous-time measurements",
+    "per_gpu": {
+      "0": {
+        "all": {
+          "samples": 141,
+          "utilization.gpu": {
+            "n": 141,
+            "mean": 17.602836879432623,
+            "median": 15.0,
+            "max": 41.0
+          },
+          "utilization.memory": {
+            "n": 141,
+            "mean": 19.680851063829788,
+            "median": 16.0,
+            "max": 46.0
+          },
+          "memory.used": {
+            "n": 141,
+            "mean": 17926.709219858156,
+            "median": 17870.0,
+            "max": 20756.0
+          },
+          "memory.total": {
+            "n": 141,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 141,
+            "mean": 41.657872340425534,
+            "median": 42.58,
+            "max": 47.45
+          }
+        },
+        "s0_f0_25_p12": {
+          "samples": 93,
+          "utilization.gpu": {
+            "n": 93,
+            "mean": 17.225806451612904,
+            "median": 13.0,
+            "max": 41.0
+          },
+          "utilization.memory": {
+            "n": 93,
+            "mean": 19.161290322580644,
+            "median": 15.0,
+            "max": 46.0
+          },
+          "memory.used": {
+            "n": 93,
+            "mean": 17702.43010752688,
+            "median": 17870.0,
+            "max": 20756.0
+          },
+          "memory.total": {
+            "n": 93,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 93,
+            "mean": 42.598172043010756,
+            "median": 42.48,
+            "max": 47.45
+          }
+        },
+        "s1_base_f1_p6": {
+          "samples": 37,
+          "utilization.gpu": {
+            "n": 37,
+            "mean": 23.675675675675677,
+            "median": 33.0,
+            "max": 39.0
+          },
+          "utilization.memory": {
+            "n": 37,
+            "mean": 26.83783783783784,
+            "median": 37.0,
+            "max": 44.0
+          },
+          "memory.used": {
+            "n": 37,
+            "mean": 20756.0,
+            "median": 20756.0,
+            "max": 20756.0
+          },
+          "memory.total": {
+            "n": 37,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 37,
+            "mean": 43.14648648648649,
+            "median": 43.9,
+            "max": 45.22
+          }
+        },
+        "unclassified_interval": {
+          "samples": 11,
+          "utilization.gpu": {
+            "n": 11,
+            "mean": 0.36363636363636365,
+            "median": 0.0,
+            "max": 2.0
+          },
+          "utilization.memory": {
+            "n": 11,
+            "mean": 0.0,
+            "median": 0.0,
+            "max": 0.0
+          },
+          "memory.used": {
+            "n": 11,
+            "mean": 10306.181818181818,
+            "median": 11338.0,
+            "max": 11338.0
+          },
+          "memory.total": {
+            "n": 11,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 11,
+            "mean": 28.70090909090909,
+            "median": 30.1,
+            "max": 31.99
+          }
+        }
+      },
+      "1": {
+        "all": {
+          "samples": 141,
+          "utilization.gpu": {
+            "n": 141,
+            "mean": 25.49645390070922,
+            "median": 20.0,
+            "max": 100.0
+          },
+          "utilization.memory": {
+            "n": 141,
+            "mean": 28.319148936170212,
+            "median": 23.0,
+            "max": 72.0
+          },
+          "memory.used": {
+            "n": 141,
+            "mean": 18162.297872340427,
+            "median": 18312.0,
+            "max": 19678.0
+          },
+          "memory.total": {
+            "n": 141,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 141,
+            "mean": 45.16787234042553,
+            "median": 46.29,
+            "max": 69.08
+          }
+        },
+        "s0_f0_25_p12": {
+          "samples": 93,
+          "utilization.gpu": {
+            "n": 93,
+            "mean": 26.311827956989248,
+            "median": 21.0,
+            "max": 100.0
+          },
+          "utilization.memory": {
+            "n": 93,
+            "mean": 28.881720430107528,
+            "median": 24.0,
+            "max": 72.0
+          },
+          "memory.used": {
+            "n": 93,
+            "mean": 18823.763440860213,
+            "median": 19678.0,
+            "max": 19678.0
+          },
+          "memory.total": {
+            "n": 93,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 93,
+            "mean": 46.57010752688172,
+            "median": 47.18,
+            "max": 69.08
+          }
+        },
+        "s1_base_f1_p6": {
+          "samples": 37,
+          "utilization.gpu": {
+            "n": 37,
+            "mean": 30.89189189189189,
+            "median": 32.0,
+            "max": 57.0
+          },
+          "utilization.memory": {
+            "n": 37,
+            "mean": 35.32432432432432,
+            "median": 37.0,
+            "max": 66.0
+          },
+          "memory.used": {
+            "n": 37,
+            "mean": 18310.37837837838,
+            "median": 18312.0,
+            "max": 18312.0
+          },
+          "memory.total": {
+            "n": 37,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 37,
+            "mean": 46.435675675675675,
+            "median": 46.17,
+            "max": 49.97
+          }
+        },
+        "unclassified_interval": {
+          "samples": 11,
+          "utilization.gpu": {
+            "n": 11,
+            "mean": 0.45454545454545453,
+            "median": 0.0,
+            "max": 2.0
+          },
+          "utilization.memory": {
+            "n": 11,
+            "mean": 0.0,
+            "median": 0.0,
+            "max": 0.0
+          },
+          "memory.used": {
+            "n": 11,
+            "mean": 12071.818181818182,
+            "median": 13282.0,
+            "max": 13284.0
+          },
+          "memory.total": {
+            "n": 11,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 11,
+            "mean": 29.048181818181817,
+            "median": 30.68,
+            "max": 32.19
+          }
+        }
+      },
+      "2": {
+        "all": {
+          "samples": 141,
+          "utilization.gpu": {
+            "n": 141,
+            "mean": 26.617021276595743,
+            "median": 23.0,
+            "max": 100.0
+          },
+          "utilization.memory": {
+            "n": 141,
+            "mean": 29.333333333333332,
+            "median": 25.0,
+            "max": 91.0
+          },
+          "memory.used": {
+            "n": 141,
+            "mean": 19688.63829787234,
+            "median": 19656.0,
+            "max": 22542.0
+          },
+          "memory.total": {
+            "n": 141,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 141,
+            "mean": 46.47936170212766,
+            "median": 47.61,
+            "max": 72.76
+          }
+        },
+        "s0_f0_25_p12": {
+          "samples": 93,
+          "utilization.gpu": {
+            "n": 93,
+            "mean": 26.440860215053764,
+            "median": 23.0,
+            "max": 100.0
+          },
+          "utilization.memory": {
+            "n": 93,
+            "mean": 29.161290322580644,
+            "median": 25.0,
+            "max": 91.0
+          },
+          "memory.used": {
+            "n": 93,
+            "mean": 19457.182795698925,
+            "median": 19656.0,
+            "max": 22542.0
+          },
+          "memory.total": {
+            "n": 93,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 93,
+            "mean": 47.68247311827957,
+            "median": 47.91,
+            "max": 72.76
+          }
+        },
+        "s1_base_f1_p6": {
+          "samples": 37,
+          "utilization.gpu": {
+            "n": 37,
+            "mean": 34.83783783783784,
+            "median": 38.0,
+            "max": 100.0
+          },
+          "utilization.memory": {
+            "n": 37,
+            "mean": 38.486486486486484,
+            "median": 43.0,
+            "max": 69.0
+          },
+          "memory.used": {
+            "n": 37,
+            "mean": 22542.0,
+            "median": 22542.0,
+            "max": 22542.0
+          },
+          "memory.total": {
+            "n": 37,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 37,
+            "mean": 48.4845945945946,
+            "median": 48.31,
+            "max": 70.92
+          }
+        },
+        "unclassified_interval": {
+          "samples": 11,
+          "utilization.gpu": {
+            "n": 11,
+            "mean": 0.45454545454545453,
+            "median": 0.0,
+            "max": 2.0
+          },
+          "utilization.memory": {
+            "n": 11,
+            "mean": 0.0,
+            "median": 0.0,
+            "max": 0.0
+          },
+          "memory.used": {
+            "n": 11,
+            "mean": 12047.818181818182,
+            "median": 13248.0,
+            "max": 13260.0
+          },
+          "memory.total": {
+            "n": 11,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 11,
+            "mean": 29.562727272727273,
+            "median": 30.95,
+            "max": 33.13
+          }
+        }
+      },
+      "3": {
+        "all": {
+          "samples": 141,
+          "utilization.gpu": {
+            "n": 141,
+            "mean": 23.70921985815603,
+            "median": 12.0,
+            "max": 100.0
+          },
+          "utilization.memory": {
+            "n": 141,
+            "mean": 26.43971631205674,
+            "median": 13.0,
+            "max": 99.0
+          },
+          "memory.used": {
+            "n": 141,
+            "mean": 19107.81560283688,
+            "median": 19294.0,
+            "max": 20636.0
+          },
+          "memory.total": {
+            "n": 141,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 141,
+            "mean": 46.24482269503546,
+            "median": 47.28,
+            "max": 70.7
+          }
+        },
+        "s0_f0_25_p12": {
+          "samples": 93,
+          "utilization.gpu": {
+            "n": 93,
+            "mean": 26.70967741935484,
+            "median": 21.0,
+            "max": 100.0
+          },
+          "utilization.memory": {
+            "n": 93,
+            "mean": 29.548387096774192,
+            "median": 24.0,
+            "max": 99.0
+          },
+          "memory.used": {
+            "n": 93,
+            "mean": 19763.956989247312,
+            "median": 20634.0,
+            "max": 20636.0
+          },
+          "memory.total": {
+            "n": 93,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 93,
+            "mean": 47.8352688172043,
+            "median": 47.36,
+            "max": 70.7
+          }
+        },
+        "s1_base_f1_p6": {
+          "samples": 37,
+          "utilization.gpu": {
+            "n": 37,
+            "mean": 23.135135135135137,
+            "median": 19.0,
+            "max": 61.0
+          },
+          "utilization.memory": {
+            "n": 37,
+            "mean": 26.486486486486488,
+            "median": 22.0,
+            "max": 71.0
+          },
+          "memory.used": {
+            "n": 37,
+            "mean": 19292.37837837838,
+            "median": 19294.0,
+            "max": 19294.0
+          },
+          "memory.total": {
+            "n": 37,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 37,
+            "mean": 47.58837837837838,
+            "median": 47.31,
+            "max": 50.39
+          }
+        },
+        "unclassified_interval": {
+          "samples": 11,
+          "utilization.gpu": {
+            "n": 11,
+            "mean": 0.2727272727272727,
+            "median": 0.0,
+            "max": 2.0
+          },
+          "utilization.memory": {
+            "n": 11,
+            "mean": 0.0,
+            "median": 0.0,
+            "max": 0.0
+          },
+          "memory.used": {
+            "n": 11,
+            "mean": 12939.636363636364,
+            "median": 14232.0,
+            "max": 14242.0
+          },
+          "memory.total": {
+            "n": 11,
+            "mean": 23034.0,
+            "median": 23034.0,
+            "max": 23034.0
+          },
+          "power.draw": {
+            "n": 11,
+            "mean": 28.27909090909091,
+            "median": 29.67,
+            "max": 31.87
+          }
+        }
+      }
+    }
+  },
+  "program_scoring": [],
+  "solutions_explicitly_provided": null,
+  "parse_errors": [],
+  "limitations": [
+    "SUMMARY/scoring file presence or status is not evidence of completed candidate coverage.",
+    "Telemetry outside candidate intervals is unclassified: it may be loading, training, execution, saving or idle.",
+    "Candidate elapsed includes preparation/generation overhead; sparse telemetry cannot isolate pure decode or GPU duty cycle.",
+    "No journal means no reliable generation cost; a process killed before journaling leaves unmeasured work.",
+    "Program tasks absent from both stage artifacts and event journals have unknown per-query denominators."
+  ]
+}

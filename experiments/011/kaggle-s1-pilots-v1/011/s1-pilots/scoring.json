@@ -1,0 +1,184 @@
+[
+  {
+    "stage": "s1_base_f1_ttt_p2",
+    "type": "ttt",
+    "queries": [
+      {
+        "task_id": "db118e2a",
+        "query_index": 0,
+        "source": "H_new",
+        "gold_available": true,
+        "A0": {
+          "state_is_requested": true,
+          "generation_complete": true,
+          "evaluation_complete": true,
+          "candidate_statuses": [
+            "complete",
+            "complete"
+          ],
+          "picked_em": false,
+          "observed_pick_em": false,
+          "candidate_em": [
+            false,
+            false
+          ]
+        },
+        "A4": {
+          "state_is_requested": true,
+          "generation_complete": true,
+          "evaluation_complete": true,
+          "candidate_statuses": [
+            "complete",
+            "complete"
+          ],
+          "picked_em": false,
+          "observed_pick_em": false,
+          "candidate_em": [
+            false,
+            false
+          ]
+        },
+        "adaptation_status": "complete",
+        "applied_updates": 4,
+        "fallback_to_a0": false,
+        "pair_completion": "complete",
+        "pair_category": "both_wrong",
+        "fallback_policy_complete": true,
+        "fallback_policy_em": false
+      },
+      {
+        "task_id": "291dc1e1",
+        "query_index": 0,
+        "source": "E24",
+        "gold_available": true,
+        "A0": {
+          "state_is_requested": true,
+          "generation_complete": true,
+          "evaluation_complete": true,
+          "candidate_statuses": [
+            "complete",
+            "complete"
+          ],
+          "picked_em": false,
+          "observed_pick_em": false,
+          "candidate_em": [
+            false,
+            false
+          ]
+        },
+        "A4": {
+          "state_is_requested": true,
+          "generation_complete": true,
+          "evaluation_complete": true,
+          "candidate_statuses": [
+            "complete",
+            "complete"
+          ],
+          "picked_em": false,
+          "observed_pick_em": false,
+          "candidate_em": [
+            false,
+            false
+          ]
+        },
+        "adaptation_status": "complete",
+        "applied_updates": 4,
+        "fallback_to_a0": false,
+        "pair_completion": "complete",
+        "pair_category": "both_wrong",
+        "fallback_policy_complete": true,
+        "fallback_policy_em": false
+      }
+    ],
+    "n_planned": 2,
+    "n_with_gold": 2,
+    "pair_completion": {
+      "complete": 2,
+      "partial": 0,
+      "none": 0
+    },
+    "n_paired_scored": 2,
+    "pair_categories": {
+      "gained": 0,
+      "lost": 0,
+      "both_correct": 0,
+      "both_wrong": 2
+    },
+    "net_gained": 0,
+    "arms": {
+      "A0": {
+        "n_scored": 2,
+        "exact_match": 0
+      },
+      "A4": {
+        "n_scored": 2,
+        "exact_match": 0
+      }
+    },
+    "n_fallback": 0,
+    "fallback_policy_n_scored": 2,
+    "fallback_policy_exact_match": 0,
+    "by_source": {
+      "E24": {
+        "n_planned": 1,
+        "n_with_gold": 1,
+        "pair_completion": {
+          "complete": 1,
+          "partial": 0,
+          "none": 0
+        },
+        "n_paired_scored": 1,
+        "pair_categories": {
+          "gained": 0,
+          "lost": 0,
+          "both_correct": 0,
+          "both_wrong": 1
+        },
+        "net_gained": 0,
+        "arms": {
+          "A0": {
+            "n_scored": 1,
+            "exact_match": 0
+          },
+          "A4": {
+            "n_scored": 1,
+            "exact_match": 0
+          }
+        },
+        "n_fallback": 0,
+        "fallback_policy_n_scored": 1,
+        "fallback_policy_exact_match": 0
+      },
+      "H_new": {
+        "n_planned": 1,
+        "n_with_gold": 1,
+        "pair_completion": {
+          "complete": 1,
+          "partial": 0,
+          "none": 0
+        },
+        "n_paired_scored": 1,
+        "pair_categories": {
+          "gained": 0,
+          "lost": 0,
+          "both_correct": 0,
+          "both_wrong": 1
+        },
+        "net_gained": 0,
+        "arms": {
+          "A0": {
+            "n_scored": 1,
+            "exact_match": 0
+          },
+          "A4": {
+            "n_scored": 1,
+            "exact_match": 0
+          }
+        },
+        "n_fallback": 0,
+        "fallback_policy_n_scored": 1,
+        "fallback_policy_exact_match": 0
+      }
+    }
+  }
+]

@@ -6,3 +6,8 @@ experiments/007/g2/episodes.jsonl
 experiments/007/**/adapter_model.safetensors
 experiments/007/**/trainer_state.pt
 experiments/007/**/*.log
+# Downloaded/reused 011 model artifacts are identified by manifests, not committed.
+experiments/011/**/*.safetensors
+experiments/011/**/trainer_state.pt
+# 012 K-only wheels are large/binary; record URL+SHA in wheel-manifest.json, not committed.
+experiments/012/wheels/*.whl

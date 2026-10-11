@@ -1,0 +1,96 @@
+{
+  "queried_at_utc": "2026-10-10 01:34:59 UTC",
+  "queried_at_beijing": "2026-10-10 09:34:59",
+  "quota": {
+    "quota_refresh_time": "2026-10-17T00:00:00Z",
+    "gpu_quota": {
+      "time_used": "2212.124s",
+      "time_reserved": "0s",
+      "total_time_allowed": "108000s",
+      "minimum_time_allowed": "108000s",
+      "has_ever_run": true
+    },
+    "tpu_quota": {
+      "time_used": "0s",
+      "time_reserved": "0s",
+      "total_time_allowed": "72000s",
+      "minimum_time_allowed": "72000s",
+      "has_ever_run": true
+    }
+  },
+  "remaining_quota_seconds": 105787.876,
+  "remaining_quota_hours": 29.385521111111114,
+  "official_l4_multiplier": 2,
+  "nominal_remaining_l4_wall_hours": 14.692760555555557,
+  "conservative_planning_multiplier": 2.3,
+  "conservative_remaining_l4_wall_hours": 12.776313526570048,
+  "note": "2.3 is a planning coefficient, not a measured or official charging rate; unexplained historical account deltas remain.",
+  "official_pages": [
+    {
+      "name": "Code Requirements",
+      "content": "![Kerneler](https://storage.googleapis.com/kaggle-media/competitions/general/Kerneler-white-desc2_transparent.png)\n### This is a Code Competition\n\n**NOTE:** We are currently exploring options to provide better compute for this competition.\n\nSubmissions to this competition must be made through Notebooks. In order for the \"Submit to Competition\" button to be active after a commit, the following conditions must be met:\n\n- CPU Notebook <= 12 hours run-time\n- GPU Notebook <= 12 hours run-time\n- No internet access enabled\n- External data, freely & publicly available, is allowed, including pre-trained models\n- Submission file must be named `submission.json`\n\nSubmission runtimes have been obfuscated. If you repeat the exact same submission you will see up to 10 minutes of variance in the time before you receive your score.\n\nPlease see the [Code Competition FAQ](https://www.kaggle.com/docs/competitions#kernels-only-FAQ) for more information on how to submit."
+    },
+    {
+      "name": "Upgraded Accelerators",
+      "content": "This competition has access to Kaggle's pool of powerful new L4x4 machines! These machines offer 96GB of GPU memory enabling submissions with much larger models. See [this page](https://cloud.google.com/compute/docs/gpus#l4-gpus) for more on these machines.\n\nWhat you need to know:\n\n- **Quota usage** - Due to their limited availability, notebooks with L4x4s consume GPU quota at twice the rate of the older T4x2 and P100 machines. We may increase this rate as necessary to ensure these machines are available for submission scoring.\n- **Restricted Use** - L4s are only available for notebooks attached to this competition. We will build tooling to enforce this if necessary. In the meantime, attempts to circumvent this restriction may be enforced by Kaggle moderation with consequences including team bans from the competition or account bans.\n- **No Internet** - All L4 sessions must have internet disabled."
+    }
+  ],
+  "accessible_s4_notebook": {
+    "id": 137317263,
+    "ref": "ccjjllt/s4-f0-train-010",
+    "title": "S4 F0 train 010",
+    "author": "ccjjllt",
+    "slug": "s4-f0-train-010",
+    "last_run_time": "2026-10-07T01:35:34.901913400Z",
+    "language": "python",
+    "kernel_type": "notebook",
+    "is_private": true,
+    "enable_gpu": true,
+    "enable_internet": false,
+    "category_ids": [
+      "gpu"
+    ],
+    "dataset_data_sources": [
+      "ccjjllt/arc2-010-s1-code-data",
+      "ccjjllt/qwen38-wheelhouse-py312"
+    ],
+    "competition_data_sources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "model_data_sources": [
+      "ugvfpdcuwfnh/qwen3-8-27b/Transformers/transformers-bf16/1"
+    ],
+    "enable_tpu": false,
+    "current_version_number": 1,
+    "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+    "machine_shape": "NvidiaL4",
+    "output_kernel_version_id": 355735798,
+    "output_file_names": [
+      "010/s4-f0/SUMMARY.json",
+      "010/s4-f0/adapter/README.md",
+      "010/s4-f0/adapter/adapter_config.json",
+      "010/s4-f0/adapter/adapter_model.safetensors",
+      "010/s4-f0/adapter/formatter.json",
+      "010/s4-f0/adapter_step_25/README.md",
+      "010/s4-f0/adapter_step_25/adapter_config.json",
+      "010/s4-f0/adapter_step_25/adapter_model.safetensors",
+      "010/s4-f0/adapter_step_25/formatter.json",
+      "010/s4-f0/formatter.json",
+      "010/s4-f0/mask_probe.json",
+      "010/s4-f0/run_config.json",
+      "010/s4-f0/template_probe.txt",
+      "010/s4-f0/train_log.jsonl",
+      "010/s4-f0/trainer_state.pt",
+      "010/s4-f0/zero_step.json"
+    ],
+    "source_identity_status": "Remote progress slug is accessible; local kernel-metadata slug is different and permission denied. Do not equate without source/log/config checks.",
+    "local_metadata_slug": "ccjjllt/s4-f0train-010"
+  },
+  "denied_query": {
+    "tool": "get_notebook_info",
+    "slug": "ccjjllt/s4-f0train-010",
+    "result": "Permission 'kernels.get' was denied",
+    "further_access_attempts": false
+  },
+  "gpu_actions": "None; read-only API queries only. No sessions started, modified, cancelled, or submitted."
+}

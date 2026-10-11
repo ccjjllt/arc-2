@@ -1,0 +1,17 @@
+{
+  "notebook_ref": "ccjjllt/arc2-011-s0-shared-model",
+  "version": 1,
+  "metadata_id": 138119880,
+  "published_on_local_date": "2026-10-11",
+  "gpu": "NvidiaL4",
+  "enable_internet": false,
+  "kernel_source": "ccjjllt/s4-f0-train-010/1",
+  "model_source": "ugvfpdcuwfnh/qwen3-8-27b/Transformers/transformers-bf16/1",
+  "dataset_source": "ccjjllt/qwen38-wheelhouse-py312",
+  "notebook_file_at_publication": "experiments/011/kaggle/s0-shared/arc2-011-s0-shared.ipynb",
+  "manifest_file": "experiments/011/execution/packaged-source-manifest.json",
+  "cli_timeout_s": 7200,
+  "local_status": "published; actual execution result pending",
+  "slug_note": "CLI returned a title-derived -model slug; queried that returned identity. No second push was issued.",
+  "notebook_sha256": "c5e0f041ea70f98bc0a0afb304487c701917945290b029133d3a3220040d5d2c"
+}

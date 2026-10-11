@@ -1,0 +1,12 @@
+{
+  "notebook_ref": "ccjjllt/arc2-011-s0-shared-model",
+  "version": 2,
+  "published_at_local_utc": "2026-10-11T04:52:20.212653+00:00",
+  "notebook_sha256": "cc16c41d0cfc86f1b65ebe78c35542690c637983fe9d250019f2cd81fe9b4dea",
+  "core_manifest_sha256": "bbc9b83fc24f7b216878695cf7ca41fec83af15ab94bbb8af640047e2896a97e",
+  "preflight_ref": "ccjjllt/arc2-011-cpu-pilot-preflight/1",
+  "cli_timeout_s": 7200,
+  "load_limit_s": 1200,
+  "status_at_recording": "published; not a completed model result",
+  "kernel_session_id": 357238142
+}

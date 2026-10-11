@@ -1,0 +1,9 @@
+{
+  "mode": "program-completion",
+  "slug": "arc2-012-program-completion",
+  "core_manifest_sha256": "2cf9a5d89b3161cafce3884a31fca003aac8a3354aefe9e91f506d59898223da",
+  "missing_implementations": [],
+  "push_performed": false,
+  "gpu_started": false,
+  "notebook_seconds": 4500
+}

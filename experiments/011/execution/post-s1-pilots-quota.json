@@ -1,0 +1,12 @@
+{
+  "checked_at_utc": "2026-10-11T07:00:44.474377+00:00",
+  "before_used_s": 48222.422,
+  "after_used_s": 53167.042,
+  "after_reserved_s": 0,
+  "total_allowed_s": 108000,
+  "account_delta_quota_h": 1.3735055555555562,
+  "remaining_quota_h": 15.231377222222221,
+  "notebook_elapsed_s": 2453.935816447,
+  "quota_refresh_time": "2026-10-17T00:00:00Z",
+  "account_delta_scope": "Account balance difference; distinguish from wall-clock and per-device hours."
+}

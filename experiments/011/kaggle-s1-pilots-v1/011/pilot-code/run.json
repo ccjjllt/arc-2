@@ -1,0 +1,53 @@
+{
+  "model_dir": "/kaggle/input/models/ugvfpdcuwfnh/qwen3-8-27b/transformers/transformers-bf16/1",
+  "challenges": "/kaggle/working/011/pilot-code/p2-challenges.json",
+  "solutions": "/kaggle/working/011/pilot-code/p2-scoring.json",
+  "out_dir": "/kaggle/working/011/s1-pilots",
+  "time_budget_s": 7200,
+  "load_limit_s": 1200,
+  "notebook_start_monotonic": 479.690113686,
+  "runtime": {
+    "base_source": "kaggle:ugvfpdcuwfnh/qwen3-8-27b/Transformers/transformers-bf16/1",
+    "deactivate_async_load": true,
+    "save_window_s": 300
+  },
+  "stages": [
+    {
+      "type": "ttt",
+      "name": "s1_base_f1_ttt_p2",
+      "adapter": null,
+      "formatter": "f1_compact",
+      "ttt_adapter_name": "ttt_p2_base",
+      "query_file": "/kaggle/working/011/pilot-code/p2-queries.json",
+      "updates": 4,
+      "max_new_tokens": 960,
+      "seed": 20261011,
+      "time_budget_s": 3600,
+      "a4_adaptation_estimate_s": 480,
+      "a4_generation_reserve_s_per_query": 480,
+      "source_by_task": {
+        "db118e2a": "H_new",
+        "291dc1e1": "E24"
+      }
+    },
+    {
+      "type": "program",
+      "name": "s2_base_program_p2",
+      "adapter": null,
+      "query_file": "/kaggle/working/011/pilot-code/p2-queries.json",
+      "time_budget_s": 2400,
+      "pilot_tasks": 2,
+      "limits": {
+        "max_new_tokens": 1536,
+        "max_prompt_tokens": 8192,
+        "max_call_seconds": 360,
+        "max_task_seconds": 1080,
+        "max_feedback_chars": 3000,
+        "per_grid_seconds": 2,
+        "per_program_seconds": 20,
+        "memory_mb": 512,
+        "seed": 20261011
+      }
+    }
+  ]
+}

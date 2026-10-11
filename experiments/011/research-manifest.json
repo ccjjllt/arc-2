@@ -1,0 +1,410 @@
+{
+  "created_date": "2026-10-10",
+  "status": "CPU manifest only; all 011 model experiments NOT RUN",
+  "selection_rule": "P6 inherits 010 TTT_P6. Interleave S/M/L then H/E. C6 chooses first entry in each 010 confirmation source/tier, C6_reserve second. Selection uses frozen input metadata only, no query solutions or scores.",
+  "source": "experiments/010/evaluation-manifest.json",
+  "source_sha256": "7d3f4cf672df7542a248bcb4fe1db846fccb377231d8dcd53e135fbb753e3fe5",
+  "probe_P6": {
+    "n_tasks": 6,
+    "n_queries": 6,
+    "entries": [
+      {
+        "n_demo": 4,
+        "n_test_queries": 1,
+        "total_input_cells": 272,
+        "max_side": 9,
+        "task_id": "db118e2a",
+        "seen_before": false,
+        "tier": "S",
+        "manifest_group": "probe_h",
+        "source_group": "H_new"
+      },
+      {
+        "n_demo": 4,
+        "n_test_queries": 1,
+        "total_input_cells": 880,
+        "max_side": 28,
+        "task_id": "291dc1e1",
+        "tier": "S",
+        "manifest_group": "probe_e",
+        "source_group": "E24"
+      },
+      {
+        "n_demo": 3,
+        "n_test_queries": 1,
+        "total_input_cells": 482,
+        "max_side": 16,
+        "task_id": "58c02a16",
+        "seen_before": false,
+        "tier": "M",
+        "manifest_group": "probe_h",
+        "source_group": "H_new"
+      },
+      {
+        "n_demo": 3,
+        "n_test_queries": 1,
+        "total_input_cells": 1829,
+        "max_side": 23,
+        "task_id": "4c416de3",
+        "tier": "M",
+        "manifest_group": "probe_e",
+        "source_group": "E24"
+      },
+      {
+        "n_demo": 2,
+        "n_test_queries": 1,
+        "total_input_cells": 768,
+        "max_side": 16,
+        "task_id": "fc4aaf52",
+        "seen_before": false,
+        "tier": "L",
+        "manifest_group": "probe_h",
+        "source_group": "H_new"
+      },
+      {
+        "n_demo": 3,
+        "n_test_queries": 1,
+        "total_input_cells": 2221,
+        "max_side": 28,
+        "task_id": "aa4ec2a5",
+        "tier": "L",
+        "manifest_group": "probe_e",
+        "source_group": "E24"
+      }
+    ],
+    "queries": [
+      {
+        "task_id": "db118e2a",
+        "query_index": 0,
+        "source_group": "H_new",
+        "tier": "S"
+      },
+      {
+        "task_id": "291dc1e1",
+        "query_index": 0,
+        "source_group": "E24",
+        "tier": "S"
+      },
+      {
+        "task_id": "58c02a16",
+        "query_index": 0,
+        "source_group": "H_new",
+        "tier": "M"
+      },
+      {
+        "task_id": "4c416de3",
+        "query_index": 0,
+        "source_group": "E24",
+        "tier": "M"
+      },
+      {
+        "task_id": "fc4aaf52",
+        "query_index": 0,
+        "source_group": "H_new",
+        "tier": "L"
+      },
+      {
+        "task_id": "aa4ec2a5",
+        "query_index": 0,
+        "source_group": "E24",
+        "tier": "L"
+      }
+    ]
+  },
+  "program_smoke_P2": {
+    "n_tasks": 2,
+    "n_queries": 2,
+    "entries": [
+      {
+        "n_demo": 4,
+        "n_test_queries": 1,
+        "total_input_cells": 272,
+        "max_side": 9,
+        "task_id": "db118e2a",
+        "seen_before": false,
+        "tier": "S",
+        "manifest_group": "probe_h",
+        "source_group": "H_new"
+      },
+      {
+        "n_demo": 4,
+        "n_test_queries": 1,
+        "total_input_cells": 880,
+        "max_side": 28,
+        "task_id": "291dc1e1",
+        "tier": "S",
+        "manifest_group": "probe_e",
+        "source_group": "E24"
+      }
+    ],
+    "queries": [
+      {
+        "task_id": "db118e2a",
+        "query_index": 0,
+        "source_group": "H_new",
+        "tier": "S"
+      },
+      {
+        "task_id": "291dc1e1",
+        "query_index": 0,
+        "source_group": "E24",
+        "tier": "S"
+      }
+    ]
+  },
+  "confirmation_C6": {
+    "n_tasks": 6,
+    "n_queries": 8,
+    "entries": [
+      {
+        "n_demo": 3,
+        "n_test_queries": 1,
+        "total_input_cells": 290,
+        "max_side": 9,
+        "task_id": "df9fd884",
+        "seen_before": false,
+        "tier": "S",
+        "manifest_group": "confirm_h",
+        "source_group": "H_reserve"
+      },
+      {
+        "n_demo": 4,
+        "n_test_queries": 2,
+        "total_input_cells": 437,
+        "max_side": 13,
+        "task_id": "20270e3b",
+        "tier": "S",
+        "manifest_group": "confirm_e",
+        "source_group": "E_reserve"
+      },
+      {
+        "n_demo": 2,
+        "n_test_queries": 1,
+        "total_input_cells": 432,
+        "max_side": 12,
+        "task_id": "e45ef808",
+        "seen_before": false,
+        "tier": "M",
+        "manifest_group": "confirm_h",
+        "source_group": "H_reserve"
+      },
+      {
+        "n_demo": 4,
+        "n_test_queries": 1,
+        "total_input_cells": 1400,
+        "max_side": 20,
+        "task_id": "dfadab01",
+        "tier": "M",
+        "manifest_group": "confirm_e",
+        "source_group": "E_reserve"
+      },
+      {
+        "n_demo": 2,
+        "n_test_queries": 1,
+        "total_input_cells": 737,
+        "max_side": 16,
+        "task_id": "878187ab",
+        "seen_before": false,
+        "tier": "L",
+        "manifest_group": "confirm_h",
+        "source_group": "H_reserve"
+      },
+      {
+        "n_demo": 2,
+        "n_test_queries": 2,
+        "total_input_cells": 2302,
+        "max_side": 29,
+        "task_id": "38007db0",
+        "tier": "L",
+        "manifest_group": "confirm_e",
+        "source_group": "E_reserve"
+      }
+    ],
+    "queries": [
+      {
+        "task_id": "df9fd884",
+        "query_index": 0,
+        "source_group": "H_reserve",
+        "tier": "S"
+      },
+      {
+        "task_id": "20270e3b",
+        "query_index": 0,
+        "source_group": "E_reserve",
+        "tier": "S"
+      },
+      {
+        "task_id": "20270e3b",
+        "query_index": 1,
+        "source_group": "E_reserve",
+        "tier": "S"
+      },
+      {
+        "task_id": "e45ef808",
+        "query_index": 0,
+        "source_group": "H_reserve",
+        "tier": "M"
+      },
+      {
+        "task_id": "dfadab01",
+        "query_index": 0,
+        "source_group": "E_reserve",
+        "tier": "M"
+      },
+      {
+        "task_id": "878187ab",
+        "query_index": 0,
+        "source_group": "H_reserve",
+        "tier": "L"
+      },
+      {
+        "task_id": "38007db0",
+        "query_index": 0,
+        "source_group": "E_reserve",
+        "tier": "L"
+      },
+      {
+        "task_id": "38007db0",
+        "query_index": 1,
+        "source_group": "E_reserve",
+        "tier": "L"
+      }
+    ]
+  },
+  "confirmation_C6_reserve": {
+    "n_tasks": 6,
+    "n_queries": 8,
+    "entries": [
+      {
+        "n_demo": 4,
+        "n_test_queries": 1,
+        "total_input_cells": 407,
+        "max_side": 13,
+        "task_id": "7e4d4f7c",
+        "seen_before": false,
+        "tier": "S",
+        "manifest_group": "confirm_h",
+        "source_group": "H_reserve"
+      },
+      {
+        "n_demo": 3,
+        "n_test_queries": 2,
+        "total_input_cells": 1118,
+        "max_side": 22,
+        "task_id": "581f7754",
+        "tier": "S",
+        "manifest_group": "confirm_e",
+        "source_group": "E_reserve"
+      },
+      {
+        "n_demo": 3,
+        "n_test_queries": 1,
+        "total_input_cells": 570,
+        "max_side": 28,
+        "task_id": "dce56571",
+        "seen_before": false,
+        "tier": "M",
+        "manifest_group": "confirm_h",
+        "source_group": "H_reserve"
+      },
+      {
+        "n_demo": 3,
+        "n_test_queries": 1,
+        "total_input_cells": 1230,
+        "max_side": 19,
+        "task_id": "db0c5428",
+        "tier": "M",
+        "manifest_group": "confirm_e",
+        "source_group": "E_reserve"
+      },
+      {
+        "n_demo": 3,
+        "n_test_queries": 2,
+        "total_input_cells": 3225,
+        "max_side": 30,
+        "task_id": "c3fa4749",
+        "seen_before": false,
+        "tier": "L",
+        "manifest_group": "confirm_h",
+        "source_group": "H_reserve"
+      },
+      {
+        "n_demo": 4,
+        "n_test_queries": 1,
+        "total_input_cells": 4500,
+        "max_side": 30,
+        "task_id": "981571dc",
+        "tier": "L",
+        "manifest_group": "confirm_e",
+        "source_group": "E_reserve"
+      }
+    ],
+    "queries": [
+      {
+        "task_id": "7e4d4f7c",
+        "query_index": 0,
+        "source_group": "H_reserve",
+        "tier": "S"
+      },
+      {
+        "task_id": "581f7754",
+        "query_index": 0,
+        "source_group": "E_reserve",
+        "tier": "S"
+      },
+      {
+        "task_id": "581f7754",
+        "query_index": 1,
+        "source_group": "E_reserve",
+        "tier": "S"
+      },
+      {
+        "task_id": "dce56571",
+        "query_index": 0,
+        "source_group": "H_reserve",
+        "tier": "M"
+      },
+      {
+        "task_id": "db0c5428",
+        "query_index": 0,
+        "source_group": "E_reserve",
+        "tier": "M"
+      },
+      {
+        "task_id": "c3fa4749",
+        "query_index": 0,
+        "source_group": "H_reserve",
+        "tier": "L"
+      },
+      {
+        "task_id": "c3fa4749",
+        "query_index": 1,
+        "source_group": "H_reserve",
+        "tier": "L"
+      },
+      {
+        "task_id": "981571dc",
+        "query_index": 0,
+        "source_group": "E_reserve",
+        "tier": "L"
+      }
+    ]
+  },
+  "confirmation_policy": "Freeze method/checkpoint/formatter/selection/budgets before C6. C6_reserve is run only if pre-score time estimate admits the whole extra block. Never retune using confirmation then claim it untouched. Report C6 8 queries versus full C12 16 queries explicitly.",
+  "p12_task_ids": [
+    "db118e2a",
+    "e3f79277",
+    "58c02a16",
+    "342dd610",
+    "fc4aaf52",
+    "52df9849",
+    "291dc1e1",
+    "1818057f",
+    "4c416de3",
+    "21897d95",
+    "aa4ec2a5",
+    "9aaea919"
+  ],
+  "no_query_answers_included": true,
+  "original_010_manifest_modified": false
+}

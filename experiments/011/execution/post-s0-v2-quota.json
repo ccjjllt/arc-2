@@ -1,0 +1,10 @@
+{
+  "checked_at_utc": "2026-10-11T06:04:31.633387+00:00",
+  "before_s0_v2_used_s": 39547.0437552,
+  "after_used_s": 48222.422,
+  "reserved_s": 0,
+  "account_delta_quota_h": 2.4098272902222218,
+  "remaining_quota_h": 16.604882777777778,
+  "notebook_elapsed_s": 4262.5931437849995,
+  "account_delta_scope": "Account balance difference, recorded independently of notebook elapsed time."
+}

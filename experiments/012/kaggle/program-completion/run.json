@@ -1,0 +1,9 @@
+{
+  "mode": "program-completion",
+  "slug": "arc2-012-program-completion",
+  "model": "ugvfpdcuwfnh/qwen3-8-27b/Transformers/transformers-bf16/1",
+  "docker": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+  "k_wheel_dataset": "ccjjllt/arc2-012-k-wheels",
+  "core_manifest_sha256": "2cf9a5d89b3161cafce3884a31fca003aac8a3354aefe9e91f506d59898223da",
+  "missing": []
+}

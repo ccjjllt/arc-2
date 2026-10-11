@@ -1,0 +1,36 @@
+{
+  "created_date": "2026-10-11",
+  "status": "LOCAL_PREPARATION_NOT_RUN",
+  "initialization": "base_default_pending_S0_final_operator_decision",
+  "tasks": [
+    {
+      "task_id": "db118e2a",
+      "query_index": 0
+    },
+    {
+      "task_id": "291dc1e1",
+      "query_index": 0
+    }
+  ],
+  "n_tasks": 2,
+  "n_queries": 2,
+  "sources": {
+    "experiments/011/execution/p6-queries.json": "02e7a837fddd9a46d4b8af2e0ef630acafd55655cfce10af73633be8134e2844",
+    "experiments/010/e0-p12-challenges.json": "792ca71c069abb420368efd1b0a29c04adaaed9761ba9225528db735cfe44a40",
+    "experiments/010/kaggle-e0-v1/010/scoring.json": "fbe21ed91e38259e70aec5864994944759e2ec83dd0bf2c9093a7c549c562459"
+  },
+  "selection": "First two interleaved P6 entries; unchanged task and query indices",
+  "confirmation_data_included": false,
+  "labels_use": "post-generation scorer only",
+  "stage_limits_s": {
+    "ttt_from_notebook_start_including_load": 3600,
+    "program_after_ttt": 2400,
+    "notebook": 7200,
+    "load": 1200,
+    "save_reserve": 300
+  },
+  "interpretation": "A0/A4 fixed O+T candidate comparison; not an equal-time TTT control",
+  "core_manifest_sha256": "bbc9b83fc24f7b216878695cf7ca41fec83af15ab94bbb8af640047e2896a97e",
+  "cpu_report_match_scope": "core_only",
+  "future_cpu_version_dependency": 1
+}
