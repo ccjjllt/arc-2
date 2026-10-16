@@ -1,0 +1,12 @@
+{
+  "source_sha256": {
+    "arc_loader.py": "8fae269c67f468e704cab380337055e8361f3990e9f542e60e173c2a1b0607aa",
+    "arc_solver.py": "e4f0dfdaf97e85beb015d3f5b38c44595043d2b9836800d69de0356d7348a019",
+    "build_submission.py": "1d82fea6c2fef557828fe51c59a4cf51e7f9bed38e6c645f61daa9cd38178c4e",
+    "worker_pool.py": "71b424d082f3820d32770e7daff95a1a62d1593b8861fe5ca14caa6768d418e4",
+    "supervise.py": "ec4f675478a0060e4e96a1edeaefcb193fe5ddb8653ff4a9c608c630e742213b"
+  },
+  "utility_root": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch",
+  "python": "3.11.13 (main, Jun  4 2025, 08:57:29) [GCC 11.4.0]",
+  "notebook_started": 1791797178.4236717
+}
