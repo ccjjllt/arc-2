@@ -1,0 +1,81 @@
+{
+  "date_beijing": "2026-10-12",
+  "scope": "Read-only source snapshots. Not executed. Account metadata does not grant source-version equivalence.",
+  "files": [
+    {
+      "path": "baseline-audit/account-submissions.json",
+      "sha256": "5bd6816c2c88ea33120355dbf3dc060b8a85d977c88b8be1906effee0e204946",
+      "bytes": 2958
+    },
+    {
+      "path": "baseline-audit/nvarc-v21-metadata.json",
+      "sha256": "c421304ff2c0887df891e7d5458d68e7fb53cdcdf17e8cef64f51f49a1f42b9b",
+      "bytes": 959
+    },
+    {
+      "path": "baseline-audit/nvarc-v21-source.ipynb",
+      "sha256": "9248683996ff7d4b70ec59ce94677934a11a06dac29ea2c5cc871ad8d46b43ed",
+      "bytes": 89038
+    },
+    {
+      "path": "baseline-audit/v21-static-review.json",
+      "sha256": "746e984a0d9a21f7a812d54c6ee06c3f1d4adcecfe96d6066d1ff8ff34a686c2",
+      "bytes": 4520
+    },
+    {
+      "path": "baseline-audit/arc_solver.py",
+      "sha256": "c2cf52fe2e0b4c8121e86922b51d3d11cb58d22e2e7c68ed17f4a37acb0b3a12",
+      "bytes": 30076
+    },
+    {
+      "path": "baseline-audit/arc_loader.py",
+      "sha256": "8fae269c67f468e704cab380337055e8361f3990e9f542e60e173c2a1b0607aa",
+      "bytes": 14269
+    },
+    {
+      "path": "baseline-audit/arc_decoder.py",
+      "sha256": "e94c871160f8dea90bb37de3445c6e7ae4dd626008a3c045c85ecf77c892b745",
+      "bytes": 16107
+    },
+    {
+      "path": "baseline-audit/build_submission.py",
+      "sha256": "9cc590c68c144a437286ab9aa5b2d995a133a83b3f78e4e7428cb7730fbd8518",
+      "bytes": 6388
+    },
+    {
+      "path": "baseline-audit/starter.py",
+      "sha256": "0b225e3170dbef1de85c755dbea708e8755751726aa1fb453b83b02f1334edfe",
+      "bytes": 13116
+    },
+    {
+      "path": "baseline-audit/cell-7.py",
+      "sha256": "6265173109ba934d3056c27972b6267e1664e4759293ddffb132079733d4bd2e",
+      "bytes": 3189
+    },
+    {
+      "path": "qwen-public/AUDIT.md",
+      "sha256": "7c270b646038d9a342f9102f877db5a68ee2049166b290efb7b257ca414800f1",
+      "bytes": 5662
+    },
+    {
+      "path": "qwen-public/madarshbb.metadata.json",
+      "sha256": "fdde9524e612515365b0a663f19df69fef5a94413868850a90c3bba518dc2f4c",
+      "bytes": 871
+    },
+    {
+      "path": "qwen-public/madarshbb.source.py",
+      "sha256": "b9f4757c39f1c818ec356ba6248560d0e899e984bbceac1b3bdfef3a109bc05f",
+      "bytes": 95485
+    },
+    {
+      "path": "qwen-public/russcore.metadata.json",
+      "sha256": "81feadf9822093a91c94c536ee517d7bc006141fa73208f63f4de386ee1804b4",
+      "bytes": 811
+    },
+    {
+      "path": "qwen-public/russcore.source.py",
+      "sha256": "3d8429bff718d299247f0a2a7c884c6428c7e50a352705446ca8c2a8e8fdad17",
+      "bytes": 192827
+    }
+  ]
+}

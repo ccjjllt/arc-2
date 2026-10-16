@@ -1,0 +1,37 @@
+{
+  "published_at_beijing": "2026-10-12 17:26",
+  "method": "Kaggle CLI push",
+  "metadata": {
+    "id": 138305775,
+    "ref": "ccjjllt/arc2-013-bounded-baseline",
+    "title": "ARC2 013 bounded baseline",
+    "author": "ccjjllt",
+    "slug": "arc2-013-bounded-baseline",
+    "last_run_time": "2026-10-09T09:26:17.895030200Z",
+    "language": "python",
+    "kernel_type": "notebook",
+    "is_private": true,
+    "enable_gpu": true,
+    "enable_internet": false,
+    "kernel_data_sources": [
+      "sorokin/pip-install-unsloth-flash-patch"
+    ],
+    "competition_data_sources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "model_data_sources": [
+      "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+    ],
+    "enable_tpu": false,
+    "current_version_number": 1,
+    "docker_image": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868",
+    "machine_shape": "NvidiaL4"
+  },
+  "status_at_read": "RUNNING",
+  "local_package": "experiments/013/kaggle-baseline-v3",
+  "notebook_sha256": "3967414122a8b6552230b9e03b3c153972bdb149c771c523fbf12f1f436fe81f",
+  "local_first_push_dns_failed": true,
+  "escalated_push_success": true,
+  "competition_submission_created": false,
+  "metadata_timestamp_note": "last_run_time retained as returned, not used as current wall-clock launch timestamp"
+}

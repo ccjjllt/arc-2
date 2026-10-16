@@ -1,0 +1,40 @@
+{
+  "scope": "Manual synthetic CPU control-flow diagnostics; subprocess/GPU/time mocked, real builder output; no GPU and no model evidence",
+  "cases": [
+    {
+      "case": "normal",
+      "exit_code": 0,
+      "status": "complete",
+      "reason": "workers_finished",
+      "full_fallback_preserved": true
+    },
+    {
+      "case": "unexpected_sigkill",
+      "exit_code": 2,
+      "status": "failed",
+      "reason": "workers_finished",
+      "full_fallback_preserved": true
+    },
+    {
+      "case": "deadline",
+      "exit_code": 0,
+      "status": "complete",
+      "reason": "solve_deadline",
+      "full_fallback_preserved": true
+    },
+    {
+      "case": "setup_failure",
+      "exit_code": 2,
+      "status": "failed",
+      "reason": "infrastructure_error",
+      "full_fallback_preserved": true
+    },
+    {
+      "case": "worker_error",
+      "exit_code": 2,
+      "status": "failed",
+      "reason": "worker_error",
+      "full_fallback_preserved": true
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "read_date_beijing": "2026-10-12",
+  "quota": {
+    "quota_refresh_time": "2026-10-17T00:00:00Z",
+    "gpu_quota": {
+      "time_used": "80910.275s",
+      "time_reserved": "0s",
+      "total_time_allowed": "108000s",
+      "minimum_time_allowed": "108000s",
+      "has_ever_run": true
+    },
+    "tpu_quota": {
+      "time_used": "0s",
+      "time_reserved": "0s",
+      "total_time_allowed": "72000s",
+      "minimum_time_allowed": "72000s",
+      "has_ever_run": true
+    }
+  },
+  "pre_run_used_seconds": 77838.631,
+  "post_run_used_seconds": 80910.275,
+  "account_delta_quota_hours": 0.8532344444444445,
+  "remaining_hours": 7.524923611111113,
+  "note": "Account delta, not an isolated per-device bill."
+}

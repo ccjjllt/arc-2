@@ -1,0 +1,51 @@
+[
+  {
+    "source": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1",
+    "file": "config.json",
+    "local_path": "experiments/013/qwen-public/dependency-evidence/model-v1-config.json",
+    "bytes": 51350,
+    "sha256": "74227dd615bf1ea975aa676bdf355a0379858c12f394b5365cd9dfa5fc2c70bc"
+  },
+  {
+    "source": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1",
+    "file": "model.safetensors.index.json",
+    "local_path": "experiments/013/qwen-public/dependency-evidence/model-v1-model.safetensors.index.json",
+    "bytes": 159995,
+    "sha256": "fbc786a85a39a12018b532c640d6673185f1a4081735a9e6ddb128392c370697"
+  },
+  {
+    "source": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1",
+    "file": "tokenizer_config.json",
+    "local_path": "experiments/013/qwen-public/dependency-evidence/model-v1-tokenizer_config.json",
+    "bytes": 17928,
+    "sha256": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27"
+  },
+  {
+    "source": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1",
+    "file": "generation_config.json",
+    "local_path": "experiments/013/qwen-public/dependency-evidence/model-v1-generation_config.json",
+    "bytes": 202,
+    "sha256": "e70c136c1b78ddc1fb0905bac8e733a4dc448d4f852a5dd75143fffc70be550e"
+  },
+  {
+    "source": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1",
+    "file": "chat_template.jinja",
+    "local_path": "experiments/013/qwen-public/dependency-evidence/model-v1-chat_template.jinja",
+    "bytes": 8952,
+    "sha256": "c3cf9e34abf4f9e36c2d72165aa9c132d3e2a725b6c2586aaa3a8af9d7a81041"
+  },
+  {
+    "source": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1",
+    "file": "README.md",
+    "local_path": "experiments/013/qwen-public/dependency-evidence/model-v1-README.md",
+    "bytes": 65249,
+    "sha256": "a247d876f5398eed9ae898f32a984083552de57237b5e20714657e1675e26d2e"
+  },
+  {
+    "source": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1",
+    "file": "LICENSE",
+    "local_path": "experiments/013/qwen-public/dependency-evidence/model-v1-LICENSE",
+    "bytes": 11544,
+    "sha256": "bbedc3fda3305820b977265f01b8619d87570a6739de3a5582c3464840f1e57a"
+  }
+]

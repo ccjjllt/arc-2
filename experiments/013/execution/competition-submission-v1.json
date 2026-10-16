@@ -1,0 +1,29 @@
+{
+  "submitted_at_utc": "2026-10-12T09:56:36.720Z",
+  "submitted_at_beijing": "2026-10-12 17:56:36",
+  "submission_id": 57103498,
+  "kernel_owner": "ccjjllt",
+  "kernel_slug": "arc2-013-bounded-baseline",
+  "kernel_version": 1,
+  "script_version_id": 357613526,
+  "file_name": "submission.json",
+  "method": "create_code_competition_submission",
+  "metadata": {
+    "ref": 57103498,
+    "total_bytes": "0",
+    "date": "2026-10-12T09:56:36.720Z",
+    "description": "013 bounded base-only TTT; fixed kgmon selection; four-task runtime pilot verified. New candidate, not the historical 30.14 version.",
+    "file_name": "submission.json",
+    "submitted_by": "ccjjllt",
+    "submitted_by_ref": "ccjjllt",
+    "team_name": "ccjjllt",
+    "url": "/code/ccjjllt/arc2-013-bounded-baseline?scriptVersionId=357613526"
+  },
+  "status_note": "Creation accepted and listed by account API; status and public_score fields not yet returned. No assumption whether queued versus running.",
+  "pilot_outcome": "experiments/013/execution/baseline-v1-outcome.json",
+  "old_best_submission": 52072735,
+  "old_best_score": 30.14,
+  "old_submissions_modified": false,
+  "final_selection_modified": false,
+  "additional_gpu_development_started": false
+}

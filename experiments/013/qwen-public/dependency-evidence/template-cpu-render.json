@@ -1,0 +1,38 @@
+[
+  {
+    "kwargs": {
+      "reasoning_effort": "xhigh"
+    },
+    "render_sha256": "8ec768512187952fe76e3cd6b26cf350777c76b4cf6084f4ed35c0070e12bf52",
+    "chars": 308,
+    "tail": " plausible alternatives, and prioritize correctness, consistency, and clarity in the final answer.<|im_end|>\n<|im_start|>user\nReturn [[1]].<|im_end|>\n<|im_start|>assistant\n<think>\n",
+    "reasoning_instruction_present": true
+  },
+  {
+    "kwargs": {
+      "reasoning_effort": "medium"
+    },
+    "render_sha256": "afbc9387a3edeeb6352935cf4cb9fa9300639699abdc2961cceb8fc60a7ea4e8",
+    "chars": 71,
+    "tail": "<|im_start|>user\nReturn [[1]].<|im_end|>\n<|im_start|>assistant\n<think>\n",
+    "reasoning_instruction_present": false
+  },
+  {
+    "kwargs": {
+      "reasoning_effort": "low"
+    },
+    "render_sha256": "238464b739887b5e668c6aa766402d5d9f7aaaff2f4c51326ed6a9d313307728",
+    "chars": 237,
+    "tail": "our thinking brief and focused, moving directly to the conclusion without unnecessary elaboration.<|im_end|>\n<|im_start|>user\nReturn [[1]].<|im_end|>\n<|im_start|>assistant\n<think>\n",
+    "reasoning_instruction_present": true
+  },
+  {
+    "kwargs": {
+      "enable_thinking": false
+    },
+    "render_sha256": "aec5afaeb1c914ea3f8d43ae00984bbf9a22eb74693452206e4fb0db0ea3a6b9",
+    "chars": 82,
+    "tail": "<|im_start|>user\nReturn [[1]].<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "reasoning_instruction_present": false
+  }
+]

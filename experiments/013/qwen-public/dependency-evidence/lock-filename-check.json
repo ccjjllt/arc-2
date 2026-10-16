@@ -1,0 +1,22 @@
+{
+  "lock_pins": 174,
+  "wheel_filenames_in_sha_manifest": 174,
+  "missing_pins_by_filename": [],
+  "unparsed_wheel_filenames": [],
+  "small_file_hash_checks": [
+    {
+      "file": "README.md",
+      "matches_provided_sha256": true
+    },
+    {
+      "file": "requirements.in",
+      "matches_provided_sha256": true
+    },
+    {
+      "file": "requirements.lock",
+      "matches_provided_sha256": true
+    }
+  ],
+  "wheel_bytes_downloaded": false,
+  "offline_resolver_run": false
+}

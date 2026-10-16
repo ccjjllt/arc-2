@@ -1,0 +1,96 @@
+{
+  "read_date": "2026-10-12",
+  "submissions": [
+    {
+      "ref": 52072735,
+      "total_bytes": "760143",
+      "date": "2026-04-26T17:02:33.323Z",
+      "description": "",
+      "file_name": "submission.json",
+      "public_score": "30.14",
+      "status": "COMPLETE",
+      "submitted_by": "ccjjllt",
+      "submitted_by_ref": "ccjjllt",
+      "team_name": "ccjjllt",
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319"
+    },
+    {
+      "ref": 52267289,
+      "total_bytes": "777429",
+      "date": "2026-05-02T16:27:45.827Z",
+      "description": "",
+      "file_name": "submission.json",
+      "public_score": "29.72",
+      "status": "COMPLETE",
+      "submitted_by": "ccjjllt",
+      "submitted_by_ref": "ccjjllt",
+      "team_name": "ccjjllt",
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316064507"
+    },
+    {
+      "ref": 52166443,
+      "total_bytes": "676401",
+      "date": "2026-04-29T11:41:33.787Z",
+      "description": "",
+      "file_name": "submission.json",
+      "public_score": "28.19",
+      "status": "COMPLETE",
+      "submitted_by": "ccjjllt",
+      "submitted_by_ref": "ccjjllt",
+      "team_name": "ccjjllt",
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=315301517"
+    },
+    {
+      "ref": 52379974,
+      "total_bytes": "755669",
+      "date": "2026-05-06T07:44:23.877Z",
+      "description": "",
+      "file_name": "submission.json",
+      "public_score": "27.92",
+      "status": "COMPLETE",
+      "submitted_by": "ccjjllt",
+      "submitted_by_ref": "ccjjllt",
+      "team_name": "ccjjllt",
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316972179"
+    },
+    {
+      "ref": 52116910,
+      "total_bytes": "693783",
+      "date": "2026-04-28T01:56:33.943Z",
+      "description": "",
+      "file_name": "submission.json",
+      "public_score": "27.36",
+      "status": "COMPLETE",
+      "submitted_by": "ccjjllt",
+      "submitted_by_ref": "ccjjllt",
+      "team_name": "ccjjllt",
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314755063"
+    },
+    {
+      "ref": 51954464,
+      "total_bytes": "589184",
+      "date": "2026-04-23T02:35:59.440Z",
+      "description": "",
+      "file_name": "submission.json",
+      "public_score": "25.69",
+      "status": "COMPLETE",
+      "submitted_by": "ccjjllt",
+      "submitted_by_ref": "ccjjllt",
+      "team_name": "ccjjllt",
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=313752727"
+    },
+    {
+      "ref": 52089422,
+      "total_bytes": "19606",
+      "date": "2026-04-27T06:48:57.117Z",
+      "description": "",
+      "file_name": "submission.json",
+      "public_score": "0.83",
+      "status": "COMPLETE",
+      "submitted_by": "ccjjllt",
+      "submitted_by_ref": "ccjjllt",
+      "team_name": "ccjjllt",
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314731536"
+    }
+  ]
+}

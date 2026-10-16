@@ -1,0 +1,12 @@
+{
+  "repack_tensor_keys": 1606,
+  "official_tensor_keys": 1606,
+  "tensor_key_sets_equal": true,
+  "repack_shard_count": 18,
+  "official_shard_count": 66,
+  "repack_metadata": {},
+  "official_metadata": {},
+  "tensor_bytes_compared": false,
+  "mtp_tensor_key_count": 22,
+  "vision_tensor_key_count": 333
+}

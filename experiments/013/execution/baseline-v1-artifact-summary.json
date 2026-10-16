@@ -1,0 +1,50 @@
+{
+  "scope": "Sparse approximately 10-second samples from after setup through worker completion, including load/train/inference/idle; not decode-only utilization or allocated-tensor peak.",
+  "per_gpu": {
+    "0": {
+      "samples": 139,
+      "mean_utilization_pct": 51.83453237410072,
+      "peak_sampled_memory_mib": 13702.0,
+      "mean_power_w": 54.954604316546764
+    },
+    "1": {
+      "samples": 139,
+      "mean_utilization_pct": 36.82014388489208,
+      "peak_sampled_memory_mib": 15270.0,
+      "mean_power_w": 36.68597122302158
+    },
+    "2": {
+      "samples": 139,
+      "mean_utilization_pct": 52.54676258992806,
+      "peak_sampled_memory_mib": 18208.0,
+      "mean_power_w": 48.14748201438849
+    },
+    "3": {
+      "samples": 139,
+      "mean_utilization_pct": 34.25179856115108,
+      "peak_sampled_memory_mib": 14870.0,
+      "mean_power_w": 37.36791366906475
+    }
+  },
+  "artifact_sha256": {
+    "arc2-013-bounded-baseline.log": "bf58628814396951a50270b8ae2d0e159091d4cd45374e60bc8da64efa047996",
+    "submission.json": "92a911def718af34277e9de2e168921372b3447ad77196636f8f934e419dd149",
+    "013-code/source-manifest.json": "1acfb0e055b7eeff6cc8afe46d4dc2fcf428186403de21e35a22e640d6368dd0",
+    "013-code/boot.json": "15dd142efe90786c7ae31a71ae7333f2843fd9f07d093d4b608083b80eca282b",
+    "013-code/arc_loader.py": "8fae269c67f468e704cab380337055e8361f3990e9f542e60e173c2a1b0607aa",
+    "013-code/worker_pool.py": "71b424d082f3820d32770e7daff95a1a62d1593b8861fe5ca14caa6768d418e4",
+    "013-code/arc_solver.py": "e4f0dfdaf97e85beb015d3f5b38c44595043d2b9836800d69de0356d7348a019",
+    "013-code/build_submission.py": "1d82fea6c2fef557828fe51c59a4cf51e7f9bed38e6c645f61daa9cd38178c4e",
+    "013-code/supervise.py": "ec4f675478a0060e4e96a1edeaefcb193fe5ddb8653ff4a9c608c630e742213b",
+    "013-run/selected-challenges.json": "faa4419f9ac74edeb2cb747aa14ad4b1abbac78035a4bcc8ea4efc2f67663bd8",
+    "013-run/supervisor.json": "3a0c16e7d7830ae380966a3318903bab204e27142d28eceac3c247d6e9f7ce8b",
+    "013-run/worker.log": "772a0e8775d52ba6f05e72bfb299105fb1c4b5f9a6994de054a51d425d5f1565",
+    "013-run/setup.log": "8940d95f9e7a2c9730a6a9cac62f9c255ae635c0464e58aa02442f4a69af26e6",
+    "013-run/coverage.json": "cff5b072506e878f0f9a99e12fd34f7ccaa9cd624a7253e056e5881791473ec4",
+    "013-run/gpu.csv": "b5e4eb3d07e0d82cb74076d986def2b7c0455005426adf5e8207f33795ff4718",
+    "013-run/events/worker-0.jsonl": "70635b6e148a3199e95323e978de5ed70bc11c79fa93602fcc0e1b34f0427179",
+    "013-run/events/worker-2.jsonl": "1ead80aa76f28bd6603cccf83f4380302203cbbecb1dbd8887fdc9104aeba20e",
+    "013-run/events/worker-3.jsonl": "208cae0179c0b407dc17a074ba1305d955ffbf7daf5199849e329572c7bba32a",
+    "013-run/events/worker-1.jsonl": "895ae566fda78043971d837a9c25d7f2afbdbceb0f69be00aff5d51494aa0052"
+  }
+}

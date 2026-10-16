@@ -1,0 +1,70 @@
+{
+  "read_date": "2026-10-12",
+  "scope": "Read-only static review of latest v21 plus previously read normal-run log; no source edits, no remote run or submission. Exact scriptVersionId314617319 source not verified.",
+  "verdict": "Worth one informative submission after minimal boundedness/output fixes; unchanged v21 is technically a completed submission-producing candidate, but its deadline and rescue semantics do not justify 12h/score guarantees.",
+  "findings": [
+    {
+      "severity": "material",
+      "topic": "Global timeout not enforced across training/scoring/loading",
+      "evidence": [
+        "arc_solver.py:409",
+        "arc_solver.py:450",
+        "arc_solver.py:500",
+        "arc_solver.py:597",
+        "arc_solver.py:632",
+        "starter.py:388",
+        "cell-7.py:13",
+        "cell-7.py:16"
+      ],
+      "detail": "Worker loads model before first deadline check. trainer.train and candidate rescoring have no deadline. Main cell runs both rescue stages unconditionally even when base consumed deadline; each stage reloads model. 600s output reserve can be consumed, no parent process deadline."
+    },
+    {
+      "severity": "material",
+      "topic": "Full JSON coverage is not real candidate coverage",
+      "evidence": [
+        "arc_loader.py:293",
+        "build_submission.py:99",
+        "build_submission.py:118",
+        "cell-7.py:9"
+      ],
+      "detail": "Hidden rerun reads all tasks/queries and initializes two attempts per query to [[0]], so builder gives structural coverage if reached. Base fixed1200s per task with240task/fourworkers has20h worst-case arithmetic, greater than11h50 working budget. Fixed lexicographic ordering can leave tail unprocessed. Builder only runs at end and raises before fallback if zero parsed files."
+    },
+    {
+      "severity": "material",
+      "topic": "Aggressive rescue scores are not comparable to normal candidates",
+      "evidence": [
+        "arc_solver.py:713",
+        "arc_solver.py:723",
+        "arc_decoder.py:47",
+        "arc_decoder.py:272",
+        "arc_decoder.py:294"
+      ],
+      "detail": "Aggressive candidates store score_aug=[beam_score] instead of actual augmented cross-view rescoring, then share the same full_probmul ranking as normal candidates. Can displace old attempt2 without calibrated evidence. attempt1 is anchored to base when available, so protection is only of base top1, not pass@2."
+    },
+    {
+      "severity": "research",
+      "topic": "Diversity label differs from implemented feature",
+      "evidence": [
+        "arc_decoder.py:255",
+        "arc_decoder.py:258",
+        "arc_decoder.py:273"
+      ],
+      "detail": "Bonus counts union of literal operation-name tokens, not independent views. permute/colors descriptors include digits and do not match exact strings. rot90 multiplicity/compositions are collapsed; a single composed-transform candidate may get several operation bonuses. No measured justification for0.5 weight."
+    },
+    {
+      "severity": "research",
+      "topic": "Normal run does not demonstrate rescue gain",
+      "evidence": [
+        "nvarc-v21-log.json:1399"
+      ],
+      "detail": "Only4public evaluation tasks/5query were actually generated. Log benchmark reports identical2.5/4 task-weighted result for all ranking strategies, including diverse_dual. This metric is not official per-output competition score and is not representatively sampled."
+    }
+  ],
+  "minimum_preparation": [
+    "Freeze chosen version and dependencies; keep old30.14 result as separate historical reference.",
+    "Make deadline cover training/scoring/worker startup; skip rescue when insufficient time; preserve a fallback submission before work and rebuild atomically from partial outputs.",
+    "Use coherent candidate score semantics; simplest low-risk first candidate excludes aggressive placeholder-score entries from replacing already available base candidates.",
+    "Log attempted task/query coverage, blank fallback count, per-stage elapsed and base-vs-rescue candidate/selection changes. Full hidden run outcome remains unknown until submission."
+  ],
+  "strategy": "Do not block all submission activity on reconstructing old exact source. A carefully frozen v21-derived bounded run answers real hidden-runtime/current-score questions; one score cannot identify rescue/diversity causal benefit. Current27B has no complete submission exporter or proven complementarity, so it should not displace4B anchor merely because it is chosen research backbone."
+}

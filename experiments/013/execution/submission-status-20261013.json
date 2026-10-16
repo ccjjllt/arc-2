@@ -1,0 +1,17 @@
+{
+  "checked_utc": "2026-10-13 03:25:23 UTC",
+  "submission_id": 57103498,
+  "status": "PENDING",
+  "public_score": null,
+  "error_description": null,
+  "status_source": "Official Kaggle CLI competitions submissions CSV",
+  "normal_notebook_status": "COMPLETE",
+  "submitted_at_utc": "2026-10-12T09:56:36.720Z",
+  "status_semantics": "SDK enum PENDING=0; covers unfinished scoring and does not distinguish queued versus running. MCP JSON omitted this default enum value.",
+  "official_queue_update": {
+    "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/discussion/747515#3537405",
+    "posted_beijing": "2026-10-12 21:58",
+    "meaning": "Staff says current capacity roughly supports one submission per team every other day; not a completion ETA for this submission."
+  },
+  "actions": "Read-only status check; no cancellation, resubmission, or new GPU."
+}
