@@ -1,0 +1,41 @@
+{
+  "recorded_at_utc": "2026-10-11T15:06:14.800125+00:00",
+  "user_authorization": "用户明确要求助手实现并启动；强调提高GPU配额利用率",
+  "package_root": "experiments/012/kaggle-v3",
+  "core_manifest_sha256": "31ce366d4df03d344cfd5ef1cbc8ed747865208eba97841acbac680de30ae14f",
+  "core_sha256": {
+    "arc_episode_data.py": "7c672182a1bff3654231f9e60da2ba503ae94124b215d04857cb20345d93c864",
+    "grid_runtime.py": "10482e0987fd83cee877882d665ff0d71dec5ca6ec8c5433c4cf46d6cfb94cba",
+    "probe_gdn_inference.py": "33f6fbfd702f34542ae4927fe7c9d0e07c977d8600a9eb2978d114c33166d85f",
+    "run_budgeted_grid_experiment.py": "10178b771eadbc44009032dd440c53604724a930fcf17dc1c43ca00e4e7bc287",
+    "solve_grid.py": "c29c428d87873c32be29fd394b8d06cdcee37da694723d49a677d25f699ca190",
+    "solve_program.py": "03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a",
+    "train_grid_sft.py": "2e4ccb40b7acee2c3b5659eff9a6afa4bcd57fa65ee78f5a1ee6e1dda285f044",
+    "ttt_per_task.py": "17d32077cc788457ae6943de6c4944453c280d4ef515220915920321a42d7229"
+  },
+  "notebook_sha256": {
+    "cpu-preflight": "6c46da412758be186e79ae331f8639a674c7b9f8010cd93a833a52ae5052c054",
+    "program-completion": "8fccf334fd69d71b61ce01a2a11192a3e0ba9a7a7fe40373598bf3b0dc1eb9b7",
+    "kernel-probe": "747dc0bfe972a0fe8cdd2d14d51f8a99fa361762e6ba377e00e8b67387ca2d1a"
+  },
+  "cpu_expected_version": 3,
+  "gpu_launched": false,
+  "latest_quota_snapshot": {
+    "used_s": 67347.676,
+    "reserved_s": 0,
+    "total_s": 108000,
+    "remaining_h": 11.29231222222222
+  },
+  "minimum_reserve_h": 6,
+  "K_wall_limit_s": 1800,
+  "P_wall_limit_s": 4500,
+  "prior_K_v2_outcome": "parent killed during load at about 10min, 621/851 tensors; not a kernel numerical result",
+  "local_manual_checks": [
+    "nonblocking silent/partial-output parent timeout",
+    "P 3000s work allowance -> four stages not_run and zero calls",
+    "P normal full worker -> four calls and zero repair",
+    "setup before load with SHA, same Notebook clock",
+    "K 64 cached single-token forwards, fresh cache, finite rejection"
+  ],
+  "gpu_stage_sequence": "K only after matching CPU receipt; P only after K collection and fresh quota review"
+}

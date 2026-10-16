@@ -1,0 +1,104 @@
+[{"stream_name":"stderr","time":7.396034966,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.396082837,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.396086375,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.396088527,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.996611759,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.996632645,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.996635359,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.996637554,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":9.247552502,"data":"012_CORE_SHA a0a8f65e2871503076dff678f056a1e6e1907e655dfd43b7318c081c934b15f8\n"}
+,{"stream_name":"stdout","time":23.93233121,"data":"equirement already satisfied: h11\u003e=0.16 in /usr/local/lib/python3.12/dist-packages (from httpcore==1.*-\u003ehttpx\u003c1,\u003e=0.23.0-\u003ehuggingface-hub\u003c2.0,\u003e=1.5.0-\u003etransformers==5.8.0) (0.16.0)\n"}
+,{"stream_name":"stdout","time":23.932354113,"data":"Requirement already satisfied: markdown-it-py\u003e=2.2.0 in /usr/local/lib/python3.12/dist-packages (from rich\u003e=12.3.0-\u003etyper-\u003etransformers==5.8.0) (4.0.0)\n"}
+,{"stream_name":"stdout","time":23.932357429,"data":"Requirement already satisfied: pygments\u003c3.0.0,\u003e=2.13.0 in /usr/local/lib/python3.12/dist-packages (from rich\u003e=12.3.0-\u003etyper-\u003etransformers==5.8.0) (2.20.0)\n"}
+,{"stream_name":"stdout","time":23.932359719,"data":"Requirement already satisfied: mpmath\u003c1.4,\u003e=1.1.0 in /usr/local/lib/python3.12/dist-packages (from sympy\u003e=1.13.3-\u003etorch\u003e=2.0.0-\u003eaccelerate) (1.3.0)\n"}
+,{"stream_name":"stdout","time":23.932362159,"data":"Requirement already satisfied: MarkupSafe\u003e=2.0 in /usr/local/lib/python3.12/dist-packages (from jinja2-\u003etorch\u003e=2.0.0-\u003eaccelerate) (3.0.3)\n"}
+,{"stream_name":"stdout","time":23.932364412,"data":"Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.12/dist-packages (from markdown-it-py\u003e=2.2.0-\u003erich\u003e=12.3.0-\u003etyper-\u003etransformers==5.8.0) (0.1.2)\n"}
+,{"stream_name":"stdout","time":23.932366751,"data":"Installing collected packages: transformers\n"}
+,{"stream_name":"stdout","time":23.932368603,"data":"  Attempting uninstall: transformers\n"}
+,{"stream_name":"stdout","time":23.932370413,"data":"    Found existing installation: transformers 5.0.0\n"}
+,{"stream_name":"stdout","time":23.932372227,"data":"    Uninstalling transformers-5.0.0:\n"}
+,{"stream_name":"stdout","time":23.932374561,"data":"      Successfully uninstalled transformers-5.0.0\n"}
+,{"stream_name":"stdout","time":23.932376469,"data":"Successfully installed transformers-5.8.0\n"}
+,{"stream_name":"stdout","time":23.932378239,"data":"\n"}
+,{"stream_name":"stdout","time":52.257075904,"data":"VERSIONS {\"python\": \"3.12.13\", \"transformers\": \"5.8.0\", \"torch\": \"2.10.0+cu128\", \"peft\": \"0.19.1\", \"accelerate\": \"1.13.0\"}\n"}
+,{"stream_name":"stdout","time":52.257104799,"data":"WHEEL_NAME_SANITIZED causal_conv1d-1.7.0+cu12torch2.10cxx11abiTRUE-cp312-cp312-linux_x86_64.whl -\u003e causal_conv1d-1.7.0cu12torch2.10cxx11abiTRUE-cp312-cp312-linux_x86_64.whl\n"}
+,{"stream_name":"stdout","time":53.989626503,"data":"WHEEL_SHA_OK causal_conv1d-1.7.0cu12torch2.10cxx11abiTRUE-cp312-cp312-linux_x86_64.whl 8e81f8c76435ad31\n"}
+,{"stream_name":"stdout","time":54.690776298,"data":"WHEEL_RESTORED causal_conv1d-1.7.0+cu12torch2.10cxx11abiTRUE-cp312-cp312-linux_x86_64.whl\n"}
+,{"stream_name":"stdout","time":54.69079977,"data":"WHEEL_SHA_OK fla_core-0.5.2-py3-none-any.whl 5e830c85bad3d0d3\n"}
+,{"stream_name":"stdout","time":54.690802584,"data":"WHEEL_RESTORED fla_core-0.5.2-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":54.69080459,"data":"WHEEL_SHA_OK flash_linear_attention-0.5.2-py3-none-any.whl dcf405d81f542639\n"}
+,{"stream_name":"stdout","time":54.690806621,"data":"WHEEL_RESTORED flash_linear_attention-0.5.2-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":54.690808978,"data":"WHEEL_NAME_MAP {\"causal_conv1d-1.7.0cu12torch2.10cxx11abiTRUE-cp312-cp312-linux_x86_64.whl\": \"causal_conv1d-1.7.0+cu12torch2.10cxx11abiTRUE-cp312-cp312-linux_x86_64.whl\", \"fla_core-0.5.2-py3-none-any.whl\": \"fla_core-0.5.2-py3-none-any.whl\", \"flash_linear_attention-0.5.2-py3-none-any.whl\": \"flash_linear_attention-0.5.2-py3-none-any.whl\"}\n"}
+,{"stream_name":"stdout","time":59.950005585,"data":"Processing ./wheels/causal_conv1d-1.7.0+cu12torch2.10cxx11abiTRUE-cp312-cp312-linux_x86_64.whl\n"}
+,{"stream_name":"stdout","time":59.950027502,"data":"Processing ./wheels/fla_core-0.5.2-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":59.950030457,"data":"Processing ./wheels/flash_linear_attention-0.5.2-py3-none-any.whl\n"}
+,{"stream_name":"stdout","time":59.950032689,"data":"Installing collected packages: flash-linear-attention, fla-core, causal-conv1d\n"}
+,{"stream_name":"stdout","time":59.950034871,"data":"Successfully installed causal-conv1d-1.7.0 fla-core-0.5.2 flash-linear-attention-0.5.2\n"}
+,{"stream_name":"stdout","time":59.950036966,"data":"\n"}
+,{"stream_name":"stdout","time":59.993203523,"data":"MODEL_DIR /kaggle/input/models/ugvfpdcuwfnh/qwen3-8-27b/transformers/transformers-bf16/1\n"}
+,{"stream_name":"stdout","time":61.314009314,"data":"PROMPT_RENDERED {\"path\": \"/kaggle/working/012/kernel-probe/db118e2a-query0-f1-prompt.txt\", \"sha256\": \"43ad9d5d1f90cd73b4c3ecb2203a4d76855339facb4165f11ba43ee7d47b4c10\", \"n_tokens\": 1392}\n"}
+,{"stream_name":"stdout","time":61.314033117,"data":"{\n"}
+,{"stream_name":"stdout","time":61.31403572,"data":"  \"notebook\": \"kernel-probe\",\n"}
+,{"stream_name":"stdout","time":61.314038249,"data":"  \"task\": \"db118e2a/query0\",\n"}
+,{"stream_name":"stdout","time":61.314040394,"data":"  \"prompt\": \"f1_full_nonhthinking\",\n"}
+,{"stream_name":"stdout","time":61.314042478,"data":"  \"fixed_decode_tokens\": 64,\n"}
+,{"stream_name":"stdout","time":61.314044462,"data":"  \"order\": [\n"}
+,{"stream_name":"stdout","time":61.314046235,"data":"    \"A1\",\n"}
+,{"stream_name":"stdout","time":61.314047991,"data":"    \"B1\",\n"}
+,{"stream_name":"stdout","time":61.314049704,"data":"    \"B2\",\n"}
+,{"stream_name":"stdout","time":61.31405149,"data":"    \"A2\"\n"}
+,{"stream_name":"stdout","time":61.314053217,"data":"  ],\n"}
+,{"stream_name":"stdout","time":61.314055037,"data":"  \"thresholds\": {\n"}
+,{"stream_name":"stdout","time":61.314056874,"data":"    \"a_rel_rms\": 0.0001,\n"}
+,{"stream_name":"stdout","time":61.314058775,"data":"    \"b_rel_floor\": 0.01,\n"}
+,{"stream_name":"stdout","time":61.314060588,"data":"    \"gain\": 0.15\n"}
+,{"stream_name":"stdout","time":61.314064344,"data":"  },\n"}
+,{"stream_name":"stdout","time":61.314066036,"data":"  \"notebook_seconds\": 1800,\n"}
+,{"stream_name":"stdout","time":61.314067864,"data":"  \"load_limit_s\": 600,\n"}
+,{"stream_name":"stdout","time":61.314069614,"data":"  \"save_window_s\": 120,\n"}
+,{"stream_name":"stdout","time":61.314079688,"data":"  \"model_dir\": \"/kaggle/input/models/ugvfpdcuwfnh/qwen3-8-27b/transformers/transformers-bf16/1\",\n"}
+,{"stream_name":"stdout","time":61.314081929,"data":"  \"output_dir\": \"/kaggle/working/012/kernel-probe/output\",\n"}
+,{"stream_name":"stdout","time":61.314083899,"data":"  \"prompt_file\": \"db118e2a-query0-f1-prompt.txt\",\n"}
+,{"stream_name":"stdout","time":61.314085831,"data":"  \"prompt_sha256\": \"43ad9d5d1f90cd73b4c3ecb2203a4d76855339facb4165f11ba43ee7d47b4c10\",\n"}
+,{"stream_name":"stdout","time":61.31408808,"data":"  \"prompt_tokens\": 1392,\n"}
+,{"stream_name":"stdout","time":61.314089864,"data":"  \"journal\": \"/kaggle/working/012/kernel-probe/journal.jsonl\"\n"}
+,{"stream_name":"stdout","time":61.314091814,"data":"}\n"}
+,{"stream_name":"stdout","time":61.314093492,"data":"PROBE_IMPORTED /kaggle/working/012/kernel-probe/probe_gdn_inference.py\n"}
+,{"stream_name":"stdout","time":61.314095546,"data":"PROBE_ENVELOPE {\"total_s\": 1800, \"phases\": {\"install_env\": 120, \"load\": 600, \"check_jit_warmup_reference\": 600, \"measure\": 360, \"save\": 120}, \"order\": [\"A1\", \"B1\", \"B2\", \"A2\"]}\n"}
+,{"stream_name":"stdout","time":61.314098674,"data":"PROBE_THRESHOLDS {\"reference_rms\": 0.0001, \"drift_floor\": 0.01, \"drift_repeat_mult\": 5.0, \"gain\": 0.15, \"rms_eps\": 1e-12, \"n_continuation\": 64, \"n_min\": 16, \"gdn_layers\": 48, \"verdicts\": [\"unstable_reference\", \"numerical_drift\", \"worth_full_output_bridge\", \"insufficient_gain\"]}\n"}
+,{"stream_name":"stdout","time":61.314102236,"data":"PROBE_FUNCTIONS [\"check_environment\", \"load_probe_session\", \"set_backend\", \"make_reference_tokens\", \"run_trial\", \"compare_trials\"]\n"}
+,{"stream_name":"stdout","time":61.314104526,"data":"PROBE_WHEELS [{\"file\": \"causal_conv1d-1.7.0+cu12torch2.10cxx11abiTRUE-cp312-cp312-linux_x86_64.whl\", \"sha256\": \"8e81f8c76435ad31aa41edc6c0c9d26de971a293b190183d2816da71547614d7\"}, {\"file\": \"fla_core-0.5.2-py3-none-any.whl\", \"sha256\": \"5e830c85bad3d0d34677f98ac7074d08687a3756f0f0499d95ceb96eb6920761\"}, {\"file\": \"flash_linear_attention-0.5.2-py3-none-any.whl\", \"sha256\": \"dcf405d81f5426393b59037097aa700d0f4a841465d5028d5aa543f4502f2400\"}]\n"}
+,{"stream_name":"stdout","time":61.314111934,"data":"PROBE_MODEL_SOURCE {\"base_source\": \"ugvfpdcuwfnh/qwen3-8-27b/Transformers/transformers-bf16/1\", \"dtype\": \"bfloat16\", \"device_map\": \"balanced\"}\n"}
+,{"stream_name":"stdout","time":61.314114217,"data":"DRY_RUN_CPU self-check ok; no model load, no CUDA imports\n"}
+,{"stream_name":"stdout","time":61.314116119,"data":"\n"}
+,{"stream_name":"stdout","time":61.314117791,"data":"PROBE_DRY_RUN_OK\n"}
+,{"stream_name":"stdout","time":61.336402086,"data":"HARD_LIMITS {'notebook_seconds': 1800, 'already_elapsed_s': 52.095702414000016}\n"}
+,{"stream_name":"stdout","time":61.336418471,"data":"PROBE_ENVELOPE {\"total_s\": 1800, \"phases\": {\"install_env\": 120, \"load\": 600, \"check_jit_warmup_reference\": 600, \"measure\": 360, \"save\": 120}, \"order\": [\"A1\", \"B1\", \"B2\", \"A2\"], \"thresholds\": {\"reference_rms\": 0.0001, \"drift_floor\": 0.01, \"drift_repeat_mult\": 5.0, \"gain\": 0.15}}\n"}
+,{"stream_name":"stdout","time":675.655378665,"data":"K_RC -9\n"}
+,{"stream_name":"stderr","time":678.789957778,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":678.78998256,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":678.789986855,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":678.79005662,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":678.790086487,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":678.790181791,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":678.790258188,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":678.790268268,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":678.79027077,"data":"Exception encountered at \"In [5]\":\n"}
+,{"stream_name":"stderr","time":678.790273191,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":678.79027522,"data":"AssertionError                            Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":678.790277118,"data":"/tmp/ipykernel_65/2743546901.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":678.790279346,"data":"      8 rc=probe.main(['--model-dir',cfg['model_dir'],'--output-dir',cfg['output_dir'],'--prompt-file',str(CODE/cfg['prompt_file']),'--journal',cfg['journal']])\n"}
+,{"stream_name":"stderr","time":678.79028154,"data":"      9 print('K_RC',rc)\n"}
+,{"stream_name":"stderr","time":678.790283285,"data":"---\u003e 10 assert rc==0\n"}
+,{"stream_name":"stderr","time":678.790285152,"data":"\n"}
+,{"stream_name":"stderr","time":678.79028682,"data":"AssertionError: \n"}
+,{"stream_name":"stderr","time":678.790288648,"data":"\n"}
+,{"stream_name":"stderr","time":680.955776742,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":680.955797168,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":681.118196432,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":681.118213843,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":682.037507276,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":682.364241086,"data":"[NbConvertApp] Writing 209166 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":684.944023816,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":685.800063946,"data":"[NbConvertApp] Writing 517130 bytes to __results__.html\n"}
+]

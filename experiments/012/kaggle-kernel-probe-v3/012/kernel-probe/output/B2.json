@@ -1,0 +1,462 @@
+{
+  "n": 64,
+  "prefill_s": 1.5455018809998364,
+  "decode_s": 13.424174447000041,
+  "total_s": 14.969676327999878,
+  "cache_len_start": 1392,
+  "cache_len_end": 1456,
+  "cache_len_expected": 1456,
+  "peak_alloc": [
+    12004795904,
+    14044843520,
+    14018759680,
+    15044169216
+  ],
+  "peak_reserved": [
+    12668895232,
+    14405337088,
+    14386462720,
+    15418261504
+  ],
+  "mem_start": [
+    11684715520,
+    13718225920,
+    13696188928,
+    14727939072
+  ],
+  "backend": "B",
+  "gdn": [
+    {
+      "layer": "model.layers.0.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.1.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.2.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.4.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.5.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.6.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.8.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.9.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.10.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.12.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.13.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.14.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.16.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.17.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.18.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.20.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.21.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.22.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.24.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.25.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.26.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.28.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.29.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.30.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.32.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.33.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.34.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.36.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.37.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.38.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.40.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.41.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.42.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.44.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.45.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.46.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.48.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.49.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.50.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.52.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.53.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.54.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.56.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.57.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.58.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.60.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.61.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    },
+    {
+      "layer": "model.layers.62.linear_attn",
+      "class": "Qwen3_5GatedDeltaNet",
+      "norm": "Qwen3_5RMSNormGated",
+      "causal_conv1d_fn": "causal_conv1d.causal_conv1d_interface.causal_conv1d_fn",
+      "causal_conv1d_update": "causal_conv1d.causal_conv1d_interface.causal_conv1d_update",
+      "chunk_gated_delta_rule": "fla.ops.gated_delta_rule.chunk.chunk_gated_delta_rule",
+      "recurrent_gated_delta_rule": "fla.ops.gated_delta_rule.fused_recurrent.fused_recurrent_gated_delta_rule"
+    }
+  ]
+}

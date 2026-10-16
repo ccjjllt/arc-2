@@ -1,0 +1,69 @@
+{
+  "status": "passed",
+  "core_manifest_sha256": "31ce366d4df03d344cfd5ef1cbc8ed747865208eba97841acbac680de30ae14f",
+  "model_weights_loaded": false,
+  "gpu_used": false,
+  "fullpath": {
+    "full_plan_calls": 4,
+    "modes": [
+      "D",
+      "L",
+      "L",
+      "D"
+    ],
+    "per_stage_generations": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "repair_total": 0,
+    "not_run_group": 1,
+    "executor": [
+      "ok",
+      "execution_error",
+      "execution_timeout",
+      "program_rejected"
+    ]
+  },
+  "worker_cases": [
+    {
+      "case": "full",
+      "calls": 4,
+      "stages": 4
+    },
+    {
+      "case": "insufficient",
+      "calls": 0,
+      "stages": 4
+    }
+  ],
+  "real_tokenizer_prompts": [
+    {
+      "task_id": "db118e2a",
+      "mode": "D",
+      "prompt_tokens": 2562,
+      "sha256": "9190a2a511fe888da6332791cdad825af9a85c9c03c3af701865d47c06066989"
+    },
+    {
+      "task_id": "db118e2a",
+      "mode": "L",
+      "prompt_tokens": 2586,
+      "sha256": "68c526bcd6aa0e4cf6f4f9f0749515a8a70aa79f1b76640573543f63163cfbfd"
+    },
+    {
+      "task_id": "291dc1e1",
+      "mode": "L",
+      "prompt_tokens": 2602,
+      "sha256": "afb3a13d67084fe589c18f6eb8bbdc196be041eacdae1a9fa912e16cb2a0debc"
+    },
+    {
+      "task_id": "291dc1e1",
+      "mode": "D",
+      "prompt_tokens": 2578,
+      "sha256": "3a0fe63c62ab5129e21988a5bcbc7e140fcc2884218c939296723ccdc695028d"
+    }
+  ],
+  "kernel_silent_child_timeout_returncode": 0,
+  "limits": "CPU orchestration only; CUDA kernels, 27B outputs and speed unverified"
+}

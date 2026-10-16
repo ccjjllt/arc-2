@@ -1,0 +1,4018 @@
+"""G1 trainer: Qwen3.8-27B BF16 LoRA that supervises the answer grid only.
+
+Manual Kaggle L4x4 entry point. Importing this file does not import torch.
+There is no FSDP, DDP, Unsloth, 4-bit, or tensor-parallel path.
+
+  python3 scripts/train_grid_sft.py --help
+"""
+
+from __future__ import annotations
+
+import argparse
+import array
+import glob
+import hashlib
+import inspect
+import json
+import os
+import random
+import sys
+import time
+import traceback
+
+FORMATTER_NAME = "space_digits_v1"
+# Canonical training formatters (solve-compatible). Legacy space_digits_v1
+# aliases to F0. Data rows carry space/compact; CLI/sidecar use
+# f0_space/f1_compact; both normalize here. Mixed-formatter input is rejected.
+FORMATTER_F0 = "f0_space"
+FORMATTER_F1 = "f1_compact"
+FORMATTER_CHOICES = ("auto", FORMATTER_F0, FORMATTER_F1)
+FORMATTER_SIDECAR = "formatter.json"
+
+
+def _normalize_train_formatter(value):
+    """Map formatter aliases to f0_space/f1_compact. Legacy space_digits_v1 -> F0."""
+    text = str(value or "").strip().lower().replace("-", "_")
+    if text in ("f0_space", "f0", "space", "space_digits_v1", "space_digits"):
+        return FORMATTER_F0
+    if text in ("f1_compact", "f1", "compact"):
+        return FORMATTER_F1
+    raise RuntimeError("unknown formatter value: %r" % (value,))
+
+
+def _row_formatter(row):
+    """Normalized formatter for one JSONL row. Missing/empty reads as F0 legacy."""
+    raw = row.get("formatter") if isinstance(row, dict) else None
+    if raw is None or (isinstance(raw, str) and not raw.strip()):
+        return FORMATTER_F0
+    return _normalize_train_formatter(raw)
+
+
+def resolve_train_formatter(cli_value, rows):
+    """Data/CLI two-choice unified formatter. Rejects mixed-formatter input.
+
+    auto: formatter comes from data rows (missing reads as F0); mixed rows
+    raise. Explicit CLI: all rows must match the CLI value, else raise.
+    Returns canonical f0_space/f1_compact.
+    """
+    cli_text = str(cli_value if cli_value is not None else "auto").strip().lower().replace("-", "_")
+    cli_norm = None
+    if cli_text not in ("auto", ""):
+        cli_norm = _normalize_train_formatter(cli_text)
+    seen = []
+    for row in (rows or []):
+        fmt = _row_formatter(row)
+        if fmt not in seen:
+            seen.append(fmt)
+    if len(seen) > 1:
+        raise RuntimeError(
+            "mixed-formatter input: rows carry %s; refusing to mix F0/F1 in one run" % (seen,)
+        )
+    data_fmt = seen[0] if seen else FORMATTER_F0
+    if cli_norm is None:
+        return data_fmt
+    if cli_norm != data_fmt:
+        raise RuntimeError(
+            "mixed-formatter input: --formatter %s disagrees with data %s; refusing to mix"
+            % (cli_norm, data_fmt)
+        )
+    return cli_norm
+
+
+def _read_train_formatter_field(obj):
+    if isinstance(obj, dict):
+        direct = obj.get("formatter")
+        if isinstance(direct, str) and direct.strip():
+            return direct
+        for nested_key in ("data", "episode", "format", "training", "run"):
+            nested = obj.get(nested_key)
+            if isinstance(nested, dict):
+                inner = nested.get("formatter")
+                if isinstance(inner, str) and inner.strip():
+                    return inner
+    return None
+
+
+def _load_train_formatter_from_file(path):
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            obj = json.load(handle)
+    except (OSError, ValueError):
+        return None
+    found = _read_train_formatter_field(obj)
+    if found is None:
+        return None
+    return _normalize_train_formatter(found)
+
+
+def read_adapter_formatter(adapter_dir):
+    """Best-effort formatter for an adapter dir; checks parent run_config.
+
+    Searches adapter-dir formatter.json/adapter_config.json/run_config.json/
+    config.json, then parent formatter.json/run_config.json (out-dir/adapter
+    layout). Legacy space_digits_v1 normalizes to F0. Returns None when no
+    field is present. Never writes.
+    """
+    if not adapter_dir:
+        return None
+    for filename in (FORMATTER_SIDECAR, "adapter_config.json", "run_config.json", "config.json"):
+        candidate = os.path.join(adapter_dir, filename)
+        if os.path.isfile(candidate):
+            try:
+                found = _load_train_formatter_from_file(candidate)
+            except RuntimeError:
+                continue
+            if found is not None:
+                return found
+    parent = os.path.dirname(os.path.abspath(adapter_dir))
+    for filename in (FORMATTER_SIDECAR, "run_config.json"):
+        candidate = os.path.join(parent, filename)
+        if os.path.isfile(candidate):
+            try:
+                found = _load_train_formatter_from_file(candidate)
+            except RuntimeError:
+                continue
+            if found is not None:
+                return found
+    return None
+
+
+def write_formatter_sidecar(dir_path, formatter, source="train"):
+    """Write independent formatter sidecar. Never touches PEFT adapter_config.json."""
+    payload = {"formatter": formatter, "formatter_source": source}
+    dump_json(os.path.join(dir_path, FORMATTER_SIDECAR), payload, one_line=False)
+    return os.path.join(dir_path, FORMATTER_SIDECAR)
+
+
+def _train_parse_grid(text, formatter, module=None):
+    """Formatter-aware strict parse for training diagnostics. No cross-format retry."""
+    parser = getattr(module, "parse_grid_text", None) if module is not None else None
+    if callable(parser):
+        data_fmt = "compact" if formatter == FORMATTER_F1 else "space"
+        try:
+            return parser(text, data_fmt)
+        except Exception:
+            return None
+    if formatter == FORMATTER_F1:
+        if not isinstance(text, str):
+            return None
+        stripped = text.strip()
+        if not stripped:
+            return None
+        rows = []
+        width = None
+        for line in stripped.split("\n"):
+            if line == "" or line != line.strip() or " " in line:
+                return None
+            parsed = []
+            for char in line:
+                if char < "0" or char > "9":
+                    return None
+                parsed.append(ord(char) - 48)
+            if width is None:
+                width = len(parsed)
+            elif len(parsed) != width:
+                return None
+            rows.append(parsed)
+        return rows if rows and width else None
+    return parse_strict_grid(text)
+
+
+def _train_target_text(grid, formatter, module=None):
+    """Formatter-aware target text. F0 space-separated, F1 compact."""
+    serializer = getattr(module, "serialize_grid", None) if module is not None else None
+    if callable(serializer):
+        data_fmt = "compact" if formatter == FORMATTER_F1 else "space"
+        return serializer(grid, data_fmt)
+    if formatter == FORMATTER_F1:
+        return "\n".join("".join(str(int(cell)) for cell in row) for row in grid)
+    return "\n".join(" ".join(str(int(cell)) for cell in row) for row in grid)
+DEFAULT_TARGETS = (
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj",
+)
+# Not part of the G1 default. Only added when --extra-targets names them.
+GDN_TARGET_NAMES = ("in_proj_qkv", "in_proj_z", "out_proj", "in_proj_a", "in_proj_b")
+# Fixed D2 true-token buckets (008 S4.7/S5): full prompt+target+EOS length.
+# Reuses scripts/arc_episode_data.py D2_TOKEN_BUCKET_NAMES/_d2_bucket_name
+# thresholds; do not invent new bounds here.
+LENGTH_BUCKET_NAMES = ("<=1024", "1025-2048", "2049-4096", "4097-8192", ">8192")
+# Plan S5 suggested recipe only (pass explicitly to enable). The --length-mixture
+# code default is None = legacy max-len/overflow-len path, unchanged.
+DEFAULT_LENGTH_MIXTURE_STR = "20,40,40,0,0"
+# Final-consumption sampling policy. Default legacy keeps the old pool order exactly.
+SAMPLE_POLICIES = ("legacy", "fair_task_base")
+DEFAULT_SAMPLE_POLICY = "legacy"
+# Fair soft source cycle inside each length bucket: 2 official per 5 = 40/60 soft.
+# Soft only: a missing source falls back to remaining rows and reports the actual
+# ratio (e.g. 009 792-row prefix 159/317/316 buckets, 318/474 official/gen).
+# Never hard-filled, never claimed as exact 40/60.
+FAIR_SOURCE_CYCLE = ("official", "gen", "gen", "official", "gen")
+DEFAULT_ZERO_STEP_IDS = (
+    "833966f4,6150a2bd,e9afcf9a,5582e5ca,d037b0a7,d631b094,66e6c45b,00576224"
+)
+ZERO_STEP_TIME_GUARD_S = 1200
+HOLDOUT_SPLITS = {
+    "holdout",
+    "eval",
+    "evaluation",
+    "test",
+    "val",
+    "valid",
+    "validation",
+    "dev",
+}
+LR_FORMULA = (
+    "1-based update u: if u<=warmup then u/warmup; "
+    "else (total-u)/(total-warmup). Update `total` uses learning rate 0."
+)
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+# Process-start wall clock (010 §5 S0-S4口径: setup/load/JIT/save included).
+# Set at import so the limit covers model load and episode encoding, not just
+# optimizer updates. Checked only at complete-update boundaries, never mid-step.
+_PROCESS_START = time.perf_counter()
+WALL_CLOCK_STOP_REASON = "wall_clock_limit"
+STOP_AFTER_UPDATE_STOP_REASON = "stop_after_update"
+# 010 §6.1 suffix-logits probe. Default full path is byte-identical to old behavior.
+LOGITS_MODES = ("full", "suffix")
+DEFAULT_LOGITS_MODE = "full"
+# Probe bucket tokens -> fixed full-length (prompt+target+EOS) buckets.
+PROBE_BUCKET_TOKENS = {
+    "short": "<=1024",
+    "2k": "1025-2048",
+    "2K": "1025-2048",
+    "4k": "2049-4096",
+    "4K": "2049-4096",
+}
+
+
+def parse_logits_mode(text):
+    """Torch-free --logits-mode. None/'' reads as full (default, unchanged)."""
+    if text is None:
+        return "full"
+    cleaned = str(text).strip().lower()
+    if not cleaned:
+        return "full"
+    if cleaned not in LOGITS_MODES:
+        raise RuntimeError(
+            "logits-mode must be one of %s, got %r" % (",".join(LOGITS_MODES), text)
+        )
+    return cleaned
+
+
+def suffix_slice_for_episode(prompt_len, target_len, full_len):
+    """Torch-free (P, T, label_start, logits_to_keep) for 010 §6.1.
+
+    L=P+T, prompt labels are [-100]*P, answer+EOS supervised length T.
+    Hidden positions kept are P-1..L-1, so labels slice starts at P-1 and
+    logits_to_keep=T+1. HF does the single causal shift; caller must not
+    shift again. Returns (P, T, label_start, logits_to_keep).
+    """
+    prompt_len = int(prompt_len)
+    target_len = int(target_len)
+    full_len = int(full_len)
+    if prompt_len < 1:
+        raise RuntimeError(
+            "suffix-contract refused: prompt_len=%d < 1" % prompt_len
+        )
+    if target_len < 1:
+        raise RuntimeError(
+            "suffix-contract refused: target_len=%d < 1 (needs at least EOS)" % target_len
+        )
+    if full_len != prompt_len + target_len:
+        raise RuntimeError(
+            "suffix-contract refused: full_len=%d != prompt_len=%d + target_len=%d"
+            % (full_len, prompt_len, target_len)
+        )
+    return prompt_len, target_len, prompt_len - 1, target_len + 1
+
+
+def validate_suffix_contract(labels, prompt_len, target_len, microbatch):
+    """Torch-free suffix contract. Raises, never silently falls back.
+
+    Bans (010 §6.1): no manual shift, no sliced-logits with full-length labels,
+    no detached prompt, no vocab cut, non-suffix input is an error, probe never
+    steps the optimizer, thresholds never auto-switch.
+    Requires microbatch==1 and labels == [-100]*P + supervised(T, no -100).
+    """
+    if int(microbatch) != 1:
+        raise RuntimeError(
+            "suffix-contract refused: microbatch=%s != 1; refusing, not falling back"
+            % (microbatch,)
+        )
+    prompt_len = int(prompt_len)
+    target_len = int(target_len)
+    if hasattr(labels, "tolist"):
+        label_list = list(labels.tolist())
+    elif isinstance(labels, array.array):
+        label_list = labels.tolist()
+    else:
+        label_list = list(labels)
+    if len(label_list) != prompt_len + target_len:
+        raise RuntimeError(
+            "suffix-contract refused: len(labels)=%d != P=%d + T=%d"
+            % (len(label_list), prompt_len, target_len)
+        )
+    if label_list[:prompt_len] != ([-100] * prompt_len):
+        raise RuntimeError(
+            "suffix-contract refused: first P=%d labels are not all -100; "
+            "answer supervision is not a continuous suffix" % prompt_len
+        )
+    tail = label_list[prompt_len:]
+    if not tail or any(int(token) == -100 for token in tail):
+        raise RuntimeError(
+            "suffix-contract refused: answer tail P..L-1 contains -100 "
+            "(len=%d); suffix path needs a continuous supervised suffix incl EOS" % len(tail)
+        )
+    suffix_slice_for_episode(prompt_len, target_len, len(label_list))
+    return True
+
+
+def parse_probe_selector(text):
+    """Torch-free --probe-suffix-logits selector. Comma-separated tokens.
+
+    Recognized bucket tokens: short (<=1024), 2k (1025-2048), 4k (2049-4096)
+    each pick one episode. Any other token is an explicit episode_id.
+    Empty/None means no probe. Never invents episodes.
+    """
+    if text is None:
+        return None
+    cleaned = str(text).strip()
+    if not cleaned:
+        return None
+    tokens = [part.strip() for part in cleaned.split(",") if part.strip()]
+    if not tokens:
+        return None
+    return tokens
+
+
+def select_probe_episodes(pool, tokens):
+    """Torch-free probe planning: bucket token -> first pool match, else episode_id.
+
+    Raises when a token has no match instead of substituting another episode.
+    Preserves selector order, deduplicates repeated tokens.
+    """
+    if not tokens:
+        raise RuntimeError("probe selector is empty")
+    by_id = {}
+    for episode in pool or []:
+        by_id.setdefault(str(getattr(episode, "episode_id", "")), episode)
+    chosen = []
+    seen = set()
+    for token in tokens:
+        bucket = PROBE_BUCKET_TOKENS.get(token, PROBE_BUCKET_TOKENS.get(str(token).lower()))
+        if bucket is not None:
+            match = None
+            for episode in pool or []:
+                if _length_bucket_name(int(episode.full_len)) == bucket:
+                    if str(episode.episode_id) not in seen:
+                        match = episode
+                        break
+            if match is None:
+                raise RuntimeError(
+                    "probe selector token %r (bucket %s) has no episode in pool; refusing substitution"
+                    % (token, bucket)
+                )
+            if str(match.episode_id) not in seen:
+                chosen.append(match)
+                seen.add(str(match.episode_id))
+        else:
+            episode = by_id.get(str(token))
+            if episode is None:
+                raise RuntimeError(
+                    "probe episode_id %r not in pool; refusing substitution" % (token,)
+                )
+            if str(token) not in seen:
+                chosen.append(episode)
+                seen.add(str(token))
+    return chosen
+
+
+def plan_probe_selection_text(tokens):
+    """Torch-free one-line probe plan for CPU dry-run (no model load)."""
+    if not tokens:
+        return "probe plan: none"
+    parts = []
+    for token in tokens:
+        bucket = PROBE_BUCKET_TOKENS.get(token, PROBE_BUCKET_TOKENS.get(str(token).lower()))
+        if bucket is not None:
+            parts.append("%s->bucket %s x1" % (token, bucket))
+        else:
+            parts.append("%s->episode_id" % token)
+    return "probe plan: " + ", ".join(parts)
+
+
+def wall_clock_status(args):
+    """Return (limited, exceeded, elapsed_s) for --wall-clock-limit (torch-free)."""
+    limit = getattr(args, "wall_clock_limit", None)
+    if limit is None:
+        return False, False, round(time.perf_counter() - _PROCESS_START, 3)
+    try:
+        limit_value = float(limit)
+    except (TypeError, ValueError):
+        return False, False, round(time.perf_counter() - _PROCESS_START, 3)
+    if not (limit_value > 0):
+        return False, False, round(time.perf_counter() - _PROCESS_START, 3)
+    elapsed = time.perf_counter() - _PROCESS_START
+    return True, elapsed >= limit_value, round(elapsed, 3)
+
+
+class SkipRun(RuntimeError):
+    def __init__(self, status, message):
+        super().__init__(message)
+        self.status = status
+
+
+class ResumeMismatch(RuntimeError):
+    def __init__(self, message):
+        super().__init__(message)
+        self.status = "FAILED_RESUME_TARGETS"
+
+
+def lr_multiplier(update, warmup, total):
+    """Learning-rate scale for a 1-based optimizer update.
+
+    Warmup covers updates 1..warmup and does not start at 0.
+    The decay anchor is update ``total``, whose scale is 0.
+    """
+    update = int(update)
+    warmup = int(warmup)
+    total = int(total)
+    if update <= 0 or total <= 0:
+        return 0.0
+    if warmup <= 0:
+        if total <= 1:
+            return 1.0
+        return max(0.0, float(total - update) / float(total - 1))
+    if update <= warmup:
+        return float(update) / float(warmup)
+    if warmup >= total:
+        return 1.0 if update <= total else 0.0
+    return max(0.0, float(total - update) / float(total - warmup))
+
+
+def build_sequence(prompt_ids, target_ids, eos_id):
+    """One unshifted sequence. Prompt labels are -100. Target and eos are supervised.
+
+    Hugging Face causal LM shifts labels internally. Do not shift again.
+    Pad positions are not inserted here. Do not treat eos as a pad label.
+    """
+    if eos_id is None:
+        raise ValueError("tokenizer eos_token_id is None; refusing to train without an eos id")
+    eos_id = int(eos_id)
+    prompt_ids = [int(x) for x in prompt_ids]
+    target_ids = [int(x) for x in target_ids]
+    input_ids = prompt_ids + target_ids + [eos_id]
+    labels = ([-100] * len(prompt_ids)) + target_ids + [eos_id]
+    attention = [1] * len(input_ids)
+    if not (len(input_ids) == len(labels) == len(attention)):
+        raise RuntimeError("sequence, labels, and attention_mask lengths diverged")
+    return input_ids, labels, attention
+
+
+def parse_strict_grid(text):
+    """Whole stripped generation must be one rectangle of single digits 0-9.
+
+    Rows are newline-separated. Digits in a row are separated by one space.
+    Returns the grid, or None. Does not search for a rectangle inside other text.
+    """
+    if not isinstance(text, str):
+        return None
+    stripped = text.strip()
+    if not stripped or "\r" in stripped or "\t" in stripped:
+        return None
+    rows = stripped.split("\n")
+    grid = []
+    width = None
+    for row in rows:
+        parts = row.split(" ")
+        if not parts or any(len(part) != 1 or part < "0" or part > "9" for part in parts):
+            return None
+        if width is None:
+            width = len(parts)
+        elif len(parts) != width or width == 0:
+            return None
+        grid.append([ord(part) - 48 for part in parts])
+    if not grid or width is None or width == 0:
+        return None
+    return grid
+
+
+def select_pool(short, overflow, n_longer, needed):
+    """Keep every episode at or under max-len. Top up from overflow only if short.
+
+    Overflow fill is shortest-first, then episode_id. Grids are never truncated.
+    ``needed`` is optimizer_updates * grad_accum and is not multiplied by GPU count.
+    """
+    if len(short) >= int(needed):
+        added = []
+    else:
+        ordered = sorted(overflow, key=lambda ep: (int(ep.full_len), str(ep.episode_id)))
+        added = ordered[: int(needed) - len(short)]
+    pool = list(short) + list(added)
+    families = {str(ep.family_id) for ep in pool}
+    stats = {
+        "n_kept_le_max_len": len(short),
+        "n_added_le_overflow": len(added),
+        "n_longer_than_overflow": int(n_longer),
+        "n_families_consumed": len(families),
+        "pool_size": len(pool),
+        "needed_examples": int(needed),
+        "overflow_fill": "shortest_then_episode_id" if added else "not_needed",
+        "kept_all_episodes_le_max_len": True,
+    }
+    return pool, stats
+
+
+def _length_bucket_name(n):
+    """Fixed D2 bucket for a full prompt+target+EOS length. Same bounds as _d2_bucket_name."""
+    n = int(n)
+    if n <= 1024:
+        return "<=1024"
+    if n <= 2048:
+        return "1025-2048"
+    if n <= 4096:
+        return "2049-4096"
+    if n <= 8192:
+        return "4097-8192"
+    return ">8192"
+
+
+def parse_length_mixture(text):
+    """Parse 'a,b,c,d,e' percentages for LENGTH_BUCKET_NAMES order. None/'' means legacy path."""
+    if text is None:
+        return None
+    cleaned = str(text).strip()
+    if not cleaned:
+        return None
+    parts = [part.strip() for part in cleaned.split(",")]
+    if len(parts) != len(LENGTH_BUCKET_NAMES):
+        raise RuntimeError(
+            "length-mixture needs 5 comma-separated percentages for %s, got %r"
+            % (",".join(LENGTH_BUCKET_NAMES), text)
+        )
+    try:
+        values = [float(part) for part in parts]
+    except ValueError:
+        raise RuntimeError("length-mixture values must be numbers, got %r" % text)
+    if any(value < 0 for value in values):
+        raise RuntimeError("length-mixture values must be >= 0, got %r" % text)
+    if abs(sum(values) - 100.0) > 1e-6:
+        raise RuntimeError("length-mixture values must sum to 100, got %r" % text)
+    return values
+
+
+def parse_sample_policy(text):
+    """Validate --sample-policy. None/'' means legacy (default, behavior unchanged)."""
+    if text is None:
+        return "legacy"
+    cleaned = str(text).strip()
+    if not cleaned:
+        return "legacy"
+    if cleaned not in SAMPLE_POLICIES:
+        raise RuntimeError(
+            "sample-policy must be one of %s, got %r" % (",".join(SAMPLE_POLICIES), text)
+        )
+    return cleaned
+
+
+def apportion_mixture_targets(mixture, needed):
+    """Deterministic largest-remainder split of `needed` over the 5 buckets."""
+    needed = int(needed)
+    raw = [float(value) / 100.0 * needed for value in mixture]
+    base = [int(value // 1) for value in raw]
+    remainder = needed - sum(base)
+    order = sorted(range(len(raw)), key=lambda i: (-(raw[i] - base[i]), i))
+    for index in order[: max(0, remainder)]:
+        base[index] += 1
+    return base
+
+
+def select_pool_mixture(bucket_lists, mixture, needed, seed):
+    """Take per-bucket quotas without duplication or cross-bucket borrowing.
+
+    Each bucket keeps at most its quota; a short bucket reports its gap and the
+    total pool may end below `needed`. Within a bucket the order is a seeded
+    shuffle of episode_id order; across buckets the pool interleaves round-robin
+    so early updates see the mixture instead of one length block.
+    """
+    needed = int(needed)
+    targets = apportion_mixture_targets(mixture, needed)
+    taken = {}
+    gaps = {}
+    ordered = []
+    for index, name in enumerate(LENGTH_BUCKET_NAMES):
+        episodes = list(bucket_lists.get(name) or [])
+        episodes.sort(key=lambda ep: (str(ep.family_id), str(ep.episode_id)))
+        shuffled = list(episodes)
+        random.Random(int(seed) + index).shuffle(shuffled)
+        quota = targets[index]
+        keep = shuffled[: min(quota, len(shuffled))]
+        taken[name] = len(keep)
+        gaps[name] = int(quota - len(keep))
+        ordered.append(keep)
+    pool = []
+    position = 0
+    active = True
+    while active:
+        active = False
+        for keep in ordered:
+            if position < len(keep):
+                pool.append(keep[position])
+                active = True
+        position += 1
+    families = {str(ep.family_id) for ep in pool}
+    stats = {
+        "mixture_requested": list(mixture),
+        "mixture_targets": targets,
+        "mixture_taken": [taken[name] for name in LENGTH_BUCKET_NAMES],
+        "mixture_gaps": [gaps[name] for name in LENGTH_BUCKET_NAMES],
+        "mixture_gaps_by_bucket": {name: gaps[name] for name in LENGTH_BUCKET_NAMES},
+        "mixture_available": [len(bucket_lists.get(name) or []) for name in LENGTH_BUCKET_NAMES],
+        "n_families_consumed": len(families),
+        "pool_size": len(pool),
+        "needed_examples": needed,
+        "no_duplication": True,
+        "no_cross_bucket_borrowing": True,
+        "note": "short buckets keep a gap; never duplicated or silently truncated",
+    }
+    return pool, stats
+
+
+def _fair_source_kind(source):
+    """Map Episode.source to official/gen/other for the soft 40/60 target."""
+    if source is None:
+        return "other"
+    text = str(source).strip().lower()
+    if not text or text == "none":
+        return "other"
+    if "official" in text:
+        return "official"
+    if "arcgen" in text or "gen" in text:
+        return "gen"
+    return "other:" + text
+
+
+def _fair_sha_hex(*parts):
+    hasher = hashlib.sha256()
+    for part in parts:
+        hasher.update(str(part).encode("utf-8"))
+        hasher.update(b"\x00")
+    return hasher.hexdigest()
+
+
+def select_pool_mixture_fair(bucket_lists, mixture, needed, seed, protected_task_ids=None):
+    """Fair consumption inside length-mixture quotas: source->task->base.
+
+    Quotas reuse apportion_mixture_targets, so e.g. 800 at 20,40,40,0,0 gives
+    160/320/320/0/0 exactly like legacy. Within each bucket, slots follow the
+    soft FAIR_SOURCE_CYCLE (official,gen,gen,official,gen = 40/60 soft target).
+    A slot prefers its source kind; when empty it falls back to remaining rows
+    (soft, never duplicated or borrowed across buckets) and reports the actual
+    ratio (e.g. 009 159/317/316 buckets with 318/474 official/gen, not exact
+    40/60). Task choice is least-selected global task first, then least-selected
+    source-task with SHA256(seed:bucket:want:task) tie; base choice is
+    least-selected family_id first (SHA tie on task:base); episode choice is
+    SHA(seed:bucket:episode_id). Yet-unseen protected tasks (explicit list when
+    given, else proxy official-only tasks with no gen rows in the pool, standing
+    in for无生成器非ARC1任务) win their source/length slot first. Round-robin
+    interleave matches legacy so early updates see the mixture.
+    """
+    needed = int(needed)
+    targets = apportion_mixture_targets(mixture, needed)
+    task_sources = {}
+    for name in LENGTH_BUCKET_NAMES:
+        for episode in (bucket_lists.get(name) or []):
+            task_sources.setdefault(str(episode.task_id), set()).add(
+                _fair_source_kind(getattr(episode, "source", None))
+            )
+    if protected_task_ids is None:
+        protected_set = {
+            task_id for task_id, kinds in task_sources.items() if kinds == {"official"}
+        }
+        protected_note = (
+            "proxy:official-only tasks (no gen rows in pool), standing in for "
+            "无生成器非ARC1任务; explicit protected-task list hook reserved "
+            "(select_pool_mixture_fair protected_task_ids)"
+        )
+    else:
+        protected_set = {str(item) for item in (protected_task_ids or [])}
+        protected_note = "explicit protected_task_ids list"
+    task_selected = {}
+    source_task_selected = {}
+    base_selected = {}
+    taken = {}
+    gaps = {}
+    ordered = []
+    per_source_actual = {}
+    kind_actual = {"official": 0, "gen": 0, "other": 0}
+    fallback_total = 0
+    fallback_by_bucket = {}
+    for index, name in enumerate(LENGTH_BUCKET_NAMES):
+        remaining = list(bucket_lists.get(name) or [])
+        quota = int(targets[index])
+        keep = []
+        bucket_fallback = 0
+        for slot in range(quota):
+            if not remaining:
+                break
+            want = FAIR_SOURCE_CYCLE[slot % len(FAIR_SOURCE_CYCLE)]
+            matching = [
+                episode
+                for episode in remaining
+                if _fair_source_kind(getattr(episode, "source", None)) == want
+            ]
+            if matching:
+                candidates = matching
+                used_fallback = False
+            else:
+                candidates = remaining
+                used_fallback = True
+                bucket_fallback += 1
+            present_tasks = {str(episode.task_id) for episode in candidates}
+            protected_unseen = [
+                task_id
+                for task_id in present_tasks
+                if task_id in protected_set and task_selected.get(task_id, 0) == 0
+            ]
+            task_pool = set(protected_unseen) if protected_unseen else present_tasks
+            best_task = None
+            best_key = None
+            for task_id in task_pool:
+                global_count = int(task_selected.get(task_id, 0))
+                source_task_count = int(source_task_selected.get((want, task_id), 0))
+                tie = _fair_sha_hex(seed, name, want, task_id)
+                key = (global_count, source_task_count, tie)
+                if best_key is None or key < best_key:
+                    best_key = key
+                    best_task = task_id
+            task_episodes = [
+                episode for episode in candidates if str(episode.task_id) == best_task
+            ]
+            present_bases = {str(episode.family_id) for episode in task_episodes}
+            best_base = None
+            best_base_key = None
+            for base_id in present_bases:
+                base_count = int(base_selected.get(base_id, 0))
+                tie = _fair_sha_hex(seed, name, best_task, base_id)
+                key = (base_count, tie)
+                if best_base_key is None or key < best_base_key:
+                    best_base_key = key
+                    best_base = base_id
+            base_episodes = [
+                episode
+                for episode in task_episodes
+                if str(episode.family_id) == best_base
+            ]
+            base_episodes.sort(
+                key=lambda episode: _fair_sha_hex(
+                    seed, name, str(getattr(episode, "episode_id", ""))
+                )
+            )
+            chosen = base_episodes[0]
+            keep.append(chosen)
+            remaining.remove(chosen)
+            task_selected[best_task] = int(task_selected.get(best_task, 0)) + 1
+            actual_kind = _fair_source_kind(getattr(chosen, "source", None))
+            source_task_selected[(actual_kind, best_task)] = int(
+                source_task_selected.get((actual_kind, best_task), 0)
+            ) + 1
+            base_selected[best_base] = int(base_selected.get(best_base, 0)) + 1
+            raw_source = str(getattr(chosen, "source", None))
+            per_source_actual[raw_source] = int(per_source_actual.get(raw_source, 0)) + 1
+            if actual_kind in kind_actual:
+                kind_actual[actual_kind] += 1
+            else:
+                kind_actual["other"] += 1
+            del used_fallback
+        taken[name] = len(keep)
+        gaps[name] = int(quota - len(keep))
+        fallback_by_bucket[name] = int(bucket_fallback)
+        fallback_total += int(bucket_fallback)
+        ordered.append(keep)
+    pool = []
+    position = 0
+    active = True
+    while active:
+        active = False
+        for keep in ordered:
+            if position < len(keep):
+                pool.append(keep[position])
+                active = True
+        position += 1
+    families = {str(episode.family_id) for episode in pool}
+    tasks = {str(episode.task_id) for episode in pool}
+    soft_targets = {}
+    for bucket_index, name in enumerate(LENGTH_BUCKET_NAMES):
+        quota = int(targets[bucket_index])
+        split = apportion_mixture_targets([40.0, 60.0], quota)
+        soft_targets[name] = {
+            "quota": quota,
+            "official_soft": int(split[0]),
+            "gen_soft": int(split[1]),
+        }
+    stats = {
+        "mixture_requested": list(mixture),
+        "mixture_targets": targets,
+        "mixture_taken": [taken[name] for name in LENGTH_BUCKET_NAMES],
+        "mixture_gaps": [gaps[name] for name in LENGTH_BUCKET_NAMES],
+        "mixture_gaps_by_bucket": {name: gaps[name] for name in LENGTH_BUCKET_NAMES},
+        "mixture_available": [len(bucket_lists.get(name) or []) for name in LENGTH_BUCKET_NAMES],
+        "sample_policy": "fair_task_base",
+        "fair_source_cycle": list(FAIR_SOURCE_CYCLE),
+        "fair_source_soft_targets_by_bucket": soft_targets,
+        "fair_source_actual_by_kind": dict(kind_actual),
+        "fair_source_actual_by_source": dict(per_source_actual),
+        "fair_fallback_slots": int(fallback_total),
+        "fair_fallback_by_bucket": dict(fallback_by_bucket),
+        "fair_protected_note": protected_note,
+        "fair_protected_pool_size": len(protected_set),
+        "fair_protected_covered": len({task for task in tasks if task in protected_set}),
+        "n_families_consumed": len(families),
+        "independent_bases_consumed": len(families),
+        "independent_base_ids": sorted(families),
+        "tasks_covered": len(tasks),
+        "tasks_covered_ids": sorted(tasks),
+        "pool_size": len(pool),
+        "needed_examples": needed,
+        "no_duplication": True,
+        "no_cross_bucket_borrowing": True,
+        "note": (
+            "fair_task_base keeps length quotas; official/gen 40/60 is a soft "
+            "target only, actual ratio reported (e.g. 009 159/317/316 with "
+            "318/474); short buckets keep a gap, never duplicated or borrowed"
+        ),
+    }
+    return pool, stats
+
+
+def bucket_consumption(episodes):
+    """Cumulative per-bucket consumption: samples, input/target tokens, base/task counts.
+
+    Legacy keys (samples/input_tokens/target_tokens/bases/tasks/n_bases/n_tasks)
+    are unchanged. New keys extend the same structure: per-source actual counts
+    (sources/n_sources), independent_bases_consumed (= n_bases, family_id count),
+    and tasks_covered (= n_tasks). True token buckets reuse LENGTH_BUCKET_NAMES.
+    """
+    out = {}
+    for name in LENGTH_BUCKET_NAMES:
+        out[name] = {
+            "samples": 0,
+            "input_tokens": 0,
+            "target_tokens": 0,
+            "bases": [],
+            "tasks": [],
+            "sources": {},
+        }
+    seen_base = {name: set() for name in LENGTH_BUCKET_NAMES}
+    seen_task = {name: set() for name in LENGTH_BUCKET_NAMES}
+    seen_source = {name: {} for name in LENGTH_BUCKET_NAMES}
+    for episode in episodes or []:
+        name = _length_bucket_name(int(episode.full_len))
+        entry = out[name]
+        entry["samples"] += 1
+        entry["input_tokens"] += int(episode.prompt_len)
+        entry["target_tokens"] += int(episode.target_len)
+        seen_base[name].add(str(episode.family_id))
+        seen_task[name].add(str(episode.task_id))
+        source_key = str(getattr(episode, "source", None))
+        seen_source[name][source_key] = int(seen_source[name].get(source_key, 0)) + 1
+    for name in LENGTH_BUCKET_NAMES:
+        out[name]["n_bases"] = len(seen_base[name])
+        out[name]["n_tasks"] = len(seen_task[name])
+        out[name]["bases"] = sorted(seen_base[name])
+        out[name]["tasks"] = sorted(seen_task[name])
+        out[name]["sources"] = dict(seen_source[name])
+        out[name]["n_sources"] = len(seen_source[name])
+        out[name]["independent_bases_consumed"] = len(seen_base[name])
+        out[name]["tasks_covered"] = len(seen_task[name])
+    return out
+
+
+def refresh_bucket_consumption(bundle, pool):
+    """Stamp cumulative bucket consumption of pool[:cursor] into run_config. Mixture only."""
+    try:
+        cursor = int(bundle.get("cursor", 0))
+    except (TypeError, ValueError):
+        return
+    consumed = bucket_consumption((pool or [])[: max(0, cursor)])
+    run_config = bundle.get("run_config")
+    if isinstance(run_config, dict):
+        run_config["bucket_consumption"] = consumed
+
+
+def grids_equal(left, right):
+    if not isinstance(left, list) or not isinstance(right, list) or len(left) != len(right):
+        return False
+    for row_a, row_b in zip(left, right):
+        if not isinstance(row_a, list) or not isinstance(row_b, list) or len(row_a) != len(row_b):
+            return False
+        for cell_a, cell_b in zip(row_a, row_b):
+            if int(cell_a) != int(cell_b):
+                return False
+    return True
+
+
+def parse_id_list(text):
+    found = []
+    for part in (text or "").split(","):
+        item = part.strip()
+        if item and item not in found:
+            found.append(item)
+    return found
+
+
+def parse_extra_targets(text):
+    extras = []
+    for part in (text or "").split(","):
+        name = part.strip()
+        if not name or name in DEFAULT_TARGETS or name in extras:
+            continue
+        extras.append(name)
+    return extras
+
+
+def dump_json(path, obj, one_line=False):
+    parent = os.path.dirname(path)
+    if parent:
+        os.makedirs(parent, exist_ok=True)
+    if one_line:
+        text = json.dumps(obj, ensure_ascii=False, separators=(",", ":"), default=str) + "\n"
+    else:
+        text = json.dumps(obj, ensure_ascii=False, indent=2, default=str) + "\n"
+    temporary = path + ".tmp"
+    with open(temporary, "w", encoding="utf-8") as handle:
+        handle.write(text)
+        handle.flush()
+        os.fsync(handle.fileno())
+    os.replace(temporary, path)
+
+
+def adapter_files_present(adapter_dir):
+    if not adapter_dir or not os.path.isdir(adapter_dir):
+        return False
+    names = set(os.listdir(adapter_dir))
+    has_config = "adapter_config.json" in names
+    has_weights = any(name.endswith(".safetensors") or name.endswith(".bin") for name in names)
+    return has_config and has_weights
+
+
+def build_parser():
+    parser = argparse.ArgumentParser(
+        description=(
+            "G1 grid SFT for Qwen3.8-27B. Frozen BF16 base, LoRA, answer-token loss, "
+            "single-process device_map=balanced. Does not launch without 4 CUDA GPUs."
+        )
+    )
+    parser.add_argument("--model-dir", default=None, help="Model directory. Default: search /kaggle/input.")
+    parser.add_argument("--episodes", required=True, help="Training episodes JSONL.")
+    parser.add_argument("--out-dir", required=True, help="Checkpoint and log directory.")
+    parser.add_argument("--optimizer-updates", type=int, default=200)
+    parser.add_argument(
+        "--scheduler-horizon",
+        type=int,
+        default=None,
+        help=(
+            "LR scheduler total horizon (010 §4: fixed 100 while stopping at 25/50). "
+            "Default None = --optimizer-updates. LR decay anchor is this horizon "
+            "(update `horizon` uses LR 0); --optimizer-updates only caps how many "
+            "updates this process runs. Resume must match the checkpoint record."
+        ),
+    )
+    parser.add_argument(
+        "--stop-after-update",
+        type=int,
+        default=None,
+        help=(
+            "Early stop at this completed-update boundary (010 §8). Saves adapter/ + "
+            "trainer_state.pt + adapter_step_N snapshot + run_config with stop_reason "
+            "and exits 0. Coexists with --wall-clock-limit; whoever hits first wins."
+        ),
+    )
+    parser.add_argument("--grad-accum", type=int, default=4)
+    parser.add_argument("--microbatch", type=int, default=1)
+    parser.add_argument("--max-len", type=int, default=1024)
+    parser.add_argument("--overflow-len", type=int, default=2048)
+    parser.add_argument("--save-every", type=int, default=25)
+    parser.add_argument(
+        "--length-mixture",
+        default=None,
+        help=(
+            "Five comma-separated percentages for fixed true-token buckets "
+            "<=1024,1025-2048,2049-4096,4097-8192,>8192 "
+            "(full prompt+target+EOS length; same bounds as D2 d2_token_buckets). "
+            "Plan 008 S5 recipe: '20,40,40,0,0' = 20%% <=1024, 40%% 1025-2048, "
+            "40%% 2049-4096, 0%% 4097-8192, 0%% >8192, so buckets >4096 are "
+            "explicitly uncovered by default. Pass e.g. '20,30,30,10,10' to "
+            "explicitly include 4K/8K rows. Not passed (default None): legacy "
+            "max-len/overflow-len pool path, behavior fully unchanged. When set: "
+            "max-len/overflow-len are recorded but do not filter; short buckets "
+            "report gaps, never duplicate minority families or borrow across "
+            "buckets, and may end below needed. Needs a pre-bucketed 'd2_bucket' "
+            "row tag when present (data-layer interface), else live full_len."
+        ),
+    )
+    parser.add_argument(
+        "--sample-policy",
+        default="legacy",
+        choices=("legacy", "fair_task_base"),
+        help=(
+            "Final-consumption selection inside length-mixture quotas. "
+            "legacy (default): old select_pool_mixture order, behavior fully unchanged. "
+            "fair_task_base: only with --length-mixture; same quotas via "
+            "apportion_mixture_targets (800 at 20,40,40,0,0 -> 160/320/320/0/0), "
+            "then source->task->base fair pick (least-selected task/base first, "
+            "unseen official-only proxy for无生成器非ARC1任务 wins its slot); "
+            "official/gen 40/60 is a soft target only with actual ratio reported "
+            "(e.g. 159/317/316 buckets, 318/474 official/gen), never hard-filled."
+        ),
+    )
+    parser.add_argument("--lr", type=float, default=2e-5)
+    parser.add_argument("--weight-decay", type=float, default=0.01)
+    parser.add_argument("--warmup-updates", type=int, default=10)
+    parser.add_argument("--clip-norm", type=float, default=1.0)
+    parser.add_argument("--seed", type=int, default=20260930)
+    parser.add_argument("--zero-step-ids", default=DEFAULT_ZERO_STEP_IDS)
+    parser.add_argument("--zero-step-max-new", type=int, default=960)
+    parser.add_argument(
+        "--resume",
+        default=None,
+        help=(
+            "Previous out-dir with adapter/ and trainer_state.pt. Exact resume only: pool order, "
+            "cursor, optimizer, scheduler, and RNG continue the update counter. "
+            "Never combined with --init-adapter."
+        ),
+    )
+    parser.add_argument(
+        "--init-adapter",
+        default=None,
+        help=(
+            "Weights-only inheritance for a new stage (008 G2a): an adapter dir, or a previous "
+            "out-dir holding adapter/ (+ optional trainer_state.pt/run_config.json for stage "
+            "accounting). Pool, cursor, optimizer, and scheduler always restart from zero; old "
+            "optimizer/scheduler/cursor are never reused. Same target_modules prefer the "
+            "verified PeftModel.from_pretrained(..., is_trainable=True) path, then strictly "
+            "verify all expected inherited tensors (G1: 512/512) with per-tensor value equality "
+            "against the weight file. Changed targets build a fresh LoRA and copy via the PEFT "
+            "public state-mapping rule (peft.utils.save_and_load.set_peft_model_state_dict "
+            "adapter-name normalization, ...lora_A.weight -> ...lora_A.default.weight); literal "
+            "saved-key intersection is never treated as success (G1 literal is 0). Copying 0 "
+            "tensors or any unexpected missing/shape/value mismatch aborts immediately instead "
+            "of training a fresh LoRA as inherited G1. Mutually exclusive with --resume "
+            "(exact resume keeps old pool/cursor/optimizer/scheduler/RNG). Stage switch records "
+            "old vs new training volume in run_config.json. Periodic saves also write immutable "
+            "adapter_step_{N} snapshots and never overwrite an existing snapshot "
+            "(adapter/ stays the latest pointer for --resume). G1 defaults unchanged: r8/alpha32, "
+            "q/k/v/o+MLP targets, BF16, answer-only mask, thinking=False, microbatch=1, accum=4."
+        ),
+    )
+    parser.add_argument(
+        "--extra-targets",
+        default="",
+        help="Comma-separated extra LoRA module names. Default empty. G1 does not add GDN targets.",
+    )
+    parser.add_argument("--challenges", default=None, help="Optional ARC challenges JSON for zero-step.")
+    parser.add_argument("--solutions", default=None, help="Optional ARC solutions JSON for zero-step exact match.")
+    parser.add_argument(
+        "--formatter",
+        default="auto",
+        help=(
+            "Unified training formatter. auto: take it from data rows (missing reads as "
+            "f0_space legacy); f0_space/f1_compact: require every row to match. "
+            "Mixed-formatter input is rejected. Legacy space_digits_v1 aliases to f0_space."
+        ),
+    )
+    parser.add_argument(
+        "--wall-clock-limit",
+        type=float,
+        default=None,
+        help=(
+            "Wall-clock budget in seconds since process start (010 §5: covers "
+            "setup/load/JIT/save, not just updates). Checked only at complete "
+            "optimizer-update boundaries: an in-flight optimizer.step is never "
+            "killed mid-step; instead the run saves adapter/ + trainer_state.pt + "
+            "adapter_step_N snapshot + run_config (with stop_reason) and exits. "
+            "Single-process primitive only: S0-S4 Notebook orchestration across "
+            "stages stays with the user (010 §8 runner). Default None = no limit."
+        ),
+    )
+    parser.add_argument(
+        "--logits-mode",
+        default="full",
+        choices=("full", "suffix"),
+        help=(
+            "010 §6.1 answer-suffix logits. full (default): old full-vocab-head path, "
+            "behavior fully unchanged. suffix: only when microbatch==1 and answer "
+            "supervision is a continuous suffix incl EOS; calls "
+            "model(input_ids=input_ids, attention_mask=attention, "
+            "labels=labels[:, P-1:], logits_to_keep=T+1, use_cache=False), keeps full "
+            "input backbone grad, HF shifts once, last logit stays ignore. Non-suffix "
+            "labels raise instead of silent fallback. No manual shift/detach/vocab cut."
+        ),
+    )
+    parser.add_argument(
+        "--probe-suffix-logits",
+        default=None,
+        help=(
+            "010 §6.1 probe selector, no training when set. Comma-separated: bucket "
+            "tokens short (<=1024) / 2k (1025-2048) / 4k (2049-4096) each pick one pool "
+            "episode, or explicit episode_id values. Same adapter + same episode, no "
+            "weight update (needs >=1 G1 non-zero LoRA case). Writes suffix_probe.json "
+            "with full/suffix loss, all-LoRA-grad rel-error/cosine, same-path repeat "
+            "noise, then time + per-GPU allocated/reserved (logits/grad cleaned, all-GPU "
+            "sync, JIT/warmup split). Thresholds recorded only; notebook decides adopt "
+            "vs keep full. E.g. --probe-suffix-logits short,2k,4k."
+        ),
+    )
+    return parser
+
+
+def read_saved_scheduler_horizon(resume_dir):
+    """Torch-free saved horizon for --resume consistency (reads run_config.json only)."""
+    path = os.path.join(resume_dir, "run_config.json")
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except (OSError, ValueError):
+        return None
+    if isinstance(data, dict):
+        for key in ("scheduler_horizon", "scheduler_total", "horizon"):
+            if data.get(key) is not None:
+                try:
+                    return int(data[key])
+                except (TypeError, ValueError):
+                    return None
+        if data.get("optimizer_updates") is not None:
+            try:
+                return int(data["optimizer_updates"])
+            except (TypeError, ValueError):
+                return None
+    return None
+
+
+def resolve_scheduler_horizon_value(args):
+    raw = getattr(args, "scheduler_horizon", None)
+    if raw is None:
+        return int(args.optimizer_updates)
+    return int(raw)
+
+
+def validate_args(args):
+    if args.microbatch != 1:
+        raise RuntimeError(
+            "microbatch must be 1. Each microstep is one episode. "
+            "effective batch = microbatch * grad_accum and is not multiplied by GPU count."
+        )
+    if args.grad_accum < 1:
+        raise RuntimeError("grad-accum must be >= 1")
+    if args.optimizer_updates < 1:
+        raise RuntimeError("optimizer-updates must be >= 1")
+    if getattr(args, "scheduler_horizon", None) is None:
+        args.scheduler_horizon = int(args.optimizer_updates)
+    else:
+        try:
+            args.scheduler_horizon = int(args.scheduler_horizon)
+        except (TypeError, ValueError):
+            raise RuntimeError("--scheduler-horizon must be an int >= 1")
+        if int(args.scheduler_horizon) < 1:
+            raise RuntimeError("--scheduler-horizon must be an int >= 1")
+        if int(args.scheduler_horizon) < int(args.optimizer_updates):
+            raise RuntimeError(
+                "--scheduler-horizon (%d) must be >= --optimizer-updates (%d); "
+                "010 §4 fixes horizon=100 while stopping at 25/50, never shrinks it"
+                % (int(args.scheduler_horizon), int(args.optimizer_updates))
+            )
+    if getattr(args, "stop_after_update", None) is not None:
+        try:
+            args.stop_after_update = int(args.stop_after_update)
+        except (TypeError, ValueError):
+            raise RuntimeError("--stop-after-update must be an int >= 1")
+        if int(args.stop_after_update) < 1:
+            raise RuntimeError("--stop-after-update must be an int >= 1")
+        if int(args.stop_after_update) > int(args.optimizer_updates):
+            raise RuntimeError(
+                "--stop-after-update (%d) must be <= --optimizer-updates (%d)"
+                % (int(args.stop_after_update), int(args.optimizer_updates))
+            )
+    if args.max_len < 1 or args.overflow_len < args.max_len:
+        raise RuntimeError("require 1 <= max-len <= overflow-len")
+    if args.save_every < 1:
+        raise RuntimeError("save-every must be >= 1")
+    if args.warmup_updates < 0:
+        raise RuntimeError("warmup-updates must be >= 0")
+    if not (args.lr > 0):
+        raise RuntimeError("lr must be > 0")
+    if not (args.clip_norm > 0):
+        raise RuntimeError("clip-norm must be > 0")
+    if args.zero_step_max_new < 1:
+        raise RuntimeError("zero-step-max-new must be >= 1")
+    if getattr(args, "wall_clock_limit", None) is not None:
+        try:
+            limit_value = float(args.wall_clock_limit)
+        except (TypeError, ValueError):
+            raise RuntimeError("--wall-clock-limit must be seconds > 0")
+        if not (limit_value > 0):
+            raise RuntimeError("--wall-clock-limit must be seconds > 0")
+        args.wall_clock_limit = limit_value
+    if not os.path.isfile(args.episodes):
+        raise RuntimeError("episodes file not found: %s" % args.episodes)
+    if args.challenges and not os.path.isfile(args.challenges):
+        raise RuntimeError("challenges file not found: %s" % args.challenges)
+    if args.solutions and not os.path.isfile(args.solutions):
+        raise RuntimeError("solutions file not found: %s" % args.solutions)
+    if args.resume:
+        resolve_resume_paths(args.resume)
+        saved_horizon = read_saved_scheduler_horizon(args.resume)
+        if saved_horizon is not None and int(saved_horizon) != int(args.scheduler_horizon):
+            raise ResumeMismatch(
+                "refusing resume because --scheduler-horizon differs "
+                "(checkpoint %d vs current %d); pass the same horizon, never silently changed"
+                % (int(saved_horizon), int(args.scheduler_horizon))
+            )
+    if getattr(args, "init_adapter", None) and args.resume:
+        raise RuntimeError(
+            "--init-adapter and --resume are mutually exclusive: weights-only new stage "
+            "vs exact resume of pool/cursor/optimizer/scheduler/RNG"
+        )
+    if getattr(args, "init_adapter", None):
+        resolve_init_adapter_dir(args.init_adapter)
+    if getattr(args, "length_mixture", None) is not None:
+        parse_length_mixture(args.length_mixture)
+        if args.resume:
+            raise RuntimeError(
+                "--length-mixture cannot be combined with --resume: resume keeps the stored "
+                "pool/cursor order and never rebuilds buckets; start a new stage with "
+                "--init-adapter for a new mixture"
+            )
+    policy = parse_sample_policy(getattr(args, "sample_policy", "legacy"))
+    if getattr(args, "sample_policy", None) in (None, ""):
+        args.sample_policy = "legacy"
+    else:
+        args.sample_policy = policy
+    if args.sample_policy == "fair_task_base":
+        if getattr(args, "length_mixture", None) is None:
+            raise RuntimeError(
+                "--sample-policy fair_task_base needs --length-mixture: fair selection "
+                "runs inside length-mixture quotas only"
+            )
+        if args.resume:
+            raise RuntimeError(
+                "--sample-policy fair_task_base cannot be combined with --resume: resume "
+                "keeps the stored pool/cursor order and never rebuilds buckets; start a "
+                "new stage with --init-adapter for a fair mixture"
+            )
+    cli_fmt = str(getattr(args, "formatter", "auto") or "auto").strip().lower().replace("-", "_")
+    if cli_fmt not in ("auto", ""):
+        _normalize_train_formatter(cli_fmt)
+    logits_mode = parse_logits_mode(getattr(args, "logits_mode", "full"))
+    args.logits_mode = logits_mode
+    if logits_mode == "suffix" and int(args.microbatch) != 1:
+        raise RuntimeError(
+            "--logits-mode suffix requires --microbatch 1 (got %s); refusing, not falling back"
+            % (args.microbatch,)
+        )
+    probe_raw = getattr(args, "probe_suffix_logits", None)
+    if probe_raw is not None:
+        tokens = parse_probe_selector(probe_raw)
+        if not tokens:
+            raise RuntimeError("--probe-suffix-logits needs tokens like short,2k,4k or episode IDs")
+        args.probe_suffix_logits = ",".join(tokens)
+        args.probe_selector_tokens = tokens
+    else:
+        args.probe_selector_tokens = None
+
+
+def resolve_resume_paths(resume_dir):
+    if not os.path.isdir(resume_dir):
+        raise RuntimeError("resume dir not found: %s" % resume_dir)
+    adapter = os.path.join(resume_dir, "adapter")
+    state = os.path.join(resume_dir, "trainer_state.pt")
+    if not os.path.isfile(os.path.join(adapter, "adapter_config.json")):
+        raise RuntimeError("resume adapter/adapter_config.json missing under %s" % resume_dir)
+    if not os.path.isfile(state):
+        raise RuntimeError("resume trainer_state.pt missing under %s" % resume_dir)
+    return adapter, state
+
+
+def resolve_init_adapter_dir(path):
+    """Accept an adapter dir or a previous out-dir holding adapter/."""
+    if not path:
+        raise RuntimeError("init-adapter path is empty")
+    direct = os.path.join(path, "adapter_config.json")
+    if os.path.isfile(direct):
+        return os.path.abspath(path)
+    nested = os.path.join(path, "adapter", "adapter_config.json")
+    if os.path.isfile(nested):
+        return os.path.abspath(os.path.join(path, "adapter"))
+    raise RuntimeError(
+        "init-adapter has no adapter_config.json as %s nor %s" % (direct, nested)
+    )
+
+
+def read_adapter_targets(adapter_dir):
+    try:
+        with open(os.path.join(adapter_dir, "adapter_config.json"), "r", encoding="utf-8") as handle:
+            config = json.load(handle)
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RuntimeError("cannot read init-adapter config: %s" % exc)
+    targets = config.get("target_modules")
+    if isinstance(targets, dict):
+        targets = list(targets.keys())
+    return [str(name) for name in (targets or [])]
+
+
+def map_saved_lora_key_to_trainable(saved_key, adapter_name="default"):
+    """Map a saved PEFT LoRA key to its live trainable state_dict key.
+
+    PEFT strips the adapter name on save (``...lora_A.weight``) while the live
+    trainable state keeps it (``...lora_A.default.weight``). This is the same
+    adapter-name rule used by the public API
+    ``peft.utils.save_and_load.set_peft_model_state_dict``. Never rely on the
+    literal ``saved_key in model_state`` check: for G1 that intersection is 0
+    and would silently yield a fresh LoRA masquerading as inheritance.
+    """
+    if not isinstance(saved_key, str):
+        return saved_key
+    tag = ".%s." % str(adapter_name)
+    if tag in saved_key:
+        return saved_key
+    mapped = saved_key
+    for marker in (
+        "lora_embedding_A",
+        "lora_embedding_B",
+        "lora_magnitude_vector",
+        "lora_A",
+        "lora_B",
+    ):
+        needle = ".%s." % marker
+        if needle in mapped:
+            mapped = mapped.replace(needle, ".%s.%s." % (marker, adapter_name))
+    return mapped
+
+
+def _read_saved_adapter_state(adapter_dir, torch_module):
+    """Locate and CPU-load the saved adapter weights (no model, no optimizer)."""
+    names = os.listdir(adapter_dir)
+    weight_file = None
+    for candidate in ("adapter_model.safetensors", "adapter_model.safetensor"):
+        if candidate in names:
+            weight_file = os.path.join(adapter_dir, candidate)
+            break
+    if weight_file is None:
+        for name in sorted(names):
+            if name.endswith(".safetensors"):
+                weight_file = os.path.join(adapter_dir, name)
+                break
+    use_torch_bin = False
+    if weight_file is None:
+        for candidate in ("adapter_model.bin", "adapter_model.pytorch_bin"):
+            if candidate in names:
+                weight_file = os.path.join(adapter_dir, candidate)
+                use_torch_bin = True
+                break
+    if weight_file is None:
+        raise RuntimeError("init-adapter has no .safetensors/.bin weights under %s" % adapter_dir)
+    if use_torch_bin:
+        old_sd = torch_module.load(weight_file, map_location="cpu", weights_only=True)
+    else:
+        try:
+            from safetensors.torch import load_file as _load_file
+        except ImportError as exc:
+            raise RuntimeError("need safetensors to read init-adapter %s (%s)" % (weight_file, exc))
+        old_sd = _load_file(weight_file, device="cpu")
+    return weight_file, old_sd
+
+
+def verify_from_pretrained_weights(model, adapter_dir, torch_module, adapter_name="default"):
+    """Strict check for the same-targets from_pretrained inheritance path.
+
+    Loads the saved file on CPU, maps each saved LoRA key with adapter-name
+    normalization, and requires every saved tensor to exist in the live model
+    with identical shape and exact values. Raises on 0 copied or any missing /
+    shape / value mismatch instead of continuing as fresh-LoRA-as-G1.
+    """
+    weight_file, old_sd = _read_saved_adapter_state(adapter_dir, torch_module)
+    current = model.state_dict()
+    saved_lora = [key for key in old_sd.keys() if "lora_" in key]
+    if not saved_lora:
+        raise RuntimeError("init-adapter %s has no lora_ tensors; refusing inheritance" % weight_file)
+    literal_hits = sum(1 for key in saved_lora if key in current)
+    verified = 0
+    not_in_new = []
+    shape_mismatch = []
+    value_mismatch = []
+    for saved_key in saved_lora:
+        mapped = map_saved_lora_key_to_trainable(saved_key, adapter_name)
+        if mapped not in current:
+            not_in_new.append("%s -> %s" % (saved_key, mapped))
+            continue
+        saved_value = old_sd[saved_key]
+        live_value = current[mapped]
+        if tuple(saved_value.shape) != tuple(live_value.shape):
+            shape_mismatch.append(mapped)
+            continue
+        try:
+            equal = bool(torch_module.equal(live_value.cpu(), saved_value.cpu()))
+        except Exception:
+            equal = False
+        if not equal:
+            value_mismatch.append(mapped)
+            continue
+        verified += 1
+    n_model_lora = sum(1 for key in current.keys() if "lora_" in key)
+    if verified == 0:
+        raise RuntimeError(
+            "init-adapter inheritance failed: verified 0/%d (literal intersection %d, "
+            "mapped %d); refusing to continue as fresh LoRA: %s"
+            % (len(saved_lora), literal_hits, len(saved_lora) - len(not_in_new), weight_file)
+        )
+    if not_in_new or shape_mismatch or value_mismatch or verified != len(saved_lora):
+        raise RuntimeError(
+            "init-adapter inheritance incomplete: verified %d/%d not_in_new=%d "
+            "shape_mismatch=%d value_mismatch=%d e.g. %s" % (
+                verified, len(saved_lora), len(not_in_new),
+                len(shape_mismatch), len(value_mismatch),
+                (not_in_new + shape_mismatch + value_mismatch)[:4],
+            )
+        )
+    if verified != n_model_lora:
+        raise RuntimeError(
+            "init-adapter inheritance size mismatch: verified %d but live model has %d "
+            "lora tensors; refusing partial inheritance" % (verified, n_model_lora)
+        )
+    return {
+        "weight_file": os.path.basename(weight_file),
+        "copied_lora_tensors": verified,
+        "shape_mismatch": shape_mismatch[:16],
+        "n_shape_mismatch": len(shape_mismatch),
+        "not_in_new": not_in_new[:16],
+        "n_not_in_new": len(not_in_new),
+        "literal_intersection": literal_hits,
+        "mapped_intersection": verified,
+        "n_value_mismatch": len(value_mismatch),
+        "peft_api_used": True,
+        "path": "from_pretrained",
+    }
+
+
+def load_init_adapter_weights(model, adapter_dir, torch_module, old_targets=None, new_targets=None, adapter_name="default"):
+    """Manual adapter-name-normalized copy for changed targets; strict, never literal.
+
+    Uses the PEFT public state-mapping rule (``set_peft_model_state_dict``
+    adapter-name insertion, ``...lora_A.weight`` -> ``...lora_A.default.weight``)
+    for every key. The literal ``saved_key in model_state`` intersection is
+    computed for diagnostics only (G1: 0) and never treated as success. After
+    the copy each tensor is value-checked against the file; 0 copied or any
+    unexpected missing/shape/value mismatch raises. Never touches base weights
+    or optimizer; optimizer/scheduler/cursor are rebuilt by the caller.
+    """
+    weight_file, old_sd = _read_saved_adapter_state(adapter_dir, torch_module)
+    if old_targets is not None and new_targets is not None:
+        targets_changed = set(old_targets) != set(new_targets)
+    else:
+        targets_changed = False
+    current = model.state_dict()
+    saved_lora = [key for key in old_sd.keys() if "lora_" in key]
+    if not saved_lora:
+        raise RuntimeError("init-adapter %s has no lora_ tensors; refusing inheritance" % weight_file)
+    literal_hits = sum(1 for key in saved_lora if key in current)
+    peft_api_used = False
+    peft_api_error = None
+    try:
+        from peft.utils.save_and_load import set_peft_model_state_dict as _set_peft_sd
+    except Exception as exc:
+        _set_peft_sd = None
+        peft_api_error = "%s: %s" % (type(exc).__name__, exc)
+    if _set_peft_sd is not None:
+        try:
+            _set_peft_sd(model, old_sd, adapter_name=adapter_name)
+            peft_api_used = True
+            current = model.state_dict()
+        except Exception as exc:
+            peft_api_error = "%s: %s" % (type(exc).__name__, exc)
+    if not peft_api_used:
+        with torch_module.no_grad():
+            for saved_key in saved_lora:
+                mapped = map_saved_lora_key_to_trainable(saved_key, adapter_name)
+                if mapped not in current:
+                    continue
+                if tuple(old_sd[saved_key].shape) != tuple(current[mapped].shape):
+                    continue
+                current[mapped].copy_(old_sd[saved_key])
+        try:
+            model.load_state_dict(current, strict=False)
+        except TypeError:
+            pass
+        current = model.state_dict()
+    copied = 0
+    shape_mismatch = []
+    not_in_new = []
+    value_mismatch = []
+    for saved_key in saved_lora:
+        mapped = map_saved_lora_key_to_trainable(saved_key, adapter_name)
+        if mapped not in current:
+            not_in_new.append("%s -> %s" % (saved_key, mapped))
+            continue
+        if tuple(old_sd[saved_key].shape) != tuple(current[mapped].shape):
+            shape_mismatch.append(mapped)
+            continue
+        try:
+            equal = bool(torch_module.equal(current[mapped].cpu(), old_sd[saved_key].cpu()))
+        except Exception:
+            equal = False
+        if not equal:
+            value_mismatch.append(mapped)
+            continue
+        copied += 1
+    if copied == 0:
+        raise RuntimeError(
+            "init-adapter inheritance failed: copied 0/%d (literal intersection %d, "
+            "mapped candidates %d); refusing fresh LoRA masquerading as inheritance: %s" % (
+                len(saved_lora), literal_hits, len(saved_lora) - len(not_in_new), weight_file,
+            )
+        )
+    if shape_mismatch or value_mismatch:
+        raise RuntimeError(
+            "init-adapter inheritance failed value/shape check: copied %d/%d "
+            "shape_mismatch=%d value_mismatch=%d e.g. %s" % (
+                copied, len(saved_lora), len(shape_mismatch), len(value_mismatch),
+                (shape_mismatch + value_mismatch)[:4],
+            )
+        )
+    if not targets_changed:
+        if not_in_new or copied != len(saved_lora):
+            raise RuntimeError(
+                "init-adapter inheritance incomplete for unchanged targets: copied %d/%d "
+                "not_in_new=%d e.g. %s" % (
+                    copied, len(saved_lora), len(not_in_new), not_in_new[:4],
+                )
+            )
+        n_model_lora = sum(1 for key in current.keys() if "lora_" in key)
+        if copied != n_model_lora:
+            raise RuntimeError(
+                "init-adapter inheritance size mismatch: copied %d but live model has %d "
+                "lora tensors; refusing partial inheritance" % (copied, n_model_lora)
+            )
+    else:
+        if copied != len(saved_lora) - len(not_in_new):
+            raise RuntimeError(
+                "init-adapter changed-targets copy inconsistent: copied %d saved=%d "
+                "not_in_new=%d" % (copied, len(saved_lora), len(not_in_new))
+            )
+    return {
+        "weight_file": os.path.basename(weight_file),
+        "copied_lora_tensors": copied,
+        "shape_mismatch": shape_mismatch[:16],
+        "n_shape_mismatch": len(shape_mismatch),
+        "not_in_new": not_in_new[:16],
+        "n_not_in_new": len(not_in_new),
+        "literal_intersection": literal_hits,
+        "mapped_intersection": copied + len(value_mismatch),
+        "n_value_mismatch": len(value_mismatch),
+        "peft_api_used": peft_api_used,
+        "peft_api_error": peft_api_error,
+        "targets_changed": bool(targets_changed),
+        "path": "manual_mapped_copy",
+    }
+
+
+def old_stage_amount(adapter_dir):
+    """Best-effort old training volume from JSON sidecars (torch-free)."""
+    parent = os.path.dirname(os.path.abspath(adapter_dir))
+    info = {"run_config_path": None, "completed_updates": None, "cursor": None}
+    for name in ("run_config.json", "SUMMARY.json"):
+        path = os.path.join(parent, name)
+        if not os.path.isfile(path):
+            continue
+        try:
+            with open(path, "r", encoding="utf-8") as handle:
+                data = json.load(handle)
+        except (OSError, json.JSONDecodeError):
+            continue
+        if info["run_config_path"] is None:
+            info["run_config_path"] = path
+        for key in ("completed_updates", "cursor"):
+            if info[key] is None and isinstance(data, dict) and data.get(key) is not None:
+                try:
+                    info[key] = int(data[key])
+                except (TypeError, ValueError):
+                    pass
+        inner = data.get("run_config") if isinstance(data, dict) else None
+        if isinstance(inner, dict):
+            for key in ("completed_updates", "cursor"):
+                if info[key] is None and inner.get(key) is not None:
+                    try:
+                        info[key] = int(inner[key])
+                    except (TypeError, ValueError):
+                        pass
+    return info
+
+
+def save_adapter_snapshot(model, out_dir, completed, formatter=FORMATTER_F0):
+    """Immutable per-step adapter dir. Never overwrites an existing snapshot."""
+    formatter = _normalize_train_formatter(formatter)
+    snapshot = os.path.join(out_dir, "adapter_step_%d" % int(completed))
+    if adapter_files_present(snapshot):
+        # Snapshot exists (resume re-save): still ensure its format sidecar is present.
+        try:
+            write_formatter_sidecar(snapshot, formatter, source="train")
+        except OSError:
+            pass
+        return snapshot
+    os.makedirs(snapshot, exist_ok=True)
+    model.save_pretrained(snapshot)
+    if not adapter_files_present(snapshot):
+        raise RuntimeError("snapshot save did not write adapter files: %s" % snapshot)
+    # Independent sidecar; never writes custom fields into PEFT adapter_config.json.
+    write_formatter_sidecar(snapshot, formatter, source="train")
+    return snapshot
+
+
+def find_model_dir(explicit):
+    if explicit:
+        config_path = os.path.join(explicit, "config.json")
+        if not os.path.isfile(config_path):
+            raise RuntimeError("model config.json not found under %s" % explicit)
+        return explicit
+    found = None
+    for config_path in sorted(glob.glob("/kaggle/input/**/config.json", recursive=True)):
+        try:
+            with open(config_path, "r", encoding="utf-8") as handle:
+                config = json.load(handle)
+        except (OSError, json.JSONDecodeError):
+            continue
+        if config.get("model_type") in ("qwen3_5", "qwen3"):
+            found = os.path.dirname(config_path)
+            break
+    if not found:
+        raise RuntimeError("FAILED_NO_MODEL: no --model-dir and no qwen3_5/qwen3 config under /kaggle/input")
+    return found
+
+
+def load_episode_module():
+    if _SCRIPT_DIR not in sys.path:
+        sys.path.insert(0, _SCRIPT_DIR)
+    try:
+        import arc_episode_data as module
+    except Exception as exc:
+        return None, "%s: %s" % (type(exc).__name__, exc)
+    return module, None
+
+
+def read_json(path):
+    with open(path, "r", encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def load_task_map(path):
+    data = read_json(path)
+    if isinstance(data, dict):
+        for key in ("challenges", "tasks", "data", "solutions"):
+            inner = data.get(key)
+            if isinstance(inner, dict) and inner:
+                return inner
+        return data
+    if isinstance(data, list):
+        mapped = {}
+        for index, item in enumerate(data):
+            if not isinstance(item, dict):
+                continue
+            task_id = str(item.get("task_id") or item.get("id") or index)
+            mapped[task_id] = item
+        return mapped
+    raise RuntimeError("unrecognized challenges/solutions JSON: %s" % path)
+
+
+def solution_grid(solutions, task_id):
+    if not isinstance(solutions, dict) or task_id not in solutions:
+        return None
+    item = solutions[task_id]
+    if not isinstance(item, list) or not item:
+        return None
+    grid = item[0]
+    if isinstance(grid, dict) and "output" in grid:
+        grid = grid["output"]
+    if not isinstance(grid, list):
+        return None
+    return grid
+
+
+def coerce_messages(result, system_prompt):
+    if isinstance(result, list) and result and isinstance(result[0], dict) and "role" in result[0]:
+        return result
+    if isinstance(result, dict) and isinstance(result.get("messages"), list):
+        return result["messages"]
+    if isinstance(result, str):
+        if not system_prompt:
+            raise RuntimeError("build_messages returned text but SYSTEM_PROMPT is missing")
+        return [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": result},
+        ]
+    raise RuntimeError("build_messages returned %s; expected chat messages" % type(result).__name__)
+
+
+def messages_for_test_query(module, tokenizer, task_id, task, solutions, formatter=FORMATTER_F0):
+    """Official test query 0. Train pairs are demos. The answer is not in the prompt.
+
+    ``tokenizer`` and ``solutions`` are unused here. Exact match reads solutions later.
+    formatter is explicit (resolved unified formatter); never relies on F0 default.
+    """
+    del tokenizer, solutions
+    builder = getattr(module, "build_messages", None)
+    if not callable(builder):
+        raise RuntimeError("arc_episode_data message builder is missing")
+    formatter = _normalize_train_formatter(formatter)
+    data_fmt = "compact" if formatter == FORMATTER_F1 else "space"
+    system_prompt = getattr(module, "SYSTEM_PROMPT", None)
+    if formatter == FORMATTER_F1:
+        system_prompt = getattr(module, "SYSTEM_PROMPT_COMPACT", system_prompt)
+    if not isinstance(task, dict):
+        raise RuntimeError("task %s is not an object" % task_id)
+    train_pairs = task.get("train")
+    tests = task.get("test")
+    if not isinstance(train_pairs, list) or not isinstance(tests, list) or not tests:
+        raise RuntimeError("task %s has no train list or test query" % task_id)
+    query = tests[0]
+    if not isinstance(query, dict) or "input" not in query:
+        raise RuntimeError("task %s test[0] has no input" % task_id)
+    demos = []
+    for pair in train_pairs:
+        if not isinstance(pair, dict) or "input" not in pair or "output" not in pair:
+            raise RuntimeError("task %s has a train pair without input and output" % task_id)
+        demos.append({"input": pair["input"], "output": pair["output"]})
+    return coerce_messages(builder(demos, query["input"], data_fmt), system_prompt)
+
+
+def render_prompt(tokenizer, messages):
+    # Do not inspect the signature for enable_thinking. 006 skipped the flag because
+    # the real signature is **kwargs, and the template then left thinking on.
+    prompt = tokenizer.apply_chat_template(
+        messages,
+        tokenize=False,
+        add_generation_prompt=True,
+        enable_thinking=False,
+    )
+    if not isinstance(prompt, str):
+        raise RuntimeError(
+            "apply_chat_template(tokenize=False, enable_thinking=False) returned %s, expected str. "
+            "Not retrying without enable_thinking." % type(prompt).__name__
+        )
+    return prompt
+
+
+def tokenize_text(tokenizer, text):
+    encoded = tokenizer(text, add_special_tokens=False)
+    token_ids = encoded["input_ids"]
+    if hasattr(token_ids, "tolist"):
+        token_ids = token_ids.tolist()
+    if token_ids and isinstance(token_ids[0], (list, tuple)):
+        if len(token_ids) != 1:
+            raise RuntimeError("tokenizer returned a batch for one string")
+        token_ids = list(token_ids[0])
+    return [int(token_id) for token_id in token_ids]
+
+
+class Episode(object):
+    __slots__ = (
+        "episode_id",
+        "task_id",
+        "family_id",
+        "input_ids",
+        "labels",
+        "prompt_len",
+        "target_len",
+        "target_grid_text",
+        "full_len",
+        "source",
+        "revision",
+        "prompt_text",
+    )
+
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+
+def encode_episode(tokenizer, row, eos_id, line_no):
+    messages = row.get("messages")
+    target = row.get("target_grid_text")
+    if not isinstance(messages, list) or not messages:
+        return None, "bad_messages"
+    if not isinstance(target, str) or target == "":
+        return None, "bad_target"
+    prompt = render_prompt(tokenizer, messages)
+    prompt_ids = tokenize_text(tokenizer, prompt)
+    target_ids = tokenize_text(tokenizer, target)
+    if not prompt_ids:
+        return None, "empty_prompt"
+    if not target_ids:
+        return None, "empty_target_tokens"
+    input_ids, labels, _attention = build_sequence(prompt_ids, target_ids, eos_id)
+    if len(input_ids) == 0:
+        return None, "empty"
+    task_id = str(row.get("task_id") or "")
+    family = row.get("family_id")
+    family_filled = family is None or family == ""
+    if family_filled:
+        family = task_id
+    episode_id = row.get("episode_id")
+    if episode_id is None or episode_id == "":
+        episode_id = "%s:%s:%s:%s" % (
+            task_id,
+            row.get("query_kind"),
+            row.get("query_index"),
+            line_no,
+        )
+    episode = Episode(
+        episode_id=str(episode_id),
+        task_id=task_id,
+        family_id=str(family),
+        input_ids=array.array("i", input_ids),
+        labels=array.array("i", labels),
+        prompt_len=len(prompt_ids),
+        target_len=len(target_ids) + 1,
+        target_grid_text=target,
+        full_len=len(input_ids),
+        source=row.get("source"),
+        revision=row.get("revision"),
+        prompt_text=prompt,
+    )
+    return episode, ("family_filled" if family_filled else None)
+
+
+def load_jsonl_rows(path):
+    rows = []
+    with open(path, "r", encoding="utf-8") as handle:
+        for line_no, line in enumerate(handle, 1):
+            text = line.strip()
+            if not text:
+                continue
+            try:
+                row = json.loads(text)
+            except json.JSONDecodeError as exc:
+                raise RuntimeError("episodes JSONL line %d is not JSON: %s" % (line_no, exc))
+            if not isinstance(row, dict):
+                raise RuntimeError("episodes JSONL line %d is not an object" % line_no)
+            row["_line_no"] = line_no
+            rows.append(row)
+    return rows
+
+
+def row_is_trainable(row, diagnostic_ids):
+    split = row.get("split")
+    if isinstance(split, str) and split.strip().lower() in HOLDOUT_SPLITS:
+        return False, "split"
+    task_id = str(row.get("task_id") or "")
+    if task_id and task_id in diagnostic_ids:
+        return False, "diagnostic"
+    return True, None
+
+
+def encode_training_rows(tokenizer, rows, eos_id, args, diagnostic_ids):
+    counts = {
+        "n_rows": len(rows),
+        "n_excluded_split": 0,
+        "n_excluded_diagnostic": 0,
+        "n_bad_messages": 0,
+        "n_bad_target": 0,
+        "n_empty_prompt": 0,
+        "n_empty_target_tokens": 0,
+        "n_empty": 0,
+        "n_family_filled_from_task": 0,
+        "n_encode_error": 0,
+    }
+    short = []
+    overflow = []
+    n_longer = 0
+    seen_ids = {}
+    mixture_lists = {name: [] for name in LENGTH_BUCKET_NAMES}
+    n_bucket_from_row_tag = 0
+    n_bucket_from_full_len = 0
+    mixture = parse_length_mixture(getattr(args, "length_mixture", None))
+    for row in rows:
+        keep, reason = row_is_trainable(row, diagnostic_ids)
+        if not keep:
+            if reason == "split":
+                counts["n_excluded_split"] += 1
+            else:
+                counts["n_excluded_diagnostic"] += 1
+            continue
+        try:
+            episode, flag = encode_episode(tokenizer, row, eos_id, row.get("_line_no"))
+        except Exception as exc:
+            message = str(exc)
+            if "enable_thinking" in message or "Not retrying" in message:
+                raise
+            counts["n_encode_error"] += 1
+            counts["last_encode_error"] = message[:300]
+            if counts["n_encode_error"] <= 3:
+                print("encode skip line %s: %s" % (row.get("_line_no"), message[:200]), flush=True)
+            continue
+        if episode is None:
+            key = {
+                "bad_messages": "n_bad_messages",
+                "bad_target": "n_bad_target",
+                "empty_prompt": "n_empty_prompt",
+                "empty_target_tokens": "n_empty_target_tokens",
+                "empty": "n_empty",
+            }.get(flag)
+            if key:
+                counts[key] += 1
+            continue
+        if flag == "family_filled":
+            counts["n_family_filled_from_task"] += 1
+        if episode.episode_id in seen_ids:
+            raise RuntimeError("duplicate episode_id %s" % episode.episode_id)
+        seen_ids[episode.episode_id] = True
+        if mixture is not None:
+            # Data-layer interface: a pre-bucketed D2 pool may carry d2_bucket;
+            # otherwise fall back to the live full prompt+target+EOS length.
+            tag = row.get("d2_bucket")
+            if tag in LENGTH_BUCKET_NAMES:
+                mixture_lists[tag].append(episode)
+                n_bucket_from_row_tag += 1
+            else:
+                mixture_lists[_length_bucket_name(int(episode.full_len))].append(episode)
+                n_bucket_from_full_len += 1
+            continue
+        if episode.full_len <= args.max_len:
+            short.append(episode)
+        elif episode.full_len <= args.overflow_len:
+            overflow.append(episode)
+        else:
+            n_longer += 1
+    needed = int(args.optimizer_updates) * int(args.grad_accum)
+    if mixture is not None:
+        policy = parse_sample_policy(getattr(args, "sample_policy", "legacy"))
+        if policy == "fair_task_base":
+            pool, stats = select_pool_mixture_fair(
+                mixture_lists, mixture, needed, getattr(args, "seed", 0)
+            )
+        else:
+            pool, stats = select_pool_mixture(
+                mixture_lists, mixture, needed, getattr(args, "seed", 0)
+            )
+            stats["sample_policy"] = "legacy"
+        stats["length_mixture"] = str(args.length_mixture)
+        stats["length_buckets"] = list(LENGTH_BUCKET_NAMES)
+        stats["n_bucket_from_row_tag"] = n_bucket_from_row_tag
+        stats["n_bucket_from_full_len"] = n_bucket_from_full_len
+        stats["bucket_interface"] = (
+            "row d2_bucket tag when present (D2 pre-index); else live full_len. "
+            "Full D2 pre-bucketed index still pending; see code_gaps_followup.json "
+            "explicit-length-mixture-cli."
+        )
+        stats["max_len_recorded_only"] = int(args.max_len)
+        stats["overflow_len_recorded_only"] = int(args.overflow_len)
+    else:
+        pool, stats = select_pool(short, overflow, n_longer, needed)
+    stats.update(counts)
+    stats["max_len"] = int(args.max_len)
+    stats["overflow_len"] = int(args.overflow_len)
+    stats["effective_batch"] = int(args.microbatch) * int(args.grad_accum)
+    stats["effective_batch_note"] = "microbatch * grad_accum; not multiplied by GPU count"
+    return pool, stats
+
+
+def package_versions():
+    import numpy
+    import torch
+    import transformers
+    import peft
+
+    versions = {
+        "python": sys.version.split()[0],
+        "torch": torch.__version__,
+        "transformers": transformers.__version__,
+        "peft": peft.__version__,
+        "numpy": numpy.__version__,
+    }
+    try:
+        import accelerate
+
+        versions["accelerate"] = accelerate.__version__
+    except Exception:
+        versions["accelerate"] = None
+    return versions
+
+
+def seed_everything(seed, torch_module, numpy_module):
+    random.seed(int(seed))
+    numpy_module.random.seed(int(seed))
+    torch_module.manual_seed(int(seed))
+    if torch_module.cuda.is_available():
+        torch_module.cuda.manual_seed_all(int(seed))
+
+
+def capture_rng(torch_module, numpy_module):
+    state = {
+        "py_rng": random.getstate(),
+        "numpy_rng": numpy_module.random.get_state(),
+        "torch_rng": torch_module.get_rng_state(),
+        "cuda_rng": None,
+    }
+    if torch_module.cuda.is_available():
+        state["cuda_rng"] = torch_module.cuda.get_rng_state_all()
+    return state
+
+
+def restore_rng(state, torch_module, numpy_module):
+    random.setstate(state["py_rng"])
+    numpy_module.random.set_state(state["numpy_rng"])
+    torch_module.set_rng_state(state["torch_rng"])
+    if state.get("cuda_rng") is not None:
+        if not torch_module.cuda.is_available():
+            raise RuntimeError("trainer_state has CUDA RNG but CUDA is not available")
+        torch_module.cuda.set_rng_state_all(state["cuda_rng"])
+
+
+def iter_runtime_configs(model):
+    holders = [model]
+    base = getattr(model, "base_model", None)
+    if base is not None:
+        holders.append(base)
+        inner = getattr(base, "model", None)
+        if inner is not None:
+            holders.append(inner)
+    seen = set()
+    for holder in holders:
+        if holder is None:
+            continue
+        for attr in ("config", "generation_config"):
+            config = getattr(holder, attr, None)
+            if config is None or id(config) in seen:
+                continue
+            seen.add(id(config))
+            yield config
+
+
+def set_use_cache(model, enabled):
+    for config in iter_runtime_configs(model):
+        try:
+            config.use_cache = bool(enabled)
+        except Exception:
+            pass
+
+
+def enable_checkpointing(model):
+    errors = []
+    enabled = False
+    holders = [model]
+    base = getattr(model, "base_model", None)
+    if base is not None:
+        holders.append(base)
+        inner = getattr(base, "model", None)
+        if inner is not None:
+            holders.append(inner)
+    for holder in holders:
+        if holder is None:
+            continue
+        if hasattr(holder, "gradient_checkpointing_enable"):
+            try:
+                holder.gradient_checkpointing_enable()
+                enabled = True
+            except Exception as exc:
+                errors.append(str(exc)[:200])
+        if hasattr(holder, "enable_input_require_grads"):
+            try:
+                holder.enable_input_require_grads()
+            except Exception as exc:
+                errors.append("input_grads:" + str(exc)[:160])
+    return enabled, errors
+
+
+def disable_checkpointing(model):
+    holders = [model]
+    base = getattr(model, "base_model", None)
+    if base is not None:
+        holders.append(base)
+        inner = getattr(base, "model", None)
+        if inner is not None:
+            holders.append(inner)
+    for holder in holders:
+        if holder is not None and hasattr(holder, "gradient_checkpointing_disable"):
+            try:
+                holder.gradient_checkpointing_disable()
+            except Exception:
+                pass
+
+
+def freeze_non_lora(model):
+    n_lora = 0
+    n_frozen = 0
+    for name, param in model.named_parameters():
+        if "lora_" in name:
+            param.requires_grad_(True)
+            n_lora += 1
+        else:
+            param.requires_grad_(False)
+            n_frozen += 1
+    if n_lora == 0:
+        raise RuntimeError("no LoRA parameters found; refusing to train the base model")
+    return n_lora, n_frozen
+
+
+def trainable_named_params(model):
+    names = []
+    params = []
+    for name, param in model.named_parameters():
+        if param.requires_grad:
+            names.append(name)
+            params.append(param)
+    return names, params
+
+
+def module_leaf_names(model):
+    leaves = set()
+    for name, _module in model.named_modules():
+        if name:
+            leaves.add(name.split(".")[-1])
+    return leaves
+
+
+def as_device(torch_module, value, fallback):
+    if value is None:
+        return fallback
+    if isinstance(value, torch_module.device):
+        return value
+    if isinstance(value, int):
+        return torch_module.device("cuda", value)
+    text = str(value)
+    if text.isdigit():
+        return torch_module.device("cuda", int(text))
+    return torch_module.device(text)
+
+
+def embedding_and_lm_devices(model, torch_module):
+    try:
+        in_dev = model.get_input_embeddings().weight.device
+    except Exception:
+        in_dev = next(model.parameters()).device
+    device_map = getattr(model, "hf_device_map", None)
+    if device_map is None:
+        try:
+            device_map = model.base_model.model.hf_device_map
+        except Exception:
+            device_map = {}
+    if not isinstance(device_map, dict):
+        device_map = {}
+    lm_value = None
+    if "lm_head" in device_map:
+        lm_value = device_map["lm_head"]
+    else:
+        for key, value in device_map.items():
+            if key == "lm_head" or str(key).endswith(".lm_head"):
+                lm_value = value
+                break
+    lm_dev = as_device(torch_module, lm_value, in_dev) if lm_value is not None else in_dev
+    return in_dev, lm_dev, device_map
+
+
+def vocab_report(model, tokenizer, config):
+    embedding = model.get_input_embeddings()
+    head = model.get_output_embeddings()
+    if head is None:
+        lm_out = None
+    elif getattr(head, "weight", None) is not None:
+        lm_out = int(head.weight.shape[0])
+    else:
+        lm_out = int(getattr(head, "out_features"))
+    added = tokenizer.get_added_vocab() if hasattr(tokenizer, "get_added_vocab") else {}
+    revision = None
+    for key in ("revision", "_commit_hash"):
+        if config.get(key):
+            revision = config.get(key)
+            break
+    if revision is None:
+        revision = getattr(model.config, "_commit_hash", None) or getattr(model.config, "revision", None)
+    tie = config.get("tie_word_embeddings")
+    if tie is None:
+        tie = getattr(model.config, "tie_word_embeddings", None)
+    names = sorted(added)
+    return {
+        "model_type": config.get("model_type") or getattr(model.config, "model_type", None),
+        "config_revision": revision,
+        "tie_word_embeddings": tie,
+        "config_vocab_size": config.get("vocab_size", getattr(model.config, "vocab_size", None)),
+        "tokenizer_len": len(tokenizer),
+        "tokenizer_vocab_size": getattr(tokenizer, "vocab_size", None),
+        "added_tokens": len(added),
+        "added_token_names": names if len(names) <= 100 else names[:100],
+        "embedding_rows": int(embedding.weight.shape[0]),
+        "lm_head_out_features": lm_out,
+        "vocab_sizes_may_differ": True,
+    }
+
+
+def ids_to_tensor(torch_module, values, device):
+    if isinstance(values, array.array):
+        values = values.tolist()
+    return torch_module.tensor([list(values)], dtype=torch_module.long).to(device)
+
+
+def suffix_forward(model, input_ids, attention, labels, prompt_len, target_len):
+    """010 §6.1 suffix path. Keeps full input_ids and backbone gradients.
+
+    output = model(input_ids=input_ids, attention_mask=attention,
+                   labels=labels[:, P-1:], logits_to_keep=T+1, use_cache=False).
+    Keeps hidden P-1..L-1; HF shift supervises first answer token and EOS,
+    last logit stays ignore. No manual shift, no full-length labels, no prompt
+    detach, no vocab cut.
+    """
+    prompt_len, target_len, label_start, keep = suffix_slice_for_episode(
+        prompt_len, target_len, int(labels.shape[1])
+    )
+    return model(
+        input_ids=input_ids,
+        attention_mask=attention,
+        labels=labels[:, label_start:],
+        logits_to_keep=keep,
+        use_cache=False,
+    )
+
+
+def _lora_grad_snapshot(model, torch_module):
+    """Clone current LoRA grads to CPU. Caller owns zero_grad before/after."""
+    snapshot = {}
+    for name, param in model.named_parameters():
+        if param.requires_grad and param.grad is not None and "lora_" in name:
+            try:
+                snapshot[name] = param.grad.detach().float().cpu().clone()
+            except Exception:
+                snapshot[name] = param.grad.detach().cpu().clone()
+    return snapshot
+
+
+def _grad_rel_cos(full_grad, suffix_grad):
+    """Per-tensor relative error and cosine. Zero/zero is masked, not success."""
+    try:
+        import math
+
+        full_flat = full_grad.reshape(-1).double()
+        suffix_flat = suffix_grad.reshape(-1).double()
+        full_norm = float(full_flat.norm().item())
+        suffix_norm = float(suffix_flat.norm().item())
+        diff_norm = float((full_flat - suffix_flat).norm().item())
+        denom = full_norm if full_norm > 0 else 0.0
+        rel = (diff_norm / denom) if denom > 0 else (0.0 if diff_norm == 0 else float("inf"))
+        if full_norm == 0 and suffix_norm == 0:
+            return rel, 1.0, full_norm, suffix_norm, True
+        dot = float((full_flat * suffix_flat).sum().item())
+        cos = dot / (full_norm * suffix_norm) if full_norm * suffix_norm > 0 else 0.0
+        if cos > 1.0:
+            cos = 1.0
+        if cos < -1.0:
+            cos = -1.0
+        if math.isnan(cos) or math.isinf(cos):
+            cos = 0.0
+        return rel, cos, full_norm, suffix_norm, False
+    except Exception:
+        return float("inf"), 0.0, 0.0, 0.0, False
+
+
+def _sync_all_gpus(torch_module):
+    try:
+        for index in range(torch_module.cuda.device_count()):
+            torch_module.cuda.synchronize(index)
+    except Exception:
+        torch_module.cuda.synchronize()
+
+
+def _probe_single_backward(model, torch_module, input_ids, attention, labels, episode, mode):
+    """One forward+backward without optimizer step. Returns (loss, grads, seconds)."""
+    model.zero_grad(set_to_none=True)
+    torch_module.cuda.empty_cache()
+    _sync_all_gpus(torch_module)
+    tick = time.perf_counter()
+    if mode == "suffix":
+        output = suffix_forward(
+            model, input_ids, attention, labels, int(episode.prompt_len), int(episode.target_len)
+        )
+    else:
+        output = model(input_ids=input_ids, attention_mask=attention, labels=labels, use_cache=False)
+    if output.loss is None:
+        raise RuntimeError("probe %s path returned loss=None" % mode)
+    loss_value = float(output.loss.detach().float().item())
+    output.loss.backward()
+    _sync_all_gpus(torch_module)
+    seconds = time.perf_counter() - tick
+    grads = _lora_grad_snapshot(model, torch_module)
+    del output
+    model.zero_grad(set_to_none=True)
+    torch_module.cuda.empty_cache()
+    return loss_value, grads, seconds
+
+
+def run_suffix_logits_probe(model, pool, tokens, torch_module, in_dev, lm_dev, adapter_label=None):
+    """010 §6.1 probe: same adapter + same episode, no weight update.
+
+    For each selected episode compares full vs suffix loss, all-LoRA-grad
+    relative error/cosine, and same-path repeat noise; then wall time and
+    per-GPU allocated/reserved with old logits/grad cleaned, all-GPU sync,
+    and JIT/warmup reported separately from measured runs. Never calls
+    optimizer.step; thresholds are recorded only, never auto-switch.
+    Caller (notebook) decides from this JSON whether to adopt suffix.
+    """
+    episodes = select_probe_episodes(pool, tokens)
+    if not episodes:
+        raise RuntimeError("probe selected no episodes")
+    was_training = bool(getattr(model, "training", False))
+    model.train()
+    torch_module.set_grad_enabled(True)
+    results = []
+    for episode in episodes:
+        label_list = episode.labels.tolist()
+        validate_suffix_contract(label_list, int(episode.prompt_len), int(episode.target_len), 1)
+        prompt_len, target_len, label_start, keep = suffix_slice_for_episode(
+            int(episode.prompt_len), int(episode.target_len), int(episode.full_len)
+        )
+        input_ids = ids_to_tensor(torch_module, episode.input_ids, in_dev)
+        labels = torch_module.tensor([label_list], dtype=torch_module.long).to(lm_dev)
+        attention = torch_module.ones_like(input_ids)
+        # Warmup (JIT) runs, discarded from timing/noise, reported separately.
+        for index in range(torch_module.cuda.device_count()):
+            torch_module.cuda.reset_peak_memory_stats(index)
+        warm_full_loss, _, warm_full_s = _probe_single_backward(
+            model, torch_module, input_ids, attention, labels, episode, "full"
+        )
+        warm_suffix_loss, _, warm_suffix_s = _probe_single_backward(
+            model, torch_module, input_ids, attention, labels, episode, "suffix"
+        )
+        for index in range(torch_module.cuda.device_count()):
+            torch_module.cuda.reset_peak_memory_stats(index)
+        full_loss_1, full_grads_1, full_s_1 = _probe_single_backward(
+            model, torch_module, input_ids, attention, labels, episode, "full"
+        )
+        full_loss_2, full_grads_2, full_s_2 = _probe_single_backward(
+            model, torch_module, input_ids, attention, labels, episode, "full"
+        )
+        suffix_loss_1, suffix_grads_1, suffix_s_1 = _probe_single_backward(
+            model, torch_module, input_ids, attention, labels, episode, "suffix"
+        )
+        suffix_loss_2, suffix_grads_2, suffix_s_2 = _probe_single_backward(
+            model, torch_module, input_ids, attention, labels, episode, "suffix"
+        )
+        _sync_all_gpus(torch_module)
+        allocated, reserved = memory_peaks(torch_module)
+        per_tensor = {}
+        rel_values = []
+        cos_values = []
+        n_masked = 0
+        names = sorted(set(full_grads_1) | set(suffix_grads_1))
+        if not names:
+            raise RuntimeError(
+                "probe found no LoRA grads for episode %s; refusing masked comparison"
+                % episode.episode_id
+            )
+        for name in names:
+            grad_full = full_grads_1.get(name)
+            grad_suffix = suffix_grads_1.get(name)
+            if grad_full is None or grad_suffix is None:
+                per_tensor[name] = {"present_full": grad_full is not None, "present_suffix": grad_suffix is not None,
+                                    "rel_error": float("inf"), "cosine": 0.0, "masked_zero": False,
+                                    "missing_side": True}
+                rel_values.append(float("inf"))
+                cos_values.append(0.0)
+                continue
+            rel, cos, full_norm, suffix_norm, masked = _grad_rel_cos(grad_full, grad_suffix)
+            per_tensor[name] = {"rel_error": rel, "cosine": cos, "full_norm": full_norm,
+                                "suffix_norm": suffix_norm, "masked_zero": masked, "missing_side": False}
+            if masked:
+                n_masked += 1
+            if rel != float("inf"):
+                rel_values.append(rel)
+            cos_values.append(cos)
+        # Same-path repeat noise baseline (full run1 vs run2, suffix run1 vs run2).
+        noise_rels = []
+        noise_cos = []
+        for store_a, store_b in ((full_grads_1, full_grads_2), (suffix_grads_1, suffix_grads_2)):
+            for name in sorted(set(store_a) & set(store_b)):
+                rel, cos, _, _, _ = _grad_rel_cos(store_a[name], store_b[name])
+                if rel != float("inf"):
+                    noise_rels.append(rel)
+                noise_cos.append(cos)
+        finite_rel = [value for value in rel_values if value != float("inf")]
+        entry = {
+            "episode_id": str(episode.episode_id),
+            "prompt_len_P": prompt_len,
+            "target_len_T": target_len,
+            "full_len_L": prompt_len + target_len,
+            "label_start_P_minus_1": label_start,
+            "logits_to_keep_T_plus_1": keep,
+            "adapter_label": adapter_label,
+            "contract": {"microbatch": 1, "continuous_suffix_incl_eos": True, "full_input_grad_kept": True},
+            "loss": {
+                "full_1": full_loss_1, "full_2": full_loss_2,
+                "suffix_1": suffix_loss_1, "suffix_2": suffix_loss_2,
+                "abs_diff_1": abs(full_loss_1 - suffix_loss_1),
+                "repeat_noise_full_abs": abs(full_loss_1 - full_loss_2),
+                "repeat_noise_suffix_abs": abs(suffix_loss_1 - suffix_loss_2),
+            },
+            "lora_grad": {
+                "n_tensors": len(names),
+                "n_masked_zero": n_masked,
+                "masked_all_zero": bool(n_masked == len(names)),
+                "max_rel_error": max(finite_rel) if finite_rel else float("inf"),
+                "mean_rel_error": (sum(finite_rel) / len(finite_rel)) if finite_rel else float("inf"),
+                "min_cosine": min(cos_values) if cos_values else 0.0,
+                "mean_cosine": (sum(cos_values) / len(cos_values)) if cos_values else 0.0,
+                "repeat_noise_max_rel": max(noise_rels) if noise_rels else 0.0,
+                "repeat_noise_min_cos": min(noise_cos) if noise_cos else 1.0,
+                "per_tensor": per_tensor,
+            },
+            "time_s": {
+                "warmup_full_JIT": round(warm_full_s, 4),
+                "warmup_suffix_JIT": round(warm_suffix_s, 4),
+                "measured_full_1": round(full_s_1, 4),
+                "measured_full_2": round(full_s_2, 4),
+                "measured_suffix_1": round(suffix_s_1, 4),
+                "measured_suffix_2": round(suffix_s_2, 4),
+                "warmup_note": "JIT/warmup discarded; measured runs only after sync+cache clean",
+            },
+            "memory_gb": {"allocated": allocated, "reserved": reserved, "unit": "1e9_bytes",
+                          "note": "peaks after sync; old logits/grad deleted and cache emptied between runs"},
+        }
+        results.append(entry)
+        del input_ids, labels, attention
+        model.zero_grad(set_to_none=True)
+        torch_module.cuda.empty_cache()
+    model.zero_grad(set_to_none=True)
+    try:
+        torch_module.cuda.empty_cache()
+    except Exception:
+        pass
+    if was_training:
+        model.train()
+    else:
+        model.eval()
+    return {
+        "logits_probe": "suffix_vs_full",
+        "auto_switch": False,
+        "decision_note": "thresholds recorded only; notebook decides adopt vs keep full on GPU",
+        "adopt_thresholds_recorded": {"max_rel_error": None, "min_cosine": None, "note": "no auto-switch in trainer"},
+        "system_diff_policy": "any unexplained systematic loss/grad diff keeps the old full path",
+        "episodes": results,
+    }
+
+
+def move_optimizer_state(optimizer, torch_module):
+    for group in optimizer.param_groups:
+        for param in group["params"]:
+            slot = optimizer.state.get(param)
+            if not slot:
+                continue
+            for key, value in list(slot.items()):
+                if torch_module.is_tensor(value):
+                    slot[key] = value.to(device=param.device)
+
+
+def memory_peaks(torch_module):
+    allocated = {}
+    reserved = {}
+    for index in range(torch_module.cuda.device_count()):
+        allocated["gpu%d" % index] = round(torch_module.cuda.max_memory_allocated(index) / 1e9, 4)
+        reserved["gpu%d" % index] = round(torch_module.cuda.max_memory_reserved(index) / 1e9, 4)
+    return allocated, reserved
+
+
+def read_chat_template(tokenizer, model_dir):
+    template = getattr(tokenizer, "chat_template", None) or ""
+    if template:
+        return template
+    path = os.path.join(model_dir, "chat_template.jinja")
+    if os.path.isfile(path):
+        with open(path, "r", encoding="utf-8") as handle:
+            return handle.read()
+    return ""
+
+
+def think_probe_facts(prompt_text, chat_template):
+    template = chat_template or ""
+    has_close = "</think>" in prompt_text
+    mentions = ("enable_thinking" in template) and ("</think>" in template)
+    return {
+        "has_think_close": has_close,
+        "has_empty_think_block": ("<think>\n\n</think>" in prompt_text) or ("<think>\n</think>" in prompt_text),
+        "template_mentions_enable_thinking": "enable_thinking" in template,
+        "template_mentions_think_close": "</think>" in template,
+        "assert_applied": mentions,
+        "assert_ok": (has_close if mentions else None),
+        "tail_400": prompt_text[-400:],
+    }
+
+
+def write_template_probe(path, prompt_text, facts, episode, formatter=FORMATTER_F0):
+    lines = [
+        "formatter=%s" % _normalize_train_formatter(formatter),
+        "episode_id=%s" % episode.episode_id,
+        "task_id=%s" % episode.task_id,
+        "assert_applied=%s" % facts["assert_applied"],
+        "assert_ok=%s" % facts["assert_ok"],
+        "has_think_close=%s" % facts["has_think_close"],
+        "has_empty_think_block=%s" % facts["has_empty_think_block"],
+        "template_mentions_enable_thinking=%s" % facts["template_mentions_enable_thinking"],
+        "--- tail 400 ---",
+        facts["tail_400"],
+        "--- full prompt ---",
+        prompt_text,
+        "",
+    ]
+    parent = os.path.dirname(path)
+    if parent:
+        os.makedirs(parent, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as handle:
+        handle.write("\n".join(lines))
+
+
+def generate_supported(model, name):
+    try:
+        signature = inspect.signature(model.generate)
+    except (TypeError, ValueError):
+        return False
+    return name in signature.parameters
+
+
+def run_zero_step(model, tokenizer, args, module, in_dev, eos_id, torch_module, formatter=FORMATTER_F0):
+    """Greedy base-behavior generations. Diagnostic ids are not taken from the train JSONL."""
+    formatter = _normalize_train_formatter(formatter)
+    started = time.perf_counter()
+    report = {
+        "skipped": False,
+        "reason": None,
+        "formatter": formatter,
+        "time_guard": False,
+        "time_guard_s": ZERO_STEP_TIME_GUARD_S,
+        "max_new_tokens": int(args.zero_step_max_new),
+        "do_sample": False,
+        "repetition_penalty": 1.0,
+        "top_k": 0,
+        "no_repeat_ngram_size": 0,
+        "presence_penalty": None,
+        "tasks": [],
+    }
+    task_ids = parse_id_list(args.zero_step_ids)
+    if not args.challenges:
+        report["skipped"] = True
+        report["reason"] = (
+            "challenges path not provided. Diagnostic task ids are not in the train pool, "
+            "so zero-step generation was not run."
+        )
+        report["elapsed_s"] = round(time.perf_counter() - started, 3)
+        return report
+    if module is None or not callable(getattr(module, "build_messages", None)):
+        report["skipped"] = True
+        report["reason"] = (
+            "arc_episode_data.build_messages is unavailable, so zero-step prompts were not "
+            "invented from a second format. template_probe still comes from the first training episode."
+        )
+        report["elapsed_s"] = round(time.perf_counter() - started, 3)
+        return report
+
+    challenges = load_task_map(args.challenges)
+    solutions = load_task_map(args.solutions) if args.solutions else None
+    text_to_grid = getattr(module, "text_to_grid", None)
+    use_presence = generate_supported(model, "presence_penalty")
+    report["presence_penalty"] = 0 if use_presence else "omitted"
+    disable_checkpointing(model)
+    set_use_cache(model, True)
+    model.eval()
+    builder_error = None
+
+    for task_id in task_ids:
+        elapsed = time.perf_counter() - started
+        if elapsed >= ZERO_STEP_TIME_GUARD_S:
+            report["time_guard"] = True
+            report["tasks"].append({
+                "task_id": task_id,
+                "status": "skipped_time_guard",
+                "decoded_text": None,
+                "parse": None,
+                "grid": None,
+                "exact_match": None,
+            })
+            continue
+        if builder_error:
+            report["tasks"].append({
+                "task_id": task_id,
+                "status": "message_fail",
+                "error": builder_error,
+                "decoded_text": None,
+                "parse": None,
+                "grid": None,
+                "exact_match": None,
+            })
+            continue
+        record = {"task_id": task_id, "status": "pending"}
+        wall0 = time.perf_counter()
+        task = challenges.get(task_id) if isinstance(challenges, dict) else None
+        if not isinstance(task, dict):
+            record.update({
+                "status": "missing_challenge",
+                "decoded_text": None,
+                "parse": None,
+                "grid": None,
+                "exact_match": None,
+                "wall_s": round(time.perf_counter() - wall0, 3),
+            })
+            report["tasks"].append(record)
+            continue
+        try:
+            messages = messages_for_test_query(module, tokenizer, task_id, task, solutions, formatter)
+            prompt_text = render_prompt(tokenizer, messages)
+            torch_module.cuda.synchronize()
+            prep0 = time.perf_counter()
+            prompt_ids = tokenize_text(tokenizer, prompt_text)
+            input_ids = torch_module.tensor([prompt_ids], dtype=torch_module.long).to(in_dev)
+            attention = torch_module.ones((1, len(prompt_ids)), dtype=torch_module.long).to(in_dev)
+            torch_module.cuda.synchronize()
+            prepare_s = time.perf_counter() - prep0
+            kwargs = {
+                "input_ids": input_ids,
+                "attention_mask": attention,
+                "max_new_tokens": int(args.zero_step_max_new),
+                "do_sample": False,
+                "repetition_penalty": 1.0,
+                # Override the published chat top_k=20. top_k=0 disables the warper.
+                "top_k": 0,
+                "no_repeat_ngram_size": 0,
+                "pad_token_id": eos_id,
+                "eos_token_id": eos_id,
+                "use_cache": True,
+            }
+            if use_presence:
+                kwargs["presence_penalty"] = 0
+            torch_module.cuda.synchronize()
+            gen0 = time.perf_counter()
+            with torch_module.inference_mode():
+                try:
+                    generated = model.generate(**kwargs)
+                except TypeError as exc:
+                    message = str(exc)
+                    reduced = dict(kwargs)
+                    if "presence_penalty" in reduced and "presence_penalty" in message:
+                        reduced.pop("presence_penalty")
+                        record["presence_penalty"] = "omitted"
+                        generated = model.generate(**reduced)
+                    elif "use_cache" in reduced and "use_cache" in message:
+                        reduced.pop("use_cache")
+                        generated = model.generate(**reduced)
+                    else:
+                        raise
+            torch_module.cuda.synchronize()
+            generate_s = time.perf_counter() - gen0
+            sequence = generated[0].detach().cpu()
+            prompt_len = int(input_ids.shape[1])
+            if int(sequence.shape[0]) >= prompt_len:
+                new_ids = sequence[prompt_len:].tolist()
+            else:
+                new_ids = sequence.tolist()
+                record["generate_omitted_prompt"] = True
+            decoded = tokenizer.decode(new_ids, skip_special_tokens=False)
+            parse_ids = list(new_ids)
+            dropped_eos = False
+            if parse_ids and int(parse_ids[-1]) == int(eos_id):
+                parse_ids = parse_ids[:-1]
+                dropped_eos = True
+            parse_text = tokenizer.decode(parse_ids, skip_special_tokens=False)
+            grid = _train_parse_grid(parse_text, formatter, module)
+            truth = solution_grid(solutions, task_id) if solutions is not None else None
+            exact = None
+            if truth is not None and grid is not None:
+                exact = bool(grids_equal(grid, truth))
+            agrees = None
+            if grid is not None and callable(text_to_grid):
+                try:
+                    if formatter == FORMATTER_F1:
+                        other = _train_parse_grid(parse_text.strip(), formatter, None)
+                    else:
+                        other = text_to_grid(parse_text.strip())
+                    agrees = bool(other == grid)
+                except Exception as exc:
+                    agrees = "error:%s" % str(exc)[:120]
+            target_text = None
+            if truth is not None:
+                target_text = _train_target_text(truth, formatter, module)
+            record.update({
+                "status": "generated",
+                "formatter": formatter,
+                "decoded_text": decoded,
+                "parse_text": parse_text,
+                "parse": "ok" if grid is not None else "parse_failure",
+                "grid": grid,
+                "exact_match": exact,
+                "prepare_s": round(prepare_s, 4),
+                "generate_s": round(generate_s, 4),
+                "wall_s": round(time.perf_counter() - wall0, 4),
+                "prompt_tokens": prompt_len,
+                "generated_tokens": len(new_ids),
+                "truncated": bool(len(new_ids) >= int(args.zero_step_max_new)),
+                "dropped_trailing_eos": dropped_eos,
+                "text_to_grid_agrees": agrees,
+                "target_text_in_prompt": (target_text in prompt_text) if target_text else None,
+            })
+            del generated, sequence, input_ids, attention
+        except Exception as exc:
+            message = str(exc)[:500]
+            if "build_messages" in message:
+                builder_error = message
+                record["status"] = "message_fail"
+            record.update({
+                "status": record.get("status") if record.get("status") == "message_fail" else "gen_fail",
+                "error": message,
+                "decoded_text": None,
+                "parse": None,
+                "grid": None,
+                "exact_match": None,
+                "wall_s": round(time.perf_counter() - wall0, 4),
+            })
+            print("zero-step %s failed: %s" % (task_id, message[:300]), flush=True)
+        report["tasks"].append(record)
+        print(
+            "zero-step %s status=%s parse=%s" % (task_id, record.get("status"), record.get("parse")),
+            flush=True,
+        )
+        torch_module.cuda.empty_cache()
+
+    report["elapsed_s"] = round(time.perf_counter() - started, 3)
+    if report["time_guard"]:
+        report["reason"] = "time_guard"
+    set_use_cache(model, False)
+    torch_module.cuda.empty_cache()
+    return report
+
+
+def write_mask_probe(path, tokenizer, episode, eos_id):
+    labels = episode.labels.tolist()
+    supervised = [token for token in labels if token != -100]
+    supervised_text = tokenizer.decode(supervised, skip_special_tokens=False)
+    eos_piece = tokenizer.decode([int(eos_id)], skip_special_tokens=False)
+    target_ids = tokenize_text(tokenizer, episode.target_grid_text)
+    expected_ids = target_ids + [int(eos_id)]
+    probe = {
+        "episode_id": episode.episode_id,
+        "prompt_len": episode.prompt_len,
+        "target_len": episode.target_len,
+        "supervised_text": supervised_text,
+        "target_grid_text": episode.target_grid_text,
+        "eos_piece": eos_piece,
+        "target_plus_eos_piece": episode.target_grid_text + eos_piece,
+        "supervised_text_equals_target_plus_eos": supervised_text == (episode.target_grid_text + eos_piece),
+        "supervised_ids_equal_target_plus_eos": supervised == expected_ids,
+        "prompt_labels_all_ignored": labels[: episode.prompt_len] == ([-100] * episode.prompt_len),
+        "n_supervised": len(supervised),
+        "n_ignored": len(labels) - len(supervised),
+        "target_in_prompt_text": episode.target_grid_text in episode.prompt_text,
+        "label_shift": "none_hf_shifts_once",
+    }
+    dump_json(path, probe, one_line=False)
+    if not probe["prompt_labels_all_ignored"] or not probe["supervised_ids_equal_target_plus_eos"]:
+        raise RuntimeError("mask probe failed; see %s" % path)
+    return probe
+
+
+def append_jsonl(path, record):
+    parent = os.path.dirname(path)
+    if parent:
+        os.makedirs(parent, exist_ok=True)
+    with open(path, "a", encoding="utf-8") as handle:
+        handle.write(json.dumps(record, ensure_ascii=False) + "\n")
+        handle.flush()
+
+
+def save_checkpoint(model, optimizer, schedule, bundle, out_dir, torch_module, formatter=None):
+    adapter_dir = os.path.join(out_dir, "adapter")
+    os.makedirs(out_dir, exist_ok=True)
+    model.save_pretrained(adapter_dir)
+    run_cfg = bundle.get("run_config") if isinstance(bundle.get("run_config"), dict) else {}
+    actual = _normalize_train_formatter(
+        formatter if formatter is not None else run_cfg.get("formatter", FORMATTER_F0)
+    )
+    payload = {
+        "formatter": actual,
+        "completed_updates": int(bundle["completed_updates"]),
+        "cursor": int(bundle["cursor"]),
+        "pool_episode_ids": list(bundle["pool_episode_ids"]),
+        "optimizer": optimizer.state_dict(),
+        "scheduler": schedule.state_dict(),
+        "trainable_param_names": list(bundle["trainable_param_names"]),
+        "argv": list(sys.argv),
+        "versions": bundle["versions"],
+        "seed": bundle["seed"],
+        "loss_divided_by_grad_accum": True,
+        "run_config": bundle["run_config"],
+    }
+    payload.update(bundle["rng"])
+    temporary = os.path.join(out_dir, "trainer_state.pt.tmp")
+    torch_module.save(payload, temporary)
+    os.replace(temporary, os.path.join(out_dir, "trainer_state.pt"))
+    dump_json(os.path.join(out_dir, "run_config.json"), bundle["run_config"], one_line=False)
+    # Independent sidecars; never writes custom fields into PEFT adapter_config.json.
+    write_formatter_sidecar(out_dir, actual, source="train")
+    write_formatter_sidecar(adapter_dir, actual, source="train")
+    if not adapter_files_present(adapter_dir):
+        raise RuntimeError("save_pretrained did not write adapter config and weights")
+    completed = int(bundle.get("completed_updates", 0))
+    if completed > 0:
+        # Immutable per-step snapshot; an existing snapshot is never overwritten, so a
+        # resumed re-save of the same update keeps the original directory intact.
+        # Each adapter_step_N carries its own format sidecar.
+        snapshot = os.path.join(out_dir, "adapter_step_%d" % completed)
+        if not adapter_files_present(snapshot):
+            model.save_pretrained(snapshot)
+            if not adapter_files_present(snapshot):
+                raise RuntimeError("snapshot save did not write adapter files: %s" % snapshot)
+        try:
+            write_formatter_sidecar(snapshot, actual, source="train")
+        except OSError:
+            pass
+    return adapter_dir
+
+
+class UpdateSchedule(object):
+    def __init__(self, optimizer, base_lr, warmup, total):
+        self.optimizer = optimizer
+        self.base_lr = float(base_lr)
+        self.warmup = int(warmup)
+        self.total = int(total)
+        self.completed = 0
+        self.last_lr = None
+
+    def apply_update_lr(self, update):
+        lr = self.base_lr * lr_multiplier(update, self.warmup, self.total)
+        for group in self.optimizer.param_groups:
+            group["lr"] = lr
+        self.last_lr = lr
+        return lr
+
+    def step(self):
+        # Once per optimizer update, never per microstep.
+        self.completed += 1
+
+    def state_dict(self):
+        return {
+            "completed": self.completed,
+            "base_lr": self.base_lr,
+            "warmup": self.warmup,
+            "total": self.total,
+            "last_lr": self.last_lr,
+            "formula": LR_FORMULA,
+        }
+
+    def load_state_dict(self, state):
+        self.completed = int(state.get("completed", 0))
+        self.last_lr = state.get("last_lr")
+
+
+def branch_note(extras, resumed):
+    base = (
+        "G1 default LoRA targets only (%s). GDN targets are not included."
+        % ", ".join(DEFAULT_TARGETS)
+    )
+    if not extras:
+        return base
+    gdn = [name for name in extras if name in GDN_TARGET_NAMES]
+    note = (
+        "New LoRA target branch. extra_targets=%s. Fresh optimizer; do not resume an older "
+        "optimizer state whose parameter names differ." % ",".join(extras)
+    )
+    if gdn:
+        note += " Caller passed GDN-related targets (%s); this is not the G1 default." % ",".join(gdn)
+    if resumed:
+        note += " Resume was requested and is allowed only when trainable names match."
+    return note
+
+
+def build_run_config(args, model_dir, versions, vocab, length_stats, targets, extras, devices, trainable, resumed_from, formatter=None):
+    # execute() passes the resolved unified formatter explicitly. Fall back to CLI normalization.
+    try:
+        cli_text = str(getattr(args, "formatter", "auto") or "auto").strip().lower().replace("-", "_")
+        cli_default = FORMATTER_F0 if cli_text in ("auto", "") else _normalize_train_formatter(cli_text)
+    except RuntimeError:
+        cli_default = FORMATTER_F0
+    actual = _normalize_train_formatter(formatter) if formatter is not None else cli_default
+    return {
+        "formatter": actual,
+        "argv": list(sys.argv),
+        "seed": int(args.seed),
+        "model_dir": model_dir,
+        "episodes": os.path.abspath(args.episodes),
+        "out_dir": os.path.abspath(args.out_dir),
+        "resumed_from": resumed_from,
+        "lr": float(args.lr),
+        "weight_decay": float(args.weight_decay),
+        "warmup_updates": int(args.warmup_updates),
+        "optimizer_updates": int(args.optimizer_updates),
+        "scheduler_horizon": int(getattr(args, "scheduler_horizon", None) or args.optimizer_updates),
+        "scheduler_note": (
+            "LR decay anchor is scheduler_horizon (update `horizon` uses LR 0); "
+            "--optimizer-updates only caps updates this process runs (010 §4)"
+        ),
+        "stop_after_update": (
+            None if getattr(args, "stop_after_update", None) is None
+            else int(args.stop_after_update)
+        ),
+        "clip_norm": float(args.clip_norm),
+        "grad_accum": int(args.grad_accum),
+        "microbatch": int(args.microbatch),
+        "effective_batch": int(args.microbatch) * int(args.grad_accum),
+        "effective_batch_note": "microbatch * grad_accum; not multiplied by GPU count",
+        "max_len": int(args.max_len),
+        "overflow_len": int(args.overflow_len),
+        "save_every": int(args.save_every),
+        "wall_clock_limit_s": (
+            None if getattr(args, "wall_clock_limit", None) is None
+            else float(args.wall_clock_limit)
+        ),
+        "wall_clock_note": (
+            "seconds since process start incl. setup/load/JIT/save (010 §5); "
+            "checked only at complete optimizer-update boundaries, never mid-step"
+        ),
+        "stop_reason": None,
+        "length_mixture": (
+            None if getattr(args, "length_mixture", None) is None
+            else str(args.length_mixture)
+        ),
+        "length_mixture_default_recipe": DEFAULT_LENGTH_MIXTURE_STR,
+        "length_buckets": list(LENGTH_BUCKET_NAMES),
+        "sample_policy": parse_sample_policy(getattr(args, "sample_policy", "legacy")),
+        "sample_policy_choices": list(SAMPLE_POLICIES),
+        "fair_source_cycle": list(FAIR_SOURCE_CYCLE),
+        "lora": {
+            "r": 8,
+            "alpha": 32,
+            "dropout": 0.0,
+            "bias": "none",
+            "task_type": "CAUSAL_LM",
+            "target_modules": list(targets),
+            "extra_targets": list(extras),
+        },
+        "branch_note": branch_note(extras, bool(args.resume)),
+        "loss": {
+            "prompt_labels": -100,
+            "pad_labels": -100,
+            "pad_positions": "only inserted padding; eos is supervised, not treated as pad",
+            "supervised": "target_grid_text tokens plus one eos id",
+            "shift": "huggingface causal LM shifts once; this script does not",
+            "backward_divisor": "grad_accum",
+            "logged_loss": "mean of unscaled microstep losses",
+            "target_token_count": "supervised tokens, including the eos id",
+            "logits_mode": parse_logits_mode(getattr(args, "logits_mode", "full")),
+            "logits_suffix_call": (
+                "model(input_ids=input_ids, attention_mask=attention, "
+                "labels=labels[:, P-1:], logits_to_keep=T+1, use_cache=False); "
+                "full input kept, hidden P-1..L-1, no manual shift/detach/vocab cut"
+            ),
+            "probe_selector": getattr(args, "probe_suffix_logits", None),
+        },
+        "lr_formula": LR_FORMULA,
+        "versions": versions,
+        "vocab": vocab,
+        "length_policy": length_stats,
+        "devices": devices,
+        "trainable_params": int(trainable),
+        "parallel": "single process device_map=balanced; no FSDP, DDP, TP, or 4-bit",
+        "zero_step_ids": parse_id_list(args.zero_step_ids),
+        "zero_step_max_new": int(args.zero_step_max_new),
+        "started_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+    }
+
+
+def train_loop(
+    model,
+    optimizer,
+    schedule,
+    pool,
+    args,
+    tokenizer,
+    eos_id,
+    in_dev,
+    lm_dev,
+    torch_module,
+    bundle,
+    summary,
+    inside_step,
+):
+    target = int(args.optimizer_updates)
+    start = int(schedule.completed)
+    cursor = int(bundle["cursor"])
+    log_path = os.path.join(args.out_dir, "train_log.jsonl")
+    mask_path = os.path.join(args.out_dir, "mask_probe.json")
+    wrote_mask = os.path.isfile(mask_path) and start > 0
+    seen_families = set()
+    micro_total = 0
+    pool_exhausted = False
+    wall_clock_hit = False
+    stop_after_raw = getattr(args, "stop_after_update", None)
+    stop_after = int(stop_after_raw) if stop_after_raw is not None else None
+    stop_after_hit = False
+    if stop_after is not None and start >= stop_after:
+        bundle["run_config"]["stop_reason"] = STOP_AFTER_UPDATE_STOP_REASON
+        bundle["run_config"]["stop_after_update"] = int(stop_after)
+        summary["note"] = "already reached stop-after-update; no further updates"
+        summary["stop_after_stop"] = True
+        summary["n_families_seen"] = 0
+        summary["completed_microsteps"] = 0
+        return cursor, True
+    if start >= target:
+        summary["note"] = "resume already reached optimizer-updates; no further updates"
+        summary["n_families_seen"] = 0
+        summary["completed_microsteps"] = 0
+        return cursor, False
+
+    def _stop_after_exit():
+        # Integer-update boundary early save: adapter/ + trainer_state.pt +
+        # run_config plus the immutable adapter_step_N snapshot via
+        # save_checkpoint. Coexists with --wall-clock-limit; whoever hits first wins.
+        bundle["run_config"]["stop_reason"] = STOP_AFTER_UPDATE_STOP_REASON
+        bundle["run_config"]["stop_after_update"] = int(stop_after)
+        if getattr(args, "length_mixture", None) is not None:
+            refresh_bucket_consumption(bundle, pool)
+            summary["bucket_consumption"] = bundle["run_config"].get("bucket_consumption")
+        save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch_module)
+        summary["stop_after_stop"] = True
+        summary["last_saved_update"] = int(schedule.completed)
+        summary["saved_this_run"] = True
+        summary["checkpoint_saved"] = True
+        print(
+            "stop-after-update %d reached; saved update %d and stopping"
+            % (int(stop_after), int(schedule.completed)),
+            flush=True,
+        )
+
+    def _wall_clock_exit(note):
+        # Boundary-only early save: adapter/ + trainer_state.pt + run_config plus
+        # the immutable adapter_step_N snapshot via save_checkpoint. Never called
+        # mid-update, so optimizer.step is never killed halfway.
+        _limited, _exceeded, _elapsed = wall_clock_status(args)
+        bundle["run_config"]["stop_reason"] = WALL_CLOCK_STOP_REASON
+        bundle["run_config"]["wall_clock_elapsed_s"] = _elapsed
+        bundle["run_config"]["wall_clock_limit_s"] = float(args.wall_clock_limit)
+        bundle["run_config"]["wall_clock_note"] = note
+        if getattr(args, "length_mixture", None) is not None:
+            refresh_bucket_consumption(bundle, pool)
+            summary["bucket_consumption"] = bundle["run_config"].get("bucket_consumption")
+        save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch_module)
+        summary["wall_clock_stop"] = True
+        summary["last_saved_update"] = int(schedule.completed)
+        summary["saved_this_run"] = True
+        summary["checkpoint_saved"] = True
+        print(
+            "wall-clock limit reached (elapsed %.1fs >= %.1fs); saved update %d and stopping (%s)"
+            % (_elapsed, float(args.wall_clock_limit), int(schedule.completed), note),
+            flush=True,
+        )
+
+    for update in range(start + 1, target + 1):
+        _limited, _exceeded, _elapsed = wall_clock_status(args)
+        if _limited and _exceeded:
+            # Next update not started: the last completed update is already saved.
+            wall_clock_hit = True
+            _wall_clock_exit("boundary before update %d" % update)
+            break
+        if cursor >= len(pool):
+            pool_exhausted = True
+            break
+        # Floor for this update. An OOM episode stays consumed; do not rewind onto it.
+        cursor_at_update = cursor
+        lr = schedule.apply_update_lr(update)
+        optimizer.zero_grad(set_to_none=True)
+        losses = []
+        episode_ids = []
+        family_ids = []
+        prompt_counts = []
+        target_counts = []
+        bucket_names = []
+        mixture_on = getattr(args, "length_mixture", None) is not None
+        torch_module.cuda.synchronize()
+        tick = time.perf_counter()
+        oom_this_update = False
+        oom_episode_id = None
+        for _micro in range(int(args.grad_accum)):
+            if cursor >= len(pool):
+                break
+            episode = pool[cursor]
+            cursor += 1
+            try:
+                input_ids = ids_to_tensor(torch_module, episode.input_ids, in_dev)
+                label_list = episode.labels.tolist()
+                labels = torch_module.tensor([label_list], dtype=torch_module.long).to(lm_dev)
+                attention = torch_module.ones_like(input_ids)
+                logits_mode = parse_logits_mode(getattr(args, "logits_mode", "full"))
+                if logits_mode == "full":
+                    output = model(input_ids=input_ids, attention_mask=attention, labels=labels)
+                else:
+                    # 010 §6.1 suffix: contract checked first, explicit error, no fallback.
+                    validate_suffix_contract(
+                        label_list, int(episode.prompt_len), int(episode.target_len),
+                        int(args.microbatch),
+                    )
+                    output = suffix_forward(
+                        model, input_ids, attention, labels,
+                        int(episode.prompt_len), int(episode.target_len),
+                    )
+                if output.loss is None:
+                    raise RuntimeError("model returned loss=None at update %d" % update)
+                loss_value = float(output.loss.detach().float().item())
+                if loss_value != loss_value or loss_value in (float("inf"), float("-inf")):
+                    raise RuntimeError("non-finite loss at update %d: %s" % (update, loss_value))
+                if not wrote_mask:
+                    write_mask_probe(mask_path, tokenizer, episode, eos_id)
+                    wrote_mask = True
+                    print("mask_probe wrote %s" % mask_path, flush=True)
+                # Divide by grad_accum so four backwards match the mean gradient. Log the raw loss.
+                scaled = output.loss / float(args.grad_accum)
+                scaled.backward()
+            except torch_module.cuda.OutOfMemoryError:
+                oom_this_update = True
+            except RuntimeError as exc:
+                if "out of memory" not in str(exc).lower():
+                    raise
+                oom_this_update = True
+            if oom_this_update:
+                oom_episode_id = getattr(episode, "episode_id", None)
+                input_ids = labels = attention = output = scaled = None
+                break
+            losses.append(loss_value)
+            episode_ids.append(episode.episode_id)
+            family_ids.append(episode.family_id)
+            seen_families.add(episode.family_id)
+            prompt_counts.append(int(episode.prompt_len))
+            target_counts.append(int(episode.target_len))
+            bucket_names.append(_length_bucket_name(int(episode.full_len)))
+            del scaled, output, input_ids, labels, attention
+        if oom_this_update:
+            # Partial accumulation must not step or advance the schedule.
+            if cursor < cursor_at_update:
+                cursor = cursor_at_update
+            input_ids = labels = attention = output = scaled = None
+            optimizer.zero_grad(set_to_none=True)
+            torch_module.cuda.empty_cache()
+            oom_count = int(summary.get("oom_count") or 0) + 1
+            summary["oom_count"] = oom_count
+            oom_record = {"status": "oom", "update": update}
+            try:
+                oom_record["formatter"] = _normalize_train_formatter(
+                    (bundle.get("run_config") or {}).get("formatter", FORMATTER_F0)
+                )
+            except RuntimeError:
+                oom_record["formatter"] = (bundle.get("run_config") or {}).get("formatter")
+            if oom_episode_id is not None:
+                oom_record["episode_id"] = oom_episode_id
+            append_jsonl(log_path, oom_record)
+            print(
+                "update %d oom episode=%s count=%d" % (update, oom_episode_id, oom_count),
+                flush=True,
+            )
+            if oom_count >= 8:
+                summary["oom_stop"] = True
+                summary["oom_count"] = 8
+                break
+            continue
+        if not losses:
+            pool_exhausted = True
+            break
+        trainable = [
+            param for param in model.parameters() if param.requires_grad and param.grad is not None
+        ]
+        if not trainable:
+            raise RuntimeError("no gradients at update %d" % update)
+        grad_norm = torch_module.nn.utils.clip_grad_norm_(trainable, float(args.clip_norm))
+        if not torch_module.isfinite(grad_norm):
+            raise RuntimeError("non-finite grad norm at update %d" % update)
+        inside_step[0] = True
+        optimizer.step()
+        inside_step[0] = False
+        schedule.step()
+        bundle["completed_updates"] = int(schedule.completed)
+        bundle["cursor"] = int(cursor)
+        bundle["run_config"]["completed_updates"] = int(schedule.completed)
+        bundle["run_config"]["cursor"] = int(cursor)
+        torch_module.cuda.synchronize()
+        seconds = time.perf_counter() - tick
+        mean_loss = sum(losses) / float(len(losses))
+        micro_total += len(losses)
+        run_fmt = (bundle.get("run_config") or {}).get("formatter", FORMATTER_F0)
+        try:
+            run_fmt = _normalize_train_formatter(run_fmt)
+        except RuntimeError:
+            pass
+        record = {
+            "update": update,
+            "formatter": run_fmt,
+            "logits_mode": parse_logits_mode(getattr(args, "logits_mode", "full")),
+            "lr": lr,
+            "mean_loss": mean_loss,
+            "microsteps": len(losses),
+            "episode_ids": episode_ids,
+            "family_ids": family_ids,
+            "prompt_token_count": prompt_counts,
+            "target_token_count": target_counts,
+            "length_bucket": bucket_names,
+            "seconds": round(seconds, 4),
+            "loss_divided_by_grad_accum": True,
+        }
+        append_jsonl(log_path, record)
+        bundle["rng"] = capture_rng(torch_module, bundle["numpy_module"])
+        print(
+            "update %d/%d lr=%g mean_loss=%.6f microsteps=%d %.2fs"
+            % (update, target, lr, mean_loss, len(losses), seconds),
+            flush=True,
+        )
+        summary["last_mean_loss"] = mean_loss
+        summary["completed_updates"] = int(schedule.completed)
+        if update % int(args.save_every) == 0:
+            if mixture_on:
+                refresh_bucket_consumption(bundle, pool)
+                summary["bucket_consumption"] = bundle["run_config"].get("bucket_consumption")
+            save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch_module)
+            summary["last_saved_update"] = int(schedule.completed)
+            summary["saved_this_run"] = True
+            summary["checkpoint_saved"] = True
+            print("saved update %d" % update, flush=True)
+        _limited, _exceeded, _elapsed = wall_clock_status(args)
+        if _limited and _exceeded:
+            # Completed-update boundary: this update (incl. its snapshot when due)
+            # is fully saved; do not start the next one.
+            wall_clock_hit = True
+            _wall_clock_exit("boundary after update %d" % update)
+            break
+        if stop_after is not None and int(update) >= int(stop_after):
+            # Stop-after wins at its own boundary; wall-clock already checked above
+            # for the same boundary (stop wins when both hit together).
+            stop_after_hit = True
+            _stop_after_exit()
+            break
+    summary["n_families_seen"] = len(seen_families)
+    summary["completed_microsteps"] = micro_total
+    if getattr(args, "length_mixture", None) is not None:
+        summary["bucket_consumption"] = bucket_consumption(pool[:cursor])
+    expected_cursor = target * int(args.grad_accum)
+    if int(schedule.completed) < target or cursor < expected_cursor:
+        if stop_after_hit or summary.get("stop_after_stop"):
+            shortfall_reason = "stop_after_update"
+        elif wall_clock_hit or summary.get("wall_clock_stop"):
+            shortfall_reason = "wall_clock_limit"
+        elif summary.get("oom_stop"):
+            shortfall_reason = "oom_stop"
+        elif pool_exhausted or cursor >= len(pool):
+            shortfall_reason = "filtered pool exhausted"
+        else:
+            shortfall_reason = "microstep shortfall"
+        summary["shortfall"] = {
+            "reason": shortfall_reason,
+            "expected_updates": target,
+            "completed_updates": int(schedule.completed),
+            "expected_microsteps": expected_cursor,
+            "completed_microsteps_this_process": micro_total,
+            "cursor": int(cursor),
+            "pool_size": len(pool),
+        }
+        return cursor, True
+    return cursor, False
+
+
+def execute(args, summary):
+    import numpy
+    import torch
+    from peft import LoraConfig, PeftModel, get_peft_model
+    from transformers import AutoModelForCausalLM, AutoTokenizer
+
+    validate_args(args)
+    if not torch.cuda.is_available():
+        raise SkipRun("SKIP_NO_GPU", "SKIP_NO_GPU: cuda unavailable")
+    gpu_count = int(torch.cuda.device_count())
+    print("GPUs:", gpu_count, flush=True)
+    if gpu_count < 4:
+        raise SkipRun("SKIP_GPU_COUNT", "SKIP_GPU_COUNT: need 4 GPUs, found %d" % gpu_count)
+    summary["gpu_count"] = gpu_count
+
+    os.makedirs(args.out_dir, exist_ok=True)
+    diagnostic_ids = set(parse_id_list(args.zero_step_ids))
+    extras = parse_extra_targets(args.extra_targets)
+    targets = list(DEFAULT_TARGETS) + extras
+    versions = package_versions()
+    model_dir = find_model_dir(args.model_dir)
+    print("MODEL_DIR:", model_dir, flush=True)
+    with open(os.path.join(model_dir, "config.json"), "r", encoding="utf-8") as handle:
+        raw_config = json.load(handle)
+
+    tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)
+    eos_id = tokenizer.eos_token_id
+    if eos_id is None:
+        raise RuntimeError("tokenizer eos_token_id is None; refusing to train without an eos id")
+    eos_id = int(eos_id)
+
+    print("encoding episodes", flush=True)
+    rows = load_jsonl_rows(args.episodes)
+    # Unified formatter: data/CLI two-choice, mixed-formatter input rejected here
+    # (CPU-fast, before model load). Missing row field reads as F0 legacy.
+    train_formatter = resolve_train_formatter(getattr(args, "formatter", "auto"), rows)
+    summary["formatter"] = train_formatter
+    print("formatter=%s source=%s" % (
+        train_formatter,
+        "cli" if str(getattr(args, "formatter", "auto") or "auto").strip().lower().replace("-", "_") not in ("auto", "") else "data",
+    ), flush=True)
+    by_id_rows = {}
+    for row in rows:
+        if row.get("episode_id") is not None:
+            by_id_rows.setdefault(str(row["episode_id"]), row)
+
+    resume_state = None
+    if args.resume:
+        _adapter_path, state_path = resolve_resume_paths(args.resume)
+        # Our checkpoint stores RNG tuples and optimizer tensors, not a weights-only blob.
+        resume_state = torch.load(state_path, map_location="cpu", weights_only=False)
+        saved_ids = [str(item) for item in resume_state.get("pool_episode_ids") or []]
+        if not saved_ids:
+            raise RuntimeError("trainer_state.pt is missing pool_episode_ids")
+        pool = []
+        missing = []
+        for episode_id in saved_ids:
+            row = by_id_rows.get(episode_id)
+            if row is None:
+                missing.append(episode_id)
+                continue
+            episode, flag = encode_episode(tokenizer, row, eos_id, row.get("_line_no"))
+            if episode is None:
+                raise RuntimeError("resume episode %s failed to encode (%s)" % (episode_id, flag))
+            pool.append(episode)
+        if missing:
+            raise RuntimeError("resume pool episodes missing from JSONL: %s" % missing[:8])
+        previous = {}
+        saved_config = resume_state.get("run_config")
+        if isinstance(saved_config, dict) and isinstance(saved_config.get("length_policy"), dict):
+            previous = dict(saved_config["length_policy"])
+        length_stats = previous
+        length_stats.update({
+            "resumed_pool": True,
+            "pool_size": len(pool),
+            "n_families_consumed": len({ep.family_id for ep in pool}),
+            "needed_examples": int(args.optimizer_updates) * int(args.grad_accum),
+            "max_len": int(args.max_len),
+            "overflow_len": int(args.overflow_len),
+            "note": "resume keeps the stored cursor order; length buckets were not rebuilt",
+        })
+        summary["length_policy"] = length_stats
+    else:
+        pool, length_stats = encode_training_rows(tokenizer, rows, eos_id, args, diagnostic_ids)
+        summary["length_policy"] = length_stats
+        if not pool:
+            detail = length_stats.get("last_encode_error") or ""
+            if getattr(args, "length_mixture", None) is not None:
+                raise RuntimeError(
+                    "FAILED_NO_DATA: no trainable episodes for length-mixture %s "
+                    "(available=%s encode_errors=%s). %s"
+                    % (
+                        args.length_mixture,
+                        length_stats.get("mixture_available"),
+                        length_stats.get("n_encode_error"),
+                        detail,
+                    )
+                )
+            raise RuntimeError(
+                "FAILED_NO_DATA: no trainable episodes at or under overflow-len %d "
+                "(kept_le_max=%s longer=%s encode_errors=%s). %s"
+                % (
+                    args.overflow_len,
+                    length_stats.get("n_kept_le_max_len"),
+                    length_stats.get("n_longer_than_overflow"),
+                    length_stats.get("n_encode_error"),
+                    detail,
+                )
+            )
+        order = list(pool)
+        if getattr(args, "length_mixture", None) is not None:
+            # Mixture pool already carries per-bucket seeded order + round-robin
+            # interleave; keep it so early updates see the mixture.
+            pool = order
+            print(
+                "length_mixture=%s buckets=%s available=%s targets=%s taken=%s gaps=%s pool=%d needed=%d" % (
+                    length_stats.get("length_mixture"),
+                    ",".join(LENGTH_BUCKET_NAMES),
+                    length_stats.get("mixture_available"),
+                    length_stats.get("mixture_targets"),
+                    length_stats.get("mixture_taken"),
+                    length_stats.get("mixture_gaps_by_bucket"),
+                    length_stats.get("pool_size"),
+                    length_stats.get("needed_examples"),
+                ),
+                flush=True,
+            )
+            if length_stats.get("sample_policy") == "fair_task_base":
+                print(
+                    "sample_policy=fair_task_base tasks=%s bases=%s kind_actual=%s fallback=%s protected=%s" % (
+                        length_stats.get("tasks_covered"),
+                        length_stats.get("independent_bases_consumed"),
+                        length_stats.get("fair_source_actual_by_kind"),
+                        length_stats.get("fair_fallback_slots"),
+                        length_stats.get("fair_protected_covered"),
+                    ),
+                    flush=True,
+                )
+        else:
+            random.Random(int(args.seed)).shuffle(order)
+            pool = order
+            print(
+                "length_policy kept_le_%d=%d added_le_%d=%d longer_than_%d=%d families=%d pool=%d needed=%d"
+                % (
+                    args.max_len,
+                    length_stats["n_kept_le_max_len"],
+                    args.overflow_len,
+                    length_stats["n_added_le_overflow"],
+                    args.overflow_len,
+                    length_stats["n_longer_than_overflow"],
+                    length_stats["n_families_consumed"],
+                    length_stats["pool_size"],
+                    length_stats["needed_examples"],
+                ),
+                flush=True,
+            )
+
+    if length_stats.get("n_excluded_diagnostic"):
+        print(
+            "WARNING excluded %d diagnostic-id rows from the train pool"
+            % length_stats["n_excluded_diagnostic"],
+            flush=True,
+        )
+
+    seed_everything(args.seed, torch, numpy)
+    print("loading model", flush=True)
+    print("LOAD_START base model_dir=%s" % model_dir, flush=True)
+    _t_base_load = time.perf_counter()
+    base = AutoModelForCausalLM.from_pretrained(
+        model_dir,
+        dtype=torch.bfloat16,
+        device_map="balanced",
+        low_cpu_mem_usage=True,
+        trust_remote_code=False,
+    )
+    print("LOAD_DONE base %.1fs" % (time.perf_counter() - _t_base_load), flush=True)
+    ckpt_ok, ckpt_errors = enable_checkpointing(base)
+    set_use_cache(base, False)
+    summary["grad_ckpt"] = True if ckpt_ok and not ckpt_errors else {"enabled": ckpt_ok, "errors": ckpt_errors}
+
+    init_info = None
+    if args.resume:
+        adapter_path, _state_path = resolve_resume_paths(args.resume)
+        print("ADAPTER_LOAD_START resume %s" % adapter_path, flush=True)
+        _t_adapter_load = time.perf_counter()
+        try:
+            model = PeftModel.from_pretrained(base, adapter_path, is_trainable=True)
+        except TypeError:
+            model = PeftModel.from_pretrained(base, adapter_path)
+        print("ADAPTER_LOAD_DONE resume %.1fs" % (time.perf_counter() - _t_adapter_load), flush=True)
+        init_info = None
+    elif getattr(args, "init_adapter", None):
+        # Weights-only new stage. Optimizer/scheduler/cursor below are rebuilt; old ones never loaded.
+        # Same targets: preferred verified PeftModel.from_pretrained(..., is_trainable=True) path
+        # with strict 512/512 value verification. Changed targets: fresh LoRA + PEFT
+        # adapter-name-normalized manual copy (never literal intersection); 0 or any
+        # unexpected missing aborts instead of silent fresh-LoRA-as-G1.
+        init_adapter_dir = resolve_init_adapter_dir(args.init_adapter)
+        init_old_targets = read_adapter_targets(init_adapter_dir)
+        targets_changed = set(init_old_targets) != set(targets)
+        missing_targets = [name for name in targets if name not in module_leaf_names(base)]
+        if missing_targets:
+            raise RuntimeError("LoRA target modules not found: %s" % missing_targets)
+        if not targets_changed:
+            print("ADAPTER_LOAD_START init_adapter %s" % init_adapter_dir, flush=True)
+            _t_adapter_load = time.perf_counter()
+            try:
+                model = PeftModel.from_pretrained(base, init_adapter_dir, is_trainable=True)
+            except TypeError:
+                model = PeftModel.from_pretrained(base, init_adapter_dir)
+            print("ADAPTER_LOAD_DONE init_adapter %.1fs" % (time.perf_counter() - _t_adapter_load), flush=True)
+            init_stats = verify_from_pretrained_weights(model, init_adapter_dir, torch)
+        else:
+            lora = LoraConfig(
+                r=8,
+                lora_alpha=32,
+                lora_dropout=0.0,
+                bias="none",
+                task_type="CAUSAL_LM",
+                target_modules=targets,
+                inference_mode=False,
+            )
+            model = get_peft_model(base, lora)
+            init_stats = load_init_adapter_weights(
+                model, init_adapter_dir, torch,
+                old_targets=init_old_targets, new_targets=targets,
+            )
+        init_old_amount = old_stage_amount(init_adapter_dir)
+        try:
+            _parent = os.path.dirname(os.path.abspath(init_adapter_dir))
+            _old_state_path = os.path.join(_parent, "trainer_state.pt")
+            if os.path.isfile(_old_state_path):
+                _old_state = torch.load(_old_state_path, map_location="cpu", weights_only=False)
+                if init_old_amount.get("completed_updates") is None:
+                    init_old_amount["completed_updates"] = int(
+                        _old_state.get("completed_updates", 0)
+                    )
+                if init_old_amount.get("cursor") is None:
+                    init_old_amount["cursor"] = int(_old_state.get("cursor", 0))
+        except Exception as exc:
+            init_old_amount["state_read_error"] = str(exc)[:200]
+        init_info = {
+            "source_adapter": os.path.abspath(init_adapter_dir),
+            "old_targets": init_old_targets,
+            "new_targets": list(targets),
+            "targets_changed": set(init_old_targets) != set(targets),
+            "old_completed_updates": init_old_amount.get("completed_updates"),
+            "old_cursor": init_old_amount.get("cursor"),
+            "new_optimizer_updates": int(args.optimizer_updates),
+            "copy": init_stats,
+        }
+        print(
+            "init-adapter copied=%d mismatch=%d not_in_new=%d targets_changed=%s" % (
+                init_stats["copied_lora_tensors"],
+                init_stats["n_shape_mismatch"],
+                init_stats["n_not_in_new"],
+                set(init_old_targets) != set(targets),
+            ),
+            flush=True,
+        )
+    else:
+        missing_targets = [name for name in targets if name not in module_leaf_names(base)]
+        if missing_targets:
+            raise RuntimeError("LoRA target modules not found: %s" % missing_targets)
+        lora = LoraConfig(
+            r=8,
+            lora_alpha=32,
+            lora_dropout=0.0,
+            bias="none",
+            task_type="CAUSAL_LM",
+            target_modules=targets,
+            inference_mode=False,
+        )
+        model = get_peft_model(base, lora)
+
+    enable_checkpointing(model)
+    set_use_cache(model, False)
+    n_lora, n_frozen = freeze_non_lora(model)
+    try:
+        model.print_trainable_parameters()
+    except Exception as exc:
+        print("print_trainable_parameters skipped:", str(exc)[:200], flush=True)
+    names, params = trainable_named_params(model)
+    trainable = sum(param.numel() for param in params)
+    print("trainable_params:", trainable, "lora_tensors:", n_lora, "frozen_tensors:", n_frozen, flush=True)
+    if any("lora_" not in name for name in names):
+        raise RuntimeError("a non-LoRA parameter requires grad; refusing to train the base")
+
+    in_dev, lm_dev, device_map = embedding_and_lm_devices(model, torch)
+    print("input_device:", in_dev, "lm_head_device:", lm_dev, flush=True)
+    print("device_map:", device_map, flush=True)
+    if getattr(in_dev, "type", None) != "cuda" or getattr(lm_dev, "type", None) != "cuda":
+        raise RuntimeError("input embedding or lm_head is not on CUDA: %s %s" % (in_dev, lm_dev))
+
+    _horizon = int(getattr(args, "scheduler_horizon", None) or args.optimizer_updates)
+    probe_tokens = getattr(args, "probe_selector_tokens", None)
+    if getattr(args, "probe_suffix_logits", None) is not None:
+        # 010 §6.1 probe-only: same adapter + same episode, never optimizer.step.
+        # Training-equivalent runtime (grad ckpt on, use_cache False) but no update.
+        if not probe_tokens:
+            raise RuntimeError("--probe-suffix-logits needs tokens like short,2k,4k or episode IDs")
+        print(plan_probe_selection_text(probe_tokens), flush=True)
+        enable_checkpointing(model)
+        set_use_cache(model, False)
+        model.train()
+        torch.set_grad_enabled(True)
+        torch.cuda.empty_cache()
+        adapter_label = None
+        try:
+            if getattr(args, "init_adapter", None):
+                adapter_label = os.path.abspath(resolve_init_adapter_dir(args.init_adapter))
+            elif args.resume:
+                adapter_label = os.path.abspath(args.resume)
+        except Exception:
+            adapter_label = None
+        probe_report = run_suffix_logits_probe(
+            model, pool, probe_tokens, torch, in_dev, lm_dev, adapter_label=adapter_label
+        )
+        probe_report["selector"] = ",".join(probe_tokens)
+        probe_report["formatter"] = train_formatter
+        probe_report["logits_mode_requested"] = parse_logits_mode(getattr(args, "logits_mode", "full"))
+        probe_report["model_dir"] = model_dir
+        os.makedirs(args.out_dir, exist_ok=True)
+        dump_json(os.path.join(args.out_dir, "suffix_probe.json"), probe_report, one_line=False)
+        summary["final"] = "PROBE_OK"
+        summary["probe_selector"] = ",".join(probe_tokens)
+        summary["probe_episodes"] = [entry["episode_id"] for entry in probe_report.get("episodes", [])]
+        summary["probe_path"] = os.path.join(os.path.abspath(args.out_dir), "suffix_probe.json")
+        summary["formatter"] = train_formatter
+        summary["logits_mode"] = parse_logits_mode(getattr(args, "logits_mode", "full"))
+        summary["weights_updated"] = False
+        allocated, reserved = memory_peaks(torch)
+        summary["max_memory_allocated_gb"] = allocated
+        summary["max_memory_reserved_gb"] = reserved
+        summary["memory_unit"] = "1e9_bytes"
+        return summary
+    optimizer = torch.optim.AdamW(params, lr=float(args.lr), weight_decay=float(args.weight_decay))
+    schedule = UpdateSchedule(optimizer, float(args.lr), int(args.warmup_updates), _horizon)
+    vocab = vocab_report(model, tokenizer, raw_config)
+    print("vocab:", json.dumps(vocab, ensure_ascii=False, default=str), flush=True)
+    devices = {"input": str(in_dev), "lm_head": str(lm_dev), "gpu_count": gpu_count}
+    run_config = build_run_config(
+        args,
+        model_dir,
+        versions,
+        vocab,
+        length_stats,
+        targets,
+        extras,
+        devices,
+        trainable,
+        os.path.abspath(args.resume) if args.resume else None,
+        train_formatter,
+    )
+    if int(args.warmup_updates) >= _horizon:
+        run_config["schedule_warning"] = "warmup_updates >= scheduler_horizon; decay interval is empty"
+        print("WARNING", run_config["schedule_warning"], flush=True)
+    print(
+        "scheduler_horizon=%d optimizer_updates=%d warmup=%d" % (_horizon, int(args.optimizer_updates), int(args.warmup_updates)),
+        flush=True,
+    )
+    if init_info is not None:
+        # New-stage accounting: old volume is reference only; the new run restarts at update 0
+        # with a fresh pool, cursor, optimizer, and scheduler.
+        try:
+            init_old_formatter = read_adapter_formatter(init_info["source_adapter"])
+        except Exception:
+            init_old_formatter = None
+        init_info["old_formatter"] = init_old_formatter
+        init_info["new_formatter"] = train_formatter
+        if init_old_formatter is not None and init_old_formatter != train_formatter:
+            print(
+                "init-adapter formatter %s differs from new run %s; new run uses data/CLI unified %s"
+                % (init_old_formatter, train_formatter, train_formatter),
+                flush=True,
+            )
+        run_config["init_adapter"] = init_info
+        run_config["stage"] = {
+            "mode": "init_adapter",
+            "old_completed_updates": init_info["old_completed_updates"],
+            "old_cursor": init_info["old_cursor"],
+            "new_optimizer_updates": int(args.optimizer_updates),
+            "note": "weights-only inheritance; not a continuation of the old loss curve",
+        }
+        summary["init_adapter"] = {
+            "source_adapter": init_info["source_adapter"],
+            "targets_changed": init_info["targets_changed"],
+            "copied_lora_tensors": init_info["copy"]["copied_lora_tensors"],
+            "old_completed_updates": init_info["old_completed_updates"],
+            "new_optimizer_updates": int(args.optimizer_updates),
+        }
+
+    cursor = 0
+    if resume_state is not None:
+        saved_names = list(resume_state.get("trainable_param_names") or [])
+        saved_adapter = read_json(os.path.join(resolve_resume_paths(args.resume)[0], "adapter_config.json"))
+        saved_targets = saved_adapter.get("target_modules") or []
+        if isinstance(saved_targets, dict):
+            saved_targets = list(saved_targets.keys())
+        saved_targets = [str(name) for name in saved_targets]
+        names_differ = saved_names != names
+        targets_differ = set(saved_targets) != set(targets)
+        if extras and (names_differ or targets_differ):
+            raise ResumeMismatch(
+                "extra targets refuse resume: requested %s, adapter targets %s, "
+                "optimizer parameter names differ=%s. Start a fresh run for this branch."
+                % (targets, saved_targets, names_differ)
+            )
+        if names_differ or targets_differ:
+            raise ResumeMismatch(
+                "refusing resume because trainable names or LoRA targets differ "
+                "(names_differ=%s targets_differ=%s)." % (names_differ, targets_differ)
+            )
+        saved_fmt_raw = resume_state.get("formatter")
+        if saved_fmt_raw is None:
+            saved_run = resume_state.get("run_config") or {}
+            saved_fmt_raw = saved_run.get("formatter") if isinstance(saved_run, dict) else None
+        if saved_fmt_raw is None:
+            # Legacy checkpoint without formatter field reads as F0.
+            saved_fmt = FORMATTER_F0
+        else:
+            try:
+                saved_fmt = _normalize_train_formatter(saved_fmt_raw)
+            except RuntimeError:
+                raise ResumeMismatch("resume checkpoint has unknown formatter %r" % (saved_fmt_raw,))
+        if saved_fmt != train_formatter:
+            raise ResumeMismatch(
+                "refusing resume because formatter differs (checkpoint %s vs current %s); "
+                "start a new stage with --init-adapter" % (saved_fmt, train_formatter)
+            )
+        run_config["formatter"] = train_formatter
+        optimizer.load_state_dict(resume_state["optimizer"])
+        move_optimizer_state(optimizer, torch)
+        if resume_state.get("scheduler"):
+            saved_sched = resume_state["scheduler"]
+            schedule.completed = int(saved_sched.get("completed", resume_state.get("completed_updates", 0)))
+            saved_total = saved_sched.get("total")
+            if saved_total is None:
+                saved_run_cfg = resume_state.get("run_config") or {}
+                saved_total = saved_run_cfg.get("scheduler_horizon", saved_run_cfg.get("optimizer_updates"))
+            if saved_total is not None and int(saved_total) != int(_horizon):
+                raise ResumeMismatch(
+                    "refusing resume because --scheduler-horizon differs "
+                    "(checkpoint %d vs current %d); pass the same horizon, never silently changed"
+                    % (int(saved_total), int(_horizon))
+                )
+            if float(saved_sched.get("base_lr", args.lr)) != float(args.lr) or int(
+                saved_sched.get("warmup", args.warmup_updates)
+            ) != int(args.warmup_updates):
+                run_config["schedule_warning"] = (
+                    "CLI lr/warmup differs from trainer_state; continuing the update counter "
+                    "on the saved scheduler horizon %d." % int(_horizon)
+                )
+                print("WARNING", run_config["schedule_warning"], flush=True)
+        else:
+            schedule.completed = int(resume_state.get("completed_updates", 0))
+        cursor = int(resume_state.get("cursor", 0))
+        if cursor > len(pool):
+            raise RuntimeError("saved cursor %d is past pool size %d" % (cursor, len(pool)))
+        try:
+            restore_rng(resume_state, torch, numpy)
+        except Exception as exc:
+            raise RuntimeError("failed to restore RNG from trainer_state: %s" % exc)
+        run_config["resumed_completed_updates"] = int(schedule.completed)
+        run_config["resumed_cursor"] = int(cursor)
+
+    same_out = bool(args.resume) and os.path.abspath(args.resume) == os.path.abspath(args.out_dir)
+    log_path = os.path.join(args.out_dir, "train_log.jsonl")
+    if not same_out:
+        with open(log_path, "w", encoding="utf-8") as handle:
+            handle.write("")
+
+    probe_episode = None
+    if pool:
+        probe_index = cursor if cursor < len(pool) else 0
+        probe_episode = pool[probe_index]
+    if probe_episode is None:
+        raise RuntimeError("FAILED_NO_DATA: training pool is empty")
+    facts = think_probe_facts(probe_episode.prompt_text, read_chat_template(tokenizer, model_dir))
+    probe_path = os.path.join(args.out_dir, "template_probe.txt")
+    write_template_probe(probe_path, probe_episode.prompt_text, facts, probe_episode, train_formatter)
+    print(facts["tail_400"], flush=True)
+    print(
+        "template_probe assert_applied=%s assert_ok=%s has_empty_think_block=%s"
+        % (facts["assert_applied"], facts["assert_ok"], facts["has_empty_think_block"]),
+        flush=True,
+    )
+    if facts["assert_applied"] and not facts["has_think_close"]:
+        raise RuntimeError(
+            "rendered prompt has no </think> close, but the chat template contains "
+            "enable_thinking and </think>. Refusing to train with thinking left on. "
+            "See template_probe.txt. Not retrying without enable_thinking."
+        )
+
+    module, module_error = load_episode_module()
+    if module_error:
+        print("arc_episode_data import:", module_error, flush=True)
+        run_config["episode_api_error"] = module_error
+    else:
+        run_config["episode_api"] = getattr(module, "__file__", "arc_episode_data")
+        run_config["build_messages"] = bool(callable(getattr(module, "build_messages", None)))
+
+    sources = sorted({str(ep.source) for ep in pool if ep.source is not None})
+    revisions = sorted({str(ep.revision) for ep in pool if ep.revision is not None})
+    run_config["data_sources"] = sources
+    run_config["data_revisions"] = revisions
+    bundle = {
+        "completed_updates": int(schedule.completed),
+        "cursor": int(cursor),
+        "pool_episode_ids": [ep.episode_id for ep in pool],
+        "trainable_param_names": names,
+        "versions": versions,
+        "seed": int(args.seed),
+        "run_config": run_config,
+        "rng": capture_rng(torch, numpy),
+        "numpy_module": numpy,
+    }
+    if getattr(args, "length_mixture", None) is not None:
+        refresh_bucket_consumption(bundle, pool)
+    save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch, train_formatter)
+    summary["saved_this_run"] = True
+    summary["checkpoint_saved"] = True
+    summary["last_saved_update"] = int(schedule.completed)
+    summary["step0_saved"] = schedule.completed == 0 and not args.resume
+    print("saved initial adapter at update %d" % schedule.completed, flush=True)
+
+    if args.resume:
+        zero = {
+            "skipped": True,
+            "formatter": train_formatter,
+            "reason": "resume: adapter is not step-0 base behavior, so zero-step was not run",
+            "time_guard": False,
+            "tasks": [],
+        }
+    else:
+        try:
+            zero = run_zero_step(model, tokenizer, args, module, in_dev, eos_id, torch, train_formatter)
+        except Exception as exc:
+            zero = {
+                "skipped": False,
+                "formatter": train_formatter,
+                "reason": "zero-step failed; training still starts",
+                "error": str(exc)[:500],
+                "time_guard": False,
+                "tasks": [],
+            }
+            print("zero-step error, continuing to training: %s" % str(exc)[:300], flush=True)
+    dump_json(os.path.join(args.out_dir, "zero_step.json"), zero, one_line=False)
+    summary["zero_step_skipped"] = bool(zero.get("skipped"))
+    summary["zero_step_reason"] = zero.get("reason")
+    summary["zero_step_time_guard"] = bool(zero.get("time_guard"))
+    summary["zero_step_parse_ok"] = sum(1 for task in zero.get("tasks") or [] if task.get("parse") == "ok")
+    summary["zero_step_exact_match"] = sum(1 for task in zero.get("tasks") or [] if task.get("exact_match") is True)
+    print("zero_step skipped=%s reason=%s" % (zero.get("skipped"), zero.get("reason")), flush=True)
+
+    enable_checkpointing(model)
+    set_use_cache(model, False)
+    model.train()
+    torch.set_grad_enabled(True)
+    torch.cuda.empty_cache()
+    for index in range(torch.cuda.device_count()):
+        torch.cuda.reset_peak_memory_stats(index)
+    summary["memory_peak_scope"] = "training_loop"
+
+    # Refresh RNG after zero-step so a resume from this update matches the training process.
+    bundle["rng"] = capture_rng(torch, numpy)
+    bundle["run_config"]["zero_step_skipped"] = summary["zero_step_skipped"]
+    bundle["run_config"]["zero_step_reason"] = summary["zero_step_reason"]
+    bundle["run_config"]["formatter"] = train_formatter
+    save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch, train_formatter)
+    summary["saved_this_run"] = True
+
+    inside_step = [False]
+    summary["_inside_step"] = inside_step
+    try:
+        _cursor, shortfall = train_loop(
+            model,
+            optimizer,
+            schedule,
+            pool,
+            args,
+            tokenizer,
+            eos_id,
+            in_dev,
+            lm_dev,
+            torch,
+            bundle,
+            summary,
+            inside_step,
+        )
+    except BaseException:
+        if not inside_step[0]:
+            try:
+                bundle["rng"] = capture_rng(torch, numpy)
+                save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch, train_formatter)
+                summary["saved_this_run"] = True
+                summary["saved_on_failure"] = True
+                summary["last_saved_update"] = int(bundle.get("completed_updates", 0))
+            except Exception as save_exc:
+                summary["save_on_exit_error"] = str(save_exc)[:300]
+        raise
+    bundle["cursor"] = int(_cursor)
+    bundle["completed_updates"] = int(schedule.completed)
+    bundle["rng"] = capture_rng(torch, numpy)
+    bundle["run_config"]["completed_updates"] = int(schedule.completed)
+    bundle["run_config"]["cursor"] = int(_cursor)
+    if getattr(args, "length_mixture", None) is not None:
+        refresh_bucket_consumption(bundle, pool)
+        summary["bucket_consumption"] = bundle["run_config"].get("bucket_consumption")
+    bundle["run_config"]["formatter"] = train_formatter
+    save_checkpoint(model, optimizer, schedule, bundle, args.out_dir, torch, train_formatter)
+    summary["saved_this_run"] = True
+    summary["checkpoint_saved"] = True
+    summary["last_saved_update"] = int(schedule.completed)
+    summary["completed_updates"] = int(schedule.completed)
+    summary["cursor"] = int(_cursor)
+    summary["pool_size"] = len(pool)
+    allocated, reserved = memory_peaks(torch)
+    summary["max_memory_allocated_gb"] = allocated
+    summary["max_memory_reserved_gb"] = reserved
+    summary["memory_unit"] = "1e9_bytes"
+    if summary.get("oom_stop"):
+        summary["final"] = "FAILED_OOM"
+    elif shortfall:
+        summary["final"] = "SHORTFALL"
+    else:
+        summary["final"] = "OK"
+    summary["inside_optimizer_step"] = False
+    return summary
+
+
+def emit(summary, code):
+    out_dir = summary.get("out_dir")
+    if out_dir:
+        try:
+            files_ok = adapter_files_present(os.path.join(out_dir, "adapter"))
+            summary["checkpoint_saved"] = bool(summary.get("saved_this_run") and files_ok)
+            if (
+                summary.get("checkpoint_saved")
+                and summary.get("last_saved_update", 0) == 0
+                and summary.get("final") != "OK"
+            ):
+                summary["checkpoint_note"] = (
+                    "adapter on disk is the step-0 initialization, not a finished training run"
+                )
+            dump_json(os.path.join(out_dir, "SUMMARY.json"), summary, one_line=True)
+        except Exception as exc:
+            summary["summary_write_error"] = str(exc)[:300]
+    line = json.dumps(summary, ensure_ascii=False, separators=(",", ":"), default=str)
+    print("G1_RESULT=%s" % summary.get("final"), flush=True)
+    print("G1_SUMMARY=%s" % line, flush=True)
+    print("G1_DONE", flush=True)
+    return code
+
+
+def run(args):
+    summary = {
+        "final": "PENDING",
+        "checkpoint_saved": False,
+        "saved_this_run": False,
+        "out_dir": os.path.abspath(args.out_dir) if args.out_dir else None,
+        "formatter": FORMATTER_NAME,
+        "loss_divided_by_grad_accum": True,
+        "effective_batch": int(args.microbatch) * int(args.grad_accum),
+    }
+    code = 1
+    try:
+        try:
+            import torch  # noqa: F401
+            import transformers  # noqa: F401
+            import peft  # noqa: F401
+            import numpy  # noqa: F401
+        except ImportError as exc:
+            summary["final"] = "FAILED_MISSING_DEPS"
+            summary["error"] = (
+                "torch, transformers, peft, and numpy are required to train (%s). "
+                "--help does not need them." % exc
+            )
+            return emit(summary, 1)
+        execute(args, summary)
+        if summary.get("final") == "SHORTFALL":
+            code = 0
+        elif summary.get("final") == "OK":
+            code = 0
+        elif summary.get("final") == "PROBE_OK":
+            code = 0
+        elif str(summary.get("final", "")).startswith("SKIP"):
+            code = 2
+        else:
+            code = 1
+    except SkipRun as exc:
+        summary["final"] = exc.status
+        summary["error"] = str(exc)
+        code = 2
+    except ResumeMismatch as exc:
+        summary["final"] = exc.status
+        summary["error"] = str(exc)
+        summary["traceback_tail"] = traceback.format_exc()[-2000:]
+        code = 1
+    except BaseException as exc:
+        status = getattr(exc, "status", None)
+        text = str(exc) if str(exc) else type(exc).__name__
+        if status:
+            summary["final"] = status
+        elif isinstance(exc, KeyboardInterrupt):
+            summary["final"] = "FAILED_INTERRUPTED"
+        elif text.startswith("SKIP_"):
+            summary["final"] = text.split(":", 1)[0]
+        elif text.startswith("FAILED_"):
+            summary["final"] = text.split(":", 1)[0]
+        else:
+            summary["final"] = "FAILED"
+        summary["error"] = text[:500]
+        summary["traceback_tail"] = traceback.format_exc()[-2000:]
+        code = 130 if isinstance(exc, KeyboardInterrupt) else (2 if str(summary["final"]).startswith("SKIP") else 1)
+    if summary.get("out_dir") and summary.get("memory_peak_scope") == "training_loop":
+        try:
+            import torch
+
+            if torch.cuda.is_available() and "max_memory_allocated_gb" not in summary:
+                allocated, reserved = memory_peaks(torch)
+                summary["max_memory_allocated_gb"] = allocated
+                summary["max_memory_reserved_gb"] = reserved
+                summary["memory_unit"] = "1e9_bytes"
+        except Exception:
+            pass
+    summary.pop("_inside_step", None)
+    summary.pop("inside_optimizer_step", None)
+    return emit(summary, code)
+
+
+def main(argv=None):
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    return run(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

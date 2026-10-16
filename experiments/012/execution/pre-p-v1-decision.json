@@ -1,0 +1,30 @@
+{
+  "decision_time_utc": "2026-10-11T15:58:00.193940+00:00",
+  "used_s": 68946.34,
+  "reserved_s": 0,
+  "remaining_quota_h": 10.84823888888889,
+  "minimum_reserve_h": 6,
+  "P_wall_limit_s": 4500,
+  "P_allowance_h": 2.875,
+  "remaining_after_allowance_h": 7.97323888888889,
+  "loading_and_setup_limit_s": 600,
+  "save_window_s": 300,
+  "core_manifest_sha256": "31ce366d4df03d344cfd5ef1cbc8ed747865208eba97841acbac680de30ae14f",
+  "cpu_version": 3,
+  "cpu_receipt_sha256": "d499b7431b7ab3b7b5cd40502a8835a2d1601d3daf3baf83dd43c9ce4bdd4e7e",
+  "notebook_sha256": "8fccf334fd69d71b61ce01a2a11192a3e0ba9a7a7fe40373598bf3b0dc1eb9b7",
+  "K_status": "complete",
+  "K_verdict": "numerical_drift; observed total-work speed benefit below 15%",
+  "P_backend": "original torch fallback; K wheels not mounted",
+  "P_plan": [
+    "db118e2a D",
+    "db118e2a L",
+    "291dc1e1 L",
+    "291dc1e1 D"
+  ],
+  "max_new_tokens": 3072,
+  "max_call_s": 720,
+  "max_task_s": 760,
+  "no_repair": true,
+  "no_competition_submission": true
+}

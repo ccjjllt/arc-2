@@ -1,0 +1,26 @@
+{
+  "notebook": "kernel-probe",
+  "task": "db118e2a/query0",
+  "prompt": "f1_full_nonhthinking",
+  "fixed_decode_tokens": 64,
+  "order": [
+    "A1",
+    "B1",
+    "B2",
+    "A2"
+  ],
+  "thresholds": {
+    "a_rel_rms": 0.0001,
+    "b_rel_floor": 0.01,
+    "gain": 0.15
+  },
+  "notebook_seconds": 1800,
+  "load_limit_s": 600,
+  "save_window_s": 120,
+  "model_dir": "/kaggle/input/models/ugvfpdcuwfnh/qwen3-8-27b/transformers/transformers-bf16/1",
+  "output_dir": "/kaggle/working/012/kernel-probe/output",
+  "prompt_file": "db118e2a-query0-f1-prompt.txt",
+  "prompt_sha256": "43ad9d5d1f90cd73b4c3ecb2203a4d76855339facb4165f11ba43ee7d47b4c10",
+  "prompt_tokens": 1392,
+  "journal": "/kaggle/working/012/kernel-probe/journal.jsonl"
+}

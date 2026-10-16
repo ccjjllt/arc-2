@@ -1,0 +1,13 @@
+{
+  "checked_at_utc": "2026-10-12T02:31:57.777865+00:00",
+  "source": "Kaggle official Python SDK quota_view; MCP transport unavailable",
+  "before_used_s": 70193.46,
+  "used_s": 76904.838,
+  "reserved_s": 0.0,
+  "total_s": 108000.0,
+  "quota_refresh_time": "2026-10-17T00:00:00",
+  "supervisor_elapsed_s": 3331.981366554,
+  "remaining_quota_h": 8.637545,
+  "account_delta_quota_h": 1.8642716666666659,
+  "accounting_scope": "Account snapshot difference; not isolated per-device billing"
+}

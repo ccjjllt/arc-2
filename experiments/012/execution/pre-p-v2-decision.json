@@ -1,0 +1,22 @@
+{
+  "decision_time_utc": "2026-10-12T01:02:19.258460+00:00",
+  "used_s": 70193.46,
+  "reserved_s": 0,
+  "remaining_quota_h": 10.501816666666665,
+  "minimum_reserve_h": 6,
+  "charge_planning_factor": 2.3,
+  "P_wall_limit_s": 4500,
+  "P_allowance_h": 2.875,
+  "remaining_after_allowance_h": 7.626816666666665,
+  "load_limit_s": 900,
+  "save_window_s": 300,
+  "change_from_v1": "Only combined setup+load ceiling 600 -> 900; same overall 4500, four P0 calls, same core and CPU receipt",
+  "basis": "V1 setup complete at 63.562s; weights still progressing at 797/851 when combined 600s limit fired; no completed candidates to resume",
+  "core_manifest_sha256": "31ce366d4df03d344cfd5ef1cbc8ed747865208eba97841acbac680de30ae14f",
+  "cpu_receipt_version": 3,
+  "configuration_validation": "experiments/012/execution/p-v2-config-repair.json",
+  "package": "experiments/012/kaggle-p-v2/program-completion",
+  "notebook_sha256": "bb5198bedbc20604eff526554447b44b79c3e3bb8a1acbd99bde44d2ab2c8e15",
+  "no_auto_retry": true,
+  "no_competition_submission": true
+}

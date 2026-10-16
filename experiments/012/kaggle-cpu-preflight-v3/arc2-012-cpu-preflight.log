@@ -1,0 +1,185 @@
+[{"stream_name":"stderr","time":6.631539822,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.631593082,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.631598242,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.6316019619999995,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.176357035,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.176390756,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.176394926,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.176398676,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":8.26116246,"data":"012_CORE_SHA 31ce366d4df03d344cfd5ef1cbc8ed747865208eba97841acbac680de30ae14f\n"}
+,{"stream_name":"stdout","time":21.489331986,"data":"dy satisfied: h11\u003e=0.16 in /usr/local/lib/python3.12/dist-packages (from httpcore==1.*-\u003ehttpx\u003c1,\u003e=0.23.0-\u003ehuggingface-hub\u003c2.0,\u003e=1.5.0-\u003etransformers==5.8.0) (0.16.0)\n"}
+,{"stream_name":"stdout","time":21.489361236,"data":"Requirement already satisfied: markdown-it-py\u003e=2.2.0 in /usr/local/lib/python3.12/dist-packages (from rich\u003e=12.3.0-\u003etyper-\u003etransformers==5.8.0) (4.0.0)\n"}
+,{"stream_name":"stdout","time":21.489366346,"data":"Requirement already satisfied: pygments\u003c3.0.0,\u003e=2.13.0 in /usr/local/lib/python3.12/dist-packages (from rich\u003e=12.3.0-\u003etyper-\u003etransformers==5.8.0) (2.20.0)\n"}
+,{"stream_name":"stdout","time":21.489370456,"data":"Requirement already satisfied: mpmath\u003c1.4,\u003e=1.1.0 in /usr/local/lib/python3.12/dist-packages (from sympy\u003e=1.13.3-\u003etorch\u003e=2.0.0-\u003eaccelerate==1.13.0) (1.3.0)\n"}
+,{"stream_name":"stdout","time":21.489374176,"data":"Requirement already satisfied: MarkupSafe\u003e=2.0 in /usr/local/lib/python3.12/dist-packages (from jinja2-\u003etorch\u003e=2.0.0-\u003eaccelerate==1.13.0) (3.0.3)\n"}
+,{"stream_name":"stdout","time":21.489378376,"data":"Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.12/dist-packages (from markdown-it-py\u003e=2.2.0-\u003erich\u003e=12.3.0-\u003etyper-\u003etransformers==5.8.0) (0.1.2)\n"}
+,{"stream_name":"stdout","time":21.489381896,"data":"Installing collected packages: transformers\n"}
+,{"stream_name":"stdout","time":21.489385316,"data":"  Attempting uninstall: transformers\n"}
+,{"stream_name":"stdout","time":21.489388596,"data":"    Found existing installation: transformers 5.0.0\n"}
+,{"stream_name":"stdout","time":21.489391956,"data":"    Uninstalling transformers-5.0.0:\n"}
+,{"stream_name":"stdout","time":21.489395146,"data":"      Successfully uninstalled transformers-5.0.0\n"}
+,{"stream_name":"stdout","time":21.489398416,"data":"Successfully installed transformers-5.8.0\n"}
+,{"stream_name":"stdout","time":21.489401616,"data":"\n"}
+,{"stream_name":"stdout","time":48.109438506,"data":"VERSIONS {\"python\": \"3.12.13\", \"transformers\": \"5.8.0\", \"torch\": \"2.10.0+cu128\", \"peft\": \"0.19.1\", \"accelerate\": \"1.13.0\"}\n"}
+,{"stream_name":"stdout","time":48.181227023,"data":"MODEL_DIR /kaggle/input/models/ugvfpdcuwfnh/qwen3-8-27b/transformers/transformers-bf16/1\n"}
+,{"stream_name":"stdout","time":48.181254853,"data":"{\n"}
+,{"stream_name":"stdout","time":48.181260293,"data":"  \"model_dir\": \"/kaggle/input/models/ugvfpdcuwfnh/qwen3-8-27b/transformers/transformers-bf16/1\",\n"}
+,{"stream_name":"stdout","time":48.181275693,"data":"  \"challenges\": \"/kaggle/working/012/code/p2-challenges.json\",\n"}
+,{"stream_name":"stdout","time":48.181279733,"data":"  \"out_dir\": \"/kaggle/working/012/program-completion/output\",\n"}
+,{"stream_name":"stdout","time":48.181283103,"data":"  \"time_budget_s\": 4500,\n"}
+,{"stream_name":"stdout","time":48.181286813,"data":"  \"load_limit_s\": 600,\n"}
+,{"stream_name":"stdout","time":48.181290393,"data":"  \"notebook_start_monotonic\": 584.733151614,\n"}
+,{"stream_name":"stdout","time":48.181293913,"data":"  \"runtime\": {\n"}
+,{"stream_name":"stdout","time":48.181297563,"data":"    \"base_source\": \"ugvfpdcuwfnh/qwen3-8-27b/Transformers/transformers-bf16/1\",\n"}
+,{"stream_name":"stdout","time":48.181301113,"data":"    \"save_window_s\": 300,\n"}
+,{"stream_name":"stdout","time":48.181304223,"data":"    \"deactivate_async_load\": true\n"}
+,{"stream_name":"stdout","time":48.181307883,"data":"  },\n"}
+,{"stream_name":"stdout","time":48.181311243,"data":"  \"stages\": [\n"}
+,{"stream_name":"stdout","time":48.181314263,"data":"    {\n"}
+,{"stream_name":"stdout","time":48.181317003,"data":"      \"name\": \"p0-db118e2a-D\",\n"}
+,{"stream_name":"stdout","time":48.181319933,"data":"      \"type\": \"program\",\n"}
+,{"stream_name":"stdout","time":48.181322873,"data":"      \"query_file\": \"/kaggle/working/012/code/p2-queries-db118e2a.json\",\n"}
+,{"stream_name":"stdout","time":48.181325843,"data":"      \"policy\": \"p0_only\",\n"}
+,{"stream_name":"stdout","time":48.181328673,"data":"      \"enable_thinking\": false,\n"}
+,{"stream_name":"stdout","time":48.181331623,"data":"      \"reasoning_effort\": \"low\",\n"}
+,{"stream_name":"stdout","time":48.181334533,"data":"      \"preserve_thinking\": true,\n"}
+,{"stream_name":"stdout","time":48.181337343,"data":"      \"arms\": [\n"}
+,{"stream_name":"stdout","time":48.181340103,"data":"        \"p0\"\n"}
+,{"stream_name":"stdout","time":48.181342883,"data":"      ],\n"}
+,{"stream_name":"stdout","time":48.181345593,"data":"      \"limits\": {\n"}
+,{"stream_name":"stdout","time":48.181348373,"data":"        \"max_new_tokens\": 3072,\n"}
+,{"stream_name":"stdout","time":48.181351263,"data":"        \"max_call_seconds\": 720,\n"}
+,{"stream_name":"stdout","time":48.181354023,"data":"        \"max_task_seconds\": 760,\n"}
+,{"stream_name":"stdout","time":48.181362193,"data":"        \"max_prompt_tokens\": 8192,\n"}
+,{"stream_name":"stdout","time":48.181365703,"data":"        \"seed\": 20261011\n"}
+,{"stream_name":"stdout","time":48.181368703,"data":"      },\n"}
+,{"stream_name":"stdout","time":48.181372013,"data":"      \"time_budget_s\": 4500\n"}
+,{"stream_name":"stdout","time":48.181374103,"data":"    },\n"}
+,{"stream_name":"stdout","time":48.181375913,"data":"    {\n"}
+,{"stream_name":"stdout","time":48.181377693,"data":"      \"name\": \"p0-db118e2a-L\",\n"}
+,{"stream_name":"stdout","time":48.181379623,"data":"      \"type\": \"program\",\n"}
+,{"stream_name":"stdout","time":48.181381533,"data":"      \"query_file\": \"/kaggle/working/012/code/p2-queries-db118e2a.json\",\n"}
+,{"stream_name":"stdout","time":48.181383583,"data":"      \"policy\": \"p0_only\",\n"}
+,{"stream_name":"stdout","time":48.181385483,"data":"      \"enable_thinking\": true,\n"}
+,{"stream_name":"stdout","time":48.181387353,"data":"      \"reasoning_effort\": \"low\",\n"}
+,{"stream_name":"stdout","time":48.181389263,"data":"      \"preserve_thinking\": true,\n"}
+,{"stream_name":"stdout","time":48.181391113,"data":"      \"arms\": [\n"}
+,{"stream_name":"stdout","time":48.181396723,"data":"        \"p0\"\n"}
+,{"stream_name":"stdout","time":48.181398623,"data":"      ],\n"}
+,{"stream_name":"stdout","time":48.181400373,"data":"      \"limits\": {\n"}
+,{"stream_name":"stdout","time":48.181402193,"data":"        \"max_new_tokens\": 3072,\n"}
+,{"stream_name":"stdout","time":48.181404033,"data":"        \"max_call_seconds\": 720,\n"}
+,{"stream_name":"stdout","time":48.181405833,"data":"        \"max_task_seconds\": 760,\n"}
+,{"stream_name":"stdout","time":48.181407663,"data":"        \"max_prompt_tokens\": 8192,\n"}
+,{"stream_name":"stdout","time":48.181409483,"data":"        \"seed\": 20261011\n"}
+,{"stream_name":"stdout","time":48.181411333,"data":"      },\n"}
+,{"stream_name":"stdout","time":48.181413103,"data":"      \"time_budget_s\": 760\n"}
+,{"stream_name":"stdout","time":48.181414933,"data":"    },\n"}
+,{"stream_name":"stdout","time":48.181416673,"data":"    {\n"}
+,{"stream_name":"stdout","time":48.181418423,"data":"      \"name\": \"p0-291dc1e1-L\",\n"}
+,{"stream_name":"stdout","time":48.181420263,"data":"      \"type\": \"program\",\n"}
+,{"stream_name":"stdout","time":48.181422133,"data":"      \"query_file\": \"/kaggle/working/012/code/p2-queries-291dc1e1.json\",\n"}
+,{"stream_name":"stdout","time":48.181424043,"data":"      \"policy\": \"p0_only\",\n"}
+,{"stream_name":"stdout","time":48.181425883,"data":"      \"enable_thinking\": true,\n"}
+,{"stream_name":"stdout","time":48.181427723,"data":"      \"reasoning_effort\": \"low\",\n"}
+,{"stream_name":"stdout","time":48.181429973,"data":"      \"preserve_thinking\": true,\n"}
+,{"stream_name":"stdout","time":48.181431833,"data":"      \"arms\": [\n"}
+,{"stream_name":"stdout","time":48.181433643,"data":"        \"p0\"\n"}
+,{"stream_name":"stdout","time":48.181435433,"data":"      ],\n"}
+,{"stream_name":"stdout","time":48.181437193,"data":"      \"limits\": {\n"}
+,{"stream_name":"stdout","time":48.181438993,"data":"        \"max_new_tokens\": 3072,\n"}
+,{"stream_name":"stdout","time":48.181440813,"data":"        \"max_call_seconds\": 720,\n"}
+,{"stream_name":"stdout","time":48.181442653,"data":"        \"max_task_seconds\": 760,\n"}
+,{"stream_name":"stdout","time":48.181445603,"data":"        \"max_prompt_tokens\": 8192,\n"}
+,{"stream_name":"stdout","time":48.181447473,"data":"        \"seed\": 20261011\n"}
+,{"stream_name":"stdout","time":48.181449343,"data":"      },\n"}
+,{"stream_name":"stdout","time":48.181451133,"data":"      \"time_budget_s\": 760\n"}
+,{"stream_name":"stdout","time":48.181453023,"data":"    },\n"}
+,{"stream_name":"stdout","time":48.181454793,"data":"    {\n"}
+,{"stream_name":"stdout","time":48.181456603,"data":"      \"name\": \"p0-291dc1e1-D\",\n"}
+,{"stream_name":"stdout","time":48.181459713,"data":"      \"type\": \"program\",\n"}
+,{"stream_name":"stdout","time":48.181463103,"data":"      \"query_file\": \"/kaggle/working/012/code/p2-queries-291dc1e1.json\",\n"}
+,{"stream_name":"stdout","time":48.181465823,"data":"      \"policy\": \"p0_only\",\n"}
+,{"stream_name":"stdout","time":48.181467743,"data":"      \"enable_thinking\": false,\n"}
+,{"stream_name":"stdout","time":48.181469613,"data":"      \"reasoning_effort\": \"low\",\n"}
+,{"stream_name":"stdout","time":48.181471483,"data":"      \"preserve_thinking\": true,\n"}
+,{"stream_name":"stdout","time":48.181496473,"data":"      \"arms\": [\n"}
+,{"stream_name":"stdout","time":48.181499633,"data":"        \"p0\"\n"}
+,{"stream_name":"stdout","time":48.181502303,"data":"      ],\n"}
+,{"stream_name":"stdout","time":48.181516633,"data":"      \"limits\": {\n"}
+,{"stream_name":"stdout","time":48.181519553,"data":"        \"max_new_tokens\": 3072,\n"}
+,{"stream_name":"stdout","time":48.181522513,"data":"        \"max_call_seconds\": 720,\n"}
+,{"stream_name":"stdout","time":48.181525183,"data":"        \"max_task_seconds\": 760,\n"}
+,{"stream_name":"stdout","time":48.181528003,"data":"        \"max_prompt_tokens\": 8192,\n"}
+,{"stream_name":"stdout","time":48.181530713,"data":"        \"seed\": 20261011\n"}
+,{"stream_name":"stdout","time":48.181533493,"data":"      },\n"}
+,{"stream_name":"stdout","time":48.181536143,"data":"      \"time_budget_s\": 760\n"}
+,{"stream_name":"stdout","time":48.181538883,"data":"    }\n"}
+,{"stream_name":"stdout","time":48.181541513,"data":"  ]\n"}
+,{"stream_name":"stdout","time":48.181544353,"data":"}\n"}
+,{"stream_name":"stdout","time":48.181547533,"data":"RUNNER_SCHEMA_OK ['p0-db118e2a-D', 'p0-db118e2a-L', 'p0-291dc1e1-L', 'p0-291dc1e1-D']\n"}
+,{"stream_name":"stdout","time":48.181550463,"data":"P0_ENTRY_OK\n"}
+,{"stream_name":"stdout","time":48.201316309,"data":"CPU_INPUTS_OK ['291dc1e1', 'db118e2a']\n"}
+,{"stream_name":"stdout","time":48.269589557,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_start\", \"monotonic\": 624.748470501, \"job\": {\"task_id\": \"cpu-check-D\", \"program_arm\": \"p0\", \"mode\": \"D\", \"kind\": \"program\", \"policy\": \"legacy\", \"backend\": \"torch_fallback\", \"enable_thinking\": false, \"reasoning_effort\": \"low\", \"preserve_thinking\": true}, \"prompt_tokens\": 64, \"remaining_s\": 59.97, \"mode\": \"D\", \"policy\": \"legacy\", \"program_arm\": \"p0\", \"task_id\": \"cpu-check-D\"}\n"}
+,{"stream_name":"stdout","time":48.276266986,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_done\", \"monotonic\": 624.756309629, \"job\": {\"task_id\": \"cpu-check-D\", \"program_arm\": \"p0\", \"mode\": \"D\", \"kind\": \"program\", \"policy\": \"legacy\", \"backend\": \"torch_fallback\", \"enable_thinking\": false, \"reasoning_effort\": \"low\", \"preserve_thinking\": true}, \"status\": \"complete\", \"gen_tokens\": 3, \"elapsed_s\": 0.001, \"mode\": \"D\", \"policy\": \"legacy\", \"program_arm\": \"p0\", \"task_id\": \"cpu-check-D\"}\n"}
+,{"stream_name":"stdout","time":48.278322056,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_start\", \"monotonic\": 624.757844619, \"job\": {\"task_id\": \"cpu-check-L\", \"program_arm\": \"p0\", \"mode\": \"L\", \"kind\": \"program\", \"policy\": \"legacy\", \"backend\": \"torch_fallback\", \"enable_thinking\": true, \"reasoning_effort\": \"low\", \"preserve_thinking\": true}, \"prompt_tokens\": 64, \"remaining_s\": 60.0, \"mode\": \"L\", \"policy\": \"legacy\", \"program_arm\": \"p0\", \"task_id\": \"cpu-check-L\"}\n"}
+,{"stream_name":"stdout","time":48.283323215,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_done\", \"monotonic\": 624.762501768, \"job\": {\"task_id\": \"cpu-check-L\", \"program_arm\": \"p0\", \"mode\": \"L\", \"kind\": \"program\", \"policy\": \"legacy\", \"backend\": \"torch_fallback\", \"enable_thinking\": true, \"reasoning_effort\": \"low\", \"preserve_thinking\": true}, \"status\": \"complete\", \"gen_tokens\": 3, \"elapsed_s\": 0.001, \"mode\": \"L\", \"policy\": \"legacy\", \"program_arm\": \"p0\", \"task_id\": \"cpu-check-L\"}\n"}
+,{"stream_name":"stdout","time":48.306535261,"data":"CPU_FULLPATH_PARSE_OK program_ready program_ready\n"}
+,{"stream_name":"stdout","time":48.378762898,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_start\", \"monotonic\": 624.858049351, \"job\": {\"task_id\": \"db118e2a\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"direct\", \"enable_thinking\": false, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"D\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"prompt_tokens\": 64, \"remaining_s\": 720.0, \"mode\": \"D\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"db118e2a\"}\n"}
+,{"stream_name":"stdout","time":48.384663517,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_done\", \"monotonic\": 624.86411168, \"job\": {\"task_id\": \"db118e2a\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"direct\", \"enable_thinking\": false, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"D\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"status\": \"complete\", \"gen_tokens\": 3, \"elapsed_s\": 0.001, \"mode\": \"D\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"db118e2a\"}\n"}
+,{"stream_name":"stdout","time":48.945582707,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_start\", \"monotonic\": 625.424847891, \"job\": {\"task_id\": \"db118e2a\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"thinking\", \"enable_thinking\": true, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"L\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"prompt_tokens\": 64, \"remaining_s\": 720.0, \"mode\": \"L\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"db118e2a\"}\n"}
+,{"stream_name":"stdout","time":48.949874827,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_done\", \"monotonic\": 625.42975671, \"job\": {\"task_id\": \"db118e2a\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"thinking\", \"enable_thinking\": true, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"L\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"status\": \"complete\", \"gen_tokens\": 3, \"elapsed_s\": 0.001, \"mode\": \"L\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"db118e2a\"}\n"}
+,{"stream_name":"stdout","time":49.512540117,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_start\", \"monotonic\": 625.99154015, \"job\": {\"task_id\": \"291dc1e1\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"thinking\", \"enable_thinking\": true, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"L\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"prompt_tokens\": 64, \"remaining_s\": 720.0, \"mode\": \"L\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"291dc1e1\"}\n"}
+,{"stream_name":"stdout","time":49.517065536,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_done\", \"monotonic\": 625.997101149, \"job\": {\"task_id\": \"291dc1e1\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"thinking\", \"enable_thinking\": true, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"L\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"status\": \"complete\", \"gen_tokens\": 3, \"elapsed_s\": 0.001, \"mode\": \"L\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"291dc1e1\"}\n"}
+,{"stream_name":"stdout","time":50.075505607,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_start\", \"monotonic\": 626.55484711, \"job\": {\"task_id\": \"291dc1e1\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"direct\", \"enable_thinking\": false, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"D\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"prompt_tokens\": 64, \"remaining_s\": 720.0, \"mode\": \"D\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"291dc1e1\"}\n"}
+,{"stream_name":"stdout","time":50.080503046,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_done\", \"monotonic\": 626.560395639, \"job\": {\"task_id\": \"291dc1e1\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"direct\", \"enable_thinking\": false, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"D\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"status\": \"complete\", \"gen_tokens\": 3, \"elapsed_s\": 0.001, \"mode\": \"D\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"291dc1e1\"}\n"}
+,{"stream_name":"stdout","time":50.741983489,"data":"CPU_FULLPATH_P0_OK 4\n"}
+,{"stream_name":"stdout","time":50.742017389,"data":"CPU_FULLPATH_NOT_RUN_OK 1\n"}
+,{"stream_name":"stdout","time":51.233230502,"data":"CPU_FULLPATH_EXECUTOR_OK ok execution_error execution_timeout program_rejected\n"}
+,{"stream_name":"stdout","time":51.233266722,"data":"CPU_FULLPATH_OK {\"full_plan_calls\": 4, \"modes\": [\"D\", \"L\", \"L\", \"D\"], \"per_stage_generations\": [1, 1, 1, 1], \"repair_total\": 0, \"not_run_group\": 1, \"executor\": [\"ok\", \"execution_error\", \"execution_timeout\", \"program_rejected\"]}\n"}
+,{"stream_name":"stdout","time":52.445678457,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_start\", \"monotonic\": 628.92444192, \"name\": \"p0-db118e2a-D\", \"deadline\": 4828.912111562, \"notebook_start_monotonic\": 628.9121115620001}\n"}
+,{"stream_name":"stdout","time":52.447351126,"data":"GRID_RUNTIME_EVENT {\"event\": \"program_p0_start\", \"monotonic\": 628.92585911, \"stage\": \"p0-db118e2a-D\", \"task_id\": \"db118e2a\", \"mode\": \"D\", \"policy\": \"p0_only\", \"remaining_calls\": 4, \"remaining_s\": 4199.99}\n"}
+,{"stream_name":"stdout","time":52.561756546,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_start\", \"monotonic\": 629.0392839, \"job\": {\"task_id\": \"db118e2a\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"direct\", \"enable_thinking\": false, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"D\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"prompt_tokens\": 64, \"remaining_s\": 720.0, \"mode\": \"D\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"db118e2a\"}\n"}
+,{"stream_name":"stdout","time":52.565751885,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_done\", \"monotonic\": 629.045230009, \"job\": {\"task_id\": \"db118e2a\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"direct\", \"enable_thinking\": false, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"D\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"status\": \"complete\", \"gen_tokens\": 3, \"elapsed_s\": 0.001, \"mode\": \"D\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"db118e2a\"}\n"}
+,{"stream_name":"stdout","time":53.072041166,"data":"GRID_RUNTIME_EVENT {\"event\": \"program_p0_done\", \"monotonic\": 629.551236979, \"stage\": \"p0-db118e2a-D\", \"task_id\": \"db118e2a\", \"mode\": \"D\", \"policy\": \"p0_only\", \"status\": \"completed\"}\n"}
+,{"stream_name":"stdout","time":53.081696394,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_done\", \"monotonic\": 629.561157477, \"name\": \"p0-db118e2a-D\", \"elapsed_s\": 0.6490427349999663}\n"}
+,{"stream_name":"stdout","time":53.082405274,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_start\", \"monotonic\": 629.561679137, \"name\": \"p0-db118e2a-L\", \"deadline\": 1389.561669917, \"notebook_start_monotonic\": 628.9121115620001}\n"}
+,{"stream_name":"stdout","time":53.083094053,"data":"GRID_RUNTIME_EVENT {\"event\": \"program_p0_start\", \"monotonic\": 629.562591247, \"stage\": \"p0-db118e2a-L\", \"task_id\": \"db118e2a\", \"mode\": \"L\", \"policy\": \"p0_only\", \"remaining_calls\": 3, \"remaining_s\": 4199.35}\n"}
+,{"stream_name":"stdout","time":53.175940817,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_start\", \"monotonic\": 629.655064231, \"job\": {\"task_id\": \"db118e2a\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"thinking\", \"enable_thinking\": true, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"L\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"prompt_tokens\": 64, \"remaining_s\": 720.0, \"mode\": \"L\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"db118e2a\"}\n"}
+,{"stream_name":"stdout","time":53.180709457,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_done\", \"monotonic\": 629.66044442, \"job\": {\"task_id\": \"db118e2a\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"thinking\", \"enable_thinking\": true, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"L\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"status\": \"complete\", \"gen_tokens\": 3, \"elapsed_s\": 0.001, \"mode\": \"L\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"db118e2a\"}\n"}
+,{"stream_name":"stdout","time":53.671387639,"data":"GRID_RUNTIME_EVENT {\"event\": \"program_p0_done\", \"monotonic\": 630.150049613, \"stage\": \"p0-db118e2a-L\", \"task_id\": \"db118e2a\", \"mode\": \"L\", \"policy\": \"p0_only\", \"status\": \"completed\"}\n"}
+,{"stream_name":"stdout","time":53.682797147,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_done\", \"monotonic\": 630.161946731, \"name\": \"p0-db118e2a-L\", \"elapsed_s\": 0.6002722040000208}\n"}
+,{"stream_name":"stdout","time":53.683469627,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_start\", \"monotonic\": 630.162604281, \"name\": \"p0-291dc1e1-L\", \"deadline\": 1390.16259628, \"notebook_start_monotonic\": 628.9121115620001}\n"}
+,{"stream_name":"stdout","time":53.684021217,"data":"GRID_RUNTIME_EVENT {\"event\": \"program_p0_start\", \"monotonic\": 630.163532081, \"stage\": \"p0-291dc1e1-L\", \"task_id\": \"291dc1e1\", \"mode\": \"L\", \"policy\": \"p0_only\", \"remaining_calls\": 2, \"remaining_s\": 4198.75}\n"}
+,{"stream_name":"stdout","time":53.78288454,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_start\", \"monotonic\": 630.261647793, \"job\": {\"task_id\": \"291dc1e1\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"thinking\", \"enable_thinking\": true, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"L\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"prompt_tokens\": 64, \"remaining_s\": 720.0, \"mode\": \"L\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"291dc1e1\"}\n"}
+,{"stream_name":"stdout","time":53.787996339,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_done\", \"monotonic\": 630.267554312, \"job\": {\"task_id\": \"291dc1e1\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"thinking\", \"enable_thinking\": true, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"L\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"status\": \"complete\", \"gen_tokens\": 3, \"elapsed_s\": 0.001, \"mode\": \"L\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"291dc1e1\"}\n"}
+,{"stream_name":"stdout","time":54.28740724,"data":"GRID_RUNTIME_EVENT {\"event\": \"program_p0_done\", \"monotonic\": 630.766423194, \"stage\": \"p0-291dc1e1-L\", \"task_id\": \"291dc1e1\", \"mode\": \"L\", \"policy\": \"p0_only\", \"status\": \"completed\"}\n"}
+,{"stream_name":"stdout","time":54.301559908,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_done\", \"monotonic\": 630.780926141, \"name\": \"p0-291dc1e1-L\", \"elapsed_s\": 0.618325370999969}\n"}
+,{"stream_name":"stdout","time":54.302509877,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_start\", \"monotonic\": 630.781659211, \"name\": \"p0-291dc1e1-D\", \"deadline\": 1390.781647471, \"notebook_start_monotonic\": 628.9121115620001}\n"}
+,{"stream_name":"stdout","time":54.304135747,"data":"GRID_RUNTIME_EVENT {\"event\": \"program_p0_start\", \"monotonic\": 630.782955051, \"stage\": \"p0-291dc1e1-D\", \"task_id\": \"291dc1e1\", \"mode\": \"D\", \"policy\": \"p0_only\", \"remaining_calls\": 1, \"remaining_s\": 4198.13}\n"}
+,{"stream_name":"stdout","time":54.40380443,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_start\", \"monotonic\": 630.882643013, \"job\": {\"task_id\": \"291dc1e1\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"direct\", \"enable_thinking\": false, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"D\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"prompt_tokens\": 64, \"remaining_s\": 720.0, \"mode\": \"D\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"291dc1e1\"}\n"}
+,{"stream_name":"stdout","time":54.409387158,"data":"GRID_RUNTIME_EVENT {\"event\": \"text_done\", \"monotonic\": 630.888877532, \"job\": {\"task_id\": \"291dc1e1\", \"query_indices\": [0], \"program_arm\": \"p0\", \"program_policy\": \"p0_only\", \"thinking_mode\": \"direct\", \"enable_thinking\": false, \"reasoning_effort\": \"low\", \"preserve_thinking\": true, \"program_prompt_version\": \"arc011-program-v1\", \"executor_policy_sha256\": \"03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a\", \"kind\": \"program\", \"mode\": \"D\", \"policy\": \"p0_only\", \"backend\": \"torch_fallback\"}, \"status\": \"complete\", \"gen_tokens\": 3, \"elapsed_s\": 0.001, \"mode\": \"D\", \"policy\": \"p0_only\", \"program_arm\": \"p0\", \"task_id\": \"291dc1e1\"}\n"}
+,{"stream_name":"stdout","time":54.906695351,"data":"GRID_RUNTIME_EVENT {\"event\": \"program_p0_done\", \"monotonic\": 631.386191634, \"stage\": \"p0-291dc1e1-D\", \"task_id\": \"291dc1e1\", \"mode\": \"D\", \"policy\": \"p0_only\", \"status\": \"completed\"}\n"}
+,{"stream_name":"stdout","time":54.922515238,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_done\", \"monotonic\": 631.401763291, \"name\": \"p0-291dc1e1-D\", \"elapsed_s\": 0.6201106799999252}\n"}
+,{"stream_name":"stdout","time":54.931140806,"data":"GRID_RUNTIME_EVENT {\"event\": \"worker_done\", \"monotonic\": 631.410301499, \"status\": \"complete\", \"elapsed_s\": 2.4904491689999304}\n"}
+,{"stream_name":"stdout","time":54.942788494,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_start\", \"monotonic\": 631.421966937, \"name\": \"p0-db118e2a-D\", \"deadline\": 3631.412224309, \"notebook_start_monotonic\": -568.5877756909999}\n"}
+,{"stream_name":"stdout","time":54.956734141,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_done\", \"monotonic\": 631.435783945, \"name\": \"p0-db118e2a-D\", \"elapsed_s\": 1200.023555176}\n"}
+,{"stream_name":"stdout","time":54.957337101,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_start\", \"monotonic\": 631.436587445, \"name\": \"p0-db118e2a-L\", \"deadline\": 1391.436578805, \"notebook_start_monotonic\": -568.5877756909999}\n"}
+,{"stream_name":"stdout","time":54.970129428999996,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_done\", \"monotonic\": 631.449308103, \"name\": \"p0-db118e2a-L\", \"elapsed_s\": 0.012723198000003322, \"group_stopped\": true, \"reason\": \"global_admission_insufficient\"}\n"}
+,{"stream_name":"stdout","time":54.970808079,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_start\", \"monotonic\": 631.449931343, \"name\": \"p0-291dc1e1-L\", \"deadline\": 1391.4499239430002, \"notebook_start_monotonic\": -568.5877756909999}\n"}
+,{"stream_name":"stdout","time":54.986328946,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_done\", \"monotonic\": 631.46507935, \"name\": \"p0-291dc1e1-L\", \"elapsed_s\": 0.015150426999980482, \"group_stopped\": true, \"reason\": \"global_admission_insufficient\"}\n"}
+,{"stream_name":"stdout","time":54.987018686,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_start\", \"monotonic\": 631.46607226, \"name\": \"p0-291dc1e1-D\", \"deadline\": 1391.4660555599999, \"notebook_start_monotonic\": -568.5877756909999}\n"}
+,{"stream_name":"stdout","time":55.000875663,"data":"GRID_RUNTIME_EVENT {\"event\": \"stage_done\", \"monotonic\": 631.479932237, \"name\": \"p0-291dc1e1-D\", \"elapsed_s\": 0.013871376999986751, \"group_stopped\": true, \"reason\": \"global_admission_insufficient\"}\n"}
+,{"stream_name":"stdout","time":55.005855673,"data":"GRID_RUNTIME_EVENT {\"event\": \"worker_done\", \"monotonic\": 631.485237876, \"status\": \"partial\", \"elapsed_s\": 1200.068474038}\n"}
+,{"stream_name":"stdout","time":55.411086441,"data":"HANG_SIMULATION reason=phase_timeout:install_env returncode=-9 log=/kaggle/working/012/cpu-preflight/k-hang/probe-hang-simulation.log\n"}
+,{"stream_name":"stdout","time":55.411114381,"data":"\n"}
+,{"stream_name":"stdout","time":55.411892311,"data":"CPU_RECEIPT {\"status\": \"passed\", \"core_manifest_sha256\": \"31ce366d4df03d344cfd5ef1cbc8ed747865208eba97841acbac680de30ae14f\", \"model_weights_loaded\": false, \"gpu_used\": false, \"fullpath\": {\"full_plan_calls\": 4, \"modes\": [\"D\", \"L\", \"L\", \"D\"], \"per_stage_generations\": [1, 1, 1, 1], \"repair_total\": 0, \"not_run_group\": 1, \"executor\": [\"ok\", \"execution_error\", \"execution_timeout\", \"program_rejected\"]}, \"worker_cases\": [{\"case\": \"full\", \"calls\": 4, \"stages\": 4}, {\"case\": \"insufficient\", \"calls\": 0, \"stages\": 4}], \"real_tokenizer_prompts\": [{\"task_id\": \"db118e2a\", \"mode\": \"D\", \"prompt_tokens\": 2562, \"sha256\": \"9190a2a511fe888da6332791cdad825af9a85c9c03c3af701865d47c06066989\"}, {\"task_id\": \"db118e2a\", \"mode\": \"L\", \"prompt_tokens\": 2586, \"sha256\": \"68c526bcd6aa0e4cf6f4f9f0749515a8a70aa79f1b76640573543f63163cfbfd\"}, {\"task_id\": \"291dc1e1\", \"mode\": \"L\", \"prompt_tokens\": 2602, \"sha256\": \"afb3a13d67084fe589c18f6eb8bbdc196be041eacdae1a9fa912e16cb2a0debc\"}, {\"task_id\": \"291dc1e1\", \"mode\": \"D\", \"prompt_tokens\": 2578, \"sha256\": \"3a0fe63c62ab5129e21988a5bcbc7e140fcc2884218c939296723ccdc695028d\"}], \"kernel_silent_child_timeout_returncode\": 0, \"limits\": \"CPU orchestration only; CUDA kernels, 27B outputs and speed unverified\"}\n"}
+,{"stream_name":"stderr","time":60.930250463,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":60.930297502,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":61.072033397,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":61.072067677,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":61.673291101,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":61.938181264,"data":"[NbConvertApp] Writing 244369 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":64.360157434,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":65.157885243,"data":"[NbConvertApp] Writing 605118 bytes to __results__.html\n"}
+]

@@ -1,0 +1,20 @@
+{
+  "recorded_at_utc": "2026-10-12T01:01:17.188493+00:00",
+  "old_package": "experiments/012/kaggle-v3/program-completion",
+  "new_package": "experiments/012/kaggle-p-v2/program-completion",
+  "changed_code_cells": [
+    4
+  ],
+  "only_notebook_source_change": "load_limit_s 600 -> 900",
+  "old_notebook_sha256": "8fccf334fd69d71b61ce01a2a11192a3e0ba9a7a7fe40373598bf3b0dc1eb9b7",
+  "new_notebook_sha256": "bb5198bedbc20604eff526554447b44b79c3e3bb8a1acbd99bde44d2ab2c8e15",
+  "core_manifest_sha256": "31ce366d4df03d344cfd5ef1cbc8ed747865208eba97841acbac680de30ae14f",
+  "core_bytes_unchanged": true,
+  "cpu_receipt_version": 3,
+  "validation": "All code cell AST; current core matches CPU receipt; real runner config dry-run via packager --check-only",
+  "whole_group_work_s": 3040,
+  "effective_work_deadline_s": 4200,
+  "maximum_prework_for_full_group_s": 1160,
+  "load_and_setup_limit_s": 900,
+  "total_wall_s": 4500
+}

@@ -1,0 +1,19 @@
+{
+  "recorded_at_utc": "2026-10-11T15:59:59.548843+00:00",
+  "notebook": "ccjjllt/arc2-012-program-completion",
+  "version": 1,
+  "cli_result": "Kernel version 1 successfully pushed",
+  "package": "experiments/012/kaggle-v3/program-completion",
+  "pre_run_record": "experiments/012/execution/pre-p-v1-decision.json",
+  "wall_limit_s": 4500,
+  "model_backend": "original torch fallback",
+  "no_auto_retry": true,
+  "K_completed": true,
+  "remote_status": "QUEUED",
+  "verified_at_utc": "2026-10-11T16:02:42.941598+00:00",
+  "status_evidence": "Kaggle CLI: KernelWorkerStatus.QUEUED",
+  "metadata_id": 138194031,
+  "verified_version": 1,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaL4"
+}

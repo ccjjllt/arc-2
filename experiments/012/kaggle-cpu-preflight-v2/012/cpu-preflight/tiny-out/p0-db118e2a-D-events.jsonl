@@ -1,0 +1,1 @@
+{"stage": "p0-db118e2a-D", "recorded_unix_s": 1791718703.41816, "task_id": "db118e2a", "program_arm": "p0", "proposal": {"task_id": "db118e2a", "status": "not_run", "reason": "global_admission_insufficient", "remaining_s": -200.0, "required_s": 3040.0, "remaining_calls": 4, "policy": "p0_only", "mode": "D", "group_stopped_by": "p0-db118e2a-D"}}

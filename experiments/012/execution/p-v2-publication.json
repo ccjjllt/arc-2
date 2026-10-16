@@ -1,0 +1,22 @@
+{
+  "recorded_at_utc": "2026-10-12T01:04:28.196614+00:00",
+  "notebook": "ccjjllt/arc2-012-program-completion",
+  "version": 2,
+  "cli_result": "Kernel version 2 successfully pushed",
+  "package": "experiments/012/kaggle-p-v2/program-completion",
+  "pre_run_record": "experiments/012/execution/pre-p-v2-decision.json",
+  "wall_limit_s": 4500,
+  "load_limit_s": 900,
+  "only_config_change": true,
+  "no_auto_retry": true,
+  "remote_status": "COMPLETE",
+  "first_generation_observed": true,
+  "verified_at_utc": "2026-10-12T01:05:08.731400+00:00",
+  "status_evidence": "Kaggle CLI KernelWorkerStatus.RUNNING; metadata current_version_number=2",
+  "verified_version": 2,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaL4",
+  "physical_generations_completed": 4,
+  "complete_programs": 0,
+  "outcome_record": "experiments/012/execution/p-v2-outcome.json"
+}

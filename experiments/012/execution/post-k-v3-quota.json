@@ -1,0 +1,35 @@
+{
+  "recorded_at_utc": "2026-10-11T15:58:43.356100+00:00",
+  "before_used_s": 67347.676,
+  "after_used_s": 68946.34,
+  "reserved_s": 0,
+  "total_s": 108000,
+  "account_delta_h": 0.4440733333333305,
+  "remaining_h": 10.84823888888889,
+  "scope": "account snapshot difference, not isolated per-device billing",
+  "K_supervisor": {
+    "reason": "exited:0",
+    "returncode": 0,
+    "elapsed_s": 775.7642853330001,
+    "notebook_start_monotonic": 1743.643220407,
+    "hard_end": 3543.6432204069997
+  },
+  "measured_total_work_reduction": [
+    0.05284839993485424,
+    0.054294666000543335
+  ],
+  "verdict": {
+    "a_top1_mismatch": 0,
+    "a_repeat_rel_rms": 0.0,
+    "drift_tol": 0.01,
+    "b1_a1_rel_rms": 0.023749476298689842,
+    "b1_a1_per_pos_max_rms": 0.10154717415571213,
+    "b1_a1_top1_mismatch": 0,
+    "b2_a2_rel_rms": 0.023749476298689842,
+    "b2_a2_per_pos_max_rms": 0.10154717415571213,
+    "b2_a2_top1_mismatch": 0,
+    "worst_rel_rms": 0.023749476298689842,
+    "worst_top1_mismatch": 0,
+    "verdict": "numerical_drift"
+  }
+}

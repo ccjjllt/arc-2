@@ -1,0 +1,96 @@
+{
+  "model_dir": "/kaggle/input/models/ugvfpdcuwfnh/qwen3-8-27b/transformers/transformers-bf16/1",
+  "challenges": "/kaggle/working/012/program-completion/p2-challenges.json",
+  "out_dir": "/kaggle/working/012/program-completion/output",
+  "time_budget_s": 4500,
+  "load_limit_s": 900,
+  "notebook_start_monotonic": 335.868879224,
+  "runtime": {
+    "base_source": "ugvfpdcuwfnh/qwen3-8-27b/Transformers/transformers-bf16/1",
+    "save_window_s": 300,
+    "deactivate_async_load": true,
+    "setup_script": "/kaggle/working/012/program-completion/setup-p.py"
+  },
+  "stages": [
+    {
+      "name": "p0-db118e2a-D",
+      "type": "program",
+      "query_file": "/kaggle/working/012/program-completion/p2-queries-db118e2a.json",
+      "policy": "p0_only",
+      "enable_thinking": false,
+      "reasoning_effort": "low",
+      "preserve_thinking": true,
+      "arms": [
+        "p0"
+      ],
+      "limits": {
+        "max_new_tokens": 3072,
+        "max_call_seconds": 720,
+        "max_task_seconds": 760,
+        "max_prompt_tokens": 8192,
+        "seed": 20261011
+      },
+      "time_budget_s": 4500
+    },
+    {
+      "name": "p0-db118e2a-L",
+      "type": "program",
+      "query_file": "/kaggle/working/012/program-completion/p2-queries-db118e2a.json",
+      "policy": "p0_only",
+      "enable_thinking": true,
+      "reasoning_effort": "low",
+      "preserve_thinking": true,
+      "arms": [
+        "p0"
+      ],
+      "limits": {
+        "max_new_tokens": 3072,
+        "max_call_seconds": 720,
+        "max_task_seconds": 760,
+        "max_prompt_tokens": 8192,
+        "seed": 20261011
+      },
+      "time_budget_s": 760
+    },
+    {
+      "name": "p0-291dc1e1-L",
+      "type": "program",
+      "query_file": "/kaggle/working/012/program-completion/p2-queries-291dc1e1.json",
+      "policy": "p0_only",
+      "enable_thinking": true,
+      "reasoning_effort": "low",
+      "preserve_thinking": true,
+      "arms": [
+        "p0"
+      ],
+      "limits": {
+        "max_new_tokens": 3072,
+        "max_call_seconds": 720,
+        "max_task_seconds": 760,
+        "max_prompt_tokens": 8192,
+        "seed": 20261011
+      },
+      "time_budget_s": 760
+    },
+    {
+      "name": "p0-291dc1e1-D",
+      "type": "program",
+      "query_file": "/kaggle/working/012/program-completion/p2-queries-291dc1e1.json",
+      "policy": "p0_only",
+      "enable_thinking": false,
+      "reasoning_effort": "low",
+      "preserve_thinking": true,
+      "arms": [
+        "p0"
+      ],
+      "limits": {
+        "max_new_tokens": 3072,
+        "max_call_seconds": 720,
+        "max_task_seconds": 760,
+        "max_prompt_tokens": 8192,
+        "seed": 20261011
+      },
+      "time_budget_s": 760
+    }
+  ]
+}

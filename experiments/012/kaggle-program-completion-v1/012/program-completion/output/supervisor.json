@@ -1,0 +1,15 @@
+{
+  "status": "budget_interrupted",
+  "reason": "load_deadline",
+  "worker_exit_code": -15,
+  "load_completed": false,
+  "elapsed_s": 601.432088085,
+  "time_budget_s": 4500,
+  "load_limit_s": 600.0,
+  "no_retry": true,
+  "notebook_start_monotonic": 245.368434149,
+  "absolute_deadline": 4745.368434149,
+  "p0_call_seconds": 760.0,
+  "active_p0": null,
+  "active_p0_parent_elapsed_s": null
+}

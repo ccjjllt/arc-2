@@ -1,0 +1,23 @@
+{
+  "full_plan_calls": 4,
+  "modes": [
+    "D",
+    "L",
+    "L",
+    "D"
+  ],
+  "per_stage_generations": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "repair_total": 0,
+  "not_run_group": 1,
+  "executor": [
+    "ok",
+    "execution_error",
+    "execution_timeout",
+    "program_rejected"
+  ]
+}

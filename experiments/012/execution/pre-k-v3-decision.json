@@ -1,0 +1,16 @@
+{
+  "decision_time_utc": "2026-10-11T15:14:27.182156+00:00",
+  "used_s": 67347.676,
+  "reserved_s": 0,
+  "remaining_quota_h": 11.29231222222222,
+  "minimum_reserve_h": 6,
+  "charge_planning_factor": 2.3,
+  "K_wall_limit_s": 1800,
+  "K_allowance_h": 1.15,
+  "P_not_started": true,
+  "cpu_version": 3,
+  "cpu_receipt_sha256": "d499b7431b7ab3b7b5cd40502a8835a2d1601d3daf3baf83dd43c9ce4bdd4e7e",
+  "core_manifest_sha256": "31ce366d4df03d344cfd5ef1cbc8ed747865208eba97841acbac680de30ae14f",
+  "package": "experiments/012/kaggle-v3/kernel-probe",
+  "notebook_sha256": "747dc0bfe972a0fe8cdd2d14d51f8a99fa361762e6ba377e00e8b67387ca2d1a"
+}
