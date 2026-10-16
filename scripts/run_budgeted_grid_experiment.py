@@ -10,6 +10,7 @@ the one worker owns the model for its entire lifetime.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -86,15 +87,15 @@ def _validate_program_stages(config):
             pairs = solver.parse_query_file(stage["query_file"])
             if len(pairs) != 1 or len(set(t for t, _ in pairs)) != 1:
                 raise ValueError("stage %s: p0_only stages must be single-task single-query (012 §7.2)" % stage["name"])
-            # p0_only new ceilings (§7.1.2): 3072/720/760/8192. Old
-            # ProgramLimits.validate still caps at 1536/360, so validate the
-            # frozen values here instead of delegating (explicit old values
-            # already rejected above, pre-load).
+            # Check constructor fields and the actual solver policy before load.
             _validate_p0_limits(merged, stage["name"])
+            program.ProgramLimits(**merged).validate(policy="p0_only")
         else:
             # Legacy three-proposal mode keeps original ceilings; validate early.
             program.ProgramLimits(**stage.get("limits", {})).validate()
     p0_stages = [s for s in program_stages if s.get("policy") == "p0_only"]
+    if p0_stages and len(p0_stages) != 4:
+        raise ValueError("012 p0_only requires all four planned D/L stages")
     if len(p0_stages) == 4:
         got = []
         for stage in p0_stages:
@@ -138,7 +139,9 @@ def _call_program_task(program, session, tid, task, limits, deadline, task_index
     except (TypeError, ValueError):
         params = {}
     if "policy" in params and "policy" in stage:
-        kwargs["policy"] = stage["policy"]
+        kwargs["policy"] = "p0_restart_repair" if stage["policy"] == "legacy" else stage["policy"]
+    if stage.get("policy") == "p0_only" and "policy" not in params:
+        raise RuntimeError("P0-only requires a policy-aware solve_program entry point")
     for key in ("enable_thinking", "reasoning_effort", "preserve_thinking", "mode"):
         if key in params:
             if key == "mode" and "mode" not in stage:
@@ -391,6 +394,33 @@ def run_ttt_stage(session, stage, tasks, deadline, out_dir):
                 for tid, qi in pairs]}
 
 
+def _program_group_not_run(stage, tasks, reason, source=None):
+    """Whole-group P termination: zero generation, every planned task not_run.
+
+    Used when an earlier p0_only stage reports group_stop
+    (global_admission_insufficient) or infrastructure_error. Later stages must
+    not re-run admission; they are directly not_run with the same reason.
+    """
+    pairs = solver.parse_query_file(stage["query_file"])
+    tids = list(dict.fromkeys(tid for tid, _ in pairs))
+    mode = _stage_mode(stage)
+    policy = stage.get("policy", "legacy")
+    group_tasks = [{"task_id": tid, "status": "not_run", "reason": reason,
+                    "policy": policy, "mode": mode,
+                    "group_stopped_by": source} for tid in tids]
+    try:
+        planned_queries = sum(len(tasks[tid]["test"]) for tid in tids)
+    except (KeyError, TypeError):
+        planned_queries = len(pairs)
+    return {"stage": stage["name"], "type": "program", "policy": policy, "mode": mode,
+            "tasks": group_tasks, "planned_tasks": len(tids),
+            "p0_only": policy == "p0_only",
+            "admission": {"group_stop": reason, "group_stopped_by": source,
+                          "call_seconds": P0_CALL_SECONDS},
+            "group_stop": reason, "group_stopped_by": source,
+            "planned_queries": planned_queries}
+
+
 def run_program_stage(session, stage, tasks, deadline, out_dir, remaining_later_calls=0):
     """p0_only: fresh P0 per task, global admission, no history carryover."""
     import solve_program as program
@@ -412,6 +442,7 @@ def run_program_stage(session, stage, tasks, deadline, out_dir, remaining_later_
             raise ValueError("stage %s limits rejected: %s" % (stage.get("name"), exc))
     global_deadline = float(session.deadline) - float(session.save_window_s)
     mode = _stage_mode(stage)
+    group_stop = None
     def persist(item):
         with open(out_dir / (stage["name"] + "-events.jsonl"), "a", encoding="utf-8") as handle:
             handle.write(json.dumps({"stage": stage["name"], "recorded_unix_s": time.time(),
@@ -422,14 +453,18 @@ def run_program_stage(session, stage, tasks, deadline, out_dir, remaining_later_
         remaining_calls = (len(tids) - task_index) + int(remaining_later_calls or 0)
         remaining_s = global_deadline - time.monotonic()
         # Global admission (§7.3): never use the local 760 stage deadline here.
+        # Rejection is reported to the worker layer via group_stop so remaining
+        # P stages are all not_run (no separate re-admission downstream).
         if policy == "p0_only" and remaining_s < remaining_calls * P0_CALL_SECONDS:
+            group_stop = "global_admission_insufficient"
             for remaining in tids[task_index:]:
                 result.append({"task_id": remaining, "status": "not_run",
                                "reason": "global_admission_insufficient",
                                "remaining_s": round(remaining_s, 3),
                                "required_s": remaining_calls * P0_CALL_SECONDS,
                                "remaining_calls": remaining_calls,
-                               "policy": policy, "mode": mode})
+                               "policy": policy, "mode": mode,
+                               "group_stopped_by": stage.get("name")})
                 persist({"task_id": remaining, "program_arm": "p0",
                          "proposal": result[-1]})
             break
@@ -448,6 +483,26 @@ def run_program_stage(session, stage, tasks, deadline, out_dir, remaining_later_
         atomic_json(out_dir / (stage["name"] + ".json"), {"stage": stage, "tasks": result})
         runtime.event("program_p0_done", stage=stage["name"], task_id=tid, mode=mode,
                       policy=policy, status=item.get("status"))
+        # infrastructure_error terminates the whole P group: stop current stage
+        # remainder as not_run and report group_stop to the worker layer.
+        if policy == "p0_only":
+            proposals = item.get("proposals") if isinstance(item.get("proposals"), dict) else {}
+            gen_status = None
+            try:
+                gen_status = proposals.get("p0", {}).get("generation", {}).get("status")
+            except AttributeError:
+                gen_status = None
+            if item.get("status") in ("infrastructure_error", "executor_unavailable") or gen_status == "infrastructure_error":
+                group_stop = "infrastructure_error"
+                for remaining in tids[task_index + 1:]:
+                    result.append({"task_id": remaining, "status": "not_run",
+                                   "reason": "infrastructure_error",
+                                   "policy": policy, "mode": mode,
+                                   "group_stopped_by": stage.get("name")})
+                    persist({"task_id": remaining, "program_arm": "p0",
+                             "proposal": result[-1]})
+                atomic_json(out_dir / (stage["name"] + ".json"), {"stage": stage, "tasks": result})
+                break
         if policy != "p0_only" and task_index == 1 and int(stage.get("pilot_tasks", 2)) == 2:
             executable = [r.get("proposals", {}).get("p0", {}).get("status") == "program_ready"
                           and any(d.get("status") == "ok" for d in r.get("proposals", {}).get("p0", {}).get("demo_results", []))
@@ -461,7 +516,9 @@ def run_program_stage(session, stage, tasks, deadline, out_dir, remaining_later_
             "planned_tasks": len(tids), "p0_only": policy == "p0_only",
             "admission": {"remaining_later_calls": int(remaining_later_calls or 0),
                           "call_seconds": P0_CALL_SECONDS,
-                          "global_deadline": global_deadline},
+                          "global_deadline": global_deadline,
+                          "group_stop": group_stop},
+            "group_stop": group_stop, "group_stopped_by": stage.get("name") if group_stop else None,
             "planned_queries": sum(len(tasks[tid]["test"]) for tid in tids)}
 
 
@@ -577,7 +634,7 @@ def stage_work_complete(stage):
         if not tasks or len(tasks) != stage.get("planned_tasks", len(tasks)):
             return False
         execution_outcomes = {"ok", "execution_error", "execution_timeout", "output_limit", "program_rejected",
-                              "incomplete_thinking", "incomplete_final_program"}
+                              "incomplete_thinking", "incomplete_final_program", "incomplete_no_eos"}
         # 012 p0_only: completeness looks only at planned p0 proposals.
         if stage.get("policy") == "p0_only" or stage.get("p0_only"):
             planned_arms = ("p0",)
@@ -662,7 +719,29 @@ def worker(config, absolute_deadline):
     suffix = [0] * (len(p0_counts) + 1)
     for i in range(len(p0_counts) - 1, -1, -1):
         suffix[i] = suffix[i + 1] + p0_counts[i]
+    # Whole-group P state: first group_stop freezes all later p0_only stages.
+    p_group_stop = None
+    p_group_source = None
     try:
+        setup_script = config.get("runtime", {}).get("setup_script")
+        if setup_script:
+            setup_path = Path(setup_script).resolve()
+            setup_source = setup_path.read_bytes()
+            summary["setup"] = {"path": str(setup_path),
+                                "sha256": hashlib.sha256(setup_source).hexdigest(),
+                                "status": "running"}
+            atomic_json(out / "SUMMARY.json", summary)
+            runtime.event("setup_start", **summary["setup"])
+            setup_started = time.monotonic()
+            # Only an explicitly configured frozen local setup script runs here;
+            # this is never the executor for model-generated code. Parent load
+            # and session deadlines remain active throughout installation.
+            exec(compile(setup_source, str(setup_path), "exec"),
+                 {"__name__": "__arc_setup__", "__file__": str(setup_path),
+                  "NOTEBOOK_START": start})
+            summary["setup"].update(status="complete", elapsed_s=time.monotonic()-setup_started)
+            atomic_json(out / "SUMMARY.json", summary)
+            runtime.event("setup_done", **summary["setup"])
         tasks = load_inputs(config)
         session = runtime.load_session(config["model_dir"], deadline=absolute_deadline,
             journal_path=str(out / "candidates.jsonl"), runtime_config=config.get("runtime"))
@@ -677,16 +756,61 @@ def worker(config, absolute_deadline):
             runtime.event("stage_start", name=stage["name"], deadline=deadline,
                           notebook_start_monotonic=start)
             kind = stage.get("type", "grid")
+            # Whole-group P termination (§2): a prior p0_only group_stop stops all
+            # remaining P stages as not_run; later stages never re-admit.
+            if kind == "program" and stage.get("policy") == "p0_only" and p_group_stop is not None:
+                result = _program_group_not_run(stage, tasks, p_group_stop, p_group_source)
+                with open(out / (stage["name"] + "-events.jsonl"), "a", encoding="utf-8") as handle:
+                    for skipped in result["tasks"]:
+                        handle.write(json.dumps({"stage": stage["name"], "recorded_unix_s": time.time(),
+                                                 "task_id": skipped["task_id"], "program_arm": "p0",
+                                                 "proposal": skipped}, ensure_ascii=False, default=str) + "\n")
+                    handle.flush()
+                    os.fsync(handle.fileno())
+                atomic_json(out / (stage["name"] + ".json"), result)
+                summary["stages"].append(result)
+                atomic_json(out / "SUMMARY.json", summary)
+                runtime.event("stage_done", name=stage["name"], elapsed_s=time.monotonic()-stage_start,
+                              group_stopped=True, reason=p_group_stop)
+                continue
             function = {"grid": run_grid_stage, "ttt": run_ttt_stage, "program": run_program_stage}[kind]
-            if kind == "program":
-                result = function(session, stage, tasks, deadline, out,
-                                  remaining_later_calls=suffix[position + 1])
-            else:
-                result = function(session, stage, tasks, deadline, out)
+            try:
+                if kind == "program":
+                    result = function(session, stage, tasks, deadline, out,
+                                      remaining_later_calls=suffix[position + 1])
+                else:
+                    result = function(session, stage, tasks, deadline, out)
+            except Exception as exc:
+                # infrastructure_error terminates the whole P group: record this
+                # stage as not_run and stop remaining P stages the same way.
+                if kind == "program" and stage.get("policy") == "p0_only":
+                    err = "%s: %s" % (type(exc).__name__, str(exc))
+                    traceback.print_exc()
+                    result = _program_group_not_run(stage, tasks, "infrastructure_error", stage.get("name"))
+                    result["error"] = err
+                    atomic_json(out / (stage["name"] + ".json"), result)
+                    summary["stages"].append(result)
+                    atomic_json(out / "SUMMARY.json", summary)
+                    runtime.event("stage_done", name=stage["name"], elapsed_s=time.monotonic()-stage_start,
+                                  group_stopped=True, reason="infrastructure_error", error=err)
+                    p_group_stop = "infrastructure_error"
+                    p_group_source = stage.get("name")
+                    continue
+                raise
             atomic_json(out / (stage["name"] + ".json"), result)
             summary["stages"].append(result)
             atomic_json(out / "SUMMARY.json", summary)
             runtime.event("stage_done", name=stage["name"], elapsed_s=time.monotonic()-stage_start)
+            if kind == "program" and stage.get("policy") == "p0_only":
+                reported = result.get("group_stop")
+                if reported in ("global_admission_insufficient", "infrastructure_error"):
+                    p_group_stop = reported
+                    p_group_source = stage.get("name")
+                elif any(t.get("status") in ("infrastructure_error", "executor_unavailable")
+                         for t in result.get("tasks", []) if isinstance(t, dict)):
+                    p_group_stop = "infrastructure_error"
+                    p_group_source = stage.get("name")
+                    result["group_stop"] = "infrastructure_error"
         if config.get("solutions"):
             atomic_json(out / "scoring.json", score_grid_results(summary["stages"], config["solutions"])
                         + score_ttt_results(summary["stages"], config["solutions"]))
@@ -696,6 +820,8 @@ def worker(config, absolute_deadline):
     except Exception as exc:
         summary["status"] = "infrastructure_error"
         summary["error"] = "%s: %s" % (type(exc).__name__, str(exc))
+        if summary.get("setup", {}).get("status") == "running":
+            summary["setup"].update(status="infrastructure_error", error=summary["error"])
         traceback.print_exc()
     summary["elapsed_s"] = time.monotonic() - start
     atomic_json(out / "SUMMARY.json", summary)
@@ -728,6 +854,10 @@ def supervise(config, config_path):
     reason = None
     buffer = b""
     last_heartbeat = process_start
+    # P parent supervision (§2): only load_done arms loading, but every active
+    # P0 is supervised by the parent clock with a 760s task-level hard cutoff.
+    active_p0 = None
+    active_p0_parent_start = None
     log = open(out / "worker.log", "ab", buffering=0)
     try:
         while True:
@@ -737,6 +867,11 @@ def supervise(config, config_path):
                 break
             if not loaded and now - process_start >= load_limit:
                 reason = "load_deadline"
+                break
+            # Parent-clock 760s hard cutoff for the active P0 call. Never uses
+            # worker-reported clocks; timeout kills the whole worker below.
+            if active_p0 is not None and now - active_p0_parent_start >= P0_CALL_SECONDS:
+                reason = "p0_call_deadline"
                 break
             if now - last_heartbeat >= 30:
                 print("SUPERVISOR_HEARTBEAT " + json.dumps({"elapsed_s": round(now-start, 1),
@@ -757,6 +892,17 @@ def supervise(config, config_path):
                                 ev = json.loads(line[len(b"GRID_RUNTIME_EVENT "):])
                                 if ev.get("event") == "load_done":
                                     loaded = True
+                                elif ev.get("event") == "program_p0_start":
+                                    # Save the active P0 event; parent receipt time
+                                    # is the timeout baseline, not worker monotonic.
+                                    active_p0 = ev
+                                    active_p0_parent_start = time.monotonic()
+                                elif ev.get("event") == "program_p0_done":
+                                    if active_p0 is None or (
+                                            ev.get("stage") == active_p0.get("stage")
+                                            and ev.get("task_id") == active_p0.get("task_id")):
+                                        active_p0 = None
+                                        active_p0_parent_start = None
                             except ValueError:
                                 pass
                 elif process.poll() is not None:
@@ -790,7 +936,10 @@ def supervise(config, config_path):
               "reason": reason, "worker_exit_code": process.returncode, "load_completed": loaded,
               "elapsed_s": time.monotonic()-start, "time_budget_s": config.get("time_budget_s", 7200),
               "load_limit_s": load_limit, "no_retry": True,
-              "notebook_start_monotonic": start, "absolute_deadline": deadline}
+              "notebook_start_monotonic": start, "absolute_deadline": deadline,
+              "p0_call_seconds": P0_CALL_SECONDS, "active_p0": active_p0,
+              "active_p0_parent_elapsed_s": (round(time.monotonic() - active_p0_parent_start, 3)
+                                             if active_p0 is not None and active_p0_parent_start is not None else None)}
     atomic_json(out / "supervisor.json", report)
     print("BUDGETED_RUN_SUMMARY=" + json.dumps(report), flush=True)
     return 2 if reason else process.returncode

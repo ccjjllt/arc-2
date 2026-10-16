@@ -406,14 +406,17 @@ def _run_p0_only(session, task_id, clean, limits, started, deadline, journal,
             enable_thinking=bool(enable_thinking), reasoning_effort=reasoning_effort,
             preserve_thinking=bool(preserve_thinking),
             deadline=call_deadline, max_time_s=limits.max_call_seconds,
-            identity={"task_id": task_id, "program_arm": "p0", "program_policy": "p0_only",
+            mode="L" if enable_thinking else "D", policy="p0_only", backend="torch_fallback",
+            identity={"task_id": task_id, "query_indices": list(range(len(clean["test"]))),
+                      "program_arm": "p0", "program_policy": "p0_only",
                       "thinking_mode": thinking_mode, "enable_thinking": bool(enable_thinking),
                       "reasoning_effort": reasoning_effort, "preserve_thinking": bool(preserve_thinking),
                       "program_prompt_version": PROMPT_VERSION, "executor_policy_sha256": policy_sha},
         )
         # Persist raw generation before executing code (012 §7.4).
         persist({"task_id": task_id, "program_arm": "p0", "generation": generation})
-        if not generation.get("cache_hit"):
+        if not generation.get("cache_hit") and (
+                generation.get("elapsed_s", 0) > 0 or generation.get("gen_tokens", 0) > 0):
             physical_calls = 1
         proposal = split_program_response(generation.get("raw_text", generation.get("text", "")),
                                           thinking_mode=thinking_mode, generation=generation)
@@ -429,7 +432,17 @@ def _run_p0_only(session, task_id, clean, limits, started, deadline, journal,
     if "query_results" not in proposals["p0"]:
         proposals["p0"]["query_results"] = _execute_cases(proposals["p0"], [q["input"] for q in clean["test"]],
                                                           limits, task_deadline)
-    result = {"task_id": task_id, "status": "completed" if time.monotonic() < task_deadline else "budget_interrupted",
+    proposal = proposals["p0"]
+    statuses = {proposal.get("status"), proposal.get("generation", {}).get("status")}
+    statuses.update(r.get("status") for r in proposal.get("demo_results", []) + proposal["query_results"])
+    if statuses & {"infrastructure_error", "executor_unavailable"}:
+        task_status = "infrastructure_error"
+    elif "budget_interrupted" in statuses or time.monotonic() >= task_deadline:
+        task_status = "budget_interrupted"
+    else:
+        task_status = next((s for s in sorted(s for s in statuses if isinstance(s, str))
+                            if s.startswith("ineligible")), "completed")
+    result = {"task_id": task_id, "status": task_status,
               "limits": asdict(limits), "policy": "p0_only", "thinking_mode": thinking_mode,
               "enable_thinking": bool(enable_thinking), "reasoning_effort": reasoning_effort,
               "preserve_thinking": bool(preserve_thinking),

@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from collections import Counter
 from pathlib import Path
 
@@ -55,163 +56,234 @@ def find_files(root: Path, *patterns):
 
 
 def summarize_kernel(root: Path):
-    files = find_files(root, "*probe*.json", "*kernel*.json", "*trial*.json")
-    trials, used = {}, []
-    for path in files:
-        data = read_json(path)
-        if not isinstance(data, dict):
-            continue
-        cand = data.get("trials", data)
-        if isinstance(cand, dict) and any(k in cand for k in ("A1", "A2", "B1", "B2")):
-            trials, used = cand, [str(path)]
-            break
-    if not trials:
-        return {"status": "missing", "files_seen": [str(p) for p in files],
-                "note": "no K trial record with A1/A2/B1/B2 found; nothing timed"}
-    detail = {}
-    for arm in ("A1", "A2", "B1", "B2"):
-        t = trials.get(arm, {}) if isinstance(trials.get(arm), dict) else {}
-        detail[arm] = {k: t.get(k) for k in ("total_s", "prefill_s", "decode_s", "rel_rms",
-                                             "top1_diff", "n_positions", "finish", "func_source")}
-    problems = [a for a in detail if detail[a].get("finish") not in (None, "ok", "complete")]
-    a1, a2 = detail["A1"], detail["A2"]
+    files = find_files(root, "probe-result.json")
+    if len(files) > 1:
+        return {"status": "ambiguous", "files_seen": [str(p) for p in files],
+                "note": "select one K session directory"}
+    diagnostics = [{"file": str(p), "record": read_json(p)} for p in
+                   find_files(root, "probe-error.json", "probe-supervisor.json")]
+    data = read_json(files[0]) if files else None
+    if not isinstance(data, dict):
+        partial = {}
+        for tag in ("A1", "B1", "B2", "A2"):
+            saved = find_files(root, tag + ".json")
+            if len(saved) == 1:
+                partial[tag] = read_json(saved[0])
+        return {"status": "incomplete" if partial or diagnostics else "missing",
+                "trials": partial, "diagnostics": diagnostics,
+                "note": "no final probe-result.json; partial trials are not a completed comparison"}
+    out = {"status": data.get("status", "incomplete"), "files_used": [str(files[0])],
+           "trials": data.get("timing", {}), "comparison": data.get("verdict", {}),
+           "reference": data.get("reference"), "diagnostics": diagnostics,
+           "note": "logit errors are recorded GPU comparisons; timing gains are recomputed here"}
+    if data.get("status") != "complete":
+        return out
+    timing, comp = out["trials"], out["comparison"]
+    def finite(v):
+        return isinstance(v, (int, float)) and not isinstance(v, bool) and math.isfinite(v)
     try:
-        a_rms = float(a1.get("rel_rms", 0.0) if a1.get("rel_rms") is not None else
-                      a2.get("rel_rms", 0.0) or 0.0)
-    except (TypeError, ValueError):
-        a_rms = None
-    verdict, reason = "incomplete", "trial fields missing"
-    if problems:
-        verdict, reason = "incomplete", "finish problems: " + ",".join(problems)
-    elif a_rms is None or a1.get("top1_diff") is None:
-        verdict, reason = "incomplete", "reference repeat fields missing"
-    elif (a1.get("top1_diff") or 0) > 0 or (a2.get("top1_diff") or 0) > 0 or a_rms > A_RMS_TOL:
-        verdict, reason = "unstable_reference", "A1/A2 top1 differ or rel RMS>1e-4; no perf claim"
-    else:
-        drift = []
-        for b, a in (("B1", "A1"), ("B2", "A2")):
-            bt, tol = detail[b], max(B_REL_FLOOR, 5 * a_rms)
-            try:
-                br = float(bt.get("rel_rms"))
-            except (TypeError, ValueError):
-                drift.append(b + ":rms_missing")
-                continue
-            if (bt.get("top1_diff") or 0) > 0 or br > tol:
-                drift.append("%s: top1=%s rms=%.5g tol=%.5g" % (b, bt.get("top1_diff"), br, tol))
-        if drift:
-            verdict, reason = "numerical_drift", "; ".join(drift) + "; keep fallback backend"
+        times = [timing[k]["total_s"] for k in ("A1", "A2", "B1", "B2")]
+        lengths = [timing[k]["n"] for k in ("A1", "A2", "B1", "B2")]
+        if not all(finite(t) and t > 0 for t in times):
+            raise ValueError("invalid trial times")
+        if len(set(lengths)) != 1 or not all(isinstance(n, int) and n >= 16 for n in lengths):
+            raise ValueError("unequal or insufficient continuation lengths")
+        ar, at = comp["a_repeat_rel_rms"], comp["a_top1_mismatch"]
+        if not all(finite(v) and v >= 0 for v in (ar, at)):
+            raise ValueError("invalid reference comparison")
+        if ar > A_RMS_TOL or at > 0:
+            verdict = "unstable_reference"
         else:
-            try:
-                g1 = 1 - detail["B1"]["total_s"] / detail["A1"]["total_s"]
-                g2 = 1 - detail["B2"]["total_s"] / detail["A2"]["total_s"]
-                verdict = "worth_full_output_bridge" if (g1 >= GAIN and g2 >= GAIN) else "insufficient_gain"
-                reason = "gains %.1f%%/%.1f%% vs 15%% bar" % (100 * g1, 100 * g2)
-            except (TypeError, ZeroDivisionError):
-                verdict, reason = "incomplete", "timing fields missing"
-    return {"status": verdict, "reason": reason, "files_used": used,
-            "files_seen": [str(p) for p in files], "trials": detail}
+            drift = False
+            for pair in ("b1_a1", "b2_a2"):
+                br, bt = comp[pair + "_rel_rms"], comp[pair + "_top1_mismatch"]
+                if not all(finite(v) and v >= 0 for v in (br, bt)):
+                    raise ValueError("invalid candidate comparison")
+                drift |= br > max(B_REL_FLOOR, 5 * ar) or bt > 0
+            if drift:
+                verdict = "numerical_drift"
+            else:
+                gains = [1 - timing[b]["total_s"] / timing[a]["total_s"]
+                         for a, b in (("A1", "B1"), ("A2", "B2"))]
+                out["recomputed_gains"] = gains
+                verdict = "worth_full_output_bridge" if all(g >= GAIN for g in gains) else "insufficient_gain"
+        out["status"] = verdict
+        if comp.get("verdict") != verdict:
+            out.update(status="inconsistent_record", derived_verdict=verdict,
+                       reason="stored verdict disagrees with saved comparisons and times")
+    except (KeyError, TypeError, ValueError) as exc:
+        out.update(status="incomplete", reason=str(exc))
+    return out
 
 
 def arm_of(item: dict) -> str:
-    for key in ("arm", "program_arm", "mode"):
-        v = str(item.get(key, "")).upper()
-        if v.startswith("D"):
+    for key in ("mode", "thinking_mode", "arm"):
+        value = str(item.get(key, "")).lower()
+        if value in ("d", "direct", "nonthinking"):
             return "D"
-        if v.startswith("L"):
+        if value in ("l", "thinking"):
             return "L"
-    name = str(item.get("stage", "") + item.get("name", "")).lower()
-    if "direct" in name or "_d" in name:
-        return "D"
-    if "think" in name or "_l" in name:
-        return "L"
-    th = item.get("enable_thinking", item.get("generation", {}).get("enable_thinking"))
-    if th is True:
-        return "L"
-    if th is False:
-        return "D"
+    if isinstance(item.get("enable_thinking"), bool):
+        return "L" if item["enable_thinking"] else "D"
+    stage = item.get("stage", item.get("name", ""))
+    if isinstance(stage, dict):
+        return arm_of(stage)
+    for mode in ("D", "L"):
+        if str(stage).upper().endswith(("-" + mode, "_" + mode)):
+            return mode
     return "?"
 
 
-def summarize_program(root: Path, scoring):
-    stage_files = [p for p in find_files(root, "*.json")
-                   if p.name not in ("scoring.json", "session_identity.json", "requested_config.json",
-                                     "supervisor.json", "SUMMARY.json") or True]
-    rows, gen_counts, exec_counts, files_used = [], Counter(), Counter(), []
-    for path in stage_files:
+PLAN = (("db118e2a", "D"), ("db118e2a", "L"), ("291dc1e1", "L"), ("291dc1e1", "D"))
+EXECUTED = {"ok", "execution_error", "execution_timeout", "output_limit"}
+
+
+def canonical_program_tasks(root):
+    # SUMMARY owns completed stages; per-stage files only fill absent stages.
+    records, sources, conflicts = {}, {}, []
+    summaries = find_files(root, "SUMMARY.json")
+    if len(summaries) > 1:
+        return records, sources, ["multiple SUMMARY.json files; select one session directory"]
+    paths = summaries + [p for p in find_files(root, "*.json") if p not in summaries]
+    for path in paths:
         data = read_json(path)
         if not isinstance(data, dict):
             continue
         items = data.get("stages", []) if path.name == "SUMMARY.json" else [data]
         for item in items:
-            if not isinstance(item, dict):
+            if not isinstance(item, dict) or not isinstance(item.get("tasks"), list):
                 continue
-            tasks = item.get("tasks", [])
-            if not tasks or not any(isinstance(t, dict) and "proposals" in t for t in tasks):
+            stage = item.get("stage")
+            meta = {**(stage if isinstance(stage, dict) else {}), **item}
+            if meta.get("policy") != "p0_only" and not meta.get("p0_only"):
                 continue
-            files_used.append(str(path))
-            for task in tasks:
-                tid = task.get("task_id", "?")
-                props = task.get("proposals", {})
-                p0 = props.get("p0", {}) if isinstance(props, dict) else {}
-                if not isinstance(p0, dict) or not p0:
-                    rows.append({"task_id": tid, "arm": arm_of({**item, **task}),
-                                 "outcome": "not_run", "em": None})
+            for task in item["tasks"]:
+                if not isinstance(task, dict):
                     continue
-                gen = p0.get("generation", {}) if isinstance(p0.get("generation"), dict) else {}
-                gstat, finish = gen.get("status"), gen.get("finish_reason", "")
-                arm = arm_of({**item, **task, **p0, "generation": gen})
-                if gstat in GEN_RESOURCE or finish == "admission_deadline":
-                    outcome = "resource_or_not_admitted"
-                elif gstat == "truncated" or finish == "length":
-                    outcome = "token_truncated"
-                elif gstat == "time_interrupted" or finish == "timeout":
-                    outcome = "time_interrupted"
-                elif gstat in GEN_DONE and finish in ("stop", "eos", "", None):
-                    outcome = "eos_raw"
-                elif gstat in GEN_DONE:
-                    outcome = "eos_raw"
-                elif gstat in (None, "", "not_run"):
-                    outcome = "not_run"
-                else:
-                    outcome = "infra_or_other:%s" % gstat
-                gen_counts[arm + ":" + outcome] += 1
-                code = p0.get("code") or p0.get("final") or ""
-                complete = outcome == "eos_raw" and bool(code)
-                qr = p0.get("query_results", []) if isinstance(p0.get("query_results"), list) else []
-                executed = sum(1 for q in qr if isinstance(q, dict) and q.get("status") in
-                               ("ok", "execution_error", "execution_timeout", "output_limit",
-                                "program_rejected", "incomplete_thinking", "incomplete_final_program"))
-                exec_counts[arm + ":executed_queries"] += executed
-                golds = scoring.get(tid) if isinstance(scoring, dict) else None
-                em = None
-                if outcome == "eos_raw" and golds:
-                    for qi, q in enumerate(qr):
-                        if qi < len(golds) and isinstance(q, dict) and q.get("status") == "ok":
-                            em = (q.get("grid") == golds[qi]) if em is None else em
-                rows.append({"task_id": tid, "arm": arm, "outcome": outcome,
-                             "complete_code": complete, "executed_queries": executed,
-                             "query_em_any": em, "gen_tokens": gen.get("gen_tokens"),
-                             "elapsed_s": gen.get("elapsed_s")})
-    if not rows and not files_used:
-        events = find_files(root, "*-events.jsonl")
-        return {"status": "missing", "rows": [],
-                "note": "no program stage with tasks/proposals found",
-                "stage_files_seen": len(stage_files), "event_files_seen": [str(p) for p in events]}
+                key = (task.get("task_id"), arm_of({**meta, **task}))
+                if key not in PLAN:
+                    conflicts.append("unexpected task/mode %r in %s" % (key, path))
+                    continue
+                if key in records:
+                    if task != records[key] and Path(sources[key]).name != "SUMMARY.json":
+                        conflicts.append("conflicting fallback records for %r" % (key,))
+                    continue
+                records[key], sources[key] = task, str(path)
+    return records, sources, conflicts
+
+
+def program_row(tid, mode, task, scoring, source):
+    row = {"task_id": tid, "arm": mode, "query_index": 0, "source_file": source,
+           "outcome": "missing_result", "complete_code": False, "ast_pass": False,
+           "thinking_closed": None if mode == "D" else False,
+           "executed_demos": 0, "demo_successes": 0, "all_demos_executed_ok": False,
+           "all_demos_matched": False, "executed_queries": 0, "valid_query_grid": False,
+           "policy_complete": False, "query_em_any": None, "observed_query_em": None,
+           "physical_generation_calls": 0, "physical_new_tokens": 0,
+           "physical_generation_seconds": 0.0, "execution_seconds": 0.0,
+           "task_elapsed_s": None, "repair_invoked_count": 0}
+    golds = scoring.get(tid) if isinstance(scoring, dict) else None
+    row["gold_available"] = isinstance(golds, list) and bool(golds)
+    if task is None:
+        return row
+    row.update(task_status=task.get("status"), reason=task.get("reason"),
+               task_elapsed_s=task.get("elapsed_s"), repair_invoked_count=task.get("repair_invoked_count", 0))
+    p0 = (task.get("proposals") or {}).get("p0", {})
+    gen = p0.get("generation") or {}
+    status, finish = gen.get("status"), gen.get("finish_reason")
+    if task.get("status") == "not_run" and not gen:
+        outcome = "not_run"
+    elif status in ("infrastructure_error", "worker_protocol_error"):
+        outcome = "infrastructure_error"
+    elif status == "budget_interrupted" or p0.get("status") == "budget_interrupted":
+        outcome = "not_admitted" if finish == "admission_deadline" else "time_interrupted"
+    elif str(status or "").startswith("ineligible"):
+        outcome = status
+    elif finish in ("max_new_tokens", "length") or status == "truncated":
+        outcome = "token_truncated"
+    elif status == "complete" and gen.get("ended_eos") is True:
+        outcome = "eos_raw"
+    elif status == "invalid_output" or finish == "no_eos":
+        outcome = "no_eos"
+    elif not gen:
+        outcome = "missing_generation"
+    else:
+        outcome = "other:" + str(status)
+    row.update(outcome=outcome, generation_status=status, finish_reason=finish,
+               proposal_status=p0.get("status"), gen_tokens=gen.get("gen_tokens"),
+               elapsed_s=gen.get("elapsed_s"), cache_hit=bool(gen.get("cache_hit")))
+    row["complete_code"] = outcome == "eos_raw" and bool(p0.get("code"))
+    row["ast_pass"] = outcome == "eos_raw" and p0.get("status") == "program_ready"
+    if mode == "L":
+        row["thinking_closed"] = str(gen.get("raw_text", "")).count("</think>") == 1
+    demos, queries = p0.get("demo_results") or [], p0.get("query_results") or []
+    # Non-ready proposals create placeholders; they never invoke the executor.
+    if row["ast_pass"]:
+        row["executed_demos"] = sum(r.get("status") in EXECUTED for r in demos)
+        row["demo_successes"] = sum(r.get("status") == "ok" for r in demos)
+        row["all_demos_executed_ok"] = bool(demos) and all(r.get("status") == "ok" for r in demos)
+        row["all_demos_matched"] = row["all_demos_executed_ok"] and p0.get("all_demos_pass") is True
+        row["executed_queries"] = sum(r.get("status") in EXECUTED for r in queries)
+    query = queries[0] if queries else {}
+    row["valid_query_grid"] = row["ast_pass"] and query.get("status") == "ok" and isinstance(query.get("grid"), list)
+    resource = GEN_RESOURCE | {"not_run"}
+    row["policy_complete"] = (outcome in ("eos_raw", "token_truncated", "no_eos")
+                              and task.get("status") not in resource and bool(queries)
+                              and not any(r.get("status") in resource for r in demos + queries))
+    if row["valid_query_grid"] and row["gold_available"]:
+        row["observed_query_em"] = query["grid"] == golds[0]
+    if row["policy_complete"] and row["gold_available"]:
+        row["query_em_any"] = row["observed_query_em"] is True
+    cached = bool(gen.get("cache_hit"))
+    inferred_calls = int(bool(gen) and not cached and
+                         (gen.get("gen_tokens", 0) > 0 or gen.get("elapsed_s", 0) > 0))
+    row["physical_generation_calls"] = task.get("physical_generation_calls", inferred_calls)
+    row["physical_new_tokens"] = task.get("physical_new_tokens", 0 if cached else gen.get("gen_tokens", 0))
+    row["physical_generation_seconds"] = task.get("physical_generation_seconds", 0 if cached else gen.get("physical_elapsed_s", gen.get("elapsed_s", 0)))
+    row["execution_seconds"] = p0.get("execution_seconds", 0.0)
+    return row
+
+
+def summarize_program(root: Path, scoring):
+    records, sources, conflicts = canonical_program_tasks(root)
+    rows = [program_row(tid, mode, records.get((tid, mode)), scoring, sources.get((tid, mode)))
+            for tid, mode in PLAN]
     by_arm = {}
+    cost_keys = ("physical_generation_calls", "physical_new_tokens", "physical_generation_seconds",
+                 "execution_seconds", "repair_invoked_count")
     for arm in ("D", "L"):
         sub = [r for r in rows if r["arm"] == arm]
-        by_arm[arm] = {"n_rows": len(sub),
+        scored = sum(r["query_em_any"] is not None for r in sub)
+        correct = sum(r["query_em_any"] is True for r in sub)
+        n_code = sum(r["complete_code"] for r in sub)
+        totals = {k: sum(r[k] for r in sub) for k in cost_keys}
+        by_arm[arm] = {"n_rows": 2, "n_planned_queries": 2,
+                       "n_recorded_queries": sum(r["source_file"] is not None for r in sub),
+                       "n_policy_complete": sum(r["policy_complete"] for r in sub),
                        "outcomes": dict(Counter(r["outcome"] for r in sub)),
-                       "complete_code": sum(1 for r in sub if r["complete_code"]),
+                       "complete_code": n_code, "ast_pass": sum(r["ast_pass"] for r in sub),
+                       "thinking_closed": sum(r["thinking_closed"] is True for r in sub) if arm == "L" else None,
+                       "executed_demos": sum(r["executed_demos"] for r in sub),
+                       "tasks_with_successful_demo": sum(r["demo_successes"] > 0 for r in sub),
+                       "all_demos_executed_ok": sum(r["all_demos_executed_ok"] for r in sub),
+                       "all_demos_matched": sum(r["all_demos_matched"] for r in sub),
                        "executed_queries": sum(r["executed_queries"] for r in sub),
-                       "query_em_true": sum(1 for r in sub if r["query_em_any"] is True),
-                       "query_em_scored": sum(1 for r in sub if r["query_em_any"] is not None)}
-    both = {(r["task_id"], r["arm"]) for r in rows}
-    return {"status": "ok", "n_rows": len(rows), "rows": rows, "by_arm": by_arm,
-            "paired_tasks": sorted({t for t, _ in both}),
-            "gen_counts": dict(gen_counts), "exec_counts": dict(exec_counts),
-            "files_used": sorted(set(files_used)),
-            "scope": "dev P2 only (db118e2a, 291dc1e1); query EM is a development check, not a competition score"}
+                       "valid_query_grids": sum(r["valid_query_grid"] for r in sub),
+                       "query_em_true": correct, "query_em_scored": scored,
+                       "query_em_over_planned": correct / 2 if scored == 2 else None,
+                       "observed_query_hits": sum(r["observed_query_em"] is True for r in sub),
+                       "physical_generation_s_per_complete_code": totals["physical_generation_seconds"] / n_code if n_code else None,
+                       **totals}
+    paired = [tid for tid in dict.fromkeys(t for t, _ in PLAN)
+              if all(next(r for r in rows if r["task_id"] == tid and r["arm"] == m)["policy_complete"]
+                     for m in ("D", "L"))]
+    return {"status": "ambiguous" if conflicts else ("ok" if records else "missing"),
+            "n_planned_calls": 4, "n_rows": 4, "rows": rows, "by_arm": by_arm,
+            "n_planned_paired_queries": 2, "n_policy_complete_pairs": len(paired),
+            "paired_tasks": paired, "conflicts": conflicts,
+            **{k: sum(r[k] for r in rows) for k in cost_keys},
+            "files_used": sorted(set(sources.values())),
+            "scope": "Fixed development P2, one query per task; missing/resource-interrupted results retain planned denominators and null EM."}
 
 
 def main(argv=None):
@@ -231,8 +303,8 @@ def main(argv=None):
                "scoring_provided": str(args.scoring) if args.scoring else None,
                "limitations": ["P2 tasks are development data, not unseen validation.",
                                "Absent files are 'missing', never zero evidence.",
-                               "Telemetry (if any) is sample-weighted, not a duty-cycle proof."]}
-    text = json.dumps(summary, ensure_ascii=False, indent=2) + "\n"
+                               "Physical cost totals cover persisted canonical P0 records; killed in-flight calls may have unrecorded cost."]}
+    text = json.dumps(summary, ensure_ascii=False, indent=2, allow_nan=False) + "\n"
     if args.out:
         args.out.parent.mkdir(parents=True, exist_ok=True)
         args.out.write_text(text, encoding="utf-8")
@@ -243,7 +315,7 @@ def main(argv=None):
     if p.get("status") == "ok":
         for arm in ("D", "L"):
             b = p["by_arm"][arm]
-            print("P arm %s: rows=%d outcomes=%s complete_code=%d executed_q=%d EM %d/%d" % (
+            print("P arm %s: planned=%d outcomes=%s complete_code=%d executed_q=%d EM %d/%d scored" % (
                 arm, b["n_rows"], b["outcomes"], b["complete_code"], b["executed_queries"],
                 b["query_em_true"], b["query_em_scored"]))
     else:
