@@ -6,9 +6,13 @@
 
 历史试提交：[用户指定 Notebook 版本 314617319](https://www.kaggle.com/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319)。用户说明 30.14 分来自未修改的公开方案复制提交，不作为自主研究效果，也不限定后续方向。
 
-**当前入口（2026-10-11）**：[012实施交接](docs/plan/012-kernel-program-completion.md)，由用户实现并操作；代码与实验均未开始。下一轮只安排≤30分钟内核探针和≤75分钟原P2程序完成性对照，两臂统一3072 token/720秒上限，合计按保守系数预留4.025配额小时，不自动追加TTT或反馈实验。
+**当前入口（2026-10-12）**：[013实际进展](docs/progress/013-submission-strategy.md)、[013实施顺序](docs/plan/013-submission-strategy.md)。既有4B提交线已完成base-only有界修复，四卡验证25.14分钟、5/5query有候选；允许评分的3题4query命中2个。北京时间17:56已正式提交冻结version1（submission **57103498**，scriptVersionId357613526），尚无新分数。账户剩7.52492配额小时、reserved0，保留6小时。27B仅完成FP8依赖静态核实，未追加GPU。发现原诊断981571dc与确认备用集交叉：本次不读其答案、不评分；主C6保留，旧C12不能再称全部未运行。
+
+[012实际进展](docs/progress/012-kernel-program-completion.md)记录上一轮：K短探针不采用快速后端；P-v2四次均3072 token截断，没有完整程序或实际执行，D/L各0/2，已按预定止损结束。历史配额快照不替代013的最新查询。
 
 [011实际进展](docs/progress/011-budget-efficient-adaptation.md)记录已完成结果：F0-25 P12为0/14，多视角完整配对0/5；TTT每题4次真实更新后，A0/A4仍均0/2。程序4次均耗尽1536 token、未产出代码，repair实际0次。10月11日15:00北京时间账户快照剩15.23138配额小时、reserved=0；未来开机前重查，保留至少6小时。无新比赛分数，C6/C12确认未运行；首GPU v1的取消原因和成本保留。
+
+**下一步**：先读取submission57103498的正式结果；保留历史30.14记录，不重复提交。27B继续核对FP8/vLLM公开实现的依赖兼容和有效思考预算，不把作者报告当本项目效果，不扩大当前无信号SFT或程序配置。
 
 ## 研究文档
 
@@ -25,7 +29,8 @@
 | 009 有效episode：表示、采样与消歧 | [plan/009-efficient-episodes.md](docs/plan/009-efficient-episodes.md) | [progress/009-efficient-episodes.md](docs/progress/009-efficient-episodes.md)；CPU研究完成：紧凑格式约省45% token，同预算覆盖改善，一例demo替换消歧；模型效果未运行 |
 | 010 配额刷新后的GPU实验 | [plan/010-gpu-budget-experiments.md](docs/plan/010-gpu-budget-experiments.md) | [progress/010-gpu-budget-experiments.md](docs/progress/010-gpu-budget-experiments.md)；E0及F1-25/50 P12均0/14，F0-suffix-25随后在011评完0/14；记录纠错见011 |
 | 011 有效预算与适配研究 | [plan/011-budget-efficient-adaptation.md](docs/plan/011-budget-efficient-adaptation.md) | [progress/011-budget-efficient-adaptation.md](docs/progress/011-budget-efficient-adaptation.md)；两GPU会话完成，无新增解；TTT 0/2、程序输出截断未进入反馈；停止扩算并保存预算 |
-| 012 GDN推理提速与程序完成性 | [plan/012-kernel-program-completion.md](docs/plan/012-kernel-program-completion.md) | 实施交接已写，由用户实现；未运行，暂无progress文件 |
+| 012 GDN推理提速与程序完成性 | [plan/012-kernel-program-completion.md](docs/plan/012-kernel-program-completion.md) | [progress/012-kernel-program-completion.md](docs/progress/012-kernel-program-completion.md)；K不采用快速后端；P-v2四次3072 token截断，无完整程序，D/L各0/2；结束本轮，保留配额 |
+| 013 奖牌目标、提交策略与27B推理研究 | [plan/013-submission-strategy.md](docs/plan/013-submission-strategy.md) | [progress/013-submission-strategy.md](docs/progress/013-submission-strategy.md)；有界4B候选验证完成、诊断2/4，已正式提交57103498待结果；27B依赖CPU核对完成 |
 
 ## Kaggle 操作链（2026-09-29 实测结论）
 
