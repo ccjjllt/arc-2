@@ -11,3 +11,8 @@ experiments/011/**/*.safetensors
 experiments/011/**/trainer_state.pt
 # 012 K-only wheels are large/binary; record URL+SHA in wheel-manifest.json, not committed.
 experiments/012/wheels/*.whl
+# Local bytecode and unsloth generated caches are not committed.
+__pycache__/
+*.pyc
+*.py[cod]
+**/unsloth_compiled_cache/
