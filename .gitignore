@@ -9,6 +9,8 @@ experiments/007/**/*.log
 # Downloaded/reused 011 model artifacts are identified by manifests, not committed.
 experiments/011/**/*.safetensors
 experiments/011/**/trainer_state.pt
+# 010 S1 adapters are large/binary; configs/manifests stay in git, weights do not.
+experiments/010/**/*.safetensors
 # 012 K-only wheels are large/binary; record URL+SHA in wheel-manifest.json, not committed.
 experiments/012/wheels/*.whl
 # Local bytecode and unsloth generated caches are not committed.
