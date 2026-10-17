@@ -1,0 +1,15 @@
+{
+  "pushed_at_beijing": "2026-10-17",
+  "account": "jiyujia",
+  "notebook_dir": "experiments/014/r-b4/notebook",
+  "kernel_metadata_id": "jiyujia/arc2-014-r-b4-paired",
+  "actual_slug": "jiyujia/arc2-014-r-b4-paired-budget-diagnosis",
+  "version": 1,
+  "status_at_push": "RUNNING",
+  "quota_jiyujia_at_push_remaining_h": 29.12,
+  "quota_jiyujia_before_push_remaining_h": 29.24,
+  "plan_ref": "docs/plan/014-regression-and-reasoning.md section 4 R",
+  "cohort": "B4_4B_budget_diagnostic 4task/6query, R0 280s vs R1 480s, 700s/task, two waves",
+  "implementation": "experiments/014/r-b4/ (arc_solver 067df22e, supervise 691075d2, worker_pool 33cb4408, build/loader frozen)",
+  "pending": "await COMPLETE, then download logs/output, score query_EM@2, raw vs rescored, train steps/seconds"
+}

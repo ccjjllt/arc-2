@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "slug": "jiyujia/arc2-014-r-b4-paired-budget-diagnosis",
+  "fixes": ["per-wave markers dir (v2)", "notebook expected supervise.py hash updated to b277fcc4 (v3); v2 failed in 16s on stale expected hash self-check"],
+  "local_verification": ["notebook boot simulation all 6 blobs assert+match_disk", "load_cohort asserts", "wave/strategy/traincap table", "notebook expected == disk shas", "py_compile"],
+  "quota_jiyujia_remaining_h_at_push": 25.19
+}

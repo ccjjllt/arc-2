@@ -1,0 +1,17 @@
+{
+  "version": 4,
+  "status": "COMPLETE",
+  "wall_s": 2456.8,
+  "worker_returncode": 0,
+  "design": "single pool single load; per-rank [wave1,wave2]; 900s load line",
+  "gpu_mean_util_pct": 43.2,
+  "per_arm": {
+    "R0_EM2": "2/6", "R1_EM2": "2/6",
+    "paired": {"0934a4d8_0": ["miss","miss"], "21897d95_0": ["miss","miss"], "21897d95_1": ["miss","miss"], "36a08778_0": ["HIT","HIT"], "36a08778_1": ["miss","miss"], "aa4ec2a5_0": ["HIT","HIT"]}
+  },
+  "oracle_vs_selection": "oracle_any == final top2 on all 6 queries; no scoring-pool loss (raw==rescored everywhere); kgmon loses nothing here",
+  "training": {"0934a4d8": {"R0_steps": 83, "R1_steps": 128}, "aa4ec2a5": {"R0_steps": 118, "R1_steps": 128}, "21897d95": {"R0_steps": 128, "R1_steps": 128}, "36a08778": {"R0_steps": 128, "R1_steps": 128}},
+  "conclusion": "R1 extra training yields zero new hits; misses are generation failures (4/6 no gold in any beam either arm), incl 21897d95_0 zero beams both arms. Per 014-4: no R2 scoring arm, end 4B expansion, hand to 27B",
+  "scoring_note": "scored locally vs public evaluation solutions, B4 tasks only; no C6/981 read",
+  "quota_jiyujia_remaining_h": 22.82
+}
