@@ -143,3 +143,11 @@ CLI已成功发布[新私有Notebook](https://www.kaggle.com/code/ccjjllt/arc2-0
 Kaggle Staff在[北京时间10月12日21:58的回复](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/discussion/747515#3537405)表示当前容量大约支持每队隔天一次提交。这比旧33小时快照更新，但不是本作业的固定ETA。普通保存与正式提交使用不同资源池；12小时执行限制不表示提交后12小时必出分。
 
 本次仅只读查询，没有取消、重投或新开GPU。证据见[状态记录](../../experiments/013/execution/submission-status-20261013.json)。
+
+## 10 10月17日：正式完成，公榜25.69
+
+本次查询submission57103498返回`COMPLETE`、`public_score=25.69`，比历史复制提交30.14低4.45个百分点。这是4B备用线新配置的结果，不是27B比赛成绩。以上“尚无新分数/PENDING”为当时历史状态，当前已由本节更新。
+
+014审计确认本轮不止改变运行边界：训练按题预算40%截断、DFS按批均分、救援删除和选2变化均影响算法。4题pilot每题1200秒；240题、启动360秒的源码算术场景中开局约695秒/题、训练278秒，不能由pilot2/4推出隐藏提分。隐藏预测下载被接口拒绝，实际隐藏覆盖/步数/错误分布未取得，具体退分因果仍未确认。
+
+新研究、官方榜单与配额快照见[014进展](014-regression-and-reasoning.md)、[原始状态](../../experiments/014/evidence/current-state.json)。保留历史30.14，不重复提交相同25.69版本；本次未新增GPU或改变最终提交选择。
