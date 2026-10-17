@@ -1,0 +1,140 @@
+{
+  "retrieved_at_local": "2026-10-17 Asia/Shanghai",
+  "scope": "Read-only API/source audit and small metadata downloads. No GPU, installation, submission, or model evaluation.",
+  "evidence_levels": {
+    "A": "Directly inspected source/metadata or official dependency declaration; no claim runtime succeeded.",
+    "B": "Original author's empirical report; not independently reproduced.",
+    "C": "Hypothesis/inference to be tested."
+  },
+  "sources": [
+    {
+      "id": "qwen_direct_new",
+      "title": "Qwen3.8-27B direct b98k c16",
+      "url": "https://www.kaggle.com/code/madarshbb/arc-agent-sub-q38-direct-b98k-c16-792ef9?scriptVersionId=358248812",
+      "version_label": 1,
+      "script_version_claimed_by_author": 358248812,
+      "score": {
+        "value": 21.5,
+        "split": "Kaggle public LB",
+        "evidence": "B",
+        "binding": "Author explicitly linked scriptVersionId in topic 748082 message 3538430; private submission record not available."
+      },
+      "discussion": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/discussion/748082#3538430",
+      "local_source": "public-sources/madarshbb-b98k-v1.source.py",
+      "findings": [
+        "Active mode direct",
+        "CUDA driver link helper added",
+        "C16 / context131072 / thinking98304 / max_tokens106496",
+        "No output cells"
+      ],
+      "limitations": [
+        "No successful serving log",
+        "Same vLLM0.19 and TF5.8 declaration conflict",
+        "Author reports small-change rerun score13; not a variance estimate"
+      ]
+    },
+    {
+      "id": "nvarc_budget",
+      "title": "ARC Baseline Rebuild",
+      "url": "https://www.kaggle.com/code/yusuketogashi/arc-baseline-rebuild",
+      "version_label": 101,
+      "evidence": "A",
+      "local_source": "public-sources/yusuketogashi-v101.source.py",
+      "findings": [
+        "Budget computed after training",
+        "CRC32 instead of process-salted hash",
+        "Zero-candidate retry"
+      ],
+      "limitations": [
+        "No verified score tied to v101",
+        "No actual performance benchmark",
+        "Do not assume original NVARC logits vocabulary151K"
+      ]
+    },
+    {
+      "id": "runtime_0272",
+      "title": "Qwen38 vLLM0272 offline wheelhouse",
+      "url": "https://www.kaggle.com/datasets/nick2187/qwen38-vllm0272-cu130-wheelhouse-v1",
+      "dataset_id": 11654954,
+      "version": 1,
+      "evidence": "A",
+      "commit": "1f7427bc0ad31fdad1b0933c77ea5acae15da2e0",
+      "local_files": [
+        "public-sources/qwen38-vllm0272-manifest.json",
+        "public-sources/qwen38-vllm0272-requirements.txt"
+      ],
+      "components": {
+        "vllm": "0.27.2rc1.dev91+g1f7427bc0",
+        "torch": "2.13.0",
+        "transformers": "5.15.0",
+        "cuda": "13.0",
+        "flashinfer": "0.6.16.post3"
+      },
+      "limitations": [
+        "Nightly release",
+        "No independent GPU validation",
+        "Wheel bytes not downloaded/verified",
+        "Dataset license metadataUnknown"
+      ],
+      "dependency_primary_urls": [
+        "https://pypi.org/pypi/vllm/0.19.0/json",
+        "https://pypi.org/pypi/vllm/0.20.0/json",
+        "https://pypi.org/pypi/vllm/0.27.0/json",
+        "https://pypi.org/pypi/vllm/0.30.0/json"
+      ]
+    },
+    {
+      "id": "merlin_fast_path",
+      "title": "Qwen3.8-27B Merlin engine",
+      "url": "https://github.com/halt95/qwen38-27b-3090s/tree/v1.3.1",
+      "release": "v1.3.1 2026-10-13",
+      "evidence": "A source / B author throughput",
+      "related_dataset": "https://www.kaggle.com/datasets/nisshokuitsuki/qwen-merlin-h95-wheels",
+      "related_dataset_id": 12580225,
+      "related_dataset_version": 1,
+      "local_files": [
+        "public-sources/halt95-upstream--PIN",
+        "public-sources/halt95-patches--merlin-engine-v2.5.2--README.md",
+        "public-sources/halt95-serve--serve-tp4.sh",
+        "public-sources/merlin-manifest.json"
+      ],
+      "limitations": [
+        "27B optimized series gated to sm86",
+        "Throughput on3090 not L4",
+        "New sm89 wheelhouse gpu_tested=false",
+        "Sm89 wheelhouse does not establish all11 dense27B patches present",
+        "Different quantized weight artifact needed"
+      ]
+    },
+    {
+      "id": "synthetic_negative",
+      "title": "Tried fine-tuning NVARC on new synthetic ARC tasks",
+      "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/discussion/748895",
+      "post_date": "2026-10-13",
+      "evidence": "B",
+      "metrics": {
+        "hardware": "1xA10080GB",
+        "lora_hours": 68.5,
+        "added_blocks_hours": 57.2,
+        "public_eval_query_count": 172,
+        "base_solved": 17,
+        "lora342k_solved": 18,
+        "added_blocks_solved": 17
+      },
+      "limitations": [
+        "Original author report",
+        "Different model and training recipe from selected27B",
+        "Does not show all synthetic training ineffective",
+        "No raw repeat distribution establishes claimed±2–4 LB variance"
+      ]
+    }
+  ],
+  "additional_screened": {
+    "agentic": "https://www.kaggle.com/code/khoinguyennguyen/arc-agi-2-agentic-multi-turn-reasoning",
+    "agentic_version": 8,
+    "agentic_note": "Readable source, default branches_per_task2/task_parallel8/context262144/MTP3 on0.19 wheelhouse; no bound score or successful logs, not preferred over minimal fixed serving pilot.",
+    "nvarc_plus": "https://www.kaggle.com/code/luxluxshan/arc2-nvarc-v1",
+    "nvarc_plus_version": 3,
+    "nvarc_note": "Independent half-cost passes, protectA top1; does not preserve everyA top2 win."
+  }
+}

@@ -1,0 +1,668 @@
+{
+  "date_beijing": "2026-10-17",
+  "status": "frozen_metadata_only_not_run",
+  "purpose": "Predeclare development cohorts and a matched-wall 4B budget diagnosis; no confirmation task is consumed",
+  "primary_metric": {
+    "name": "query_EM@2",
+    "definition": "number of test queries whose fixed first or second output exactly equals the full gold grid / number of all test queries in the cohort",
+    "missing_or_fallback_only_query": "counts in denominator and is wrong unless exact equality genuinely holds",
+    "do_not_substitute": "mean of per-task scores; candidate oracle or all-candidate union"
+  },
+  "source_files": [
+    {
+      "path": "experiments/010/evaluation-manifest.json",
+      "sha256": "7d3f4cf672df7542a248bcb4fe1db846fccb377231d8dcd53e135fbb753e3fe5",
+      "role": "manifest/query metadata"
+    },
+    {
+      "path": "experiments/011/research-manifest.json",
+      "sha256": "301c10ad8768c232ba50a2b94cc9b3b4c975da9fdc3ea936b90a02719575ffeb",
+      "role": "manifest/query metadata"
+    },
+    {
+      "path": "experiments/012/inputs/p2-queries.json",
+      "sha256": "6379a22f3581b32411b7547f187c57403dbd6ba07fa22875d3b6e4a63dbd8b61",
+      "role": "manifest/query metadata"
+    },
+    {
+      "path": "experiments/011/execution/p6-queries.json",
+      "sha256": "02e7a837fddd9a46d4b8af2e0ef630acafd55655cfce10af73633be8134e2844",
+      "role": "manifest/query metadata"
+    },
+    {
+      "path": "experiments/011/execution/p12-queries.json",
+      "sha256": "884eb10df5a65bb527cd4c4c72edc7b5ce4dafd16f481e8fef8cc8478e7950f7",
+      "role": "manifest/query metadata"
+    },
+    {
+      "path": "experiments/013/kaggle-baseline-verified-v1/013-run/events/worker-0.jsonl",
+      "sha256": "70635b6e148a3199e95323e978de5ed70bc11c79fa93602fcc0e1b34f0427179",
+      "role": "task_start query-count metadata only"
+    },
+    {
+      "path": "experiments/013/kaggle-baseline-verified-v1/013-run/events/worker-1.jsonl",
+      "sha256": "895ae566fda78043971d837a9c25d7f2afbdbceb0f69be00aff5d51494aa0052",
+      "role": "task_start query-count metadata only"
+    },
+    {
+      "path": "experiments/013/kaggle-baseline-verified-v1/013-run/events/worker-3.jsonl",
+      "sha256": "208cae0179c0b407dc17a074ba1305d955ffbf7daf5199849e329572c7bba32a",
+      "role": "task_start query-count metadata only"
+    }
+  ],
+  "cohorts": {
+    "P2_012": {
+      "task_count": 2,
+      "query_count": 2,
+      "tasks": [
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 880,
+          "max_side": 28,
+          "task_id": "291dc1e1",
+          "tier": "S",
+          "manifest_group": "probe_e",
+          "source_group": "E24"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 272,
+          "max_side": 9,
+          "task_id": "db118e2a",
+          "seen_before": false,
+          "tier": "S",
+          "manifest_group": "probe_h",
+          "source_group": "H_new"
+        }
+      ],
+      "queries": [
+        {
+          "task_id": "291dc1e1",
+          "query_index": 0,
+          "query_key": "291dc1e1_0"
+        },
+        {
+          "task_id": "db118e2a",
+          "query_index": 0,
+          "query_key": "db118e2a_0"
+        }
+      ],
+      "source_file": "experiments/011/research-manifest.json",
+      "source_json_pointer": "/program_smoke_P2",
+      "execution_order": "task_id ascending, then query_index ascending",
+      "primary_metric": "query_EM@2",
+      "checked_against_query_metadata_file": "experiments/012/inputs/p2-queries.json"
+    },
+    "P6_011": {
+      "task_count": 6,
+      "query_count": 6,
+      "tasks": [
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 880,
+          "max_side": 28,
+          "task_id": "291dc1e1",
+          "tier": "S",
+          "manifest_group": "probe_e",
+          "source_group": "E24"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 1829,
+          "max_side": 23,
+          "task_id": "4c416de3",
+          "tier": "M",
+          "manifest_group": "probe_e",
+          "source_group": "E24"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 482,
+          "max_side": 16,
+          "task_id": "58c02a16",
+          "seen_before": false,
+          "tier": "M",
+          "manifest_group": "probe_h",
+          "source_group": "H_new"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 2221,
+          "max_side": 28,
+          "task_id": "aa4ec2a5",
+          "tier": "L",
+          "manifest_group": "probe_e",
+          "source_group": "E24"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 272,
+          "max_side": 9,
+          "task_id": "db118e2a",
+          "seen_before": false,
+          "tier": "S",
+          "manifest_group": "probe_h",
+          "source_group": "H_new"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 1,
+          "total_input_cells": 768,
+          "max_side": 16,
+          "task_id": "fc4aaf52",
+          "seen_before": false,
+          "tier": "L",
+          "manifest_group": "probe_h",
+          "source_group": "H_new"
+        }
+      ],
+      "queries": [
+        {
+          "task_id": "291dc1e1",
+          "query_index": 0,
+          "query_key": "291dc1e1_0"
+        },
+        {
+          "task_id": "4c416de3",
+          "query_index": 0,
+          "query_key": "4c416de3_0"
+        },
+        {
+          "task_id": "58c02a16",
+          "query_index": 0,
+          "query_key": "58c02a16_0"
+        },
+        {
+          "task_id": "aa4ec2a5",
+          "query_index": 0,
+          "query_key": "aa4ec2a5_0"
+        },
+        {
+          "task_id": "db118e2a",
+          "query_index": 0,
+          "query_key": "db118e2a_0"
+        },
+        {
+          "task_id": "fc4aaf52",
+          "query_index": 0,
+          "query_key": "fc4aaf52_0"
+        }
+      ],
+      "source_file": "experiments/011/research-manifest.json",
+      "source_json_pointer": "/probe_P6",
+      "execution_order": "task_id ascending, then query_index ascending",
+      "primary_metric": "query_EM@2",
+      "checked_against_query_metadata_file": "experiments/011/execution/p6-queries.json"
+    },
+    "P12_010": {
+      "task_count": 12,
+      "query_count": 14,
+      "tasks": [
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 1003,
+          "max_side": 22,
+          "task_id": "1818057f",
+          "tier": "S",
+          "manifest_group": "probe_e",
+          "source_group": "E24"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 2,
+          "total_input_cells": 1994,
+          "max_side": 30,
+          "task_id": "21897d95",
+          "tier": "M",
+          "manifest_group": "probe_e",
+          "source_group": "E24"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 880,
+          "max_side": 28,
+          "task_id": "291dc1e1",
+          "tier": "S",
+          "manifest_group": "probe_e",
+          "source_group": "E24"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 656,
+          "max_side": 16,
+          "task_id": "342dd610",
+          "seen_before": true,
+          "tier": "M",
+          "manifest_group": "probe_h",
+          "source_group": "H_new"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 1829,
+          "max_side": 23,
+          "task_id": "4c416de3",
+          "tier": "M",
+          "manifest_group": "probe_e",
+          "source_group": "E24"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 2,
+          "total_input_cells": 1024,
+          "max_side": 16,
+          "task_id": "52df9849",
+          "seen_before": false,
+          "tier": "L",
+          "manifest_group": "probe_h",
+          "source_group": "H_new"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 482,
+          "max_side": 16,
+          "task_id": "58c02a16",
+          "seen_before": false,
+          "tier": "M",
+          "manifest_group": "probe_h",
+          "source_group": "H_new"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 3600,
+          "max_side": 30,
+          "task_id": "9aaea919",
+          "tier": "L",
+          "manifest_group": "probe_e",
+          "source_group": "E24"
+        },
+        {
+          "n_demo": 3,
+          "n_test_queries": 1,
+          "total_input_cells": 2221,
+          "max_side": 28,
+          "task_id": "aa4ec2a5",
+          "tier": "L",
+          "manifest_group": "probe_e",
+          "source_group": "E24"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 1,
+          "total_input_cells": 272,
+          "max_side": 9,
+          "task_id": "db118e2a",
+          "seen_before": false,
+          "tier": "S",
+          "manifest_group": "probe_h",
+          "source_group": "H_new"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 1,
+          "total_input_cells": 108,
+          "max_side": 6,
+          "task_id": "e3f79277",
+          "seen_before": false,
+          "tier": "S",
+          "manifest_group": "probe_h",
+          "source_group": "H_new"
+        },
+        {
+          "n_demo": 2,
+          "n_test_queries": 1,
+          "total_input_cells": 768,
+          "max_side": 16,
+          "task_id": "fc4aaf52",
+          "seen_before": false,
+          "tier": "L",
+          "manifest_group": "probe_h",
+          "source_group": "H_new"
+        }
+      ],
+      "queries": [
+        {
+          "task_id": "1818057f",
+          "query_index": 0,
+          "query_key": "1818057f_0"
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 0,
+          "query_key": "21897d95_0"
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 1,
+          "query_key": "21897d95_1"
+        },
+        {
+          "task_id": "291dc1e1",
+          "query_index": 0,
+          "query_key": "291dc1e1_0"
+        },
+        {
+          "task_id": "342dd610",
+          "query_index": 0,
+          "query_key": "342dd610_0"
+        },
+        {
+          "task_id": "4c416de3",
+          "query_index": 0,
+          "query_key": "4c416de3_0"
+        },
+        {
+          "task_id": "52df9849",
+          "query_index": 0,
+          "query_key": "52df9849_0"
+        },
+        {
+          "task_id": "52df9849",
+          "query_index": 1,
+          "query_key": "52df9849_1"
+        },
+        {
+          "task_id": "58c02a16",
+          "query_index": 0,
+          "query_key": "58c02a16_0"
+        },
+        {
+          "task_id": "9aaea919",
+          "query_index": 0,
+          "query_key": "9aaea919_0"
+        },
+        {
+          "task_id": "aa4ec2a5",
+          "query_index": 0,
+          "query_key": "aa4ec2a5_0"
+        },
+        {
+          "task_id": "db118e2a",
+          "query_index": 0,
+          "query_key": "db118e2a_0"
+        },
+        {
+          "task_id": "e3f79277",
+          "query_index": 0,
+          "query_key": "e3f79277_0"
+        },
+        {
+          "task_id": "fc4aaf52",
+          "query_index": 0,
+          "query_key": "fc4aaf52_0"
+        }
+      ],
+      "source_file": "experiments/010/evaluation-manifest.json",
+      "source_json_pointer": "/probe_P12",
+      "execution_order": "task_id ascending, then query_index ascending",
+      "primary_metric": "query_EM@2",
+      "checked_against_query_metadata_file": "experiments/011/execution/p12-queries.json"
+    },
+    "B4_4B_budget_diagnostic": {
+      "task_count": 4,
+      "query_count": 6,
+      "tasks": [
+        {
+          "task_id": "0934a4d8",
+          "n_test_queries": 1,
+          "source_group": "013_existing_development_pilot"
+        },
+        {
+          "n_demo": 4,
+          "n_test_queries": 2,
+          "total_input_cells": 1994,
+          "max_side": 30,
+          "task_id": "21897d95",
+          "tier": "M",
+          "manifest_group": "probe_e",
+          "source_group": "E24"
+        },
+        {
+          "task_id": "36a08778",
+          "n_test_queries": 2,
+          "source_group": "013_existing_development_pilot"
+        },
+        {
+          "task_id": "aa4ec2a5",
+          "n_test_queries": 1,
+          "source_group": "013_existing_development_pilot"
+        }
+      ],
+      "queries": [
+        {
+          "task_id": "0934a4d8",
+          "query_index": 0,
+          "query_key": "0934a4d8_0"
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 0,
+          "query_key": "21897d95_0"
+        },
+        {
+          "task_id": "21897d95",
+          "query_index": 1,
+          "query_key": "21897d95_1"
+        },
+        {
+          "task_id": "36a08778",
+          "query_index": 0,
+          "query_key": "36a08778_0"
+        },
+        {
+          "task_id": "36a08778",
+          "query_index": 1,
+          "query_key": "36a08778_1"
+        },
+        {
+          "task_id": "aa4ec2a5",
+          "query_index": 0,
+          "query_key": "aa4ec2a5_0"
+        }
+      ],
+      "source_file": "multiple_metadata_sources",
+      "source_json_pointer": "see sources and selection_rule",
+      "execution_order": "task_id ascending, then query_index ascending",
+      "primary_metric": "query_EM@2",
+      "selection_rule": {
+        "fixed_013_allowed_scoring_task_ids": [
+          "0934a4d8",
+          "36a08778",
+          "aa4ec2a5"
+        ],
+        "fourth_from": "P12 tasks with n_test_queries > 1, outside main/reserve C6 and 981571dc",
+        "eligible_fourth_ids_sorted": [
+          "21897d95",
+          "52df9849"
+        ],
+        "selected_fourth": "21897d95",
+        "tie_break": "task_id ascending, take first",
+        "uses_accuracy_or_predictions_to_select": false,
+        "all_queries_included": true
+      },
+      "paired_protocol": {
+        "status": "cohort_budget_and_policy_frozen; implementation/source SHA not yet available; not run",
+        "strategy_ids": [
+          "R0",
+          "R1"
+        ],
+        "strategy_count": 2,
+        "per_strategy_task_wall_seconds": 700,
+        "task_clock_starts": "before adapter reset and task-specific preparation",
+        "task_clock_includes": [
+          "adapter reset",
+          "training preparation",
+          "TTT",
+          "decode",
+          "candidate scoring",
+          "task candidate serialization"
+        ],
+        "shared_model_load_outside_task_clock": true,
+        "gpu_layout": "4 x L4, one independent worker per GPU",
+        "waves": [
+          {
+            "wave": 1,
+            "assignments": [
+              {
+                "gpu_index": 0,
+                "task_id": "0934a4d8",
+                "task_wall_seconds": 700,
+                "strategy": "R0"
+              },
+              {
+                "gpu_index": 1,
+                "task_id": "21897d95",
+                "task_wall_seconds": 700,
+                "strategy": "R0"
+              },
+              {
+                "gpu_index": 2,
+                "task_id": "36a08778",
+                "task_wall_seconds": 700,
+                "strategy": "R1"
+              },
+              {
+                "gpu_index": 3,
+                "task_id": "aa4ec2a5",
+                "task_wall_seconds": 700,
+                "strategy": "R1"
+              }
+            ]
+          },
+          {
+            "wave": 2,
+            "assignments": [
+              {
+                "gpu_index": 0,
+                "task_id": "0934a4d8",
+                "task_wall_seconds": 700,
+                "strategy": "R1"
+              },
+              {
+                "gpu_index": 1,
+                "task_id": "21897d95",
+                "task_wall_seconds": 700,
+                "strategy": "R1"
+              },
+              {
+                "gpu_index": 2,
+                "task_id": "36a08778",
+                "task_wall_seconds": 700,
+                "strategy": "R0"
+              },
+              {
+                "gpu_index": 3,
+                "task_id": "aa4ec2a5",
+                "task_wall_seconds": 700,
+                "strategy": "R0"
+              }
+            ]
+          }
+        ],
+        "model_adapter_reset_between_tasks_and_strategies": true,
+        "same_task_to_gpu_assignment_across_waves": true,
+        "task_phase_nominal_max_wall_seconds": 1400,
+        "wall_estimate_excludes": [
+          "initial model/dependency loading",
+          "shared warmup",
+          "final export"
+        ],
+        "metrics": [
+          "query_EM@2",
+          "complete_candidate_query_coverage",
+          "oracle_any_over_saved_candidates_when_gold_allowed",
+          "trained_steps",
+          "per_stage_wall_seconds",
+          "timed_out_queries"
+        ],
+        "metric_denominator_per_strategy": 6,
+        "metric_denominator_includes_no_candidate_queries": true,
+        "task_averaged_score_is_not_primary_metric": true,
+        "algorithms_not_defined_by_this_cohort_file": false,
+        "requires_before_run": [
+          "freeze both strategy configuration/source SHA",
+          "freeze same model/tokenizer and seeds",
+          "record actual GPU/runtime",
+          "apply gold only after generation and selection are fixed"
+        ],
+        "strategy_policies": {
+          "R0": {
+            "reference": "013 frozen submission logic",
+            "task_wall_seconds": 700,
+            "train_allowance_seconds": 280
+          },
+          "R1": {
+            "reference": "same as R0 except training time allocation",
+            "task_wall_seconds": 700,
+            "train_allowance_seconds": 480,
+            "minimum_inference_reserved_seconds": 220
+          }
+        },
+        "shared_recording_only_patch": "Persist complete raw beams separately from fully rescored candidates in both arms; no change to ranking from raw records.",
+        "ordering": "First two task IDs R0 then R1; last two R1 then R0. Same task remains on same GPU. Shared warmup and reset overhead included in session cap.",
+        "session_wall_cap_seconds": 3600
+      }
+    }
+  },
+  "excluded_confirmation": {
+    "main_C6_task_ids": [
+      "20270e3b",
+      "38007db0",
+      "878187ab",
+      "df9fd884",
+      "dfadab01",
+      "e45ef808"
+    ],
+    "reserve_C6_task_ids": [
+      "581f7754",
+      "7e4d4f7c",
+      "981571dc",
+      "c3fa4749",
+      "db0c5428",
+      "dce56571"
+    ],
+    "additional_explicit_exclusion": [
+      "981571dc"
+    ]
+  },
+  "intersection_checks": {
+    "P2_012": {
+      "main_C6_overlap": [],
+      "reserve_C6_overlap": [],
+      "explicit_981571dc_overlap": []
+    },
+    "P6_011": {
+      "main_C6_overlap": [],
+      "reserve_C6_overlap": [],
+      "explicit_981571dc_overlap": []
+    },
+    "P12_010": {
+      "main_C6_overlap": [],
+      "reserve_C6_overlap": [],
+      "explicit_981571dc_overlap": []
+    },
+    "B4_4B_budget_diagnostic": {
+      "main_C6_overlap": [],
+      "reserve_C6_overlap": [],
+      "explicit_981571dc_overlap": []
+    }
+  },
+  "all_development_confirmation_intersections_empty": true,
+  "source_answers_read_to_build_cohorts": false,
+  "query_predictions_or_scores_used_for_selection": false,
+  "original_manifests_modified": false,
+  "gpu_run_started": false,
+  "historical_task_metadata_note": "Task tier/source/seen_before fields are inherited source-manifest snapshots; all listed cohorts are now development-used and seen_before=false must not be interpreted as current untouched status."
+}

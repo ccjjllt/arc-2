@@ -1,0 +1,30 @@
+{
+  "id": 115843415,
+  "ref": "koushikrudra/failed-in-aimo",
+  "title": "Failed in AIMO",
+  "author": "Koushik Rudra",
+  "slug": "failed-in-aimo",
+  "last_run_time": "2026-10-14T02:31:04.476880600Z",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "category_ids": [
+    "gpu"
+  ],
+  "kernel_data_sources": [
+    "sorokin/pip-install-unsloth-flash-patch"
+  ],
+  "competition_data_sources": [
+    "arc-prize-2026-arc-agi-2"
+  ],
+  "total_votes": 894,
+  "model_data_sources": [
+    "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+  ],
+  "enable_tpu": false,
+  "current_version_number": 2,
+  "docker_image": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868",
+  "machine_shape": "NvidiaL4"
+}

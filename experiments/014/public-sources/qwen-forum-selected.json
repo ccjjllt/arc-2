@@ -1,0 +1,36 @@
+{
+  "retrieved": "2026-10-17 Asia/Shanghai",
+  "topic": 748082,
+  "messages": [
+    {
+      "id": 3539437,
+      "date": "2026-10-16T00:04:15.633Z",
+      "author": "/mikelou1",
+      "text": "Not a NVARC ensemble, as my program don't have time to do that. However there is a tiny kernel issue I found that made my program score only 40% (instead of the 60% projected by CV)."
+    },
+    {
+      "id": 3536521,
+      "date": "2026-10-10T15:33:12.870Z",
+      "author": "/thangnm1",
+      "text": " I scored 26.81 with Qwen 3.8 27B and 8.61 with Qwen Flash. On the 120 validation tasks, Qwen 3.8 27B achieved 80% accuracy."
+    },
+    {
+      "id": 3536545,
+      "date": "2026-10-10T16:43:15.117Z",
+      "author": "/thangnm1",
+      "text": "I just use qwen 27 original. My best score is finetune from NVARC"
+    },
+    {
+      "id": 3538430,
+      "date": "2026-10-14T07:10:28.040Z",
+      "author": "/madarshbb",
+      "text": "Here you go : https://www.kaggle.com/code/madarshbb/arc-agent-sub-q38-direct-b98k-c16-792ef9?scriptVersionId=358248812 (scored 21.53 on one of the versions of my working notebooks, but dont want to share that, but this is the one that scored 21.5)\n\n![](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F14670471%2F317795526c99d94f43d3c7736f0f912d%2FScreenshot%202026-10-14%20130150.png?generation=1791963142782751&alt=media)\n\nSeems to have high variance because when I re-ran with a small change, score dropped to 13, hope this helps.\n\nDid anyone have any luck ensembling qwen 3.8 27b with nvarc are comfortable sharing?"
+    },
+    {
+      "id": 3538609,
+      "date": "2026-10-14T15:17:15.337Z",
+      "author": "/foysalemonshanto",
+      "text": "I haven’t tried it yet. However, NVARC and Qwen 3.8 27B complement each other, with a correlation of 0.43 between them.NVARC is better for simple pazzle and Qwen is better for complex pazzle.\n\n\nNVARC loads the Qwen3-4B model four times across separate L4 GPUs in an L4 × 4 setup. In my case, the model weights are split into four parts and loaded across the four L4 GPUs.After loading Qwen 3.8 27B, only a small amount of VRAM remains available for the KV cache. Therefore, loading Qwen3-4B alongside Qwen 3.8 27B is difficult due to the limited GPU memory.\nYou are using my repacked Qwen3.8 27B ha ha! thanks and carry on."
+    }
+  ]
+}

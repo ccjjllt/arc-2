@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-10-17 Asia/Shanghai",
+  "target": {
+    "ref": "ccjjllt/reproduce-nvarc-2025-results",
+    "scriptVersionId": 314617319,
+    "url": "https://www.kaggle.com/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319"
+  },
+  "inherited_evidence": "013 progress and baseline metadata state that exact historical source was not obtained; v21 is latest and is not verified as this scriptVersionId.",
+  "attempt": {
+    "tool": "mcp__kaggle__get_notebook_info",
+    "request": {
+      "userName": "ccjjllt",
+      "kernelSlug": "reproduce-nvarc-2025-results",
+      "hasVersionLabel": true,
+      "versionLabel": "314617319"
+    },
+    "result": "Not found",
+    "isError": true
+  },
+  "conclusion": "Exact source not obtained. The exposed tool supports versionLabel but does not document a separate numeric scriptVersionId parameter; this result does not prove the historical notebook is deleted or inaccessible through the normal website.",
+  "limitations": [
+    "No additional API guesses or retrieval attempts made.",
+    "No hidden submission output downloaded.",
+    "Do not substitute latest v21 or claim TTT/DFS/rescue/selector configuration of version314617319 is known.",
+    "No source hash exists because no exact source was returned."
+  ]
+}

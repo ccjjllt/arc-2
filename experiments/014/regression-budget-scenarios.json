@@ -1,0 +1,250 @@
+{
+  "date_beijing": "2026-10-17",
+  "method": "Manual CPU arithmetic using AST-extracted exact compute_puzzle_budget; no model execution or solutions loaded",
+  "conditional": "These scenarios are not hidden runtime measurements. First popped task, 4 workers, 42600 solve seconds, stated startup. Later budgets change dynamically.",
+  "rows": [
+    {
+      "task_count": 120,
+      "startup_seconds": 0,
+      "first_worker_task_budget_seconds": 1200,
+      "train_allowance_seconds": 480,
+      "test_queries": 1,
+      "decode_batches": 4,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 150.0
+    },
+    {
+      "task_count": 120,
+      "startup_seconds": 0,
+      "first_worker_task_budget_seconds": 1200,
+      "train_allowance_seconds": 480,
+      "test_queries": 2,
+      "decode_batches": 8,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 67.5
+    },
+    {
+      "task_count": 120,
+      "startup_seconds": 0,
+      "first_worker_task_budget_seconds": 1200,
+      "train_allowance_seconds": 480,
+      "test_queries": 3,
+      "decode_batches": 12,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 45.0
+    },
+    {
+      "task_count": 120,
+      "startup_seconds": 360,
+      "first_worker_task_budget_seconds": 1200,
+      "train_allowance_seconds": 480,
+      "test_queries": 1,
+      "decode_batches": 4,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 150.0
+    },
+    {
+      "task_count": 120,
+      "startup_seconds": 360,
+      "first_worker_task_budget_seconds": 1200,
+      "train_allowance_seconds": 480,
+      "test_queries": 2,
+      "decode_batches": 8,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 67.5
+    },
+    {
+      "task_count": 120,
+      "startup_seconds": 360,
+      "first_worker_task_budget_seconds": 1200,
+      "train_allowance_seconds": 480,
+      "test_queries": 3,
+      "decode_batches": 12,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 45.0
+    },
+    {
+      "task_count": 120,
+      "startup_seconds": 600,
+      "first_worker_task_budget_seconds": 1200,
+      "train_allowance_seconds": 480,
+      "test_queries": 1,
+      "decode_batches": 4,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 150.0
+    },
+    {
+      "task_count": 120,
+      "startup_seconds": 600,
+      "first_worker_task_budget_seconds": 1200,
+      "train_allowance_seconds": 480,
+      "test_queries": 2,
+      "decode_batches": 8,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 67.5
+    },
+    {
+      "task_count": 120,
+      "startup_seconds": 600,
+      "first_worker_task_budget_seconds": 1200,
+      "train_allowance_seconds": 480,
+      "test_queries": 3,
+      "decode_batches": 12,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 45.0
+    },
+    {
+      "task_count": 240,
+      "startup_seconds": 0,
+      "first_worker_task_budget_seconds": 701.235,
+      "train_allowance_seconds": 280.494,
+      "test_queries": 1,
+      "decode_batches": 4,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 78.889
+    },
+    {
+      "task_count": 240,
+      "startup_seconds": 0,
+      "first_worker_task_budget_seconds": 701.235,
+      "train_allowance_seconds": 280.494,
+      "test_queries": 2,
+      "decode_batches": 8,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 39.444
+    },
+    {
+      "task_count": 240,
+      "startup_seconds": 0,
+      "first_worker_task_budget_seconds": 701.235,
+      "train_allowance_seconds": 280.494,
+      "test_queries": 3,
+      "decode_batches": 12,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 26.296
+    },
+    {
+      "task_count": 240,
+      "startup_seconds": 360,
+      "first_worker_task_budget_seconds": 695.309,
+      "train_allowance_seconds": 278.123,
+      "test_queries": 1,
+      "decode_batches": 4,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 78.222
+    },
+    {
+      "task_count": 240,
+      "startup_seconds": 360,
+      "first_worker_task_budget_seconds": 695.309,
+      "train_allowance_seconds": 278.123,
+      "test_queries": 2,
+      "decode_batches": 8,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 39.111
+    },
+    {
+      "task_count": 240,
+      "startup_seconds": 360,
+      "first_worker_task_budget_seconds": 695.309,
+      "train_allowance_seconds": 278.123,
+      "test_queries": 3,
+      "decode_batches": 12,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 26.074
+    },
+    {
+      "task_count": 240,
+      "startup_seconds": 600,
+      "first_worker_task_budget_seconds": 691.358,
+      "train_allowance_seconds": 276.543,
+      "test_queries": 1,
+      "decode_batches": 4,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 77.778
+    },
+    {
+      "task_count": 240,
+      "startup_seconds": 600,
+      "first_worker_task_budget_seconds": 691.358,
+      "train_allowance_seconds": 276.543,
+      "test_queries": 2,
+      "decode_batches": 8,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 38.889
+    },
+    {
+      "task_count": 240,
+      "startup_seconds": 600,
+      "first_worker_task_budget_seconds": 691.358,
+      "train_allowance_seconds": 276.543,
+      "test_queries": 3,
+      "decode_batches": 12,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 25.926
+    },
+    {
+      "task_count": 400,
+      "startup_seconds": 0,
+      "first_worker_task_budget_seconds": 422.829,
+      "train_allowance_seconds": 169.132,
+      "test_queries": 1,
+      "decode_batches": 4,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 47.568
+    },
+    {
+      "task_count": 400,
+      "startup_seconds": 0,
+      "first_worker_task_budget_seconds": 422.829,
+      "train_allowance_seconds": 169.132,
+      "test_queries": 2,
+      "decode_batches": 8,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 23.784
+    },
+    {
+      "task_count": 400,
+      "startup_seconds": 0,
+      "first_worker_task_budget_seconds": 422.829,
+      "train_allowance_seconds": 169.132,
+      "test_queries": 3,
+      "decode_batches": 12,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 15.856
+    },
+    {
+      "task_count": 400,
+      "startup_seconds": 360,
+      "first_worker_task_budget_seconds": 419.256,
+      "train_allowance_seconds": 167.702,
+      "test_queries": 1,
+      "decode_batches": 4,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 47.166
+    },
+    {
+      "task_count": 400,
+      "startup_seconds": 360,
+      "first_worker_task_budget_seconds": 419.256,
+      "train_allowance_seconds": 167.702,
+      "test_queries": 2,
+      "decode_batches": 8,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 23.583
+    },
+    {
+      "task_count": 400,
+      "startup_seconds": 360,
+      "first_worker_task_budget_seconds": 419.256,
+      "train_allowance_seconds": 167.702,
+      "test_queries": 3,
+      "decode_batches": 12,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 15.722
+    },
+    {
+      "task_count": 400,
+      "startup_seconds": 600,
+      "first_worker_task_budget_seconds": 416.873,
+      "train_allowance_seconds": 166.749,
+      "test_queries": 1,
+      "decode_batches": 4,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 46.898
+    },
+    {
+      "task_count": 400,
+      "startup_seconds": 600,
+      "first_worker_task_budget_seconds": 416.873,
+      "train_allowance_seconds": 166.749,
+      "test_queries": 2,
+      "decode_batches": 8,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 23.449
+    },
+    {
+      "task_count": 400,
+      "startup_seconds": 600,
+      "first_worker_task_budget_seconds": 416.873,
+      "train_allowance_seconds": 166.749,
+      "test_queries": 3,
+      "decode_batches": 12,
+      "first_batch_dfs_allowance_seconds_if_train_uses_cap": 15.633
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "retrieved": "2026-10-17 Asia/Shanghai",
+  "files": [
+    {
+      "file": "halt95-patches--merlin-engine-v2.5.2--README.md",
+      "bytes": 12441,
+      "sha256": "5bc64c92f9d89c58c5238ff441493bca94102b0016c058ad68818f65606061d6"
+    },
+    {
+      "file": "halt95-release--requirements-pinned.txt",
+      "bytes": 22321,
+      "sha256": "82c5609cafab941873fc4b284f9b85c250aab3b07f4c8c98adb1ebbffd9ec507"
+    },
+    {
+      "file": "halt95-serve--serve-tp4.sh",
+      "bytes": 7701,
+      "sha256": "c44d7a6cd3aaa19ce6753e9fd3ab2e15bca9951a897f7b29950bea2110be813b"
+    },
+    {
+      "file": "halt95-upstream--PIN",
+      "bytes": 840,
+      "sha256": "58885230a7f143d0a93b404a3b95dc0985e211d73d0ba4c2d74965198e719053"
+    },
+    {
+      "file": "khoinguyennguyen-agentic-v8.source.py",
+      "bytes": 127742,
+      "sha256": "9e5cccacb59c0e1c696d1736a9245e495ce4e0f6cb094b34736bf978018c9aed"
+    },
+    {
+      "file": "koushikrudra-failed-in-aimo.metadata.json",
+      "bytes": 835,
+      "sha256": "5de7d14df58f550c83fd5760abf5aa5841199ed5e4ac2445b086aa623f6fdaf4"
+    },
+    {
+      "file": "koushikrudra-failed-in-aimo.source.py",
+      "bytes": 84438,
+      "sha256": "e61ed9a8e83b55aee0b68d14e197d0b0397a20551f7a06aa5aff503cd0ddd5ec"
+    },
+    {
+      "file": "luxluxshan-nvarc-plus.metadata.json",
+      "bytes": 835,
+      "sha256": "c7822914ec0682227f055df4fbbc9cb534af3dc4f44db9895270334da8141f00"
+    },
+    {
+      "file": "luxluxshan-nvarc-plus.source.py",
+      "bytes": 56098,
+      "sha256": "3b0e738e2a5849fded438640c09057a627b2a64765618e6a10c325c18a9fe854"
+    },
+    {
+      "file": "madarshbb-b98k-v1.metadata.json",
+      "bytes": 919,
+      "sha256": "4d6d47a72d956b29d8cad56477c0593aab1f65b4e99230a55fcf31ba7622e5d1"
+    },
+    {
+      "file": "madarshbb-b98k-v1.source.py",
+      "bytes": 96369,
+      "sha256": "9f64e5575afc4c6125ebd50bb775cded6859895e5976c3a944285ceabaef813c"
+    },
+    {
+      "file": "merlin-manifest.json",
+      "bytes": 48194,
+      "sha256": "5b8704866680fd372b5f612e027dd8da172e618ab7d082c84a609e308e2a8617"
+    },
+    {
+      "file": "mikelou1-perfpatch-v2.metadata.json",
+      "bytes": 886,
+      "sha256": "066e6ef6dffef097361c2e7c0ac7b1e1789643047f0ba016fec0e19576985291"
+    },
+    {
+      "file": "mikelou1-perfpatch-v2.source.py",
+      "bytes": 38893,
+      "sha256": "9280e1a740ab60c9604be3cf3911c4b19ff856890227eec51ecda91cc3f6faa0"
+    },
+    {
+      "file": "qwen-forum-selected.json",
+      "bytes": 2373,
+      "sha256": "89810e9cab58ea9d0d45685b8890cd64159571143f33b937df29863d1ad5e05c"
+    },
+    {
+      "file": "qwen38-vllm0272-manifest.json",
+      "bytes": 39718,
+      "sha256": "c9a31a531c2ec9e703de936859906a2db2a78a8987419de744e2bd3c0e2861e1"
+    },
+    {
+      "file": "qwen38-vllm0272-requirements.txt",
+      "bytes": 3900,
+      "sha256": "ebb525ba1fda0bc955fc19fe06fa381dd994e5b9a26a6e154a7ecd923f85d133"
+    },
+    {
+      "file": "retrieval-metadata.json",
+      "bytes": 4736,
+      "sha256": "6652122d5e5365aefa9c89329f30ffb38bcda270a5c593f2e3cccd86d45e95ad"
+    },
+    {
+      "file": "russcore-freeform.metadata.json",
+      "bytes": 811,
+      "sha256": "585b6ff7744688dcb390b6db43f7f2eb1f74f651b5d3a1fec9b788431d5c8d4d"
+    },
+    {
+      "file": "russcore-freeform.source.py",
+      "bytes": 192827,
+      "sha256": "3141a30e93412e938cbee7c933c126196c4e172d6f73a46b647bbc04bf21f721"
+    },
+    {
+      "file": "vllm-pypi-versions.json",
+      "bytes": 5583,
+      "sha256": "10490ba16dc8c8b8f41f96add7508372e9f286135d723d31274af17a851c0c1a"
+    },
+    {
+      "file": "yusuketogashi-v101.metadata.json",
+      "bytes": 856,
+      "sha256": "c001f58092be86fbc0e78537215136eaa30996a855ee67ec337bffaa17de6d01"
+    },
+    {
+      "file": "yusuketogashi-v101.source.py",
+      "bytes": 44830,
+      "sha256": "4dafa6c83b4a5b672c454699a914d40c7f8c207cdbce1cba0ac7e22332e7d8e8"
+    }
+  ]
+}

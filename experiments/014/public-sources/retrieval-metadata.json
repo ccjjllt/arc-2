@@ -1,0 +1,116 @@
+{
+  "retrieved": "2026-10-17",
+  "dataset_metadata": [
+    {
+      "id": 12580225,
+      "ref": "nisshokuitsuki/qwen-merlin-h95-wheels",
+      "subtitle": "Offline cp312 wheels for halt95's Merlin vLLM 0.30 fork, built for sm89",
+      "creator_name": "amn",
+      "total_bytes": "3819416358",
+      "last_updated": "2026-10-14T10:24:17.013Z",
+      "download_count": 87,
+      "license_name": "Other (specified in description)",
+      "description": "Offline Python 3.12 (x86_64, manylinux) wheelhouse for halt95's Merlin engine: vLLM 0.30.0 plus the Flash-Next v2.5.2 patch series (https://github.com/halt95/qwen38-flash-next-3090s), with its two compiled extensions rebuilt for sm89 (L4) and a one-line patch that admits sm89 to the FP8 QSA KV reader (vllm-0.30.0+merlin252.sm89). The other 196 wheels are that release's pinned runtime (release/v2.5/requirements-pinned.txt) as unmodified cp312 wheels from PyPI: torch 2.13.0 (CUDA 13.0), triton 3.7.1, flashinfer-python 0.6.18.post1 and NVIDIA's CUDA 13 wheels.\n\nflashinfer-aot-sm89-sampling.so and flashinfer-aot-sm89-norm.so are FlashInfer 0.6.18.post1's sampling and norm JIT modules compiled for sm89; copied to ",
+      "owner_name": "amn",
+      "owner_ref": "nisshokuitsuki",
+      "title": "qwen-merlin-h95-wheels",
+      "view_count": 8,
+      "vote_count": 1,
+      "current_version_number": 1,
+      "usability_rating": 0.5,
+      "versions": [
+        {
+          "version_number": 1,
+          "creation_date": "2026-10-14T10:24:17.013Z",
+          "creator_name": "amn",
+          "creator_ref": "qwen-merlin-h95-wheels",
+          "version_notes": "Initial release",
+          "status": "Ready"
+        }
+      ],
+      "thumbnail_image_url": "https://storage.googleapis.com/kaggle-datasets-images/new-version-temp-images/default-backgrounds-46.png-14000652/dataset-thumbnail.png"
+    },
+    {
+      "id": 11654954,
+      "ref": "nick2187/qwen38-vllm0272-cu130-wheelhouse-v1",
+      "subtitle": "",
+      "creator_name": "Nick2187",
+      "total_bytes": "4901033657",
+      "last_updated": "2026-08-14T15:50:25.417Z",
+      "download_count": 42,
+      "license_name": "Unknown",
+      "description": "",
+      "owner_name": "Nick2187",
+      "owner_ref": "nick2187",
+      "title": "qwen38-vllm0272-cu130-wheelhouse-v1",
+      "view_count": 20,
+      "current_version_number": 1,
+      "usability_rating": 0.125,
+      "versions": [
+        {
+          "version_number": 1,
+          "creation_date": "2026-08-14T15:50:25.417Z",
+          "creator_name": "Nick2187",
+          "creator_ref": "qwen38-vllm0272-cu130-wheelhouse-v1",
+          "version_notes": "Initial release",
+          "status": "Ready"
+        }
+      ],
+      "thumbnail_image_url": "https://storage.googleapis.com/kaggle-datasets-images/new-version-temp-images/default-backgrounds-17.png-19071211/dataset-thumbnail.png"
+    }
+  ],
+  "notebooks": [
+    {
+      "ref": "madarshbb/arc-agent-sub-q38-direct-b98k-c16-792ef9",
+      "version": 1,
+      "id": 138627466,
+      "outputs": 0,
+      "docker": "gcr.io/kaggle-images/python@sha256:e5452ce6268c2e8345cfe5141f31ca7ff47032aca46a7ea532bbb87481281d0c"
+    },
+    {
+      "ref": "mikelou1/arc-agi2-lb33-89-minimal-perfpatch",
+      "version": 2,
+      "id": 127096220,
+      "outputs": 0,
+      "docker": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868"
+    },
+    {
+      "ref": "yusuketogashi/arc-baseline-rebuild",
+      "version": 101,
+      "id": 127537314,
+      "outputs": 0,
+      "docker": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461"
+    }
+  ],
+  "agentic_metadata": {
+    "id": 138071398,
+    "ref": "khoinguyennguyen/arc-agi-2-agentic-multi-turn-reasoning",
+    "title": "ARC-AGI 2 Agentic Multi-turn Reasoning ",
+    "author": "The Silverhead Engineer",
+    "slug": "arc-agi-2-agentic-multi-turn-reasoning",
+    "last_run_time": "2026-10-14T02:32:37.303411500Z",
+    "language": "python",
+    "kernel_type": "notebook",
+    "is_private": false,
+    "enable_gpu": true,
+    "enable_internet": false,
+    "category_ids": [
+      "gpu"
+    ],
+    "dataset_data_sources": [
+      "mirzamilanfarabi/arc3-vllm-h100-wheelhouse-v3"
+    ],
+    "competition_data_sources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "total_votes": 10,
+    "model_data_sources": [
+      "zerabytex/qwen-3-6-35b-a3b-fp8/Transformers/default/1",
+      "mikedan7/qwen3-8-27b-fp8-official/PyTorch/hf-fp8/1"
+    ],
+    "enable_tpu": false,
+    "current_version_number": 8,
+    "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+    "machine_shape": "NvidiaL4"
+  }
+}
