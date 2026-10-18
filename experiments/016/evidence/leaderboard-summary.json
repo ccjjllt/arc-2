@@ -1,0 +1,52 @@
+{
+  "download_at_utc": "2026-10-18T10:34:12Z",
+  "source": "Kaggle official API public leaderboard download",
+  "archive_sha256": "1d0ebbe2c523ae98dd173ce42f67078bf455c99b0c4f5c335f8e1b219fee7861",
+  "csv_name": "arc-prize-2026-arc-agi-2-publicleaderboard-2026-10-18T10:34:12.csv",
+  "csv_row_count": 3020,
+  "competition_metadata_team_count": 3019,
+  "count_note": "两个官方接口快照计数差1，保留差异；两者金牌公式均为16。",
+  "team": {
+    "Rank": "1015",
+    "TeamId": "17139277",
+    "TeamName": "jiyujia",
+    "LastSubmissionDate": "2026-10-12 09:56:36",
+    "Score": "30.14",
+    "SubmissionCount": "8",
+    "TeamMemberUserNames": "ccjjllt,jiyujia"
+  },
+  "rank_references": [
+    {
+      "Rank": "1",
+      "TeamId": "16756524",
+      "TeamName": "Tufa Labs",
+      "LastSubmissionDate": "2026-10-17 10:24:27",
+      "Score": "88.06",
+      "SubmissionCount": "54",
+      "TeamMemberUserNames": "driessmit1,jeroencottaar,pressman1,stefano1283"
+    },
+    {
+      "Rank": "8",
+      "TeamId": "15526034",
+      "TeamName": "ARC Raiders",
+      "LastSubmissionDate": "2026-10-17 02:56:19",
+      "Score": "68.33",
+      "SubmissionCount": "77",
+      "TeamMemberUserNames": "dzjiann,keithtyser,mitubant,ngyzly"
+    },
+    {
+      "Rank": "16",
+      "TeamId": "16505371",
+      "TeamName": "guoqin gu",
+      "LastSubmissionDate": "2026-10-17 19:17:24",
+      "Score": "61.81",
+      "SubmissionCount": "4",
+      "TeamMemberUserNames": "guoqingu"
+    }
+  ],
+  "gold_reference_count": 16,
+  "gold_source": "https://www.kaggle.com/progression/competitions",
+  "score_gap_to_current_rank16": 31.67,
+  "score_gap_to_current_rank8": 38.19,
+  "not_final_cutoff": true
+}

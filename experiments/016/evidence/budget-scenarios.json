@@ -1,0 +1,137 @@
+{
+  "method": "CPU scenario arithmetic, not hidden run measurement",
+  "long_request_measured": {
+    "P6_high_wall_s": 4106.13,
+    "P6_low_wall_s": 2234.37,
+    "queries": 6,
+    "setup_s": 658.3
+  },
+  "linear_extrapolation": [
+    {
+      "queries": 240,
+      "high_h": 45.807,
+      "low_h": 25.009,
+      "both_h": 70.633
+    },
+    {
+      "queries": 280,
+      "high_h": 53.41,
+      "low_h": 29.147,
+      "both_h": 82.375
+    },
+    {
+      "queries": 340,
+      "high_h": 64.816,
+      "low_h": 35.353,
+      "both_h": 99.987
+    }
+  ],
+  "deployment_envelope": [
+    {
+      "assumed_effective_aggregate_tok_s": 65,
+      "queries": 240,
+      "generation_wall_budget_h": 10.5,
+      "total_8192_token_slots": 299,
+      "full_first_pass_possible_by_arithmetic": true,
+      "extra_second_slots_after_first_pass": 59,
+      "one_8192_pass_generation_h": 8.402,
+      "two_8192_passes_generation_h": 16.804
+    },
+    {
+      "assumed_effective_aggregate_tok_s": 65,
+      "queries": 280,
+      "generation_wall_budget_h": 10.5,
+      "total_8192_token_slots": 299,
+      "full_first_pass_possible_by_arithmetic": true,
+      "extra_second_slots_after_first_pass": 19,
+      "one_8192_pass_generation_h": 9.802,
+      "two_8192_passes_generation_h": 19.605
+    },
+    {
+      "assumed_effective_aggregate_tok_s": 65,
+      "queries": 340,
+      "generation_wall_budget_h": 10.5,
+      "total_8192_token_slots": 299,
+      "full_first_pass_possible_by_arithmetic": false,
+      "extra_second_slots_after_first_pass": 0,
+      "one_8192_pass_generation_h": 11.903,
+      "two_8192_passes_generation_h": 23.806
+    },
+    {
+      "assumed_effective_aggregate_tok_s": 75,
+      "queries": 240,
+      "generation_wall_budget_h": 10.5,
+      "total_8192_token_slots": 346,
+      "full_first_pass_possible_by_arithmetic": true,
+      "extra_second_slots_after_first_pass": 106,
+      "one_8192_pass_generation_h": 7.282,
+      "two_8192_passes_generation_h": 14.564
+    },
+    {
+      "assumed_effective_aggregate_tok_s": 75,
+      "queries": 280,
+      "generation_wall_budget_h": 10.5,
+      "total_8192_token_slots": 346,
+      "full_first_pass_possible_by_arithmetic": true,
+      "extra_second_slots_after_first_pass": 66,
+      "one_8192_pass_generation_h": 8.495,
+      "two_8192_passes_generation_h": 16.991
+    },
+    {
+      "assumed_effective_aggregate_tok_s": 75,
+      "queries": 340,
+      "generation_wall_budget_h": 10.5,
+      "total_8192_token_slots": 346,
+      "full_first_pass_possible_by_arithmetic": true,
+      "extra_second_slots_after_first_pass": 6,
+      "one_8192_pass_generation_h": 10.316,
+      "two_8192_passes_generation_h": 20.632
+    },
+    {
+      "assumed_effective_aggregate_tok_s": 85,
+      "queries": 240,
+      "generation_wall_budget_h": 10.5,
+      "total_8192_token_slots": 392,
+      "full_first_pass_possible_by_arithmetic": true,
+      "extra_second_slots_after_first_pass": 152,
+      "one_8192_pass_generation_h": 6.425,
+      "two_8192_passes_generation_h": 12.85
+    },
+    {
+      "assumed_effective_aggregate_tok_s": 85,
+      "queries": 280,
+      "generation_wall_budget_h": 10.5,
+      "total_8192_token_slots": 392,
+      "full_first_pass_possible_by_arithmetic": true,
+      "extra_second_slots_after_first_pass": 112,
+      "one_8192_pass_generation_h": 7.496,
+      "two_8192_passes_generation_h": 14.992
+    },
+    {
+      "assumed_effective_aggregate_tok_s": 85,
+      "queries": 340,
+      "generation_wall_budget_h": 10.5,
+      "total_8192_token_slots": 392,
+      "full_first_pass_possible_by_arithmetic": true,
+      "extra_second_slots_after_first_pass": 52,
+      "one_8192_pass_generation_h": 9.102,
+      "two_8192_passes_generation_h": 18.204
+    }
+  ],
+  "limitations": [
+    "Hidden query count is unknown; 240 is task count and lower-bound query scenario.",
+    "65/75/85 are sensitivity scenarios, not measured from new budgeted policy.",
+    "015 low-arm measured approximately75–87aggregate tok/s; high-armC4 not yet measured.",
+    "10.5h generation+0.5h setup leaves1h runtime margin; no guarantee prefill/cache behavior scales.",
+    "All phase costs including program feedback and fallback must share12h."
+  ],
+  "quota_plan": {
+    "account": "ccjjllt",
+    "remaining_hours": 21.859087499999998,
+    "reserve_hours": 6,
+    "planned_max_session_h_before_refresh": 6.895,
+    "planning_multiplier": 2.3,
+    "official_multiplier": 2,
+    "do_not_combine_accounts": true
+  }
+}

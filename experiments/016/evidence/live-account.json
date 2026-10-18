@@ -1,0 +1,75 @@
+{
+  "queried_at_utc": "2026-10-18T10:34:09.108653+00:00",
+  "account": "ccjjllt",
+  "gpu_quota": {
+    "total_seconds": 108000.0,
+    "used_seconds": 29307.285,
+    "reserved_seconds": 0.0,
+    "remaining_hours": 21.859087499999998,
+    "refresh": "2026-10-24T00:00:00"
+  },
+  "submission_limits": {
+    "num_today": 0,
+    "num_total": 8,
+    "num_allowed_now": 1,
+    "limited_by_total": false
+  },
+  "submissions": [
+    {
+      "ref": "57103498",
+      "date": "2026-10-12 09:56:36.720000",
+      "status": "SubmissionStatus.COMPLETE",
+      "public_score": "25.69",
+      "private_score": ""
+    },
+    {
+      "ref": "52379974",
+      "date": "2026-05-06 07:44:23.877000",
+      "status": "SubmissionStatus.COMPLETE",
+      "public_score": "27.92",
+      "private_score": ""
+    },
+    {
+      "ref": "52267289",
+      "date": "2026-05-02 16:27:45.827000",
+      "status": "SubmissionStatus.COMPLETE",
+      "public_score": "29.72",
+      "private_score": ""
+    },
+    {
+      "ref": "52166443",
+      "date": "2026-04-29 11:41:33.787000",
+      "status": "SubmissionStatus.COMPLETE",
+      "public_score": "28.19",
+      "private_score": ""
+    },
+    {
+      "ref": "52116910",
+      "date": "2026-04-28 01:56:33.943000",
+      "status": "SubmissionStatus.COMPLETE",
+      "public_score": "27.36",
+      "private_score": ""
+    },
+    {
+      "ref": "52089422",
+      "date": "2026-04-27 06:48:57.117000",
+      "status": "SubmissionStatus.COMPLETE",
+      "public_score": "0.83",
+      "private_score": ""
+    },
+    {
+      "ref": "52072735",
+      "date": "2026-04-26 17:02:33.323000",
+      "status": "SubmissionStatus.COMPLETE",
+      "public_score": "30.14",
+      "private_score": ""
+    },
+    {
+      "ref": "51954464",
+      "date": "2026-04-23 02:35:59.440000",
+      "status": "SubmissionStatus.COMPLETE",
+      "public_score": "25.69",
+      "private_score": ""
+    }
+  ]
+}
