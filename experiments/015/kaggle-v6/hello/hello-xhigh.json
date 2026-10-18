@@ -1,0 +1,42 @@
+{
+ "phase": "hello",
+ "query": null,
+ "arm": null,
+ "request": {
+  "effort": "xhigh",
+  "seed": 1001,
+  "max_tokens": 4096,
+  "sampling": {
+   "temperature": 1.0,
+   "top_p": 0.95,
+   "top_k": 20
+  },
+  "stream_options": {
+   "include_usage": true
+  },
+  "chat_template_kwargs": {
+   "enable_thinking": true,
+   "reasoning_effort": "xhigh"
+  }
+ },
+ "finish_reason": "stop",
+ "usage": {
+  "prompt_tokens": 56,
+  "total_tokens": 93,
+  "completion_tokens": 37
+ },
+ "wall_s": 1.8,
+ "ttft_s": 0.48,
+ "agg_tok_s": 20.23,
+ "client_error": null,
+ "cancelled_by_client": null,
+ "generation_observed": true,
+ "protocol_complete": true,
+ "valid_answer": false,
+ "usage_present": true,
+ "answered": false,
+ "grid": null,
+ "content_chars": 7,
+ "reasoning_chars": 122,
+ "status": null
+}

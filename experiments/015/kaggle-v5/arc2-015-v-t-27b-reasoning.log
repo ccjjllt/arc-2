@@ -1,0 +1,30 @@
+[{"stream_name":"stderr","time":8.772363729,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":8.772401781,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":9.985822118,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.985839923,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.985842522,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.985844784,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":10.760033984,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":10.760055117,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":10.760057972,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":10.760060004,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":12.231778101,"data":"PY312 Python 3.12.3\n"}
+,{"stream_name":"stdout","time":12.23237768,"data":"{\"event\": \"boot\", \"source_sha256\": {\"vdriver.py\": \"58af50caa4e9ce0cfc121f7623698fbdebf916c452023798cdea8572cef58bb4\", \"run_reasoning_probe.py\": \"af29f0419d90dda6cfa1df0753884cc7ea609ebea25d9527989f4c5246d64be6\", \"p2-prompts.json\": \"9f0c23dc53994fc21a937ebfc1ea51d11af4377281ed07fa44bdcb723854dd83\", \"p6-extra-prompts.json\": \"76f3b6324e4ee28bebc12b63f2e0d6834e6c65883beb0090892c1f7940eeb572\"}, \"py312\": \"Python 3.12.3\", \"python\": \"3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]\", \"notebook_started\": 1792307379.5010338, \"session_seconds\": 15200}\n"}
+,{"stream_name":"stdout","time":12.707970227,"data":"[vdriver 07:09:40] env: {\"python\": \"3.12.3\", \"nvidia_smi\": \"NVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\", \"pip_pkgs\": {}}\n"}
+,{"stream_name":"stdout","time":12.909591327,"data":"[vdriver 07:09:40] env: {\"python\": \"3.12.3\", \"nvidia_smi\": \"NVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\", \"pip_pkgs\": {}}\n"}
+,{"stream_name":"stdout","time":35.343765222,"data":"[vdriver 07:10:02] no pip for 3.12; trying stdlib ensurepip ...\n"}
+,{"stream_name":"stdout","time":35.38825429,"data":"[vdriver 07:10:02] pip install explicit vllm wheel + runtime requirements\n"}
+,{"stream_name":"stdout","time":35.545796286,"data":"[vdriver 07:10:02] no pip for 3.12; trying stdlib ensurepip ...\n"}
+,{"stream_name":"stdout","time":35.5458159,"data":"[vdriver 07:10:02] pip install explicit vllm wheel + runtime requirements\n"}
+,{"stream_name":"stdout","time":321.276735561,"data":"[vdriver 07:14:48] EVIDENCE-EXIT status=install_failed\n"}
+,{"stream_name":"stdout","time":321.332029319,"data":"[vdriver 07:14:48] EVIDENCE-EXIT status=install_failed\n"}
+,{"stream_name":"stdout","time":321.332056775,"data":"VDRIVER_RETURN_CODE 0\n"}
+,{"stream_name":"stderr","time":323.908351045,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":323.90838264,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":324.098970493,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":324.098988183,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":324.993127719,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":325.069413366,"data":"[NbConvertApp] Writing 126493 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":327.716352339,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":328.238816317,"data":"[NbConvertApp] Writing 406232 bytes to __results__.html\n"}
+]

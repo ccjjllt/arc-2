@@ -1,0 +1,1 @@
+The user is asking me to return [[1]]. This is a straightforward request - they want me to output the literal text [[1]].

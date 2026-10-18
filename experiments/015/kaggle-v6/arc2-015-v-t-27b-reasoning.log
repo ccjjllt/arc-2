@@ -1,0 +1,58 @@
+[{"stream_name":"stderr","time":6.293810957,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.293849417,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.179619946,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.179639586,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.179642335,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.17964448,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.785134902,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.785156563,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.78515926,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.785161447,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":8.960008444,"data":"PY312 Python 3.12.3\n"}
+,{"stream_name":"stdout","time":8.960705012,"data":"{\"event\": \"boot\", \"source_sha256\": {\"vdriver.py\": \"08e0d169219f10a8d37e378a0b8d4aeb7f221c850a20cd1672ad0293ce0fe3f2\", \"run_reasoning_probe.py\": \"af29f0419d90dda6cfa1df0753884cc7ea609ebea25d9527989f4c5246d64be6\", \"p2-prompts.json\": \"9f0c23dc53994fc21a937ebfc1ea51d11af4377281ed07fa44bdcb723854dd83\", \"p6-extra-prompts.json\": \"76f3b6324e4ee28bebc12b63f2e0d6834e6c65883beb0090892c1f7940eeb572\"}, \"py312\": \"Python 3.12.3\", \"python\": \"3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]\", \"notebook_started\": 1792308006.5400503, \"session_seconds\": 15000}\n"}
+,{"stream_name":"stdout","time":9.289839845,"data":"[vdriver 07:20:06] env: {\"python\": \"3.12.3\", \"nvidia_smi\": \"NVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\", \"pip_pkgs\": {}}\n"}
+,{"stream_name":"stdout","time":9.49135681,"data":"[vdriver 07:20:06] env: {\"python\": \"3.12.3\", \"nvidia_smi\": \"NVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\", \"pip_pkgs\": {}}\n"}
+,{"stream_name":"stdout","time":12.642966151,"data":"[vdriver 07:20:10] no pip for 3.12; trying stdlib ensurepip ...\n"}
+,{"stream_name":"stdout","time":12.68591301,"data":"[vdriver 07:20:10] pip install runtime requirements, then vllm wheel --no-deps\n"}
+,{"stream_name":"stdout","time":12.844913639,"data":"[vdriver 07:20:10] no pip for 3.12; trying stdlib ensurepip ...\n"}
+,{"stream_name":"stdout","time":12.844930485,"data":"[vdriver 07:20:10] pip install runtime requirements, then vllm wheel --no-deps\n"}
+,{"stream_name":"stdout","time":267.348239188,"data":"[vdriver 07:24:24] import vllm rc=0 out=0.27.2rc1.dev91+g1f7427bc0\n"}
+,{"stream_name":"stdout","time":267.348276367,"data":"/kaggle/working/vprobe/site/vllm/__init__.py\n"}
+,{"stream_name":"stdout","time":267.348280497,"data":"2.13.0+cu130 \n"}
+,{"stream_name":"stdout","time":267.552099245,"data":"[vdriver 07:24:24] import vllm rc=0 out=0.27.2rc1.dev91+g1f7427bc0\n"}
+,{"stream_name":"stdout","time":267.552128076,"data":"/kaggle/working/vprobe/site/vllm/__init__.py\n"}
+,{"stream_name":"stdout","time":267.552131349,"data":"2.13.0+cu130 \n"}
+,{"stream_name":"stdout","time":267.681335912,"data":"[vdriver 07:24:25] template xhigh/low differ\n"}
+,{"stream_name":"stdout","time":267.686104955,"data":"[probe 07:24:25] libcuda hits: ['/usr/local/nvidia/lib64/libcuda.so', '/usr/local/nvidia/lib64/libcuda.so.1', '/usr/local/nvidia/lib64/libcuda.so.580.178.04', '/usr/local/cuda/compat/libcuda.so']\n"}
+,{"stream_name":"stdout","time":267.686208633,"data":"[probe 07:24:25] serve: /usr/bin/python3.12 -m vllm.entrypoints.openai.api_server --model /kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1 --served-model-name qwen --host 127.0.0.1 --port 1234 --tensor-parallel-size 4 --max-model-len 65536 --gpu-memory-utilization 0.9 --max-num-seqs 4 --enable-prefix-caching --reasoning-parser qwen3 --language-model-only\n"}
+,{"stream_name":"stdout","time":267.883451116,"data":"[vdriver 07:24:25] template xhigh/low differ\n"}
+,{"stream_name":"stdout","time":267.883478194,"data":"[probe 07:24:25] libcuda hits: ['/usr/local/nvidia/lib64/libcuda.so', '/usr/local/nvidia/lib64/libcuda.so.1', '/usr/local/nvidia/lib64/libcuda.so.580.178.04', '/usr/local/cuda/compat/libcuda.so']\n"}
+,{"stream_name":"stdout","time":267.883482984,"data":"[probe 07:24:25] serve: /usr/bin/python3.12 -m vllm.entrypoints.openai.api_server --model /kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1 --served-model-name qwen --host 127.0.0.1 --port 1234 --tensor-parallel-size 4 --max-model-len 65536 --gpu-memory-utilization 0.9 --max-num-seqs 4 --enable-prefix-caching --reasoning-parser qwen3 --language-model-only\n"}
+,{"stream_name":"stdout","time":667.733485233,"data":"[probe 07:31:05] server ready after 400s\n"}
+,{"stream_name":"stdout","time":667.733654059,"data":"[vdriver 07:31:05] server up, install_load_s=658.5\n"}
+,{"stream_name":"stdout","time":667.937452288,"data":"[probe 07:31:05] server ready after 400s\n"}
+,{"stream_name":"stdout","time":667.937473909,"data":"[vdriver 07:31:05] server up, install_load_s=658.5\n"}
+,{"stream_name":"stdout","time":669.563707521,"data":"[vdriver 07:31:07] hello-xhigh: finish=stop usage={'prompt_tokens': 56, 'total_tokens': 93, 'completion_tokens': 37} valid=False err=None\n"}
+,{"stream_name":"stdout","time":669.765788098,"data":"[vdriver 07:31:07] hello-xhigh: finish=stop usage={'prompt_tokens': 56, 'total_tokens': 93, 'completion_tokens': 37} valid=False err=None\n"}
+,{"stream_name":"stdout","time":670.935439058,"data":"[vdriver 07:31:08] hello-low: finish=stop usage={'prompt_tokens': 44, 'total_tokens': 76, 'completion_tokens': 32} valid=False err=None\n"}
+,{"stream_name":"stdout","time":671.137581609,"data":"[vdriver 07:31:08] hello-low: finish=stop usage={'prompt_tokens': 44, 'total_tokens': 76, 'completion_tokens': 32} valid=False err=None\n"}
+,{"stream_name":"stdout","time":672.638601854,"data":"[vdriver 07:31:10] wave-wave-0: finish=stop wall=1.7 tok/s=21.06 valid=False err=None\n"}
+,{"stream_name":"stdout","time":672.638770803,"data":"[vdriver 07:31:10] wave-wave-1: finish=stop wall=1.6 tok/s=21.02 valid=False err=None\n"}
+,{"stream_name":"stdout","time":672.638981263,"data":"[vdriver 07:31:10] wave-wave-2: finish=stop wall=1.7 tok/s=21.17 valid=False err=None\n"}
+,{"stream_name":"stdout","time":672.639245019,"data":"[vdriver 07:31:10] wave-wave-3: finish=stop wall=1.6 tok/s=21.02 valid=False err=None\n"}
+,{"stream_name":"stdout","time":672.84078588,"data":"[vdriver 07:31:10] wave-wave-0: finish=stop wall=1.7 tok/s=21.06 valid=False err=None\n"}
+,{"stream_name":"stdout","time":672.840817412,"data":"[vdriver 07:31:10] wave-wave-1: finish=stop wall=1.6 tok/s=21.02 valid=False err=None\n"}
+,{"stream_name":"stdout","time":672.840832361,"data":"[vdriver 07:31:10] wave-wave-2: finish=stop wall=1.7 tok/s=21.17 valid=False err=None\n"}
+,{"stream_name":"stdout","time":672.84083468,"data":"[vdriver 07:31:10] wave-wave-3: finish=stop wall=1.6 tok/s=21.02 valid=False err=None\n"}
+,{"stream_name":"stdout","time":680.81463558,"data":"[vdriver 07:31:18] EVIDENCE-EXIT status=recheck_not_admitted\n"}
+,{"stream_name":"stdout","time":680.880973689,"data":"[vdriver 07:31:18] EVIDENCE-EXIT status=recheck_not_admitted\n"}
+,{"stream_name":"stdout","time":680.880994992,"data":"VDRIVER_RETURN_CODE 0\n"}
+,{"stream_name":"stderr","time":683.345295317,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":683.345317514,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":683.507524231,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":683.507547862,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":684.334574838,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":684.412143166,"data":"[NbConvertApp] Writing 129862 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":686.998466983,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":687.523624569,"data":"[NbConvertApp] Writing 409527 bytes to __results__.html\n"}
+]

@@ -4,17 +4,17 @@
 
 比赛：[Kaggle ARC Prize 2026 — ARC-AGI-2](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview)。
 
-**下一轮交接**：[015 — Qwen3.8-27B完整推理与程序反馈研究](docs/plan/015-qwen38-reasoning-research.md)。继承已完成的4B负结果，补装vLLM后集中研究完整思考与新增正确答案；不扩建门控、测试或工程体系。015尚未实施。
+**当前进展**：[015 — Qwen3.8-27B完整推理](docs/progress/015-qwen38-reasoning-research.md)。version 7 在冻结 P6 上 T-high 与 T-low 的 query EM@2 都是 1/6，命中题不同。14/18 次调用在 token 上限截断且最终通道为空。这不是公榜分。公榜队伍分仍是 30.14（第 1013/3015）。
 
 历史试提交：[用户指定 Notebook 版本 314617319](https://www.kaggle.com/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319)。用户说明 30.14 分来自未修改的公开方案复制提交，不作为自主研究效果，也不限定后续方向。
 
-**当前入口（2026-10-18）**：[014执行复核](docs/progress/014-regression-and-reasoning.md)、[014实验交接](docs/plan/014-regression-and-reasoning.md)。用户已完成4B R v4：同700秒预算下R0/R1均2/6，原始候选oracle也均2/6，没有评分/选解丢失，结束本轮4B扩算。27B V v4虽标COMPLETE，实际在`import_vllm_failed`退出，尚无模型生成；先定位导入错误并修计量、截止和Notebook打包问题。当前CLI身份ccjjllt剩23.443896配额小时、reserved0；R/V所有者jiyujia的历史余额不混用。已有正式提交仍为历史30.14与4B备用25.69，无新公榜成绩。主C6未动，981571dc已退出未见备用确认资格。
+**当前入口（2026-10-18 18:23 北京）**：[015进展](docs/progress/015-qwen38-reasoning-research.md)。4B R 已结束。27B version 7 已跑完，P6 上两臂各 1/6。jiyujia 结束后剩 12.94 配额小时。主 C6 未动。
 
 [012实际进展](docs/progress/012-kernel-program-completion.md)记录上一轮：K短探针不采用快速后端；P-v2四次均3072 token截断，没有完整程序或实际执行，D/L各0/2，已按预定止损结束。历史配额快照不替代013的最新查询。
 
 [011实际进展](docs/progress/011-budget-efficient-adaptation.md)记录已完成结果：F0-25 P12为0/14，多视角完整配对0/5；TTT每题4次真实更新后，A0/A4仍均0/2。程序4次均耗尽1536 token、未产出代码，repair实际0次。10月11日15:00北京时间账户快照剩15.23138配额小时、reserved=0；未来开机前重查，保留至少6小时。无新比赛分数，C6/C12确认未运行；首GPU v1的取消原因和成本保留。
 
-**下一步**：V的直接错误已定位为漏装vLLM本体，现有wheelhouse已包含固定主wheel；显式安装它，同时修流式token计量、总截止和协议准入，重打包后仅做一次有限服务复验。得到真实生成和吞吐后，进入既定P2的xhigh1×32K/low2×16K，再依信号扩P6/P12。R不重跑、R2不启动、不扩大无信号训练，暂不新增提交。比赛最后提交北京时间11月3日07:59；内部目标10月29–30日前冻结并提交最终候选，给排队与修复留余量。
+**下一步**：27B 的完整思考已经能给出个别正确网格，但 32K/16K 上限下多数调用没有最终通道。不再用同一上限扩 P12。若继续这台模型，先研究怎样在同样输出预算内写出最终网格。R 不重跑。比赛最后提交北京时间 11 月 3 日 07:59。
 
 ## 研究文档
 
@@ -34,7 +34,7 @@
 | 012 GDN推理提速与程序完成性 | [plan/012-kernel-program-completion.md](docs/plan/012-kernel-program-completion.md) | [progress/012-kernel-program-completion.md](docs/progress/012-kernel-program-completion.md)；K不采用快速后端；P-v2四次3072 token截断，无完整程序，D/L各0/2；结束本轮，保留配额 |
 | 013 奖牌目标、提交策略与27B推理研究 | [plan/013-submission-strategy.md](docs/plan/013-submission-strategy.md) | [progress/013-submission-strategy.md](docs/progress/013-submission-strategy.md)；4B诊断2/4，正式提交57103498公榜25.69；27B依赖CPU核对完成 |
 | 014 退分归因与27B完整推理 | [plan/014-regression-and-reasoning.md](docs/plan/014-regression-and-reasoning.md) | [progress/014-regression-and-reasoning.md](docs/progress/014-regression-and-reasoning.md)；R v4两臂2/6、无oracle新增，结束4B扩算；V v4导入失败，先修运行与计量，T尚未开始 |
-| 015 完整推理与程序反馈研究交接 | [plan/015-qwen38-reasoning-research.md](docs/plan/015-qwen38-reasoning-research.md) | 交接已写；修正与新实验未运行 |
+| 015 完整推理与程序反馈 | [plan/015-qwen38-reasoning-research.md](docs/plan/015-qwen38-reasoning-research.md) | [progress/015-qwen38-reasoning-research.md](docs/progress/015-qwen38-reasoning-research.md)；P6 两臂各 1/6，多数调用截断 |
 
 ## Kaggle 操作链（2026-09-29 实测结论）
 

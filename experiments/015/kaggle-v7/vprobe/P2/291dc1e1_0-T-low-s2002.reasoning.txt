@@ -1,0 +1,1185 @@
+Let me analyze the ARC puzzles to understand the transformation rule.
+
+Looking at the demos:
+
+**Demo 1:** Input is 20x8, output is 12x6.
+The input has a border (0s on top, 1s on left, 2s on top-right, 8s as background) containing rectangular blocks of colors.
+
+Let me identify the blocks in Demo 1 input:
+- 4 4 block at rows 2-3, cols 2-3
+- 9 9 block at rows 2-3, cols 5-6
+- 6 6 block at rows 6-9, cols 2-3
+- 4 4 block at rows 6-7, cols 5-6
+- 6 6 block at rows 10-11, cols 2-3
+- 4 7 block at rows 10-11, cols 5-6
+- 7 7 block at rows 12-15, cols 5-6
+- 3 6 block at rows 14-15, cols 2-3
+- 3 3 block at rows 16-17, cols 2-3
+
+Wait, let me re-read the input more carefully.
+
+Demo 1 input (20x8):
+Row 0: 0 2 2 2 2 2 2 2
+Row 1: 1 8 8 8 8 8 8 8
+Row 2: 1 8 4 4 8 9 9 8
+Row 3: 1 8 4 4 8 9 9 8
+Row 4: 1 8 8 8 8 8 8 8
+Row 5: 1 8 8 8 8 8 8 8
+Row 6: 1 8 1 6 8 4 4 8
+Row 7: 1 8 2 6 8 4 4 8
+Row 8: 1 8 6 6 8 8 8 8
+Row 9: 1 8 6 6 8 8 8 8
+Row 10: 1 8 6 6 8 4 7 8
+Row 11: 1 8 6 6 8 7 4 8
+Row 12: 1 8 8 8 8 7 7 8
+Row 13: 1 8 8 8 8 7 7 8
+Row 14: 1 8 3 6 8 7 7 8
+Row 15: 1 8 3 6 8 7 7 8
+Row 16: 1 8 3 3 8 8 8 8
+Row 17: 1 8 3 3 8 8 8 8
+Row 18: 1 8 8 8 8 8 8 8
+Row 19: 1 8 8 8 8 8 8 8
+
+Wait, there's a '1' at row 6, col 2 and '2' at row 7, col 2. Those are not 8s or block colors. Let me reconsider.
+
+Actually, looking more carefully, the border is 0 (top), 1 (left), 2 (right-top), and 8 is the background inside. The blocks are rectangles of uniform color.
+
+But wait, row 6 col 2 is '1' and row 7 col 2 is '2'. Those seem like anomalies or part of the border? No, they're inside the grid.
+
+Hmm, let me reconsider. Maybe those are just part of the block patterns. Let me look at the output to understand.
+
+Demo 1 output (12x6):
+Row 0: 8 8 4 4 8 8
+Row 1: 8 8 4 4 8 8
+Row 2: 6 6 6 6 6 6
+Row 3: 1 2 6 6 6 6
+Row 4: 8 6 6 3 3 8
+Row 5: 8 3 3 3 3 8
+Row 6: 8 8 9 9 8 8
+Row 7: 8 8 9 9 8 8
+Row 8: 8 8 4 4 8 8
+Row 9: 8 8 4 4 8 8
+Row 10: 7 4 7 7 7 7
+Row 11: 4 7 7 7 7 7
+
+So the output seems to be the blocks rearranged. Let me identify the blocks in the input and see how they map to the output.
+
+Blocks in Demo 1 input (within the 8-background area, cols 1-6, rows 1-19):
+1. 4x2 block at (2,2)-(3,3) - a 2x2 block of 4s
+2. 9x2 block at (2,5)-(3,6) - a 2x2 block of 9s
+3. 6x4 block at (6,2)-(9,3) - but wait, row 6 col 2 is '1' and row 7 col 2 is '2'
+
+Hmm, that's tricky. Let me reconsider what counts as a "block."
+
+Actually, I think the rule might be different. Let me look at the sizes.
+
+In Demo 1, the input inner area (removing border) is 18x6 (rows 1-18, cols 1-6). Wait no, the border is row 0 (top), col 0 (left), and the last column? No, looking again:
+
+Row 0: 0 2 2 2 2 2 2 2 - this is the top border
+Col 0: all 1s (except row 0 which is 0)
+The right side: col 7 is all 8s
+
+So the inner area is rows 1-19, cols 1-6, which is 19x6. But the output is 12x6.
+
+Wait, let me reconsider the border. In Demo 2:
+Row 0: 0 1 1 1 1 1 1 1 1 1 1
+Col 0: all 2s (except row 0 which is 0)
+So border is: top row has 0 then 1s, left col has 2s.
+
+In Demo 3:
+Row 0: 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+Col 0: all 2s (except row 0 which is 0)
+
+In Demo 4:
+Row 0: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0
+Col 0: all 8s (except row 0)
+Last col: all 2s
+
+So the border pattern varies. In Demo 4, the 0 is at top-right, 1s are on top, 8s on left, 2s on right.
+
+Let me focus on identifying the blocks and the transformation.
+
+In Demo 2, the inner area (rows 1-7, cols 1-10) is 7x10.
+Blocks:
+- 3x2 at (2,2)-(3,3): 2x2 of 3s
+- 4x4 at (2,6)-(3,9): 2x4 of 4s
+- 6x2 at (5,2)-(6,3): 2x2 of 6s
+- 9x2 at (5,6)-(6,7): 2x2 of 9s
+
+Output is 8x4:
+Row 0: 8 3 3 8
+Row 1: 8 3 3 8
+Row 2: 4 4 4 4
+Row 3: 4 4 4 4
+Row 4: 8 6 6 8
+Row 5: 8 6 6 8
+Row 6: 8 9 9 8
+Row 7: 8 9 9 8
+
+So the 2x2 block of 3s stays 2x2. The 2x4 block of 4s stays 2x4. The 2x2 block of 6s stays 2x2. The 2x2 block of 9s stays 2x2.
+
+The output width is 4 (the max block width). The blocks are arranged vertically, each centered or left-aligned in the output.
+
+Wait, the 4s block is 2x4 and fills the full width. The others are 2x2 and are centered (with 8 on each side).
+
+Output height is 8 = 2+2+2+2 (sum of block heights).
+
+Now let me check the ordering. In the input:
+- Top row: 3s (left) and 4s (right)
+- Bottom row: 6s (left) and 9s (right)
+
+In the output:
+- 3s first
+- 4s second
+- 6s third
+- 9s fourth
+
+So it's: top-left, top-right, bottom-left, bottom-right? Or reading order (left-to-right, top-to-bottom)?
+
+Reading order would be: 3s (top-left), 4s (top-right), 6s (bottom-left), 9s (bottom-right). Yes! That matches.
+
+Now Demo 3:
+Inner area (rows 1-7, cols 1-27) is 7x27.
+Blocks:
+- 3s: 2x8 at (2,2)-(3,9)
+- 9s: 2x2 at (2,12)-(3,13)
+- 7s: 2x4 at (2,16)-(3,19)
+- 4s: 2x4 at (2,22)-(3,25)
+- 9s: 2x2 at (5,2)-(6,3)
+- 6s: 2x8 at (5,6)-(6,13)
+- 4s: 2x2 at (5,16)-(6,17)
+
+Output is 14x8:
+Row 0: 3 3 3 3 3 3 3 3
+Row 1: 3 3 3 3 3 3 3 3
+Row 2: 8 8 8 9 9 8 8 8
+Row 3: 8 8 8 9 9 8 8 8
+Row 4: 8 8 7 7 7 7 8 8
+Row 5: 8 8 7 7 7 7 8 8
+Row 6: 8 8 4 4 4 4 8 8
+Row 7: 8 8 4 4 4 4 8 8
+Row 8: 8 8 8 9 9 8 8 8
+Row 9: 8 8 8 9 9 8 8 8
+Row 10: 6 6 6 6 6 6 6 6
+Row 11: 6 6 6 6 6 6 6 6
+Row 12: 8 8 8 4 4 8 8 8
+Row 13: 8 8 8 4 4 8 8 8
+
+So the output width is 8 (max block width = 8 for the 3s and 6s blocks).
+The blocks are arranged in reading order (left-to-right, top-to-bottom within each row of blocks).
+
+Row 1 of blocks (top): 3s (width 8), 9s (width 2), 7s (width 4), 4s (width 4)
+Row 2 of blocks (bottom): 9s (width 2), 6s (width 8), 4s (width 2)
+
+In the output:
+- 3s: full width 8, no padding
+- 9s: centered? Position at cols 3-4 out of 8. (8-2)/2 = 3, so yes centered.
+- 7s: centered? Position at cols 2-5 out of 8. (8-4)/2 = 2, yes centered.
+- 4s: centered? Position at cols 2-5 out of 8. (8-4)/2 = 2, yes centered.
+- 9s (bottom): centered? Position at cols 3-4. Yes.
+- 6s: full width 8.
+- 4s (bottom): centered? Position at cols 3-4. Yes.
+
+So each block is centered horizontally in the output, and stacked vertically in reading order.
+
+Now let me check Demo 4:
+Inner area (rows 1-7, cols 1-22) is 7x22.
+Blocks:
+- 3s: 2x6 at (2,2)-(3,7)
+- 7s: 2x2 at (2,9)-(3,10)
+- 3s: 2x2 at (2,13)-(3,14)
+- 4s: 2x4 at (2,17)-(3,20)
+- 3s: 2x4 at (5,5)-(6,8)
+- 6s: 2x6 at (5,11)-(6,16)
+- 9s: 2x2 at (5,19)-(6,20)
+
+Output is 14x6:
+Row 0: 8 4 4 4 4 8
+Row 1: 8 4 4 4 4 8
+Row 2: 8 8 3 3 8 8
+Row 3: 8 8 3 3 8 8
+Row 4: 8 8 7 7 8 8
+Row 5: 8 8 7 7 8 8
+Row 6: 3 3 3 3 3 3
+Row 7: 3 3 3 3 3 3
+Row 8: 8 8 9 9 8 8
+Row 9: 8 8 9 9 8 8
+Row 10: 6 6 6 6 6 6
+Row 11: 6 6 6 6 6 6
+Row 12: 8 3 3 3 3 8
+Row 13: 8 3 3 3 3 8
+
+Output width is 6 (max block width = 6 for the 3s at (2,2) and 6s at (5,11)).
+
+Reading order of blocks:
+Top row (left to right): 3s(6), 7s(2), 3s(2), 4s(4)
+Bottom row (left to right): 3s(4), 6s(6), 9s(2)
+
+In output:
+- 4s: width 4, centered in 6: (6-4)/2 = 1, so cols 1-4. Output shows "8 4 4 4 4 8". Yes!
+- 3s (2x2): width 2, centered in 6: (6-2)/2 = 2, so cols 2-3. Output shows "8 8 3 3 8 8". Yes!
+- 7s: width 2, centered in 6: cols 2-3. Output shows "8 8 7 7 8 8". Yes!
+- 3s (2x6): width 6, fills. Output shows "3 3 3 3 3 3". Yes!
+- 9s: width 2, centered in 6: cols 2-3. Output shows "8 8 9 9 8 8". Yes!
+- 6s: width 6, fills. Output shows "6 6 6 6 6 6". Yes!
+- 3s (2x4): width 4, centered in 6: cols 1-4. Output shows "8 3 3 3 3 8". Yes!
+
+But wait - the ORDER is different from what I expected. Let me re-examine.
+
+The output order is: 4s, 3s(2x2), 7s, 3s(2x6), 9s, 6s, 3s(2x4)
+
+But reading order would be: 3s(6), 7s(2), 3s(2), 4s(4), 3s(4), 6s(6), 9s(2)
+
+That doesn't match. Let me reconsider.
+
+Hmm, wait. Let me re-read the output:
+Row 0: 8 4 4 4 4 8  -> 4s block
+Row 2: 8 8 3 3 8 8  -> 3s block (2x2)
+Row 4: 8 8 7 7 8 8  -> 7s block
+Row 6: 3 3 3 3 3 3  -> 3s block (2x6)
+Row 8: 8 8 9 9 8 8  -> 9s block
+Row 10: 6 6 6 6 6 6 -> 6s block
+Row 12: 8 3 3 3 3 8 -> 3s block (2x4)
+
+So the order is: 4s, 3s(2x2), 7s, 3s(2x6), 9s, 6s, 3s(2x4)
+
+Let me think about what ordering this could be...
+
+By size (width x height)?
+- 4s: 4x2 = 8
+- 3s(2x2): 2x2 = 4
+- 7s: 2x2 = 4
+- 3s(2x6): 6x2 = 12
+- 9s: 2x2 = 4
+- 6s: 6x2 = 12
+- 3s(2x4): 4x2 = 8
+
+That gives: 4, 4, 4, 8, 8, 12, 12 - not matching.
+
+By width?
+- 4s: 4
+- 3s(2x2): 2
+- 7s: 2
+- 3s(2x6): 6
+- 9s: 2
+- 6s: 6
+- 3s(2x4): 4
+
+That gives: 4, 2, 2, 6, 2, 6, 4 - not sorted.
+
+Hmm, let me reconsider. Maybe I'm misidentifying the blocks.
+
+Let me re-examine Demo 4 input more carefully:
+Row 2: 8 3 3 3 3 3 3 8 8 7 7 8 8 3 3 8 8 4 4 4 4 8 2
+Row 3: 8 3 3 3 3 3 3 8 8 7 7 8 8 3 3 8 8 4 4 4 4 8 2
+Row 5: 8 8 8 8 8 3 3 3 3 8 8 6 6 6 6 6 6 8 8 9 9 8 2
+Row 6: 8 8 8 8 8 3 3 3 3 8 8 6 6 6 6 6 6 8 8 9 9 8 2
+
+So in row 2 (0-indexed from the full grid), the blocks are:
+- Cols 1-6: 3s (width 6)
+- Cols 9-10: 7s (width 2)
+- Cols 13-14: 3s (width 2)
+- Cols 17-20: 4s (width 4)
+
+In row 5:
+- Cols 5-8: 3s (width 4)
+- Cols 11-16: 6s (width 6)
+- Cols 19-20: 9s (width 2)
+
+Now the output order: 4s, 3s(2x2), 7s, 3s(2x6), 9s, 6s, 3s(2x4)
+
+Hmm, what if the ordering is by the rightmost position? Or by some other criterion?
+
+4s is at cols 17-20 (rightmost in top row)
+3s(2x2) is at cols 13-14
+7s is at cols 9-10
+3s(2x6) is at cols 1-6
+9s is at cols 19-20 (rightmost in bottom row)
+6s is at cols 11-16
+3s(2x4) is at cols 5-8
+
+Top row right-to-left: 4s(17-20), 3s(13-14), 7s(9-10), 3s(1-6)
+Bottom row right-to-left: 9s(19-20), 6s(11-16), 3s(5-8)
+
+YES! That matches! The order is: top row right-to-left, then bottom row right-to-left!
+
+Let me verify with Demo 2:
+Blocks:
+- 3s at cols 2-3 (top-left)
+- 4s at cols 6-9 (top-right)
+- 6s at cols 2-3 (bottom-left)
+- 9s at cols 6-7 (bottom-right)
+
+Top row right-to-left: 4s(6-9), 3s(2-3)
+Bottom row right-to-left: 9s(6-7), 6s(2-3)
+
+Expected output order: 4s, 3s, 9s, 6s
+
+But actual output is: 3s, 4s, 6s, 9s
+
+That doesn't match! Let me re-examine.
+
+Demo 2 output:
+Row 0: 8 3 3 8
+Row 1: 8 3 3 8
+Row 2: 4 4 4 4
+Row 3: 4 4 4 4
+Row 4: 8 6 6 8
+Row 5: 8 6 6 8
+Row 6: 8 9 9 8
+Row 7: 8 9 9 8
+
+Order: 3s, 4s, 6s, 9s
+
+That's left-to-right, top-to-bottom (normal reading order).
+
+But Demo 4 gives right-to-left, top-to-bottom? That's inconsistent.
+
+Let me re-examine Demo 4. Maybe I made an error.
+
+Actually wait, let me re-examine Demo 4's border. 
+
+Demo 4 input (8x23):
+Row 0: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0
+Row 1: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 2
+Row 2: 8 3 3 3 3 3 3 8 8 7 7 8 8 3 3 8 8 4 4 4 4 8 2
+Row 3: 8 3 3 3 3 3 3 8 8 7 7 8 8 3 3 8 8 4 4 4 4 8 2
+Row 4: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 2
+Row 5: 8 8 8 8 8 3 3 3 3 8 8 6 6 6 6 6 6 8 8 9 9 8 2
+Row 6: 8 8 8 8 8 3 3 3 3 8 8 6 6 6 6 6 6 8 8 9 9 8 2
+Row 7: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 2
+
+So the border is:
+- Top row (row 0): 1s and a 0 at the end
+- Left column (col 0): 8s
+- Right column (col 22): 2s
+- Bottom row (row 7): all 8s (which is the same as background)
+
+The inner area is rows 1-6, cols 1-21. That's 6x21.
+
+But wait, row 1 is all 8s (background) and row 7 is all 8s. So the actual content is in rows 2-3 and 5-6.
+
+Blocks in inner area:
+Top group (rows 2-3):
+- 3s: cols 1-6 (width 6)
+- 7s: cols 9-10 (width 2)
+- 3s: cols 13-14 (width 2)
+- 4s: cols 17-20 (width 4)
+
+Bottom group (rows 5-6):
+- 3s: cols 5-8 (width 4)
+- 6s: cols 11-16 (width 6)
+- 9s: cols 19-20 (width 2)
+
+Output order: 4s, 3s(2), 7s, 3s(6), 9s, 6s, 3s(4)
+
+Top row right-to-left: 4s, 3s(2), 7s, 3s(6) ✓
+Bottom row right-to-left: 9s, 6s, 3s(4) ✓
+
+Now let me re-check Demo 2:
+Top row: 3s at cols 2-3, 4s at cols 6-9
+Top row right-to-left: 4s, 3s
+
+Bottom row: 6s at cols 2-3, 9s at cols 6-7
+Bottom row right-to-left: 9s, 6s
+
+Expected: 4s, 3s, 9s, 6s
+Actual: 3s, 4s, 6s, 9s
+
+That's left-to-right! Not right-to-left.
+
+Hmm, so it's not consistent. Let me think about what else could determine the order.
+
+Wait, maybe I need to look at this differently. What if the border determines the direction?
+
+In Demo 2: 0 is at top-left, 1s on top, 2s on left.
+In Demo 4: 0 is at top-right, 1s on top, 8s on left, 2s on right.
+
+What if the position of 0 determines the reading direction?
+
+Demo 1: 0 at top-left (0,0). Reading order would be... let me check.
+Demo 2: 0 at top-left (0,0). Reading order is left-to-right, top-to-bottom.
+Demo 3: 0 at top-left (0,0). Let me check.
+Demo 4: 0 at top-right (0,22). Reading order is right-to-left, top-to-bottom.
+
+Let me verify Demo 1:
+0 is at (0,0) - top-left.
+Expected reading order: left-to-right, top-to-bottom.
+
+Blocks in Demo 1 (inner area, rows 1-19, cols 1-6):
+Row group 1 (rows 2-3):
+- 4s: cols 2-3 (width 2)
+- 9s: cols 5-6 (width 2)
+
+Row group 2 (rows 6-9):
+- 6s: cols 2-3 (width 2) [but with some anomalies at rows 6-7]
+- 4s: cols 5-6 (width 2)
+
+Row group 3 (rows 10-11):
+- 6s: cols 2-3 (width 2)
+- 4s/7s: cols 5-6 (width 2) - mixed?
+
+Row group 4 (rows 12-15):
+- 7s: cols 5-6 (width 2)
+- 3s/6s: cols 2-3 (width 2) - mixed?
+
+Row group 5 (rows 16-17):
+- 3s: cols 2-3 (width 2)
+
+Wait, this is getting complicated with the mixed blocks. Let me look at the output again.
+
+Demo 1 output (12x6):
+Row 0: 8 8 4 4 8 8
+Row 1: 8 8 4 4 8 8
+Row 2: 6 6 6 6 6 6
+Row 3: 1 2 6 6 6 6
+Row 4: 8 6 6 3 3 8
+Row 5: 8 3 3 3 3 8
+Row 6: 8 8 9 9 8 8
+Row 7: 8 8 9 9 8 8
+Row 8: 8 8 4 4 8 8
+Row 9: 8 8 4 4 8 8
+Row 10: 7 4 7 7 7 7
+Row 11: 4 7 7 7 7 7
+
+So the blocks in the output are:
+1. 4s (2x2) - centered in width 6
+2. 6s with 1,2 (4x2) - but it's not uniform! Row 2 is all 6s, row 3 is 1,2,6,6,6,6
+3. 6s with 3s (2x2 top + 2x4 bottom?) - rows 4-5
+4. 9s (2x2) - centered
+5. 4s (2x2) - centered
+6. 7s/4s (2x2) - rows 10-11
+
+Wait, the output blocks aren't all uniform. Let me look more carefully.
+
+Output row 2: 6 6 6 6 6 6
+Output row 3: 1 2 6 6 6 6
+
+This looks like it's preserving the actual content of the block including non-background pixels within it.
+
+Let me re-examine the input blocks more carefully.
+
+In Demo 1 input, the block at rows 6-9, cols 2-3:
+Row 6: 1 6
+Row 7: 2 6
+Row 8: 6 6
+Row 9: 6 6
+
+So this is a 4x2 region that contains 1, 2, and 6s. In the output, this appears as:
+Row 2: 6 6 6 6 6 6
+Row 3: 1 2 6 6 6 6
+
+Hmm, that's 6 wide but the original block was only 2 wide. So it's being expanded?
+
+Wait, I think I'm misunderstanding. Let me reconsider.
+
+Maybe the "blocks" are defined differently. Perhaps the inner area is divided into a grid of cells (like a table), and each cell contains a block of uniform color (or a pattern).
+
+Let me look at Demo 1 input inner area (rows 1-19, cols 1-6) and try to identify the cell structure.
+
+Looking at the 8s as separators:
+Row 1: 8 8 8 8 8 8 (all background)
+Row 2: 8 4 4 8 9 9
+Row 3: 8 4 4 8 9 9
+Row 4: 8 8 8 8 8 8
+Row 5: 8 8 8 8 8 8
+Row 6: 8 1 6 8 4 4
+Row 7: 8 2 6 8 4 4
+Row 8: 8 6 6 8 8 8
+Row 9: 8 6 6 8 8 8
+Row 10: 8 6 6 8 4 7
+Row 11: 8 6 6 8 7 4
+Row 12: 8 8 8 8 7 7
+Row 13: 8 8 8 8 7 7
+Row 14: 8 3 6 8 7 7
+Row 15: 8 3 6 8 7 7
+Row 16: 8 3 3 8 8 8
+Row 17: 8 3 3 8 8 8
+Row 18: 8 8 8 8 8 8
+Row 19: 8 8 8 8 8 8
+
+So the columns are: col 1 is always 8, col 4 is always 8.
+The content is in cols 2-3 (left block column) and cols 5-6 (right block column).
+
+Left column blocks (cols 2-3):
+- Rows 2-3: 4 4 / 4 4 (2x2 of 4s)
+- Rows 6-9: 1 6 / 2 6 / 6 6 / 6 6 (4x2 mixed)
+- Rows 10-11: 6 6 / 6 6 (2x2 of 6s)
+- Rows 14-17: 3 6 / 3 6 / 3 3 / 3 3 (4x2 mixed)
+
+Right column blocks (cols 5-6):
+- Rows 2-3: 9 9 / 9 9 (2x2 of 9s)
+- Rows 6-7: 4 4 / 4 4 (2x2 of 4s)
+- Rows 10-15: 4 7 / 7 4 / 7 7 / 7 7 / 7 7 / 7 7 (6x2 mixed)
+- (Rows 14-15 are part of the above)
+
+Wait, let me be more careful. The right column:
+Row 10: 4 7
+Row 11: 7 4
+Row 12: 7 7
+Row 13: 7 7
+Row 14: 7 7
+Row 15: 7 7
+
+That's 6 rows. But the left column at rows 10-15:
+Row 10: 6 6
+Row 11: 6 6
+Row 12: 8 8
+Row 13: 8 8
+Row 14: 3 6
+Row 15: 3 6
+
+So left column has: 6s at rows 10-11, then 8s at rows 12-13, then 3/6 at rows 14-15.
+
+Let me redefine the blocks by contiguous non-8 regions:
+
+Left column (cols 2-3):
+Block A: rows 2-3 (4s) - 2x2
+Block B: rows 6-9 (mixed: 1,2,6) - 4x2
+Block C: rows 10-11 (6s) - 2x2
+Block D: rows 14-17 (mixed: 3,6) - 4x2
+
+Right column (cols 5-6):
+Block E: rows 2-3 (9s) - 2x2
+Block F: rows 6-7 (4s) - 2x2
+Block G: rows 10-15 (mixed: 4,7) - 6x2
+
+Now the output:
+1. 4s 2x2 -> "8 8 4 4 8 8" x2 (centered in width 6)
+2. Mixed 4x2 -> "6 6 6 6 6 6" and "1 2 6 6 6 6" (expanded to width 6?)
+3. Mixed 4x2 -> "8 6 6 3 3 8" and "8 3 3 3 3 8" (hmm, this is different)
+4. 9s 2x2 -> "8 8 9 9 8 8" x2
+5. 4s 2x2 -> "8 8 4 4 8 8" x2
+6. Mixed 6x2 -> "7 4 7 7 7 7" and "4 7 7 7 7 7" (only 2 rows shown for 6x2?)
+
+Wait, the output is 12 rows total. Let me count:
+- Block 1 (4s): 2 rows
+- Block 2 (mixed 4x2): 2 rows? But original was 4 rows...
+- Block 3 (mixed 4x2): 2 rows? But original was 4 rows...
+- Block 4 (9s): 2 rows
+- Block 5 (4s): 2 rows
+- Block 6 (mixed 6x2): 2 rows? But original was 6 rows...
+
+Total: 2+2+2+2+2+2 = 12. Yes!
+
+But the original blocks had different heights (2, 4, 2, 4, 2, 2, 6). In the output they're all 2 rows?
+
+Wait no, let me recount. The output is 12x6. Let me look at it as pairs of rows:
+Rows 0-1: 4s block
+Rows 2-3: 6/1/2 block
+Rows 4-5: 6/3 block
+Rows 6-7: 9s block
+Rows 8-9: 4s block
+Rows 10-11: 7/4 block
+
+So there are 6 blocks, each 2 rows tall. But the original blocks had varying heights (2, 4, 2, 4, 2, 6).
+
+Hmm, but looking at the content:
+Output rows 2-3:
+6 6 6 6 6 6
+1 2 6 6 6 6
+
+Original block B (rows 6-9, cols 2-3):
+1 6
+2 6
+6 6
+6 6
+
+So the 4x2 block became a 2x6 block? It's been rotated/transposed!
+
+Original:
+1 6
+2 6
+6 6
+6 6
+
+If we transpose:
+1 2 6 6
+6 6 6 6
+
+And then... the output shows:
+6 6 6 6 6 6
+1 2 6 6 6 6
+
+That's the transpose but with the rows reversed and padded to width 6!
+
+Original transpose:
+Row 0: 1 2 6 6
+Row 1: 6 6 6 6
+
+Reversed:
+Row 0: 6 6 6 6
+Row 1: 1 2 6 6
+
+Padded to width 6 (centered):
+Row 0: 1 6 6 6 6 2? No...
+
+Hmm, (6-4)/2 = 1, so:
+Row 0: 8 6 6 6 6 8
+Row 1: 8 1 2 6 6 8
+
+But the actual output is:
+Row 2: 6 6 6 6 6 6
+Row 3: 1 2 6 6 6 6
+
+That doesn't match centering. Let me reconsider.
+
+Actually wait. The output width is 6, and the block width after transpose is 4. If left-aligned:
+Row 0: 6 6 6 6 _ _
+Row 1: 1 2 6 6 _ _
+
+But that gives:
+6 6 6 6 8 8
+1 2 6 6 8 8
+
+Still not matching.
+
+Let me look at this differently. What if the block is just placed as-is (not transposed) but the width is different?
+
+Original block B is 4 rows x 2 cols:
+1 6
+2 6
+6 6
+6 6
+
+In the output it appears as 2 rows x 6 cols:
+6 6 6 6 6 6
+1 2 6 6 6 6
+
+Hmm, if I read the original column by column (bottom to top for each column):
+Col 0 (bottom to top): 6 6 2 1
+Col 1 (bottom to top): 6 6 6 6
+
+Placed side by side:
+6 6 6 6 6 6
+6 6 2 1 6 6
+
+No, that doesn't work either.
+
+Let me try reading column by column (top to bottom):
+Col 0: 1 2 6 6
+Col 1: 6 6 6 6
+
+Placed as rows:
+1 2 6 6
+6 6 6 6
+
+That's the transpose. And the output shows:
+6 6 6 6 6 6
+1 2 6 6 6 6
+
+If I reverse the rows of the transpose:
+6 6 6 6
+1 2 6 6
+
+And then... pad on the right? Or left-align?
+
+6 6 6 6 -> 6 6 6 6 6 6 (padded right with 6s?)
+1 2 6 6 -> 1 2 6 6 6 6 (padded right with 6s?)
+
+Hmm, that's interesting but seems arbitrary.
+
+Actually wait. Let me reconsider the problem. Maybe I'm overcomplicating this.
+
+Let me look at the output width. In Demo 1, the output is 6 wide. The input inner area is 6 wide (cols 1-6). So the output width equals the inner area width!
+
+In Demo 2, the output is 4 wide. The input inner area (cols 1-10) is 10 wide. That doesn't match.
+
+Hmm, let me reconsider.
+
+Demo 2 inner area: rows 1-7, cols 1-10 (7x10). Output: 8x4.
+Demo 3 inner area: rows 1-7, cols 1-27 (7x27). Output: 14x8.
+Demo 4 inner area: rows 1-7, cols 1-22 (7x22). Output: 14x6.
+
+Output widths: 4, 8, 6. Max block widths: 4, 8, 6. So output width = max block width.
+
+Output heights: 8, 14, 12. Sum of block heights: 
+Demo 2: 2+2+2+2 = 8 ✓
+Demo 3: 2+2+2+2+2+2+2 = 14 ✓ (7 blocks of height 2)
+Demo 4: 2+2+2+2+2+2+2 = 14 ✓ (7 blocks of height 2)
+
+So in all demos, every block in the output is exactly 2 rows tall! Even if the original block was 4 or 6 rows tall.
+
+This means the transformation must involve some kind of reshaping of each block to 2 rows.
+
+Let me reconsider. In Demo 1:
+Block B original (4x2):
+1 6
+2 6
+6 6
+6 6
+
+In output (2x6):
+6 6 6 6 6 6
+1 2 6 6 6 6
+
+If I read the original in column-major order (top to bottom, left to right):
+1 2 6 6 6 6 6 6
+
+And reshape to 2x6:
+1 2 6 6 6 6
+6 6 6 6 6 6
+
+But the output is:
+6 6 6 6 6 6
+1 2 6 6 6 6
+
+That's the reverse! So it's column-major order, but rows are reversed (or read bottom-to-top, left-to-right).
+
+Reading bottom-to-top, left-to-right:
+Col 0 bottom-to-top: 6 6 2 1
+Col 1 bottom-to-top: 6 6 6 6
+
+Combined: 6 6 2 1 6 6 6 6
+
+Reshape to 2x6:
+6 6 2 1 6 6
+6 6 6 6 6 6
+
+Still not matching.
+
+Let me try: read the original row by row (left to right, top to bottom):
+1 6 2 6 6 6 6 6
+
+Reshape to 2x6:
+1 6 2 6 6 6
+6 6 6 6 6 6
+
+Not matching either.
+
+What about: read row by row but bottom to top:
+6 6 6 6 2 6 1 6
+
+Reshape to 2x6:
+6 6 6 6 2 6
+1 6 6 6 6 6
+
+Not matching.
+
+Hmm. Let me look at the actual output values more carefully.
+
+Output rows 2-3 (the block that corresponds to original rows 6-9, cols 2-3):
+6 6 6 6 6 6
+1 2 6 6 6 6
+
+Original:
+Row 6: 1 6
+Row 7: 2 6
+Row 8: 6 6
+Row 9: 6 6
+
+What if the transformation is: the block is placed in the output at the position where it appeared horizontally, but the vertical dimension is compressed?
+
+Original position: cols 2-3 in a 6-wide area. In the output (also 6 wide), the block would be at cols 2-3. But the output shows:
+6 6 6 6 6 6
+1 2 6 6 6 6
+
+The 1 and 2 are at cols 0-1, not cols 2-3.
+
+I'm confused. Let me try a completely different approach.
+
+What if the "blocks" I'm identifying are wrong, and the actual structure is different?
+
+Let me look at Demo 1 more carefully. The inner area is 19 rows x 6 cols.
+
+What if the grid is divided into a regular grid of cells, and each cell is exactly 2 rows tall? Then 19/2 = 9.5, which doesn't work.
+
+What if some cells are 2 rows and some are different? Looking at the 8s as separators:
+
+The 8s appear at:
+- Row 1 (all 8s)
+- Row 4 (all 8s)
+- Row 5 (all 8s)
+- Row 12, col 2-3 (8s)
+- Row 13, col 2-3 (8s)
+- Row 18 (all 8s)
+- Row 19 (all 8s)
+- Col 1 (all 8s)
+- Col 4 (all 8s)
+
+So the structure in the left column (cols 2-3) is:
+- Rows 2-3: content (4s)
+- Rows 4-5: empty (8s)
+- Rows 6-9: content (mixed)
+- Rows 10-11: content (6s)
+- Rows 12-13: empty (8s)
+- Rows 14-17: content (mixed)
+- Rows 18-19: empty (8s)
+
+And in the right column (cols 5-6):
+- Rows 2-3: content (9s)
+- Rows 4-5: empty (8s)
+- Rows 6-7: content (4s)
+- Rows 8-9: empty (8s)
+- Rows 10-15: content (mixed)
+- Rows 16-19: empty (8s)
+
+So the "slots" or "cells" in the grid are:
+Left column: 4 slots (at rows 2-3, 6-9, 10-11, 14-17)
+Right column: 3 slots (at rows 2-3, 6-7, 10-15)
+
+But the slots have different heights! The left column slots are 2, 4, 2, 4 rows. The right column slots are 2, 2, 6 rows.
+
+In the output, each slot becomes exactly 2 rows. So the transformation must be compressing each slot to 2 rows while preserving the content somehow.
+
+For a 2x2 slot, it stays 2x2.
+For a 4x2 slot, it becomes 2x4 (transposed).
+For a 6x2 slot, it becomes 2x6 (transposed).
+
+Let me verify this with Block B (4x2 -> 2x4):
+Original:
+1 6
+2 6
+6 6
+6 6
+
+Transposed:
+1 2 6 6
+6 6 6 6
+
+But the output shows (within the 6-wide output):
+6 6 6 6 6 6
+1 2 6 6 6 6
+
+The transposed version would be:
+1 2 6 6
+6 6 6 6
+
+If placed at the left in a 6-wide output:
+1 2 6 6 _ _
+6 6 6 6 _ _
+
+But the actual output is:
+6 6 6 6 6 6
+1 2 6 6 6 6
+
+Hmm, what if it's transposed AND the rows are reversed?
+6 6 6 6
+1 2 6 6
+
+Placed at left:
+6 6 6 6 _ _
+1 2 6 6 _ _
+
+With _ being 6 (the dominant color)?
+6 6 6 6 6 6
+1 2 6 6 6 6
+
+YES! That matches!
+
+So the transformation for a tall block (h x w where h > 2) is:
+1. Transpose (w x h)
+2. Reverse the rows
+3. Place in output, padding with the dominant color of the block
+
+Wait, but what's the "dominant color"? In Block B, the dominant color is 6 (6 out of 8 cells are 6).
+
+Let me verify with Block D (rows 14-17, cols 2-3):
+Original:
+3 6
+3 6
+3 3
+3 3
+
+Transposed:
+3 3 3 3
+6 6 3 3
+
+Reversed rows:
+6 6 3 3
+3 3 3 3
+
+In the output (rows 4-5):
+8 6 6 3 3 8
+8 3 3 3 3 8
+
+Hmm, that's padded with 8s, not 6s. And the position is cols 1-4 (centered in 6: (6-4)/2 = 1).
+
+Wait, (6-4)/2 = 1, so cols 1-4. The output shows:
+Row 4: 8 6 6 3 3 8 -> 6 6 3 3 at cols 1-4 ✓
+Row 5: 8 3 3 3 3 8 -> 3 3 3 3 at cols 1-4 ✓
+
+So it IS centered! And padded with 8s (background), not the dominant color.
+
+But for Block B, the output was:
+Row 2: 6 6 6 6 6 6
+Row 3: 1 2 6 6 6 6
+
+The transposed-and-reversed version is:
+6 6 6 6
+1 2 6 6
+
+If centered in width 6: (6-4)/2 = 1, so cols 1-4:
+8 6 6 6 6 8
+8 1 2 6 6 8
+
+But the actual output is:
+6 6 6 6 6 6
+1 2 6 6 6 6
+
+That's NOT centered and NOT padded with 8s. It's left-aligned and padded with 6s on the right.
+
+I'm getting confused. Let me look at this from a different angle.
+
+Actually, wait. Let me reconsider whether the output width is always the max block width or if it's something else.
+
+Demo 1: Output width = 6. Max block width after transpose = 6 (Block G is 6x2, transposed to 2x6). The inner area width is also 6.
+
+Demo 2: Output width = 4. Max block width = 4 (the 4s block is 2x4). Inner area width = 10.
+
+Demo 3: Output width = 8. Max block width = 8 (the 3s and 6s blocks are 2x8). Inner area width = 27.
+
+Demo 4: Output width = 6. Max block width = 6 (the 3s and 6s blocks are 2x6). Inner area width = 22.
+
+So output width = max block width (after considering the original orientation).
+
+Now for placement within the output width:
+- In Demo 2, all blocks are either 2 wide or 4 wide. The 2-wide blocks are centered (1 pad on each side in width 4). The 4-wide block fills the width.
+- In Demo 3, blocks are 2, 4, or 8 wide. 8-wide fills, 4-wide centered (2 pad each side), 2-wide centered (3 pad each side).
+- In Demo 4, blocks are 2, 4, or 6 wide. 6-wide fills, 4-wide centered (1 pad each side), 2-wide centered (2 pad each side).
+
+So the rule seems to be: each block is centered horizontally in the output.
+
+But in Demo 1, Block B (4x2 -> 2x4 after transpose) should be centered in width 6:
+(6-4)/2 = 1, so 1 pad on each side:
+8 6 6 6 6 8
+8 1 2 6 6 8
+
+But the actual output is:
+6 6 6 6 6 6
+1 2 6 6 6 6
+
+This is NOT centered. It's left-aligned with the block color filling the rest.
+
+Unless... the block is actually wider than I think. What if the "block" includes the 8s around it?
+
+Let me reconsider. What if the "cell" in the grid is defined by the 8-separators, and the cell includes everything between the 8s?
+
+In Demo 1, the left column (cols 2-3) is separated from the right column (cols 5-6) by col 4 (all 8s). And both are bounded by col 1 (all 8s) and col 6 (the edge).
+
+So the left "lane" is cols 2-3 (width 2) and the right "lane" is cols 5-6 (width 2).
+
+Within each lane, the blocks are separated by rows of 8s.
+
+Hmm, but that gives block widths of 2, and after transpose they'd be 2 wide (for 2x2 blocks) or wider (for taller blocks).
+
+Actually, I wonder if I should think of this differently. What if the entire inner area is treated as a set of "rows" (separated by all-8 rows) and "columns" (separated by all-8 columns), forming a grid of cells?
+
+In Demo 1:
+- All-8 columns: col 1 and col 4 (within the inner area cols 1-6)
+- This gives 2 column groups: cols 2-3 and cols 5-6
+- All-8 rows within the inner area: row 1, row 4, row 5, row 18, row 19
+
+Wait, but rows 4 and 5 are all 8s in the left column but not in the right column (right column has 4s at rows 6-7, not 4-5). Let me recheck.
+
+Actually, let me look at which rows are entirely 8s in the inner area (cols 1-6):
+Row 1: 8 8 8 8 8 8 ✓
+Row 4: 8 8 8 8 8 8 ✓
+Row 5: 8 8 8 8 8 8 ✓
+Row 18: 8 8 8 8 8 8 ✓
+Row 19: 8 8 8 8 8 8 ✓
+
+And which columns are entirely 8s:
+Col 1: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 ✓
+Col 4: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 ✓
+
+So the grid of cells is:
+- 2 columns (cols 2-3, cols 5-6)
+- Row groups: rows 2-3, rows 6-17 (since rows 4-5 are separators but only within the full width)
+
+Wait, rows 4 and 5 are all 8s across the full inner width, so they are separators. That gives row groups:
+- Rows 2-3
+- Rows 6-17
+- (rows 18-19 are empty)
+
+But rows 6-17 is a big group. Within it, there are sub-separators that only apply to one column.
+
+I think the key insight is that the grid is not a regular grid of cells. Instead, each "lane" (column group) can have its own row separators.
+
+So in the left lane (cols 2-3):
+- Block at rows 2-3 (2 rows)
+- Block at rows 6-9 (4 rows)
+- Block at rows 10-11 (2 rows)
+- Block at rows 14-17 (4 rows)
+
+In the right lane (cols 5-6):
+- Block at rows 2-3 (2 rows)
+- Block at rows 6-7 (2 rows)
+- Block at rows 10-15 (6 rows)
+
+Now, the output stacks all these blocks vertically (one after another), each becoming 2 rows tall, centered horizontally in the output width.
+
+The output width = max width of any block (after potential transpose).
+
+For 2x2 blocks: width stays 2.
+For 4x2 blocks: transposed to 2x4, width becomes 4.
+For 6x2 blocks: transposed to 2x6, width becomes 6.
+
+So in Demo 1, the max width is 6 (from the 6x2 block G). Output width = 6. ✓
+
+Now the ordering: In Demo 1 (0 at top-left), the order should be left-to-right, top-to-bottom.
+
+Left lane blocks (top to bottom): A(4s, 2x2), B(mixed, 4x2), C(6s, 2x2), D(mixed, 4x2)
+Right lane blocks (top to bottom): E(9s, 2x2), F(4s, 2x2), G(mixed, 6x2)
+
+Reading order (left-to-right, top-to-bottom):
+A, E, B, F, C, G, D
+
+But the output order is:
+1. 4s (2x2) = A
+2. mixed (4x2) = B
+3. mixed (4x2) = D
+4. 9s (2x2) = E
+5. 4s (2x2) = F
+6. mixed (6x2) = G
+
+That's A, B, D, E, F, G. Not matching the reading order.
+
+Hmm, what about: all left lane blocks first (top to bottom), then all right lane blocks (top to bottom)?
+A, B, C, D, E, F, G
+
+But the output has A, B, D, E, F, G (C is missing or merged).
+
+Wait, let me re-examine. Maybe C (the 6s at rows 10-11) is part of block B? Let me look again:
+
+Left lane:
+Row 6: 1 6
+Row 7: 2 6
+Row 8: 6 6
+Row 9: 6 6
+Row 10: 6 6
+Row 11: 6 6
+Row 12: 8 8
+Row 13: 8 8
+Row 14: 3 6
+Row 15: 3 6
+Row 16: 3 3
+Row 17: 3 3
+
+So rows 6-11 are all non-8! That's a 6x2 block, not two separate blocks!
+
+Let me redo:
+Left lane blocks:
+- Rows 2-3: 4s (2x2)
+- Rows 6-11: mixed (6x2) [1,2,6,6,6,6 / 6,6,6,6,6,6]
+- Rows 14-17: mixed (4x2) [3,3,3,3 / 6,6,3,3]
+
+Right lane blocks:
+- Rows 2-3: 9s (2x2)
+- Rows 6-7: 4s (2x2)
+- Rows 10-15: mixed (6x2) [4,7,7,7,7,7 / 7,4,7,7,7,7]
+
+So there are 6 blocks total. Output is 12 rows = 6 blocks × 2 rows. ✓
+
+Now the order in the output:
+1. 4s (2x2) = Left, rows 2-3
+2. mixed 6x2 (1,2,6) = Left, rows 6-11
+3. mixed 4x2 (3,6) = Left, rows 14-17
+4. 9s (2x2) = Right, rows 2-3
+5. 4s (2x2) = Right, rows 6-7
+6. mixed 6x2 (4,7) = Right, rows 10-15
+
+So the order is: all left lane blocks (top to bottom), then all right lane blocks (top to bottom).
+
+Let me verify with Demo 2:
+Inner area (rows 1-7, cols 1-10):
+All-8 columns: Let me check.
+Col 1: 8 8 8 8 8 8 8 ✓
+Col 5: 8 8 8 8 8 8 8 ✓
+Col 10: 8 8 8 8 8 8 8 ✓
+
+Wait, col 10 is the last column. Let me use 0-indexed cols within the inner area.
+
+Inner area cols (0-indexed from col 1 of the full grid):
+Col 0 (full grid col 1): 8 8 8 8 8 8 8
+Col 1 (full grid col 2): 8 3 3 8 8 6 6 8
+Col 2 (full grid col 3): 8 3 3 8 8 6 6 8
+Col 3 (full grid col 4): 8 8 8 8 8 8 8 8
+Col 4 (full grid col 5): 8 8 8 8 8 8 8 8
+Col 5 (full grid col 6): 8 8 4 4 8 8 9 9
+Col 6 (full grid col 7): 8 8 4 4 8 8 9 9
+Col 7 (full grid col 8): 8 8 4 4 8 8 8 8
+Col 8 (full grid col 9): 8 8 4 4 8 8 8 8
+Col 9 (full grid col 10): 8 8 8 8 8 8 8 8
+
+All-8 columns: 0, 3, 4, 9
+Column groups: cols 1-2 (width 2), cols 5-8 (width 4)
+
+Left lane (cols 1-2):
+Row 0 (full row 1): 8 8
+Row 1 (full row 2): 3 3
+Row 2 (full row 3): 3 3
+Row 3 (full row 4): 8 8
+Row 4 (full row 5): 6 6
+Row 5 (full row 6): 6 6
+Row 6 (full row 7): 8 8
+
+Blocks: rows 1-2 (3s, 2x2), rows 4-5 (6s, 2x2)
+
+Right lane (cols 5-8):
+Row 0: 8 8 8 8
+Row 1: 4 4 4 4
+Row 2: 4 4 4 4
+Row 3: 8 8 8 8
+Row 4: 8 9 9 8
+Row 5: 8 9 9 8
+Row 6: 8 8 8 8
+
+Blocks: rows 1-2 (4s, 2x4), rows 4-5 (9s, 2x2)
+
+Order (left lane top-to-bottom, then right lane top-to-bottom):
+3s, 6s, 4s, 9s
+
+But the actual output order is: 3s, 4s, 6s, 9s
+
+That's NOT left-then-right. That's interleaved by row position!
+
+3s (left, rows 1-2), 4s (right, rows 1-2), 6s (left, rows 4-5), 9s (right, rows 4-5)
+
+So it's: for each "row group" (determined by horizontal 8-separators across the full width), process left-to-right.
+
+The horizontal separators (rows that are all 8s across the full inner width):
+Row 0: all 8s ✓
+Row 3: all 8s ✓
+Row 6: all 8s ✓
+
+So row groups are: rows 1-2 and rows 4-5.
+
+Row group 1 (rows 1-2): left=3s, right=4s → output: 3s, 4s
+Row group 2 (rows 4-5): left=6s, right=9s → output: 6s, 9s
+
+Total order: 3s, 4s, 6s, 9s ✓
+
+Now let me re-examine Demo 1 with this logic.
+
+Inner area (rows 1-19, cols 1-6):
+All-8 rows (across full inner width):
+Row 1: 8 8 8 8 8 8 ✓
+Row 4: 8 8 8 8 8 8 ✓
+Row 5: 8 8 8 8 8 8 ✓
+Row 18: 8 8 8 8 8 8 ✓
+Row 19: 8 8 8 8 8 8 ✓
+
+Row groups: rows 2-3, rows 6-17
+
+Within row group 1 (rows 2-3):
+Left lane (cols 2-3): 4s
+Right lane (cols 5-6): 9s
+
+Within row group 2 (rows 6-17):
+Left lane (cols 2-3):
+Row 6: 1 6
+Row 7: 2 6
+Row 8: 6 6
+Row 9: 6 6
+Row 10: 6 6
+Row 11: 6 6
+Row 12: 8 8
+Row 13: 8 8
+Row 14: 3 6
+Row 15: 3 6
+Row 16: 3 3
+Row 17: 3 3
+
+So within this row group, the left lane has sub-blocks separated by 8-rows:
+- Rows 

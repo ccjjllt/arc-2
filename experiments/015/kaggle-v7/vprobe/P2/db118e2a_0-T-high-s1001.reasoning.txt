@@ -1,0 +1,285 @@
+We need solve ARC puzzle. Need think step by step in tags. Then output final grid only in code fence. Need analyze pattern from demos. Let's deeply infer.
+
+We have four demos. Input grids of varying sizes, output always 15x15. Digits 0-9. Output seems consists of two copies of some 5x5? Let's inspect.
+
+Demo1 input 9x7:
+Rows:
+0: 7 4 4 4 4 4 7
+1: 4 7 7 7 7 7 4
+2: 4 7 7 7 7 7 4
+3: 4 7 7 7 7 7 4
+4: 4 7 7 7 7 7 4
+5: 4 7 7 9 7 7 4
+6: 4 7 7 7 7 7 4
+7: 4 7 7 7 7 1 4
+8: 7 4 4 4 4 4 7
+
+Output 15x15: mostly 7 background. Two 5x5 blocks? First block rows 2-6, cols 3-7:
+row2: 7 4 4 4 7? Wait output row2: 7 7 7 4 4 4 7 7 ... Actually row 2 (0-index) length 15: positions 0-14: 7 7 7 4 4 4 7 7 7 7 7 7 7 7 7. So block at cols 3-6? Need 5x5? Let's see rows 2-6, cols 3-7:
+r2 c3-7: 4 4 4 7 7? Wait c3=4 c4=4 c5=4 c6=7 c7=7. Not 5x5 symmetric.
+Look output:
+row2: 7 7 7 4 4 4 7 7 7 7 7 7 7 7 7
+row3: 7 7 4 9 7 7 4 7 7 7 7 7 7 7 7
+row4: 7 7 4 7 7 7 4 7 ...
+row5: 7 7 4 7 7 1 4 ...
+row6: 7 7 7 4 4 4 7 ...
+This forms a 5x5 pattern at rows 2-6, cols 2-6? Let's index 0: row2 col2=7 col3=4 c4=4 c5=4 c6=7 => [7,4,4,4,7]
+row3 c2=4 c3=9 c4=7 c5=7 c6=4 => [4,9,7,7,4]
+row4: [4,7,7,7,4]
+row5: [4,7,7,1,4]
+row6: [7,4,4,4,7]
+Yes 5x5. Second copy rows 8-12, cols 8-12? row8 c8-12: 7 4 4 4 7? row8: 7 7 7 7 7 7 7 7 7 4 4 4 7 7 7 -> c8=7 c9=4 c10=4 c11=4 c12=7. Yes second copy at (8,8). Pattern is input border? Let's map.
+
+Input has a 7x5 interior? Actually input 9x7 with border of 4? Top/bottom row: 7 4 4 4 4 4 7 (a 7 at corners, 4 line). Left/right columns have 4 except corners 7. Interior 7x5? The interior 7 rows (1..7) and 5 cols (1..5) are all 7 except some digits: at row5 col3 = 9? input row5: 4 7 7 9 7 7 4 -> interior col3? (0-index c3=9). row7 c5=1. This interior 7x5 has 7 background, objects 9 and 1. Output 5x5 block seems not direct 5x5 from input, but transformed? The 5x5 pattern for Demo1:
+7 4 4 4 7
+4 9 7 7 4
+4 7 7 7 4
+4 7 7 1 4
+7 4 4 4 7
+This is like take a 5x5 submatrix from input? Input 5x5 maybe interior excluding some? If take input rows 4-8? Let's see. Input has 9 rows, 7 cols. A 5x5 maybe centered? Rows 2-6, cols 1-5:
+r2: 7 7 7 7 7? Actually input row2: 4 7 7 7 7 7 4 => cols1-5 all 7
+r3 all 7
+r4 all 7
+r5: 7 7 9 7 7
+r6: 7 7 7 7 7
+Not output.
+Maybe output block is constructed by detecting bounding box of non-7 inside input? The input has border 4 around background 7, special digits 9 and 1. Output block uses border color 4 and background 7, with special digits placed in specific positions? In output first block: 5x5, border 4, background 7, special digits at (1,1)=9, (3,3)=1. In input: special digits positions relative to interior? Input size 9x7, border thickness 1 of 4/corners 7? Let interior 7x5 rows1-7 cols1-5. Coordinates of special digits: 9 at input (5,3), relative to interior top-left (1,1): (4,2). 1 at (7,5): relative (6,4). If compress? Output 5x5 interior 3x3 between border? positions: 9 at (1,1) interior coordinate? Output block border at outer ring; inner 3x3 positions rows1-3 cols1-3. 9 at inner (0,0); 1 at inner (2,2). So maybe they take bounding box of special digits in interior and place at corners? In input interior dimensions 7x5. Special digits at relative (4,2) and (6,4). Their min row=4 max=6, min col=2 max=4. Not corners. If normalized? Maybe special digits correspond to two "objects" in a 7x5? Wait output second copy is same 5x5 block. So each input has one pattern, duplicated in output at two fixed positions? Let's inspect other demos.
+
+Demo2 input 7x8:
+0: 7 3 3 3 3 3 3 7
+1: 3 7 7 7 7 7 7 3
+2: 3 7 7 7 7 7 7 3
+3: 3 7 7 7 3 7 7 3
+4: 3 7 7 7 7 7 7 3
+5: 3 7 7 7 7 7 7 3
+6: 7 3 3 3 3 3 3 7
+Output 15x15 has two 5x5 blocks rows2-6 cols2-6 and rows8-12 cols8-12:
+block:
+7 3 3 3 7
+3 7 7 7 3
+3 7 3 7 3
+3 7 7 7 3
+7 3 3 3 7
+Special digit 3 at inner center? Input interior 5x6? Border 3, corners 7. Interior rows1-5 cols1-6 (5 rows x 6 cols) background 7, special 3 at input row3 col4 (0-index). Relative interior (2,3). Output block 5x5 has 3 at inner center (row? block rows0-4, border; inner 3x3 row2? Actually block row2: 3 7 3 7 3, so special at output block (2,2) interior center? Wait inner 3x3 coordinates rows1-3 cols1-3; row2 col2 = center). So single special mapped to center? In demo2 interior dimensions 5x6, special at center? relative row 2 of 5 = center; col 3 of 6 = not exact? Maybe output 5x5 interior 3x3, center is (1,1) inner? Actually output block 5x5, border ring. Inner 3x3 rows1-3 cols1-3. center of 3x3 is row2 col2. Yes special at center. Maybe input special is at center of interior? Input interior 5x6, center horizontally? For even width 6, columns1-6, center could be col3 or4? Special col4 (0-index absolute) = relative col3 (1-index 4) maybe one of centers? But output center.
+
+Demo3 input 9x9:
+0: 7 9 9 9 9 9 9 9 7
+1: 9 7 7 7 7 7 7 7 9
+2: 9 7 7 9 7 7 7 7 9
+3: 9 7 9 7 9 7 7 7 9
+4: 9 7 7 9 7 7 7 7 9
+5: 9 7 7 7 7 7 7 7 9
+6: 9 7 7 7 7 7 7 7 9
+7: 9 7 7 7 7 7 7 7 9
+8: 7 9 9 9 9 9 9 9 7
+Interior 7x7 rows1-7 cols1-7 background 7, special 9s form plus shape? Positions:
+row2 col3 (rel1,2)
+row3 col2 (rel2,1), row3 col4 (rel2,3)
+row4 col3 (rel3,2)
+This is a plus/diamond of 4 9s around missing center? Actually plus shape centered at (2,2) relative? If interior 7x7 coordinates 0..6: 9 at (1,2), (2,1), (2,3), (3,2). Center (2,2) is 7. Output block:
+7 9 9 9 7
+9 7 9 7 9
+9 9 7 9 9
+9 7 9 7 9
+7 9 9 9 7
+Wait from output rows2-6 cols2-6:
+r2: 7 9 9 9 7
+r3: 9 7 9 7 9
+r4: 9 9 7 9 9
+r5: 9 7 9 7 9
+r6: 7 9 9 9 7
+This is 5x5 border? Outer ring includes 7 at corners, 9 on edges; inner ring has 9 at N/E/S/W and corners of inner? Let's analyze. It's like a 5x5 pattern with background 7 and special 9s in a cross thick? Actually output block special 9 positions: all cells except? List 5x5:
+(0,0)=7 (0,1)=9 (0,2)=9 (0,3)=9 (0,4)=7
+(1,0)=9 (1,1)=7 (1,2)=9 (1,3)=7 (1,4)=9
+(2,0)=9 (2,1)=9 (2,2)=7 (2,3)=9 (2,4)=9
+(3,0)=9 (3,1)=7 (3,2)=9 (3,3)=7 (3,4)=9
+(4,0)=7 (4,1)=9 (4,2)=9 (4,3)=9 (4,4)=7
+Special 9 at all cells where Manhattan distance from center? Let's center (2,2). 7 at center, at (1,1),(1,3),(3,1),(3,3), corners. 9 at edge midpoints and corners of inner 3x3? Actually positions with Chebyshev? It is like 3x3 ring? For 5x5, 7 are cells with x,y parity? Pattern: 7 at (r+c even?) Let's check (0,0) even 7, (0,1) odd 9, (0,2) even but 9 not 7. So no.
+
+Demo3 input plus shape of four 9s around center; output is maybe "expanded" by scaling? Input interior 7x7, special plus at relative (1,2),(2,1),(2,3),(3,2) centered at (2,2). Output block 5x5 maybe is the 5x5 bounding box? If take input 5x5 centered at plus? Input rows2-6 cols2-6:
+row2: 7 7 9 7 7?
+Let's index input: rows0-8, cols0-8.
+5x5 rows2-6 cols2-6:
+r2 c2-6: 7 9 7 7 7? Input row2: 9 7 7 9 7 7 7 7 9 => c2=7 c3=9 c4=7 c5=7 c6=7 -> 7 9 7 7 7
+r3: 9 7 9 7 9? row3: 9 7 9 7 9 7 7 7 9 => c2=9 c3=7 c4=9 c5=7 c6=9
+r4: 9 7 7 9 7? row4: 9 7 7 9 7 7 7 7 9 => c2=7? Wait row4 (0-index): "9 7 7 9 7 7 7 7 9", c2=7 c3=9 c4=7 c5=7 c6=7. Hmm not symmetric.
+Maybe rows2-6 cols2-6 not output. Output 5x5 has more 9s than input. Could be generated from input special set by some rule: take all special cells in input, compute something, then produce a canonical 5x5 pattern? Need infer.
+
+Demo4 input 6x7:
+0: 7 6 6 6 6 6 7
+1: 6 7 7 8 7 7 6
+2: 6 7 2 7 2 7 6
+3: 6 7 2 8 2 7 6
+4: 6 7 7 7 7 7 6
+5: 7 6 6 6 6 6 7
+Interior rows1-4 cols1-5 (4x5) background 7, border 6 corners 7. Special digits: 8 at (1,3), (3,3); 2 at (2,2),(2,4),(3,2),(3,4). Output block:
+7 6 6 6 7
+6 7 8 7 6
+6 2 7 2 6
+6 2 8 2 6
+7 6 6 6 7
+This is exactly? The interior 4x5? Let's compare input interior (4 rows x 5 cols):
+rows1-4, cols1-5:
+r1: 7 7 8 7 7
+r2: 7 2 7 2 7
+r3: 7 2 8 2 7
+r4: 7 7 7 7 7
+Output 5x5 with border 6, inner 3x3:
+r1 inner row0: 7 8 7
+r2 inner row1: 2 7 2
+r3 inner row2: 2 8 2
+This looks like input interior with border removed? Input interior has extra 7 padding? If take bounding box of special digits in interior: rows1-3 (relative 0? Let's compute absolute: specials at rows1-3? row1 has 8, rows2-3 have 2/8. min row=1 max=3, min col=2 max=4. Bounding box 3x3: rows1-3, cols2-4:
+row1 c2-4: 7 8 7
+row2: 2 7 2
+row3: 2 8 2
+Exactly output inner 3x3! Surround with border of frame color 6 (input border color) and corners? Output border: outer ring 6 except corners 7. Yes input frame color 6, background/corner 7. So Demo4 rule: find bounding box of non-background digits (inside the frame), extract that subpattern (size 3x3), place it inside a 5x5 frame with border color of input frame and corner/background 7? Then duplicate the 5x5 in output at two positions on 15x15 canvas.
+
+Check Demo1 with this rule. Input frame color? border digits are 4, corners 7. Background inside is 7. Special non-background digits: 9 and 1. Bounding box of specials in interior? Input interior rows1-7 cols1-5. 9 at (5,3), 1 at (7,5). min row=5 max=7, min col=3 max=5. Absolute rows5-7, cols3-5: 3x3 subgrid:
+row5: 7 9 7? Input row5: 4 7 7 9 7 7 4 -> c3=9 c4=7 c5=7 => [9,7,7]
+row6: 7 7 7? row6: 4 7 7 7 7 7 4 -> c3=7 c4=7 c5=7 => [7,7,7]
+row7: 7 7 1? row7: 4 7 7 7 7 1 4 -> c3=7 c4=7 c5=1 => [7,7,1]
+Output inner 3x3 is:
+9 7 7
+7 7 7
+7 7 1
+Yes! Surround by frame color 4 border with corners 7 gives output block:
+7 4 4 4 7
+4 9 7 7 4
+4 7 7 7 4
+4 7 7 1 4
+7 4 4 4 7. Matches. Great.
+
+Demo2: Input frame color 3, background 7. Special non-background: 3 at input row3 col4? But note 3 is also frame color. Is frame color considered special? The interior has a 3 at row3 col4, same as frame. The rule might be non-background digits inside interior (not 7) includes frame color 3. Bounding box of all non-7 inside interior: only that 3 at (3,4). min=max row3 col4. 1x1 subgrid [3]. But output inner 3x3? It is:
+7 7 7
+7 3 7
+7 7 7
+Not just 1x1. So maybe if bounding box is 1x1, expand/pad to 3x3 centered? Or there are special digits? Wait input interior 5x6, non-7 digits: 3 at row3 col4. Also are border? no. Output inner 3x3 has 3 at center. Could be because bounding box of special digit is 1x1 but output always 3x3, padded with background 7 and centered. But why centered? Maybe bounding box is then scaled/padded to 3x3 by centering the object? Need see if bounding box size can be other than 3? In demos all inner output is 3x3. Maybe the core pattern is always a 3x3 "cropped" around some center? The input contains a 3x3 "object" possibly embedded in larger background. Need identify 3x3 region. In Demo1 bounding box of specials was 3x3 (height 3 width 3) exactly. Demo4 bounding box 3x3 exactly. Demo3 bounding box of 9s? Input interior 7x7, 9 positions: (2,3) abs? Let's list absolute: row2 col3, row3 col2, row3 col4, row4 col3. Min row=2 max=4, min col=2 max=4. Bounding box 3x3 rows2-4 cols2-4:
+row2 c2-4: 7 9 7? Input row2: 9 7 7 9 7 7 7 7 9 -> c2=7 c3=9 c4=7 -> [7,9,7]
+row3: 9 7 9? row3: 9 7 9 7 9 7 7 7 9 -> c2=9 c3=7 c4=9 -> [9,7,9]
+row4: 7 9 7? row4: 9 7 7 9 7 7 7 7 9 -> c2=7 c3=9 c4=7 -> [7,9,7]
+That's a plus shape. Output inner 3x3 is:
+9 9 9? Wait output block inner 3x3 rows1-3 cols1-3:
+row1: 7 9 7? Actually block row1 (output row3): 9 7 9 7 9? Let's carefully extract output block 5x5 for Demo3:
+Output rows 2-6, cols 2-6:
+row2: [7,9,9,9,7]
+row3: [9,7,9,7,9]
+row4: [9,9,7,9,9]
+row5: [9,7,9,7,9]
+row6: [7,9,9,9,7]
+Inner 3x3 (rows1-3, cols1-3):
+[7,9,7]
+[9,7,9]
+[7,9,7]
+Yes! That's exactly the bounding box plus shape. I earlier thought inner had more 9s due to border? The border ring also has 9s: frame color is 9? In Demo3 input border color is 9, corners 7. Output border ring is 9 except corners 7. That's why outer ring all 9 edges. So inner 3x3 is exactly bounding box. Good.
+
+Thus overall rule:
+- Input grid has an outer frame of some color C (not 7?) with corners maybe background color 7? The inside is background 7 with some pattern of non-7 digits (possibly including C). There is a frame around interior. The input dimensions vary: The frame thickness one cell? Actually top/bottom rows: corners 7, edges C. Left/right columns: corners 7, edges C. Interior is (H-2) x (W-2), filled with 7 except pattern digits.
+- We need find the minimal bounding box of all cells inside the frame that are not background 7? (i.e., pattern pixels). That box may be 1x1, 3x3, etc? In demos it is 1x1 or 3x3. Output 15x15 has two identical 5x5 tiles placed at top-left-ish and bottom-right-ish: positions rows 2..6, cols 2..6 and rows 8..12, cols 8..12 (0-index). The tile consists of a 5x5: border ring color C, corners 7? Wait if C is frame color, tile outer ring is C except four corners 7. Inside 3x3 is the extracted pattern? But if bounding box is 1x1, how map to inner 3x3? In Demo2 inner 3x3 is a 1x1 pattern centered in 3x3 with background 7. In other demos bounding box 3x3 fits exactly inner 3x3. So maybe always place pattern inside a 3x3 area: If bounding box is smaller, center it within 3x3? For 1x1, center. If 3x3, fill. Could be output tile inner is always 3x3; the pattern is placed by preserving relative positions to the center of bounding box? Need infer for test input. Test may have bounding box maybe 3x3 or 2? Need determine.
+
+Test input:
+6x5:
+7 8 8 8 7
+8 7 7 7 8
+8 8 8 8 8
+8 8 4 7 8
+8 8 7 4 8
+7 8 8 8 7
+
+We need produce 15x15. Need apply rule. Let's parse.
+Input 6 rows x 5 cols.
+Row0: 7 8 8 8 7
+Row1: 8 7 7 7 8
+Row2: 8 8 8 8 8
+Row3: 8 8 4 7 8
+Row4: 8 8 7 4 8
+Row5: 7 8 8 8 7
+
+Frame color? Top row corners 7, edges 8. Bottom same. Left/right columns corners 7, edges 8. So frame color C=8, background inside B=7? Interior rows1-4, cols1-3 (since width 5 -> interior cols 1,2,3; height 6 -> rows1-4). Interior 4x3:
+r1: 7 7 7
+r2: 8 8 8
+r3: 8 4 7
+r4: 8 7 4
+
+Non-background (not 7) inside: 8s and 4s. Note 8 is frame color but appears inside. Need bounding box of all non-7 cells inside interior.
+Interior coordinates absolute (r,c):
+r1: none (all 7)
+r2: c1,c2,c3 = 8
+r3: c1=8,c2=4,c3=7
+r4: c1=8,c2=7,c3=4
+Min row=2, max row=4; min col=1, max col=3. Bounding box size 3 rows x 3 cols: rows2-4, cols1-3. Subgrid:
+row2: 8 8 8
+row3: 8 4 7
+row4: 8 7 4
+This is 3x3. Then tile 5x5: outer ring frame color 8 except corners 7; inner 3x3 as above. Tile:
+row0: 7 8 8 8 7
+row1: 8 8 8 8 8? Wait border left/right color C, inner row: c0=8, inner row 8 8 8, c4=8 -> 8 8 8 8 8
+row2: 8 8 4 7 8
+row3: 8 8 7 4 8
+row4: 7 8 8 8 7
+But check if inner row1 (tile row1) has left/right border 8; if inner row is 8 8 8 then whole row all 8. That's fine.
+Then place two copies in 15x15 at rows 2-6, cols 2-6 and rows 8-12, cols 8-12. Background 7 elsewhere. Need verify positions from demos: first tile at top rows 2..6, cols 2..6; second at rows 8..12, cols 8..12. 15x15 filled with 7. Yes.
+
+Need output final grid only. But let's not rush. Need ensure there are no alternative interpretations. Let's analyze demos thoroughly and possible edge cases. Need maybe output tile border corners are 7, edge color frame. In test tile row0 7 8 8 8 7, row4 same. Row1: 8 8 8 8 8 (since border left/right 8, inner row all 8). Row2: 8 8 4 7 8. Row3: 8 8 7 4 8. That's tile.
+
+But need confirm if bounding box extraction includes cells equal to frame color inside? In demos: Demo2 special is 3 which equals frame color. It was included. Demo3 frame color 9 inside plus included. Demo4 frame color 6 inside? Actually input interior includes no 6? It has 8 and 2 only; frame color 6 not inside. But Demo2 and 3 show frame color inside is part of pattern. So yes all non-7 inside.
+
+What if interior background isn't 7? In all demos background inside is 7 and output background is 7. The digit 7 seems constant background/empty. Frame corners also 7. So rule: background color is 7; frame color is the color on the edges of the border (top row non-corners etc). The pattern is non-7 inside border. Extract bounding box of pattern. Then make a 5x5 object: border of frame color, corners 7, center 3x3? But if pattern bounding box not 3x3? How to embed? We need know for test bounding box is 3x3, so fine.
+
+Could there be multiple disconnected patterns? In test bounding box includes all non-7; maybe there is a 7 at row3 col3 inside bounding box. We include it as background within pattern. That's what demos do: bounding box may contain background 7 cells (Demo1 bounding box has 7s; Demo3 has center 7; Demo4 has center 7). Good.
+
+Need ensure tile inner 3x3 orientation: exactly extracted subgrid no transformation? Demo1 extracted rows5-7 cols3-5:
+[9 7 7; 7 7 7; 7 7 1]
+Output inner:
+row3? block row1: 9 7 7? block rows1-3 cols1-3:
+row1: 9 7 7 (from block row3: 4 9 7 7 4 -> inner 9 7 7)
+row2: 7 7 7
+row3: 7 7 1. Yes.
+Demo3 extracted plus [7 9 7;9 7 9;7 9 7], output inner same. Demo4 extracted [7 8 7;2 7 2;2 8 2], output same. Demo2 extracted [3], output inner [7 7 7;7 3 7;7 7 7]. For 1x1, center. If 2x2 maybe? Not needed but could matter? Test 3x3.
+
+Now output 15x15. Let's construct carefully.
+15 rows, 15 cols, all 7.
+Tile T:
+r0: 7 8 8 8 7
+r1: 8 8 8 8 8
+r2: 8 8 4 7 8
+r3: 8 8 7 4 8
+r4: 7 8 8 8 7
+
+Place first at top-left (r=2,c=2): rows 2-6, cols 2-6.
+Place second at (r=8,c=8): rows 8-12, cols 8-12.
+
+Let's generate 15 rows. Use 0-index.
+Initialize each row 15 7s.
+
+Row0: all 7.
+Row1: all 7.
+Row2: tile row0 at cols2-6: col0 7, col1 7, c2=7,c3=8,c4=8,c5=8,c6=7, c7-14 7. So row2: 7 7 7 8 8 8 7 7 7 7 7 7 7 7 7.
+Row3: tile row1 at cols2-6: c2-c6 = 8 8 8 8 8. Row: 7 7 8 8 8 8 8 7 7 7 7 7 7 7 7? Wait c0=7,c1=7,c2=8,c3=8,c4=8,c5=8,c6=8,c7=7... Yes.
+Row4: tile row2: c2-c6 = 8 8 4 7 8. Row: 7 7 8 8 4 7 8 7 7 7 7 7 7 7 7.
+Row5: tile row3: 8 8 7 4 8. Row: 7 7 8 8 7 4 8 7 7 7 7 7 7 7 7.
+Row6: tile row4: 7 8 8 8 7. Row: 7 7 7 8 8 8 7 7 7 7 7 7 7 7 7.
+Row7: all 7.
+Row8: second tile row0 at cols8-12: c0-7 7, c8=7,c9=8,c10=8,c11=8,c12=7,c13-14 7. Row: 7 7 7 7 7 7 7 7 7 8 8 8 7 7 7.
+Row9: tile row1: c8-12 8 8 8 8 8. Row: seven 7? cols0-7 (8 columns) all 7, then 8 8 8 8 8, then c13-14 7. Row: 7 7 7 7 7 7 7 7 8 8 8 8 8 7 7.
+Row10: tile row2: c8-12 = 8 8 4 7 8. Row: 7 7 7 7 7 7 7 7 8 8 4 7 8 7 7.
+Row11: tile row3: c8-12 = 8 8 7 4 8. Row: 7 7 7 7 7 7 7 7 8 8 7 4 8 7 7.
+Row12: tile row4: c8-12 = 7 8 8 8 7. Row: 7 7 7 7 7 7 7 7 7 8 8 8 7 7 7.
+Row13: all 7.
+Row14: all 7.
+
+Need check if tile row1 all 8: In output demos when inner row contained background 7 and border color C, row could be C C 7 C C etc. For test inner row0 all 8, so border row all 8. Fine.
+
+But let's examine possible subtlety: The input frame in test has an entire row of 8 inside interior row2. Does that count as pattern or perhaps part of frame? The frame is only the outer border, but 8 inside is pattern. Bounding box includes row2 all 8. However, is it possible the intended pattern is just the 4s, treating 8 as "border/frame color" to be ignored except for tile border? In Demo2, the interior special was 3 equal to frame color. They did not ignore frame color; it was the pattern. But maybe rule: pattern consists of digits different from both background and frame color? Demo2 would have no pattern, impossible. Maybe pattern consists of digits not equal to background, including frame color. In Demo3, frame color 9 is pattern. So yes.
+
+But in test, 8 appears as a horizontal bar row and left column within bounding box. Is that intended? Input has interior:
+7 7 7
+8 8 8
+8 4 7
+8 7 4
+This looks like an "L"/bar with 4s. Bounding box all non-7 includes 8 bar. If instead pattern maybe only digits that are not frame color? 4s only: positions (3,2),(4,3) bounding box 2x2 rows3-4 cols2-3: [4 7;7 4]. Then tile inner maybe 3x3 centered? That would be different. But demos show frame color can be pattern. Let's verify Demo2: If ignoring frame color 3, interior has no non-background, but output has 3. So can't ignore. If pattern is any digit not 7, yes.
+
+Could pattern be the smallest rectangular region containing all digits that are neither 7 nor the *corner*? Corner 7. same.
+
+Now let's consider if output placement might be based on input dimensions? All outputs 15x15 with two copies. The positions fixed? Demo1/2/3/4 all 15x15, first at (2,2), second at (8,8). Yes. Need output 15x15.
+
+Need ensure only final grid inside ``` fence, no other text after. But user says Think step by step inside  tags, then output ONLY final grid ... inside a single fence. No other text after fence. We can include thinking in tags (we are doing). Final should be code fence only. But need maybe not include 

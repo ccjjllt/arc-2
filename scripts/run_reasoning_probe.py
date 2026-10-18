@@ -32,6 +32,7 @@ import subprocess
 import sys
 import time
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 # ---- V固定配置(014-5),GPU上不得擅自放大 ----
@@ -43,6 +44,7 @@ PORT = 1234
 SAMPLING = {"temperature": 1.0, "top_p": 0.95, "top_k": 20}
 SEED_XHIGH = 1001
 SEED_LOW = 2001
+SEED_LOW_B = 2002
 INSTALL_BUDGET_S = 20 * 60
 PROTOCOL_BUDGET_S = 5 * 60
 
@@ -101,7 +103,8 @@ def cuda_link_dir(work: Path) -> str:
     return str(d)
 
 
-def start_server(model_root: Path, work: Path, extra: list[str]) -> subprocess.Popen:
+def start_server(model_root: Path, work: Path, extra: list[str],
+                 deadline: float | None = None) -> subprocess.Popen:
     """V首配置:TP4/65536/C4/FP8(模型自带quant config,不传--quantization)、KV默认dtype、无MTP。"""
     env = dict(os.environ, HF_HUB_OFFLINE="1", TRANSFORMERS_OFFLINE="1",
                VLLM_NO_USAGE_STATS="1",
@@ -123,7 +126,8 @@ def start_server(model_root: Path, work: Path, extra: list[str]) -> subprocess.P
     proc = subprocess.Popen(cmd, env=env, stdout=open(slog, "w"),
                             stderr=subprocess.STDOUT, start_new_session=True)
     t = time.time()
-    while time.time() - t < 1500:
+    limit = time.monotonic() + 1500 if deadline is None else float(deadline)
+    while time.monotonic() < limit:
         if proc.poll() is not None:
             break
         try:
@@ -134,7 +138,7 @@ def start_server(model_root: Path, work: Path, extra: list[str]) -> subprocess.P
                         log(f"server ready after {time.time() - t:.0f}s")
                         return proc
         except Exception:
-            time.sleep(10)
+            time.sleep(min(10, max(0.0, limit - time.monotonic())))
     tail = "\n".join(slog.read_text(errors="replace").splitlines()[-30:]) if slog.exists() else ""
     kill_server(proc, work)
     raise RuntimeError(f"server failed to start; tail:\n{tail}")
@@ -165,25 +169,44 @@ def kill_server(proc: subprocess.Popen | None, work: Path) -> None:
 
 
 def chat_once(messages: list[dict], effort: str, seed: int, max_tokens: int,
-              timeout_s: float, out: dict) -> dict:
-    """官方模板kwargs传参;流式读以测TTFT;超时即关连接(服务端abort效果待实测)。"""
+              timeout_s: float, out: dict, deadline: float | None = None) -> dict:
+    """官方模板kwargs传参。请求流式usage,先读usage再读choices。
+    timeout_s与deadline取较早者作为本次墙钟;socket超时只限制一次静默。"""
     payload = {"model": "qwen", "messages": messages, "stream": True,
                "max_tokens": max_tokens, "seed": seed,
+               "stream_options": {"include_usage": True},
                "chat_template_kwargs": {"enable_thinking": True, "reasoning_effort": effort},
                **SAMPLING}
     out["request"] = {"effort": effort, "seed": seed, "max_tokens": max_tokens,
                       "sampling": dict(SAMPLING),
+                      "stream_options": payload["stream_options"],
                       "chat_template_kwargs": payload["chat_template_kwargs"]}
     req = urllib.request.Request(f"http://127.0.0.1:{PORT}/v1/chat/completions",
                                  data=json.dumps(payload).encode(),
                                  headers={"Content-Type": "application/json",
                                           "Accept": "text/event-stream"})
+    limit = time.monotonic() + float(timeout_s)
+    if deadline is not None:
+        limit = min(limit, float(deadline))
     t0 = time.time()
     first_tok_t = None
     texts, reasons, finish, usage = [], [], None, {}
     try:
-        with urllib.request.urlopen(req, timeout=timeout_s) as r:
-            for raw in r:
+        remaining = limit - time.monotonic()
+        if remaining <= 0:
+            raise TimeoutError("deadline_before_request")
+        # Prefill can sit silent; 180s bounds a dead socket without cutting a long prompt.
+        stall_s = min(180.0, max(1.0, remaining))
+        with urllib.request.urlopen(req, timeout=stall_s) as r:
+            while True:
+                if time.monotonic() >= limit:
+                    if finish is None:
+                        out["client_error"] = "deadline_exceeded"
+                        out["cancelled_by_client"] = True
+                    break
+                raw = r.readline()
+                if not raw:
+                    break
                 line = raw.decode(errors="replace").strip()
                 if not line.startswith("data:"):
                     continue
@@ -191,31 +214,71 @@ def chat_once(messages: list[dict], effort: str, seed: int, max_tokens: int,
                 if data == "[DONE]":
                     break
                 try:
-                    ch = json.loads(data)["choices"][0]
+                    obj = json.loads(data)
                 except Exception:
                     continue
-                d = ch.get("delta", {})
-                if first_tok_t is None and (d.get("content") or d.get("reasoning_content")
-                                            or d.get("reasoning")):
+                if obj.get("usage"):
+                    usage = obj["usage"]
+                choices = obj.get("choices") or []
+                if not choices:
+                    continue
+                ch = choices[0]
+                d = ch.get("delta") or {}
+                piece_c = d.get("content") or ""
+                piece_r = d.get("reasoning_content") or d.get("reasoning") or ""
+                if first_tok_t is None and (piece_c or piece_r):
                     first_tok_t = time.time()
-                texts.append(d.get("content") or "")
-                reasons.append(d.get("reasoning_content") or d.get("reasoning") or "")
+                texts.append(piece_c)
+                reasons.append(piece_r)
                 if ch.get("finish_reason"):
                     finish = ch["finish_reason"]
-                if json.loads(data).get("usage"):
-                    usage = json.loads(data)["usage"]
     except Exception as exc:
-        # 连接关闭=客户端取消;后端是否立即停生成需看server日志,GPU上核实。
-        out["client_error"] = f"{type(exc).__name__}:{exc}"[:300]
-        out["cancelled_by_client"] = True
+        if "client_error" not in out:
+            out["client_error"] = f"{type(exc).__name__}:{exc}"[:300]
+            out["cancelled_by_client"] = True
     wall = time.time() - t0
     content, reasoning = "".join(texts), "".join(reasons)
     out.update({"content_chars": len(content), "reasoning_chars": len(reasoning),
                 "finish_reason": finish, "usage": usage, "wall_s": round(wall, 1),
                 "ttft_s": round(first_tok_t - t0, 2) if first_tok_t else None})
-    ntok = usage.get("completion_tokens") or 0
+    ntok = usage.get("completion_tokens") if isinstance(usage, dict) else None
     out["agg_tok_s"] = round(ntok / wall, 2) if wall > 0 and ntok else None
+    out["usage_present"] = ntok is not None
     return {"content": content, "reasoning": reasoning, "finish": finish}
+
+
+def chat_wave(specs: list[dict]) -> dict:
+    """One concurrent wave, at most MAX_NUM_SEQS in flight. Aggregate tok/s uses the wave wall."""
+    n = len(specs)
+    workers = min(MAX_NUM_SEQS, n) if n else 1
+    slots: list = [None] * n
+    t0 = time.monotonic()
+
+    def run_one(i, spec):
+        rec: dict = {}
+        res = chat_once(spec["messages"], spec["effort"], spec["seed"], spec["max_tokens"],
+                        spec.get("timeout_s", 600.0), rec, deadline=spec.get("deadline"))
+        return i, rec, res
+
+    if n:
+        with ThreadPoolExecutor(max_workers=workers) as ex:
+            futs = [ex.submit(run_one, i, spec) for i, spec in enumerate(specs)]
+            for fut in as_completed(futs):
+                i, rec, res = fut.result()
+                slots[i] = {"rec": rec, "res": res}
+    wall = time.monotonic() - t0
+    missing = 0
+    ntok = 0
+    for slot in slots:
+        usage = slot["rec"].get("usage") or {}
+        got = usage.get("completion_tokens") if isinstance(usage, dict) else None
+        if got is None:
+            missing += 1
+        else:
+            ntok += got
+    return {"calls": slots, "wave_wall_s": round(wall, 2), "concurrency": min(MAX_NUM_SEQS, n),
+            "completion_tokens_sum": ntok, "usage_missing": missing,
+            "agg_tok_s": None if wall <= 0 or missing else round(ntok / wall, 2)}
 
 
 def extract_final_grid(content: str, finish: str | None) -> list[list[int]] | None:
@@ -242,13 +305,32 @@ def extract_final_grid(content: str, finish: str | None) -> list[list[int]] | No
             if not ln:
                 continue
             cells = ln.replace(",", " ").split()
-            if not cells or any(not c.isdigit() for c in cells):
+            row, bad = [], not cells
+            for c in cells:
+                if not c.isdigit() or int(c) > 9:
+                    bad = True
+                    break
+                row.append(int(c))
+            if bad:
                 grid = []
                 break
-            grid.append([int(c) for c in cells])
-        if grid and all(len(r) == len(grid[0]) for r in grid):
+            grid.append(row)
+        if (grid and 1 <= len(grid) <= 30 and 1 <= len(grid[0]) <= 30
+                and all(len(r) == len(grid[0]) for r in grid)):
             return grid
     return None
+
+
+def classify_generation(rec: dict, content: str, finish: str | None) -> dict:
+    """Separate tokens seen, a finished protocol, and a legal ARC grid."""
+    usage = rec.get("usage") or {}
+    ntok = usage.get("completion_tokens") if isinstance(usage, dict) else None
+    generated = bool((ntok or 0) > 0 or rec.get("content_chars") or rec.get("reasoning_chars")
+                     or rec.get("ttft_s") is not None)
+    protocol_complete = finish == "stop" and not rec.get("client_error")
+    grid = extract_final_grid(content, finish) if protocol_complete else None
+    return {"generation_observed": generated, "protocol_complete": bool(protocol_complete),
+            "valid_answer": grid is not None, "usage_present": ntok is not None, "grid": grid}
 
 
 def main() -> int:
@@ -333,8 +415,11 @@ def main() -> int:
             rec: dict = {}
             res = chat_once([{"role": "user", "content": prompt}], ef, seed,
                             args.max_tokens, args.timeout_s, rec)
-            rec["grid"] = extract_final_grid(res["content"], res["finish"])
-            rec["answered"] = rec["grid"] is not None
+            flags = classify_generation(rec, res["content"], res["finish"])
+            rec.update({k: flags[k] for k in (
+                "generation_observed", "protocol_complete", "valid_answer", "usage_present")})
+            rec["grid"] = flags["grid"]
+            rec["answered"] = flags["valid_answer"]
             (work / f"reply-{ef}.json").write_text(json.dumps(
                 {"request": rec.get("request"), "finish_reason": rec.get("finish_reason"),
                  "usage": rec.get("usage"), "wall_s": rec.get("wall_s"),
@@ -355,9 +440,10 @@ def main() -> int:
         kill_server(proc, work)
         (work / "run.json").write_text(json.dumps(run, indent=1))
     # 成功标准:真实生成+reasoning/final区分可见,不是"端口已打开"。
-    ok = [p for p in run.get("probes", []) if p.get("finish_reason") and not p.get("client_error")]
+    ok = [p for p in run.get("probes", [])
+          if p.get("generation_observed") and p.get("usage_present") and not p.get("client_error")]
     if not ok:
-        log("EVIDENCE-FAIL:无真实生成,不进P2")
+        log("EVIDENCE-FAIL:无带usage的真实生成,不进P2")
         return 5
     log("短协议通过;是否进P2由T准入(实测R)决定")
     return 0

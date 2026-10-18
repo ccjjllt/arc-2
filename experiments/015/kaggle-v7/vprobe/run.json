@@ -1,0 +1,1992 @@
+{
+ "config": {
+  "tp": 4,
+  "max_model_len": 65536,
+  "max_num_seqs": 4,
+  "gpu_mem_util": 0.9,
+  "kv_dtype": "default",
+  "mtp": false,
+  "sampling": {
+   "temperature": 1.0,
+   "top_p": 0.95,
+   "top_k": 20
+  },
+  "hello_max_tokens": 4096,
+  "wave_n": 4,
+  "wave_max_tokens": 256,
+  "t_high": {
+   "effort": "xhigh",
+   "calls": 1,
+   "max_tokens": 32768,
+   "seed": 1001,
+   "concurrency": 2
+  },
+  "t_low": {
+   "effort": "low",
+   "calls": 2,
+   "max_tokens": 16384,
+   "seeds": [
+    2001,
+    2002
+   ],
+   "concurrency": 4
+  },
+  "second_slot_rule": "T-high duplicates its only answer; T-low keeps seed order",
+  "vllm_wheel": "vllm-0.27.2rc1.dev91+g1f7427bc0-cp38-abi3-manylinux_2_28_x86_64.whl",
+  "vllm_wheel_sha256": "5cbeedeb8266362ef935775c4c33203e4dab74e8da1649a977bae833df62304a"
+ },
+ "budgets": {
+  "install_load_s": 1200,
+  "protocol_s": 900,
+  "session_s": 14626.0,
+  "save_margin_s": 180
+ },
+ "denominator": {
+  "P2": [
+   "291dc1e1_0",
+   "db118e2a_0"
+  ],
+  "P6": [
+   "291dc1e1_0",
+   "4c416de3_0",
+   "58c02a16_0",
+   "aa4ec2a5_0",
+   "db118e2a_0",
+   "fc4aaf52_0"
+  ],
+  "P6_extra": [
+   "4c416de3_0",
+   "58c02a16_0",
+   "aa4ec2a5_0",
+   "fc4aaf52_0"
+  ]
+ },
+ "calls": [
+  {
+   "request": {
+    "effort": "xhigh",
+    "seed": 1001,
+    "max_tokens": 4096,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "xhigh"
+    }
+   },
+   "content_chars": 7,
+   "reasoning_chars": 122,
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 56,
+    "total_tokens": 93,
+    "completion_tokens": 37
+   },
+   "wall_s": 1.8,
+   "ttft_s": 0.47,
+   "agg_tok_s": 20.21,
+   "usage_present": true,
+   "phase": "hello",
+   "literal_probe": true,
+   "generation_observed": true,
+   "protocol_complete": true,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "low",
+    "seed": 2001,
+    "max_tokens": 4096,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "low"
+    }
+   },
+   "content_chars": 7,
+   "reasoning_chars": 113,
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 44,
+    "total_tokens": 78,
+    "completion_tokens": 34
+   },
+   "wall_s": 1.4,
+   "ttft_s": 0.2,
+   "agg_tok_s": 23.48,
+   "usage_present": true,
+   "phase": "hello",
+   "literal_probe": true,
+   "generation_observed": true,
+   "protocol_complete": true,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "xhigh",
+    "seed": 3001,
+    "max_tokens": 256,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "xhigh"
+    }
+   },
+   "content_chars": 7,
+   "reasoning_chars": 121,
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 56,
+    "total_tokens": 95,
+    "completion_tokens": 39
+   },
+   "wall_s": 1.8,
+   "ttft_s": 0.22,
+   "agg_tok_s": 21.4,
+   "usage_present": true,
+   "phase": "wave",
+   "arm": "probe",
+   "query": null,
+   "generation_observed": true,
+   "protocol_complete": true,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "low",
+    "seed": 3002,
+    "max_tokens": 256,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "low"
+    }
+   },
+   "content_chars": 7,
+   "reasoning_chars": 124,
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 44,
+    "total_tokens": 78,
+    "completion_tokens": 34
+   },
+   "wall_s": 1.6,
+   "ttft_s": 0.22,
+   "agg_tok_s": 20.94,
+   "usage_present": true,
+   "phase": "wave",
+   "arm": "probe",
+   "query": null,
+   "generation_observed": true,
+   "protocol_complete": true,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "xhigh",
+    "seed": 3003,
+    "max_tokens": 256,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "xhigh"
+    }
+   },
+   "content_chars": 7,
+   "reasoning_chars": 114,
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 56,
+    "total_tokens": 92,
+    "completion_tokens": 36
+   },
+   "wall_s": 1.7,
+   "ttft_s": 0.22,
+   "agg_tok_s": 21.09,
+   "usage_present": true,
+   "phase": "wave",
+   "arm": "probe",
+   "query": null,
+   "generation_observed": true,
+   "protocol_complete": true,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "low",
+    "seed": 3004,
+    "max_tokens": 256,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "low"
+    }
+   },
+   "content_chars": 7,
+   "reasoning_chars": 122,
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 44,
+    "total_tokens": 78,
+    "completion_tokens": 34
+   },
+   "wall_s": 1.6,
+   "ttft_s": 0.21,
+   "agg_tok_s": 20.95,
+   "usage_present": true,
+   "phase": "wave",
+   "arm": "probe",
+   "query": null,
+   "generation_observed": true,
+   "protocol_complete": true,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "xhigh",
+    "seed": 1001,
+    "max_tokens": 32768,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "xhigh"
+    }
+   },
+   "content_chars": 0,
+   "reasoning_chars": 97288,
+   "finish_reason": "length",
+   "usage": {
+    "prompt_tokens": 2572,
+    "total_tokens": 35340,
+    "completion_tokens": 32768
+   },
+   "wall_s": 1317.6,
+   "ttft_s": 2.8,
+   "agg_tok_s": 24.87,
+   "usage_present": true,
+   "phase": "P2",
+   "arm": "T-high",
+   "query": "291dc1e1_0",
+   "generation_observed": true,
+   "protocol_complete": false,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "xhigh",
+    "seed": 1001,
+    "max_tokens": 32768,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "xhigh"
+    }
+   },
+   "content_chars": 0,
+   "reasoning_chars": 20256,
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 2556,
+    "total_tokens": 11276,
+    "completion_tokens": 8720
+   },
+   "wall_s": 367.3,
+   "ttft_s": 3.21,
+   "agg_tok_s": 23.74,
+   "usage_present": true,
+   "phase": "P2",
+   "arm": "T-high",
+   "query": "db118e2a_0",
+   "generation_observed": true,
+   "protocol_complete": true,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "low",
+    "seed": 2001,
+    "max_tokens": 16384,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "low"
+    }
+   },
+   "content_chars": 0,
+   "reasoning_chars": 30473,
+   "finish_reason": "length",
+   "usage": {
+    "prompt_tokens": 2560,
+    "total_tokens": 18944,
+    "completion_tokens": 16384
+   },
+   "wall_s": 728.5,
+   "ttft_s": 3.16,
+   "agg_tok_s": 22.49,
+   "usage_present": true,
+   "phase": "P2",
+   "arm": "T-low",
+   "query": "291dc1e1_0",
+   "generation_observed": true,
+   "protocol_complete": false,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "low",
+    "seed": 2002,
+    "max_tokens": 16384,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "low"
+    }
+   },
+   "content_chars": 0,
+   "reasoning_chars": 33053,
+   "finish_reason": "length",
+   "usage": {
+    "prompt_tokens": 2560,
+    "total_tokens": 18944,
+    "completion_tokens": 16384
+   },
+   "wall_s": 728.5,
+   "ttft_s": 3.16,
+   "agg_tok_s": 22.49,
+   "usage_present": true,
+   "phase": "P2",
+   "arm": "T-low",
+   "query": "291dc1e1_0",
+   "generation_observed": true,
+   "protocol_complete": false,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "low",
+    "seed": 2001,
+    "max_tokens": 16384,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "low"
+    }
+   },
+   "content_chars": 1169,
+   "reasoning_chars": 14000,
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 2544,
+    "total_tokens": 11024,
+    "completion_tokens": 8480
+   },
+   "wall_s": 378.7,
+   "ttft_s": 2.46,
+   "agg_tok_s": 22.39,
+   "usage_present": true,
+   "phase": "P2",
+   "arm": "T-low",
+   "query": "db118e2a_0",
+   "generation_observed": true,
+   "protocol_complete": true,
+   "valid_answer": true,
+   "grid": [
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     8,
+     8,
+     8,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     8,
+     8,
+     8,
+     8,
+     8,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     8,
+     8,
+     4,
+     7,
+     8,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     8,
+     8,
+     7,
+     4,
+     8,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     8,
+     8,
+     8,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     8,
+     8,
+     8,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     8,
+     8,
+     8,
+     8,
+     8,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     8,
+     8,
+     4,
+     7,
+     8,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     8,
+     8,
+     7,
+     4,
+     8,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     8,
+     8,
+     8,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ]
+   ],
+   "answered": true
+  },
+  {
+   "request": {
+    "effort": "low",
+    "seed": 2002,
+    "max_tokens": 16384,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "low"
+    }
+   },
+   "content_chars": 459,
+   "reasoning_chars": 22894,
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 2544,
+    "total_tokens": 16271,
+    "completion_tokens": 13727
+   },
+   "wall_s": 614.3,
+   "ttft_s": 2.46,
+   "agg_tok_s": 22.34,
+   "usage_present": true,
+   "phase": "P2",
+   "arm": "T-low",
+   "query": "db118e2a_0",
+   "generation_observed": true,
+   "protocol_complete": true,
+   "valid_answer": true,
+   "grid": [
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     8,
+     8,
+     8,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     8,
+     8,
+     8,
+     8,
+     8,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     8,
+     8,
+     4,
+     7,
+     8,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     8,
+     8,
+     7,
+     4,
+     8,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     8,
+     8,
+     8,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     8,
+     8,
+     8,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     8,
+     8,
+     8,
+     8,
+     8,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     8,
+     8,
+     4,
+     7,
+     8,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     8,
+     8,
+     7,
+     4,
+     8,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     8,
+     8,
+     8,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ],
+    [
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7,
+     7
+    ]
+   ],
+   "answered": true
+  },
+  {
+   "request": {
+    "effort": "xhigh",
+    "seed": 1001,
+    "max_tokens": 32768,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "xhigh"
+    }
+   },
+   "content_chars": 0,
+   "reasoning_chars": 83082,
+   "finish_reason": "length",
+   "usage": {
+    "prompt_tokens": 6678,
+    "total_tokens": 39446,
+    "completion_tokens": 32768
+   },
+   "wall_s": 1353.9,
+   "ttft_s": 5.0,
+   "agg_tok_s": 24.2,
+   "usage_present": true,
+   "phase": "P6_extra",
+   "arm": "T-high",
+   "query": "4c416de3_0",
+   "generation_observed": true,
+   "protocol_complete": false,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "xhigh",
+    "seed": 1001,
+    "max_tokens": 32768,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "xhigh"
+    }
+   },
+   "content_chars": 521,
+   "reasoning_chars": 32503,
+   "finish_reason": "stop",
+   "usage": {
+    "prompt_tokens": 1604,
+    "total_tokens": 17545,
+    "completion_tokens": 15941
+   },
+   "wall_s": 680.6,
+   "ttft_s": 0.97,
+   "agg_tok_s": 23.42,
+   "usage_present": true,
+   "phase": "P6_extra",
+   "arm": "T-high",
+   "query": "58c02a16_0",
+   "generation_observed": true,
+   "protocol_complete": true,
+   "valid_answer": true,
+   "grid": [
+    [
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4,
+     7,
+     4,
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4
+    ],
+    [
+     4,
+     4,
+     7,
+     5,
+     5,
+     7,
+     4,
+     4,
+     7,
+     4,
+     4,
+     7,
+     5,
+     5,
+     7,
+     4
+    ],
+    [
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4,
+     7,
+     4,
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4
+    ],
+    [
+     4,
+     7,
+     4,
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4,
+     7,
+     4,
+     4,
+     7,
+     4,
+     5
+    ],
+    [
+     4,
+     4,
+     7,
+     4,
+     4,
+     7,
+     5,
+     5,
+     7,
+     4,
+     4,
+     7,
+     4,
+     4,
+     7,
+     5
+    ],
+    [
+     4,
+     7,
+     4,
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4,
+     7,
+     4,
+     4,
+     7,
+     4,
+     5
+    ],
+    [
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4,
+     7,
+     4,
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4
+    ],
+    [
+     4,
+     4,
+     7,
+     5,
+     5,
+     7,
+     4,
+     4,
+     7,
+     4,
+     4,
+     7,
+     5,
+     5,
+     7,
+     4
+    ],
+    [
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4,
+     7,
+     4,
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4
+    ],
+    [
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4,
+     7,
+     4,
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4
+    ],
+    [
+     4,
+     4,
+     7,
+     5,
+     5,
+     7,
+     4,
+     4,
+     7,
+     4,
+     4,
+     7,
+     5,
+     5,
+     7,
+     4
+    ],
+    [
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4,
+     7,
+     4,
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4
+    ],
+    [
+     4,
+     7,
+     4,
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4,
+     7,
+     4,
+     4,
+     7,
+     4,
+     5
+    ],
+    [
+     4,
+     4,
+     7,
+     4,
+     4,
+     7,
+     5,
+     5,
+     7,
+     4,
+     4,
+     7,
+     4,
+     4,
+     7,
+     5
+    ],
+    [
+     4,
+     7,
+     4,
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4,
+     7,
+     4,
+     4,
+     7,
+     4,
+     5
+    ],
+    [
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4,
+     7,
+     4,
+     4,
+     7,
+     4,
+     5,
+     7,
+     5,
+     4
+    ]
+   ],
+   "answered": true
+  },
+  {
+   "request": {
+    "effort": "xhigh",
+    "seed": 1001,
+    "max_tokens": 32768,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "xhigh"
+    }
+   },
+   "content_chars": 0,
+   "reasoning_chars": 87657,
+   "finish_reason": "length",
+   "usage": {
+    "prompt_tokens": 7678,
+    "total_tokens": 40446,
+    "completion_tokens": 32768
+   },
+   "wall_s": 1434.7,
+   "ttft_s": 5.91,
+   "agg_tok_s": 22.84,
+   "usage_present": true,
+   "phase": "P6_extra",
+   "arm": "T-high",
+   "query": "aa4ec2a5_0",
+   "generation_observed": true,
+   "protocol_complete": false,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "xhigh",
+    "seed": 1001,
+    "max_tokens": 32768,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "xhigh"
+    }
+   },
+   "content_chars": 0,
+   "reasoning_chars": 96641,
+   "finish_reason": "length",
+   "usage": {
+    "prompt_tokens": 2734,
+    "total_tokens": 35502,
+    "completion_tokens": 32768
+   },
+   "wall_s": 1434.5,
+   "ttft_s": 2.44,
+   "agg_tok_s": 22.84,
+   "usage_present": true,
+   "phase": "P6_extra",
+   "arm": "T-high",
+   "query": "fc4aaf52_0",
+   "generation_observed": true,
+   "protocol_complete": false,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "low",
+    "seed": 2001,
+    "max_tokens": 16384,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "low"
+    }
+   },
+   "content_chars": 0,
+   "reasoning_chars": 35893,
+   "finish_reason": "length",
+   "usage": {
+    "prompt_tokens": 6666,
+    "total_tokens": 23050,
+    "completion_tokens": 16384
+   },
+   "wall_s": 750.4,
+   "ttft_s": 4.42,
+   "agg_tok_s": 21.83,
+   "usage_present": true,
+   "phase": "P6_extra",
+   "arm": "T-low",
+   "query": "4c416de3_0",
+   "generation_observed": true,
+   "protocol_complete": false,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "low",
+    "seed": 2002,
+    "max_tokens": 16384,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "low"
+    }
+   },
+   "content_chars": 0,
+   "reasoning_chars": 28760,
+   "finish_reason": "length",
+   "usage": {
+    "prompt_tokens": 6666,
+    "total_tokens": 23050,
+    "completion_tokens": 16384
+   },
+   "wall_s": 750.4,
+   "ttft_s": 4.42,
+   "agg_tok_s": 21.83,
+   "usage_present": true,
+   "phase": "P6_extra",
+   "arm": "T-low",
+   "query": "4c416de3_0",
+   "generation_observed": true,
+   "protocol_complete": false,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "low",
+    "seed": 2001,
+    "max_tokens": 16384,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "low"
+    }
+   },
+   "content_chars": 0,
+   "reasoning_chars": 33523,
+   "finish_reason": "length",
+   "usage": {
+    "prompt_tokens": 1592,
+    "total_tokens": 17976,
+    "completion_tokens": 16384
+   },
+   "wall_s": 750.5,
+   "ttft_s": 4.97,
+   "agg_tok_s": 21.83,
+   "usage_present": true,
+   "phase": "P6_extra",
+   "arm": "T-low",
+   "query": "58c02a16_0",
+   "generation_observed": true,
+   "protocol_complete": false,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "low",
+    "seed": 2002,
+    "max_tokens": 16384,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "low"
+    }
+   },
+   "content_chars": 0,
+   "reasoning_chars": 32116,
+   "finish_reason": "length",
+   "usage": {
+    "prompt_tokens": 1592,
+    "total_tokens": 17976,
+    "completion_tokens": 16384
+   },
+   "wall_s": 750.5,
+   "ttft_s": 4.97,
+   "agg_tok_s": 21.83,
+   "usage_present": true,
+   "phase": "P6_extra",
+   "arm": "T-low",
+   "query": "58c02a16_0",
+   "generation_observed": true,
+   "protocol_complete": false,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "low",
+    "seed": 2001,
+    "max_tokens": 16384,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "low"
+    }
+   },
+   "content_chars": 0,
+   "reasoning_chars": 30662,
+   "finish_reason": "length",
+   "usage": {
+    "prompt_tokens": 7666,
+    "total_tokens": 24050,
+    "completion_tokens": 16384
+   },
+   "wall_s": 755.3,
+   "ttft_s": 5.57,
+   "agg_tok_s": 21.69,
+   "usage_present": true,
+   "phase": "P6_extra",
+   "arm": "T-low",
+   "query": "aa4ec2a5_0",
+   "generation_observed": true,
+   "protocol_complete": false,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "low",
+    "seed": 2002,
+    "max_tokens": 16384,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "low"
+    }
+   },
+   "content_chars": 0,
+   "reasoning_chars": 30846,
+   "finish_reason": "length",
+   "usage": {
+    "prompt_tokens": 7666,
+    "total_tokens": 24050,
+    "completion_tokens": 16384
+   },
+   "wall_s": 755.3,
+   "ttft_s": 5.57,
+   "agg_tok_s": 21.69,
+   "usage_present": true,
+   "phase": "P6_extra",
+   "arm": "T-low",
+   "query": "aa4ec2a5_0",
+   "generation_observed": true,
+   "protocol_complete": false,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "low",
+    "seed": 2001,
+    "max_tokens": 16384,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "low"
+    }
+   },
+   "content_chars": 0,
+   "reasoning_chars": 32545,
+   "finish_reason": "length",
+   "usage": {
+    "prompt_tokens": 2722,
+    "total_tokens": 19106,
+    "completion_tokens": 16384
+   },
+   "wall_s": 755.4,
+   "ttft_s": 6.45,
+   "agg_tok_s": 21.69,
+   "usage_present": true,
+   "phase": "P6_extra",
+   "arm": "T-low",
+   "query": "fc4aaf52_0",
+   "generation_observed": true,
+   "protocol_complete": false,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  },
+  {
+   "request": {
+    "effort": "low",
+    "seed": 2002,
+    "max_tokens": 16384,
+    "sampling": {
+     "temperature": 1.0,
+     "top_p": 0.95,
+     "top_k": 20
+    },
+    "stream_options": {
+     "include_usage": true
+    },
+    "chat_template_kwargs": {
+     "enable_thinking": true,
+     "reasoning_effort": "low"
+    }
+   },
+   "content_chars": 0,
+   "reasoning_chars": 32563,
+   "finish_reason": "length",
+   "usage": {
+    "prompt_tokens": 2722,
+    "total_tokens": 19106,
+    "completion_tokens": 16384
+   },
+   "wall_s": 755.4,
+   "ttft_s": 6.45,
+   "agg_tok_s": 21.69,
+   "usage_present": true,
+   "phase": "P6_extra",
+   "arm": "T-low",
+   "query": "fc4aaf52_0",
+   "generation_observed": true,
+   "protocol_complete": false,
+   "valid_answer": false,
+   "grid": null,
+   "answered": false
+  }
+ ],
+ "host": {
+  "python": "3.12.3",
+  "nvidia_smi": "NVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB",
+  "pip_pkgs": {}
+ },
+ "mounts": {
+  "model_root": "/kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1",
+  "wheelhouse": "/kaggle/input/datasets/nick2187/qwen38-vllm0272-cu130-wheelhouse-v1"
+ },
+ "vllm_wheel_sha256_observed": "5cbeedeb8266362ef935775c4c33203e4dab74e8da1649a977bae833df62304a",
+ "ensurepip_rc": 1,
+ "installer": "fallback_pip_python312_target",
+ "vllm_install": "requirements_then_vllm_no_deps",
+ "install_cmd": {
+  "requirements": [
+   "/usr/bin/python3",
+   "-m",
+   "pip",
+   "install",
+   "--python-version",
+   "3.12",
+   "--only-binary",
+   ":all:",
+   "--no-index",
+   "--find-links",
+   "/kaggle/input/datasets/nick2187/qwen38-vllm0272-cu130-wheelhouse-v1/wheels",
+   "--requirement",
+   "/kaggle/input/datasets/nick2187/qwen38-vllm0272-cu130-wheelhouse-v1/requirements-qwen38-runtime.txt",
+   "--target",
+   "/kaggle/working/vprobe/site"
+  ],
+  "vllm_no_deps": [
+   "/usr/bin/python3",
+   "-m",
+   "pip",
+   "install",
+   "--python-version",
+   "3.12",
+   "--only-binary",
+   ":all:",
+   "--no-index",
+   "--no-deps",
+   "--find-links",
+   "/kaggle/input/datasets/nick2187/qwen38-vllm0272-cu130-wheelhouse-v1/wheels",
+   "/kaggle/input/datasets/nick2187/qwen38-vllm0272-cu130-wheelhouse-v1/wheels/vllm-0.27.2rc1.dev91+g1f7427bc0-cp38-abi3-manylinux_2_28_x86_64.whl",
+   "--target",
+   "/kaggle/working/vprobe/site"
+  ]
+ },
+ "import_check": {
+  "rc": 0,
+  "out": "0.27.2rc1.dev91+g1f7427bc0\n/kaggle/working/vprobe/site/vllm/__init__.py\n2.13.0+cu130 "
+ },
+ "install_s": 257.9,
+ "template_render": {
+  "status": "d differ",
+  "renders": {
+   "xhigh": {
+    "chars": 300,
+    "sha256": "3596a18ffe07d3574565a48d10940373a04973330f73311d095c02654c629e67",
+    "tail": "te key assumptions, consider plausible alternatives, and prioritize correctness, consistency, and clarity in the final answer.<|im_end|>\n<|im_start|>user\nhello<|im_end|>\n<|im_start|>assistant\n<think>\n"
+   },
+   "low": {
+    "chars": 229,
+    "sha256": "e8d2202243e5a0c56afbf21defb42da0f43036f1da8f1489397858bc115cb776",
+    "tail": "effort is set to low. Keep your thinking brief and focused, moving directly to the conclusion without unnecessary elaboration.<|im_end|>\n<|im_start|>user\nhello<|im_end|>\n<|im_start|>assistant\n<think>\n"
+   }
+  }
+ },
+ "install_load_s": 658.3,
+ "protocol_s": 3.3,
+ "protocol_admitted": false,
+ "generation_admitted": true,
+ "waves": [
+  {
+   "phase": "wave",
+   "arm": "probe",
+   "concurrency": 4,
+   "wave_wall_s": 1.82,
+   "completion_tokens_sum": 143,
+   "usage_missing": 0,
+   "agg_tok_s": 78.43,
+   "n": 4
+  },
+  {
+   "phase": "P2",
+   "arm": "T-high",
+   "concurrency": 2,
+   "wave_wall_s": 1317.55,
+   "completion_tokens_sum": 41488,
+   "usage_missing": 0,
+   "agg_tok_s": 31.49,
+   "n": 2
+  },
+  {
+   "phase": "P2",
+   "arm": "T-low",
+   "concurrency": 4,
+   "wave_wall_s": 728.5,
+   "completion_tokens_sum": 54975,
+   "usage_missing": 0,
+   "agg_tok_s": 75.46,
+   "n": 4
+  },
+  {
+   "phase": "P6_extra",
+   "arm": "T-high",
+   "concurrency": 2,
+   "wave_wall_s": 1353.92,
+   "completion_tokens_sum": 48709,
+   "usage_missing": 0,
+   "agg_tok_s": 35.98,
+   "n": 2
+  },
+  {
+   "phase": "P6_extra",
+   "arm": "T-high",
+   "concurrency": 2,
+   "wave_wall_s": 1434.66,
+   "completion_tokens_sum": 65536,
+   "usage_missing": 0,
+   "agg_tok_s": 45.68,
+   "n": 2
+  },
+  {
+   "phase": "P6_extra",
+   "arm": "T-low",
+   "concurrency": 4,
+   "wave_wall_s": 750.48,
+   "completion_tokens_sum": 65536,
+   "usage_missing": 0,
+   "agg_tok_s": 87.33,
+   "n": 4
+  },
+  {
+   "phase": "P6_extra",
+   "arm": "T-low",
+   "concurrency": 4,
+   "wave_wall_s": 755.39,
+   "completion_tokens_sum": 65536,
+   "usage_missing": 0,
+   "agg_tok_s": 86.76,
+   "n": 4
+  }
+ ],
+ "wave_measured": {
+  "phase": "wave",
+  "arm": "probe",
+  "concurrency": 4,
+  "wave_wall_s": 1.82,
+  "completion_tokens_sum": 143,
+  "usage_missing": 0,
+  "agg_tok_s": 78.43,
+  "n": 4
+ },
+ "P2": {
+  "label": "P2",
+  "keys": [
+   "291dc1e1_0",
+   "db118e2a_0"
+  ],
+  "wall_s": 2046.1,
+  "completion_tokens": 96463,
+  "usage_missing": 0,
+  "complete": true
+ },
+ "p6_gate": {
+  "remain_s": 11916.5,
+  "need_s": 5210.6,
+  "p2_wall_s": 2046.1,
+  "p2_completion_tokens": 96463,
+  "rate_tok_s": 47.145,
+  "decision": "run",
+  "reason": "remaining_covers_estimated_extra_queries"
+ },
+ "P6_extra": {
+  "label": "P6_extra",
+  "keys": [
+   "4c416de3_0",
+   "58c02a16_0",
+   "aa4ec2a5_0",
+   "fc4aaf52_0"
+  ],
+  "wall_s": 4294.5,
+  "completion_tokens": 245317,
+  "usage_missing": 0,
+  "complete": true
+ },
+ "status": "complete_with_evidence",
+ "elapsed_s": 7009.1,
+ "serve_tail": "(APIServer pid=227) INFO 10-18 09:27:09 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 86.4 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 9.2%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:27:19 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 86.8 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 9.4%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:27:29 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 86.4 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 9.6%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:27:39 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 86.0 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 9.6%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:27:49 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 86.4 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 9.6%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:27:59 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 86.0 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 9.8%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:28:09 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 86.0 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 10.0%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:28:19 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 85.6 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 10.0%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:28:29 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 86.0 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 10.0%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:28:39 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 85.6 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 10.2%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:28:49 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 85.6 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 10.4%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:28:59 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 85.2 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 10.4%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:29:09 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 85.2 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 10.6%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:29:19 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 85.6 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 10.8%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:29:29 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 84.8 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 10.8%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:29:39 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 85.2 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 10.8%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:29:49 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 84.8 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 11.0%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:29:59 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 84.8 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 11.2%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:30:09 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 84.8 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 11.2%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:30:19 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 84.8 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 11.2%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:30:29 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 84.4 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 11.4%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:30:39 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 84.4 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 11.6%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:30:49 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 84.4 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 11.6%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:30:59 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 84.4 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 11.9%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:31:09 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 84.0 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 11.9%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:31:19 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 84.0 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 12.1%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:31:29 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 84.0 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 12.1%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:31:39 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 83.6 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 12.3%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:31:49 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 84.0 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 12.5%, Prefix cache hit rate: 30.6%\n(APIServer pid=227) INFO 10-18 09:31:59 [loggers.py:310] Engine 000: Avg prompt throughput: 0.0 tokens/s, Avg generation throughput: 83.6 tokens/s, Running: 4 reqs, Waiting: 0 reqs, GPU KV cache usage: 12.5%, Prefix cache hit rate: 30.6%"
+}

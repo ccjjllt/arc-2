@@ -1,0 +1,43 @@
+{
+ "phase": "P6_extra",
+ "query": "fc4aaf52_0",
+ "arm": "T-high",
+ "request": {
+  "effort": "xhigh",
+  "seed": 1001,
+  "max_tokens": 32768,
+  "sampling": {
+   "temperature": 1.0,
+   "top_p": 0.95,
+   "top_k": 20
+  },
+  "stream_options": {
+   "include_usage": true
+  },
+  "chat_template_kwargs": {
+   "enable_thinking": true,
+   "reasoning_effort": "xhigh"
+  }
+ },
+ "finish_reason": "length",
+ "usage": {
+  "prompt_tokens": 2734,
+  "total_tokens": 35502,
+  "completion_tokens": 32768
+ },
+ "wall_s": 1434.5,
+ "ttft_s": 2.44,
+ "agg_tok_s": 22.84,
+ "client_error": null,
+ "cancelled_by_client": null,
+ "generation_observed": true,
+ "protocol_complete": false,
+ "valid_answer": false,
+ "usage_present": true,
+ "answered": false,
+ "grid": null,
+ "content_chars": 0,
+ "reasoning_chars": 96641,
+ "status": null,
+ "literal_probe": null
+}

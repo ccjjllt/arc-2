@@ -1,0 +1,31 @@
+{
+ "kernel": "jiyujia/arc2-015-v-t-27b-reasoning",
+ "version": 7,
+ "elapsed_s": 7009.1,
+ "install_load_s": 658.3,
+ "hardware": "4x NVIDIA L4, driver 580.178.04, Python 3.12.3",
+ "weights": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1",
+ "vllm": "0.27.2rc1.dev91+g1f7427bc0",
+ "torch": "2.13.0+cu130",
+ "cohort": "frozen P6, development tasks already used in earlier pilots, not an unseen confirmation set",
+ "metric": "query EM@2, exact full grid, missing final counts wrong",
+ "P2": {
+  "n": 2,
+  "T-high": "0/2",
+  "T-low": "1/2",
+  "wall_s": 2046.1,
+  "completion_tokens": 96463
+ },
+ "P6": {
+  "n": 6,
+  "T-high": "1/6",
+  "T-low": "1/6",
+  "union_diagnostic": "2/6"
+ },
+ "hits": {
+  "db118e2a_0": "T-low both seeds exact and identical 15x15; T-high stop at 8720 tokens with empty content",
+  "58c02a16_0": "T-high one answer exact 16x16, duplicated into slot 2; both T-low calls length at 16384 with empty content"
+ },
+ "calls": "18 task calls: 14 finish_reason=length with empty content, 1 stop with empty content, 3 stop with a legal grid",
+ "not_a_submission_score": true
+}
