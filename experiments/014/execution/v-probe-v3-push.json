@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "fix": "renamed shadowing helper run() -> sh(); vdriver dict `run` shadowed function at pip step (CPU test exited before reaching it)",
+  "lesson": "orderly-exit tests must cover every stage entry, not just gates",
+  "local_verification": ["py_compile", "repack boot sim 3 files"]
+}

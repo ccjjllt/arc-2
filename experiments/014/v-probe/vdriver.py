@@ -18,6 +18,7 @@ import urllib.request
 from pathlib import Path
 
 import run_reasoning_probe as P
+import shutil
 
 INSTALL_BUDGET_S = 20 * 60
 PROTOCOL_BUDGET_S = 5 * 60
@@ -30,13 +31,16 @@ def log(msg):
     print(f"[vdriver {time.strftime('%H:%M:%S')}] {msg}", flush=True)
 
 
-def run(cmd, timeout, cwd=None, env=None):
+def sh(cmd, timeout, cwd=None, env=None):
     return subprocess.run(cmd, capture_output=True, text=True, timeout=timeout,
                           cwd=cwd, env=env)
 
 
 def orderly(work, run, status, code=0):
     run["status"] = status
+    # Keep kernel output small: the isolated site/ prefix (multi-GB torch)
+    # is reproducible from the wheelhouse in ~minutes; evidence stays tiny.
+    shutil.rmtree(work / "site", ignore_errors=True)
     (work / "run.json").write_text(json.dumps(run, indent=1))
     log(f"EVIDENCE-EXIT status={status}")
     return code
@@ -46,6 +50,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--work", default="/kaggle/working/vprobe")
     ap.add_argument("--prompts", default=None, help="p2-prompts.json path")
+    ap.add_argument("--pip-python", default=None,
+                    help="Interpreter that has pip (notebook cell python); used only as a "
+                         "fallback installer with --python-version 3.12 --target")
     ap.add_argument("--session-seconds", type=float, default=3600.0)
     args = ap.parse_args()
     work = Path(args.work)
@@ -78,6 +85,9 @@ def main():
     log(f"model: {model_root} wheelhouse: {wh}")
 
     # 3) Offline install into isolated prefix (never touch system torch).
+    # /usr/bin/python3.12 ships without pip: first try stdlib ensurepip
+    # (bundled wheel, offline), else install with the cell python's pip
+    # using --python-version 3.12 (tag selection only, --target dir).
     site = work / "site"
     site.mkdir(exist_ok=True)
     wheels = wh / "wheels"
@@ -85,10 +95,28 @@ def main():
     if not wheels.is_dir() or not req.is_file():
         run["wheelhouse_layout"] = sorted(p.name for p in wh.iterdir())[:20]
         return orderly(work, run, "wheelhouse_layout_unexpected")
-    log(f"pip install ({len(list(wheels.glob('*.whl')))} wheels) ...")
+    PY = sys.executable
+    pip_probe = sh([PY, "-m", "pip", "--version"], timeout=60)
+    if pip_probe.returncode:
+        log("no pip for 3.12; trying stdlib ensurepip ...")
+        ens = sh([PY, "-m", "ensurepip", "--default-pip"], timeout=180)
+        (work / "ensurepip.log").write_text((ens.stdout + "\n---STDERR---\n" + ens.stderr)[-4000:])
+        run["ensurepip_rc"] = ens.returncode
+        pip_probe = sh([PY, "-m", "pip", "--version"], timeout=60)
+    use_fallback_installer = pip_probe.returncode != 0
+    if use_fallback_installer and not args.pip_python:
+        return orderly(work, run, "no_pip_for_312_and_no_fallback")
+    log(f"pip install ({len(list(wheels.glob('*.whl')))} wheels) "
+        f"{'via fallback ' + str(args.pip_python) if use_fallback_installer else 'via 3.12 pip'} ...")
+    run["installer"] = "fallback_pip_python312_target" if use_fallback_installer else "py312_pip"
     try:
-        ins = run(["python", "-m", "pip", "install", "--no-index", "--find-links", str(wheels),
-                   "--requirement", str(req), "--target", str(site)], timeout=INSTALL_BUDGET_S)
+        if use_fallback_installer:
+            ins = sh([args.pip_python, "-m", "pip", "install", "--python-version", "3.12",
+                      "--only-binary", ":all:", "--no-index", "--find-links", str(wheels),
+                      "--requirement", str(req), "--target", str(site)], timeout=INSTALL_BUDGET_S)
+        else:
+            ins = sh([sys.executable, "-m", "pip", "install", "--no-index", "--find-links", str(wheels),
+                      "--requirement", str(req), "--target", str(site)], timeout=INSTALL_BUDGET_S)
     except subprocess.TimeoutExpired:
         return orderly(work, run, "install_timeout_over_20min")
     (work / "pip-install.log").write_text(ins.stdout[-6000:] + "\n---STDERR---\n" + ins.stderr[-6000:])
@@ -97,17 +125,18 @@ def main():
         return orderly(work, run, "install_failed")
     os.environ["PYTHONPATH"] = os.pathsep.join(
         [str(site), os.environ.get("PYTHONPATH", "")]).strip(os.pathsep)
-    imp = run(["python", "-c", "import vllm, torch; print(vllm.__version__, torch.__version__)",
+    imp = sh([sys.executable, "-c", "import vllm, torch; print(vllm.__version__, torch.__version__)",
                ], timeout=300, env=dict(os.environ))
     run["import_check"] = {"rc": imp.returncode,
-                           "out": (imp.stdout.strip() + " " + imp.stderr.strip())[-300:]}
+                           "out": (imp.stdout.strip() + " " + imp.stderr.strip())[-1500:]}
+    log("import vllm check rc=%s out=%s" % (imp.returncode, run["import_check"]["out"][-500:]))
     if imp.returncode:
         return orderly(work, run, "import_vllm_failed")
     log("import vllm OK: " + run["import_check"]["out"])
     run["install_s"] = round(time.time() - t0, 1)
 
     # 4) Template two-effort render check (no server; reuse frozen probe CLI).
-    tpl = run(["python", "run_reasoning_probe.py", "--skip-serve", "--work", str(work / "tpl")],
+    tpl = sh([sys.executable, "run_reasoning_probe.py", "--skip-serve", "--work", str(work / "tpl")],
               timeout=300, cwd=str(Path(__file__).resolve().parent),
               env=dict(os.environ))
     try:

@@ -1,0 +1,6 @@
+{
+  "version": 4,
+  "fix": "py3.12 lacks pip: try stdlib ensurepip, else fallback installer (cell 3.13 pip with --python-version 3.12 --only-binary --target)",
+  "v3_root_cause": "/usr/bin/python3.12 has no pip module; mounts+4xL4 were fine",
+  "local_verification": ["py_compile", "vdriver import-safe", "repack boot sim 3 files + --pip-python present"]
+}
