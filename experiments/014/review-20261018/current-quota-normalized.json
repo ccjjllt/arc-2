@@ -1,0 +1,13 @@
+{
+  "queried_at_utc": "2026-10-18T05:20:28.506402+00:00",
+  "account": "ccjjllt",
+  "gpu_seconds": {
+    "allowed": 108000.0,
+    "used": 23601.973,
+    "reserved": 0.0
+  },
+  "refresh_utc": "2026-10-24T00:00:00",
+  "remaining_gpu_hours": 23.443896388888888,
+  "normalization_note": "Use timedelta.total_seconds(). Installed Kaggle SDK TimeDeltaSerializer uses delta.seconds and drops full days; its to_dict serialization displays 108000 allowed seconds as 21600. The earlier serialized snapshot is not a quota reduction.",
+  "account_scope_note": "Authenticated current CLI identity ccjjllt; user R/V Notebook owner is jiyujia. Do not combine account balances or treat previous jiyujia 22.82h as current."
+}

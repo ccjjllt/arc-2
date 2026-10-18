@@ -1,0 +1,18 @@
+{
+  "0934a4d8": {
+    "strategy": "R0",
+    "train_max_seconds": 280
+  },
+  "21897d95": {
+    "strategy": "R0",
+    "train_max_seconds": 280
+  },
+  "36a08778": {
+    "strategy": "R1",
+    "train_max_seconds": 480
+  },
+  "aa4ec2a5": {
+    "strategy": "R1",
+    "train_max_seconds": 480
+  }
+}

@@ -1,0 +1,32 @@
+[{"stream_name":"stderr","time":6.259445432,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.259480628,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.15286127,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.152885149,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.152887914,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.15289001,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.751994921,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.752017465,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.752020122,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.752022305,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":8.93287843,"data":"PY312 Python 3.12.3\n"}
+,{"stream_name":"stdout","time":8.933620892,"data":"{\"event\": \"boot\", \"source_sha256\": {\"vdriver.py\": \"0aa6675b6eb8c9fff17145bac13f7308c19cc85323ca54a26f4c9b1112279ba3\", \"run_reasoning_probe.py\": \"827934ec2865102eea31493acc2bd230da2fa1ebc2315cfeaf558fdde561e1c9\", \"p2-prompts.json\": \"9f0c23dc53994fc21a937ebfc1ea51d11af4377281ed07fa44bdcb723854dd83\"}, \"py312\": \"Python 3.12.3\", \"python\": \"3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]\", \"notebook_started\": 1792253631.2485557}\n"}
+,{"stream_name":"stdout","time":9.257795519,"data":"[vdriver 16:13:51] env: {\"python\": \"3.12.3\", \"nvidia_smi\": \"NVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\", \"pip_pkgs\": {}}\n"}
+,{"stream_name":"stdout","time":9.459837428,"data":"[vdriver 16:13:51] env: {\"python\": \"3.12.3\", \"nvidia_smi\": \"NVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\", \"pip_pkgs\": {}}\n"}
+,{"stream_name":"stdout","time":9.650313507,"data":"[vdriver 16:13:51] model: /kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1 wheelhouse: /kaggle/input/datasets/nick2187/qwen38-vllm0272-cu130-wheelhouse-v1\n"}
+,{"stream_name":"stdout","time":9.672400936,"data":"[vdriver 16:13:52] no pip for 3.12; trying stdlib ensurepip ...\n"}
+,{"stream_name":"stdout","time":9.716677916,"data":"[vdriver 16:13:52] pip install (193 wheels) via fallback /usr/bin/python3 ...\n"}
+,{"stream_name":"stdout","time":9.852392637,"data":"[vdriver 16:13:51] model: /kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1 wheelhouse: /kaggle/input/datasets/nick2187/qwen38-vllm0272-cu130-wheelhouse-v1\n"}
+,{"stream_name":"stdout","time":9.852412251,"data":"[vdriver 16:13:52] no pip for 3.12; trying stdlib ensurepip ...\n"}
+,{"stream_name":"stdout","time":9.852414895,"data":"[vdriver 16:13:52] pip install (193 wheels) via fallback /usr/bin/python3 ...\n"}
+,{"stream_name":"stdout","time":256.974685207,"data":"[vdriver 16:17:59] EVIDENCE-EXIT status=import_vllm_failed\n"}
+,{"stream_name":"stdout","time":256.993782401,"data":"[vdriver 16:17:59] EVIDENCE-EXIT status=import_vllm_failed\n"}
+,{"stream_name":"stdout","time":256.993799094,"data":"VDRIVER_RETURN_CODE 0\n"}
+,{"stream_name":"stderr","time":259.608532952,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":259.608561309,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":259.76654277,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":259.766559892,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":272.061999826,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":272.139412144,"data":"[NbConvertApp] Writing 62928 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":274.830595261,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":276.657258197,"data":"[NbConvertApp] Writing 340509 bytes to __results__.html\n"}
+]

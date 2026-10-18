@@ -1,0 +1,74 @@
+{
+  "review_date_beijing": "2026-10-18",
+  "requested_notebook_version": "jiyujia/arc2-014-v-27b-service-probe/4",
+  "remote_status": "COMPLETE",
+  "observed_exit_status": "import_vllm_failed",
+  "observed_driver_returncode": 0,
+  "model_server_started": false,
+  "real_generation_observed": false,
+  "log_evidence": [
+    {
+      "seconds_from_kernel_start": 8.93287843,
+      "text": "PY312 Python 3.12.3"
+    },
+    {
+      "seconds_from_kernel_start": 8.933620892,
+      "text": "{\"event\": \"boot\", \"source_sha256\": {\"vdriver.py\": \"0aa6675b6eb8c9fff17145bac13f7308c19cc85323ca54a26f4c9b1112279ba3\", \"run_reasoning_probe.py\": \"827934ec2865102eea31493acc2bd230da2fa1ebc2315cfeaf558fdde561e1c9\", \"p2-prompts.json\": \"9f0c23dc53994fc21a937ebfc1ea51d11af4377281ed07fa44bdcb723854dd83\"}, \"py312\": \"Python 3.12.3\", \"python\": \"3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]\", \"notebook_started\": 1792253631.2485557}"
+    },
+    {
+      "seconds_from_kernel_start": 9.257795519,
+      "text": "[vdriver 16:13:51] env: {\"python\": \"3.12.3\", \"nvidia_smi\": \"NVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\", \"pip_pkgs\": {}}"
+    },
+    {
+      "seconds_from_kernel_start": 9.459837428,
+      "text": "[vdriver 16:13:51] env: {\"python\": \"3.12.3\", \"nvidia_smi\": \"NVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\", \"pip_pkgs\": {}}"
+    },
+    {
+      "seconds_from_kernel_start": 9.650313507,
+      "text": "[vdriver 16:13:51] model: /kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1 wheelhouse: /kaggle/input/datasets/nick2187/qwen38-vllm0272-cu130-wheelhouse-v1"
+    },
+    {
+      "seconds_from_kernel_start": 9.852392637,
+      "text": "[vdriver 16:13:51] model: /kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1 wheelhouse: /kaggle/input/datasets/nick2187/qwen38-vllm0272-cu130-wheelhouse-v1"
+    },
+    {
+      "seconds_from_kernel_start": 256.974685207,
+      "text": "[vdriver 16:17:59] EVIDENCE-EXIT status=import_vllm_failed"
+    },
+    {
+      "seconds_from_kernel_start": 256.993782401,
+      "text": "[vdriver 16:17:59] EVIDENCE-EXIT status=import_vllm_failed"
+    },
+    {
+      "seconds_from_kernel_start": 256.993799094,
+      "text": "VDRIVER_RETURN_CODE 0"
+    }
+  ],
+  "specific_import_error": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'vllm'",
+  "notes": [
+    "CLI output endpoint returns ordinary Notebook output ZIP, not hidden competition predictions.",
+    "Current repository vdriver differs from embedded/remote boot version; remote boot SHA is authoritative."
+  ],
+  "direct_cause": "Installer supplies only runtime dependency requirements, which do not include the vllm distribution; the main vllm wheel exists in the wheelhouse but is never passed to pip. Successful install list contains dependencies but not vllm.",
+  "required_main_wheel": "wheels/vllm-0.27.2rc1.dev91+g1f7427bc0-cp38-abi3-manylinux_2_28_x86_64.whl",
+  "required_main_wheel_sha256": "5cbeedeb8266362ef935775c4c33203e4dab74e8da1649a977bae833df62304a",
+  "cuda_or_model_incompatibility_established": false,
+  "evidence_files": [
+    {
+      "path": "experiments/014/review-20261018/v-probe-v4/vprobe/run.json",
+      "sha256": "3dd46f1e7bfdb13f31af816336cd21f3b16fd58e473b0f808138a629aad7b4b5"
+    },
+    {
+      "path": "experiments/014/review-20261018/v-probe-v4/vprobe/pip-install.log",
+      "sha256": "07285588bf727ab09c0dc109b58623350a3cee52a19c631fd9b648dffe0eebe2"
+    },
+    {
+      "path": "experiments/014/public-sources/qwen38-vllm0272-requirements.txt",
+      "sha256": "ebb525ba1fda0bc955fc19fe06fa381dd994e5b9a26a6e154a7ecd923f85d133"
+    },
+    {
+      "path": "experiments/014/public-sources/qwen38-vllm0272-manifest.json",
+      "sha256": "c9a31a531c2ec9e703de936859906a2db2a78a8987419de744e2bd3c0e2861e1"
+    }
+  ]
+}

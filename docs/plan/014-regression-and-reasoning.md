@@ -2,6 +2,8 @@
 
 日期：2026-10-17，北京时间。对应[实际进展](../progress/014-regression-and-reasoning.md)。目标仍为金牌和奖金，主模型固定Qwen/Qwen3.8-27B。本轮是深度研究与实施交接；下面GPU实验全部**未运行**，不以计划、依赖资产或CPU算术代替提分结果。
 
+**10月18日执行状态覆盖说明**：下文保留原计划，不代表当前仍未实现。用户已完成R v4，R0/R1均2/6且oracle相同，结束R、不进入R2。V脚本和Notebook已实现，v4因仅装依赖、漏装vLLM主wheel而报`No module named 'vllm'`，尚无模型生成。下一步显式安装manifest中固定主wheel，修usage/截止/协议和打包身份，再复验V；不重做R、不提前进入T。详见[进展第6节](../progress/014-regression-and-reasoning.md)，新的预算按实际运行账户余额计算，不重复使用原10小时额度。
+
 ## 1 先纠正对当前结果的理解
 
 submission **57103498** 已COMPLETE，公榜 **25.69**，比历史30.14低4.45个百分点。这次使用的是Sorokin专项**4B备用线**，不是本项目选定27B的提交。历史30.14属于用户复制后未修改的公开Notebook；精确版本314617319与latest v21不能混用。
