@@ -1,0 +1,34 @@
+{
+ "account": "ccjjllt",
+ "code_file": "arc2-018a-f291-feedback.ipynb",
+ "id_specified": "ccjjllt/arc2-018a-f291-feedback",
+ "machine_shape": "NvidiaL4",
+ "payload_sha256": {
+  "F-291dc1e1_0.code.py": "cc808fdb875a395dced5601f22616e60606306e57d115812125e98a6f0a1f9de",
+  "F-291dc1e1_0.final.txt": "16e3c18ea494b1f866c54136db4bde6a91ad6a071f59e84ddc63af4d42f709d1",
+  "run_reasoning_probe.py": "8970e7a7de10077db2b855ca5202ae60256ae8eb0af20ca32f58a2aa88bc28ed",
+  "solve_program.py": "03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a",
+  "task-291-clean.json": "6a0c60cfb64acd658deb95fd4ba2fca7b932023584fabc921b691f04ae8ff1ef",
+  "vdriver018a.py": "3e3d45455100778d546a21c1f22477579acc9c39c4ef72a969cf79c2b10b1be1"
+ },
+ "push_attempts": [
+  "attempt1: version 1 pushed; title-derived slug warning, actual slug has -vs-restart suffix (same lesson as 016)"
+ ],
+ "push_command": "kaggle kernels push -p experiments/018/aq/notebook",
+ "quota_gate": {
+  "need_h": 7.73,
+  "remaining_h": 20.11,
+  "reserve_h": 6,
+  "rule": "45min session x2.3 factor + 6h reserve"
+ },
+ "quota_snapshot_ccjjllt_pre_push": {
+  "remaining_h": 20.11,
+  "total_h": 30.0,
+  "used_h": 9.89
+ },
+ "session_seconds": 2700,
+ "slug": "ccjjllt/arc2-018a-f291-feedback-vs-restart",
+ "status_after_push": "KernelWorkerStatus.RUNNING",
+ "url": "https://www.kaggle.com/code/ccjjllt/arc2-018a-f291-feedback-vs-restart",
+ "version": 1
+}
