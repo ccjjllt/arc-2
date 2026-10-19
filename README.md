@@ -4,11 +4,11 @@
 
 比赛：[Kaggle ARC Prize 2026 — ARC-AGI-2](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview)。
 
-**当前进展**：[016 — 吞吐、预算与答案恢复](docs/progress/016-budgeted-final-submission.md)。v1 COMPLETE（38分钟）：C8选中（S=1.788）、硬思考预算GPU生效、B16合法率6/6但正确解无新增（B8/B16各1/6、EM@2 1/6）、恢复8/15合法但EM@2持平2/6。下一步按计划第6.3节走程序+demo反馈，不堆token。
+**当前进展**：[017 — 程序反馈对照与提交入口](docs/plan/017-program-feedback-and-submission-entry.md)（计划已写，待执行）。016 v1结论：C8选中、硬预算生效、B16合法6/6但无新增正确解、恢复EM@2持平2/6，详见[016实际进展](docs/progress/016-budgeted-final-submission.md)§11–§12。
 
 历史试提交：[用户指定 Notebook 版本 314617319](https://www.kaggle.com/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319)。用户说明 30.14 分来自未修改的公开方案复制提交，不作为自主研究效果，也不限定后续方向。
 
-**当前入口（2026-10-19）**：[016修订交接](docs/plan/016-budgeted-final-submission.md)为唯一执行入口；[实际进展](docs/progress/016-budgeted-final-submission.md)第7–11节记录修订、实现、复核、推送与v1结果。旧4B R已结束，主C6未动。v1后jiyujia剩9.50小时（+2.15h≈墙钟×2）；ccjjllt剩21.13小时未动；均10月24日08:00北京刷新，不相加。
+**当前入口（2026-10-19）**：[017计划](docs/plan/017-program-feedback-and-submission-entry.md)为唯一执行入口（P2门控→P6程序对照＋本地提交入口）。旧4B R已结束，主C6未动。注意jiyujia剩9.50小时不满足10.6h门槛，执行前按实际运行身份重查；ccjjllt剩21.13小时；均10月24日08:00北京刷新，不相加。
 
 [012实际进展](docs/progress/012-kernel-program-completion.md)记录上一轮：K短探针不采用快速后端；P-v2四次均3072 token截断，没有完整程序或实际执行，D/L各0/2，已按预定止损结束。历史配额快照不替代013的最新查询。
 
@@ -35,7 +35,8 @@
 | 013 奖牌目标、提交策略与27B推理研究 | [plan/013-submission-strategy.md](docs/plan/013-submission-strategy.md) | [progress/013-submission-strategy.md](docs/progress/013-submission-strategy.md)；4B诊断2/4，正式提交57103498公榜25.69；27B依赖CPU核对完成 |
 | 014 退分归因与27B完整推理 | [plan/014-regression-and-reasoning.md](docs/plan/014-regression-and-reasoning.md) | [progress/014-regression-and-reasoning.md](docs/progress/014-regression-and-reasoning.md)；R v4两臂2/6、无oracle新增，结束4B扩算；V v4导入失败，先修运行与计量，T尚未开始 |
 | 015 完整推理与程序反馈 | [plan/015-qwen38-reasoning-research.md](docs/plan/015-qwen38-reasoning-research.md) | [progress/015-qwen38-reasoning-research.md](docs/progress/015-qwen38-reasoning-research.md)；P6 两臂各 1/6，多数调用截断 |
-| 016 有限思考与赛前提交 | [plan/016-budgeted-final-submission.md](docs/plan/016-budgeted-final-submission.md) | [progress/016-budgeted-final-submission.md](docs/progress/016-budgeted-final-submission.md)；v1 COMPLETE：C8选中、硬预算生效、B16合法6/6但无新增正确解、恢复EM@2持平；下一步程序+demo反馈 |
+| 016 有限思考与赛前提交 | [plan/016-budgeted-final-submission.md](docs/plan/016-budgeted-final-submission.md) | [progress/016-budgeted-final-submission.md](docs/progress/016-budgeted-final-submission.md)；v1 COMPLETE：C8选中、硬预算生效、B16合法6/6但无新增正确解、恢复EM@2持平、用户四项确认入§12 |
+| 017 程序反馈对照与提交入口 | [plan/017-program-feedback-and-submission-entry.md](docs/plan/017-program-feedback-and-submission-entry.md) | 未启动；P2门控→P6（共享P0＋一次demo反馈 vs 同预算重启）＋本地提交入口 |
 
 ## Kaggle 操作链（2026-09-29 实测结论）
 
