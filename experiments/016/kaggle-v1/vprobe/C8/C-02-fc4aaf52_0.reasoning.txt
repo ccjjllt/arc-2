@@ -1,0 +1,32 @@
+We need solve ARC puzzle. Need think step by step in XML, then final grid fenced only. Need analyze patterns.
+
+We have 2 demos and test. Inputs 16x16 background 8. Demos show a pattern of 0/5 (or 1/2) transformed somehow. Need infer rule.
+
+Demo1 input: shape? Let's index rows 0-15, cols 0-15.
+Input1 nonzero:
+row4: c4=0
+row5: c3=0, c4=5, c5=0
+row6: c2=0,c3=5,c4=5,c5=5,c6=0
+row7: c3=0,c4=5,c5=0
+row8: c3=0,c4=5,c5=0
+row9: c2=0,c3=5,c4=5,c5=5,c6=0
+row10: c3=0,c4=5,c5=0
+row11: c4=0
+Seems a symmetric plus/rhombus? Actually two overlapping? Let's map coordinates relative maybe center? There are 0s forming boundary, 5s interior.
+
+Output1:
+row4: c7=5
+row5: c6=5,c7=0,c8=5
+row6: c5=5,c6=0,c7=0,c8=0,c9=5
+row7: c6=5,c7=0,c8=5
+row8: c4=5,c5=0,c6=5 (only three? row8: 8 8 8 8 5 0 5 8 ...)
+row9: c3=5,c4=0,c5=0,c6=0,c7=5
+row10: c4=5,c5=0,c6=5
+row11: c5=5
+Let's list output1:
+(4,7)
+(5,6) (5,7) (5,8)
+(6,5) (6,6) (6,7) (6,8) (6,9)
+(7,6) (7,7) (7,8)
+(8,4) (8,5) (8,6)
+(

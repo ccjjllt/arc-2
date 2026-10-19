@@ -1,0 +1,52 @@
+{
+ "phase": "R",
+ "query": "58c02a16_0",
+ "arm": "R",
+ "request": {
+  "effort": null,
+  "seed": 3101,
+  "max_tokens": 4096,
+  "enable_thinking": false,
+  "thinking_token_budget": null,
+  "request_id": "R-06-58c02a16_0-T-low-s2001",
+  "sampling": {
+   "temperature": 1.0,
+   "top_p": 0.95,
+   "top_k": 20
+  },
+  "stream_options": {
+   "include_usage": true
+  },
+  "chat_template_kwargs": {
+   "enable_thinking": false
+  }
+ },
+ "finish_reason": "length",
+ "usage": {
+  "prompt_tokens": 8912,
+  "total_tokens": 13008,
+  "completion_tokens": 4096
+ },
+ "wall_s": 290.1,
+ "ttft_s": 35.29,
+ "agg_tok_s": 14.12,
+ "client_error": null,
+ "cancelled_by_client": null,
+ "generation_observed": true,
+ "protocol_complete": false,
+ "valid_answer": false,
+ "usage_present": true,
+ "answered": false,
+ "grid": null,
+ "content_chars": 9750,
+ "reasoning_chars": 0,
+ "status": null,
+ "events": {
+  "queued_monotonic": 1017.781,
+  "wave_start_monotonic": 1017.781,
+  "issued_monotonic": 1017.784,
+  "issued_wall_s": 1792381100.576,
+  "done_monotonic": 1307.854,
+  "queue_wait_s": 0.003
+ }
+}

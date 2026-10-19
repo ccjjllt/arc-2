@@ -1,0 +1,19 @@
+We need solve ARC puzzle. Need analyze thoroughly.
+
+We have four demos input -> output. Need infer transformation and apply to test input 6x5.
+
+We need output final grid only in fence.
+
+Let's parse demos. All inputs are grids with a border of some non-7? Actually input contains outer border digit maybe 7/9/6/8? And interior mostly 7? Let's inspect.
+
+Demo1 input 9x7:
+Row0: 7 4 4 4 4 4 7
+1: 4 7 7 7 7 7 4
+2: 4 7 7 7 7 7 4
+3: 4 7 7 7 7 7 4
+4: 4 7 7 7 7 7 4
+5: 4 7 7 9 7 7 4
+6: 4 7 7 7 7 7 4
+7: 4 7 7 7 7 1 4
+8: 7 4 4 4 4 4 7
+Border: corners 7, edge non-corner 4. Interior (rows1-7, cols1-5) mostly 7 except special digits 9 at (5,3), 1 at (7,4). Output 15x15. It seems create two copies of a 3x3 tile extracted from input? The output has background 7. There are two identical 5x5 boxes? Let's see: Output at top-left around rows2-6 cols2-6? Row2: 7 7 7 4 4 4 7... Row3: 7 7 4 9 7 7 4... Row4: 7 7 4 7 7 7 4... Row5: 7 7 4 7 7 1 4... Row6: 7 7 7 4 4 4 7... That's a 5x5 pattern: border 4, interior 3x3 from input? Specifically interior 3x3 of demo1 input rows5-7 cols2-4? Input rows5: 4 7 7 9 7 7 4; row6: 4 7

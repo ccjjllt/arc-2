@@ -1,0 +1,11 @@
+We need solve ARC puzzle. We need think step by step inside tags (but final output only grid). We have demos and test. Need infer transformation.
+
+Let's parse puzzle. ARC grids with digits. There are rectangular structures made of zero border? background digit varies: demo1 background 1, demo2 background 8, demo3 background 2, test background 3. There are shapes: zero outlines (rectangles? with holes?) containing single digits inside? Output fills 2x2 squares around certain digits? Need understand rule.
+
+Let's inspect demos thoroughly.
+
+Demo1 input 21x21, bg 1. There are multiple zero rectangles maybe 7x? with digits inside.
+Input rows indexed 0-20, cols 0-20.
+Row2: ... col10=8 col11=8
+Row3: col3=0 c4-10? let's list: row3: 1 1 1 0 0 0 0 0 0 0 8 8 1...
+Actually row3 has c3-9 zeros, c10=8 c11=8. Row4: c3=0, c4-8? "1 1 1 0 1 1 1 1 1 8 0 1": c3 0, c9 8, c10 0? Wait row4: 1 1 1 0 1 1 1 1 1 8 0 1 1... c3=0, c9=8, c10=0. Row5: c3=0, c5=3, c8=8, c10=0. Row6: c3=0,c10=0. Row7 c3=0,c10=0. Row8 c3=0,c5=4,c8=2,c10=0. Row9 c3=0,c10=0. Row10 c3=0,c4-10 zeros? row10: 1 1 1 0 0 0 0 0 0 0 0 1: c3-10 zeros. So big zero rectangle from rows3-10, cols3-10 (8x8?) Actually width 8 (c3-c10

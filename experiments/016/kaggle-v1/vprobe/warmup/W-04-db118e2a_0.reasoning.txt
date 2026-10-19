@@ -1,0 +1,1 @@
+We need solve ARC puzzle. Need think carefully. Must output final grid only in

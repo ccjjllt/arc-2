@@ -38,7 +38,9 @@ from pathlib import Path
 # ---- V固定配置(014-5),GPU上不得擅自放大 ----
 TP_SIZE = 4
 MAX_MODEL_LEN = 65536
-MAX_NUM_SEQS = 4  # =客户端并发上限
+# 016分离：服务容量与客户端并发独立。服务固定8，客户端显式传4/8。
+SERVICE_MAX_NUM_SEQS = 8
+MAX_NUM_SEQS = 4  # 保留为默认客户端并发（向后兼容），服务改用SERVICE_MAX_NUM_SEQS
 GPU_MEM_UTIL = 0.90
 PORT = 1234
 SAMPLING = {"temperature": 1.0, "top_p": 0.95, "top_k": 20}
@@ -104,8 +106,10 @@ def cuda_link_dir(work: Path) -> str:
 
 
 def start_server(model_root: Path, work: Path, extra: list[str],
-                 deadline: float | None = None) -> subprocess.Popen:
-    """V首配置:TP4/65536/C4/FP8(模型自带quant config,不传--quantization)、KV默认dtype、无MTP。"""
+                 deadline: float | None = None,
+                 service_max_seqs: int = SERVICE_MAX_NUM_SEQS) -> subprocess.Popen:
+    """V首配置:TP4/65536/C8服务/FP8(模型自带quant config,不传--quantization)、KV默认dtype、无MTP。
+    016起服务容量固定8，客户端并发由chat_wave显式控制，不再共用MAX_NUM_SEQS。"""
     env = dict(os.environ, HF_HUB_OFFLINE="1", TRANSFORMERS_OFFLINE="1",
                VLLM_NO_USAGE_STATS="1",
                LIBRARY_PATH=":".join([cuda_link_dir(work), "/usr/local/nvidia/lib64",
@@ -116,7 +120,7 @@ def start_server(model_root: Path, work: Path, extra: list[str],
            "--tensor-parallel-size", str(TP_SIZE),
            "--max-model-len", str(MAX_MODEL_LEN),
            "--gpu-memory-utilization", str(GPU_MEM_UTIL),
-           "--max-num-seqs", str(MAX_NUM_SEQS),
+           "--max-num-seqs", str(service_max_seqs),
            "--enable-prefix-caching",
            "--reasoning-parser", "qwen3",
            "--language-model-only",
@@ -168,19 +172,35 @@ def kill_server(proc: subprocess.Popen | None, work: Path) -> None:
         time.sleep(5)
 
 
-def chat_once(messages: list[dict], effort: str, seed: int, max_tokens: int,
-              timeout_s: float, out: dict, deadline: float | None = None) -> dict:
+def chat_once(messages: list[dict], effort: str | None, seed: int, max_tokens: int,
+              timeout_s: float, out: dict, deadline: float | None = None,
+              thinking_token_budget: int | None = None,
+              enable_thinking: bool = True,
+              request_id: str | None = None) -> dict:
     """官方模板kwargs传参。请求流式usage,先读usage再读choices。
-    timeout_s与deadline取较早者作为本次墙钟;socket超时只限制一次静默。"""
+    timeout_s与deadline取较早者作为本次墙钟;socket超时只限制一次静默。
+    016: 顶层thinking_token_budget仅在enable_thinking为真时发送；
+    恢复请求传enable_thinking=False且effort=None，不传budget与effort。"""
+    chat_template_kwargs: dict = {"enable_thinking": bool(enable_thinking)}
+    if enable_thinking and effort is not None:
+        chat_template_kwargs["reasoning_effort"] = effort
     payload = {"model": "qwen", "messages": messages, "stream": True,
                "max_tokens": max_tokens, "seed": seed,
                "stream_options": {"include_usage": True},
-               "chat_template_kwargs": {"enable_thinking": True, "reasoning_effort": effort},
+               "chat_template_kwargs": chat_template_kwargs,
                **SAMPLING}
+    # 固定版本支持顶层thinking_token_budget；放顶层，不放chat_template_kwargs。
+    if enable_thinking and thinking_token_budget is not None:
+        payload["thinking_token_budget"] = int(thinking_token_budget)
     out["request"] = {"effort": effort, "seed": seed, "max_tokens": max_tokens,
+                      "enable_thinking": bool(enable_thinking),
+                      "thinking_token_budget": thinking_token_budget,
+                      "request_id": request_id,
                       "sampling": dict(SAMPLING),
                       "stream_options": payload["stream_options"],
                       "chat_template_kwargs": payload["chat_template_kwargs"]}
+    if "thinking_token_budget" in payload:
+        out["request"]["thinking_token_budget_sent"] = payload["thinking_token_budget"]
     req = urllib.request.Request(f"http://127.0.0.1:{PORT}/v1/chat/completions",
                                  data=json.dumps(payload).encode(),
                                  headers={"Content-Type": "application/json",
@@ -244,20 +264,44 @@ def chat_once(messages: list[dict], effort: str, seed: int, max_tokens: int,
     ntok = usage.get("completion_tokens") if isinstance(usage, dict) else None
     out["agg_tok_s"] = round(ntok / wall, 2) if wall > 0 and ntok else None
     out["usage_present"] = ntok is not None
+    # 016排队分析：记录实际发出与首token的单调时钟，调用方负责排队时间。
+    out.setdefault("events", {})["issued_wall_s"] = round(t0, 3)
     return {"content": content, "reasoning": reasoning, "finish": finish}
 
 
-def chat_wave(specs: list[dict]) -> dict:
-    """One concurrent wave, at most MAX_NUM_SEQS in flight. Aggregate tok/s uses the wave wall."""
+def chat_wave(specs: list[dict], client_concurrency: int | None = None,
+              on_slot_done=None) -> dict:
+    """滚动队列：整份清单一次交入，在途空位即补下一条。
+    client_concurrency显式控制ThreadPoolExecutor宽度，与服务SERVICE_MAX_NUM_SEQS独立。
+    on_slot_done(i, spec, slot)在每条完成时立即回调，用于逐请求落盘；顺序用request_id还原。"""
     n = len(specs)
-    workers = min(MAX_NUM_SEQS, n) if n else 1
+    workers = min((client_concurrency if client_concurrency else MAX_NUM_SEQS), n) if n else 1
     slots: list = [None] * n
     t0 = time.monotonic()
+    t0_wall = time.time()
+    for _i, _s in enumerate(specs):
+        _s.setdefault("queued_monotonic", t0 + 0.0)
+        if _s.get("queued_monotonic") == t0:
+            # 保持提交顺序的相对排队标记，实际排队由线程池调度决定
+            pass
+    # 统一打上波次起点，run_one记录实际发出时刻
+    wave_queued = t0
 
     def run_one(i, spec):
         rec: dict = {}
-        res = chat_once(spec["messages"], spec["effort"], spec["seed"], spec["max_tokens"],
-                        spec.get("timeout_s", 600.0), rec, deadline=spec.get("deadline"))
+        rec["events"] = {"queued_monotonic": round(spec.get("queued_monotonic", wave_queued), 3),
+                         "wave_start_monotonic": round(wave_queued, 3)}
+        issued = time.monotonic()
+        rec["events"]["issued_monotonic"] = round(issued, 3)
+        rec["events"]["issued_wall_s"] = round(time.time(), 3)
+        res = chat_once(spec["messages"], spec.get("effort"), spec["seed"], spec["max_tokens"],
+                        spec.get("timeout_s", 600.0), rec, deadline=spec.get("deadline"),
+                        thinking_token_budget=spec.get("thinking_token_budget"),
+                        enable_thinking=spec.get("enable_thinking", True),
+                        request_id=spec.get("request_id"))
+        rec["events"]["done_monotonic"] = round(time.monotonic(), 3)
+        # 相对波次的排队等待（发出减去波次起点），不等于服务端排队
+        rec["events"]["queue_wait_s"] = round(issued - wave_queued, 3)
         return i, rec, res
 
     if n:
@@ -266,6 +310,11 @@ def chat_wave(specs: list[dict]) -> dict:
             for fut in as_completed(futs):
                 i, rec, res = fut.result()
                 slots[i] = {"rec": rec, "res": res}
+                if on_slot_done is not None:
+                    try:
+                        on_slot_done(i, specs[i], slots[i])
+                    except Exception:
+                        pass
     wall = time.monotonic() - t0
     missing = 0
     ntok = 0
@@ -276,7 +325,9 @@ def chat_wave(specs: list[dict]) -> dict:
             missing += 1
         else:
             ntok += got
-    return {"calls": slots, "wave_wall_s": round(wall, 2), "concurrency": min(MAX_NUM_SEQS, n),
+    return {"calls": slots, "wave_wall_s": round(wall, 2), "concurrency": workers,
+            "client_concurrency": workers, "service_max_seqs": SERVICE_MAX_NUM_SEQS,
+            "wave_start_wall_s": round(t0_wall, 3),
             "completion_tokens_sum": ntok, "usage_missing": missing,
             "agg_tok_s": None if wall <= 0 or missing else round(ntok / wall, 2)}
 
@@ -347,7 +398,9 @@ def main() -> int:
     work = Path(args.work)
     work.mkdir(parents=True, exist_ok=True)
     run = {"config": {"tp": TP_SIZE, "max_model_len": MAX_MODEL_LEN,
-                      "max_num_seqs": MAX_NUM_SEQS, "gpu_mem_util": GPU_MEM_UTIL,
+                      "service_max_num_seqs": SERVICE_MAX_NUM_SEQS,
+                      "default_client_concurrency": MAX_NUM_SEQS,
+                      "max_num_seqs_legacy": MAX_NUM_SEQS, "gpu_mem_util": GPU_MEM_UTIL,
                       "kv_dtype": "default", "mtp": False},
            "budgets": {"install_s": INSTALL_BUDGET_S, "protocol_s": PROTOCOL_BUDGET_S}}
     record_versions(run)

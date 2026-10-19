@@ -1,0 +1,1 @@
+We need solve ARC puzzle. Need infer transformation from demos and apply to test input

@@ -1,0 +1,1 @@
+We need solve ARC puzzle. Need produce final grid. Need deeply analyze demos,

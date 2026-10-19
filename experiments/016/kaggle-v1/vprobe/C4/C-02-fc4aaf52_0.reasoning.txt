@@ -1,0 +1,28 @@
+We need solve ARC puzzle. Need think step by step in XML, then final grid fenced only. Need analyze patterns.
+
+We have 2 demos and test. Inputs 16x16 background 8. Demos show a pattern of 0/5 (or 1/2) transformed somehow. Need infer rule.
+
+Demo1 input: shape? Let's index rows 0-15, cols 0-15.
+Input1 nonzero (not 8) at:
+Row4: col4=0
+Row5: col3=0, col4=5, col5=0
+Row6: col2=0, col3=5, col4=5, col5=5, col6=0
+Row7: col3=0, col4=5, col5=0
+Row8: col3=0, col4=5, col5=0
+Row9: col2=0, col3=5, col4=5, col5=5, col6=0
+Row10: col3=0, col4=5, col5=0
+Row11: col4=0
+This forms? Maybe a 3D object projected? Output:
+Row4: col7=5
+Row5: col6=5, col7=0, col8=5
+Row6: col5=5, col6=0, col7=0, col8=0, col9=5
+Row7: col6=5, col7=0, col8=5
+Row8: col4=5, col5=0, col6=5
+Row9: col3=5, col4=0, col5=0, col6=0, col7=5
+Row10: col4=5, col5=0, col6=5
+Row11: col4=5? Let's parse output1 rows:
+0-3 all 8
+4: 8 8 8 8 8 8 8 5 8...
+5: 8 8 8 8 8 8 5 0 5 8...
+6: 8 8 8 8 8 5 0 0 0 5 8...
+7: 8 8 8 8 8 8 

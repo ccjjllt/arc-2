@@ -1,0 +1,23 @@
+We need solve ARC puzzle. Need produce final grid. Need deeply analyze demos, infer transformation. Need final only code fence. But first think extensively.
+
+We have input grids of 4 background and 1 shapes? Output uses 2,8,6,1. Need understand rule.
+
+ARC: each grid uses digits 0-9. Demos:
+Input background 4, objects made of 1. Output modifies: some 1 remain? New colors 2,8,6. Looks like for each connected component of 1? It draws bounding boxes? Maybe based on shape: outline? Interior holes? Let's inspect demos.
+
+Demo1 input 23x25. Let's parse shapes. Background 4. There are several 1 components maybe. Output: 2 outlines? 8 inner outlines? 6 inside? Some 1 preserved as blocks? Need infer.
+
+Let's denote colors: 4 background. 1 object cells input.
+Output: 2,8,6,1.
+In output, original 1 regions maybe transformed into colored rectangles/rectangular frames? Let's analyze.
+
+Demo1 input components (connected likely orthogonal? 4-conn?). Need identify.
+
+Rows 0-index, cols 0-index.
+Input Demo1:
+Row0 all 4
+Row1: cols 16-22 = 1? "4 4 ... 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 1 1 1 1 1 1 1 4 4" So cols 16-22 length 7.
+Row2: cols 3-6=1, col16=1, cols20-22=1? text: 4 4 4 1 1 1 1 4 4 4 4 4 4 4 4 4 1 4 4 4 1 1 1 4 4. Yes.
+Row3: cols3-10=1, col16=1, cols20-22=1.
+Row4: cols3-6=1, col9=1, col16=1, cols20-22=1.
+Row5: cols3-6=1, col9=1

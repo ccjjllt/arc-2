@@ -112,3 +112,120 @@ C8暂用标准明确为同工作量完成速度比`T4/T8≥1.20`且无OOM/持续
 P6每预算臂只有6条，因此将共12条混合排入同一所选并发队列，以观察真实长生成C8。没有另一份完全相同长队列的C4重跑，不能把它写成严格长生成C4/C8速度对照。每臂EM@1、固定B8+B16的EM@2、各自独有命中和成本分别记录。8K不预设为部署胜者，16K首轮是否可承担要用新长生成吞吐与实际Q重新算。
 
 程序反馈、P12/C6、32K追加、新训练和新提交均留到后续根据结果决定，不纳入本次两小时。实施者按修订计划交回吞吐、逐query正确性、恢复收益、总成本与准确产物位置。
+
+## 8 2026-10-19：016最小代码已实施，GPU仍未运行
+
+本节记录代码实现状态，与研究效果分离。**GPU实验、训练、提交均未运行；无新分数。**
+
+### 实现产物
+
+| 产物 | SHA256/状态 |
+| --- | --- |
+| `scripts/run_reasoning_probe.py` | `8970e7a7de10077db2b855ca5202ae60256ae8eb0af20ca32f58a2aa88c28d`；`experiments/016/crb/run_reasoning_probe.py`字节一致 |
+| `experiments/016/crb/vdriver016.py` | `11830b3c42dc262c4192a9e49cd68563750d48740af522ad0c39c8c361fc6509` |
+| `experiments/016/crb/recovery_tails/` | 15份各末16000字符+`manifest.json`；源为015 `P2`/`P6_extra` reasoning全文，本地截尾，GPU端不再截断即用 |
+| `experiments/016/crb/notebook/arc2-016-crb.ipynb` | 582476字节；内嵌上述19文件，解包后SHA已核对一致 |
+| `experiments/016/crb/notebook/kernel-metadata.json` | 沿用015挂载：比赛+wheelhouse+FP8权重，`NvidiaL4`，无网 |
+
+改动对照计划第8节：服务`SERVICE_MAX_NUM_SEQS=8`与客户端并发分离；`chat_wave(specs, client_concurrency, on_slot_done)`整清单滚动、完成即落盘；`chat_once`新增顶层`thinking_token_budget`与`enable_thinking`，恢复请求不传effort/budget，C短测不加硬截断，B两臂分别6144/14336；016 driver只跑C→R→B，复用015安装与模板核对链路。
+
+### 本地CPU核对（非GPU证据）
+
+- `py_compile`通过；`--skip-serve`返回0，配置含服务8/客户端默认4。
+- Mock SSE验证：xhigh+6144顶层发送且`chat_template_kwargs`含effort；恢复`enable_thinking=false`无budget/effort；短测无budget。
+- Mock并发验证：`client_concurrency=4/8`分别限宽，`on_slot_done`逐条回调15次全回。
+- 清单构造验证：C为六题字符降序两轮+前四共16；R为query→arm→seed固定15序且15份均可定位；B为奇题B8先/偶题B16先共12，`request_id`固定；主实验上限225280核对一致。
+- 干跑验证：本地Python3.9按预期停在`env_incompatible_python_3_9`，prompt双SHA与冻结值一致，Notebook解包19文件SHA一致，`git diff --check`通过。
+
+### 未运行与交接
+
+Kaggle会话、两小时C/R/B、P12/C6、程序分支、新训练与提交全部未运行。C6答案未读。
+
+用户执行前需重查实际授权身份余额与提交额度，按`session_seconds=7200`、110分钟停发新请求、115分钟收尾、120分钟进程组结束的上限推进；`kaggle kernels push -p experiments/016/crb/notebook`后取回`/kaggle/working/vprobe`，本地评分后再按计划第9节交回C/R/B/总账四表。
+
+## 9 2026-10-19：跑前GPU利用率复核（未跑GPU）
+
+本次只重读015冻结证据与016当前代码，不改冻结性能参数，无新GPU实验、无新分数。
+
+### 015证据显示GPU远未触及容量上限
+
+- 服务日志 `vllm-server.log` 共912行：KV容量707060 token（65K×10.79）；C8最坏约8×24K≈192K，占27%，安全。C8阶段KV无压力。
+- 635个engine采样中Running恒等于客户端并发（1/2/4），Waiting>0仅2次且瞬时（3+1、2+2各一次），无持续排队。
+- engine端生成吞吐约25（1路）/48（2路）/84–90（4路）token/s，接近线性；客户端聚合21–25/路。C8有明确上探空间，`S≥1.20`阈值合理。
+- prefix命中：各题不同时0%，重复query时30.6%。016暖机（C8）+C4→C8同序已覆盖该收益。
+- 不可调栈限制：L4（cc8.9）`Not enough SMs to use max_autotune_gemm`、PCIe下custom allreduce禁用、部分FP8形状缺调优配置，均属冻结wheel/硬件现状；按计划§17/§55/§101不新增开关，本轮不碰。
+
+结论：016当前实现（滚动队列、暖机覆盖8路形状、B单波混排、阶段间仅日志落盘、110/115/120截止+partial）已是冻结约束内的最高利用；无需为利用率改动服务/批参数。
+
+### 为省配额补的三个安全判定（不改变GPU行为）
+
+1. 新增 `parse_running`：解析阶段内日志增量的`Running/Waiting`最大值与样本数，对应计划§82/§99的“真实八路同时生成”证据。
+2. C决策：C8完整但`max_running<8`时判`C8_unsaturated_use_C4`并默认C4，排在S评估之前；`C_compare`增记`max_run4/max_run8/wait8`。
+3. R空集守卫：15份全缺失时记`no_specs_all_missing`且`complete=false`，不再把空波次记成完成。
+
+### 新产物与核对
+
+| 产物 | SHA256/状态 |
+| --- | --- |
+| `experiments/016/crb/vdriver016.py` | `4703620271c64844dc8b953fcabc4d54ebf234445060a474b227ce1d9ddb3fc1` |
+| `scripts/run_reasoning_probe.py` | 不变，`8970e7a7…`，副本一致 |
+| `experiments/016/crb/notebook/arc2-016-crb.ipynb` | 586044字节，已用新driver重建 |
+
+本地CPU核对：`py_compile`通过；`parse_running`在015全日志得`max4/wait2/635样本`、空输入得零、合成C8行得`max8`；Notebook解包19文件SHA与磁盘一致；`git diff --check`通过。
+
+## 10 2026-10-19：已推送GPU，v1运行中（用户指令执行）
+
+用户指令推送后执行，不再只是交接。推送记录见[`experiments/016/execution/push.json`](../../experiments/016/execution/push.json)。
+
+- 推送：`kaggle kernels push -p experiments/016/crb/notebook`，约2026-10-19 03:24–03:25Z；实际slug为[`jiyujia/arc2-016-c-r-b-27b-reasoning`](https://www.kaggle.com/code/jiyujia/arc2-016-c-r-b-27b-reasoning)，推送后状态`RUNNING`。
+- 事故：推送时metadata id写的是`arc2-016-crb`，与标题解析出的`arc2-016-c-r-b-27b-reasoning`不一致，Kaggle按标题建了新slug；第二次同包推送报409，未产生新版本。metadata id已纠正为实际slug，无代码改动；运行中的v1即为已核对的19文件包（driver`47036202…`），不重推打断。
+- 配额门：推送前jiyujia剩11.65h（已用18.35/总额30，刷新10-24），满足2h×2.3=4.6h+6h储备=10.6h，余量仅约1h；ccjjllt未动（剩21.13h）。按账户差记账，不冒充逐设备账单。
+- 下一步：等COMPLETE后取回`/kaggle/working/vprobe`，本地评分（答案不出境），按计划第9节交回C/R/B/总账四表。运行结论以取回产物为准，不以RUNNING代替成功。
+
+## 11 2026-10-19：v1结果已取回并本地评分（P6开发集，非公榜分）
+
+kernel `jiyujia/arc2-016-c-r-b-27b-reasoning` v1 COMPLETE，`elapsed_s=2271.4`（约38分钟），`complete_with_evidence`，无`first_error`。产物落盘`experiments/016/kaggle-v1/vprobe/`。评分用冻结本地答案（010评分文件+P2评分文件；P6已反复用于开发，不作未见验证、不预测公榜）。
+
+机制结论先行：预算探针`effective_hint=true`（sent=8，`length`，reasoning仅30字符、final 251字符非空）——冻结wheel的顶层`thinking_token_budget`在GPU实际生效，无需升级引擎。B16六条全部`stop`且合法（6/6），相对015的14/18截断是机制成功；但正确解无新增（见表2）。
+
+### 表1 C4/C8（同16请求×512，各8192 token）
+
+| 项 | C4 | C8 |
+| --- | --- | --- |
+| 完成 | 16/16 | 16/16 |
+| 整队墙钟 | 93.28秒 | 52.16秒 |
+| 聚合 | 87.82 tok/s | 157.07 tok/s |
+| S=T4/T8 | — | **1.788** |
+| OOM/重算增量 | false/0 | false/0 |
+| engine最大Running | 4（saturated） | **8（saturated）**，Waiting峰值0 |
+| finish | 32/32 length（短decode负载，不计成绩） | 同左 |
+
+全服务日志160个Running采样中96个为8路；Waiting>0全程仅6次瞬时（1/3/6/7各短暂），无持续排队。结束时prefix命中57.4%。决策：**暂用C8**（S≥1.20、无OOM/持续重算、真实八路已观察到）。KV容量704876 token（10.76×），C8最坏占用约27%，无压力。
+
+### 表2 P6 B8/B16（固定xhigh/seed4101；B8=6144/8192，B16=14336/16384）
+
+| query | B8（token/valid/正误） | B16（token/valid/正误） |
+| --- | --- | --- |
+| 291dc1e1_0 | 8192 length/非法/错 | 14521 stop/合法/错（15×6） |
+| 4c416de3_0 | 6983 stop/非法/错 | 15177 stop/合法/错（19×22） |
+| 58c02a16_0 | 6661 stop/合法/错 | 14853 stop/合法/错（16×16） |
+| aa4ec2a5_0 | 7553 stop/合法/错 | 15745 stop/合法/错（26×27） |
+| db118e2a_0 | 6599 stop/合法/**对** | 14791 stop/合法/**对** |
+| fc4aaf52_0 | 6661 stop/合法/错 | 14853 stop/合法/错（16×16） |
+
+EM@1：B8 1/6，B16 1/6；固定双槽[B8,B16] EM@2=**1/6**（仅db；291/4c缺合法B8时按规则重复B16，仍错）；B16独有0，B8独有0。B臂合计89940 token vs B8臂42649 token，差47291 token；12请求共享C8队列1074.4秒、聚合123.41 tok/s，12/12完成、无OOM/重算（preempt_total=0），所选并发在长生成上稳定。B阶段TTFT普遍0.2–1.7秒（前缀缓存命中），R阶段长prefill为5–40秒。
+
+### 表3 R恢复（15份空final，末16000字符，一次final-only，seed3101）
+
+15/15完成（351.74秒，36637 token，聚合104.16 tok/s），合法8/15：291×3（形状16×8/18×7/20×6各不相同，全错）、aa-high 26×27错、db-high对、fc×3（16×16各不相同，全错）；4c×3与58-low×2仍length耗尽。**新增exact仅1份**：db-high恢复网格与015 db-low已知网格逐格相同（冗余命中，无新query）。固定high→low2001→low2002去重取二，真实EM@2=**2/6**（58、db），与恢复前持平，无丢失、无新增query。计入015沉没成本后累计输出527390 token、推理7945.3秒。
+
+### 表4 会话总账
+
+权重/轮子/输入与冻结一致（wheel SHA`5cbeedeb…304a`，prompt双SHA匹配）；硬件4×L4（driver 580.178.04）、Python3.12.3、torch2.13.0+cu130、vLLM同wheel（import rc=0）；TP4/64K/服务8/0.9/默认KV。起止约03:24–04:03Z；安装+加载666.6秒，各阶段：暖机+探针27.9秒（512 token）、C4 93.28秒、C8 52.16秒、R 351.74秒、B 1074.4秒；未运行/中断项无（59主请求+17辅助全部完成）；新输出185610+512 token，远低于225792上限。jiyujia配额18.35→20.50已用小时（+2.15h≈墙钟×2），剩9.50h，reserved 0。
+
+### 回答计划第9节四个问题
+
+1. 后续用C4还是C8：**C8**（S=1.788且饱和健康）。
+2. 8K/16K位置：B16把合法率从B8的4/6提到6/6，但无独立新增；16K首轮全量不可负担第二遍（Q240×约15K token在123 tok/s下仅生成约8.1小时，未计prefill/恢复/落盘）。**不宣布首轮16K**；候选为8K首轮+选择性16K/恢复。
+3. final恢复：保留为廉价补充（35K token换1冗余exact+完成率信息），7/8合法恢复是错误网格，不能当主解题器；是否对失败query触发恢复，留待程序分支对照后再定。
+4. 下一轮：按计划第6.3节，本轮是“完整率上升但只增加错误网格”（B16新增5个合法错解、R新增7个合法错解，正确query零新增）——**下一轮改为完整程序+一次demo反馈，不在本轮继续堆token**；P12确认暂缓。

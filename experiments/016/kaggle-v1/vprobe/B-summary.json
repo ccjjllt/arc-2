@@ -1,0 +1,30 @@
+{
+ "n": 12,
+ "wall_s": 1074.4,
+ "completion_tokens_sum": 132589,
+ "usage_missing": 0,
+ "agg_tok_s": 123.41,
+ "client": 8,
+ "done_per_arm": {
+  "B8": 6,
+  "B16": 6
+ },
+ "valid_per_arm": {
+  "B8": 4,
+  "B16": 6
+ },
+ "order": [
+  "B-B8-291dc1e1_0",
+  "B-B16-291dc1e1_0",
+  "B-B16-4c416de3_0",
+  "B-B8-4c416de3_0",
+  "B-B8-58c02a16_0",
+  "B-B16-58c02a16_0",
+  "B-B16-aa4ec2a5_0",
+  "B-B8-aa4ec2a5_0",
+  "B-B8-db118e2a_0",
+  "B-B16-db118e2a_0",
+  "B-B16-fc4aaf52_0",
+  "B-B8-fc4aaf52_0"
+ ]
+}

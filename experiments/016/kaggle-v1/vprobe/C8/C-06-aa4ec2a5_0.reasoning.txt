@@ -1,0 +1,20 @@
+We need solve ARC puzzle. Need analyze demos infer transformation. Need produce final grid only. We must think carefully. Let's restate.
+
+We have inputs: background 4, objects made of 1. Output: for each connected component? It adds border of 2 around components? Some interiors become 8, some become 6? Need infer rule. Let's inspect demos.
+
+Colors: 4 background, 1 input shapes. Output uses 4 background unchanged mostly, 2 outline? 1 retained in some shapes, 8 and 6 fill parts? Need derive.
+
+Demo1:
+Input 23x25. There are multiple components of 1? Let's map.
+Output:
+- Large top-left-ish component? Input rows 1-7 cols 3-? shape: a rectangular-ish shape maybe with holes? Output shows for that component: border 2 around, inside 8 except a subregion 6? Let's detail.
+Input component A top left:
+rows (0-index):
+r1: c3-6 =1? Actually row1: 4 4 4 1 1 1 1 4...? Wait Demo1 input row1 (second row): "4 4 4 1 1 1 1 4 4 4 4 4 4 4 4 4 1 1 1 1 1 1 1 4 4"
+row2: 4 4 4 1 1 1 1 4 4 4 4 4 4 4 4 4 1 4 4 4 1 1 1 4 4
+row3: 4 4 4 1 1 1 1 1 1 1 4 ...
+row4: 4 4 4 1 1 1 1 4 4 1 4 ...
+row5: 4 4 4 1 1 1 1 4 4 1 4 ...
+row6: 4 4 4 4 4 4 1 1 1 1 4 ...
+row7: 4 4 4 4 4 4 1 1 1 1 4...
+This component? Actually rows 1-7: left block

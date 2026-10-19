@@ -1,0 +1,59 @@
+Looking at the demos, I need to identify the transformation rule:
+
+**Demo 1:** Input has two colors (0=outer, 5=inner) forming a symmetric shape. Output swaps colors (0↔5) and shifts rows right by different amounts.
+
+**Demo 2:** Input has two colors (1=outer, 2=inner) forming a symmetric shape. Output swaps colors (1↔2) and shifts rows right.
+
+Let me analyze the shift pattern by examining the structure:
+
+**Demo 1 shifts:** rows 4-7 shift +3, rows 8-9 shift +1, rows 10-11 shift +0
+**Demo 2 shifts:** rows 4-7 shift +5, rows 8-11 shift +0
+
+Looking at the shape structure, I notice the key is identifying "bar" rows (rows with the maximum width of the inner color) and the vertical distances.
+
+In Demo 1: The inner color (5) has horizontal bars of length 3 at rows 6 and 9. The vertical distance between these bars is 3 rows. The top section (rows 4-7) shifts by 3, the middle section (rows 8-9) shifts by 1, bottom (rows 10-11) shifts by 0.
+
+In Demo 2: The inner color (2) has a 2-wide bar at rows 7-8 (adjacent). The max width of the shape is 5. The top section (rows 4-7) shifts by 5, bottom (rows 8-11) shifts by 0.
+
+Wait, let me reconsider. Looking more carefully at the outputs:
+
+**Demo 1:** The shift amounts are 3,3,3,3,1,1,0,0 for the 8 rows of the shape.
+**Demo 2:** The shift amounts are 5,5,5,5,0,0,0,0 for the 8 rows of the shape.
+
+For Demo 2, top half shifts by max width (5), bottom half by 0.
+
+For Demo 1, it's more complex. Let me look at where the "fold" occurs. In Demo 1, the shape has two full-width rows (rows 6 and 9). In Demo 2, the two full-width rows are adjacent (rows 7 and 8).
+
+The pattern seems to be: shift each row by the number of columns from the row's left edge to the left edge of the nearest full-width row above (or the max width if no full-width row above).
+
+Actually, looking at this differently: the transformation appears to "unfold" the shape by shifting the top portion right so that the left edges form a continuous diagonal.
+
+For the test input: Shape is rows 5-10, with widths 3,5,7,7,5,3. Colors are 4 (outer) and 9 (inner). Max width = 7.
+
+Following the Demo 2 pattern (where the two max-width rows are adjacent at the middle), the top half (rows 5-8) should shift right by 7, and bottom half (rows 9-10) should shift by 0. Colors swap: 4↔9.
+
+Row 5: 4 4 4 → shift +7 → cols 10,11,12 become 9 9 9
+Row 6: 4 9 9 9 4 → shift +7 → cols 9-13 become 9 4 4 4 9
+Row 7: 4 9 9 9 9 9 4 → shift +7 → cols 9-15 become 9 4 4 4 4 4 9
+Row 8: 4 9 9 9 9 9 4 → shift +7 → cols 9-15 become 9 4 4 4 4 4 9
+Row 9: 4 9 9 9 4 → shift +0 → cols 2-6 become 9 4 4 4 9
+Row 10: 4 4 4 → shift +0 → cols 3-5 become 9 9 9
+
+```
+8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+8 8 8 8 8 8 8 8 8 8 9 9 9 8 8 8
+8 8 8 8 8 8 8 8 8 9 4 4 4 9 8 8
+8 8 8 8 8 8 8 8 8 9 4 4 4 4 4 9
+8 8 8 8 8 8 8 8 8 9 4 4 4 4 4 9
+8 8 8 9 4 4 4 9 8 8 8 8 8 8 8 8
+8 8 9 9 9 8 8 8 8 8 8 8 8 8 8 8
+8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+```

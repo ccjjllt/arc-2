@@ -1,0 +1,18 @@
+We need solve ARC puzzle. Need think carefully. Need output only final grid in fence. Need infer transformation. Let's analyze demos.
+
+We have input grids: contain border of 0? Actually digits. In demo 1 input 20x8:
+Row0: 0 2 2 2 2 2 2 2
+Rows1-19: start 1? row1: 1 8 8 8 8 8 8 8
+So border? top row all 2 except first 0; left col all 1 except top 0? Right? last col all 2? Wait row0 last 2; rows1-19 last 2. bottom row last 2. Maybe frame colors: 0 top-left, 2 top and right? 1 left? But grid inside has 8 background. There are colored rectangles/blocks of non-8 numbers inside.
+
+Output grids seem transformed/cropped/rearranged: likely extract objects (rectangles) inside 8 frame, reorder by some rule (e.g. based on position/path, sizes, colors), pad to bounding box? Need infer.
+
+Demo 1 input size 20x8, output 12x6. It seems output is 6 columns, 12 rows. Inside input width 8, height 20. Maybe remove border columns/rows? Input has left col 1, top row 2, right col 2, bottom row 2? Inside area columns 1..6? rows 1..19? Actually output width 6. Input interior width excluding first and last columns? 20x8: remove left col (1s) and right col (2s) => 6 columns. remove top row? maybe remove top row 2s and bottom row? output height 12 not 18. So it crops vertically to bounding box of non-8 inside? Let's inspect demo1.
+
+Input interior columns 1-6:
+r1: 8 8 8 8 8 8
+r2: 8 4 4 8 9 9
+r3: 8 4 4 8 9 9
+r4: 8 8 8 8 8 8
+r5: 8 8 8 8 8 8
+r6: 8 

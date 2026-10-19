@@ -1,0 +1,94 @@
+es from a narrow part to a wide part**. In Demo1, row lengths: 1,3,5,3,3,5,3,1. The wide rows (length5) at i2 and i5. Shifts: before/including first wide: 3 (which is length of row before? i1 length3); after first wide until second wide: 1 (maybe length difference?); after second wide: 0. Demo2 lengths:1,3,3,5,5,3,3,1. Wide rows i3,i4. Shifts: before/including first wide:5 (the wide length), after second wide:0. So for Demo2, shift before wide = wide length (5). For Demo1, shift before first wide = 3 not 5. Why? Because there is another wide later? Maybe shift = distance (in columns) between the two wide rows' inner fills? In Demo1 the two wide rows have inner fill length3, and they are separated by 2 rows. The top shift maybe 3 because the wide row's **inner** length is 3. In Demo2 wide rows have inner length2, but full length5. If using full length, Demo1 would5. So inconsistent.
+
+Maybe the color to use for shift is not inner but **the color that is less frequent**? Demo1 less frequent inner5 horizontal run length3 -> top shift3. Demo2 less frequent inner2 horizontal run length2, but shift5. So no.
+
+Let's look at the **output** shapes: maybe they are the input shapes after applying **a 90-degree rotation to each connected component of one color** and then merging. In Demo2, the top half shifted right by 5; this is exactly what would happen if the top half (rows4-7) was rotated 180 degrees? No, if you rotate a 4x5 top half 180, rows order reverse and columns reverse, not.
+Could it be **mirror the shape horizontally and place it next to the original**, but only keep the part that doesn't overlap? In Demo2, output has bottom half original (colors swapped) and top half mirrored? Let's compare top output to input top half color-swapped, not mirrored horizontally. It is identical order, just shifted. So no.
+
+Maybe the rule involves **the background color 8**: shift each row by the number of 8s between the shape and the right edge of the grid? In Demo1 row4 shape at c4, right edge to 15 has 11 8s; shift3 no. Number of 8s to left? c2? no.
+
+Could be **move the shape so that its center of mass moves to a fixed offset (e.g., column 7 or 8) row by row**? Top rows shifted more to reach a target column based on row's width.
+Let's compute target output left edge maybe = **original left edge + (max_row_width - row_width)**? Demo1 max length5. s = 5 - length? Row lengths:1->4 not3;3->2 not3;5->0 not3. s = length -? top length1 shift3; length3 shift3; length5 shift3; then length3 shift1; length5 shift1; length3 shift0; length1 shift0. It depends on which part of shape (top/middle/bottom), not length.
+Maybe s = **distance from row to the top of the nearest wide row** * something. For Demo1 wide rows i2,i5. For rows i0-3, distance to first wide? i0 2, i1 1,i2 0,i3 1. Shifts all3. No.
+For rows i4-5, distance to second wide? i4 1,i5 0, shifts1. Bottom i6-7 distance after second wide 1,2, shifts0.
+Demo2 wide rows i3,i4. Top i0-3 distance to first wide 3,2,1,0 all shift5. Bottom i4-7 distance from second wide 0,1,2,3 shift0. So shift is a step function determined by wide rows, with value perhaps = max length (5) in Demo2, but 3 in Demo1 top, 1 middle,0 bottom. Could value = **width of the row at the wide row that is the nearest below/above?** For top in Demo1 nearest wide below i2 length5, but shift3. Maybe width of inner color at wide row=3. For middle rows i4-5, nearest wide below i5 inner width3, but shift1. Not.
+
+Maybe the shift value equals the **horizontal distance between the left edges of two consecutive wide rows** in the input? Demo1 wide rows i2 and i5 both left edge c2, distance0, no. Right edge both c6, distance0.
+Could be **number of rows between wide rows**? i2 to i5 distance3, shifts? top3, middle? bottom0. Demo2 wide rows i3,i4 distance1, shift top5? no.
+
+Let's explore another angle: Perhaps the transformation is not based on row segments of the whole shape, but on **individual pixels** shifted by the number of that pixel's color to its left in the input. For each non-8 pixel, output position = (r, c + count of its color in row to the left?) with color swap. Let's test.
+Demo1 row6: input 0 5 5 5 0. For each pixel:
+c2=0: count 0 to left0 -> output c2? but actual c5. Count foreground to left? 0. Count background? c0-1 two 8s ->2 not3.
+Maybe shift = count of **other color** to left? c2 0: other 5 left0. c3 5: other 0 left1 -> output c4? actual c6.
+No.
+Shift = number of foreground cells to the right? c2 has4 -> maybe? no.
+
+Maybe output pixel (r,c) is input (r, c - k_r) where k_r = number of foreground cells in row r that are to the left of the **first occurrence of a certain pattern**. Could be derived from the **run-length encoding** of each row. Let's encode rows with colors.
+Demo1 rows (relative):
+r4: 0
+r5: 0 5 0
+r6: 0 5 5 5 0
+r7: 0 5 0
+r8: 0 5 0
+r9: 0 5 5 5 0
+r10:0 5 0
+r11:0
+Output rows after swap and shift. The shift might be the **number of cells in the row's run-length encoding before the central run**. For row6: 0 |555|0, central run length3 -> shift3. Row5: 0|5|0, central run length1 but shift3. So no.
+Maybe shift for a group of rows is determined by the **central run length of the widest row in that group**. Top group rows4-7 includes wide row6 central run length3 -> shift3. Middle group rows8-9 includes? row8 central run length1, row9 wide central run3. But shift1, maybe central run of row8 (the non-wide row) =1. Bottom group rows10-11 includes row10 central run1 but shift0. Hmm.
+Groups maybe determined by **color pattern of the central cell**? Top group rows4-7: central (c4) colors: r4 0, r5 5, r6 5, r7 5. Middle rows8-9: r8 5, r9 5? Bottom r10 5,r11 0. Not.
+
+Let's see if input shapes can be interpreted as **two overlapping copies of a base pattern**. Demo1: There are two "diamonds" of size? Top part rows4-7 pattern:
+..0..
+.050.
+05550
+.050.
+This is a 4-row shape like a diamond (height4, width5) with top missing? Bottom part rows8-11:
+.050.
+05550
+.050.
+..0..
+This is the same shape shifted down one? Actually top pattern rows4-7: row4 single, row5 3, row6 5, row7 3. Bottom rows8-11: row8 3,row9 5,row10 3,row11 single. They overlap in row7/8? They are two copies of a 4-row diamond offset by 4 rows? Copy A rows4-7, copy B rows8-11 (shift down4). They are vertically adjacent, not overlapping. Input is two identical 4-row diamonds stacked with a seam between row7 and8. Output shifts top diamond right by3, bottom diamond? But bottom not uniform: rows8-11 output shifts 1,1,0,0, not entire bottom diamond shifted. Wait bottom diamond rows8-11 input:
+row8 .050.
+row9 05550
+row10 .050.
+row11 ..0..
+If output were this color-swapped shifted uniformly +1, we'd get:
+row8 .505. at c4-6? yes shift+1 relative to input min c2 -> c3-7? row8 output c4-6, relative to c3? Let's align. Input bottom diamond min c2. Shift +1 -> left edges: row8 c4? Input row8 c3,c4,c5 -> output c4,c5,c6 yes. row9 c2-6 -> c3-7 yes. row10 c3-5 -> c4-6 if shift+1, but actual c3-5 (shift0). row11 c4 -> c5 if shift+1, actual c4. So bottom diamond is not uniformly shifted; its bottom two rows shift less, making it maybe another diamond? It looks like the bottom part itself is split: row8-9 (top of bottom diamond) shift1, row10-11 (bottom of bottom diamond) shift0. That suggests there are **three stacked diamonds** of height? Let's decompose into 2-row or 4-row units.
+Input Demo1 could be a sequence of "rings" with widths: 1,3,5,3,3,5,3,1. This is like two diamonds of height4 sharing a 3-row? Diamond height4 lengths 1,3,5,3? A 4-row diamond (top to bottom) would lengths 1,3,5,3? Yes (not symmetric bottom? maybe height4). We have 1,3,5,3 (top) and 3,5,3,1 (bottom). They overlap at the 3 length? Actually stacked: top diamond rows4-7 = 1,3,5,3; bottom diamond rows8-11 = 3,5,3,1. They share the middle? Not same rows. Output shifts: top diamond rows4-7 +3; the first two rows of bottom diamond (rows8-9, lengths3,5) +1; last two rows (10-11, lengths3,1) 0. That's as if there are **three diamonds**: top 4-row shifted3, middle 2? maybe a diamond of length? and bottom 2? Let's see rows8-11 lengths 3,5,3,1 could be a diamond missing top row? Shifts 1,1,0,0. Could be two sub-diamonds: rows8-10 (3,5,3) shift? row8 1,row9 1,row10 0 not uniform. rows8-9 (3,5) shift1; rows10-11 (3,1) shift0.
+Maybe each horizontal "layer" corresponds to a **fold** of a longer diagonal ribbon. The shift decreases by 2 then1. Could be the ribbon width/step.
+
+Let's look at Demo2 lengths: 1,3,3,5,5,3,3,1. This could be two diamonds of height4? Top rows4-7:1,3,3,5 (not diamond), bottom 5,3,3,1. Or a rectangle with corners. Shifts top4 rows +5, bottom4 0.
+Test lengths: row5 3, row6 5, row7 7, row8 7, row9 5, row10 3. Height6, max width7. This looks like a hexagon/diamond. Need predict shifts. If the rule is something like "shift each row by the number of cells to the right of the central vertical line in the top half"? Let's find a pattern from lengths.
+Demo2 length sequence symmetric: 1,3,3,5,5,3,3,1. Shifts: top half 5, bottom0. The split is at the middle between the two 5s. Shift amount = max length (5). So perhaps for any vertically symmetric shape, shift top half right by max width, bottom half unchanged, swap colors. But Demo1 is also vertically symmetric? Length sequence 1,3,5,3,3,5,3,1. It is not symmetric? Reverse:1,3,5,3,3,5,3,1 yes it is symmetric! It is vertically symmetric around between row7/8? Let's check colors/patterns: row4 vs row11: ..0.. both. row5 vs row10: .050. both. row6 vs row9: 05550 both. row7 vs row8: .050. both. Yes Demo1 is perfectly vertically symmetric! Yet shifts are not just top half +? bottom0. If the simple rule top half max width, bottom0, Demo1 would shifts rows4-7 =5, rows8-11=0 (or maybe top max width 5). But actual 3,3,3,3,1,1,0,0. So there is something else causing additional shifts in bottom half. Why is Demo1 different? Because its shape has **two full-width rows** (row6 and row9), while Demo2 also has two full-width rows (row7 and8). Both symmetric. Maybe the shift amount is not max width but **the distance between the two full-width rows**? In Demo1 full-width rows at i2 and i5 (distance3). Shifts: top 3, middle 1, bottom0. In Demo2 full-width rows at i3 and i4 (distance1). Shifts: top5, bottom0. Not.
+Maybe shift amount is **the vertical distance between full-width rows** for top? Demo1 distance3 -> top shift3. Demo2 distance1 -> top shift? 1 not5. No.
+Maybe shift amount is **the horizontal width of the full-width rows** for Demo2 (5), and **the vertical distance between them** for Demo1 (3). Which one is more salient? In Demo1 full-width rows have width5 but top shift3; maybe because the full-width rows are not adjacent, so you unfold each fold separately: top fold amount = vertical distance to next full row? 3? The middle fold amount =? distance to next? 1? bottom0. Let's formalize: There are "bar" rows (full width) at i=2 and5. The shape may be a ribbon folded at these bars. The amount to shift a segment equals the **number of rows from that segment to the next bar below**? Top segment above first bar: distance? Rows4-7 include first bar and row after? Hmm.
+If we consider the inner color horizontal bars (length3) at rows6 and9. The vertical distance between bars is 3 rows (row6 to row9). Top shift3. Then after row7? The next bar at row9 distance from row8 is1, so rows8-9 shift1. After row9, bottom rows shift0. This matches: shift for a row = vertical distance from that row to the **next horizontal bar of the inner color below or at that row**? Let's test Demo1:
+Inner horizontal bars (rows with inner run length >1?) at row6 and row9. For each row, distance to next bar below (including maybe):
+r4 next bar row6 distance2, but shift3.
+r5 next bar row6 distance1, shift3.
+r6 bar distance0, shift3.
+r7 next bar row9 distance2, shift3.
+r8 next bar row9 distance1, shift1.
+r9 bar distance0, shift1.
+r10 no next bar? shift0.
+r11 none shift0.
+Top rows all3 not distance. Maybe shift = distance to previous bar + distance to next bar? r4 previous none? no.
+Demo2 inner horizontal bars? Inner 2 has a 2-wide bar at rows7-8 (two adjacent rows). If treat bars at row7,8. Distances:
+r4 to row7=3 but shift5.
+No.
+
+Maybe shift = **width of the row's horizontal bar in the output**, which is the vertical distance to the next bar? Hmm.
+
+Let's analyze the **inner color path** as a graph. In Demo1 inner 5 cells form a connected component with two horizontal arms. If we "unfold" by making the path monotone in x as y increases, the horizontal displacement of each row segment might be the **cumulative sum of horizontal segments above**. Imagine the inner path is a polyline: start at top (row5 c4), go down to row6, left to c3, right to c5, down to row7, down to row8, down to row9, left/right, down. To straighten it into a diagonal, you translate each row by the x-coordinate of the path at that row. The path's x-coordinate in output could be chosen as the **running sum of horizontal movements**. Let's trace inner 5 in input as a 1-cell wide path maybe with branches. If we choose a centerline: row5 c4; row6 c3-5 (a horizontal segment); row7 c4; row8 c4; row9 c3-5; row10 c4. This could be a path that goes: from top down to row6, then across left-to-right? The horizontal segments at row6 and row9. To unfold, maybe we shift row6 segment right by its length? Actually output row6 inner (0) is c6-8 (length3). The top vertical segment row5/7 at c7 centered above the middle of row6 segment. So top segment's x-center =7. The row8 single x=5. Row9 segment x-center=5. Row10 single x=4.
+The x-center sequence for inner output: 7,7,7,5,5,4 (rows5-10). Differences: 0,0,-2,0,-1. These differences might correspond to the horizontal lengths of inner segments? Row6 length3, row9 length3. Difference -2 after row7? Difference -1 after row9? Maybe the shift decreases by (length of horizontal segment -1) after a horizontal bar? Top bar length3 -> after it, shift decreases by2 (from top group to middle). Bottom bar length3 -> after it, shift decreases by1? But why different? Maybe because top bar is above the center, bottom bar below, and the decrease amounts are the number of rows between bars? Not.
+
+Let's examine **outer color path** in Demo1. Outer 0 cells form two diagonal edges. Output outer (5) left edge sequence maybe chosen to be a **continuous path with steps of 1**. The input outer left edge path: 4,3,2,3,3,2,3,4. If we apply row shifts s, output left edge = input left + s. We might choose s to make output left edge a **monotone path from top to bottom with minimum horizontal jumps?** Let's see if we can choose s_i such that output left edge changes by at most 1 per row and maybe stays within some bounds. Input left edge changes: -1,-1,+1,0,-1,+1,-1. If s_i is nondecreasing? To make L_out changes small, s_i changes must cancel large input changes. L_out changes with s: (s_{i+1}-s_i)+d_i. We have s changes: 0,0,0,-2,0,-1,0. L_out changes: -1,-1,+1,-2,-1,0,+1. Still jumps -2 at row7/8. Maybe unavoidable due to fold. If we wanted L_out monotone decreasing then increasing? It is 7,6,5,6,4,3,3,4: a zigzag. Could be the **shortest path** connecting top and bottom left edges without crossing? Hmm.
+
+Maybe the transformation is to **rotate the shape 90 degrees around the center of each row's bounding box**? No.
+
+Let's consider the possibility of a **global affine transform** with row-dependent shift because the shape is being **sheared along a diagonal fold**. The shift amounts may be determined by the **column of the leftmost 8 cell inside the bounding box**. For each row, maybe shift = number of 8 cells to the left of the foreground segment within the bounding box of the **whole shape's projection**. In Demo1 bounding box cols2-6. For each row, count 8s to left of segment inside bbox:
+r4 L=4, inside left c2-3 =>2, shift3 no.
+Count 8s to right: r4 c5-6=>2, shift3.
+r5 L=3 left c2=>1, shift3; right c? c? row5 R=5, right c6=>1.
+No.
+Maybe count 8s in the row **above** inside bbox? r4 above none

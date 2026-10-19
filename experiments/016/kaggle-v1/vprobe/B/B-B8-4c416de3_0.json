@@ -1,0 +1,54 @@
+{
+ "phase": "B",
+ "query": "4c416de3_0",
+ "arm": "B8",
+ "request": {
+  "effort": "xhigh",
+  "seed": 4101,
+  "max_tokens": 8192,
+  "enable_thinking": true,
+  "thinking_token_budget": 6144,
+  "request_id": "B-B8-4c416de3_0",
+  "sampling": {
+   "temperature": 1.0,
+   "top_p": 0.95,
+   "top_k": 20
+  },
+  "stream_options": {
+   "include_usage": true
+  },
+  "chat_template_kwargs": {
+   "enable_thinking": true,
+   "reasoning_effort": "xhigh"
+  },
+  "thinking_token_budget_sent": 6144
+ },
+ "finish_reason": "stop",
+ "usage": {
+  "prompt_tokens": 6678,
+  "total_tokens": 13661,
+  "completion_tokens": 6983
+ },
+ "wall_s": 345.9,
+ "ttft_s": 1.25,
+ "agg_tok_s": 20.19,
+ "client_error": null,
+ "cancelled_by_client": null,
+ "generation_observed": true,
+ "protocol_complete": true,
+ "valid_answer": false,
+ "usage_present": true,
+ "answered": false,
+ "grid": null,
+ "content_chars": 843,
+ "reasoning_chars": 14388,
+ "status": null,
+ "events": {
+  "queued_monotonic": 1369.523,
+  "wave_start_monotonic": 1369.523,
+  "issued_monotonic": 1369.524,
+  "issued_wall_s": 1792381452.316,
+  "done_monotonic": 1715.398,
+  "queue_wait_s": 0.001
+ }
+}

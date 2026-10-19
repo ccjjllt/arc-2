@@ -1,0 +1,618 @@
+ 7 2 7 7
+2 2 7 8 8 7 8 8 7
+7 2 2 7 8 8 7 8 8
+2 7 7 8 7 7 8 7 7
+```
+
+Let me check if there's a horizontal period. 
+Row 0: 2 2 7 2 2 7 8 8 7
+If period is 4: positions 0,4,8 should be same: 2,2,7 ✗
+If period is 3: positions 0,3,6 should be same: 2,2,8 ✗
+If period is 6: positions 0,6 should be same: 2,8 ✗
+
+Hmm, no simple horizontal period.
+
+What about a larger tile? Let me check if the tile is 6x6:
+Rows 0-5:
+```
+2 2 7 2 2 7
+7 2 2 7 2 2
+2 7 7 2 7 7
+8 8 7 2 2 7
+7 8 8 7 2 2
+8 7 7 2 7 7
+```
+
+Rows 6-8 (should equal rows 0-2 of tile if period is 6):
+Row 6: 2 2 7 8 8 7 8 8 7 → first 6: 2 2 7 8 8 7
+Row 0: 2 2 7 2 2 7 8 8 7 → first 6: 2 2 7 2 2 7
+
+These are different. So period isn't 6.
+
+What about the whole grid being one tile (no repetition needed since it's 9x9)?
+
+Actually, I think I need to step back and think about what transformation maps the seed to the full output.
+
+Let me look at all three demos more carefully.
+
+Demo 1: Seed 3x3, grid 7x7, tile 4x4
+Demo 2: Seed 4x4, grid 9x9, tile ?
+Demo 3: Seed 4x3, grid 12x8, tile ?
+
+In Demo 3, I found the horizontal period is 4. The seed is 3 columns wide. So the tile is 4 columns wide (1 more than seed).
+
+In Demo 1, the seed is 3x3 and the tile is 4x4 (1 more in each dimension).
+
+In Demo 2, the seed is 4x4. If the pattern is "tile is seed + 1 in each dimension," the tile would be 5x5.
+
+Let me check Demo 2 with a 5x5 tile. The first 5 rows and 5 columns of the output:
+```
+2 2 7 2 2
+7 2 2 7 2
+2 7 7 2 7
+8 8 7 2 2
+7 8 8 7 2
+```
+
+If this 5x5 tiles the 9x9 grid:
+Row 0: 2 2 7 2 2 | 2 7 2 2 7 | 2 → 2 2 7 2 2 2 7 2 2 7 2
+Actual: 2 2 7 2 2 7 8 8 7
+
+Doesn't match.
+
+Let me try a different tile size for Demo 2. What if the tile is the same size as the seed (4x4) but the tiling uses some offset or transformation?
+
+Actually, let me look at this from a completely different angle. What if the pattern is created by overlaying the seed pattern at different positions?
+
+Or what if the rule is about the positions of specific values?
+
+Let me look at where the non-7, non-background values appear in each demo.
+
+Demo 1: Values used are 3 and 4 (besides 7).
+In the 4x4 tile:
+3 appears at: (0,0), (1,1), (2,2), (3,3) → the main diagonal!
+4 appears at: (0,2), (1,3), (2,0), (3,1) → these are (r, r+2 mod 4)
+
+So:
+- (r-c) mod 4 == 0 → 3
+- (r-c) mod 4 == 2 → 4
+- (r-c) mod 4 == 1 or 3 → 7
+
+This confirms my earlier finding for Demo 1.
+
+Demo 2: Values used are 2, 7, and 8 (besides... well 7 is the background).
+Wait, 7 is used both as background AND as a value in the seed. Let me look at the seed again:
+```
+2 2 7 8
+7 2 2 8
+2 7 7 8
+8 8 8 8
+```
+
+Values: 2, 7, 8. The background is 7. So 7 is both a "pattern value" and the "background/fill" value. That's unusual.
+
+In the output, let me see where 2, 7, and 8 appear:
+```
+2 2 7 2 2 7 8 8 7
+7 2 2 7 2 2 7 8 8
+2 7 7 2 7 7 8 7 7
+8 8 7 2 2 7 2 2 7
+7 8 8 7 2 2 7 2 2
+8 7 7 2 7 7 2 7 7
+2 2 7 8 8 7 8 8 7
+7 2 2 7 8 8 7 8 8
+2 7 7 8 7 7 8 7 7
+```
+
+Let me look for a pattern. Where does 2 appear?
+Row 0: cols 0,1,3,4
+Row 1: cols 1,2,4,5
+Row 2: cols 0,3,6,7
+Row 3: cols 3,4,6,7
+Row 4: cols 4,5,7,8
+Row 5: cols 3,6,7
+Row 6: cols 0,1,6,7
+Row 7: cols 1,2,7,8
+Row 8: cols 3,4,7,8
+
+Hmm, let me look at this modulo something.
+
+Where does 8 appear?
+Row 0: cols 6,7
+Row 1: cols 7,8
+Row 2: col 6
+Row 3: cols 0,1
+Row 4: cols 0,1
+Row 5: col 0
+Row 6: cols 3,4,6,7
+Row 7: cols 4,5,6,7
+Row 8: cols 3,4
+
+This is getting complex. Let me try a different approach.
+
+What if the tile size equals the seed size, and the tiling involves some kind of shift or transformation at each tile boundary?
+
+Or what if the pattern is: the output is the seed "smeared" or "reflected" in some way?
+
+Let me look at Demo 3 more carefully since it has the clearest structure.
+
+Demo 3 output (taking first 4 columns, since horizontal period is 4):
+```
+Row 0:  9 7 0 7
+Row 1:  7 7 7 7
+Row 2:  7 9 7 0
+Row 3:  0 7 0 7
+Row 4:  7 7 7 7
+Row 5:  7 0 7 0
+Row 6:  0 7 9 7
+Row 7:  7 7 7 7
+Row 8:  7 0 7 9
+Row 9:  9 7 0 7
+Row 10: 7 7 7 7
+Row 11: 7 9 7 0
+```
+
+The seed is:
+```
+9 7 0
+7 7 0
+7 9 0
+0 0 0
+```
+
+And the 4x4 tile (first 4 rows, first 4 cols of output) is:
+```
+9 7 0 7
+7 7 7 7
+7 9 7 0
+0 7 0 7
+```
+
+Now, the vertical sequence of 4-row blocks:
+Block 0 (rows 0-3):
+```
+9 7 0 7
+7 7 7 7
+7 9 7 0
+0 7 0 7
+```
+
+Block 1 (rows 4-7):
+```
+7 7 7 7
+7 0 7 0
+0 7 9 7
+7 7 7 7
+```
+
+Block 2 (rows 8-11):
+```
+7 0 7 9
+9 7 0 7
+7 7 7 7
+7 9 7 0
+```
+
+Is there a relationship between these blocks? Let me see if block 1 is a shift of block 0.
+
+Block 0:
+```
+9 7 0 7
+7 7 7 7
+7 9 7 0
+0 7 0 7
+```
+
+If I shift block 0 down by 1 row (circularly):
+```
+0 7 0 7
+9 7 0 7
+7 7 7 7
+7 9 7 0
+```
+
+Compare with block 2:
+```
+7 0 7 9
+9 7 0 7
+7 7 7 7
+7 9 7 0
+```
+
+Row 1 of shifted = Row 1 of block 2 ✓
+Row 2 of shifted = Row 2 of block 2 ✓
+Row 3 of shifted = Row 3 of block 2 ✓
+Row 0 of shifted = 0 7 0 7, but block 2 row 0 = 7 0 7 9 ✗
+
+Not quite.
+
+Let me try shifting block 0 down by 1:
+Original block 0:
+Row 0: 9 7 0 7
+Row 1: 7 7 7 7
+Row 2: 7 9 7 0
+Row 3: 0 7 0 7
+
+Shifted down by 1 (row 3 becomes row 0, etc.):
+Row 0: 0 7 0 7
+Row 1: 9 7 0 7
+Row 2: 7 7 7 7
+Row 3: 7 9 7 0
+
+Block 2:
+Row 0: 7 0 7 9
+Row 1: 9 7 0 7
+Row 2: 7 7 7 7
+Row 3: 7 9 7 0
+
+Rows 1-3 match! But row 0 doesn't.
+
+What if there's also a horizontal shift? Let me try shifting block 0 down by 1 and right by 1:
+Original:
+```
+9 7 0 7
+7 7 7 7
+7 9 7 0
+0 7 0 7
+```
+
+Shift right by 1 (circular):
+```
+7 9 7 0
+7 7 7 7
+9 7 0 7
+7 0 7 0
+```
+
+Then shift down by 1:
+```
+7 0 7 0
+7 9 7 0
+7 7 7 7
+9 7 0 7
+```
+
+Compare with block 1:
+```
+7 7 7 7
+7 0 7 0
+0 7 9 7
+7 7 7 7
+```
+
+Nope.
+
+Let me try a different approach. What if the pattern in each position is determined by (r mod 4, c mod 4) but with a larger period?
+
+Actually, let me reconsider. What if the "tile" for the vertical direction is larger?
+
+In Demo 3, the vertical period is 9 (since row 0 = row 9, row 1 = row 10, row 2 = row 11). Wait, let me verify:
+Row 0: 9 7 0 7
+Row 9: 9 7 0 7 ✓
+
+Row 1: 7 7 7 7
+Row 10: 7 7 7 7 ✓
+
+Row 2: 7 9 7 0
+Row 11: 7 9 7 0 ✓
+
+So the vertical period is 9. But the seed is 4 rows tall. 9 = 4 + 4 + 1? Or 9 = 2*4 + 1?
+
+Hmm, or maybe the vertical period equals the grid height minus the seed height + seed height = ... no that doesn't make sense.
+
+Wait, the grid is 12 rows. The seed is 4 rows. 12 - 4 = 8. That's not 9.
+
+Actually, maybe I should look at this differently. What if the full pattern (the "super-tile") has dimensions that are the LCM of something, or is determined by the seed dimensions?
+
+Let me look at this from yet another angle. What if the pattern is generated by placing the seed at specific positions in the output?
+
+In Demo 3, the seed is:
+```
+9 7 0
+7 7 0
+7 9 0
+0 0 0
+```
+
+Where does this exact 4x3 block appear in the output?
+Looking for the pattern 9,7,0 in the first row: appears at cols 0-2 and cols 4-6.
+Looking for the full 4x3 pattern:
+Rows 0-3, cols 0-2: 9,7,0 / 7,7,7 / 7,9,7 / 0,7,0 → Not matching (seed row 1 is 7,7,0 but output has 7,7,7)
+
+Hmm, the seed doesn't appear verbatim in the output (except partially).
+
+OK let me try yet another approach. What if the rule is:
+
+The output at (r, c) = seed(r mod H, c mod W) where H and W are the seed dimensions, BUT with some modification?
+
+Demo 3: H=4, W=3
+Output(0,0) = seed(0,0) = 9 ✓
+Output(0,1) = seed(0,1) = 7 ✓
+Output(0,2) = seed(0,2) = 0 ✓
+Output(0,3) = seed(0,0) = 9? But output is 7. ✗
+
+Doesn't work.
+
+What about: output(r,c) = seed(r mod H, c mod W) but with H and W being different from the seed dimensions?
+
+In Demo 3, if W=4 (horizontal period is 4):
+We need a 4x4 "extended seed":
+```
+9 7 0 ?
+7 7 0 ?
+7 9 0 ?
+0 0 0 ?
+```
+
+From the output, the 4th column is: 7, 7, 0, 7 (from rows 0-3).
+So the 4x4 tile is:
+```
+9 7 0 7
+7 7 7 7
+7 9 7 0
+0 7 0 7
+```
+
+Now for the vertical direction, if the period is 9, we need a 9x4 tile:
+```
+9 7 0 7
+7 7 7 7
+7 9 7 0
+0 7 0 7
+7 7 7 7
+7 0 7 0
+0 7 9 7
+7 7 7 7
+7 0 7 9
+```
+
+And this 9x4 tile repeats vertically (and the 4-column pattern repeats horizontally).
+
+But where does this 9x4 tile come from? The seed only gives us the first 4x3.
+
+I think the key insight might be that the tile is generated by some rule based on the seed values and their positions.
+
+Let me look at the non-7 values in each seed and see if there's a pattern in how they're placed in the output.
+
+Demo 1 seed non-7 values (3 and 4):
+(0,0)=3, (0,2)=4, (1,1)=3, (1,2)=4, (2,0)=4, (2,1)=4, (2,2)=4
+
+In the 4x4 tile:
+3 appears at: (0,0), (1,1), (2,2), (3,3) → main diagonal
+4 appears at: (0,2), (1,3), (2,0), (3,1) → diagonal offset by 2
+
+So the values 3 and 4 are placed on diagonals. The seed tells us which values go on which diagonals.
+
+From the seed:
+- 3 is at (0,0) and (1,1) → these are on the main diagonal (r-c=0)
+- 4 is at (0,2), (2,0), (2,1), (2,2) → these are on diagonals r-c=2, r-c=2, r-c=1, r-c=0
+
+Wait, (2,2) has r-c=0, same as where 3 is. But in the tile, (2,2)=3, not 4.
+
+Hmm, so the seed value at (2,2) is 4, but in the tile it becomes 3. And the seed value at (1,2) is 4, but in the tile it becomes 7. And seed (2,1)=4 becomes 7 in the tile.
+
+So the seed is NOT directly mapped to the tile. The seed is more like a "hint" or "constraint" from which the tile is derived.
+
+Let me think about what information the seed provides:
+1. The set of values used (excluding 7 which is background)
+2. The relative positions of these values
+3. The dimensions of the pattern area
+
+Maybe the rule is:
+- Identify the unique non-7 values in the seed
+- Assign each to a diagonal (based on r-c mod tile_size)
+- Fill the tile accordingly
+
+For Demo 1:
+Values: 3, 4
+Tile size: 4
+3 is assigned to diagonal r-c≡0 (mod 4)
+4 is assigned to diagonal r-c≡2 (mod 4)
+All other diagonals get 7 (background)
+
+How do we determine which diagonal each value goes to?
+From the seed:
+3 appears at (0,0) [r-c=0] and (1,1) [r-c=0] → consistently r-c≡0
+4 appears at (0,2) [r-c=-2≡2], (1,2) [r-c=-1≡3], (2,0) [r-c=2], (2,1) [r-c=1], (2,2) [r-c=0]
+
+4 appears on multiple diagonals! So it's not a simple "one value per diagonal" rule.
+
+Unless... the tile size is determined differently, or the rule is more nuanced.
+
+Wait, what if I look at this differently? What if the seed defines a "pattern" that gets tiled, but the tiling involves some kind of convolution or superposition?
+
+Actually, let me reconsider. What if the tile size is always (seed_height + 1) x (seed_width + 1)?
+
+Demo 1: seed 3x3 → tile 4x4 ✓
+Demo 2: seed 4x4 → tile 5x5
+Demo 3: seed 4x3 → tile 5x4
+
+For Demo 3, if tile is 5x4:
+The 5x4 tile from the output (first 5 rows, first 4 cols):
+```
+9 7 0 7
+7 7 7 7
+7 9 7 0
+0 7 0 7
+7 7 7 7
+```
+
+If this tiles vertically with period 5:
+Row 0-4: as above
+Row 5-9: should equal rows 0-4
+Row 5: 7 0 7 0
+Row 0: 9 7 0 7
+These don't match. So the vertical period isn't 5.
+
+Hmm. Let me try tile size = seed size for the dimension that's "full" and seed_size + 1 for the other.
+
+Actually, I realize I should look at this more carefully. Let me check if the output can be described as: output(r,c) = f(r mod A, c mod B) for some A and B.
+
+Demo 1 (7x7 output):
+If A=4, B=4: output(r,c) = f(r mod 4, c mod 4)
+Row 0 = Row 4 ✓ (both are 3 7 4 7 3 7 4)
+Col 0 pattern: 3,7,4,7,3,7,4 → period 4 ✓
+
+Demo 3 (12x8 output):
+If A=9, B=4: output(r,c) = f(r mod 9, c mod 4)
+Row 0 = Row 9 ✓
+Col 0 pattern: 9,7,7,0,7,7,0,7,7,9,7,7 → period 9 ✓
+
+Demo 2 (9x9 output):
+Let me check if there's a period.
+Row 0: 2 2 7 2 2 7 8 8 7
+Row 1: 7 2 2 7 2 2 7 8 8
+...
+
+Is row 0 = row 5? Row 5: 8 7 7 2 7 7 2 7 7. No.
+Is row 0 = row 9? Grid is only 9 rows (0-8), so no.
+
+Let me check if the horizontal period exists:
+Row 0: 2 2 7 2 2 7 8 8 7
+If B=4: positions 0,4,8 → 2,2,7 ✗
+If B=3: positions 0,3,6 → 2,2,8 ✗
+If B=6: positions 0,6 → 2,8 ✗
+If B=9: trivially yes (no repetition within the row)
+
+So in Demo 2, there's no horizontal period less than 9. That means the "tile" is at least 9 columns wide.
+
+And for vertical: is there any repetition? The grid is 9 rows.
+Row 0: 2 2 7 2 2 7 8 8 7
+Row 1: 7 2 2 7 2 2 7 8 8
+Row 2: 2 7 7 2 7 7 8 7 7
+Row 3: 8 8 7 2 2 7 2 2 7
+Row 4: 7 8 8 7 2 2 7 2 2
+Row 5: 8 7 7 2 7 7 2 7 7
+Row 6: 2 2 7 8 8 7 8 8 7
+Row 7: 7 2 2 7 8 8 7 8 8
+Row 8: 2 7 7 8 7 7 8 7 7
+
+All different. So no vertical period less than 9 either.
+
+This means for Demo 2, the entire 9x9 output is the "tile" (no repetition needed). The seed is 4x4 in the top-left.
+
+So the relationship between seed and output is:
+- Demo 1: 3x3 seed → 7x7 output (4x4 tile repeated)
+- Demo 2: 4x4 seed → 9x9 output (9x9, no repetition)
+- Demo 3: 4x3 seed → 12x8 output (9x4 tile repeated)
+
+Hmm, the output sizes are:
+- Demo 1: 7x7 = (3+4)x(3+4)
+- Demo 2: 9x9 = (4+5)x(4+5)
+- Demo 3: 12x8 = (4+8)x(3+5)
+
+That doesn't follow a clean pattern.
+
+Wait, let me reconsider. What if the grid size determines the tile size, and the seed just provides the "seed values" that get distributed according to some rule?
+
+Actually, I wonder if the rule is related to the positions of non-7 values in the seed, and the output places copies of these values at positions determined by modular arithmetic.
+
+Let me look at Demo 1 again:
+Seed non-7 values:
+(0,0)=3, (0,2)=4, (1,1)=3, (1,2)=4, (2,0)=4, (2,1)=4, (2,2)=4
+
+Output non-7 values (in the 4x4 tile):
+(0,0)=3, (0,2)=4
+(1,1)=3, (1,3)=4
+(2,0)=4, (2,2)=3
+(3,1)=4, (3,3)=3
+
+So in the output tile:
+3 is at positions where (r-c) mod 4 = 0: (0,0), (1,1), (2,2), (3,3)
+4 is at positions where (r-c) mod 4 = 2: (0,2), (1,3), (2,0), (3,1)
+
+In the seed:
+3 is at (0,0) [r-c=0] and (1,1) [r-c=0] → all have r-c≡0 (mod 4)
+4 is at (0,2) [r-c=-2≡2], (1,2) [r-c=-1≡3], (2,0) [r-c=2], (2,1) [r-c=1], (2,2) [r-c=0]
+
+So 4 appears at r-c values: 2, 3, 2, 1, 0 (mod 4). That's not consistent.
+
+But in the output, 4 only appears at r-c≡2. So the seed has "noise" or the rule isn't simply "assign value to diagonal based on where it appears in seed."
+
+Let me think about this differently. What if the rule is:
+1. Find all non-7 values in the seed
+2. For each unique value, find the "primary" diagonal it belongs to (maybe the most common r-c mod N, or the first occurrence)
+3. Place that value on that diagonal in the output tile
+
+For Demo 1:
+Value 3: appears at r-c = 0, 0 → primary diagonal: 0
+Value 4: appears at r-c = 2, 3, 2, 1, 0 → most common: 2 (appears twice)
+
+That gives us:
+3 on diagonal 0, 4 on diagonal 2 → matches the output!
+
+Let me verify with Demo 3:
+Seed:
+```
+9 7 0
+7 7 0
+7 9 0
+0 0 0
+```
+
+Non-7 values:
+9 at (0,0) [r-c=0], (2,1) [r-c=1]
+0 at (0,2) [r-c=-2≡2 mod 4], (1,2) [r-c=-1≡3], (2,2) [r-c=0], (3,0) [r-c=3], (3,1) [r-c=2], (3,2) [r-c=1]
+
+Value 9: r-c values are 0, 1 → tie, so which is primary?
+Value 0: r-c values are 2, 3, 0, 3, 2, 1 → most common: 2 and 3 (each appear twice)
+
+In the output tile (4x4):
+```
+9 7 0 7
+7 7 7 7
+7 9 7 0
+0 7 0 7
+```
+
+9 is at: (0,0) [r-c=0], (2,1) [r-c=1]
+0 is at: (0,2) [r-c=2], (2,3) [r-c=3], (3,0) [r-c=3], (3,2) [r-c=1]
+
+So 9 is on diagonals 0 and 1, and 0 is on diagonals 1, 2, and 3.
+
+That doesn't match the "one value per diagonal" rule. Multiple values share diagonals, and values appear on multiple diagonals.
+
+Hmm, let me reconsider.
+
+Wait, actually in the output tile for Demo 3:
+9 is at (0,0) and (2,1).
+0 is at (0,2), (2,3), (3,0), (3,2).
+
+Let me check (r+c) mod 4:
+9: (0,0)→0, (2,1)→3
+0: (0,2)→2, (2,3)→1, (3,0)→3, (3,2)→1
+
+Not consistent either.
+
+What about (r*2 + c) mod something? Or some other formula?
+
+Let me try to find a pattern in the 4x4 tile of Demo 3:
+```
+9 7 0 7
+7 7 7 7
+7 9 7 0
+0 7 0 7
+```
+
+Non-7 positions: (0,0)=9, (0,2)=0, (2,1)=9, (2,3)=0, (3,0)=0, (3,2)=0
+
+Let me see: 
+(0,0): r=0,c=0 → 9
+(0,2): r=0,c=2 → 0
+(2,1): r=2,c=1 → 9
+(2,3): r=2,c=3 → 0
+(3,0): r=3,c=0 → 0
+(3,2): r=3,c=2 → 0
+
+9 appears at (0,0) and (2,1). The difference is (2,1). So 9 repeats with offset (2,1)?
+0 appears at (0,2), (2,3), (3,0), (3,2). 
+(0,2) to (2,3): offset (2,1)
+(2,3) to (3,0): offset (1,1) (wrapping: 3+1=4≡0 mod 4)
+(3,0) to (3,2): offset (0,2)
+(0,2) to (3,2): offset (3,0)
+
+Not a clean pattern.
+
+Let me try another approach. What if the output is generated by a 2D periodic function where the period in each dimension equals the seed dimension + 1?
+
+Demo 1: period (4,4), seed

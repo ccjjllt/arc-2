@@ -1,0 +1,83 @@
+We need solve ARC puzzle. Need infer transformation from demos, apply test. Must think thoroughly. Need final only grid fenced. Let's analyze.
+
+We have three demos. Inputs: background color varying (1,8,2). Contains shapes/frames made of 0 (holes/borders?) and some digits. Outputs: fills certain 2x2 blocks adjacent to corners/sides? Looks like each 0 rectangular frame? Let's parse.
+
+Demo1: 21x21, background 1. There are objects made of 0 (black? hole color) outlines? Input:
+Rows (0-index):
+2: col10,11 = 8,8 (two 8s) above? Actually 8s at (2,10),(2,11); row3 col10,11 8,8. A 2x2 block of 8 at top? 
+Row3: 0s from col3 to10? "1 1 1 0 0 0 0 0 0 0 8 8 1..."
+Rows4-10 etc. Let's map.
+Demo1 input object 1: rectangle of 0 border? Rows3-10, cols3-10? Let's list:
+row3: c3 0 c4 0 c5 0 c6 0 c7 0 c8 0 c9 0 c10 0? Wait row3 string: 1 1 1 0 0 0 0 0 0 0 8 8 1... So c3-c10 zeros, 8 at c10? Need index carefully.
+Let's index columns 0-20.
+row0 all 1
+row1 all1
+row2: 1 1 1 1 1 1 1 1 1 1 1 8 8? Wait given: "1 1 1 1 1 1 1 1 1 1 1 8 8 1..." Let's count: positions 0-10 are 1? There are 11 ones then 8,8. So c10=8? Let's count: 0:1,1:1,2:1,3:1,4:1,5:1,6:1,7:1,8:1,9:1,10:1,11:8,12:8? The string has 11 1s? "1 1 1 1 1 1 1 1 1 1 1 8 8" => indices 0-10 =1 (11 items), 11=8,12=8. But earlier I thought c10,11. Let's verify row3: "1 1 1 0 0 0 0 0 0 0 8 8 1 ..." Count: 0:1,1:1,2:1,3:0,4:0,5:0,6:0,7:0,8:0,9:0,10:8,11:8. So 8s at c10,11 row2? Wait row2 count has 11 ones then 8s, so c10,11? If 0-10 ones (11) then c11,c12? Let's count: string row2: 1(0) 1(1) 1(2) 1(3) 1(4) 1(5) 1(6) 1(7) 1(8) 1(9) 1(10) 8(11) 8(12). Yes c11,c12. Row3: 1(0)1(1)1(2)0(3)0(4)0(5)0(6)0(7)0(8)0(9)8(10)8(11). So 8s at c10,11. This seems row2 8s shifted? Need exact. Let's maybe not rely on indices. But transformation seems about rectangular 0 frames, and colored pixels inside. Output creates 2x2 patches outside corners? Let's inspect.
+
+In Demo1 output, for top-left big rectangle, original 0 border remains, but output adds 3s: row2 c2,c3? row2 output "1 1 3 3 1 ..." row3 "1 1 3 3 0 0 ..." row4 "1 1 1 0 3 1 ..." So a 3 appears as an L-shape/2x2 corner outside top-left corner of the 0 rectangle? Original inner 3 at row5 c5? Actually input has a 3 inside rectangle at row5? row5: "1 1 1 0 1 3 1 1 8 1 0 1..." so c5=3. Output adds 3s outside corners: top-left area around top-left corner (outside 0 border) with 3 from inner cell? The original inner digit 3 is preserved. It creates a 2x2 square of that digit at outside corner? Let's see: output top-left: rows2-3 c2-3 = 3 3 / 3 3, a 2x2 block adjacent diagonally to corner of 0 rectangle? The 0 rectangle top-left at (row3,col3). The 2x2 block at rows2-3? Wait row3 c3 is 0, not 3. output row3: c2=3,c3=3? But c3 is top-left border 0 in input. Output row3 c3 changed from 0 to 3? Let's check output row3: "1 1 3 3 0 0 0 0 0 0 8 8..." It has at c2=3,c3=3,c4=0... So yes it overwrote the top-left 0 corner with 3? But row3 c3 in input was 0. In output, the 0 rectangle border may be broken at corners? Let's inspect output big rect: row3 c4-9 zeros, c10 8? row4 c3=0, c4=3? row4 output "1 1 1 0 3 1 1 1 1 8 0..." So left border c3 zeros rows4-9? Top border zeros row3 c4-9? The top-left corner cell (3,3) changed to 3. Top row zeros c4-c9, left column zeros c4? Wait row4 c3=0, row4 c4=3 (inside). So corner cell overwritten by 3; top/left edges remain zeros except corner? The 2x2 block of 3 includes (2,2),(2,3),(3,2),(3,3). It replaces corner border cell and three outside background cells. Then inside at (4,4)? output has 3 at row4 c4, but input had 1. So also adjacent inside corner cell? The original inner digit 3 at row5 c5? Need map. The transformation likely: each rectangular frame of 0 with a single colored pixel inside (or at some position) causes expansion: create 2x2 squares of that color at four corners? Let's analyze all demo1 objects.
+
+Demo1 has top-right 2x2 8 block attached to big 0 rectangle? Input row2-3 c10/11/12? 8s. Output: 8s remain? row2 output: c10? "1 1 3 3 1 1 1 1 1 1 8 8 ..." Wait row2 output: 1 1 3 3 1 1 1 1 1 1 8 8 1... So 8s at c10,11? row3 output: ... c10 8 c11 8? "0 0 0 0 0 0 8 8" maybe c10,11. So 2x2 8 remains.
+
+Big rectangle input: 0 border from row3 to10? and col3 to10? with 8s attached at top-right? Let's map precisely. It may be an incomplete rectangle: zeros form border, with 8 block overlapping top-right outside? There are inner digits: 3 at (5,5), 4 at (8,5), 2 at (8,8). Output: For top-left corner, 3s. Bottom-left? output rows9-11 c3-4? Let's see output row9: "1 1 1 0 4 1 1 1 1 2 0..." so c4=4, c9=2. row10: "1 1 4 4 0 0 0 0 0 0 2 2" c2=4,c3=4,c10=2,c11=2. row11: "1 1 4 4 1 1 1 1 1 1 2 2" c2=4,c3=4,c10=2,c11=2. So bottom-left corner: 2x2 4 at rows10-11 c2-3? But row9 c4=4 inside? Actually bottom-left corner of 0 rectangle at row10 c3? Input row10: "1 1 1 0 0 0 0 0 0 0 0 1..." zeros c3-c10. row11 all 1. Output row10 c2=4,c3=4,c4-9 zeros,c10=2,c11=2; row11 c2=4,c3=4,c10=2,c11=2. It replaces bottom-left corner c3? Wait row10 c3 is corner 0, changed to 4? Output row10 c3=4, yes. Top-left similarly. Bottom-right: 2s at rows10-11 c10-11; corner c10 changed to 2, right? input bottom-right corner row10 c10=0 changed to 2. Top-right? there is 8 block, maybe 8 is inner digit at top-right? It produced? output row9 has c9=2? Hmm.
+
+Let's identify four colored digits inside big rectangle: 3 at top-left-ish, 4 at bottom-left-ish, 2 at bottom-right-ish? There might be 8 at top-right, represented by 2x2 block outside? In input, 8s at row2-3 col10-11? Maybe top-right digit is 8 but it's outside/attached? Output doesn't create 8 at top-right? Wait output row2/3 has 8s. It already is a 2x2 block of 8 at top-right of rectangle? But if transformation creates 2x2 block of that digit at each corner, for top-right it would overwrite corner with 8. In output, top-right corner row3 c10? It is 8? Yes row3 c10,c11=8 maybe. Row2 c10,c11=8. So top-right corner 2x2 of 8: rows2-3 c10-11. That matches. But input had 8 2x2 at top-right? It seems input already had 8 block at top-right, perhaps representing the digit at that corner. Output retains it.
+
+Inner digits positions: For each colored digit inside a 0 rectangle, output creates a 2x2 block of that digit outside at the nearest corner? The digit's position relative to rectangle selects corner. E.g., big rectangle interior area (inside 0 border). There are four quadrants: top-left inside digit 3 -> top-left corner 2x2 outside. Bottom-left inside digit 4 -> bottom-left. Bottom-right inside digit 2 -> bottom-right. Top-right 8 -> top-right. The 0 rectangle border may be a "room" with four digits placed one per corner region. The output: for each digit inside, fill the corresponding outside corner 2x2 with that digit. It also fills the inside cell adjacent to that corner? Let's see: For 3 top-left, output has 3 at row4 c4 (inside adjacent to top-left corner) and row5 c5 original 3. Wait original input has only one 3 at row5 c5 (not adjacent corner?). Output row4 c4=3, row5 c5=3. So not just outside block? It creates diagonal line? Let's map: if 0 rectangle border top-left at (r0,c0). Interior top-left adjacent cell (r0+1,c0+1). Original 3 at (r0+2,c0+2)? In output row4 c4 = (r0+1,c0+1) 3; row5 c5 original 3; so it filled a diagonal from corner? For bottom-left 4: original at row8 c5? Output row9 c4=4 (inside adjacent bottom-left) and row10? row10 c? bottom-left outside 2x2. For 2: original row8 c8, output row9 c9=2 and outside bottom-right 2x2. So for each digit, output fills a diagonal path? Let's examine exact.
+
+Demo1 big 0 rectangle: border likely rows 3..10 and cols 3..10? Top-left corner (3,3). Interior 7x7 rows4-9 cols4-9. Digits:
+3 at row5, col5? That's interior coordinate (1,1) if top-left interior (4,4). Output has 3 at (4,4), (5,5) (original), plus outside 2x2 at (2,2),(2,3),(3,2),(3,3). So it made a line from outside corner to inside digit? Outside 2x2 includes corner and adjacent outside; inside diagonal includes (4,4),(5,5). There is a gap? (3,3) corner changed to 3, then (4,4), (5,5) diagonal. But outside 2x2 also includes (2,3),(3,2) off diagonal.
+
+4 at row8 col5? interior coordinate (4,1) near left bottom. Output: outside bottom-left 2x2 at rows10-11 cols2-3, plus inside (9,4)=4? Original (8,5)=4. Diagonal from bottom-left corner (10,3) to digit? Coordinates: corner (10,3); outside 2x2 includes (10,2),(11,2),(11,3); inside adjacent (9,4); then original (8,5). That's diagonal up-right from corner to digit? From (10,3) -> (9,4) -> (8,5). Yes. But outside 2x2 includes two off-diagonal cells (10,2),(11,2) and (11,3) maybe to make 2x2.
+
+2 at row8 col8? interior (4,4) relative bottom-right? Corner (10,10). Output outside 2x2 rows10-11 cols10-11 (but c10 is corner, c11 outside right; rows10,11). Inside (9,9)=2; original (8,8)=2. Diagonal from corner (10,10)->(9,9)->(8,8). Plus 2x2 block outside? It includes (10,10) corner, (10,11) outside right, (11,10) outside below, (11,11) diagonal outside. For top-left: corner (3,3), outside block rows2-3 cols2-3 includes (3,3), (3,2) left, (2,3) up, (2,2) diagonal. Inside diagonal (4,4),(5,5). For top-right: corner (3,10) maybe? Original 8? 8 block at rows2-3 cols10-11? Corner (3,10) top-right of rectangle? Interior adjacent (4,9)? But output maybe has 8 at (4,9)? Let's check row4 output: "1 1 1 0 3 1 1 1 1 8 0 1" c9=8? There is an 8 at c9 row4, input row4 c9? input row4: "1 1 1 0 1 1 1 1 1 8 0 1" c9=8? Actually input row4 c9=8 (the 8 block includes row4? Let's see: input has 8s at row2,3? Wait row4 has 8 at c9? Given row4: "1 1 1 0 1 1 1 1 1 8 0 1 1..." There is an 8 at c9. row5: "... 8 1 0" c8=8. So 8s form maybe a vertical/diagonal? Let's map 8 object: It might be another 0 rectangle? Hmm.
+
+Let's step back. The grids contain multiple "rooms" (rectangles with 0 border) and digits inside. Output seems to extend each digit to a 2x2 square at the nearest corner of its containing 0 rectangle, and fill diagonal cells between the digit and that corner? But maybe the rule is simpler: each 0 rectangle has colored cells inside. For each colored cell, find the nearest corner of the rectangle (based on relative position) and paint a 2x2 block at that corner and all cells along the line from the digit to that corner? But demos may show only a 2-cell diagonal (digit + adjacent inside corner) plus 2x2 at corner. Need infer for test where digits positions vary, maybe not exactly symmetric.
+
+Let's analyze Demo2 and 3 to solidify.
+
+Demo2: background 8. There are 0 rectangles? Input has:
+- top-left small rectangle? rows3-4? Actually rows2-4 cols4-6? Input:
+row2: c4=1 c5=1
+row3: c4=1 c5=0 c6=1 c7=0 c8=0 c9=0 c10=0? wait row3: "8 8 8 8 1 0 1 0 0 0 0 0 8" so there's a shape: 1 at (2,4),(2,5); (3,4)=1,(3,5)=0,(3,6)=1; (4,5)=1,(4,6)=1? row4: "8 8 8 8 8 1 1 8 8 8 4 0 8". This may be a small 2x2 0? Not a complete rectangle. Output: 1s form plus? Output top-left: row2 c4=1 c5=1 c10=4 c11=4? Wait row2 output: "8 8 8 8 1 1 8 8 8 8 8 4 4 8..." row3: "8 8 8 8 1 0 1 0 0 0 4 0 4" row4: "8 8 8 8 8 1 1 8 8 8 4 4". So there is a 4 at (4,10) input? and output fills 2x2 of 4 at top-right of a 0 rectangle? Let's identify.
+
+Demo2 input has several objects:
+1. A 0 vertical line? Rows3-9 col5? Actually row3 c5=0, row4 c5=1? Hmm.
+Let's parse Demo2 systematically. Grid 23x23. Background 8. Zeros and digits.
+
+Input rows with indices (0-based):
+0: all 8
+1: all 8
+2: 8 8 8 8 1 1 8 8 8 8 8 8 8 ...
+3: 8 8 8 8 1 0 1 0 0 0 0 0 8 ...
+4: 8 8 8 8 8 1 1 8 8 8 4 0 8 ...
+5: 8 8 8 8 8 0 8 8 8 8 8 0 8 ...
+6: 8 8 8 8 8 0 8 8 8 8 8 0 8 ...
+7: 8 8 8 8 8 0 8 8 8 8 8 0 8 ...
+8: 8 8 8 8 8 0 6 8 8 8 3 3 8 ...
+9: 8 8 8 8 8 0 0 0 0 0 3 0 3 ...
+10:8 8 8 8 8 8 8 8 8 8 8 3 3 ...
+11-14 all 8
+15: 8 8 8 8 8 8 8 0 0 0 0 0 8...
+16: 8 8 8 8 8 8 8 0 2 8 7 0 8...
+17: 8 8 8 8 8 8 8 0 8 8 8 0 8...
+18: 8 8 8 8 8 8 8 0 3 8 4 0 8...
+19: 8 8 8 8 8 8 8 0 0 0 0 0 8...
+20-22 all 8
+
+Zeros form rectangular borders? Object A: rows3-9? cols? Let's find connected 0 regions. There is vertical line of 0 at col5 rows5-9 (row3 col5=0, row4 col5=1, row5-9 col5=0). Also row3 cols7-11 zeros? row3 c7-11=0? Row3: c7=0,c8=0,c9=0,c10=0,c11=0. Row4 c11=0. Row5-9 c11=0. Row9 c6-c10 zeros (c6=0,c7=0,c8=0,c9=0,c10=0). This forms a 0 rectangle? Top row row3 c7-11; left side? col? The left side maybe col5? But top-left missing? Let's see rectangle corners: top-left (3,7)? top-right (3,11)? bottom-left (9,6?) bottom-right (9,11?) Not consistent.
+
+Output object A: 6s form a plus/corner? Output:
+row2: c4=1,c5=1, c10=4,c11=4
+row3: c4=1,c5=0,c6=1, c7=0,c8=0,c9=0,c10=4,c11=0,c12=4
+row4: c5=1,c6=1, c10=4,c11=4
+row5-7: c5=0, c11=0 unchanged
+row8: c5=6? output row8: "8 8 8 8 8 6 6 8 8 8 3 3" so c5=6,c6=6, c10=3,c11=3
+row9: "8 8 8 8 6 0 6 0 0 0 3 0 3" c4=6,c5=0,c6=6,c10=3,c11=0,c12=3
+row10: "8 8 8 8 6 6 8 8 8 8 8 3 3" c4=6,c5=6,c11=3,c12=3
+So for a 0 rectangle? It seems a 0 rectangular frame from row3 to9, col5 to11? Let's check input: top border row3 col5? c5=0, c6=1 (not 0), c7-11=0. Not full. left border col5 row3=0,row4=1,row5-9=0. right border col11 rows3-9=0. bottom border row9 c5? c5=0, c6-c10=0, c11=0. But top has break at c6 (1), left has break at row4 (1), maybe these are colored digits inside? The 1 at top? The 1s inside? Let's identify interior colored digits: 4 at (4,10), 6 at (8,6), 3 at (8,10),(8,11? wait input row8 c10=3,c11=3? row8: "... 8 8 8 3 3 8" c10=3,c11=3), row9 c10=3,c12=3, row10 c11=3,c12=3. That 3 shape is outside? Hmm.
+
+Output for 4: input 4 at (4,10) inside near top-right of 0 rectangle (rows3-9, cols5-11). Output 2x2 4 at top-right corner: rows2-3? Actually output 4s: (2,10),(2,11),(3,10),(3,12? wait row3 c10=4,c11=0,c12=4) row4 c10=4,c11=4. It's not simple 2x2 at (2,10)-(3,11); it includes row3 c12 and row4 c10,c11, plus maybe row3 c10. Let's list 4 output cells:
+row2: c10=4,c11=4
+row3: c10=4,c12=4
+row4: c10=4,c11=4
+plus original? input row4 c10=4. So shape: a 3x3 ring? Coordinates relative to top-right corner (row3,col11)? The 0 rectangle top-right corner maybe (3,11). 4 at (4,10) inside diagonal adjacent to corner? Output fills cells: (2,10),(2,11) above corner; (3,10) left of corner? (3,12) right of corner? (4,10) original, (4,11) corner? Wait corner (3,11) in input is 0. Output row3 c11 remains 0! So not filling corner. But it fills around it: (2,10),(2,11),(3,10),(3,12),(4,10),(4,11). This is a 3x3 square minus center? Center is (3,11)=

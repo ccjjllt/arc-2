@@ -1,0 +1,18 @@
+We need solve ARC puzzle. Need think step by step inside tags, then final only grid fenced. We need infer transformation from 4 demos to test. Let's analyze thoroughly.
+
+We have input grids with digits. Digits 0-9. In demos:
+Demo1 input 20x8, output 12x6.
+Demo2 input 8x11, output 8x4.
+Demo3 input 8x28, output 14x8.
+Demo4 input 8x23, output 14x6.
+Test input 28x8 (tall narrow). Need output.
+
+Let's understand patterns.
+
+All inputs have border? Demo1: row0: 0 2 2 2 2 2 2 2? Wait input row0: 0 2 2 2 2 2 2 2 (length 8). Row1-19: start 1 then 8 etc? Actually row1: 1 8 8 ... 8. Last col all 8? Wait Demo1 row0 col0 0, col1-7 2. Rows 1-19 col0 1, col1-7 mostly 8. So there is a border of 2 top and 1 left? Top row 2, left col 1, maybe background inside 8. There are colored rectangular blocks inside on 8 background.
+
+Demo2 input 8x11: row0: 0 1 1 ... 1 (top border 1 except 0 corner). Rows1-7: col0 2, then 8 background. Left border 2. So top row 1, left col 2.
+
+Demo3 input 8x28: row0: 0 1...1, rows1-7: col0 2, background 8. So same: top border 1, left border 2.
+
+Demo4 input 8x23: row0: 1...1 0 (0 at far right). rows1-7: col0 8, background 8, last col 2? Row1: 8 ... 8 2. So right border 2? top border 1 with 0 at right corner. Maybe border digits are irrelevant and indicate orientation? Test input 28x8: row0: 

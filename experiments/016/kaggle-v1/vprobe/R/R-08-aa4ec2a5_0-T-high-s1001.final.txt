@@ -1,0 +1,81 @@
+Looking at the demos, the pattern is:
+
+1. **Identify connected components of 1s** (4-connected)
+2. **For each component:**
+   - Find enclosed holes (4s completely surrounded by 1s) → fill with **6**
+   - If the component has holes → recolor original 1s to **8**, else keep as **1**
+   - Add a **2** border around the filled shape (original 1s + holes) using 8-neighbor adjacency, placed on adjacent 4s outside the shape
+
+Let me trace through the test input components:
+
+**Component 1** (top-left, rows 2-11): Has an enclosed hole at row 3, cols 13-14. → 8s with 6 hole, 2 border
+**Component 2** (right-middle, rows 10-14): Solid, no holes → 1s with 2 border  
+**Component 3** (small middle, rows 15-16, cols 10-12): Solid, no holes → 1s with 2 border
+**Component 4** (bottom-left, rows 17-19, cols 7-12): Solid, no holes → 1s with 2 border
+**Component 5** (bottom-right, rows 20-22): Has enclosed hole at row 21, col 22 → 8s with 6 hole, 2 border
+
+Applying the border (8-neighbor dilation of the filled shape, placed on surrounding 4s):
+
+```
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 4 2 2 2 2 2 2 2 2 2 2 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 2 8 8 8 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 7 2 8 8 8 8 8 6 6 8 8 2 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 2 8 8 8 8 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4
+4 4 4 4 2 2 2 8 8 8 8 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4
+4 4 4 2 8 8 8 8 8 8 8 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4
+4 4 4 2 8 8 8 8 8 8 8 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4
+4 4 4 2 8 8 8 8 8 8 8 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4
+4 4 4 2 8 8 8 8 8 8 8 8 8 2 4 4 4 2 2 2 2 2 2 4 4 4 4
+4 4 4 2 8 8 8 8 8 8 8 8 8 2 4 4 4 2 1 1 1 1 2 4 4 4 4
+4 4 4 2 2 2 2 2 2 2 2 2 2 2 4 4 4 2 1 1 1 1 2 4 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 8 8 8 8 8 8 8 2 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 8 8 8 8 8 8 8 2 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 8 8 8 8 8 8 8 2 4
+4 4 4 4 4 4 4 4 4 4 2 1 1 2 4 4 4 2 8 8 8 8 8 8 8 2 4
+4 4 4 4 4 4 4 4 4 4 2 1 1 2 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 2 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 2 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 2 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 2 2 2 2 2 2 2 2 4 4 4 4 2 2 2 2 2 2 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 8 6 8 8 2 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 8 8 8 8 2 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 2 2 2 2 2 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+```
+
+Wait, I need to double-check component 1's hole. Looking at rows 2-11 more carefully: the "gap" at row 3, cols 13-14 is actually open to the right (not enclosed), so no hole. Let me reconsider...
+
+Actually, examining the shape: rows 5-8 have full width c4-16, rows 2-4 have c8-16 with gap at c13-14 in rows 3-4. This gap is enclosed by 1s on all sides. So there IS a hole.
+
+Let me also verify component 5: rows 20-22, the 1 at row 21 col 22 is enclosed by 1s above (row 20), below (row 22), left (col 21), and right (col 23). Yes, enclosed hole.
+
+```
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 4 2 2 2 2 2 2 2 2 2 2 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 2 8 8 8 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 2 8 8 8 8 8 6 6 8 8 2 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 2 8 8 8 8 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4
+4 4 4 4 2 2 2 8 8 8 8 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4
+4 4 4 2 8 8 8 8 8 8 8 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4
+4 4 4 2 8 8 8 8 8 8 8 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4
+4 4 4 2 8 8 8 8 8 8 8 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4
+4 4 4 2 8 8 8 8 8 8 8 8 8 2 4 4 4 2 2 2 2 2 2 4 4 4 4
+4 4 4 2 8 8 8 8 8 8 8 8 8 2 4 4 4 2 1 1 1 1 2 4 4 4 4
+4 4 4 2 2 2 2 2 2 2 2 2 2 2 4 4 4 2 1 1 1 1 2 4 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 8 8 8 8 8 8 8 2 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 8 8 8 8 8 8 8 2 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 8 8 8 8 8 8 8 2 4
+4 4 4 4 4 4 4 4 4 4 2 1 1 2 4 4 4 2 8 8 8 8 8 8 8 2 4
+4 4 4 4 4 4 4 4 4 4 2 1 1 2 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 2 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 2 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 2 8 8 8 8 8 8 2 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 2 2 2 2 2 2 2 2 4 4 4 4 2 2 2 2 2 2 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 8 6 8 8 2 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 8 8 8 8 2 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 2 2 2 2 2 2 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+```

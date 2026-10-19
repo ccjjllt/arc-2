@@ -1,0 +1,553 @@
+at works!
+
+Wait, but which row exactly? The split is between row 7 and row 8. In Demo 1, row 7 has 3 cells and row 8 has 3 cells. In Demo 2, row 7 has 5 cells and row 8 has 5 cells.
+
+Actually, I think the shift might be the width of the shape at the middle (the widest point of the top half or the widest point at the boundary).
+
+Hmm, let me think about this differently. 
+
+In Demo 1, the shape is a diamond. The widest point is at rows 6 and 9 (width 5). The middle of the shape (between rows 7 and 8) has width 3.
+
+In Demo 2, the shape is not a simple diamond. The widest point is at rows 7 and 8 (width 5). The middle of the shape (between rows 7 and 8) has width 5.
+
+So the shift = width at the middle of the shape? That seems to work for both demos.
+
+Actually wait, let me reconsider. Maybe it's simpler than I think.
+
+Let me look at the position more carefully.
+
+In Demo 1:
+- The shape's center column is col 4 (the diamond is centered at col 4).
+- The top half in the output is centered at col 7.
+- Shift = 7 - 4 = 3.
+
+In Demo 2:
+- The shape's center... it's not symmetric. Let me find the center differently.
+- The shape spans cols 1-5. Center = col 3.
+- The top half in the output spans cols 6-10. Center = col 8.
+- Shift = 8 - 3 = 5.
+
+Hmm, or maybe the shift is related to the width at the boundary.
+
+Actually, let me reconsider the problem. Maybe the rule is:
+- The top half shifts right by its own width (at the widest point within the top half).
+
+In Demo 1, the top half's widest point is row 6 with width 5. But the shift is 3, not 5.
+
+Or maybe the shift is the width of the last row of the top half (the row at the split point).
+
+Demo 1: Row 7 (last row of top half) has width 3. Shift = 3. ✓
+Demo 2: Row 7 (last row of top half) has width 5. Shift = 5. ✓
+
+That works!
+
+Alternatively, maybe the shift is the width of the first row of the bottom half.
+Demo 1: Row 8 (first row of bottom half) has width 3. Shift = 3. ✓
+Demo 2: Row 8 (first row of bottom half) has width 5. Shift = 5. ✓
+
+Both work since in both cases the split rows have the same width.
+
+Let me think about whether it could be something else. What if the shift is always the number of cells in the "neck" of the shape?
+
+Actually, I think the most natural interpretation is: the top half shifts right by the width of the shape at the split point.
+
+Now let me verify the color swap:
+- In Demo 1: 0 (border) ↔ 5 (fill)
+- In Demo 2: 1 (border) ↔ 2 (fill)
+
+So the rule is: swap the two non-background colors.
+
+Let me now apply this to the test input.
+
+Test input:
+```
+Row 5:  8 8 8 4 4 4 8 8 8 8 8 8 8 8 8 8
+Row 6:  8 8 4 9 9 9 4 8 8 8 8 8 8 8 8 8
+Row 7:  8 4 9 9 9 9 9 4 8 8 8 8 8 8 8 8
+Row 8:  8 4 9 9 9 9 9 4 8 8 8 8 8 8 8 8
+Row 9:  8 8 4 9 9 9 4 8 8 8 8 8 8 8 8 8
+Row 10: 8 8 8 4 4 4 8 8 8 8 8 8 8 8 8 8
+```
+
+The shape is a diamond made of 4s (border) and 9s (fill).
+
+Let me identify the structure:
+Row 5: cols 3,4,5 = 4,4,4 (width 3)
+Row 6: cols 2,3,4,5,6 = 4,9,9,9,4 (width 5)
+Row 7: cols 1,2,3,4,5,6,7 = 4,9,9,9,9,9,4 (width 7)
+Row 8: cols 1,2,3,4,5,6,7 = 4,9,9,9,9,9,4 (width 7)
+Row 9: cols 2,3,4,5,6 = 4,9,9,9,4 (width 5)
+Row 10: cols 3,4,5 = 4,4,4 (width 3)
+
+The shape is 6 rows tall (rows 5-10). The middle is between rows 7 and 8.
+
+Top half (rows 5-7):
+Row 5: cols 3,4,5 = 4,4,4
+Row 6: cols 2,3,4,5,6 = 4,9,9,9,4
+Row 7: cols 1,2,3,4,5,6,7 = 4,9,9,9,9,9,4
+
+Bottom half (rows 8-10):
+Row 8: cols 1,2,3,4,5,6,7 = 4,9,9,9,9,9,4
+Row 9: cols 2,3,4,5,6 = 4,9,9,9,4
+Row 10: cols 3,4,5 = 4,4,4
+
+Now, the width at the split point:
+- Row 7 (last row of top half) has width 7.
+- Row 8 (first row of bottom half) has width 7.
+
+So the top half should shift right by 7 columns.
+
+Color swap: 4 ↔ 9.
+
+Let me construct the output:
+
+Top half (shifted right by 7, colors swapped 4→9, 9→4):
+Original Row 5: cols 3,4,5 = 4,4,4 → New cols 10,11,12 = 9,9,9
+Original Row 6: cols 2,3,4,5,6 = 4,9,9,9,4 → New cols 9,10,11,12,13 = 9,4,4,4,9
+Original Row 7: cols 1,2,3,4,5,6,7 = 4,9,9,9,9,9,4 → New cols 8,9,10,11,12,13,14 = 9,4,4,4,4,4,9
+
+Bottom half (no shift, colors swapped 4→9, 9→4):
+Original Row 8: cols 1,2,3,4,5,6,7 = 4,9,9,9,9,9,4 → New cols 1,2,3,4,5,6,7 = 9,4,4,4,4,4,9
+Original Row 9: cols 2,3,4,5,6 = 4,9,9,9,4 → New cols 2,3,4,5,6 = 9,4,4,4,9
+Original Row 10: cols 3,4,5 = 4,4,4 → New cols 3,4,5 = 9,9,9
+
+Let me verify this makes sense by checking against the demos.
+
+In Demo 1:
+- Top half shifts right by 3 (width at split = 3)
+- The shape was at cols 2-6, center at col 4
+- After shift, top half is at cols 5-9, center at col 7
+- 7 - 4 = 3 ✓
+
+In Demo 2:
+- Top half shifts right by 5 (width at split = 5)
+- The shape was at cols 1-5, center at col 3
+- After shift, top half is at cols 6-10, center at col 8
+- 8 - 3 = 5 ✓
+
+For the test:
+- Top half shifts right by 7 (width at split = 7)
+- The shape is at cols 1-7, center at col 4
+- After shift, top half should be at cols 8-14, center at col 11
+- 11 - 4 = 7 ✓
+
+Let me write out the full output grid:
+
+Row 0: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+Row 1: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+Row 2: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+Row 3: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+Row 4: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+Row 5: 8 8 8 8 8 8 8 8 8 8 9 9 9 8 8 8
+Row 6: 8 8 8 8 8 8 8 8 8 9 4 4 4 9 8 8
+Row 7: 8 8 8 8 8 8 8 8 9 4 4 4 4 4 9 8
+Row 8: 8 9 4 4 4 4 4 9 8 8 8 8 8 8 8 8
+Row 9: 8 8 9 4 4 4 9 8 8 8 8 8 8 8 8 8
+Row 10: 8 8 8 9 9 9 8 8 8 8 8 8 8 8 8 8
+Row 11: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+Row 12: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+Row 13: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+Row 14: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+Row 15: 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+
+Let me double-check by verifying the structure matches.
+
+Top half output:
+Row 5: cols 10,11,12 (3 cells) - matches original row 5 width of 3 ✓
+Row 6: cols 9,10,11,12,13 (5 cells) - matches original row 6 width of 5 ✓
+Row 7: cols 8,9,10,11,12,13,14 (7 cells) - matches original row 7 width of 7 ✓
+
+Bottom half output:
+Row 8: cols 1,2,3,4,5,6,7 (7 cells) - matches original row 8 width of 7 ✓
+Row 9: cols 2,3,4,5,6 (5 cells) - matches original row 9 width of 5 ✓
+Row 10: cols 3,4,5 (3 cells) - matches original row 10 width of 3 ✓
+
+Colors:
+Top half:
+Row 5: 9,9,9 (was 4,4,4) ✓
+Row 6: 9,4,4,4,9 (was 4,9,9,9,4) ✓
+Row 7: 9,4,4,4,4,4,9 (was 4,9,9,9,9,9,4) ✓
+
+Bottom half:
+Row 8: 9,4,4,4,4,4,9 (was 4,9,9,9,9,9,4) ✓
+Row 9: 9,4,4,4,9 (was 4,9,9,9,4) ✓
+Row 10: 9,9,9 (was 4,4,4) ✓
+
+Everything checks out!
+
+Wait, I want to double-check my understanding of the "shift" by looking at it from a different angle. Let me verify with Demo 1 more carefully.
+
+Demo 1 input shape:
+```
+Row 4:  . . X . .    (col 4)
+Row 5:  . X X X .    (cols 3-5)
+Row 6:  X X X X X    (cols 2-6)
+Row 7:  . X X X .    (cols 3-5)
+Row 8:  . X X X .    (cols 3-5)
+Row 9:  X X X X X    (cols 2-6)
+Row 10: . X X X .    (cols 3-5)
+Row 11: . . X . .    (col 4)
+```
+
+Split between rows 7 and 8.
+
+Top half:
+Row 4: col 4
+Row 5: cols 3-5
+Row 6: cols 2-6
+Row 7: cols 3-5
+
+Bottom half:
+Row 8: cols 3-5
+Row 9: cols 2-6
+Row 10: cols 3-5
+Row 11: col 4
+
+Width at split: Row 7 has width 3, Row 8 has width 3. Shift = 3.
+
+Top half shifted right by 3:
+Row 4: col 7
+Row 5: cols 6-8
+Row 6: cols 5-9
+Row 7: cols 6-8
+
+Output top half:
+Row 4: col 7 ✓
+Row 5: cols 6-8 ✓
+Row 6: cols 5-9 ✓
+Row 7: cols 6-8 ✓
+
+Bottom half (no shift):
+Row 8: cols 3-5
+Row 9: cols 2-6
+Row 10: cols 3-5
+Row 11: col 4
+
+Output bottom half:
+Row 8: cols 4-6... 
+
+Wait, that doesn't match! Let me re-check.
+
+Output row 8: (8,4)=5, (8,5)=0, (8,6)=5 → cols 4-6
+But original bottom half row 8: cols 3-5
+
+These don't match! The bottom half also shifted?
+
+Let me re-examine. Original bottom half:
+Row 8: cols 3,4,5
+Row 9: cols 2,3,4,5,6
+Row 10: cols 3,4,5
+Row 11: col 4
+
+Output bottom half:
+Row 8: cols 4,5,6
+Row 9: cols 2,3,4,5,6
+Row 10: cols 3,4,5
+Row 11: col 4
+
+Hmm, row 8 shifted by 1 but rows 9-11 didn't? That's weird.
+
+Wait, let me re-read the output more carefully.
+
+Demo 1 output:
+```
+Row 8:  8 8 8 5 0 5 8 8 8 8 8 8 8 8 8 8
+```
+Col 3=8, col 4=5, col 5=0, col 6=5. So cols 4,5,6.
+
+But original row 8: `8 8 8 0 5 0 8 8 8 8 8 8 8 8 8 8`
+Col 3=0, col 4=5, col 5=0. So cols 3,4,5.
+
+So the bottom half row 8 shifted right by 1? That's inconsistent with what I thought.
+
+Hmm, let me reconsider. Maybe I'm wrong about the split point or the shift rule.
+
+Let me look at this differently. What if the rule is not "split and shift" but something else entirely?
+
+Let me look at the input and output as complete shapes and see if there's a pattern.
+
+Demo 1 input (non-8 cells, with values):
+```
+(4,4)=0
+(5,3)=0, (5,4)=5, (5,5)=0
+(6,2)=0, (6,3)=5, (6,4)=5, (6,5)=5, (6,6)=0
+(7,3)=0, (7,4)=5, (7,5)=0
+(8,3)=0, (8,4)=5, (8,5)=0
+(9,2)=0, (9,3)=5, (9,4)=5, (9,5)=5, (9,6)=0
+(10,3)=0, (10,4)=5, (10,5)=0
+(11,4)=0
+```
+
+Demo 1 output (non-8 cells, with values):
+```
+(4,7)=5
+(5,6)=5, (5,7)=0, (5,8)=5
+(6,5)=5, (6,6)=0, (6,7)=0, (6,8)=0, (6,9)=5
+(7,6)=5, (7,7)=0, (7,8)=5
+(8,4)=5, (8,5)=0, (8,6)=5
+(9,2)=5, (9,3)=0, (9,4)=0, (9,5)=0, (9,6)=5
+(10,3)=5, (10,4)=0, (10,5)=5
+(11,4)=5
+```
+
+Let me see if there's a pattern by comparing each cell.
+
+If I look at the output, the 0s are at:
+(5,7), (6,6), (6,7), (6,8), (7,7), (8,5), (9,3), (9,4), (9,5), (10,4)
+
+The 5s are at:
+(4,7), (5,6), (5,8), (6,5), (6,9), (7,6), (7,8), (8,4), (8,6), (9,2), (9,6), (10,3), (10,5), (11,4)
+
+In the input, the 0s (border) are at:
+(4,4), (5,3), (5,5), (6,2), (6,6), (7,3), (7,5), (8,3), (8,5), (9,2), (9,6), (10,3), (10,5), (11,4)
+
+The 5s (fill) are at:
+(5,4), (6,3), (6,4), (6,5), (7,4), (8,4), (9,3), (9,4), (9,5), (10,4)
+
+So in the input: 14 border cells (0) and 10 fill cells (5). Total = 24.
+In the output: 10 border cells (now 0) and 14 fill cells (now 5). Total = 24.
+
+The counts are swapped! The 14 border cells became 14 fill cells, and the 10 fill cells became 10 border cells. But they're in different positions.
+
+Hmm, so it's not just a simple color swap in place. The cells have moved.
+
+Let me think about this differently. What if the transformation is:
+1. The border cells (0 in input) become the fill cells (0 in output) - but at different positions
+2. The fill cells (5 in input) become the border cells (5 in output) - but at different positions
+
+Actually wait - in the output, 0 is the "inner" color and 5 is the "outer" color. In the input, 0 is the "outer" color and 5 is the "inner" color. So the colors are swapped AND the shape structure changes.
+
+Let me look at this from a "morphological" perspective. 
+
+In the input, the shape is a diamond with:
+- Outer layer: 0
+- Inner layer: 5
+
+In the output, the shape appears to be:
+- Outer layer: 5
+- Inner layer: 0
+
+But the shape itself is different (wider in some places).
+
+Actually, let me look at this from yet another angle. What if the output shape is the "dilation" or "erosion" of the input shape?
+
+Input shape (just the structure, all non-8 cells):
+```
+    X
+   XXX
+  XXXXX
+   XXX
+   XXX
+  XXXXX
+   XXX
+    X
+```
+
+Output shape:
+```
+      X
+     XXX
+    XXXXX
+     XXX
+   XXX
+  XXXXX
+   XXX
+    X
+```
+
+Hmm, the output shape looks like the input shape but with the top half shifted right. Let me verify this interpretation.
+
+If I take the input shape and shift the top half (rows 4-7) right by 3:
+```
+Row 4:  col 4→7: X at col 7
+Row 5:  cols 3-5→6-8: XXX at cols 6-8
+Row 6:  cols 2-6→5-9: XXXXX at cols 5-9
+Row 7:  cols 3-5→6-8: XXX at cols 6-8
+Row 8:  cols 3-5: XXX at cols 3-5
+Row 9:  cols 2-6: XXXXX at cols 2-6
+Row 10: cols 3-5: XXX at cols 3-5
+Row 11: col 4: X at col 4
+```
+
+This gives:
+```
+Row 4:  . . . . . . . X . . . . . . . .
+Row 5:  . . . . . . X X X . . . . . . .
+Row 6:  . . . . . X X X X X . . . . . .
+Row 7:  . . . . . . X X X . . . . . . .
+Row 8:  . . . X X X . . . . . . . . . .
+Row 9:  . . X X X X X . . . . . . . . .
+Row 10: . . . X X X . . . . . . . . . .
+Row 11: . . . . X . . . . . . . . . . .
+```
+
+And the actual output structure is:
+```
+Row 4:  . . . . . . . X . . . . . . . .  (col 7)
+Row 5:  . . . . . . X X X . . . . . . .  (cols 6-8)
+Row 6:  . . . . . X X X X X . . . . . .  (cols 5-9)
+Row 7:  . . . . . . X X X . . . . . . .  (cols 6-8)
+Row 8:  . . . . X X X . . . . . . . . .  (cols 4-6)
+Row 9:  . . X X X X X . . . . . . . . .  (cols 2-6)
+Row 10: . . . X X X . . . . . . . . . .  (cols 3-5)
+Row 11: . . . . X . . . . . . . . . . .  (col 4)
+```
+
+Row 8 in my prediction: cols 3-5
+Row 8 in actual output: cols 4-6
+
+These don't match! Row 8 is off by 1.
+
+Hmm, so my "shift top half right by 3" theory doesn't perfectly explain Demo 1.
+
+Let me look at Demo 2 more carefully.
+
+Demo 2 input structure:
+```
+Row 4:  . . X . . .    (col 2)
+Row 5:  . X X X . .    (cols 1-3)
+Row 6:  . X X X . .    (cols 1-3)
+Row 7:  . X X X X X    (cols 1-5)
+Row 8:  . X X X X X    (cols 1-5)
+Row 9:  . X X X . .    (cols 1-3)
+Row 10: . X X X . .    (cols 1-3)
+Row 11: . . X . . .    (col 2)
+```
+
+Demo 2 output structure:
+```
+Row 4:  . . . . . . X . .    (col 7)
+Row 5:  . . . . . . X X X .  (cols 6-8)
+Row 6:  . . . . . . X X X .  (cols 6-8)
+Row 7:  . . . . . . X X X X X (cols 6-10)
+Row 8:  X X X X X . . . . .  (cols 1-5)
+Row 9:  X X X . . . . . . .  (cols 1-3)
+Row 10: X X X . . . . . . .  (cols 1-3)
+Row 11: . X . . . . . . . .  (col 2)
+```
+
+Wait, row 11 in output: (11,2)=2. That's col 2 (0-indexed). And in input, row 11 is also at col 2. So the bottom half didn't shift.
+
+Let me verify: if I shift the top half (rows 4-7) right by 5:
+Row 4: col 2→7 ✓
+Row 5: cols 1-3→6-8 ✓
+Row 6: cols 1-3→6-8 ✓
+Row 7: cols 1-5→6-10 ✓
+
+And the bottom half stays:
+Row 8: cols 1-5 ✓
+Row 9: cols 1-3 ✓
+Row 10: cols 1-3 ✓
+Row 11: col 2 ✓
+
+This works perfectly for Demo 2!
+
+Now let me go back to Demo 1 and re-examine.
+
+Demo 1 input:
+Row 4: col 4
+Row 5: cols 3-5
+Row 6: cols 2-6
+Row 7: cols 3-5
+Row 8: cols 3-5
+Row 9: cols 2-6
+Row 10: cols 3-5
+Row 11: col 4
+
+If I split between rows 7 and 8, and shift top half right by 3:
+Row 4: col 4→7
+Row 5: cols 3-5→6-8
+Row 6: cols 2-6→5-9
+Row 7: cols 3-5→6-8
+Row 8: cols 3-5 (no shift)
+Row 9: cols 2-6 (no shift)
+Row 10: cols 3-5 (no shift)
+Row 11: col 4 (no shift)
+
+Expected output:
+Row 4: col 7
+Row 5: cols 6-8
+Row 6: cols 5-9
+Row 7: cols 6-8
+Row 8: cols 3-5
+Row 9: cols 2-6
+Row 10: cols 3-5
+Row 11: col 4
+
+Actual output:
+Row 4: col 7 ✓
+Row 5: cols 6-8 ✓
+Row 6: cols 5-9 ✓
+Row 7: cols 6-8 ✓
+Row 8: cols 4-6 ✗ (expected 3-5)
+Row 9: cols 2-6 ✓
+Row 10: cols 3-5 ✓
+Row 11: col 4 ✓
+
+Only row 8 is different! Expected cols 3-5, got cols 4-6.
+
+That's strange. Let me re-read the Demo 1 output very carefully.
+
+Demo 1 output row 8: `8 8 8 5 0 5 8 8 8 8 8 8 8 8 8 8`
+
+Position: 0=8, 1=8, 2=8, 3=5, 4=0, 5=5, 6=8, ...
+
+So it's cols 3,4,5! Not cols 4,5,6!
+
+I was miscounting! Let me recount:
+`8 8 8 5 0 5 8 8 8 8 8 8 8 8 8 8`
+ 0 1 2 3 4 5 6 7 8 9 ...
+
+Yes! Cols 3,4,5. I made an indexing error earlier.
+
+So the output is:
+Row 8: cols 3,4,5 = 5,0,5
+
+And the original bottom half row 8: cols 3,4,5 = 0,5,0
+
+Structure matches! Colors are swapped! 
+
+So my theory is correct:
+1. Split the shape horizontally at the middle
+2. Shift the top half to the right by the width of the shape at the split point
+3. Keep the bottom half in place
+4. Swap the two non-background colors
+
+Let me verify the shift amount one more time.
+
+Demo 1: Width at split (row 7 or row 8) = 3. Shift = 3. ✓
+Demo 2: Width at split (row 7 or row 8) = 5. Shift = 5. ✓
+
+Now for the test input:
+Shape rows 5-10, split between rows 7 and 8.
+Width at row 7 = 7 (cols 1-7).
+Width at row 8 = 7 (cols 1-7).
+Shift = 7.
+
+Top half (rows 5-7) shifted right by 7:
+Row 5: cols 3,4,5 → cols 10,11,12
+Row 6: cols 2,3,4,5,6 → cols 9,10,11,12,13
+Row 7: cols 1,2,3,4,5,6,7 → cols 8,9,10,11,12,13,14
+
+Bottom half (rows 8-10) stays:
+Row 8: cols 1,2,3,4,5,6,7
+Row 9: cols 2,3,4,5,6
+Row 10: cols 3,4,5
+
+Colors swapped: 4→9, 9→4.
+
+Top half:
+Row 5: cols 10,11,12 = 9,9,9
+Row 6: cols 9,10,11,12,13 = 9,4,4,4,9
+Row 7: cols 8,9,10,11,12,13,14 = 9,4,4,4,4,4,9
+
+Bottom half:
+Row 8: cols 1,2,3,4,5,6,7 = 9,4,4,4,4,4,9
+Row 9: cols 2,3,4,5,6 = 9,4,4,4,9
+Row 10: cols 3,4,5 = 9,9,9
+
+Full output grid:
+Row 0:  8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+Row 1:  8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+Row 2:  8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8
+Row 3:  8 8 8 8 8 8 8 8 8 8 8 8 8 

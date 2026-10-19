@@ -1,0 +1,213 @@
+{
+ "phase": "R",
+ "query": "291dc1e1_0",
+ "arm": "R",
+ "request": {
+  "effort": null,
+  "seed": 3101,
+  "max_tokens": 4096,
+  "enable_thinking": false,
+  "thinking_token_budget": null,
+  "request_id": "R-02-291dc1e1_0-T-low-s2002",
+  "sampling": {
+   "temperature": 1.0,
+   "top_p": 0.95,
+   "top_k": 20
+  },
+  "stream_options": {
+   "include_usage": true
+  },
+  "chat_template_kwargs": {
+   "enable_thinking": false
+  }
+ },
+ "finish_reason": "stop",
+ "usage": {
+  "prompt_tokens": 9688,
+  "total_tokens": 10849,
+  "completion_tokens": 1161
+ },
+ "wall_s": 110.8,
+ "ttft_s": 18.71,
+ "agg_tok_s": 10.48,
+ "client_error": null,
+ "cancelled_by_client": null,
+ "generation_observed": true,
+ "protocol_complete": true,
+ "valid_answer": true,
+ "usage_present": true,
+ "answered": true,
+ "grid": [
+  [
+   8,
+   3,
+   3,
+   3,
+   3,
+   8
+  ],
+  [
+   8,
+   3,
+   3,
+   3,
+   3,
+   8
+  ],
+  [
+   8,
+   8,
+   4,
+   4,
+   8,
+   8
+  ],
+  [
+   8,
+   8,
+   4,
+   4,
+   8,
+   8
+  ],
+  [
+   8,
+   6,
+   6,
+   6,
+   6,
+   8
+  ],
+  [
+   8,
+   1,
+   2,
+   6,
+   6,
+   8
+  ],
+  [
+   8,
+   8,
+   6,
+   3,
+   8,
+   8
+  ],
+  [
+   8,
+   8,
+   6,
+   3,
+   8,
+   8
+  ],
+  [
+   8,
+   8,
+   5,
+   5,
+   8,
+   8
+  ],
+  [
+   8,
+   8,
+   5,
+   5,
+   8,
+   8
+  ],
+  [
+   8,
+   6,
+   6,
+   6,
+   6,
+   8
+  ],
+  [
+   8,
+   6,
+   6,
+   6,
+   6,
+   8
+  ],
+  [
+   8,
+   9,
+   9,
+   7,
+   7,
+   8
+  ],
+  [
+   8,
+   7,
+   7,
+   7,
+   7,
+   8
+  ],
+  [
+   8,
+   8,
+   9,
+   9,
+   8,
+   8
+  ],
+  [
+   8,
+   8,
+   9,
+   9,
+   8,
+   8
+  ],
+  [
+   8,
+   9,
+   9,
+   9,
+   9,
+   8
+  ],
+  [
+   8,
+   9,
+   9,
+   9,
+   9,
+   8
+  ],
+  [
+   8,
+   8,
+   4,
+   4,
+   8,
+   8
+  ],
+  [
+   8,
+   8,
+   4,
+   4,
+   8,
+   8
+  ]
+ ],
+ "content_chars": 1982,
+ "reasoning_chars": 0,
+ "status": null,
+ "events": {
+  "queued_monotonic": 1017.781,
+  "wave_start_monotonic": 1017.781,
+  "issued_monotonic": 1017.782,
+  "issued_wall_s": 1792381100.574,
+  "done_monotonic": 1128.563,
+  "queue_wait_s": 0.001
+ }
+}

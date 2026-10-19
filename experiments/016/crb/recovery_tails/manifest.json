@@ -1,0 +1,92 @@
+{
+ "291dc1e1_0-T-high-s1001": {
+  "src": "experiments/015/kaggle-v7/vprobe/P2/291dc1e1_0-T-high-s1001.reasoning.txt",
+  "src_bytes": 97334,
+  "tail_chars": 16000,
+  "tail_sha256": "350470222a816bc0e56400b4b439fed2b1f6a0b7fbb304bed2da41e09a686d5e"
+ },
+ "4c416de3_0-T-high-s1001": {
+  "src": "experiments/015/kaggle-v7/vprobe/P6_extra/4c416de3_0-T-high-s1001.reasoning.txt",
+  "src_bytes": 83082,
+  "tail_chars": 16000,
+  "tail_sha256": "2dd3653e3e63c7368eff428f85f439c7ad5b8e0810d2d5004c459b5394a8c3dc"
+ },
+ "aa4ec2a5_0-T-high-s1001": {
+  "src": "experiments/015/kaggle-v7/vprobe/P6_extra/aa4ec2a5_0-T-high-s1001.reasoning.txt",
+  "src_bytes": 87657,
+  "tail_chars": 16000,
+  "tail_sha256": "be693f8c0ab7066e7619136dc423043f25cf2db473bba2afdb2073e3a430936a"
+ },
+ "db118e2a_0-T-high-s1001": {
+  "src": "experiments/015/kaggle-v7/vprobe/P2/db118e2a_0-T-high-s1001.reasoning.txt",
+  "src_bytes": 20256,
+  "tail_chars": 16000,
+  "tail_sha256": "445cee6128bbe50820aa272051d9e8002cda13c3f3156b0058400b2f9cb53b82"
+ },
+ "fc4aaf52_0-T-high-s1001": {
+  "src": "experiments/015/kaggle-v7/vprobe/P6_extra/fc4aaf52_0-T-high-s1001.reasoning.txt",
+  "src_bytes": 96642,
+  "tail_chars": 16000,
+  "tail_sha256": "0f7693b6f02d947360827f51a41404366ccddd9f423b52ea36bf402939488993"
+ },
+ "291dc1e1_0-T-low-s2001": {
+  "src": "experiments/015/kaggle-v7/vprobe/P2/291dc1e1_0-T-low-s2001.reasoning.txt",
+  "src_bytes": 30663,
+  "tail_chars": 16000,
+  "tail_sha256": "0b6c24a12545de3ff21a162ac9f1b37862131b71492088c6d40b06c2aaeeb3d6"
+ },
+ "291dc1e1_0-T-low-s2002": {
+  "src": "experiments/015/kaggle-v7/vprobe/P2/291dc1e1_0-T-low-s2002.reasoning.txt",
+  "src_bytes": 33114,
+  "tail_chars": 16000,
+  "tail_sha256": "7719f00e29ec0ccb77ba56d110521fb30f0231b9b197ef7ceb2d86a1b0251e24"
+ },
+ "4c416de3_0-T-low-s2001": {
+  "src": "experiments/015/kaggle-v7/vprobe/P6_extra/4c416de3_0-T-low-s2001.reasoning.txt",
+  "src_bytes": 36089,
+  "tail_chars": 16000,
+  "tail_sha256": "3ab2d3a5410787ae1e7c28a4fd55908b581577a9bff50c3add6f6b3c17076204"
+ },
+ "4c416de3_0-T-low-s2002": {
+  "src": "experiments/015/kaggle-v7/vprobe/P6_extra/4c416de3_0-T-low-s2002.reasoning.txt",
+  "src_bytes": 28814,
+  "tail_chars": 16000,
+  "tail_sha256": "4ad910851a18f9b338254a5a6354b74841b97ccd17ffd4cd3c8d94522117ad6d"
+ },
+ "58c02a16_0-T-low-s2001": {
+  "src": "experiments/015/kaggle-v7/vprobe/P6_extra/58c02a16_0-T-low-s2001.reasoning.txt",
+  "src_bytes": 33987,
+  "tail_chars": 16000,
+  "tail_sha256": "97285a03d4379b111db59478bbf2b88bdad3569844c2df0e7b93f66bf427dfcf"
+ },
+ "58c02a16_0-T-low-s2002": {
+  "src": "experiments/015/kaggle-v7/vprobe/P6_extra/58c02a16_0-T-low-s2002.reasoning.txt",
+  "src_bytes": 32543,
+  "tail_chars": 16000,
+  "tail_sha256": "da1339b20ff143d8477698368f2d475b1ecb81e371c2f9f5e2476c13e0abe365"
+ },
+ "aa4ec2a5_0-T-low-s2001": {
+  "src": "experiments/015/kaggle-v7/vprobe/P6_extra/aa4ec2a5_0-T-low-s2001.reasoning.txt",
+  "src_bytes": 30798,
+  "tail_chars": 16000,
+  "tail_sha256": "1bcc5f95d9039511e175b6a90e4b838eda99a2e5d0faece839261c7868255352"
+ },
+ "aa4ec2a5_0-T-low-s2002": {
+  "src": "experiments/015/kaggle-v7/vprobe/P6_extra/aa4ec2a5_0-T-low-s2002.reasoning.txt",
+  "src_bytes": 31010,
+  "tail_chars": 16000,
+  "tail_sha256": "0b38c23634db6c618c3620a8ac4a3d51678bb5335f7b54a0bc520e5a68af5568"
+ },
+ "fc4aaf52_0-T-low-s2001": {
+  "src": "experiments/015/kaggle-v7/vprobe/P6_extra/fc4aaf52_0-T-low-s2001.reasoning.txt",
+  "src_bytes": 32708,
+  "tail_chars": 16000,
+  "tail_sha256": "15a32d8b56c8ba66a5509b53cb773bd83ea85a09437c4f7c2981a25b3fc0fc03"
+ },
+ "fc4aaf52_0-T-low-s2002": {
+  "src": "experiments/015/kaggle-v7/vprobe/P6_extra/fc4aaf52_0-T-low-s2002.reasoning.txt",
+  "src_bytes": 32759,
+  "tail_chars": 16000,
+  "tail_sha256": "d84c69caab54f2dbb3e3a5120321e70ca44086edb0b39785f01d7826d5f3c0d5"
+ }
+}

@@ -1,0 +1,31 @@
+We need solve ARC puzzle. Need think deeply, output final grid only. Let's analyze.
+
+We have 3 demos, test 16x16. Need infer transformation.
+
+Common: Input has some pattern (non-7 digits) in top-left region (maybe 3x3, 4x4? separated by column/row of 7s?) and rest 7. Output fills entire grid with periodic tiling/pattern derived from input pattern, possibly repeated in blocks with offsets. Need identify rule.
+
+Let's parse demos.
+
+Demo1 input 7x7:
+Rows 0-2:
+3 7 4
+7 3 4
+4 4 4
+Rows 3-6 all 7.
+Non-7 digits: 3 and 4. Background 7. Shape occupies 3x3 top-left. Output:
+3 7 4 7 3 7 4
+7 3 7 4 7 3 7
+4 7 3 7 4 7 3
+7 4 7 3 7 4 7
+3 7 4 7 3 7 4
+7 3 7 4 7 3 7
+4 7 3 7 4 7 3
+Looks like a repeating 2x? pattern? Let's inspect output modulo.
+Output row0: 3 7 4 7 3 7 4
+row1: 7 3 7 4 7 3 7
+row2: 4 7 3 7 4 7 3
+row3: 7 4 7 3 7 4 7
+row4: row0
+row5: row1
+row6: row2
+Vertical period 4? rows 0,4 same; 1,5 same; 2,6 same; 3 unique. Horizontal period 4? cols 0-3: 3 7 4 7; cols4-6 same first three? row0 col4 3 col5 7 col6 4. yes period 4 horizontally? Row0 length 7: pattern [3,7,4,7] repeated -> 3 7 4 7 3 7 4. Row1 [7,3,7,4
