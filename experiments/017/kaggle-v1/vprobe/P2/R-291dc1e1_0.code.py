@@ -1,0 +1,185 @@
+def transform(grid):
+    if not grid or not grid[0]:
+        return [[0]]
+
+    rows = len(grid)
+    cols = len(grid[0])
+
+    # Detect the 0-corner and which two sides use the two frame values.
+    zero_positions = [(r, c) for r in range(rows) for c in range(cols) if grid[r][c] == 0]
+    origin = None
+    horiz_axis = None
+    vert_axis = None
+    origin_side = None
+
+    # Top-left origin: top row one constant, left column one constant.
+    if (0, 0) in zero_positions:
+        top_val = grid[0][1]
+        left_val = grid[1][0]
+        if (all(grid[0][c] == top_val for c in range(cols)) and
+            all(grid[r][0] == left_val for r in range(rows))):
+            origin = (0, 0)
+            horiz_axis = top_val
+            vert_axis = left_val
+            origin_side = 'top-left'
+
+    # Top-right origin.
+    if origin is None and (0, cols - 1) in zero_positions:
+        top_val = grid[0][cols - 2]
+        right_val = grid[1][cols - 1]
+        if (all(grid[0][c] == top_val for c in range(cols)) and
+            all(grid[r][cols - 1] == right_val for r in range(rows))):
+            origin = (0, cols - 1)
+            horiz_axis = top_val
+            vert_axis = right_val
+            origin_side = 'top-right'
+
+    # Bottom-left origin.
+    if origin is None and (rows - 1, 0) in zero_positions:
+        left_val = grid[rows - 2][0]
+        bottom_val = grid[rows - 1][1]
+        if (all(grid[r][0] == left_val for r in range(rows)) and
+            all(grid[rows - 1][c] == bottom_val for c in range(cols))):
+            origin = (rows - 1, 0)
+            horiz_axis = bottom_val
+            vert_axis = left_val
+            origin_side = 'bottom-left'
+
+    # Bottom-right origin.
+    if origin is None and (rows - 1, cols - 1) in zero_positions:
+        right_val = grid[rows - 2][cols - 1]
+        bottom_val = grid[rows - 1][cols - 2]
+        if (all(grid[r][cols - 1] == right_val for r in range(rows)) and
+            all(grid[rows - 1][c] == bottom_val for c in range(cols))):
+            origin = (rows - 1, cols - 1)
+            horiz_axis = bottom_val
+            vert_axis = right_val
+            origin_side = 'bottom-right'
+
+    if origin is None:
+        # Fallback for unexpected but simple cases.
+        return [[0 for _ in range(cols)] for _ in range(rows)]
+
+    orow, ocol = origin
+
+    # Determine the interior bounding box excluding all frame rows/cols.
+    top_r = 1
+    bottom_r = rows - 1
+    left_c = 1
+    right_c = cols - 1
+    if origin_side == 'top-left':
+        top_r = 1
+        bottom_r = rows - 1
+        left_c = 1
+        right_c = cols - 1
+    elif origin_side == 'top-right':
+        top_r = 1
+        bottom_r = rows - 1
+        left_c = 1
+        right_c = cols - 2
+    elif origin_side == 'bottom-left':
+        top_r = 1
+        bottom_r = rows - 2
+        left_c = 1
+        right_c = cols - 1
+    else:
+        top_r = 1
+        bottom_r = rows - 2
+        left_c = 1
+        right_c = cols - 2
+
+    # Extract 4-connected components of non-8, non-frame-axis colors inside.
+    frame_vals = set()
+    frame_vals.add(horiz_axis)
+    frame_vals.add(vert_axis)
+
+    def is_object(r, c):
+        v = grid[r][c]
+        return v != 8 and v not in frame_vals
+
+    seen = [[False] * cols for _ in range(rows)]
+    comps = []
+
+    for r in range(top_r, bottom_r + 1):
+        for c in range(left_c, right_c + 1):
+            if seen[r][c]:
+                continue
+            if not is_object(r, c):
+                seen[r][c] = True
+                continue
+
+            color = grid[r][c]
+            stack = [(r, c)]
+            seen[r][c] = True
+            cells = []
+            while stack:
+                cr, cc = stack.pop()
+                cells.append((cr, cc))
+                for dr, dc in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+                    nr, nc = cr + dr, cc + dc
+                    if (top_r <= nr <= bottom_r and left_c <= nc <= right_c and
+                            not seen[nr][nc] and is_object(nr, nc) and grid[nr][nc] == color):
+                        seen[nr][nc] = True
+                        stack.append((nr, nc))
+
+            min_r = min(rr for rr, _ in cells)
+            max_r = max(rr for rr, _ in cells)
+            min_c = min(cc for _, cc in cells)
+            max_c = max(cc for _, cc in cells)
+            height = max_r - min_r + 1
+            width = max_c - min_c + 1
+
+            shape = []
+            for rr in range(min_r, max_r + 1):
+                row = []
+                for cc in range(min_c, max_c + 1):
+                    row.append(color if (rr, cc) in cells else 8)
+                shape.append(row)
+
+            # Convert component top-left anchor to coordinate from origin.
+            if origin_side == 'top-left':
+                y = min_r
+                x = min_c
+            elif origin_side == 'top-right':
+                y = min_r
+                x = (right_c + 1) - min_c
+            elif origin_side == 'bottom-left':
+                y = (bottom_r + 1) - min_r
+                x = min_c
+            else:
+                y = (bottom_r + 1) - min_r
+                x = (right_c + 1) - min_c
+
+            comps.append({
+                'color': color,
+                'shape': shape,
+                'h': height,
+                'w': width,
+                'x': x,
+                'y': y,
+            })
+
+    # Sort by coordinate order: primary y, secondary x.
+    comps.sort(key=lambda comp: (comp['y'], comp['x']))
+
+    # Build output by stacking components vertically.
+    max_w = max((comp['w'] for comp in comps), default=0)
+    out_h = sum(comp['h'] for comp in comps)
+    if max_w <= 0 or out_h <= 0:
+        return [[8]]
+
+    out = [[8] * max_w for _ in range(out_h)]
+    row_offset = 0
+    for comp in comps:
+        shape = comp['shape']
+        h = comp['h']
+        w = comp['w']
+        # Center horizontally.
+        left = (max_w - w) // 2
+        for i in range(h):
+            for j in range(w):
+                if shape[i][j] != 8:
+                    out[row_offset + i][left + j] = shape[i][j]
+        row_offset += h
+
+    return out

@@ -1,0 +1,13 @@
+{
+ "status": "gate_closed_no_plus4",
+ "reason": {
+  "p0_both_ok": false,
+  "demo_legal_any": true,
+  "p2_tok": 66372,
+  "p2_wall_s": 1065.0,
+  "need_est_s": 3029.9,
+  "remain_s": 3299.2,
+  "time_ok": true,
+  "decision": "closed"
+ }
+}

@@ -1,0 +1,162 @@
+
+We need infer transformation from demos. Need output pure Python. Let's continue analysis carefully. We have four demos. Need solve test.
+
+We identified pattern likely: extract connected monochromatic components of colors other than background 8 and frame? Then output arranged row-major by original bounding box? But demo0 complicates. Need understand exact grouping/order/placement.
+
+Let's parse all demos in terms of monochromatic connected components (4-neighbor same color) excluding frame colors? In demo0 output components correspond to what? Let's list input mono components and output components to infer.
+
+Demo1 input mono components (all 4):
+3: 2x2 at (2,2)-(3,3)
+4: 2x4 at (2,6)-(3,9)
+6: 2x2 at (5,2)-(6,3)
+9: 2x2 at (5,6)-(6,7)
+Output order: 3,4,6,9 (row-major by top-left). Output placement: each component cropped to its bounding box, centered horizontally in width=max bbox width (4). Vertical stacking in order, no gaps. This matches.
+
+Demo2 input mono components:
+3: 2x8
+9 top: 2x2 at (2,12)
+7: 2x4 at (2,16)
+4 top: 2x4 at (2,22)
+9 bottom: 2x2 at (5,2)
+6: 2x8 at (5,6)
+4 bottom: 2x2 at (5,16)
+Order: top row left-to-right: 3,9,7,4; bottom row: 9,6,4. Output exactly that. Width max=8, centered.
+
+Demo3 input? Let's parse. Input 7x23:
+r0: 1 1 ... 1 0
+r1: 8 8 ... 8 2
+r2: 8,3,3,3,3,3,3,8,8,7,7,8,8,3,3,8,8,4,4,4,4,8,2
+r3: same
+r4: all 8 then 2
+r5: 8,8,8,8,8,3,3,3,3,8,8,6,6,6,6,6,6,8,8,9,9,8,2
+r6: same
+Frame: top row ones, right col 2, top-right 0. Inside rows1-6 cols0-21? There is 8 border? col0=8, col21=8? Actually r2 col21=8, r5 col21=8. Right frame col22=2. Inside region maybe rows1-6, cols0-21.
+Mono components (excluding frame 0,1,2? But 2 is frame only; no object 2 in demo3? output no 2):
+3 top-left: rows2-3 cols1-6 width6 height2.
+7: rows2-3 cols9-10 width2 height2.
+3 mid: rows2-3 cols13-14 width2 height2.
+4: rows2-3 cols17-20 width4 height2.
+3 lower: rows5-6 cols5-8 width4 height2.
+6: rows5-6 cols11-16 width6 height2.
+9: rows5-6 cols19-20 width2 height2.
+Total 7 components. Output 14x6:
+rows0-1: 4,4,4,4,8,8? Wait output:
+[[8,4,4,4,4,8],
+ [8,4,4,4,4,8],
+ [8,8,3,3,8,8],
+ [8,8,3,3,8,8],
+ [8,8,7,7,8,8],
+ [8,8,7,7,8,8],
+ [3,3,3,3,3,3],
+ [3,3,3,3,3,3],
+ [8,8,9,9,8,8],
+ [8,8,9,9,8,8],
+ [6,6,6,6,6,6],
+ [6,6,6,6,6,6],
+ [8,3,3,3,3,8],
+ [8,3,3,3,3,8]]
+Components output: 4 (2x4), 3 (2x2), 7 (2x2), 3 (2x6), 9 (2x2), 6 (2x6), 3 (2x4). Order? This is not simply input row-major left-to-right: input row-major top row: 3(w6),7(w2),3(w2),4(w4); bottom row: 3(w4),6(w6),9(w2). Output order: 4, 3(mid? or top-left? ambiguous),7, 3(top-left w6),9,6,3(lower w4). Looks like sorted by something else. Let's compare maybe by color? 4 first, then 3 small, 7, 3 big, 9,6,3 medium. Maybe order by original column? No.
+
+Maybe components are grouped into "objects" by color? There are three 3-components in input. Output has three 3-components, but their order maybe interleaved with others. Let's identify which output 3 corresponds to which input by width:
+- output row2-3: 3 width2 -> could be top row mid 3 (w2)
+- output row6-7: 3 width6 -> top-left 3 (w6)
+- output row12-13: 3 width4 -> bottom 3 (w4)
+So output order of 3s: w2, w6, w4. Input row-major of 3s: w6 (col1), w2 (col13), w4 (col5 bottom). Output order: w2, w6, w4. Other colors: 4 (w4 top right) first; 7 (w2 top second); 9 (w2 bottom right); 6 (w6 bottom second). Output sequence: 4, 3w2, 7, 3w6, 9, 6, 3w4.
+This looks like order by original y (row band) but within each band maybe sorted by x? Top band y=2 components at x: 3w6 (x1), 7 (x9), 3w2 (x13), 4 (x17). If output top-band order should 3w6,7,3w2,4, but actual starts 4,3w2,7,3w6 (reverse? x descending). Bottom band x: 3w4 (x5),6(x11),9(x19). Reverse would 9,6,3w4. Actual after 3w6: 9,6,3w4. Ah! Output order seems: top row components right-to-left, then bottom row components right-to-left. But top row actual: 4 (rightmost), 3w2 (third), 7 (second), 3w6 (leftmost). Yes. Bottom: 9 (rightmost),6,3w4. So order is row-major but within each horizontal row of objects, right-to-left. But demo1 and demo2? Demo1 top row: 3 left, 4 right. Right-to-left would 4,3 then bottom right-to-left 9,6 => output 4,3,9,6. But actual 3,4,6,9. So not simply right-to-left.
+
+Maybe orientation/frame matters. Demo3 frame is on right side (0 at top-right, top edge 1, right edge 2). Perhaps the reading order direction is determined by frame: If frame on left (demos0-2), objects are ordered left-to-right within rows? Demo1/2 yes. Demo3 frame on right, so order right-to-left within rows. What about vertical order? Demos1/2 top-to-bottom. Demo3 also top-to-bottom. Demo0? Need check frame on left? demo0 0 top-left, top edge 2, left edge 1. Frame on left -> order left-to-right? Let's test with components if grouped by row bands.
+
+Demo0 if components are monochromatic? But output grouping seemed maybe multiple mono components merged? Let's first see if output components can be interpreted as mono components ordered left-to-right/top-to-bottom, with width max maybe 6, centered? Need identify output components as mono components? Output has colors: 4,6,1,2,3,9,4,7. Are there mono components in output? Let's list 4-connected same-color components in output:
+- 4 top rows0-1 c2-3: 2x2.
+- 6 in rows2-5: shape: row2 c0-5 all 6; row3 c2-5 6? row3 [1,2,6,6,6,6] -> c2-5; row4 [8,6,6,3,3,8] -> c1-2; row5 [8,3,3,3,3,8] -> none. So 6 component shape 4x? connected. Is this mono component one of input 6 components? Input had a big 6 component shape: rows6-11 c2-3, with c3 rows6-11, c2 rows8-11. Cropped 6x2:
+1 6? Wait component cells same color 6 only:
+r6: . 6
+r7: . 6
+r8: 6 6
+r9: 6 6
+r10:6 6
+r11:6 6
+Cropped 6 rows x2:
+[0,6]
+[0,6]
+[6,6]
+[6,6]
+[6,6]
+[6,6]
+Output 6 component if crop? rows2-5 c0-5:
+[6,6,6,6,6,6]
+[0,0,6,6,6,6]
+[0,6,6,0,0,0]
+[0,0,0,0,0,0]
+Not same. Could be rotated? If rotate input big 6 component 90? Let's test. Input big 6 component shape 6x2 with missing top-left two cells? Matrix (1=6):
+row0: 0 1
+row1: 0 1
+row2: 1 1
+row3: 1 1
+row4: 1 1
+row5: 1 1
+Rotate 90 clockwise -> 2x6:
+row0: 1 1 1 1 0 0
+row1: 1 1 1 1 1 1
+Rotate 90 counter -> 2x6:
+row0: 1 1 1 1 1 1
+row1: 0 0 1 1 1 1
+Not output 4x6.
+Output 6 component matrix 4x6:
+row0: 1 1 1 1 1 1
+row1: 0 0 1 1 1 1
+row2: 0 1 1 0 0 0
+row3: 0 0 0 0 0 0
+This is exactly input big 6 component rotated 90 degrees? Let's compare rotate counter 2x6 not 4x6. Maybe output includes other colors as part of object, not just 6. If object is the entire multi-color card, not mono.
+
+Maybe the objects are "rectangular cards" that may contain multiple colors, and the transformation extracts each card by its rectangular boundary? Demo0 output large object 4x6 might correspond to input card spanning rows6-? c2-3? Let's see if input has a 4x6 card when transposed? Input large object maybe a 6x4 region with mixed colors if include c? It could be a card that was rotated 90 degrees in output. Let's explore.
+
+Maybe input is a "scene" of rectangular tiles (objects) on 8 background. Some tiles are monochromatic, some have patterns. The transformation: find all non-8 rectangular blocks (objects) (by connected non-8 regions) and rotate each block 90 degrees? Then stack? Let's test demo1/2: If rotate each object 90, 2x4 would become 4x2, but output 4 object remains 2x4, so no.
+
+Maybe output order determined by sorting objects by some property (color, size) and orientation maybe based on frame? Need infer.
+
+Let's inspect demo0 output objects if considered non-8 connected components (multi-color). Non-8 components in output:
+1) top 4 (2x2) rows0-1 c2-3.
+2) big component rows2-5 (4x6) with colors 6,1,2,3.
+3) 9 rows6-7 c3-4.
+4) 4 rows8-9 c3-4? Actually rows8-9 [8,8,4,4,8,8] c2-3.
+5) bottom component rows10-11 (2x6): row10 [7,4,7,7,7,7], row11 [4,7,7,7,7,7]. Connected multi-color.
+Total 5 output objects.
+Input non-8 connected components (multi-color) earlier: 6 components: top4, top9, left big 6x2 (r6-11), mid4 2x2 (r6-7 c5-6), right 7/4 6x2 (r10-15), left 3/6 4x2 (r14-17). That's 6. Output has 5. Did two input components merge into output big object? Which? Input left big 6x2 (with 1,2,6) and left 3/6 4x2 (with 3,6) could merge in output big object because output big includes both 1,2,6 and 3,6. They were separated in input by 8 gap rows12-13. Maybe output groups by column? They are in same left column, separated by gap, but output puts them adjacent? Similarly right 4/7 6x2 becomes bottom object. Input top 4 and mid 4? Output has two 4 objects separate (top and middle). Hmm.
+
+Let's map input non-8 components to output objects by content:
+- Output top 4 (2x2) likely input top 4 (r2-3 c2-3) or input mid4 (r6-7 c5-6). Both 2x2 solid 4. Need order decide.
+- Output middle 4 (rows8-9) likely the other 4.
+- Output 9 likely input top9.
+- Output bottom object (2x6) likely input right 7/4 6x2 rotated? Input right object 6 rows x2:
+r10: 4 7
+r11: 7 4
+r12: 7 7
+r13: 7 7
+r14: 7 7
+r15: 7 7
+Output bottom 2 rows x6:
+row10: 7 4 7 7 7 7
+row11: 4 7 7 7 7 7
+This is exactly input right object rotated 90 degrees? Let's test. Input matrix 6x2 (top to bottom, left to right):
+[4,7]
+[7,4]
+[7,7]
+[7,7]
+[7,7]
+[7,7]
+Rotate 90 clockwise -> 2x6:
+Take input rows, columns. 90 CW result row0 = input col0 bottom-to-top? For matrix:
+CW: new[r][c] = old[H-1-c][r] for H=6,W=2 -> 2x6.
+new row0 (r=0): old[5][0]=7, old[4][0]=7, old[3][0]=7, old[2][0]=7, old[1][0]=7, old[0][0]=4 => [7,7,7,7,7,4]
+new row1: old[5][1]=7, old[4][1]=7, old[3][1]=7, old[2][1]=7, old[1][1]=4, old[0][1]=7 => [7,7,7,7,4,7]
+Not output.
+Rotate 90 CCW -> new row0 = old col1 top-to-bottom? CCW: new[r][c]=old[c][W-1-r], W=2, new 2x6.
+row0: old[0][1]=7, old[1][1]=4, old[2][1]=7, old[3][1]=7, old[4][1]=7, old[5][1]=7 => [7,4,7,7,7,7]
+row1: old[0][0]=4, old[1][0]=7, old[2][0]=7, old[3][0]=7, old[4][0]=7, old[5][0]=7 => [4,7,7,7,7,7]
+This matches output bottom exactly! So output bottom object is input right 6x2 rotated 90 degrees counterclockwise (or transpose + flip vertical? Actually CCW).
+
+Now output big object maybe input left 6x2 and 4x2 components combined? Let's see input left top component 6x2 (r6-11 c2-3):
+[1,6]
+[2,6]
+[6,

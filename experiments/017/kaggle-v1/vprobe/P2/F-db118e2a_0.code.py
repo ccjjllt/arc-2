@@ -1,0 +1,131 @@
+def transform(grid):
+    h = len(grid)
+    w = len(grid[0])
+    bg = 7
+
+    def nonbg(g):
+        pts = []
+        for r in range(len(g)):
+            for c in range(len(g[0])):
+                if g[r][c] != bg:
+                    pts.append((r, c, g[r][c]))
+        return pts
+
+    # Find the inner rectangle: remove the outer frame.
+    # The frame is the border cells that are not 7, but corners are 7.
+    # In all demos, inner is rows 1..h-2, cols 1..w-2.
+    inner = [row[1:-1] for row in grid[1:-1]]
+
+    pts = nonbg(inner)
+    if not pts:
+        interior = [[bg] * 3 for _ in range(3)]
+    else:
+        interior = [[bg] * 3 for _ in range(3)]
+
+        rmin = min(r for r, c, v in pts)
+        rmax = max(r for r, c, v in pts)
+        cmin = min(c for r, c, v in pts)
+        cmax = max(c for r, c, v in pts)
+        rh = rmax - rmin + 1
+        cw = cmax - cmin + 1
+
+        # If the non-background pattern already fits in 3x3, normalize its
+        # bounding box to 3x3.  If it is smaller, center it.
+        if rh <= 3 and cw <= 3:
+            # For single-cell patterns, center.
+            # For larger, map exact bbox coordinates to local 3x3.
+            # If rh == 1, vertical position is centered if there is only one row,
+            # else use proportional mapping.
+            # Demos show exact mapping when bbox is 3x3; single center.
+            if rh == 1 and cw == 1:
+                interior[1][1] = pts[0][2]
+            else:
+                # Map each point to a 3x3 cell by scaling its bbox coordinates.
+                # Use integer arithmetic: 0 -> 0, max -> 2.
+                for r, c, v in pts:
+                    if rh == 1:
+                        lr = 1
+                    else:
+                        lr = (r - rmin) * 2 // (rh - 1)
+                    if cw == 1:
+                        lc = 1
+                    else:
+                        lc = (c - cmin) * 2 // (cw - 1)
+                    # Keep the color.  If multiple points map to the same cell,
+                    # later points do not override earlier non-7 colors unless
+                    # the target is still background.
+                    if interior[lr][lc] == bg:
+                        interior[lr][lc] = v
+
+        else:
+            # Fallback: downsample the whole inner grid to 3x3 by blocks,
+            # choosing a non-background color if present.
+            ih = len(inner)
+            iw = len(inner[0])
+            for ir in range(3):
+                r0 = ir * ih // 3
+                r1 = (ir + 1) * ih // 3
+                if r1 <= r0:
+                    r1 = r0 + 1
+                for ic in range(3):
+                    c0 = ic * iw // 3
+                    c1 = (ic + 1) * iw // 3
+                    if c1 <= c0:
+                        c1 = c0 + 1
+                    val = bg
+                    for r in range(r0, min(r1, ih)):
+                        for c in range(c0, min(c1, iw)):
+                            if inner[r][c] != bg:
+                                val = inner[r][c]
+                    interior[ir][ic] = val
+
+    # Determine frame color: the most common non-7 color on the outer border
+    # (excluding corners), or simply grid[0][1] if present.
+    frame = bg
+    border_vals = {}
+    for c in range(1, w - 1):
+        v = grid[0][c]
+        if v != bg:
+            border_vals[v] = border_vals.get(v, 0) + 1
+        v = grid[h - 1][c]
+        if v != bg:
+            border_vals[v] = border_vals.get(v, 0) + 1
+    for r in range(1, h - 1):
+        v = grid[r][0]
+        if v != bg:
+            border_vals[v] = border_vals.get(v, 0) + 1
+        v = grid[r][w - 1]
+        if v != bg:
+            border_vals[v] = border_vals.get(v, 0) + 1
+    if border_vals:
+        frame = max(border_vals.items(), key=lambda kv: kv[1])[0]
+    else:
+        # Should not happen for valid inputs.
+        frame = grid[0][1] if w > 2 else bg
+
+    out = [[bg] * 15 for _ in range(15)]
+
+    def place_tile(r0, c0):
+        # top row: bg, frame, frame, frame, bg
+        out[r0 + 0][c0 + 0] = bg
+        out[r0 + 0][c0 + 1] = frame
+        out[r0 + 0][c0 + 2] = frame
+        out[r0 + 0][c0 + 3] = frame
+        out[r0 + 0][c0 + 4] = bg
+
+        for i in range(1, 4):
+            out[r0 + i][c0 + 0] = frame
+            out[r0 + i][c0 + 1] = interior[i - 1][0]
+            out[r0 + i][c0 + 2] = interior[i - 1][1]
+            out[r0 + i][c0 + 3] = interior[i - 1][2]
+            out[r0 + i][c0 + 4] = frame
+
+        out[r0 + 4][c0 + 0] = bg
+        out[r0 + 4][c0 + 1] = frame
+        out[r0 + 4][c0 + 2] = frame
+        out[r0 + 4][c0 + 3] = frame
+        out[r0 + 4][c0 + 4] = bg
+
+    place_tile(2, 2)
+    place_tile(8, 8)
+    return out

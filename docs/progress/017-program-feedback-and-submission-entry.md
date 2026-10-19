@@ -83,3 +83,39 @@ P12不再由“任意非db命中”自动触发：58在015已命中，只有R重
 `experiments/017/submit_entry/submit_lib.py`（SHA`0f0f72e2…`）：逐字复用013的`atomic_json/initial_submission/valid_grid/existing_submission_matches`（kgmon/NLL/beam/pickle路径未借用），新增`count_queries/estimate_and_guard/update_slots/validate_submission`。
 
 人工CPU干跑（证据`dryrun-report.json`，非测试套件）：公开多query输入2task/4query占位→校验通过；P6已记录合法网格部分更新（单候选重复填两槽已断言）→未知键/锯齿/bool/越界更新被拒并记错；更新后文件仍合法可读；调度门对“240query×15K单遍”放行（约9.02h）、“两遍等价”拒绝并报23842秒缺口。干跑只证明接线/格式，不证明隐藏运行、12小时可完成或提分。
+
+## 8 2026-10-19：v1结果（P2门未过，+4未跑；F-db程序exact）
+
+会话`complete_with_evidence`，rc=0，耗时1806秒；server无preempt/OOM记录；执行器预检通过；ccjjllt配额8.93→9.88h（约0.95h）。6次调用全部有usage。
+
+### P2逐调用（P0 seed 5101，F/R seed 5102，各12288/思考≤8192）
+
+| 调用 | finish | parse | demo命中 | query合法 | ctok |
+| --- | --- | --- | --- | --- | --- |
+| P0-291 | length | generation_not_ok | 0 | 否 | 12288 |
+| P0-db | length | generation_not_ok | 0 | 否 | 12288 |
+| F-291 | stop | program_ready | 3/4 | 是 | 9842 |
+| R-291 | stop | program_ready | 0/4 | 是 | 9965 |
+| F-db | stop | program_ready | 4/4 | 是 | 9701 |
+| R-db | length | generation_not_ok | 0 | 否 | 12288 |
+
+门控：`p0_both_ok=false`（两题P0均被12288截断、无完整程序），`demo_legal_any=true`，`time_ok=true`（P2用1065秒，+4预估3029秒、剩余3299秒）。按计划保守止损：`p2_gate_closed`，+4四个题未跑，`slots.json`中+4槽位全空。
+
+### 本地评分（GPU只做执行，答案比对全在本地；P6为反复用开发集，不作公榜/泛化声明）
+
+- F-db query网格与`experiments/010/kaggle-e0-v1/010/scoring.json`中db答案字节一致：**exact**；且同程序4个demo全过。程序是通用写法（找外框颜色、inner归一化到3×3、下采样兜底、15×15铺两块），非硬编码答案。
+- F-291、R-291 query均为形状错失（26×6、28×8 vs 答案18×8）。
+- 两槽装配（P0缺席，实际退化为单臂重复）：A_F=[F,F]在P2为1/2（db），A_R在291为[R,R]错失、db为空槽 → 0/2。
+
+### 研究结论（诚实口径）
+
+1. **原问题未被回答**：P0两题均无完整程序，共享P0锚点不存在，实际比较的是[失败P0＋错误上下文重试] vs [独立重启]，不是计划要的[P0,F] vs [P0,R]。F-db的exact不能记为“反馈修复优于重启”。
+2. **程序可行性信号**：同seed下F臂2/2完整程序、R臂1/2；F-db一次拿到4demo全过＋exact，说明程序路线在db题上走得通，反馈文本即使基于失败P0也有用（重试效应）。但n=2，不作胜负断言。
+3. **预算教训**：6次调用3次撞12288上限（含两个P0），P2波agg仅约22tok/s（长程序生成远慢于016短测123）。程序任务thinking 8192＋12288总量不够P0一次写完；下一轮要么加总量、要么降thinking预算、要么P0给更短的脚手架提示。按当前速度，+4（12次）约需3000秒以上，90分钟会话装得下但余量小。
+4. B提交入口不受影响：`submit_lib`干跑结论仍成立，待真实程序+4或全量时再接入。
+
+### 下一步（需用户定）
+
+- 选项a：调预算重跑P2门（P0加到16384或thinking降到4096），再进+4。成本约1h配额。
+- 选项b：放弃共享P0锚点，改测更便宜的问题（F/R都从失败P0重试的胜率对照），但这已偏离017原问题。
+- P12仍暂缓；C6/981未动；无提交。

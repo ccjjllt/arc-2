@@ -1,0 +1,140 @@
+
+We need infer transformation from demos. Need output pure Python. Let's continue analysis carefully. We have four demos. Need solve test.
+
+We identified output 15x15 background 7, two identical 5x5 tiles at offsets (2,2) and (8,8). Tile outer border frame color F, corners 7, 3x3 interior pattern extracted from input. Need infer exact interior extraction.
+
+Let's formalize demos.
+
+Demo0:
+Input 9x7. Corners 7, edges F=4. Inner region = rows 1..7, cols 1..5: size 7x5. Background 7. Non-bg cells: 9 at (row5,col3 whole) -> inner (4,2); 1 at (6,5) -> inner (5,4); 1 at (7,5) -> inner (6,4).
+Output interior 3x3:
+[9,7,7]
+[7,7,7]
+[7,7,1]
+
+Demo1:
+Input 7x8. F=3. Inner rows1..5 cols1..6: size5x6. Non-bg: 3 at whole (3,4) -> inner (2,3). Output interior:
+[7,7,7]
+[7,3,7]
+[7,7,7]
+
+Demo2:
+Input 9x9. F=9. Inner rows1..7 cols1..7: size7x7. Non-bg: 9 at (2,3)->inner(1,2); (3,2)->(2,1); (3,4)->(2,3); (4,3)->(3,2). Output interior:
+[7,9,7]
+[9,7,9]
+[7,9,7]
+
+Demo3:
+Input 6x7. F=6. Inner rows1..4 cols1..5: size4x5. Non-bg: 8 at (1,3)->inner(0,2); 2 at (2,2)->(1,1), (2,4)->(1,3), (3,2)->(2,1), 8 at (3,3)->(2,2), 2 at (3,4)->(2,3). Output interior:
+[7,8,7]
+[2,7,2]
+[2,8,2]
+
+It looks like interior is a 3x3 grid where each cell corresponds to a connected component? Or bounding box of non-bg cells mapped to 3x3.
+
+Let's test a hypothesis: For inner region, find bounding box of all cells not equal to background (7). If bounding box dimensions <=3? For demo3 bounding box exactly 3x3 -> output equals it. Demo1 bounding box 1x1 -> output center? If map single cell to center yes. Demo2 bounding box rows1..3, cols1..3 -> 3x3? Input plus inside inner: coordinates min row1 max3, min col1 max3. The 3x3 subgrid rows1..3 cols1..3 is:
+row1: [7,9,7]
+row2: [9,7,9]
+row3: [7,9,7]
+Exactly output! Wait earlier I thought plus coords (1,2),(2,1),(2,3),(3,2). Bounding box 3x3 rows1-3 cols1-3. Yes output equals direct 3x3 subgrid, not mapping with scaling. Good.
+
+Demo0 bounding box of non-bg: rows4..6, cols2..4 -> 3x3 subgrid:
+row4: [9,7,7]
+row5: [7,7,1]
+row6: [7,7,1]
+But output is [9,7,7;7,7,7;7,7,1]. Missing middle 1. Why? Could the middle 1 not be non-bg? It is 1. Maybe background inside is not 7? No.
+Maybe there is a rule to "remove cells that are not at extremes?" Or the bounding box should be of "unique marker colors"? But 1 repeated.
+Could output maybe has 1 at middle if we misread row? Let's re-verify demo0 output from prompt:
+out=[[7,7,7,7,7,7,7,7,7,7,7,7,7,7,7],
+[7,7,7,7,7,7,7,7,7,7,7,7,7,7,7],
+[7,7,7,4,4,4,7,7,7,7,7,7,7,7,7],
+[7,7,4,9,7,7,4,7,7,7,7,7,7,7,7],
+[7,7,4,7,7,7,4,7,7,7,7,7,7,7,7],
+[7,7,4,7,7,1,4,7,7,7,7,7,7,7,7],
+[7,7,7,4,4,4,7,7,7,7,7,7,7,7,7],
+...
+Top-left tile rows2-6 cols2-6:
+r2: indices 2-6: 7,4,4,4,7
+r3: 4,9,7,7,4
+r4: 4,7,7,7,4
+r5: 4,7,7,1,4
+r6: 7,4,4,4,7
+Interior rows 3-5, cols3-5 (0-based): row3 [9,7,7], row4 [7,7,7], row5 [7,7,1]. Yes.
+Input demo0:
+[[7,4,4,4,4,4,7],
+ [4,7,7,7,7,7,4],
+ [4,7,7,7,7,7,4],
+ [4,7,7,7,7,7,4],
+ [4,7,7,7,7,7,4],
+ [4,7,7,9,7,7,4],
+ [4,7,7,7,7,1,4],
+ [4,7,7,7,7,1,4],
+ [7,4,4,4,4,4,7]]
+Maybe there are actually only two 1s? row6 and row7. Yes.
+Why output only one? Could be because output interior is the "top-left to bottom-right diagonal" of the bounding box? No, it has top-left 9 and bottom-right 1, middle 7. If bounding box 3x3, maybe it takes the corners of bounding box? In demo2 bounding box 3x3, output plus has edge centers not corners. So no.
+
+Maybe input markers are considered as "objects" and output interior is the set of object centers after scaling? The two vertical 1s form a connected component of length 2; maybe output shows one cell representing that component, placed at its centroid or endpoint? For demo0 component of 1s at inner (5,4),(6,4). If bounding box rows4..6 cols2..4, component centroid row5.5 col4. Mapped to 3x3 local coordinates (relative bbox): rows 1.5, col 2. Output at (2,2) (bottom-right). Could choose bottom of component. 9 single at (0,0). Demo3 has two separate 2 components? Let's see 2s at (1,1),(2,1) vertical pair and (1,3),(2,3) vertical pair? Actually inner 2s: (1,1),(1,3),(2,1),(2,3). These form two vertical pairs adjacent. Output has 2 at left middle, left bottom, right middle, right bottom. It did not collapse vertical pairs; it shows both cells. Hmm.
+
+Could the missing middle 1 be due to color 1 representing a line/digit that is drawn differently? Wait colors are integers, no semantic. But maybe the transformation is "take the 3x3 subgrid of the input at the position of the 9?" No.
+
+Let's examine input frames and output tile positions. Maybe output tile is not derived from full inner region but from a specific 5x5 subgrid of input? For demo0, output tile maybe equals some 5x5 subgrid of input after color remapping? Input contains a 5x5 subgrid with frame 4 and interior markers? Let's see input 9x7. If we crop rows4..8 cols2..6? Values:
+row4 [7,7,7,7,7]? whole row4: [4,7,7,7,7,7,4], cols2-6 [7,7,7,7,4]
+not frame.
+Crop rows4..8, cols1..5:
+row4 [7,7,7,7,7]
+row5 [7,7,9,7,7]
+row6 [7,7,7,7,1]
+row7 [7,7,7,7,1]
+row8 [7,4,4,4,4]
+Not 5x5 tile.
+But output tile 5x5 frame F around a 3x3 interior. The input itself is a larger version: F frame around a 3x3 interior that has been "expanded" by adding rows/cols of background? Maybe the 3x3 interior is at a particular location determined by special marker? Let's compare output interior to some 3x3 crop of input inner. For demo0, output interior [9,7,7;7,7,7;7,7,1]. Is there a 3x3 crop in input inner with that? Inner 7x5. Crop rows4..6 cols2..4 is [9,7,7;7,7,1;7,7,1] (extra 1). Crop rows3..5 cols2..4: [7,7,7;7,7,9;7,7,7]. Crop rows4..6 cols3..5: [7,7,7;7,1,1;7,1,1? cols3-5: row4 [7,7,7], row5 [7,1,? row5 cols3=7? Wait inner row5 [7,7,7,7,1]? Actually inner row5 whole [4,7,7,9,7,7,4] -> inner cols1..5: [7,7,9,7,7], not. Let's recalc inner for demo0 precisely:
+Whole rows:
+0: 7 4 4 4 4 4 7
+1: 4 7 7 7 7 7 4
+2: 4 7 7 7 7 7 4
+3: 4 7 7 7 7 7 4
+4: 4 7 7 7 7 7 4
+5: 4 7 7 9 7 7 4
+6: 4 7 7 7 7 1 4
+7: 4 7 7 7 7 1 4
+8: 7 4 4 4 4 4 7
+Inner rows 1-7 cols1-5 (5 columns):
+r1: [7,7,7,7,7]
+r2: [7,7,7,7,7]
+r3: [7,7,7,7,7]
+r4: [7,7,7,7,7]
+r5: [7,7,9,7,7]
+r6: [7,7,7,7,1]
+r7: [7,7,7,7,1]
+Yes. 3x3 crop rows4-6? 0-based inner rows 4..6, cols2..4:
+r4 [7,7,7]
+r5 [9,7,7]? Wait r5 inner [7,7,9,7,7], cols2-4 = [9,7,7]
+r6 [7,7,1]? cols2-4 = [7,7,1]
+So crop is [7,7,7;9,7,7;7,7,1], not output. Crop rows5..7 cols2..4:
+[9,7,7;7,7,1;7,7,1]. Output is same but middle right 7 not 1. Crop rows5..7 cols? To get 9 top-left and 1 bottom-right: rows5-7 cols2-4 yes. But output removes middle 1. Why? Maybe because the 3x3 output should be "centered" on the 9? If 9 at top-left, 1s at bottom-right, maybe choose crop such that 9 top-left and bottom-most 1 bottom-right, but if crop 3 rows from row5 to7 includes both 1s. Can't include both and 9 with only 3 rows? Bounding box height 3 includes both. It must include row6 middle 1. Unless one of the input 1s is considered part of frame? No.
+
+Maybe I mis-assigned F: Frame color could be 7? Input outer corners 7, and inside background maybe 4? Let's rethink color roles.
+
+Maybe in input, color 7 is the "frame" (outer corners and background of output), and color 4 is the "background" inside? The outer border of input has 4 on edges and 7 at corners. Inside is 7 with markers. Output background 7, tile frame 4. So 7 is background, 4 frame. That seems right.
+
+Could there be a rule involving "remove duplicate adjacent pixels when shrinking by factor 2"? If input inner region is downsampled by taking one pixel from each 2x2 or some blocks. Let's test.
+
+Suppose inner region is divided into 3x3 blocks by scaling to 3. For demo0 inner size 7x5. If use blocks: rows [0-2,3-5,6] or [0-2,3-5,6-?], cols [0-1,2-3,4]. Non-bg per block: 9 in block row? 9 at (4,2) -> row band maybe 1 (if rows 3-5), col band 1 (cols2-3) => output center? Not top-left. 1s at (5,4),(6,4) -> row band 1/2, col band 2. Could output bottom-right. But 9 would be center, not top-left. If choose bands differently: rows [0-3,4-5,6], cols [0,1-3,4]? 9 at row band1, col band1. Not.
+
+Maybe output interior is a "3x3 reduction" where each output cell is the color of the corresponding connected component's bounding box corner? Let's inspect shapes.
+
+Alternative: The input is generated by taking the output 5x5 tile and "inflating" it: each non-background cell in the 3x3 interior is expanded to a line of length proportional to its position? For demo0 output interior has 9 at top-left, 1 at bottom-right. When inflated into inner 7x5, 9 at (4,2), 1s at (5,4),(6,4). That seems like 9 expanded? A single output cell might map to a line of length 2? 1 maps to two cells. Why? Maybe each color's line length equals its numeric value? 1 -> length 1? But two 1s? 9 -> length 9? No.
+
+Maybe the input is a "distance" or "countdown" from a point? The 1s indicate two steps? Hmm.
+
+Look at demo1: output interior center 3. Input has one 3 at inner (2,3). If output cell maps to input cell, single. Demo2: output plus 4 cells maps to input plus 4 cells (no inflation). Demo3: output 6 non-bg cells maps to input 6 non-bg cells (no inflation). Only demo0 has output 2 non-bg cells but input 3 (two 1s). Could input have an erroneous extra 1? Or transformation removes one because of some rule.
+
+Maybe colors have parity/direction: 1 means move right/down? The two 1s form a 2-pixel vertical line. Output shows a 1 at endpoint after compressing connected components to their extremal cell. In demo3, vertical pairs of 2s: if compress components to extremal, left pair (1,1),(2,1) would compress to one, right pair to one, output would have only two 2s, but it has four. So no.
+
+Could the two 1s in demo0 be diagonal? They are same col vertical. Maybe one is actually on frame? inner col4 is last column adjacent to frame. In output interior, col2 is last col. Both map to last col. One at row5, one row6. Output has bottom. Why choose bottom? Maybe because it's the last non-bg in reading order? For demo3, last 2s in reading order: (2,3) and (2,1)? Actually reading order bottom rows. If compress each color to last occurrence, color 2 would only one cell, but output has four. No.
+
+Maybe there are two distinct colors? Both 1. If rule is "for each color, keep the cell with maximum row+col" -> 1 at bottom. For 2s in demo3, max row+col among 2s is (2,3) only, but output has all four. So no.
+
+Maybe output is not interior extraction but "draw a 3x3 pattern formed by the set of colors present and their relative positions between min and max of each color separately"? Let's explore.
+
+Maybe for each distinct non-bg color, compute its bounding box in inner region, and place a cell at the top-left of that bounding box in a 3x3 normalized grid? For demo0:

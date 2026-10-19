@@ -1,0 +1,42 @@
+[{"stream_name":"stderr","time":8.525362302,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":8.525409391,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":9.749138203,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.749159405,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.749162393,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.749164562,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":10.472674264,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":10.472692628,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":10.472695749,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":10.472697813,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":11.929252134,"data":"PY312 Python 3.12.3\n"}
+,{"stream_name":"stdout","time":11.929866115,"data":"{\"event\": \"boot\", \"source_sha256\": {\"vdriver017.py\": \"c06caeb8673a\", \"run_reasoning_probe.py\": \"8970e7a7de10\", \"solve_program.py\": \"03aaa3818a8f\", \"p6-challenges.json\": \"03c5c50bd588\"}, \"py312\": \"Python 3.12.3\", \"python\": \"3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]\", \"notebook_started\": 1792391982.8007793, \"session_seconds\": 5400}\n"}
+,{"stream_name":"stdout","time":12.483210482,"data":"[017 06:39:43] env: {\"python\": \"3.12.3\", \"nvidia_smi\": \"NVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\", \"pip_pkgs\": {}}\n"}
+,{"stream_name":"stdout","time":12.484183965,"data":"[017 06:39:43] challenges sha match 017 frozen\n"}
+,{"stream_name":"stdout","time":12.684923527,"data":"[017 06:39:43] env: {\"python\": \"3.12.3\", \"nvidia_smi\": \"NVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\\nNVIDIA L4, 580.178.04, 23034 MiB\", \"pip_pkgs\": {}}\n"}
+,{"stream_name":"stdout","time":12.684939445,"data":"[017 06:39:43] challenges sha match 017 frozen\n"}
+,{"stream_name":"stdout","time":316.971449175,"data":"[017 06:44:47] template xhigh/low differ\n"}
+,{"stream_name":"stdout","time":316.978198867,"data":"[probe 06:44:47] libcuda hits: ['/usr/local/nvidia/lib64/libcuda.so', '/usr/local/nvidia/lib64/libcuda.so.1', '/usr/local/nvidia/lib64/libcuda.so.580.178.04', '/usr/local/cuda/compat/libcuda.so']\n"}
+,{"stream_name":"stdout","time":316.978258091,"data":"[probe 06:44:47] serve: /usr/bin/python3.12 -m vllm.entrypoints.openai.api_server --model /kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1 --served-model-name qwen --host 127.0.0.1 --port 1234 --tensor-parallel-size 4 --max-model-len 65536 --gpu-memory-utilization 0.9 --max-num-seqs 8 --enable-prefix-caching --reasoning-parser qwen3 --language-model-only\n"}
+,{"stream_name":"stdout","time":317.175765048,"data":"[017 06:44:47] template xhigh/low differ\n"}
+,{"stream_name":"stdout","time":317.175791215,"data":"[probe 06:44:47] libcuda hits: ['/usr/local/nvidia/lib64/libcuda.so', '/usr/local/nvidia/lib64/libcuda.so.1', '/usr/local/nvidia/lib64/libcuda.so.580.178.04', '/usr/local/cuda/compat/libcuda.so']\n"}
+,{"stream_name":"stdout","time":317.175805904,"data":"[probe 06:44:47] serve: /usr/bin/python3.12 -m vllm.entrypoints.openai.api_server --model /kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1 --served-model-name qwen --host 127.0.0.1 --port 1234 --tensor-parallel-size 4 --max-model-len 65536 --gpu-memory-utilization 0.9 --max-num-seqs 8 --enable-prefix-caching --reasoning-parser qwen3 --language-model-only\n"}
+,{"stream_name":"stdout","time":747.026687039,"data":"[probe 06:51:57] server ready after 430s\n"}
+,{"stream_name":"stdout","time":747.026729596,"data":"[017 06:51:57] server up service_max=8 install_load_s=734.6\n"}
+,{"stream_name":"stdout","time":747.094248658,"data":"[017 06:51:58] executor preflight ok\n"}
+,{"stream_name":"stdout","time":747.231170985,"data":"[probe 06:51:57] server ready after 430s\n"}
+,{"stream_name":"stdout","time":747.231197081,"data":"[017 06:51:57] server up service_max=8 install_load_s=734.6\n"}
+,{"stream_name":"stdout","time":747.231200924,"data":"[017 06:51:58] executor preflight ok\n"}
+,{"stream_name":"stdout","time":1813.224056068,"data":"[017 07:09:44] gate closed p0=False demo=True time=True\n"}
+,{"stream_name":"stdout","time":1813.429352068,"data":"[017 07:09:44] gate closed p0=False demo=True time=True\n"}
+,{"stream_name":"stdout","time":1821.409958862,"data":"[017 07:09:52] EVIDENCE-EXIT status=complete_with_evidence\n"}
+,{"stream_name":"stdout","time":1821.438980828,"data":"[017 07:09:52] EVIDENCE-EXIT status=complete_with_evidence\n"}
+,{"stream_name":"stdout","time":1821.43900215,"data":"VDRIVER_RETURN_CODE 0\n"}
+,{"stream_name":"stderr","time":1824.096889701,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1824.096915518,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1824.296706825,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1824.29675441,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1825.235293676,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1825.312767295,"data":"[NbConvertApp] Writing 208267 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1827.955083295,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1828.496018542,"data":"[NbConvertApp] Writing 488481 bytes to __results__.html\n"}
+]
