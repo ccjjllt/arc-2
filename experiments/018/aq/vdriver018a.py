@@ -9,6 +9,7 @@ Seeds: both new calls 5103 (R2 differs from v1 R-291's 5102 to avoid replay).
 from __future__ import annotations
 
 import argparse
+import faulthandler
 import hashlib
 import json
 import os
@@ -27,8 +28,8 @@ VLLM_WHEEL_NAME = "vllm-0.27.2rc1.dev91+g1f7427bc0-cp38-abi3-manylinux_2_28_x86_
 VLLM_WHEEL_SHA256 = "5cbeedeb8262fbc7e77c5b4c33203e4dab74e8da1649a977bae833df62304a"
 INSTALL_BUDGET_S = 20 * 60
 SAVE_MARGIN_S = 300
-NEW_REQUEST_CUTOFF_S = 35 * 60
-HARD_STOP_S = 42 * 60
+NEW_REQUEST_CUTOFF_S = 80 * 60
+HARD_STOP_S = 85 * 60
 
 QUERY = "291dc1e1_0"
 TASK = "291dc1e1"
@@ -47,12 +48,33 @@ FROZEN_SHA = {
     "task-291-clean.json": "6a0c60cfb64acd658deb95fd4ba2fca7b932023584fabc921b691f04ae8ff1ef",
 }
 
-STATE = {"proc": None, "work": None, "run": None, "closed": False}
+STATE = {"proc": None, "work": None, "run": None, "closed": False, "phase": "init"}
 GPU_SAMPLER_STOP = threading.Event()
 
 
+def watchdog(work: Path, interval_s: float = 60.0):
+    while not GPU_SAMPLER_STOP.is_set():
+        time.sleep(interval_s)
+        if GPU_SAMPLER_STOP.is_set():
+            break
+        try:
+            with open(work / "driver-watch.log", "a") as h:
+                h.write(f"[{time.strftime('%H:%M:%S')}] alive phase={STATE.get('phase')}\n")
+                faulthandler.dump_traceback(file=h)
+                h.write("---\n")
+        except Exception:
+            pass
+
+
 def log(msg):
-    print(f"[018a {time.strftime('%H:%M:%S')}] {msg}", flush=True)
+    line = f"[018a {time.strftime('%H:%M:%S')}] {msg}"
+    print(line, flush=True)
+    try:
+        if STATE.get("work") is not None:
+            with open(STATE["work"] / "driver-stdout.log", "a") as h:
+                h.write(line + "\n")
+    except Exception:
+        pass
 
 
 def sh(cmd, timeout, cwd=None, env=None):
@@ -250,7 +272,7 @@ def main():
     ap.add_argument("--work", default="/kaggle/working/vprobe")
     ap.add_argument("--frozen", required=True)
     ap.add_argument("--pip-python", default=None)
-    ap.add_argument("--session-seconds", type=float, default=2700.0)
+    ap.add_argument("--session-seconds", type=float, default=5400.0)
     args = ap.parse_args()
     work = Path(args.work)
     work.mkdir(parents=True, exist_ok=True)
@@ -272,7 +294,18 @@ def main():
     STATE["work"] = work
     STATE["run"] = run
     signal.signal(signal.SIGTERM, on_term)
+    try:
+        lock_fd = os.open(work / "driver.lock", os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        os.write(lock_fd, str(os.getpid()).encode())
+    except FileExistsError:
+        print("[018a] lock busy, another driver holds it; exiting quietly", flush=True)
+        return 0
+    log(f"driver start session_s={args.session_seconds} frozen_dir={frozen}")
     P.record_versions(run)
+    log("versions recorded")
+    STATE["phase"] = "frozen"
+    wd = threading.Thread(target=watchdog, args=(work, 60.0), daemon=True)
+    wd.start()
 
     for name, want in FROZEN_SHA.items():
         p = frozen / name
@@ -283,6 +316,8 @@ def main():
             run["frozen_mismatch"] = {"file": name, "got": got, "want": want}
             return finish("frozen_mismatch", detail=name)
     run["frozen_sha_ok"] = True
+    run["frozen_json_ok"] = True
+    save(work, run)
     log("frozen SHA match 018")
     frozen_final = (frozen / "F-291dc1e1_0.final.txt").read_text()
     frozen_code = (frozen / "F-291dc1e1_0.code.py").read_text()
@@ -325,28 +360,44 @@ def main():
             return [args.pip_python, "-m", "pip", "install", "--python-version", "3.12",
                     "--only-binary", ":all:", "--no-index"]
         return [sys.executable, "-m", "pip", "install", "--no-index"]
+    log(f"installer mode: {'fallback' if use_fallback else 'py312 pip'}")
+    STATE["phase"] = "pip-req"
     try:
+        log("phase: requirements install start")
         ins = sh(_base() + ["--find-links", str(wheels), "--requirement", str(req),
                             "--target", str(site)], timeout=INSTALL_BUDGET_S)
+        log(f"phase: requirements install rc={ins.returncode}")
     except subprocess.TimeoutExpired:
         return finish("install_timeout_over_20min")
     (work / "pip-install.log").write_text(ins.stdout[-8000:] + "\n---STDERR---\n" + ins.stderr[-4000:])
+    run["pip_requirements_rc"] = ins.returncode
+    save(work, run)
     if ins.returncode:
         return finish("install_failed", detail=(ins.stderr or ins.stdout)[-400:])
     try:
+        log("phase: vllm wheel install start")
         vins = sh(_base() + ["--no-deps", "--find-links", str(wheels), str(wheel_path),
                              "--target", str(site)], timeout=600)
+        log(f"phase: vllm wheel install rc={vins.returncode}")
     except subprocess.TimeoutExpired:
         return finish("vllm_wheel_install_timeout")
+    (work / "pip-vllm.log").write_text(vins.stdout[-4000:] + "\n---STDERR---\n" + vins.stderr[-4000:])
+    run["pip_wheel_rc"] = vins.returncode
+    save(work, run)
+    STATE["phase"] = "import"
     if vins.returncode:
         return finish("vllm_wheel_install_failed")
     os.environ["PYTHONPATH"] = os.pathsep.join([str(site), os.environ.get("PYTHONPATH", "")]).strip(os.pathsep)
+    log("phase: import check start")
     imp = sh([sys.executable, "-c", "import vllm, torch; print(vllm.__version__)"], timeout=300,
              env=dict(os.environ))
+    log(f"phase: import check rc={imp.returncode}")
     run["import_check"] = {"rc": imp.returncode, "out": (imp.stdout + imp.stderr)[-500:]}
+    save(work, run)
     if imp.returncode:
         return finish("import_vllm_failed")
     run["install_s"] = round(time.time() - t0_wall, 1)
+    STATE["phase"] = "template"
 
     tpl = sh([sys.executable, "run_reasoning_probe.py", "--skip-serve", "--work", str(work / "tpl")],
              timeout=300, cwd=str(Path(__file__).resolve().parent), env=dict(os.environ))
@@ -355,6 +406,7 @@ def main():
     except Exception as exc:
         return finish("template_check_failed", detail=f"{type(exc).__name__}:{exc}")
     run["template_render"] = tpl_run.get("template_render")
+    save(work, run)
     if tpl_run.get("template_render", {}).get("status") != "d differ":
         return finish("template_efforts_identical")
 
@@ -369,6 +421,7 @@ def main():
     STATE["proc"] = proc
     run["install_load_s"] = round(time.time() - t0_wall, 1)
     save(work, run)
+    STATE["phase"] = "preflight"
 
     pre = SP.execute_grid("def transform(grid):\n    return [row[:] for row in grid]", [[1]],
                           wall_seconds=2.0, memory_mb=512)
@@ -398,6 +451,7 @@ def main():
     (work / "frozen-feedback.json").write_text(feedback)
     save(work, run)
     log(f"frozen rerun demo_matches={frozen_matches} feedback_chars={len(feedback)}")
+    STATE["phase"] = "calls"
 
     # ---- 2次模型调用 ----
     _, _, base_messages = build_base_prompt(task)

@@ -8,7 +8,7 @@
 
 历史试提交：[用户指定 Notebook 版本 314617319](https://www.kaggle.com/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319)。用户说明 30.14 分来自未修改的公开方案复制提交，不作为自主研究效果，也不限定后续方向。
 
-**当前入口（2026-10-19）**：[018计划](docs/plan/018-f291-feedback-and-constrained-generation.md)为唯一执行入口：A线2调用GPU对照进行中，B线本地实现已干跑、B-verify待批。主C6未动。
+**当前入口（2026-10-19）**：[018计划](docs/plan/018-f291-feedback-and-constrained-generation.md)为唯一执行入口：A线v4已推RUNNING（teammateb身份，含看门狗）；探针已验平台正常；B线驱动就绪、B-verify待推。主C6未动。
 
 [012实际进展](docs/progress/012-kernel-program-completion.md)记录上一轮：K短探针不采用快速后端；P-v2四次均3072 token截断，没有完整程序或实际执行，D/L各0/2，已按预定止损结束。历史配额快照不替代013的最新查询。
 
@@ -37,7 +37,7 @@
 | 015 完整推理与程序反馈 | [plan/015-qwen38-reasoning-research.md](docs/plan/015-qwen38-reasoning-research.md) | [progress/015-qwen38-reasoning-research.md](docs/progress/015-qwen38-reasoning-research.md)；P6 两臂各 1/6，多数调用截断 |
 | 016 有限思考与赛前提交 | [plan/016-budgeted-final-submission.md](docs/plan/016-budgeted-final-submission.md) | [progress/016-budgeted-final-submission.md](docs/progress/016-budgeted-final-submission.md)；v1 COMPLETE：C8选中、硬预算生效、B16合法6/6但无新增正确解、恢复EM@2持平、用户四项确认入§12 |
 | 017 程序反馈对照与提交入口 | [plan/017-program-feedback-and-submission-entry.md](docs/plan/017-program-feedback-and-submission-entry.md) | [progress/017-program-feedback-and-submission-entry.md](docs/progress/017-program-feedback-and-submission-entry.md)；v1跑完：P2门未过+4未跑，F-db程序exact；原问题未答，已由018接替 |
-| 018 F-291反馈对照与受约束程序生成 | [plan/018-f291-feedback-and-constrained-generation.md](docs/plan/018-f291-feedback-and-constrained-generation.md) | [progress/018-f291-feedback-and-constrained-generation.md](docs/progress/018-f291-feedback-and-constrained-generation.md)；A线GPU运行中，B线CPU实现+干跑完成 |
+| 018 F-291反馈对照与受约束程序生成 | [plan/018-f291-feedback-and-constrained-generation.md](docs/plan/018-f291-feedback-and-constrained-generation.md) | [progress/018-f291-feedback-and-constrained-generation.md](docs/progress/018-f291-feedback-and-constrained-generation.md)；A线v1–v3空转，v4(teammateb,RUNNING)带看门狗；B线驱动+离线验证完成 |
 
 ## Kaggle 操作链（2026-09-29 实测结论）
 

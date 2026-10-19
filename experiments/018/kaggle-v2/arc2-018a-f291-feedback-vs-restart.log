@@ -1,0 +1,27 @@
+[{"stream_name":"stderr","time":5.192117903,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":5.192152257,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":5.974145593,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":5.974177735,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":5.974182376,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":5.974184658,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":6.532763436,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.532785725,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.532788449,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.532790674,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":7.876797912,"data":"[018a 08:56:36] driver start session_s=3600.0 frozen_dir=/kaggle/working/018-frozen\n"}
+,{"stream_name":"stdout","time":7.950580431,"data":"[018a 08:56:36] versions recorded\n"}
+,{"stream_name":"stdout","time":8.079013188,"data":"[018a 08:56:36] driver start session_s=3600.0 frozen_dir=/kaggle/working/018-frozen\n"}
+,{"stream_name":"stdout","time":8.079026739,"data":"[018a 08:56:36] versions recorded\n"}
+,{"stream_name":"stdout","time":3547.642069634,"data":"[018a 09:55:36] EVIDENCE-EXIT status=signal_15\n"}
+,{"stream_name":"stdout","time":3547.644553157,"data":"NOTEBOOK_DEADLINE\n"}
+,{"stream_name":"stdout","time":3547.64633432,"data":"[018a 09:55:36] EVIDENCE-EXIT status=signal_15\n"}
+,{"stream_name":"stdout","time":3547.646340565,"data":"VDRIVER_RETURN_CODE 0\n"}
+,{"stream_name":"stderr","time":3550.011278266,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":3550.011302192,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":3550.158935725,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":3550.158956215,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":3550.949612273,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":3551.025599139,"data":"[NbConvertApp] Writing 168715 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":3553.565745726,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":3554.067140625,"data":"[NbConvertApp] Writing 447008 bytes to __results__.html\n"}
+]

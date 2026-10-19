@@ -30,5 +30,53 @@
  "slug": "ccjjllt/arc2-018a-f291-feedback-vs-restart",
  "status_after_push": "KernelWorkerStatus.RUNNING",
  "url": "https://www.kaggle.com/code/ccjjllt/arc2-018a-f291-feedback-vs-restart",
- "version": 1
+ "version": 1,
+ "v1_outcome": "signal_15 at notebook deadline (2640s); zero driver stdout; no model calls; run.json only (elapsed 2639.7s). Root cause: silent stall before first driver log (pre-install); evidence absent. Fix: startup/phase logs + nvidia-smi 30s timeout in vendored probe + 3600s session.",
+ "v2": {
+  "slug": "qingyu1232/arc2-018a-f291-feedback-vs-restart",
+  "version": 1,
+  "status_at_push": "RUNNING",
+  "session_seconds": 3600,
+  "notebook_wait_s": 3540,
+  "account": "qingyu1232 (user-confirmed own)",
+  "payload_sha256": {
+   "vdriver018a.py": "9ad8d5e9877c2c45fd39acd32c4add6def4e4416be1fe6fb31c8f9b00d500967",
+   "run_reasoning_probe.py": "7aac22b620bee0cda3b7d930b31e641b6c02a674d981421a60ee48863838a0d5",
+   "solve_program.py": "03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a"
+  },
+  "vendored_probe_diff_vs_scripts": "record_versions nvidia-smi timeout=30 + failure capture (2 lines)"
+ },
+ "quota_note": "ccjjllt cycle reset observed 2026-10-19: 29.83/30h at v2 push; v1 consumed on ccjjllt pre-reset (unquantified)",
+ "v3": {
+  "slug": "qingyu1232/arc2-018a-f291-fix-restart-v3",
+  "version": 1,
+  "status_at_push": "see status check",
+  "session_seconds": 5400,
+  "reason": "v2 kernel SaveKernel 409 persisted; new kernel sidesteps version conflict; title/slug aligned, no warning",
+  "payload_sha256": {
+   "vdriver018a.py": "6ee3df47e834a4ab2c80013ac4132baadd6def4e4416be1fe6fb31c8f9b00d500967",
+   "run_reasoning_probe.py": "7aac22b620bee0cda3b7d930b31e641b6c02a674d981421a60ee48863838a0d5",
+   "solve_program.py": "03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a"
+  },
+  "notebook_dir": "experiments/018/aq3/notebook"
+ },
+ "v4": {
+  "slug": "qingyu1232/arc2-018a-f291-fix-restart-v3",
+  "version": 2,
+  "identity": "teammatea/teammateb token file (user-directed)",
+  "notebook_dir": "experiments/018/aq3/notebook",
+  "session_seconds": 5400,
+  "status_at_push": "RUNNING",
+  "payload_sha256": {
+   "vdriver018a.py": "b6ea61e4db244a265ac949fdb2a024bfc58a12838157523bfb4788b3ecd97e56",
+   "run_reasoning_probe.py": "7aac22b620bee0cda3b7d930b31e641b6c02a674d981421a60ee48863838a0d5",
+   "solve_program.py": "03aaa3818a8f3beafee019140bae823f968e913af72ef297fa7531f24816a37a"
+  },
+  "quota_gate": {
+   "need_h": 9.45,
+   "remaining_h": 23.85,
+   "used_h": 6.15
+  },
+  "probe": "qingyu1232/arc2-018a-probe-sanity v1 COMPLETE, L4 healthy, platform path OK"
+ }
 }

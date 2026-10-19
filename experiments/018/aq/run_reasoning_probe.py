@@ -70,9 +70,12 @@ def record_versions(out: dict) -> None:
     try:
         smi = subprocess.run(
             ["nvidia-smi", "--query-gpu=name,driver_version,memory.total",
-             "--format=csv,noheader"], capture_output=True, text=True).stdout.strip()
+             "--format=csv,noheader"], capture_output=True, text=True,
+            timeout=30).stdout.strip()
     except FileNotFoundError:
         smi = "nvidia-smi not present (CPU)"
+    except Exception as exc:
+        smi = f"nvidia-smi failed ({type(exc).__name__})"
     out["host"] = {"python": sys.version.split()[0], "nvidia_smi": smi}
     try:
         import importlib.metadata as md
