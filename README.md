@@ -4,11 +4,11 @@
 
 比赛：[Kaggle ARC Prize 2026 — ARC-AGI-2](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview)。
 
-**当前进展**：[017 — 程序反馈对照与提交入口](docs/plan/017-program-feedback-and-submission-entry.md)已完成研究复核，待实施。016原始结果独立重算确认：B8/B16各1/6、恢复后仍2/6，无新增query；C8可继续使用。已纠正恢复成本、配额归因与重算计数口径，见[017复核记录](docs/progress/017-program-feedback-and-submission-entry.md)。
+**当前进展**：[017 — 程序反馈对照与提交入口](docs/plan/017-program-feedback-and-submission-entry.md)：驱动+提交入口已实现，ccjjllt v1 GPU运行中，B已CPU干跑。016 v1结论见[016实际进展](docs/progress/016-budgeted-final-submission.md)§11–§13。
 
 历史试提交：[用户指定 Notebook 版本 314617319](https://www.kaggle.com/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319)。用户说明 30.14 分来自未修改的公开方案复制提交，不作为自主研究效果，也不限定后续方向。
 
-**当前入口（2026-10-19）**：[017修订计划](docs/plan/017-program-feedback-and-submission-entry.md)为唯一执行入口：P2先导，复用结果补其余4题；对照[P0,反馈修复]与[P0,独立重启]，共最多18次调用。建议首次90分钟上限，执行前按实际身份重查余额；9.50/21.13小时仅是历史记录，不相加、不作当前余额。主C6未动。
+**当前入口（2026-10-19）**：[017计划](docs/plan/017-program-feedback-and-submission-entry.md)为唯一执行入口：P2门控→补4题（[P0,反馈修复] vs [P0,独立重启]，18次）；B提交入口本地实现已干跑。v1已用ccjjllt配额推送运行（90分钟上限）。主C6未动。
 
 [012实际进展](docs/progress/012-kernel-program-completion.md)记录上一轮：K短探针不采用快速后端；P-v2四次均3072 token截断，没有完整程序或实际执行，D/L各0/2，已按预定止损结束。历史配额快照不替代013的最新查询。
 
@@ -36,7 +36,7 @@
 | 014 退分归因与27B完整推理 | [plan/014-regression-and-reasoning.md](docs/plan/014-regression-and-reasoning.md) | [progress/014-regression-and-reasoning.md](docs/progress/014-regression-and-reasoning.md)；R v4两臂2/6、无oracle新增，结束4B扩算；V v4导入失败，先修运行与计量，T尚未开始 |
 | 015 完整推理与程序反馈 | [plan/015-qwen38-reasoning-research.md](docs/plan/015-qwen38-reasoning-research.md) | [progress/015-qwen38-reasoning-research.md](docs/progress/015-qwen38-reasoning-research.md)；P6 两臂各 1/6，多数调用截断 |
 | 016 有限思考与赛前提交 | [plan/016-budgeted-final-submission.md](docs/plan/016-budgeted-final-submission.md) | [progress/016-budgeted-final-submission.md](docs/progress/016-budgeted-final-submission.md)；v1 COMPLETE：C8选中、硬预算生效、B16合法6/6但无新增正确解、恢复EM@2持平、用户四项确认入§12 |
-| 017 程序反馈对照与提交入口 | [plan/017-program-feedback-and-submission-entry.md](docs/plan/017-program-feedback-and-submission-entry.md) | [progress/017-program-feedback-and-submission-entry.md](docs/progress/017-program-feedback-and-submission-entry.md)；研究复核与交接修订完成，GPU/入口实现未运行 |
+| 017 程序反馈对照与提交入口 | [plan/017-program-feedback-and-submission-entry.md](docs/plan/017-program-feedback-and-submission-entry.md) | [progress/017-program-feedback-and-submission-entry.md](docs/progress/017-program-feedback-and-submission-entry.md)；驱动+提交入口已实现，ccjjllt v1运行中，B已CPU干跑 |
 
 ## Kaggle 操作链（2026-09-29 实测结论）
 

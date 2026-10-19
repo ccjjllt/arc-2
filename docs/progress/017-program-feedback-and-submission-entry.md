@@ -55,3 +55,31 @@ P12不再由“任意非db命中”自动触发：58在015已命中，只有R重
 - [实现复核](../../experiments/017/review-implementation.md)：解析器、执行器、题面和提交连接。
 
 修订后再次独立阅读，未发现两槽、调用预算、反馈范围、90分钟截止或最终文件保存方面的阻断问题。后续实施只需局部适配与手动小实验；成果仍取决于真实程序生成/执行，未确认前不扩P12、C6或宣称可正式提交。
+
+## 6 2026-10-19：GPU驱动已实现并推送（ccjjllt v1运行中）
+
+按修订计划实施，未启动部分为GPU运行结果分析（待COMPLETE后取回）。
+
+### 实现产物
+
+| 产物 | SHA256 |
+| --- | --- |
+| `experiments/017/pq/vdriver017.py` | `c06caeb8673ace84724071d6cb38cc18c124408415232e0d37e531c7b034e191` |
+| `experiments/017/pq/run_reasoning_probe.py` | `8970e7a7…`（与016一致，未改） |
+| `experiments/017/pq/solve_program.py` | `03aaa381…`（与脚本一致，未改；import用，不exec） |
+| `experiments/017/pq/p6-challenges.json` | `03c5c50b…`（P6六题，train全留、test仅input，由`task_inputs_only`重建） |
+| Notebook | 204866字节，内嵌上4文件，解包SHA一致 |
+
+要点对照计划§6–§7：复用016安装/模板/服务8/C8滚动/落盘/截止链路；`parse_generation`先查stop+无错再direct解析（`generation=None`）；沿用解析器python/py/无语言标签范围；`execute_grid` 2秒/512MB、程序累计20秒；反馈`demo_feedback`≤3000字符且先断言条数对齐；P0 query预测落盘复用不覆盖；F用P0 final文本（reasoning另存）；门控“两题各≥1完整P0且≥1合法demo输出＋时间够”否则`p2_gate_closed`收尾；两槽A_F=[P0,F]、A_R=[P0,R]缺一重复、皆缺记空；P0波→F/R波顺序组装，奇偶query交替先F/先R。
+
+本地CPU核对（非GPU证据）：`py_compile`通过；prompt构造冒烟（291约3.6K、db约3.5K字符，均远小于64K）；direct解析示例程序得`program_ready`；F/R交替顺序与request_id唯一性已核；Notebook解包4文件SHA一致；`git diff --check`通过。macOS执行器返回`executor_unavailable`属预期（资源限制装不上），已按计划交由GPU会话内预检判定，不冒充模型错误。
+
+### 推送记录
+
+[`experiments/017/execution/push.json`](../../experiments/017/execution/push.json)：`ccjjllt/arc2-017-p0-f-r-program-feedback` v1，`RUNNING`，会话5400秒。推送前ccjjllt剩21.13h（满足9.45h门槛）；标题即slug，无016式id错位。用户明确指示使用ccjjllt配额。
+
+## 7 2026-10-19：B提交入口已实现并CPU干跑
+
+`experiments/017/submit_entry/submit_lib.py`（SHA`0f0f72e2…`）：逐字复用013的`atomic_json/initial_submission/valid_grid/existing_submission_matches`（kgmon/NLL/beam/pickle路径未借用），新增`count_queries/estimate_and_guard/update_slots/validate_submission`。
+
+人工CPU干跑（证据`dryrun-report.json`，非测试套件）：公开多query输入2task/4query占位→校验通过；P6已记录合法网格部分更新（单候选重复填两槽已断言）→未知键/锯齿/bool/越界更新被拒并记错；更新后文件仍合法可读；调度门对“240query×15K单遍”放行（约9.02h）、“两遍等价”拒绝并报23842秒缺口。干跑只证明接线/格式，不证明隐藏运行、12小时可完成或提分。
