@@ -4,17 +4,19 @@
 
 比赛：[Kaggle ARC Prize 2026 — ARC-AGI-2](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview)。
 
-**当前进展**：[020 — 提分验证与真实提交交接](docs/plan/020-score-validation-and-real-submission.md)。019已完成公开全量输出演练和+4程序实验：直出160/172真实覆盖但用户复核固定双槽0/158；+4的新增正确题来自独立重启，反馈0/4。C8实际并发8已确认；正式输入选择、程序及时执行、反馈携带原代码和候选排序仍需修复。当前没有27B新榜分或奖牌证据。
+**当前进展**：[020 — 提分验证与真实提交交接](docs/plan/020-score-validation-and-real-submission.md)。长思考Direct1+CPU补槽已真正提交比赛 **57443913**，15:59 UTC回查PENDING，尚无新榜分。冻结C24为 **17/26（65.38%）**，其中非ARC1为14/22、旧ARC1为3/4；来源是项目training留出，不能外推为榜分或奖牌证据。
 
 历史试提交：[用户指定 Notebook 版本 314617319](https://www.kaggle.com/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319)。用户说明 30.14 分来自未修改的公开方案复制提交，不作为自主研究效果，也不限定后续方向。
 
-**当前入口（2026-10-20）**：[020计划](docs/plan/020-score-validation-and-real-submission.md)与[020进展](docs/progress/020-score-validation-and-real-submission.md)。按用户最新指令，优先使用ccjjllt、qingyu1232、jiyujia的剩余GPU配额，zhuating留作后备。按“本地修提交链 → D24开发 → C24一次确认 → 最终版本公开全量Save & Run → 正式代码竞赛提交”推进；普通会话基准3+3+4小时，必要分片的额外加载另记，开机前逐账号实查余额。D24/C24题面已冻结，实验和新提交未运行。019 pilot已推理旧主C6部分题，不能再称旧确认块未动。
+**当前入口（2026-10-20）**：[020计划](docs/plan/020-score-validation-and-real-submission.md)与[020进展](docs/progress/020-score-validation-and-real-submission.md)。旧账号优先的GPU研究已完成本轮，生成采样忙碌率99.68%；zhuating仅提供CPU依赖恢复、未启用ARC2 GPU研究。正式Notebook v1普通保存300秒只做CPU产文件，隐藏41400秒运行同一冻结模型策略；C24模型产物已完整评分，普通文件不是模型评测。E20下一轮公开输入已准备、未运行。
 
 [012实际进展](docs/progress/012-kernel-program-completion.md)记录上一轮：K短探针不采用快速后端；P-v2四次均3072 token截断，没有完整程序或实际执行，D/L各0/2，已按预定止损结束。历史配额快照不替代013的最新查询。
 
 [011实际进展](docs/progress/011-budget-efficient-adaptation.md)记录已完成结果：F0-25 P12为0/14，多视角完整配对0/5；TTT每题4次真实更新后，A0/A4仍均0/2。程序4次均耗尽1536 token、未产出代码，repair实际0次。10月11日15:00北京时间账户快照剩15.23138配额小时、reserved=0；未来开机前重查，保留至少6小时。无新比赛分数，C6/C12确认未运行；首GPU v1的取消原因和成本保留。
 
-**下一步**：按[020计划](docs/plan/020-score-validation-and-real-submission.md)比较同模型独立候选与有限CPU修正、选择性反馈；暂停019低预算直出的原样扩跑。以取得新submission ID并核对固定版本作为真正提交的凭据，实际榜分返回后再判断是否超过历史30.14。
+**真实提交已发生**：`57443913`，2026-10-20 15:28:59 UTC，正式[Notebook v1](https://www.kaggle.com/code/ccjjllt/arc2-020-deep-direct-submission?scriptVersionId=360461153)。15:59 UTC 回查为 PENDING，尚无榜分。使用同一冻结的长思考 Direct1 + CPU line，隐藏预算41400秒；没有手动修改最终候选选择。[受理与版本凭据](experiments/020/execution/competition-submission.json)。提交时C24后片仍在运行，首次27B计分研究不等于已超过历史30.14。
+
+**下一步**：查询57443913的正式榜分；优先研究长思考后最终网格交付和完整预算覆盖。原D24程序/CPU0/34、短反馈0/4、深程序0/8、完整反馈0/26，停止这些配置原样扩跑。开发Deep6直出2/8、CPU补槽3/8，仍只作开发证据。
 
 ## 研究文档
 
@@ -39,7 +41,7 @@
 | 017 程序反馈对照与提交入口 | [plan/017-program-feedback-and-submission-entry.md](docs/plan/017-program-feedback-and-submission-entry.md) | [progress/017-program-feedback-and-submission-entry.md](docs/progress/017-program-feedback-and-submission-entry.md)；v1跑完：P2门未过+4未跑，F-db程序exact；原问题未答，已由018接替 |
 | 018 F-291反馈对照与受约束程序生成 | [plan/018-f291-feedback-and-constrained-generation.md](docs/plan/018-f291-feedback-and-constrained-generation.md) | [progress/018-f291-feedback-and-constrained-generation.md](docs/progress/018-f291-feedback-and-constrained-generation.md)；A线v6中F-fix在291拿下exact、R2截断；复核更正哈希死循环与B线四项阻断缺陷，转入019 |
 | 019 全量提交候选打通、首稿形成率与+4流程验证 | [plan/019-submission-and-first-draft-pipeline.md](docs/plan/019-submission-and-first-draft-pipeline.md) | [progress/019-submission-and-first-draft-pipeline.md](docs/progress/019-submission-and-first-draft-pipeline.md)；P1输出120task/172query，附件评分0/158；+4反馈0/4、重启1/4；并发与加载计量已更正 |
-| 020 提分验证与真实提交交接 | [plan/020-score-validation-and-real-submission.md](docs/plan/020-score-validation-and-real-submission.md) | [progress/020-score-validation-and-real-submission.md](docs/progress/020-score-validation-and-real-submission.md)；交接与D24/C24题面已完成，代码修复、GPU实验和新正式提交未运行 |
+| 020 提分验证与真实提交交接 | [plan/020-score-validation-and-real-submission.md](docs/plan/020-score-validation-and-real-submission.md) | [progress/020-score-validation-and-real-submission.md](docs/progress/020-score-validation-and-real-submission.md)；C24固定17/26（training来源），正式提交57443913已受理/PENDING，尚无新榜分 |
 
 ## Kaggle 操作链（2026-09-29 实测结论）
 
