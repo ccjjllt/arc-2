@@ -1,0 +1,429 @@
+{
+  "status": "complete_combined_runtime_analysis_no_query_gold",
+  "scope": "All fixed C24 runtime outputs: ccjjllt v3 8 tasks/8 queries plus qingyu1232 v1 16 tasks/18 queries. No query gold, solutions or score artifacts read. No scoring or prediction repair performed.",
+  "cohort": "confirmation_C24_020",
+  "tasks": 24,
+  "queries": 26,
+  "source_manifest": {
+    "path": "experiments/020/cohorts/confirmation-c24-manifest.json",
+    "sha256": "6859e458e83ad49f5c038dbb6b59fded42f567dcc86c0043e809b7528cca3300"
+  },
+  "source_runs": {
+    "ccjjllt": {
+      "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/run.json",
+      "sha256": "7a2c3dc3da787becdd702bd88587253f1fea08a3b17131298eb6d1d59c625008"
+    },
+    "qingyu1232": {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/run.json",
+      "sha256": "9d0fed092b2859f232840720a2643b717fab0281e9da24ffbf6765145539f723"
+    }
+  },
+  "source_runtime_summaries": {
+    "ccjjllt": {
+      "path": "experiments/020/execution/c24-ccjjllt-runtime-summary.json",
+      "sha256": "74883571fd4edee9f3b34b120a65938508326cc11e8b274f43f8ef5e30f19419"
+    },
+    "qingyu1232": {
+      "path": "experiments/020/execution/c24-qingyu1232-runtime-summary.json",
+      "sha256": "8385b141d4f135714fd2ace90d859d5cba83b3630d5cba7b81149d2ca9a4dc94"
+    }
+  },
+  "cohort_membership": {
+    "task_sets_disjoint": true,
+    "intersection": [],
+    "task_union_equals_frozen_C24": true,
+    "missing_task_ids": [],
+    "unexpected_task_ids": [],
+    "expected_queries_from_manifest": 26,
+    "all_query_denominators_retained": true
+  },
+  "per_account": {
+    "ccjjllt": {
+      "kernel_ref": "ccjjllt/arc2-020-c24-deep-direct",
+      "kernel_version": 3,
+      "tasks": 8,
+      "queries": 8,
+      "physical_calls": 8,
+      "completion_tokens": 232342,
+      "timing": {
+        "start_utc": "2026-10-20T14:39:14.452215+00:00",
+        "run_finished_utc": "2026-10-20T15:18:06.603105+00:00",
+        "session_wall_seconds": 2332.318,
+        "install_seconds_subset": 269.4,
+        "install_load_seconds_inclusive": 719.5,
+        "generation_wave_wall_seconds": 1612.55,
+        "generation_aggregate_completion_tokens_per_second": 144.08,
+        "request_seconds_sum_not_wall": 8879.7,
+        "session_budget_seconds": 3600.0,
+        "note": "install_load includes installation. Overlapping concurrent request seconds are not session wall time."
+      },
+      "actual_concurrency": {
+        "configured_client_and_service_max": 8,
+        "wave_client_limit": 8,
+        "peak_outstanding_requests": 8,
+        "time_weighted_outstanding_requests": 5.506833174056947,
+        "first_issue_to_last_done_seconds": 1612.501,
+        "server_running_request_log_samples": 161,
+        "server_running_request_sample_peak": 8,
+        "server_running_request_sample_mean": 5.490683229813665,
+        "server_running_request_sample_histogram": {
+          "1": 6,
+          "2": 13,
+          "3": 12,
+          "4": 1,
+          "5": 8,
+          "6": 96,
+          "7": 4,
+          "8": 21
+        },
+        "note": "Client mean integrates actual issued-to-done HTTP intervals, excluding local queue wait. Server mean is an unweighted sampled Running count, not a measure of simultaneous token execution."
+      },
+      "GPU": {
+        "generation_sample_rows": 318,
+        "generation_GPU_observations": 1272,
+        "generation_utilization_sample_mean_percent": 99.66430817610063,
+        "per_GPU_utilization_sample_mean_percent": {
+          "0": 99.68553459119497,
+          "1": 99.67924528301887,
+          "2": 99.66666666666667,
+          "3": 99.62578616352201
+        },
+        "per_GPU_memory_used_peak_MiB": {
+          "0": 20223.0,
+          "1": 20223.0,
+          "2": 20223.0,
+          "3": 20223.0
+        },
+        "note": "nvidia-smi utilization.gpu during generation; not correctness, useful reasoning or theoretical GPU efficiency."
+      },
+      "MTP_observed": {
+        "logger_intervals": 161,
+        "accepted_draft_tokens_logged": 132595,
+        "drafted_tokens_logged": 199206,
+        "weighted_logged_draft_acceptance_percent": 66.56175014808791,
+        "reported_mean_acceptance_length_min": 1.58,
+        "reported_mean_acceptance_length_median": 2.33,
+        "reported_mean_acceptance_length_max": 2.86,
+        "note": "Sum of observed periodic logger intervals, not an exact generation-total counter. Draft acceptance is not a speed multiplier; no same-prompt MTP-off A/B was run."
+      },
+      "admitted_direct_tasks": 7,
+      "legal_query_outputs": 7,
+      "placeholder_queries": 1,
+      "finish_reasons": {
+        "stop": 8
+      }
+    },
+    "qingyu1232": {
+      "kernel_ref": "qingyu1232/arc2-020-c24-deep-direct",
+      "kernel_version": 1,
+      "tasks": 16,
+      "queries": 18,
+      "physical_calls": 16,
+      "completion_tokens": 447996,
+      "timing": {
+        "start_utc": "2026-10-20T14:43:01.289144+00:00",
+        "run_finished_utc": "2026-10-20T15:49:39.312493+00:00",
+        "session_wall_seconds": 3998.19,
+        "install_seconds_subset": 316.6,
+        "install_load_seconds_inclusive": 786.6,
+        "generation_wave_wall_seconds": 3211.15,
+        "generation_aggregate_completion_tokens_per_second": 139.51,
+        "request_seconds_sum_not_wall": 17896.8,
+        "session_budget_seconds": 6000.0,
+        "note": "install_load includes installation. Overlapping concurrent request seconds are not session wall time."
+      },
+      "actual_concurrency": {
+        "configured_client_and_service_max": 8,
+        "wave_client_limit": 8,
+        "peak_outstanding_requests": 8,
+        "time_weighted_outstanding_requests": 5.573407206529376,
+        "first_issue_to_last_done_seconds": 3211.0879999999997,
+        "server_running_request_log_samples": 321,
+        "server_running_request_sample_peak": 8,
+        "server_running_request_sample_mean": 5.56386292834891,
+        "server_running_request_sample_histogram": {
+          "1": 43,
+          "2": 41,
+          "3": 27,
+          "4": 4,
+          "5": 3,
+          "6": 18,
+          "7": 39,
+          "8": 146
+        },
+        "note": "Client mean integrates actual issued-to-done HTTP intervals, excluding local queue wait. Server mean is an unweighted sampled Running count, not a measure of simultaneous token execution."
+      },
+      "GPU": {
+        "generation_sample_rows": 634,
+        "generation_GPU_observations": 2536,
+        "generation_utilization_sample_mean_percent": 99.6845425867508,
+        "per_GPU_utilization_sample_mean_percent": {
+          "0": 99.6845425867508,
+          "1": 99.6845425867508,
+          "2": 99.6845425867508,
+          "3": 99.6845425867508
+        },
+        "per_GPU_memory_used_peak_MiB": {
+          "0": 20189.0,
+          "1": 20189.0,
+          "2": 20189.0,
+          "3": 20189.0
+        },
+        "note": "nvidia-smi utilization.gpu during generation; not correctness, useful reasoning or theoretical GPU efficiency."
+      },
+      "MTP_observed": {
+        "logger_intervals": 321,
+        "accepted_draft_tokens_logged": 257681,
+        "drafted_tokens_logged": 380452,
+        "weighted_logged_draft_acceptance_percent": 67.73022615205072,
+        "reported_mean_acceptance_length_min": 1.84,
+        "reported_mean_acceptance_length_median": 2.35,
+        "reported_mean_acceptance_length_max": 2.98,
+        "note": "Sum of observed periodic logger intervals, not an exact generation-total counter. Draft acceptance is not a speed multiplier; no same-prompt MTP-off A/B was run."
+      },
+      "admitted_direct_tasks": 13,
+      "legal_query_outputs": 14,
+      "placeholder_queries": 4,
+      "finish_reasons": {
+        "stop": 13,
+        "length": 3
+      }
+    }
+  },
+  "shared_configuration": {
+    "config_equal": true,
+    "config": {
+      "tp": 4,
+      "concurrency": 8,
+      "generation_max": 49152,
+      "thinking_max": 40960,
+      "generation_mode": "direct",
+      "line_complement": true,
+      "direct_attempts": 1,
+      "direct_context_margin_tokens": 128,
+      "effort": "xhigh",
+      "sampling": {
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 20
+      },
+      "seeds": {
+        "P0": 5101,
+        "F": 5103,
+        "R": 5105
+      },
+      "mtp_tokens": 2,
+      "speculative_config": {
+        "method": "mtp",
+        "num_speculative_tokens": 2
+      },
+      "mamba_cache_mode": "align",
+      "near_rule": {
+        "exact_min": 0.5,
+        "shape_min": 0.75,
+        "foreground_min": 0.8,
+        "changed_min": 0.8
+      },
+      "cpu_scope": "disabled for direct grids",
+      "cpu_max_variants": 32,
+      "cpu_max_seconds": 30,
+      "vllm_wheel_sha256": "5cbeedeb8266362ef935775c4c33203e4dab74e8da1649a977bae833df62304a"
+    },
+    "recorded_source_sha256_equal": true,
+    "model_root_equal": true,
+    "runtime_requirements_sha256_equal": true,
+    "CPU_line_solver_sha256_equal": true,
+    "hardware_per_account": "4 x NVIDIA L4, TP4; two separate accounts/jobs, not one eight-GPU model instance"
+  },
+  "combined_cost": {
+    "physical_calls": 24,
+    "completion_tokens": 680338,
+    "prompt_tokens_sum": 64558,
+    "calls_missing_usage": 0,
+    "account_session_wall_seconds_sum": 6330.508,
+    "account_install_seconds_sum_subset": 586.0,
+    "account_install_load_seconds_sum_inclusive": 1506.1,
+    "account_generation_wave_seconds_sum": 4823.7,
+    "completion_tokens_per_summed_account_generation_second": 141.04069490225345,
+    "request_seconds_sum_not_wall": 26776.5,
+    "CPU_line_wall_seconds_sum": 0.041247,
+    "GPU_quota_consumption": "not_measured_by_this_runtime_analysis",
+    "note": "6330.508 seconds is summed account job wall time, not elapsed time experienced with parallel jobs. Installation is already included in install_load. Request durations overlap. Pooled token/s divides by summed four-GPU job generation time and is not same-prompt or isolated MTP speed attribution."
+  },
+  "calendar_elapsed": {
+    "first_job_start_utc": "2026-10-20T14:39:14.452215+00:00",
+    "last_job_finish_utc": "2026-10-20T15:49:39.312493+00:00",
+    "first_start_to_last_finish_seconds": 4224.860277414322,
+    "actual_HTTP_first_issue_to_last_done_seconds": 3505.1930000782013,
+    "note": "Derived from recorded host wall timestamps across the two concurrently running accounts; differs from summed account wall time and is not a single-job runtime benchmark."
+  },
+  "actual_HTTP_concurrency_across_accounts": {
+    "peak_outstanding_requests": 14,
+    "time_weighted_outstanding_requests_over_HTTP_calendar_span": 7.639087205556797,
+    "basis": "issued_wall_s plus per-request monotonic issued-to-done duration; local queue waits excluded",
+    "note": "Cross-account timestamp-derived outstanding requests. Each model service max is eight; this is not fourteen sequences within one engine."
+  },
+  "GPU_pooled": {
+    "generation_GPU_observations": 3808,
+    "sample_weighted_utilization_mean_percent": 99.67778361344538,
+    "note": "Observation-weighted pooling across both jobs, not a quota estimate or a measure of useful reasoning/correctness."
+  },
+  "MTP_pooled": {
+    "logger_intervals": 482,
+    "accepted_draft_tokens_logged": 390276,
+    "drafted_tokens_logged": 579658,
+    "weighted_logged_draft_acceptance_percent": 67.3286662135259,
+    "note": "Observed periodic intervals pooled by actual accepted/drafted counts; not an exact total counter, speed multiplier or MTP-on/off causal comparison."
+  },
+  "coverage": {
+    "totals_for_each_identical_policy": {
+      "tasks": 24,
+      "queries": 26,
+      "format_ok": 26,
+      "single_covered": 21,
+      "double_distinct": 0,
+      "placeholder": 5,
+      "updated_keys": 21
+    },
+    "admitted_direct_tasks": 20,
+    "invalid_direct_tasks": 4,
+    "M0_M1_identical_in_each_shard": true,
+    "combined_M0_M1_identical": true,
+    "direct_demo_exact": null,
+    "note": "20 admitted tasks supply 21 legal query predictions; five queries remain placeholders. Format/admission counts are not correctness, and direct mode does not execute demos."
+  },
+  "finish_reasons": {
+    "stop": 21,
+    "length": 3
+  },
+  "invalid_output_categories": {
+    "closed_JSON_with_ragged_grid": {
+      "tasks": 1,
+      "affected_queries": 1
+    },
+    "total_token_limit_with_analysis_in_final_channel": {
+      "tasks": 3,
+      "affected_queries": 4
+    }
+  },
+  "invalid_outputs": [
+    {
+      "task_id": "984d8a3e",
+      "affected_queries": 1,
+      "finish_reason": "stop",
+      "completion_tokens": 41606,
+      "validation_error": "Grid must be rectangular",
+      "source_reply": {
+        "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-984d8a3e.reply.json",
+        "sha256": "628538afbc1ca7bf44e68a17d0c8a9a128e6ee1ee97dd06bceb71f97e8508c09"
+      },
+      "content_chars": 720,
+      "reasoning_chars": 103822,
+      "code_fence_count": 0,
+      "frozen_output_modified": false,
+      "category": "closed_JSON_with_ragged_grid",
+      "row_widths": {
+        "query0": [
+          17,
+          17,
+          17,
+          17,
+          17,
+          17,
+          17,
+          17,
+          17,
+          17,
+          17,
+          17,
+          18,
+          17,
+          17,
+          17,
+          17
+        ]
+      },
+      "note": "Closed parseable JSON, but rows have unequal widths. No trimming or padding performed."
+    },
+    {
+      "task_id": "aa62e3f4",
+      "affected_queries": 1,
+      "finish_reason": "length",
+      "completion_tokens": 49152,
+      "validation_error": "Expecting value: line 1 column 1 (char 0)",
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-aa62e3f4.reply.json",
+        "sha256": "eaa9f1f730ad179ad79ae612cb9d05342c8e1ebfd5954fbe2de49fc70a2c2502"
+      },
+      "content_chars": 24176,
+      "reasoning_chars": 115971,
+      "code_fence_count": 0,
+      "frozen_output_modified": false,
+      "category": "total_token_limit_with_analysis_in_final_channel",
+      "content_opening_excerpt": "\nWe need continue analysis and produce final JSON. We need be very careful. Let's re-evaluate. The prior analysis ended incomplete. Need solve. We have demos and query. Need infer transformation rule. Let's systematically analyze demos with poss",
+      "note": "Final/content channel continues unresolved analysis, ends without final prediction JSON, and finish is length. No valid grid is being discarded solely due EOS. Usage lacks reasoning-token/channel-boundary counts, so the 40960 request field does not establish a measured hard reasoning boundary."
+    },
+    {
+      "task_id": "b7fb29bc",
+      "affected_queries": 1,
+      "finish_reason": "length",
+      "completion_tokens": 49152,
+      "validation_error": "Expecting value: line 1 column 1 (char 0)",
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-b7fb29bc.reply.json",
+        "sha256": "168887d36fe373e277dca631f860c66b13bd73b1b88dace80ed6edd1b4a3e42d"
+      },
+      "content_chars": 26916,
+      "reasoning_chars": 117036,
+      "code_fence_count": 0,
+      "frozen_output_modified": false,
+      "category": "total_token_limit_with_analysis_in_final_channel",
+      "content_opening_excerpt": "\nWe need answer final JSON only. But need ensure correct output. Need resolve rule. Let's continue carefully. We have promising anchor squares parity rule? Need test and apply to query. But not fully consistent. Need infer exact rule from demos,",
+      "note": "Final/content channel continues unresolved analysis, ends without final prediction JSON, and finish is length. No valid grid is being discarded solely due EOS. Usage lacks reasoning-token/channel-boundary counts, so the 40960 request field does not establish a measured hard reasoning boundary."
+    },
+    {
+      "task_id": "c3fa4749",
+      "affected_queries": 2,
+      "finish_reason": "length",
+      "completion_tokens": 49152,
+      "validation_error": "Expecting value: line 1 column 1 (char 0)",
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-c3fa4749.reply.json",
+        "sha256": "c0f2ca1055b4928de3f066ce51687b8f62e54bc7bc18bfdf7e1c12068f75ca14"
+      },
+      "content_chars": 16649,
+      "reasoning_chars": 101740,
+      "code_fence_count": 0,
+      "frozen_output_modified": false,
+      "category": "total_token_limit_with_analysis_in_final_channel",
+      "content_opening_excerpt": "\n\nThe user asks for a JSON object with keys query0 and query1, each a complete output grid. I need solve puzzle. I have started analysis but cut off. Need continue carefully. I have a plausible rule: boundary pockets. Need apply to queries. I ne",
+      "note": "Final/content channel continues unresolved analysis, ends without final prediction JSON, and finish is length. No valid grid is being discarded solely due EOS. Usage lacks reasoning-token/channel-boundary counts, so the 40960 request field does not establish a measured hard reasoning boundary."
+    }
+  ],
+  "CPU_line": {
+    "tasks_checked": 24,
+    "admitted_tasks": 0,
+    "supported_queries": 0,
+    "elapsed_cpu_wall_seconds_sum": 0.041247,
+    "errors": [],
+    "note": "Zero demo-admitted CPU tasks means C24 cannot measure the line rule contribution. M0/M1 labels do not create an independent gain comparison."
+  },
+  "token_budget_evidence": {
+    "preflight_records": 24,
+    "status_counts": {
+      "unchanged": 24
+    },
+    "note": "All 24 effective request budgets remained 49152/40960 with 8192 final-channel allowance. Three final channels nonetheless continued analysis until the total cap. No returned reasoning-token boundary counts permit proving exact 40960 enforcement."
+  },
+  "fixed_query_scoring": {
+    "status": "not_scored_here_parent_scores_all_frozen_outputs",
+    "denominator": 26,
+    "EM_at_2": null,
+    "unmatched_query_count": null,
+    "note": "Full manifest membership and runtime denominator are verified here; official version/input matching and exact accuracy belong to the separate scoring step."
+  },
+  "query_gold_read_by_analysis": false,
+  "new_experiment_run": false,
+  "frozen_predictions_modified": false,
+  "source_modified": false
+}

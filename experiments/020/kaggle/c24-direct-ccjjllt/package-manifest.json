@@ -1,0 +1,29 @@
+{
+  "owner": "ccjjllt",
+  "slug": "arc2-020-c24-deep-direct",
+  "cohort": "experiments/020/cohorts/shards/c24-ccjjllt-challenges.json",
+  "p0_only": false,
+  "generation_mode": "direct",
+  "direct_attempts": 1,
+  "result_label": "paired",
+  "frozen_initial": null,
+  "gen_max": 49152,
+  "thinking_max": 40960,
+  "mtp_tokens": 2,
+  "speculative_config": {
+    "method": "mtp",
+    "num_speculative_tokens": 2
+  },
+  "mamba_cache_mode": "align",
+  "policy": "M1",
+  "source_sha256": {
+    "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+    "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+    "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+    "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+    "vdriver020_submit.py": "11589dbe9bfa91707dc0c91db23137e57428d28ce4b5324c711ac7ff0b6c3e4f",
+    "cohort-challenges.json": "2e72f3cc7d91bb90f1f106ae36a38fb941af3d81f94683546f3f9d1f467db3b8"
+  },
+  "notebook_sha256": "b8344c81fa55fab692834b8066a84db1b64bdab86bf948d911d397822229baae",
+  "session_seconds": 3600
+}

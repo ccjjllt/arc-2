@@ -1,0 +1,66 @@
+{
+  "recorded_at_utc": "2026-10-20T14:42:57.652123+00:00",
+  "policy_freeze": "experiments/020/execution/c24-policy-freeze-v2.json",
+  "carrier_evidence": "experiments/020/execution/runtime-recovery-carriers.json",
+  "query_gold_read": false,
+  "competition_submission": false,
+  "shards": {
+    "ccjjllt": {
+      "kernel_ref": "ccjjllt/arc2-020-c24-deep-direct",
+      "version": 3,
+      "status_checked": "COMPLETE",
+      "status_checked_at_utc": "2026-10-20T15:18:09Z",
+      "first_code_cell_utc": "2026-10-20T14:39:14Z",
+      "notebook_sha256": "ac21debb621200f5867fb88b680e628338269b334f773d189f5bddc5a9409f8b",
+      "source_sha256": {
+        "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+        "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+        "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+        "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+        "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124",
+        "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+        "cohort-challenges.json": "2e72f3cc7d91bb90f1f106ae36a38fb941af3d81f94683546f3f9d1f467db3b8"
+      },
+      "session_seconds": 3600,
+      "runtime_kernel": "ccjjllt/arc2-020-runtime-recovery",
+      "consumer_mount_confirmed": true,
+      "runtime_summary": "experiments/020/execution/c24-ccjjllt-runtime-summary.json"
+    },
+    "qingyu1232": {
+      "kernel_ref": "qingyu1232/arc2-020-c24-deep-direct",
+      "version": 1,
+      "status_checked": "COMPLETE",
+      "status_checked_at_utc": "2026-10-20T15:49:42Z",
+      "first_code_cell_utc": "2026-10-20T14:43:01Z",
+      "notebook_sha256": "b58a477760877d14554bc98929b2dd8ed3072a3fbed5604e9852bb40a5e089fe",
+      "source_sha256": {
+        "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+        "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+        "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+        "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+        "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124",
+        "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+        "cohort-challenges.json": "fd713b1d85f1002f4d53a889d7ed7ca06f892d5f1844b930111a9e5701824fd1"
+      },
+      "session_seconds": 6000,
+      "runtime_kernel": "qingyu1232/arc2-020-runtime-recovery",
+      "consumer_mount_confirmed": true,
+      "runtime_summary": "experiments/020/execution/c24-qingyu1232-runtime-summary.json"
+    }
+  },
+  "launch_snapshot_query_gold_read": false,
+  "completion_status_evidence": "Each driver emitted complete_with_evidence / return 0; CLI follow exited, and all frozen output files were downloaded.",
+  "completed_results": {
+    "prediction_freeze": "experiments/020/scoring-c24-v1/prediction-freeze.json",
+    "score_report": "experiments/020/scoring-c24-v1/score-report.json",
+    "runtime_summary": "experiments/020/execution/c24-combined-runtime-summary.json",
+    "exact_queries": 17,
+    "matched_queries": 26,
+    "non_ARC1_exact": 14,
+    "non_ARC1_matched": 22,
+    "official_split": "training",
+    "not_a_Kaggle_score": true,
+    "competition_submission_ref": 57443913,
+    "competition_submission_preceded_C24_scoring": true
+  }
+}

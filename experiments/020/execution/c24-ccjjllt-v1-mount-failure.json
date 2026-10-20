@@ -1,0 +1,16 @@
+{
+  "utc": "2026-10-20T14:09:15.419056+00:00",
+  "kernel": "ccjjllt/arc2-020-c24-deep-direct",
+  "version": 1,
+  "status": "mount_missing",
+  "actual_driver_seconds": 0.498,
+  "model_generation_calls": 0,
+  "before_dataset_source": [
+    "nick2187/qwen38-vllm0272-cu130-wheelhouse-v1"
+  ],
+  "retry_dataset_source": [
+    "nick2187/qwen38-vllm0272-cu130-wheelhouse-v1/1"
+  ],
+  "reason": "Service rejected unversioned dataset as invalid; retry exact v1 ref supported by official SaveKernelRequest. Same fixed wheel/requirements and prediction policy.",
+  "query_gold_read": false
+}

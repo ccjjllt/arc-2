@@ -1,0 +1,658 @@
+{
+  "status": "complete_runtime_analysis_no_query_gold",
+  "scope": "This is the ccjjllt slice of C24 only: 8 tasks / 8 queries, not the full 24-task confirmation. Only fixed run outputs, generated replies, source hashes, hardware samples and server logs were read. No official query answers, solutions or scoring ledger were read; no scoring, output repair, model call or source edit was performed.",
+  "kernel_ref": "ccjjllt/arc2-020-c24-deep-direct",
+  "kernel_version": 3,
+  "local_run_status": "complete_with_evidence",
+  "owner": "ccjjllt",
+  "tasks": 8,
+  "queries": 8,
+  "task_ids": [
+    "6bcdb01e",
+    "9841fdad",
+    "984d8a3e",
+    "9c56f360",
+    "a416fc5b",
+    "ad173014",
+    "dce56571",
+    "df9fd884"
+  ],
+  "sources": {
+    "run": {
+      "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/run.json",
+      "sha256": "7a2c3dc3da787becdd702bd88587253f1fea08a3b17131298eb6d1d59c625008"
+    },
+    "gpu_samples": {
+      "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/gpu-samples.jsonl",
+      "sha256": "8dcf5b564e46254df65aea39a76dc4184726eba60c39481365ad4e959ec9ae5d"
+    },
+    "vllm_server_log": {
+      "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/vllm-server.log",
+      "sha256": "9473bcd1f573ebff28d002b699912a20a225b2ec98d03c3a24db966873ea0320"
+    },
+    "submission_M0": {
+      "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/submission-M0.json",
+      "sha256": "376d66b32e64446298198aedf319e33c2f75a0a44eb30a2cc4542a30148772e0"
+    },
+    "submission_M1": {
+      "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/submission-M1.json",
+      "sha256": "376d66b32e64446298198aedf319e33c2f75a0a44eb30a2cc4542a30148772e0"
+    }
+  },
+  "generation_mode": "direct",
+  "recorded_result_label": "paired",
+  "comparison_note": "Although the run label is paired, both slots/policies use one P0 direct prediction plus the same optional CPU rule. CPU applicability is zero here and M0/M1 are identical. This is not an independent two-model or paired-gain comparison.",
+  "config": {
+    "tp": 4,
+    "concurrency": 8,
+    "generation_max": 49152,
+    "thinking_max": 40960,
+    "generation_mode": "direct",
+    "line_complement": true,
+    "direct_attempts": 1,
+    "direct_context_margin_tokens": 128,
+    "effort": "xhigh",
+    "sampling": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20
+    },
+    "seeds": {
+      "P0": 5101,
+      "F": 5103,
+      "R": 5105
+    },
+    "mtp_tokens": 2,
+    "speculative_config": {
+      "method": "mtp",
+      "num_speculative_tokens": 2
+    },
+    "mamba_cache_mode": "align",
+    "near_rule": {
+      "exact_min": 0.5,
+      "shape_min": 0.75,
+      "foreground_min": 0.8,
+      "changed_min": 0.8
+    },
+    "cpu_scope": "disabled for direct grids",
+    "cpu_max_variants": 32,
+    "cpu_max_seconds": 30,
+    "vllm_wheel_sha256": "5cbeedeb8266362ef935775c4c33203e4dab74e8da1649a977bae833df62304a"
+  },
+  "executed_source_sha256": {
+    "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124",
+    "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+    "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+    "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+    "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+    "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e"
+  },
+  "input_challenges_sha256": "2e72f3cc7d91bb90f1f106ae36a38fb941af3d81f94683546f3f9d1f467db3b8",
+  "actual_hardware": {
+    "python": "3.12.3",
+    "nvidia_smi": "NVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB",
+    "pip_pkgs": {}
+  },
+  "model_root": "/kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1",
+  "runtime_requirements_sha256": "ebb525ba1fda0bc955fc19fe06fa381dd994e5b9a26a6e154a7ecd923f85d133",
+  "runtime_install": {
+    "requirements_return_code": 0,
+    "wheel_return_code": 0,
+    "import_check": {
+      "rc": 0,
+      "out": "0.27.2rc1.dev91+g1f7427bc0\n"
+    },
+    "wheel_hash_record": {
+      "status": "match",
+      "observed": "5cbeedeb8266362e"
+    }
+  },
+  "timing": {
+    "start_utc": "2026-10-20T14:39:14.452215+00:00",
+    "run_finished_utc": "2026-10-20T15:18:06.603105+00:00",
+    "session_wall_seconds": 2332.318,
+    "install_seconds_subset": 269.4,
+    "install_load_seconds_inclusive": 719.5,
+    "generation_wave_wall_seconds": 1612.55,
+    "generation_aggregate_completion_tokens_per_second": 144.08,
+    "request_seconds_sum_not_wall": 8879.7,
+    "session_budget_seconds": 3600.0,
+    "note": "install_load includes installation. Concurrent request seconds overlap and are not session wall time."
+  },
+  "tokens": {
+    "physical_calls": 8,
+    "completion_tokens": 232342,
+    "prompt_tokens_sum": 19525,
+    "usage_missing": 0,
+    "finish_reasons": {
+      "stop": 8
+    },
+    "length_truncated_calls": 0,
+    "completion_token_min": 5973,
+    "completion_token_max": 41606
+  },
+  "token_budget_evidence": {
+    "preflight_records": 8,
+    "preflight_status_counts": {
+      "unchanged": 8
+    },
+    "effective_max_tokens_unique": [
+      49152
+    ],
+    "effective_thinking_budget_unique": [
+      40960
+    ],
+    "effective_final_output_space_tokens_unique": [
+      8192
+    ],
+    "note": "All eight requests retained 49152/40960 after actual prompt-token preflight; none was context-clipped. This verifies budget calculation and sending, not a measured reasoning-token hard boundary: returned usage has no reasoning_tokens breakdown. stop does not ensure a valid rectangular grid."
+  },
+  "actual_concurrency": {
+    "configured_client_and_service_max": 8,
+    "wave_client_limit": 8,
+    "peak_outstanding_requests": 8,
+    "time_weighted_outstanding_requests": 5.506833174056947,
+    "first_issue_to_last_done_seconds": 1612.501,
+    "server_running_request_log_samples": 161,
+    "server_running_request_sample_peak": 8,
+    "server_running_request_sample_mean": 5.490683229813665,
+    "server_running_request_sample_histogram": {
+      "1": 6,
+      "2": 13,
+      "3": 12,
+      "4": 1,
+      "5": 8,
+      "6": 96,
+      "7": 4,
+      "8": 21
+    },
+    "note": "Client mean integrates issued-to-done intervals; server mean is the unweighted sampled Running count, not a measurement of simultaneous token execution."
+  },
+  "GPU": {
+    "generation_sample_rows": 318,
+    "generation_GPU_observations": 1272,
+    "generation_utilization_sample_mean_percent": 99.66430817610063,
+    "per_GPU_utilization_sample_mean_percent": {
+      "0": 99.68553459119497,
+      "1": 99.67924528301887,
+      "2": 99.66666666666667,
+      "3": 99.62578616352201
+    },
+    "per_GPU_memory_used_peak_MiB": {
+      "0": 20223.0,
+      "1": 20223.0,
+      "2": 20223.0,
+      "3": 20223.0
+    },
+    "note": "nvidia-smi utilization.gpu sampled in the generation window. Busy time is not a measure of useful reasoning, correctness or theoretical GPU efficiency."
+  },
+  "MTP_observed": {
+    "logger_intervals": 161,
+    "accepted_draft_tokens_logged": 132595,
+    "drafted_tokens_logged": 199206,
+    "weighted_logged_draft_acceptance_percent": 66.56175014808791,
+    "reported_mean_acceptance_length_min": 1.58,
+    "reported_mean_acceptance_length_median": 2.33,
+    "reported_mean_acceptance_length_max": 2.86,
+    "log_examples": [
+      "(APIServer pid=224) INFO 10-20 14:51:22 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 1.58, Accepted throughput: 0.60 tokens/s, Drafted throughput: 2.05 tokens/s, Accepted: 7 tokens, Drafted: 24 tokens, Per-position acceptance rate: 0.417, 0.167, Avg Draft acceptance rate: 29.2%",
+      "(APIServer pid=224) INFO 10-20 15:04:42 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.25, Accepted throughput: 80.79 tokens/s, Drafted throughput: 129.59 tokens/s, Accepted: 808 tokens, Drafted: 1296 tokens, Per-position acceptance rate: 0.744, 0.503, Avg Draft acceptance rate: 62.3%",
+      "(APIServer pid=224) INFO 10-20 15:18:02 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.50, Accepted throughput: 19.10 tokens/s, Drafted throughput: 25.40 tokens/s, Accepted: 191 tokens, Drafted: 254 tokens, Per-position acceptance rate: 0.819, 0.685, Avg Draft acceptance rate: 75.2%"
+    ],
+    "note": "Aggregates observed periodic log intervals rather than an exact generation-total counter. Draft acceptance is not a speed multiplier, and this run has no same-prompt MTP-off A/B."
+  },
+  "coverage": {
+    "p0_funnel_recorded": {
+      "planned": 8,
+      "returned_slots": 8,
+      "http_issued": 8,
+      "generation_finished": 8,
+      "admitted_programs": 0,
+      "admitted_direct_predictions": 7,
+      "all_demos_pass": 0
+    },
+    "admitted_direct_tasks": 7,
+    "legal_query_outputs": 7,
+    "placeholder_queries": 1,
+    "M0_M1_identical": true,
+    "policies": {
+      "M0": {
+        "tasks": 8,
+        "queries": 8,
+        "format_ok": 8,
+        "single_covered": 7,
+        "double_distinct": 0,
+        "placeholder": 1,
+        "updated_keys": 7
+      },
+      "M1": {
+        "tasks": 8,
+        "queries": 8,
+        "format_ok": 8,
+        "single_covered": 7,
+        "double_distinct": 0,
+        "placeholder": 1,
+        "updated_keys": 7
+      }
+    },
+    "final_format_validation": {
+      "M0": [
+        true,
+        {
+          "tasks": 8,
+          "queries": 8
+        }
+      ],
+      "M1": [
+        true,
+        {
+          "tasks": 8,
+          "queries": 8
+        }
+      ]
+    },
+    "demo_exact": null,
+    "all_demo_pass": null,
+    "note": "Direct output has unknown demo evidence; recorded funnel all_demos_pass=0 is not a measured demo failure. Seven legal predictions and one placeholder are output coverage only, not correct/incorrect answers."
+  },
+  "CPU_line": {
+    "enabled": true,
+    "status": "complete",
+    "tasks": {
+      "6bcdb01e": {
+        "demo_total": 2,
+        "demo_matches": 0,
+        "changed_demo_count": 2,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "9c56f360": {
+        "demo_total": 3,
+        "demo_matches": 0,
+        "changed_demo_count": 3,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "df9fd884": {
+        "demo_total": 3,
+        "demo_matches": 0,
+        "changed_demo_count": 3,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "984d8a3e": {
+        "demo_total": 2,
+        "demo_matches": 0,
+        "changed_demo_count": 2,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "dce56571": {
+        "demo_total": 3,
+        "demo_matches": 0,
+        "changed_demo_count": 3,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "a416fc5b": {
+        "demo_total": 3,
+        "demo_matches": 0,
+        "changed_demo_count": 3,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "9841fdad": {
+        "demo_total": 2,
+        "demo_matches": 0,
+        "changed_demo_count": 2,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "ad173014": {
+        "demo_total": 3,
+        "demo_matches": 0,
+        "changed_demo_count": 3,
+        "admitted": false,
+        "supported_queries": 0
+      }
+    },
+    "admitted_task_count": 0,
+    "supported_query_count": 0,
+    "errors": [],
+    "query_gold_used": false,
+    "solver_source_sha256": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+    "elapsed_cpu_wall_seconds": 0.0127
+  },
+  "policy_costs": {
+    "M0": {
+      "logical_calls": 8,
+      "completion_tokens": 232342,
+      "request_seconds_sum_not_wall": 8879.7,
+      "cpu_repair_seconds": 0
+    },
+    "M1": {
+      "logical_calls": 8,
+      "completion_tokens": 232342,
+      "request_seconds_sum_not_wall": 8879.7,
+      "cpu_repair_seconds": 0
+    }
+  },
+  "callback_errors": [],
+  "per_task": [
+    {
+      "task_id": "9c56f360",
+      "arm": "P0",
+      "completion_tokens": 5973,
+      "prompt_tokens": 1027,
+      "request_seconds": 219.0,
+      "time_to_first_token_seconds": 4.14,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "query_count": 1,
+      "validation_error": null,
+      "content_chars": 319,
+      "reasoning_chars": 15142,
+      "demo_evidence": "unknown",
+      "source_reply": {
+        "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-9c56f360.reply.json",
+        "sha256": "6f0aaffa300e98a332a975b7fca59f291a8f8a0b2a6e549d2128f2c4aa53f8c2"
+      },
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 1027,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 64381,
+        "effective_final_output_space_tokens": 8192
+      }
+    },
+    {
+      "task_id": "dce56571",
+      "arm": "P0",
+      "completion_tokens": 7102,
+      "prompt_tokens": 1849,
+      "request_seconds": 250.7,
+      "time_to_first_token_seconds": 8.02,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "query_count": 1,
+      "validation_error": null,
+      "content_chars": 715,
+      "reasoning_chars": 15235,
+      "demo_evidence": "unknown",
+      "source_reply": {
+        "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-dce56571.reply.json",
+        "sha256": "56658580ed32a0dd9ffbfda87bd193c5f51686a70c48463663db05b94e4aeed2"
+      },
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 1849,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 63559,
+        "effective_final_output_space_tokens": 8192
+      }
+    },
+    {
+      "task_id": "9841fdad",
+      "arm": "P0",
+      "completion_tokens": 31774,
+      "prompt_tokens": 3170,
+      "request_seconds": 1217.3,
+      "time_to_first_token_seconds": 10.7,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "query_count": 1,
+      "validation_error": null,
+      "content_chars": 728,
+      "reasoning_chars": 92088,
+      "demo_evidence": "unknown",
+      "source_reply": {
+        "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-9841fdad.reply.json",
+        "sha256": "dd137df5ab7e25769e4d876dfa06630851b19dbd4210d83da44477945acb557c"
+      },
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 3170,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 62238,
+        "effective_final_output_space_tokens": 8192
+      }
+    },
+    {
+      "task_id": "a416fc5b",
+      "arm": "P0",
+      "completion_tokens": 33229,
+      "prompt_tokens": 2149,
+      "request_seconds": 1294.8,
+      "time_to_first_token_seconds": 8.82,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "query_count": 1,
+      "validation_error": null,
+      "content_chars": 279,
+      "reasoning_chars": 98732,
+      "demo_evidence": "unknown",
+      "source_reply": {
+        "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-a416fc5b.reply.json",
+        "sha256": "ec3bf6c7043f1a1b574d76f75b0cde5b4e2bf2c9765384566358622c12fdaaf7"
+      },
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 2149,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 63259,
+        "effective_final_output_space_tokens": 8192
+      }
+    },
+    {
+      "task_id": "ad173014",
+      "arm": "P0",
+      "completion_tokens": 37175,
+      "prompt_tokens": 7955,
+      "request_seconds": 1301.4,
+      "time_to_first_token_seconds": 15.0,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "query_count": 1,
+      "validation_error": null,
+      "content_chars": 1669,
+      "reasoning_chars": 77682,
+      "demo_evidence": "unknown",
+      "source_reply": {
+        "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-ad173014.reply.json",
+        "sha256": "75e533f18fb60e919d6b19f0a63822438c02c7e9cbb47c3b66a65c4c27b25fba"
+      },
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 7955,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 57453,
+        "effective_final_output_space_tokens": 8192
+      }
+    },
+    {
+      "task_id": "df9fd884",
+      "arm": "P0",
+      "completion_tokens": 34300,
+      "prompt_tokens": 1217,
+      "request_seconds": 1426.8,
+      "time_to_first_token_seconds": 5.99,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "query_count": 1,
+      "validation_error": null,
+      "content_chars": 159,
+      "reasoning_chars": 109482,
+      "demo_evidence": "unknown",
+      "source_reply": {
+        "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-df9fd884.reply.json",
+        "sha256": "77094257f6fd3d6e4b9eb354192c3bd24dff90c78a7c8cfd7dbbc4d14a3d8ce7"
+      },
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 1217,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 64191,
+        "effective_final_output_space_tokens": 8192
+      }
+    },
+    {
+      "task_id": "984d8a3e",
+      "arm": "P0",
+      "completion_tokens": 41606,
+      "prompt_tokens": 1556,
+      "request_seconds": 1557.2,
+      "time_to_first_token_seconds": 5.99,
+      "finish_reason": "stop",
+      "parse_status": "direct_invalid",
+      "generation_admitted": false,
+      "legal_query_outputs": 0,
+      "query_count": 1,
+      "validation_error": "Grid must be rectangular",
+      "content_chars": 720,
+      "reasoning_chars": 103822,
+      "demo_evidence": "unknown",
+      "source_reply": {
+        "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-984d8a3e.reply.json",
+        "sha256": "628538afbc1ca7bf44e68a17d0c8a9a128e6ee1ee97dd06bceb71f97e8508c09"
+      },
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 1556,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 63852,
+        "effective_final_output_space_tokens": 8192
+      }
+    },
+    {
+      "task_id": "6bcdb01e",
+      "arm": "P0",
+      "completion_tokens": 41183,
+      "prompt_tokens": 602,
+      "request_seconds": 1612.5,
+      "time_to_first_token_seconds": 1.46,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "query_count": 1,
+      "validation_error": null,
+      "content_chars": 261,
+      "reasoning_chars": 115402,
+      "demo_evidence": "unknown",
+      "source_reply": {
+        "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-6bcdb01e.reply.json",
+        "sha256": "71b62b70fd34ba85457939cfe23b767315ce30f4ac7c199f47899f92af312843"
+      },
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 602,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 64806,
+        "effective_final_output_space_tokens": 8192
+      }
+    }
+  ],
+  "invalid_output_984d8a3e": {
+    "finish_reason": "stop",
+    "completion_tokens": 41606,
+    "parse_status": "direct_invalid",
+    "validation_error": "Grid must be rectangular",
+    "json_closed_and_parseable": true,
+    "query_grid_rows": 17,
+    "row_widths_zero_based_order": [
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      18,
+      17,
+      17,
+      17,
+      17
+    ],
+    "row_width_histogram": {
+      "17": 16,
+      "18": 1
+    },
+    "note": "The fixed generated JSON has inconsistent row widths. It is not a token-length truncation or missing final JSON. No row trimming, padding or other output repair was performed; the existing placeholder remains."
+  },
+  "fixed_query_scoring": {
+    "status": "not_scored_no_query_gold_read",
+    "denominator": 8,
+    "EM_at_2": null,
+    "note": "Wait for all C24 predictions to be frozen and let parent perform the one confirmation score. Do not infer correctness from admission or completion."
+  },
+  "query_gold_used_by_run": false,
+  "query_gold_read_by_analysis": false,
+  "new_experiment_run": false,
+  "source_modified": false,
+  "frozen_predictions_modified": false
+}

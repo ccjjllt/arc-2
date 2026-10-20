@@ -1,0 +1,1055 @@
+{
+  "status": "complete_runtime_analysis_no_query_gold",
+  "scope": "Fixed C24 slice runtime metadata, generated replies/predictions and hardware/server logs only. No official query solutions, answer ledger or scoring artifact read; no scoring, source edit, output repair, generated-program execution or new model call.",
+  "kernel_ref": "qingyu1232/arc2-020-c24-deep-direct",
+  "kernel_version": 1,
+  "local_run_status": "complete_with_evidence",
+  "owner": "qingyu1232",
+  "tasks": 16,
+  "queries": 18,
+  "task_ids": [
+    "52fd389e",
+    "54dc2872",
+    "66f2d22f",
+    "68bc2e87",
+    "7e4d4f7c",
+    "878187ab",
+    "8886d717",
+    "9344f635",
+    "a644e277",
+    "aa62e3f4",
+    "aaef0977",
+    "b7fb29bc",
+    "c3fa4749",
+    "cc9053aa",
+    "e45ef808",
+    "ff2825db"
+  ],
+  "sources": {
+    "run": {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/run.json",
+      "sha256": "9d0fed092b2859f232840720a2643b717fab0281e9da24ffbf6765145539f723"
+    },
+    "gpu_samples": {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/gpu-samples.jsonl",
+      "sha256": "e21e9aabd17c30c0ef23bbaae76ecd02f86bdec3afa5ace12f2739f96dd80f05"
+    },
+    "vllm_server_log": {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/vllm-server.log",
+      "sha256": "9b183ed4faee9ad294d9cd6283b02f2d4d2ef391127a4c96d69ab7e5ba3b31db"
+    },
+    "submission_M0": {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/submission-M0.json",
+      "sha256": "4b2ac5188c6722cd80a717cc56a5f7cae196fc4449d3cb5ce860406c1f94ffd6"
+    },
+    "submission_M1": {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/submission-M1.json",
+      "sha256": "4b2ac5188c6722cd80a717cc56a5f7cae196fc4449d3cb5ce860406c1f94ffd6"
+    },
+    "C24_input_manifest": {
+      "path": "experiments/020/cohorts/confirmation-c24-manifest.json",
+      "sha256": "6859e458e83ad49f5c038dbb6b59fded42f567dcc86c0043e809b7528cca3300"
+    }
+  },
+  "generation_mode": "direct",
+  "recorded_result_label": "paired",
+  "comparison_note": "One direct P0 plus the same optional CPU line candidate is used by both policies. CPU applicability is zero, so M0/M1 are identical; the paired run label is not evidence of independent strategies or a gain comparison.",
+  "config": {
+    "tp": 4,
+    "concurrency": 8,
+    "generation_max": 49152,
+    "thinking_max": 40960,
+    "generation_mode": "direct",
+    "line_complement": true,
+    "direct_attempts": 1,
+    "direct_context_margin_tokens": 128,
+    "effort": "xhigh",
+    "sampling": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20
+    },
+    "seeds": {
+      "P0": 5101,
+      "F": 5103,
+      "R": 5105
+    },
+    "mtp_tokens": 2,
+    "speculative_config": {
+      "method": "mtp",
+      "num_speculative_tokens": 2
+    },
+    "mamba_cache_mode": "align",
+    "near_rule": {
+      "exact_min": 0.5,
+      "shape_min": 0.75,
+      "foreground_min": 0.8,
+      "changed_min": 0.8
+    },
+    "cpu_scope": "disabled for direct grids",
+    "cpu_max_variants": 32,
+    "cpu_max_seconds": 30,
+    "vllm_wheel_sha256": "5cbeedeb8266362ef935775c4c33203e4dab74e8da1649a977bae833df62304a"
+  },
+  "executed_source_sha256": {
+    "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+    "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+    "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+    "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+    "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+    "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+  },
+  "input_challenges_sha256": "fd713b1d85f1002f4d53a889d7ed7ca06f892d5f1844b930111a9e5701824fd1",
+  "actual_hardware": {
+    "python": "3.12.3",
+    "nvidia_smi": "NVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB",
+    "pip_pkgs": {}
+  },
+  "model_root": "/kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1",
+  "runtime_requirements_sha256": "ebb525ba1fda0bc955fc19fe06fa381dd994e5b9a26a6e154a7ecd923f85d133",
+  "runtime_install": {
+    "requirements_return_code": 0,
+    "wheel_return_code": 0,
+    "import_check": {
+      "rc": 0,
+      "out": "0.27.2rc1.dev91+g1f7427bc0\n"
+    },
+    "wheel_hash_record": {
+      "status": "match",
+      "observed": "5cbeedeb8266362e"
+    }
+  },
+  "timing": {
+    "start_utc": "2026-10-20T14:43:01.289144+00:00",
+    "run_finished_utc": "2026-10-20T15:49:39.312493+00:00",
+    "session_wall_seconds": 3998.19,
+    "install_seconds_subset": 316.6,
+    "install_load_seconds_inclusive": 786.6,
+    "generation_wave_wall_seconds": 3211.15,
+    "generation_aggregate_completion_tokens_per_second": 139.51,
+    "request_seconds_sum_not_wall": 17896.8,
+    "session_budget_seconds": 6000.0,
+    "note": "install_load includes installation. Overlapping concurrent request seconds are not session wall time."
+  },
+  "tokens": {
+    "physical_calls": 16,
+    "completion_tokens": 447996,
+    "prompt_tokens_sum": 45033,
+    "usage_missing": 0,
+    "finish_reasons": {
+      "stop": 13,
+      "length": 3
+    },
+    "length_truncated_calls": 3,
+    "completion_token_min": 5929,
+    "completion_token_max": 49152
+  },
+  "token_budget_evidence": {
+    "preflight_records": 16,
+    "preflight_status_counts": {
+      "unchanged": 16
+    },
+    "effective_max_tokens_unique": [
+      49152
+    ],
+    "effective_thinking_budget_unique": [
+      40960
+    ],
+    "effective_final_output_space_tokens_unique": [
+      8192
+    ],
+    "note": "Every request retains 49152/40960 after prompt-token preflight. Returned usage lacks reasoning_tokens or channel transition positions; the sent field is not a measurement of a hard reasoning boundary or a guarantee of a usable final answer."
+  },
+  "actual_concurrency": {
+    "configured_client_and_service_max": 8,
+    "wave_client_limit": 8,
+    "peak_outstanding_requests": 8,
+    "time_weighted_outstanding_requests": 5.573407206529376,
+    "first_issue_to_last_done_seconds": 3211.0879999999997,
+    "server_running_request_log_samples": 321,
+    "server_running_request_sample_peak": 8,
+    "server_running_request_sample_mean": 5.56386292834891,
+    "server_running_request_sample_histogram": {
+      "1": 43,
+      "2": 41,
+      "3": 27,
+      "4": 4,
+      "5": 3,
+      "6": 18,
+      "7": 39,
+      "8": 146
+    },
+    "note": "Client mean integrates actual issued-to-done HTTP intervals, excluding local queue wait. Server mean is an unweighted sampled Running count, not a measure of simultaneous token execution."
+  },
+  "GPU": {
+    "generation_sample_rows": 634,
+    "generation_GPU_observations": 2536,
+    "generation_utilization_sample_mean_percent": 99.6845425867508,
+    "per_GPU_utilization_sample_mean_percent": {
+      "0": 99.6845425867508,
+      "1": 99.6845425867508,
+      "2": 99.6845425867508,
+      "3": 99.6845425867508
+    },
+    "per_GPU_memory_used_peak_MiB": {
+      "0": 20189.0,
+      "1": 20189.0,
+      "2": 20189.0,
+      "3": 20189.0
+    },
+    "note": "nvidia-smi utilization.gpu during generation; not correctness, useful reasoning or theoretical GPU efficiency."
+  },
+  "MTP_observed": {
+    "logger_intervals": 321,
+    "accepted_draft_tokens_logged": 257681,
+    "drafted_tokens_logged": 380452,
+    "weighted_logged_draft_acceptance_percent": 67.73022615205072,
+    "reported_mean_acceptance_length_min": 1.84,
+    "reported_mean_acceptance_length_median": 2.35,
+    "reported_mean_acceptance_length_max": 2.98,
+    "log_examples": [
+      "(APIServer pid=224) INFO 10-20 14:56:15 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.11, Accepted throughput: 0.85 tokens/s, Drafted throughput: 1.54 tokens/s, Accepted: 10 tokens, Drafted: 18 tokens, Per-position acceptance rate: 0.778, 0.333, Avg Draft acceptance rate: 55.6%",
+      "(APIServer pid=224) INFO 10-20 15:22:56 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.45, Accepted throughput: 93.60 tokens/s, Drafted throughput: 128.79 tokens/s, Accepted: 936 tokens, Drafted: 1288 tokens, Per-position acceptance rate: 0.795, 0.658, Avg Draft acceptance rate: 72.7%",
+      "(APIServer pid=224) INFO 10-20 15:49:36 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.53, Accepted throughput: 16.70 tokens/s, Drafted throughput: 21.80 tokens/s, Accepted: 167 tokens, Drafted: 218 tokens, Per-position acceptance rate: 0.835, 0.697, Avg Draft acceptance rate: 76.6%"
+    ],
+    "note": "Sum of observed periodic logger intervals, not an exact generation-total counter. Draft acceptance is not a speed multiplier; no same-prompt MTP-off A/B was run."
+  },
+  "coverage": {
+    "p0_funnel_recorded": {
+      "planned": 16,
+      "returned_slots": 16,
+      "http_issued": 16,
+      "generation_finished": 16,
+      "admitted_programs": 0,
+      "admitted_direct_predictions": 13,
+      "all_demos_pass": 0
+    },
+    "admitted_direct_tasks": 13,
+    "legal_query_outputs": 14,
+    "placeholder_queries": 4,
+    "M0_M1_identical": true,
+    "policies": {
+      "M0": {
+        "tasks": 16,
+        "queries": 18,
+        "format_ok": 18,
+        "single_covered": 14,
+        "double_distinct": 0,
+        "placeholder": 4,
+        "updated_keys": 14
+      },
+      "M1": {
+        "tasks": 16,
+        "queries": 18,
+        "format_ok": 18,
+        "single_covered": 14,
+        "double_distinct": 0,
+        "placeholder": 4,
+        "updated_keys": 14
+      }
+    },
+    "final_format_validation": {
+      "M0": [
+        true,
+        {
+          "tasks": 16,
+          "queries": 18
+        }
+      ],
+      "M1": [
+        true,
+        {
+          "tasks": 16,
+          "queries": 18
+        }
+      ]
+    },
+    "demo_exact": null,
+    "all_demo_pass": null,
+    "note": "Direct output has unknown demo evidence; funnel all_demos_pass=0 is not measured demo failure. Admission/format and query coverage do not measure query correctness."
+  },
+  "CPU_line": {
+    "enabled": true,
+    "status": "complete",
+    "tasks": {
+      "aaef0977": {
+        "demo_total": 2,
+        "demo_matches": 0,
+        "changed_demo_count": 2,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "66f2d22f": {
+        "demo_total": 4,
+        "demo_matches": 0,
+        "changed_demo_count": 4,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "9344f635": {
+        "demo_total": 3,
+        "demo_matches": 0,
+        "changed_demo_count": 3,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "cc9053aa": {
+        "demo_total": 3,
+        "demo_matches": 0,
+        "changed_demo_count": 3,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "7e4d4f7c": {
+        "demo_total": 4,
+        "demo_matches": 0,
+        "changed_demo_count": 4,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "aa62e3f4": {
+        "demo_total": 2,
+        "demo_matches": 0,
+        "changed_demo_count": 2,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "e45ef808": {
+        "demo_total": 2,
+        "demo_matches": 0,
+        "changed_demo_count": 2,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "54dc2872": {
+        "demo_total": 2,
+        "demo_matches": 0,
+        "changed_demo_count": 2,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "ff2825db": {
+        "demo_total": 3,
+        "demo_matches": 0,
+        "changed_demo_count": 3,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "8886d717": {
+        "demo_total": 3,
+        "demo_matches": 0,
+        "changed_demo_count": 3,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "878187ab": {
+        "demo_total": 2,
+        "demo_matches": 0,
+        "changed_demo_count": 2,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "a644e277": {
+        "demo_total": 2,
+        "demo_matches": 0,
+        "changed_demo_count": 2,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "b7fb29bc": {
+        "demo_total": 3,
+        "demo_matches": 0,
+        "changed_demo_count": 3,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "68bc2e87": {
+        "demo_total": 4,
+        "demo_matches": 0,
+        "changed_demo_count": 4,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "52fd389e": {
+        "demo_total": 3,
+        "demo_matches": 0,
+        "changed_demo_count": 3,
+        "admitted": false,
+        "supported_queries": 0
+      },
+      "c3fa4749": {
+        "demo_total": 3,
+        "demo_matches": 0,
+        "changed_demo_count": 3,
+        "admitted": false,
+        "supported_queries": 0
+      }
+    },
+    "admitted_task_count": 0,
+    "supported_query_count": 0,
+    "errors": [],
+    "query_gold_used": false,
+    "solver_source_sha256": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+    "elapsed_cpu_wall_seconds": 0.028547
+  },
+  "policy_costs": {
+    "M0": {
+      "logical_calls": 16,
+      "completion_tokens": 447996,
+      "request_seconds_sum_not_wall": 17896.8,
+      "cpu_repair_seconds": 0
+    },
+    "M1": {
+      "logical_calls": 16,
+      "completion_tokens": 447996,
+      "request_seconds_sum_not_wall": 17896.8,
+      "cpu_repair_seconds": 0
+    }
+  },
+  "callback_errors": [],
+  "per_task": [
+    {
+      "task_id": "7e4d4f7c",
+      "arm": "P0",
+      "query_count": 1,
+      "completion_tokens": 5929,
+      "prompt_tokens": 1258,
+      "request_seconds": 208.5,
+      "time_to_first_token_seconds": 7.41,
+      "queue_wait_seconds": 0.004,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "validation_error": null,
+      "content_chars": 63,
+      "reasoning_chars": 18263,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 1258,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 64150,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-7e4d4f7c.reply.json",
+        "sha256": "91309b5dd0dd59e3811b4d0b0505433b201c7436c0e9c1edc48c1996ef4c7d53"
+      }
+    },
+    {
+      "task_id": "9344f635",
+      "arm": "P0",
+      "query_count": 1,
+      "completion_tokens": 8078,
+      "prompt_tokens": 1161,
+      "request_seconds": 277.9,
+      "time_to_first_token_seconds": 4.41,
+      "queue_wait_seconds": 0.003,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "validation_error": null,
+      "content_chars": 382,
+      "reasoning_chars": 23434,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 1161,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 64247,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-9344f635.reply.json",
+        "sha256": "661638c59f7b0121e4fb3c4ac6249b4a0a1ae3bffec5300fadbf4333467ea462"
+      }
+    },
+    {
+      "task_id": "e45ef808",
+      "arm": "P0",
+      "query_count": 1,
+      "completion_tokens": 11265,
+      "prompt_tokens": 1618,
+      "request_seconds": 374.8,
+      "time_to_first_token_seconds": 9.36,
+      "queue_wait_seconds": 0.005,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "validation_error": null,
+      "content_chars": 326,
+      "reasoning_chars": 28124,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 1618,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 63790,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-e45ef808.reply.json",
+        "sha256": "bf08977e14430bff22c992d5def72c68cb736e5e65702e87fb923e4feb1dd7ef"
+      }
+    },
+    {
+      "task_id": "aaef0977",
+      "arm": "P0",
+      "query_count": 1,
+      "completion_tokens": 11939,
+      "prompt_tokens": 818,
+      "request_seconds": 398.6,
+      "time_to_first_token_seconds": 4.41,
+      "queue_wait_seconds": 0.002,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "validation_error": null,
+      "content_chars": 222,
+      "reasoning_chars": 25443,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 818,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 64590,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-aaef0977.reply.json",
+        "sha256": "d9a675fe152c51e5962846c4bb72582dfa34d22af04c2e8b9ad2312ec768f2d2"
+      }
+    },
+    {
+      "task_id": "ff2825db",
+      "arm": "P0",
+      "query_count": 2,
+      "completion_tokens": 11984,
+      "prompt_tokens": 1793,
+      "request_seconds": 419.0,
+      "time_to_first_token_seconds": 1.26,
+      "queue_wait_seconds": 208.491,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 2,
+      "validation_error": null,
+      "content_chars": 760,
+      "reasoning_chars": 30064,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 1793,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 63615,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-ff2825db.reply.json",
+        "sha256": "cdb9aad68e29c347cedf9e13d3926e96b6a8d1d4722491ea5fc06dcab4d44df6"
+      }
+    },
+    {
+      "task_id": "66f2d22f",
+      "arm": "P0",
+      "query_count": 1,
+      "completion_tokens": 19736,
+      "prompt_tokens": 976,
+      "request_seconds": 663.7,
+      "time_to_first_token_seconds": 1.44,
+      "queue_wait_seconds": 0.002,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "validation_error": null,
+      "content_chars": 104,
+      "reasoning_chars": 42329,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 976,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 64432,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-66f2d22f.reply.json",
+        "sha256": "92b582c4c9ba3d7bd590949c6a83690eff5869e4c8c2f9137935ca7a4609df94"
+      }
+    },
+    {
+      "task_id": "54dc2872",
+      "arm": "P0",
+      "query_count": 1,
+      "completion_tokens": 20100,
+      "prompt_tokens": 1690,
+      "request_seconds": 707.7,
+      "time_to_first_token_seconds": 9.36,
+      "queue_wait_seconds": 0.005,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "validation_error": null,
+      "content_chars": 351,
+      "reasoning_chars": 56534,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 1690,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 63718,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-54dc2872.reply.json",
+        "sha256": "01b0ed944193fa8ae97d06f97db4d5fe5731d73ca3c496d02e898e1878d5167e"
+      }
+    },
+    {
+      "task_id": "cc9053aa",
+      "arm": "P0",
+      "query_count": 1,
+      "completion_tokens": 32418,
+      "prompt_tokens": 1175,
+      "request_seconds": 1254.8,
+      "time_to_first_token_seconds": 6.3,
+      "queue_wait_seconds": 0.003,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "validation_error": null,
+      "content_chars": 247,
+      "reasoning_chars": 90843,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 1175,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 64233,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-cc9053aa.reply.json",
+        "sha256": "152d29daee0f41418aefc3ce48ef3837621bfcb5a78f5358af92e536fcfb230a"
+      }
+    },
+    {
+      "task_id": "52fd389e",
+      "arm": "P0",
+      "query_count": 1,
+      "completion_tokens": 19712,
+      "prompt_tokens": 9367,
+      "request_seconds": 767.7,
+      "time_to_first_token_seconds": 5.86,
+      "queue_wait_seconds": 707.75,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "validation_error": null,
+      "content_chars": 1907,
+      "reasoning_chars": 38269,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 9367,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 56041,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-52fd389e.reply.json",
+        "sha256": "22ae63b3e524d7e102743afae5a98591c19eea4feb2a02fe9cba82f12f10f305"
+      }
+    },
+    {
+      "task_id": "878187ab",
+      "arm": "P0",
+      "query_count": 1,
+      "completion_tokens": 35236,
+      "prompt_tokens": 2676,
+      "request_seconds": 1475.9,
+      "time_to_first_token_seconds": 1.78,
+      "queue_wait_seconds": 374.847,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "validation_error": null,
+      "content_chars": 558,
+      "reasoning_chars": 91626,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 2676,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 62732,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-878187ab.reply.json",
+        "sha256": "c37cc1d7f7a185e6d66c76d8ce39d20d14f713631518ab016ad80b2173f95a26"
+      }
+    },
+    {
+      "task_id": "8886d717",
+      "arm": "P0",
+      "query_count": 1,
+      "completion_tokens": 41474,
+      "prompt_tokens": 1839,
+      "request_seconds": 1758.3,
+      "time_to_first_token_seconds": 1.29,
+      "queue_wait_seconds": 277.905,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "validation_error": null,
+      "content_chars": 547,
+      "reasoning_chars": 111968,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 1839,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 63569,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-8886d717.reply.json",
+        "sha256": "41e0b499c320e1d2a6e3bc9a08ea7b5092233e89a5030e097310ed9117278c9e"
+      }
+    },
+    {
+      "task_id": "aa62e3f4",
+      "arm": "P0",
+      "query_count": 1,
+      "completion_tokens": 49152,
+      "prompt_tokens": 1448,
+      "request_seconds": 2058.8,
+      "time_to_first_token_seconds": 7.41,
+      "queue_wait_seconds": 0.004,
+      "http_status": 200,
+      "finish_reason": "length",
+      "parse_status": "direct_invalid",
+      "generation_admitted": false,
+      "legal_query_outputs": 0,
+      "validation_error": "Expecting value: line 1 column 1 (char 0)",
+      "content_chars": 24176,
+      "reasoning_chars": 115971,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 1448,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 63960,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-aa62e3f4.reply.json",
+        "sha256": "eaa9f1f730ad179ad79ae612cb9d05342c8e1ebfd5954fbe2de49fc70a2c2502"
+      }
+    },
+    {
+      "task_id": "a644e277",
+      "arm": "P0",
+      "query_count": 1,
+      "completion_tokens": 41687,
+      "prompt_tokens": 2738,
+      "request_seconds": 1708.6,
+      "time_to_first_token_seconds": 1.82,
+      "queue_wait_seconds": 398.589,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "validation_error": null,
+      "content_chars": 766,
+      "reasoning_chars": 98582,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 2738,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 62670,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-a644e277.reply.json",
+        "sha256": "b158830a4cd1f4df67c172d3d7b8faf38a2993b05942709883e86c9a04c89255"
+      }
+    },
+    {
+      "task_id": "68bc2e87",
+      "arm": "P0",
+      "query_count": 1,
+      "completion_tokens": 40982,
+      "prompt_tokens": 3648,
+      "request_seconds": 1712.3,
+      "time_to_first_token_seconds": 2.41,
+      "queue_wait_seconds": 663.718,
+      "http_status": 200,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "validation_error": null,
+      "content_chars": 38,
+      "reasoning_chars": 99660,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 3648,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 61760,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-68bc2e87.reply.json",
+        "sha256": "5d39e1685e5c6a23f929a362df19d1ec339ab04ba6f81c3983757f0d05880c46"
+      }
+    },
+    {
+      "task_id": "b7fb29bc",
+      "arm": "P0",
+      "query_count": 1,
+      "completion_tokens": 49152,
+      "prompt_tokens": 3335,
+      "request_seconds": 2153.9,
+      "time_to_first_token_seconds": 2.23,
+      "queue_wait_seconds": 627.455,
+      "http_status": 200,
+      "finish_reason": "length",
+      "parse_status": "direct_invalid",
+      "generation_admitted": false,
+      "legal_query_outputs": 0,
+      "validation_error": "Expecting value: line 1 column 1 (char 0)",
+      "content_chars": 26916,
+      "reasoning_chars": 117036,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 3335,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 62073,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-b7fb29bc.reply.json",
+        "sha256": "168887d36fe373e277dca631f860c66b13bd73b1b88dace80ed6edd1b4a3e42d"
+      }
+    },
+    {
+      "task_id": "c3fa4749",
+      "arm": "P0",
+      "query_count": 2,
+      "completion_tokens": 49152,
+      "prompt_tokens": 9493,
+      "request_seconds": 1956.3,
+      "time_to_first_token_seconds": 6.1,
+      "queue_wait_seconds": 1254.797,
+      "http_status": 200,
+      "finish_reason": "length",
+      "parse_status": "direct_invalid",
+      "generation_admitted": false,
+      "legal_query_outputs": 0,
+      "validation_error": "Expecting value: line 1 column 1 (char 0)",
+      "content_chars": 16649,
+      "reasoning_chars": 101740,
+      "demo_evidence": "unknown",
+      "token_budget": {
+        "requested_max_tokens": 49152,
+        "requested_thinking_token_budget": 40960,
+        "prompt_tokens": 9493,
+        "max_model_len": 65536,
+        "context_margin_tokens": 128,
+        "requested_final_output_space_tokens": 8192,
+        "effective_max_tokens": 49152,
+        "effective_thinking_token_budget": 40960,
+        "status": "unchanged",
+        "available_generation_tokens": 55915,
+        "effective_final_output_space_tokens": 8192
+      },
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-c3fa4749.reply.json",
+        "sha256": "c0f2ca1055b4928de3f066ce51687b8f62e54bc7bc18bfdf7e1c12068f75ca14"
+      }
+    }
+  ],
+  "invalid_outputs": [
+    {
+      "task_id": "aa62e3f4",
+      "affected_queries": 1,
+      "finish_reason": "length",
+      "completion_tokens": 49152,
+      "validation_error": "Expecting value: line 1 column 1 (char 0)",
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-aa62e3f4.reply.json",
+        "sha256": "eaa9f1f730ad179ad79ae612cb9d05342c8e1ebfd5954fbe2de49fc70a2c2502"
+      },
+      "content_chars": 24176,
+      "reasoning_chars": 115971,
+      "code_fence_count": 0,
+      "frozen_output_modified": false,
+      "category": "total_token_limit_with_analysis_in_final_channel",
+      "content_opening_excerpt": "\nWe need continue analysis and produce final JSON. We need be very careful. Let's re-evaluate. The prior analysis ended incomplete. Need solve. We have demos and query. Need infer transformation rule. Let's systematically analyze demos with poss",
+      "note": "Final/content channel continues unresolved analysis, ends without final prediction JSON, and finish is length. No valid grid is being discarded solely due EOS. Usage lacks reasoning-token/channel-boundary counts, so the 40960 request field does not establish a measured hard reasoning boundary."
+    },
+    {
+      "task_id": "b7fb29bc",
+      "affected_queries": 1,
+      "finish_reason": "length",
+      "completion_tokens": 49152,
+      "validation_error": "Expecting value: line 1 column 1 (char 0)",
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-b7fb29bc.reply.json",
+        "sha256": "168887d36fe373e277dca631f860c66b13bd73b1b88dace80ed6edd1b4a3e42d"
+      },
+      "content_chars": 26916,
+      "reasoning_chars": 117036,
+      "code_fence_count": 0,
+      "frozen_output_modified": false,
+      "category": "total_token_limit_with_analysis_in_final_channel",
+      "content_opening_excerpt": "\nWe need answer final JSON only. But need ensure correct output. Need resolve rule. Let's continue carefully. We have promising anchor squares parity rule? Need test and apply to query. But not fully consistent. Need infer exact rule from demos,",
+      "note": "Final/content channel continues unresolved analysis, ends without final prediction JSON, and finish is length. No valid grid is being discarded solely due EOS. Usage lacks reasoning-token/channel-boundary counts, so the 40960 request field does not establish a measured hard reasoning boundary."
+    },
+    {
+      "task_id": "c3fa4749",
+      "affected_queries": 2,
+      "finish_reason": "length",
+      "completion_tokens": 49152,
+      "validation_error": "Expecting value: line 1 column 1 (char 0)",
+      "source_reply": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-c3fa4749.reply.json",
+        "sha256": "c0f2ca1055b4928de3f066ce51687b8f62e54bc7bc18bfdf7e1c12068f75ca14"
+      },
+      "content_chars": 16649,
+      "reasoning_chars": 101740,
+      "code_fence_count": 0,
+      "frozen_output_modified": false,
+      "category": "total_token_limit_with_analysis_in_final_channel",
+      "content_opening_excerpt": "\n\nThe user asks for a JSON object with keys query0 and query1, each a complete output grid. I need solve puzzle. I have started analysis but cut off. Need continue carefully. I have a plausible rule: boundary pockets. Need apply to queries. I ne",
+      "note": "Final/content channel continues unresolved analysis, ends without final prediction JSON, and finish is length. No valid grid is being discarded solely due EOS. Usage lacks reasoning-token/channel-boundary counts, so the 40960 request field does not establish a measured hard reasoning boundary."
+    }
+  ],
+  "fixed_query_scoring": {
+    "status": "not_scored_no_query_gold_read",
+    "denominator": 18,
+    "EM_at_2": null,
+    "note": "Parent separately freezes all C24 outputs and scores the full confirmation. This summary contains no score."
+  },
+  "query_gold_used_by_run": false,
+  "query_gold_read_by_analysis": false,
+  "new_experiment_run": false,
+  "source_modified": false,
+  "frozen_predictions_modified": false
+}

@@ -1,0 +1,15 @@
+{
+  "checked_at_utc": "2026-10-20T15:51:39.284797+00:00",
+  "account": "qingyu1232",
+  "authenticated_username": "qingyu1232",
+  "fresh_independent_process": true,
+  "c24_completion_reported_by_root_utc": "2026-10-20T15:49:42Z",
+  "quota_refresh_time_utc": "2026-10-24T00:00:00",
+  "total_seconds": 108000.0,
+  "used_seconds": 99796.854,
+  "reserved_seconds": 0.0,
+  "available_seconds": 8203.145999999993,
+  "available_hours": 2.278651666666665,
+  "method": "KaggleApi.quota_view; duration fields normalized with total_seconds()",
+  "scope": "Read-only quota snapshot after root reported C24 complete. No new GPU run or submission. No attribution of all quota changes or assertion that hidden scoring is free."
+}
