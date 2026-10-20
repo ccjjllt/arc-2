@@ -1,0 +1,283 @@
+We need solve ARC-like grid transformation. Need infer rule from demos. Need output Python transform. Let's analyze thoroughly.
+
+We have two demos: 16x16 grids, background 8. There are shapes composed of border color and fill color? Demo0 input: shape is plus/diamond? Colors: 0 and 5. Let's map.
+
+Demo0 input coords (row,col):
+Row4: col4=0
+Row5: col3=0, col4=5, col5=0
+Row6: col2=0, col3=5, col4=5, col5=5, col6=0
+Row7: col3=0, col4=5, col5=0
+Row8: col3=0, col4=5, col5=0
+Row9: col2=0, col3=5, col4=5, col5=5, col6=0
+Row10: col3=0, col4=5, col5=0
+Row11: col4=0
+Output demo0:
+Rows 4-11:
+Row4: col7=5
+Row5: col6=5, col7=0, col8=5
+Row6: col5=5, col6=0, col7=0, col8=0, col9=5
+Row7: col6=5, col7=0, col8=5
+Row8: col4=5, col5=0, col6=5
+Row9: col3=5, col4=0, col5=0, col6=0, col7=5
+Row10: col4=5, col5=0, col6=5
+Row11: col5=5
+
+This looks like input shape (a 5? filled cross?) transformed? Let's identify input object. Colors: 0 is maybe border? 5 fill. Input has two 3x? diamond? Actually looks like two 'diamond' outlines of zeros connected? Let's draw input non-8 with . for background, 0 border, 5 fill:
+Row4: ....0....
+Row5: ...050...
+Row6: ..05550..
+Row7: ...050...
+Row8: ...050...
+Row9: ..05550..
+Row10: ...050...
+Row11: ....0....
+This is like a vertical elongated hexagon? Shape: two diamond-ish cells? Top row4 single 0; row5 0-5-0; row6 0-5-5-5-0; row7 0-5-0; row8 0-5-0; row9 0-5-5-5-0; row10 0-5-0; row11 single 0. It seems a shape with 0 outline around interior 5s. But there are holes? Actually 0 forms border; 5 fill interior cells. The shape is like a vertically oriented "double diamond" or a diamond of radius? It consists of 18? cells: 0 count? Top 1, row5 2, row6 2, row7 2, row8 2, row9 2, row10 2, bottom1 =14 0s. 5 count row5 1, row6 3, row7 1, row8 1, row9 3, row10 1 =10. total 24.
+Output shape:
+Row4: .....5? positions 7 (1)
+Row5: ....5 0 5 (3)
+Row6: ...5 0 0 0 5 (5)
+Row7: ....5 0 5 (3)
+Row8: ..5 0 5? positions 4,5,6 (3)
+Row9: .5 0 0 0 5? positions 3,4,5,6,7 (5)
+Row10: ..5 0 5 (3)
+Row11: ...5 (1)
+Now colors: 5 border? 0 fill? Output 0 cells: row5 col7, row6 col6-8, row7 col7, row8 col5, row9 col4-6, row10 col5 =? counts 1+3+1+1+3+1=10 zeros, matching input 5 count. 5s count 1+2+2+2+2+2+2+1? row4 1, row5 2, row6 2, row7 2, row8 2, row9 2, row10 2, row11 1=14, matching input 0 count. So colors swapped? The input 5 interior becomes output 0, input 0 border becomes output 5. Additionally shape appears shifted and rotated/reflected? Let's compare geometry.
+
+Input pattern (relative to top-left maybe bounding box rows4-11, cols2-6 width5 height8):
+Use coordinates r 0..7, c 0..4:
+0: r0 c2
+r1 c1,3? Wait input row5 col3=0, col4=5, col5=0. Bounding col2-6 => row1 c1,c3 zeros, c2 five.
+r2 c0,c4 zeros, c1,c2,c3 fives
+r3 c1,c3 zeros, c2 five
+r4 c1,c3 zeros, c2 five
+r5 c0,c4 zeros, c1,c2,c3 fives
+r6 c1,c3 zeros, c2 five
+r7 c2 zero
+So input pattern of two colors:
+B B? Let's set A=0 border, X=5 fill:
+r0: ..A..
+r1: .AXA.
+r2: AXXXA
+r3: .AXA.
+r4: .AXA.
+r5: AXXXA
+r6: .AXA.
+r7: ..A..
+Output bounding rows4-11 cols4-9? row4 col7, row5 c6-8, row6 c5-9, row7 c6-8, row8 c4-6, row9 c3-7, row10 c4-6, row11 c5. Bounding rows4-11 cols3-9? width7 height8? Let's choose bbox min col3 max col9 width7; but row4 only col7, row11 col5. Pattern output in bbox cols3..9 (c0..6):
+Set B=5 border? F=0 fill.
+row4 (r0): c4? col7 => c4? Since col3->c0: col7 c4. pattern .....? c4 B: .....B? Actually width7: positions c0..6: 0:8,1:8,2:8,3:8,4:5,5:8,6:8 => ....B..
+r1: col6 c3, col7 c4 F, col8 c5 B => ...BFB.
+r2: col5 c2 B, col6 c3 F, col7 c4 F, col8 c5 F, col9 c6 B => ..BFFF B? "..BFFFF?" Wait row6 output: [8,8,8,8,8,5,0,0,0,5,8...] c0..6: c2=5, c3=0,c4=0,c5=0,c6=5 => ..BFFF? that's B F F F B.
+r3: c3 B,c4 F,c5 B => ...BFB.
+r4: col4 c1 B, col5 c2 F, col6 c3 B => ..BFB..
+r5: col3 c0 B, col4 c1 F, col5 c2 F, col6 c3 F, col7 c4 B => BFFFF? Actually B F F F B.
+r6: c1 B,c2 F,c3 B => ..BFB..
+r7: c2 B => ..B....
+This pattern doesn't simply swap colors in same shape; shape changed: Output pattern:
+r0: ....B..
+r1: ...BFB.
+r2: ..BFFF? no ..BFFF? wait 5 cells: .. B F F F B => ..BFFF? length 7: ..BFFFF? Let's write exactly: c0 ., c1 ., c2 B, c3 F, c4 F, c5 F, c6 B => ..BFFFF? no BFFF B has 4 non-dot? Actually positions c2 B, c3 F, c4 F, c5 F, c6 B = B F F F B, string ". . B F F F B" -> "..BFFFB" (5 non-dots). Yes.
+r3: ...BFB.
+r4: ..BFB..
+r5: BFFFB..
+r6: ..BFB..
+r7: ..B....
+This looks like input pattern with colors swapped and rotated 90? Let's inspect input pattern if swap colors (0->5, 5->0) in same orientation:
+r0: ....5..
+r1: ..50 5..
+r2: .5000 5.
+r3: ..50 5..
+r4: ..50 5..
+r5: .5000 5.
+r6: ..50 5..
+r7: ....5..
+That would be:
+r0 ....B..
+r1 ..BFB..
+r2 .BFFF B.
+r3 ..BFB..
+r4 ..BFB..
+r5 .BFFF B.
+r6 ..BFB..
+r7 ....B..
+Output different: row1 BFB shifted right? Actually input swapped row1 has c1 B,c2 F,c3 B. Output row1 c3 B,c4 F,c5 B. Row2 input swapped c1..c4, output c2..c5. Row3 input c1..c3, output c3..c5. Row4 input c1..c3, output c1..c3. Row5 input c1..c4, output c0..c4. So seems output is a "folded" or moved shape along a diagonal? Maybe input object split into two identical subshapes? Let's see input has two "diamonds" overlapping? It is two diamond outlines? Top diamond rows4-7? rows4-7:
+r0 ..0..
+r1 .050.
+r2 05550
+r3 .050. (but top diamond height 4? Actually diamond radius 2 would rows0-4, but here top part rows0-3, not symmetric.) Bottom part rows5-8? rows5-8:
+r5 05550? Wait row5 is .050. row6 05550 row7 .050 row8 ..0..? That's diamond offset. Input maybe two diamonds vertically overlapping: top diamond centered (row6,col4?) and bottom centered (row8,col4?)? Let's identify. A diamond (4-neighbor? 8-neighbor?) of border color 0 around fill 5? The top diamond from row4 to row7, width max row6, centered col4? Coordinates:
+Top diamond rows4-7, cols2-6:
+r4: col4 0
+r5: col3,5 0, col4 5
+r6: col2,6 0, col3-5 5? But if diamond radius2, bottom row should row8 col4? Top incomplete? Actually top shape rows4-7 forms top half of a diamond? Top half includes apex row4, row5, row6 wide, row7? Hmm.
+Bottom diamond rows5-11? row5 .050., row6 05550, row7 .050., row8 .050., row9 05550, row10 .050., row11 ..0..? Not symmetric.
+
+Maybe input represents a "tetromino" or "polyomino" of zeros and fives? Output is two separate transformed components? Let's inspect demo1.
+
+Demo1 input colors 1 (border?) and 2 (fill?) background 8. Input rows4-11 cols1-5? Let's map:
+Row4: col2=1
+Row5: col1=1,col2=2,col3=1
+Row6: col1=1,col2=2,col3=1
+Row7: col1=1,col2=2,col3=2,col4=1,col5=1?
+Wait input row7: [8,1,2,2,1,1,8...]: col1=1, col2=2, col3=2, col4=1, col5=1
+Row8: [8,1,2,2,1,1,...] same
+Row9: [8,1,2,1,8...] col1=1,col2=2,col3=1
+Row10: [8,1,2,1,...]
+Row11: [8,8,1,8...] col2=1
+So pattern relative rows4-11 cols1-5 (width5 height8):
+r0: .A... (c1? col2 -> c1)
+r1: A X A . .
+r2: A X A . .
+r3: A X X A A
+r4: A X X A A
+r5: A X A . .
+r6: A X A . .
+r7: .A...
+where A=1 border, X=2 fill.
+Output demo1:
+Rows4-11:
+Row4: col7=2
+Row5: col6=2,col7=1,col8=2
+Row6: col6=2,col7=1,col8=2
+Row7: col6=2,col7=1,col8=1,col9=2,col10=2? Wait output row7: [8,8,8,8,8,8,2,1,1,2,2,...] col6=2,col7=1,col8=1,col9=2,col10=2
+Row8: [8,2,1,1,2,2,...] col1=2,col2=1,col3=1,col4=2,col5=2
+Row9: [8,2,1,2,8...] col1=2,col2=1,col3=2
+Row10: [8,2,1,2,8...] same
+Row11: [8,8,2,8...] col2=2
+So output colors swapped: 1->2, 2->1. Pattern bbox maybe rows4-11 cols1-10? Let's choose min col1 max col10 width10 height8. But pattern not single connected? Output has two clusters? Row8 cluster left cols1-5; rows4-7,9-11 cluster right cols6-10? Let's list output pattern with swapped colors: B=2, F=1.
+Rows4-11, cols? We need see shape transformation.
+Output right cluster rows4-7:
+r0 (row4): c? If using col6-10? row4 col7 => c1 B.
+r1 row5 col6 B,c7 F,c8 B => BFB..
+r2 row6 same BFB..
+r3 row7 col6 B,c7 F,c8 F,c9 B,c10 B => BFFBB
+Left cluster row8-11:
+r4 row8 col1 B,c2 F,c3 F,c4 B,c5 B => BFFBB? (if align left at c? Maybe c0..4)
+r5 row9 col1 B,c2 F,c3 B => BFB..
+r6 row10 same BFB..
+r7 row11 col2 B => .B...
+So output is two pieces: upper-right is like a diamond/capsule? Lower-left is another? It seems input single shape split? Let's compare input pattern:
+Input A=1 (border) and X=2 (fill), rows4-11, cols1-5:
+r0: .A...
+r1: AXA..
+r2: AXA..
+r3: AXXAA
+r4: AXXAA
+r5: AXA..
+r6: AXA..
+r7: .A...
+This shape looks like a "T" or "P"? It's a vertical bar of AXA rows1-6, with two extra AXXAA rows at middle and an apex top/bottom. More specifically: a 3-wide vertical capsule with two cells extending to the right at rows3-4 (extra AA? Actually row3 A X X A A: positions c0 A,c1 X,c2 X,c3 A,c4 A; row4 same. So a 2x3 rectangle attached to right of central column? Border/fill? Output: colors swapped, and shape maybe split into two congruent parts by moving one part? Let's examine output clusters:
+Upper-right cluster:
+r0: .B...
+r1: BFB..
+r2: BFB..
+r3: BFFBB? Actually row3: B F F B B (width5) = BFFBB
+This matches input top part? Input top part rows0-3? Input top rows0-3:
+r0 .A...
+r1 AXA..
+r2 AXA..
+r3 AXXAA
+If swap colors:
+r0 .B...
+r1 BFB..
+r2 BFB..
+r3 BFFBB
+That's exactly upper-right output rows0-3! Lower-left output rows4-7:
+r4 BFFBB? Wait row4 (output row8) BFFBB
+r5 BFB..
+r6 BFB..
+r7 .B...
+This matches input bottom part rows4-7 swapped? Input rows4-7:
+r4 AXXAA -> BFFBB
+r5 AXA.. -> BFB..
+r6 AXA.. -> BFB..
+r7 .A... -> .B...
+Yes! So transformation in demo1: input shape is vertically split into two 4-row halves (top half rows0-3, bottom half rows4-7), each half swapped colors. Then the top half is moved? It remains in top rows? Upper-right output top half is shifted horizontally right by 5 columns (from input c0-4 to output c6-10) and placed at top rows 0-3. Bottom half shifted? Left output bottom half: input bottom rows4-7 at cols0-4 moved to output rows4-7? But output bottom half is at cols0-4, same horizontal position (c0-4) not shifted? Wait input bottom half cols0-4, output bottom half cols0-4. So top half shifted right by 5, bottom half unshifted? Or top half shifted right by width? Let's check demo0 similar split? Input rows0-7 split top half rows0-3 and bottom half rows4-7. Swapped colors:
+Top half input rows0-3:
+r0 ..A..
+r1 .AXA.
+r2 AXXXA
+r3 .AXA.
+Swap => r0 ..B.., r1 .BFB., r2 BFFFB, r3 .BFB.
+Bottom half input rows4-7:
+r4 .AXA.
+r5 AXXXA
+r6 .AXA.
+r7 ..A..
+Swap => r4 .BFB., r5 BFFFB, r6 .BFB., r7 ..B..
+Now output demo0 pattern in rows0-7 (if bbox width7 maybe):
+We had output rows0-7:
+r0 ....B.. (B at c4)
+r1 ...BFB. (c3-5)
+r2 ..BFFFB (c2-6)
+r3 ...BFB. (c3-5)
+r4 ..BFB.. (c1-3)
+r5 BFFFB.. (c0-4)
+r6 ..BFB.. (c1-3)
+r7 ..B.... (c2)
+Does this match top half and bottom half moved? Top half swapped pattern (width5):
+t0 ..B..
+t1 .BFB.
+t2 BFFFB
+t3 .BFB.
+If placed at output rows0-3 with horizontal offset? We see output rows0-3:
+r0 ....B.. -> if top half t0 ..B.. width5 shifted offset? t0 B at c2; to appear c4 offset +2.
+r1 .BFB. B at c1, F c2, B c3; output BFB at c3-5 -> offset +2.
+r2 BFFFB at c0-4; output BFFFB at c2-6 -> offset +2.
+r3 .BFB. -> offset +2. Yes top half shifted right by 2.
+Bottom half swapped pattern:
+b0 .BFB. (c1-3)
+b1 BFFFB (c0-4)
+b2 .BFB. (c1-3)
+b3 ..B.. (c2)
+Output rows4-7:
+r4 ..BFB.. -> BFB at c1-3. If bottom half b0 .BFB. offset 0? b0 c1-3, output c1-3 yes offset 0.
+r5 BFFFB at c0-4 offset 0.
+r6 .BFB. at c1-3 offset 0.
+r7 ..B.. at c2 offset 0.
+So bottom half unshifted. Thus transformation: Find connected object? It seems input contains a symmetric/regular shape of two colors; split into top and bottom equal halves? Swap colors; shift top half right by some amount? Demo1 top half shifted right by 5 (width of half? width5). Demo0 top half shifted right by 2? Why? Need infer exact rule. Maybe shift top half right by distance to make shapes touch? Or reflect across vertical? Let's analyze.
+
+Could be rule: Given shape made of two colors (outline/fill). Split along horizontal midline into top and bottom halves. Invert colors (swap the two non-background colors). Then move the top half horizontally to the right by the width of the bottom half? But demo0 width? Input shape bbox width 5? Top half shift by 2 not 5. Let's compute bounding boxes. Demo0 input bbox width=5 (cols2-6). Shift top half output relative input = +2. Top half width maybe? Top half bbox rows0-3 cols1-4? Actually top half pattern width4 (c1-4). Bottom half width5 (c0-4). Shift +2 maybe center? Output top half c3-6? Wait top half swapped width? Top half max width row2 c0-4 => width5. Shift +2 would place c2-6. In output top half row2 c2-6. Yes shift=2. Demo1 top half width? Top half rows0-3 max width5 (c0-4). Shift +5? It would place c5-9? But output top half c6-10. Wait using output bbox? Let's recalc demo1. Input top half rows0-3 max width? rows: r0 c1, r1 c0-2, r2 c0-2, r3 c0-4 => width5 c0-4. Output upper cluster rows0-3: r0 c? Let's set output absolute: row4 col7; row5 col6,7,8; row6 col6,7,8; row7 col6,7,8,9,10. If choose relative output min col? min col of upper cluster=6, max=10. Top half pattern width5 c? relative to min col6: r0 c1, r1 c0-2, r2 c0-2, r3 c0-4. So top half placed at min col6. Input top half min col=1, max=4. Shift = +5. But top half width=5; shift by width? Yes shift 5. For demo0 top half input min col? Input top half absolute min col? row4 col4 c4; row5 c3,4,5; row6 c2-6; row7 c3-5 => min col2 max6 width5. Output top half absolute min col? row4 col7? Wait top half output rows4-7: row4 col7; row5 col6-8; row6 col5-9; row7 col6-8. Min col5 max9 width5. Shift = +3? Let's recalc with absolute: input top half min col2, output top half min col5 => shift +3. But earlier relative to input overall bbox (min col2) I got +2? I mistakenly set top half relative min c0 at col2, output relative c? Output min col5 relative to overall? Overall output bbox min col3? Let's define overall output min col in demo0 is row9 col3? Actually output includes bottom half min col3? Let's list output demo0 all non-8: row4 c7, row5 c6-8, row6 c5-9, row7 c6-8, row8 c4-6, row9 c3-7, row10 c4-6, row11 c5. Overall min col3 (row9), max col9. If relative overall output min col3: top half rows0-3 (row4-7): min col5 relative c2, max9 relative c6. Input overall bbox min col2: top half min c0, max c4. Shift relative to overall bbox +2. Absolute shift +3 because overall bbox shifted? Wait bottom half output min col? bottom half rows8-11: row8 c4-6, row9 c3-7, row10 c4-6,row11 c5. Bottom half min col3 max7. Input bottom half absolute min col2 max6? Input bottom half rows8-11: row8 c3-5, row9 c2-6, row10 c3-5,row11 c4 => min col2 max6. Output bottom half min col3 max7, shift +1? Earlier I said bottom unshifted relative to input bbox, but absolute shift +1. Because overall output bbox min col3 due bottom half shift +1. Let's check input bottom half absolute: rows8 (index 8) = [8,8,0,5,5,5,0] at cols2,3,4,5,6; row9 col3,4,5; row10 col3,4,5; row11 col4. Output bottom half rows8 (row8) = col4,5,6? Wait output row8: [8,8,8,5,0,5,8] col4=5,col5=0,col6=5; row9 col3=5,col4=0,col5=0,col6=0,col7=5; row10 col4=5,col5=0,col6=5; row11 col5=5. That bottom half shifted right by +1 relative input bottom half (col2->col3, col3->col4, col4->col5, col5->col6, col6->col7). Yes bottom half shift +1, not 0. Top half absolute shift +3 (min col2->5). So both halves shifted right by different amounts? Maybe each half shifted to maintain some alignment/touch? Let's examine overall output: two halves perhaps arranged diagonally, top right, bottom left but still connected? Top half min col5, bottom half min col3. Top half is shifted +2 relative to bottom half (since input halves same x). Output top half shifted +2 relative to bottom half. Demo1: bottom half output min col1? bottom left rows8-11: row8 c1-5, row9 c1-3,row10 c1-3,row11 c2 => min col1. Input bottom half min col1. So bottom shift 0. Top half output min col6; input top min col1; shift +5. Relative top-bottom shift = +5. In demo0 relative shift = top min 5 - bottom min 3 = +2. So top half is shifted right relative to bottom half by some amount. Need infer amount.
+
+Maybe transformation: The original shape is a "snake" or two halves that are identical but one is shifted? Input may consist of two overlapping identical half-shapes? Output separates them? Let's see. Input shape might be union of two components? In both demos, input has two "layers"? Actually colors represent two states; maybe transformation is a "dissection" where a shape with two colors is split along horizontal line and each half's colors swapped, then top half translated right by the number of cells in something? Need derive from demos and test. Test input:
+16x16, background 8, shape colors 4 (border?) and 9 (fill?) rows5-10 cols2-7? Let's map.
+Input test:
+Row5: cols3,4,5 =4? [8,8,8,4,4,4,8] => c3,c4,c5 4.
+Row6: c2=4,c3=9,c4=9,c5=9,c6=4.
+Row7: c1=4,c2-6=9,c7=4.
+Row8: c1=4,c2-6=9,c7=4.
+Row9: c2=4,c3-5=9,c6=4.
+Row10: c3,c4,c5=4.
+Rows 11 etc background.
+So pattern rows5-10 (height6), cols1-7 width7:
+r0: ..AAA.. (c2,c3,c4 if col1 c0? Let's set min col1: c0=col1, c1=2, c2=3, c3=4, c4=5, c5=6, c6=7. Row5 c3,4,5 => c2,c3,c4 A)
+r1: .A999A? col2 A, col3-5 9, col6 A -> c1 A, c2-4 X, c5 A
+r2: A99999A? col1 A, col2-6 9, col7 A -> c0 A, c1-5 X, c6 A
+r3: A99999A
+r4: .A999A? c1 A,c2-4 X,c5 A
+r5: ..AAA.. c2-4 A
+This is a diamond/rhombus of border 4 and fill 9, height 6 width7, symmetric. Not two 4-row halves? Height even? 6. It is a single diamond shape: top row 3 border, then increasing, middle two rows width7, decreasing, bottom row 3 border. It looks like a hexagon/diamond. Colors: border color 4, fill 9. According to demos, transformation likely: split horizontally into two halves of height 3 (top rows r0-r2 and bottom r3-r5), swap colors, and shift top half right relative to bottom by some amount? Need infer shift amount from shape dimensions/pattern. For test, output likely some arrangement. Need exact rule.
+
+Let's formalize demos. There is an input object made of two colors: one is "frame" and one "interior"? In output, colors swapped. The object is split into top and bottom halves along a horizontal line. The top half is moved right by a certain horizontal offset, bottom perhaps remains? But in demo0 bottom shifted relative to input because maybe output placement normalized? The task output grid dimensions fixed 16x16; no normalization? We need reproduce exact output positions, not just relative. The output in demos appears placed with some absolute coordinates derived from input and transformations. We need infer how positions chosen. Could be: top half and bottom half are each translated according to their "center of mass" or to keep a certain alignment? Let's inspect absolute placement rules.
+
+Maybe it's not split of one shape, but two separate components? In input, there are two colored regions? Actually colors 0 and 5 form a connected object (8-connected? maybe 4). But maybe there are two "pieces" of a 2-color pattern that after color swap and translation produce output. The translation amounts might correspond to the number of cells of a certain color? Let's compute.
+
+Demo0:
+Input object bbox rows4-11, cols2-6. Output object bbox rows4-11, cols3-9. So vertical position unchanged (same top/bottom rows). Horizontal: output bbox min increased by 1 (2->3), max increased by 3 (6->9). So width increased from 5 to 7 (overall). The top half shifted more than bottom.
+What determines top and bottom shifts? Could be: top half is shifted right by the number of columns from its left edge to the vertical axis of symmetry? For demo0, shape symmetric vertical around col4 (absolute). Input top half? Maybe top half is shifted right by center column index? Let's see: center col4. Top half min col2, width5. Shift +3? center col4? shift = center col - leftmost +? 4-2=2, but shift 3. Or shift = rightmost - center? 6-4=2. Not 3.
+Bottom shift +1. Maybe shift each half right by its number of rows? Top half height 4 -> shift? no 3. Bottom height4 -> shift 1.
+Maybe shift each half right by count of border cells? Top half border count? Input top half 0 cells: row4 1, row5 2,row6 2,row7 2 =7. Not 3. Fill count? top half 5 cells: 0? row5 1,row6 3,row7 1=5. Shift 3 no. Bottom half border count: row8 2,row9 2,row10 2,row11 1=7, fill 5. shift1 no.
+
+Demo1:
+Input bbox rows4-11, cols1-5. Output bbox rows4-11, cols1-10. Vertical unchanged. Width increased from5 to10. Bottom shift 0, top shift +5.
+Top shift = input width? 5. Bottom shift =0.
+Demo0: top shift +3, bottom +1. Maybe top shift = width of top half? Top half width? Demo0 top half bbox width? Top half rows4-7: min col2 max6 width5. Not 3. Top half width excluding border? fill width? row5 fill c4, row6 fill c3-5, row7 fill c4: bbox fill c3-5 width3. Shift top =3! Bottom half fill bbox? rows8-11 fill: row8 c3-5, row9 c4? Wait fill 5 in input bottom: row8 (row8? input row8? Let's index: bottom half rows8-11 (0-index absolute) row8: col3,4,5=5? Actually input row8: [8,8,8,0,5,0,8] fill c4 only? Let's re-evaluate input demo0 rows:
+Given rows:
+4: 8 8 8 8 0 8... -> c4 0
+5: 8 8 8 0 5 0 -> c3 0,c4 5,c5 0
+6: 8 8 0 5 5 5 0 -> c2 0,c3-5 5,c6 0
+7: 8 8 8 0 5 0 -> c3 0,c4 5,c5 0
+8: 8 8 8 0 5 0 -> c3 0,c4 5,c5 0
+9: 8 8 0 5 5 5 0 -> c2 0,c3-5 5,c6 0
+10: 8 8 8 0 5 0 -> c3 0,c4 5,c5 0
+11: 8 8 8 8 0 -> c4 0

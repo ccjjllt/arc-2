@@ -1,0 +1,137 @@
+
+
+```python
+def transform(grid):
+    H = len(grid)
+    W = len(grid[0])
+    out = [row[:] for row in grid]
+
+    def is_sep(v):
+        return v in (2, 6, 8)
+
+    seeds = []
+    for r in range(H):
+        for c in range(W):
+            v = grid[r][c]
+            if not is_sep(v):
+                ok = True
+                for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    nr, nc = r + dr, c + dc
+                    if 0 <= nr < H and 0 <= nc < W and is_sep(grid[nr][nc]):
+                        ok = False
+                        break
+                if ok:
+                    seeds.append((r, c, v))
+
+    if not seeds:
+        return out
+
+    bg = 0
+    cnt = {}
+    for r in range(H):
+        for c in range(W):
+            if not is_sep(grid[r][c]):
+                cnt[grid[r][c]] = cnt.get(grid[r][c], 0) + 1
+    bg = max(cnt, key=lambda k: cnt[k])
+
+    # For each seed, collect rectangular regions of cells for which the
+    # Chebyshev distance to the region boundary equals d.
+    seed_layers = {}
+    for r0, c0, val in seeds:
+        up = r0
+        while up > 0 and not is_sep(grid[up - 1][c0]):
+            up -= 1
+        dn = r0
+        while dn < H - 1 and not is_sep(grid[dn + 1][c0]):
+            dn += 1
+        lf = c0
+        while lf > 0 and not is_sep(grid[r0][lf - 1]):
+            lf -= 1
+        rt = c0
+        while rt < W - 1 and not is_sep(grid[r0][rt + 1]):
+            rt += 1
+        layers = {}
+        for d in range(min((dn - up + 1) // 2 + 1, (rt - lf + 1) // 2 + 1)):
+            r1 = up + d
+            r2 = dn - d
+            c1 = lf + d
+            c2 = rt - d
+            cells = set()
+            if r1 <= r2 and c1 <= c2:
+                for r in range(r1, r2 + 1):
+                    if r == r1 or r == r2:
+                        for c in range(c1, c2 + 1):
+                            cells.add((r, c))
+                for r in range(r1 + 1, r2):
+                    cells.add((r, c1))
+                    cells.add((r, c2))
+            layers[d] = cells
+        if layers:
+            seed_layers[(up, dn, lf, rt)] = (layers, (r0 - up, c0 - lf, val))
+
+    # Resolve conflicts: for each cell, prefer seed whose layer cell includes it.
+    # If multiple, choose by larger region area, then earlier seed.
+    for key, (layers, seed_info) in seed_layers.items():
+        up, dn, lf, rt = key
+        area = (dn - up + 1) * (rt - lf + 1)
+        for d, cells in layers.items():
+            for r, c in cells:
+                cur = out[r][c]
+                if is_sep(cur):
+                    continue
+                # Determine if this seed's layer should override current candidate.
+                # We will mark in a temporary dict.
+                prev = None
+                # Use a simple global store: cell -> (area, -index, val)
+                # We need index; use dict outside.
+        pass
+
+    # Simpler: build best assignment by iterating seeds with deterministic order.
+    best = {}
+    for idx, (r0, c0, val) in enumerate(seeds):
+        up = r0
+        while up > 0 and not is_sep(grid[up - 1][c0]):
+            up -= 1
+        dn = r0
+        while dn < H - 1 and not is_sep(grid[dn + 1][c0]):
+            dn += 1
+        lf = c0
+        while lf > 0 and not is_sep(grid[r0][lf - 1]):
+            lf -= 1
+        rt = c0
+        while rt < W - 1 and not is_sep(grid[r0][rt + 1]):
+            rt += 1
+        area = (dn - up + 1) * (rt - lf + 1)
+        for d in range(min((dn - up + 1) // 2 + 1, (rt - lf + 1) // 2 + 1)):
+            r1 = up + d
+            r2 = dn - d
+            c1 = lf + d
+            c2 = rt - d
+            if r1 > r2 or c1 > c2:
+                continue
+            cells = []
+            for r in range(r1, r2 + 1):
+                if r == r1 or r == r2:
+                    cells.extend((r, c) for c in range(c1, c2 + 1))
+                else:
+                    cells.append((r, c1))
+                    cells.append((r, c2))
+            for r, c in cells:
+                if is_sep(grid[r][c]):
+                    continue
+                cand = (area, -idx, val, d)
+                if (r, c) not in best or cand > best[(r, c)]:
+                    best[(r, c)] = cand
+
+    # For cells not chosen by any seed, use background.
+    for r in range(H):
+        for c in range(W):
+            if is_sep(grid[r][c]):
+                continue
+            if (r, c) in best:
+                out[r][c] = best[(r, c)][2]
+            else:
+                out[r][c] = bg
+
+    return out
+```

@@ -1,0 +1,10 @@
+[019p4 03:16:55] driver start session_s=5400.0
+[019p4 03:16:55] versions recorded
+[019p4 03:16:55] challenges sha match 017 frozen
+[019p4 03:17:01] wheel hash match (sync)
+[019p4 03:21:55] template xhigh/low differ
+[019p4 03:28:35] server up install_load_s=700.3
+[019p4 03:28:36] executor preflight ok
+[019p4 03:35:51] P0 done {'n': 4, 'wall_s': 435.18, 'wave_wall_s': 434.23, 'completion_tokens_sum': 35783, 'usage_missing': 0, 'agg_tok_s': 82.41}
+[019p4 03:45:52] FR done {'n': 7, 'wall_s': 601.28, 'wave_wall_s': 599.9, 'completion_tokens_sum': 69464, 'usage_missing': 0, 'agg_tok_s': 115.79}
+[019p4 03:46:00] EVIDENCE-EXIT status=complete_with_evidence

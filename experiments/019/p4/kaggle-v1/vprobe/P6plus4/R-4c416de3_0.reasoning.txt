@@ -1,0 +1,127 @@
+We need solve ARC-like task. Need infer transformation from demos. Need output Python function only. Need analyze carefully.
+
+We have demos. Let's restate.
+
+Grids use colors: background varies (1 in demo0, 8 in demo1, 2 in demo2, 3 in test). There are walls/frames made of 0 (black?) forming rectangular boxes? Inside/around boxes are numbers (objects). Output extends some colored pixels? It seems each small rectangular object of nonzero color adjacent to/inside a 0-frame? The output fills a 2x2 block around some special corner? Need infer.
+
+Let's inspect demos.
+
+Demo0 input 21x21? Actually rows length 21, 21 rows. Background 1. There is a large 0 rectangular ring? Coordinates:
+Rows 3 to 10, cols 3 to 10? Let's index 0-based.
+Row2: cols10,11 are 8? Input:
+row2 [1,1,1,1,1,1,1,1,1,1,8,8,1...]
+row3: [1,1,1,0,0,0,0,0,0,0,8,8,1...]
+row4: [1,1,1,0,1,1,1,1,1,8,0,1,1...]
+row5: [1,1,1,0,1,3,1,1,8,1,0,1...]
+row6: [1,1,1,0,1,1,1,1,1,1,0,1]
+row7: similar
+row8: [1,1,1,0,1,4,1,1,2,1,0,1]
+row9: similar
+row10: [1,1,1,0,0,0,0,0,0,0,0,1]
+So a 0 rectangle outer? from row3 col3 to row10 col10? It is 8x8? row3-10 inclusive 8 rows, col3-10 inclusive 8 cols. Border zeros. Inside cells rows4-9, cols4-9 are background 1 except some objects: at (5,5)=3, (8,5)=4, (8,8)=2. Also there is vertical/horizontal line? There are 8 at (2,10),(2,11),(3,10),(3,11) outside top-right; and at (4,9)=8? row4 col9=8; (5,8)=8? row5 col8=8. Those 8s maybe connected to large 0 frame? Actually row4 col9 is 8, row5 col8 is 8, row3 col10-11 8, row2 col10-11 8. Output changes: around object 3? Let's compare.
+
+Demo0 output:
+Rows changed:
+row2: [1,1,3,3,1,1,1,1,1,1,8,8...] (was 1 at cols2,3? Actually col2,3 become 3? row2 output: indices: 0 1 2=3 3=3 4=1... So 2x2 block of 3 at top-left outside the 0 rectangle near top-left? The object 3 at (5,5) inside rectangle. Output also row3: [1,1,3,3,0,0,0,0,0,0,8,8] so row3 cols2,3 become 3. Row4: [1,1,1,0,3,1,1,1,1,8,0,1] so object 3 inside at (4,4)? Wait input object 3 at row5 col5 (0-based: row5 col5). Output row4 col4 becomes 3; row5 col5 remains 3? Let's map: row4 output has col4=3. row5 output same [0,1,3,1,8,1,0], so object at (5,5) stays. Additionally row9: [1,1,1,0,4,1,1,1,1,2,0] row9 col4=4, col9=2; row10: [1,1,1,4,4,0,0,0,0,0,2,2]; row11: [1,1,1,4,4,1,1,1,1,1,2,2]. So objects 4 at (8,5) and 2 at (8,8) produce copies to bottom-left? For 4: original at row8 col5? input row8: col5=4, col8=2. Output row8? [1,1,1,0,1,4,1,1,2,1,0] unchanged. Output row9 col4=4, row10 cols2,3? Actually row10 output: col2=4 col3=4, col10=2 col11=2; row11 col2=4 col3=4, col10=2 col11=2. So 4 produced a 2x2 block at bottom-left of 0 rectangle? Coordinates row10-11 col2-3. 2 produced 2x2 at bottom-right? row10-11 col10-11. 3 produced 2x2 at top-left row2-3 col2-3 and also a pixel adjacent inside? Wait output for 3: top-left block row2-3 col2-3, and row4 col4 (inside adjacent to original? original at row5 col5, top-left diagonal? It changed row4 col4 to 3). Did row5? original row5 col5 remains. Did row4 col5 or row5 col4 remain 1? Yes. So output added at (4,4) which is top-left diagonal inside rectangle from original at (5,5)? But also outside top-left 2x2 at (2,3,2,3) outside rectangle. Why for 3 not bottom? Let's understand.
+
+Maybe each object number inside a 0-box is connected to a corner of the box by a path? It projects to nearest corner? In demo0, 3 at center-ish top? It is at (5,5), box interior rows4-9 cols4-9. It's near top-left corner (4,4). 4 at (8,5) near bottom-left corner (9,4)? 2 at (8,8) near bottom-right corner (9,9)? Output fills a diagonal line? Let's see: For 3, original at (5,5), output adds (4,4) (one step top-left), then outside (2-3,2-3)? That's a 2x2 block two steps further? But why not add (6,6)? Maybe it "expands" a line from object to nearest corner and beyond? But only 2x2 block at the corner side.
+
+For 4 at (8,5), output adds (9,4) (one step bottom-left), then 2x2 at (10,11,2,3)? Wait nearest bottom-left corner of box is (10,3) border? Actually 0 rectangle border cells row10 cols3-10 and col3 rows3-10. Inside corner adjacent to border at (9,4) is bottom-left interior. The 2x2 block outside is at rows10-11 cols2-3. That's diagonal outside the bottom-left corner (border cell (10,3)). For 2 at (8,8), output adds (9,9) and outside 2x2 rows10-11 cols10-11 (diagonal outside bottom-right border cell (10,10)). For 3, nearest top-left interior is (4,4), outside 2x2 rows2-3 cols2-3 (diagonal outside top-left border cell (3,3)). So rule: for each colored cell inside a 0 rectangle (not 0, not background), identify the nearest corner? Then draw a diagonal line? But only one adjacent step and a 2x2 block at diagonal outside? Why not continuous? Maybe object is a "particle" moving toward the nearest corner of its containing rectangle until it hits border, then creates a 2x2 footprint outside at that corner? It may move one step? Need see if distance >1. In demo0 distances: 3 at (5,5) to top-left interior (4,4) distance 1, so output adds at corner interior and outside block. 4 at (8,5) to bottom-left interior (9,4) distance 1. 2 at (8,8) to bottom-right interior (9,9) distance 1. But why not move further? In other demos objects farther? Let's inspect.
+
+Demo1: background 8. There are multiple 0 rectangles. Input:
+Large? rows2-4? Let's map.
+Rows2: col4,5 =1,1
+Row3: col4=1,col5=0,col6=1, then cols7-11? 0? row3: [8,8,8,8,1,0,1,0,0,0,0,0,8...] So there is 0 box at rows3-4? Actually col4-6 rows? And another 0 box cols7-11 rows3-? Let's parse all.
+Demo1 input:
+Row2: 8 8 8 8 1 1 8 8 ...
+Row3: 8 8 8 8 1 0 1 0 0 0 0 0 8...
+Row4: 8 8 8 8 8 1 1 8 8 8 4 0 8...
+Row5: 8 8 8 8 8 0 8 8 8 8 8 0 8...
+Row6: same row6 col5=0, col11=0
+Row7: same
+Row8: col5=0, col6=6, col10=3, col11=3? Wait row8: [8,8,8,8,8,0,6,8,8,8,3,3,8...]
+Row9: [8,8,8,8,8,0,0,0,0,0,3,0,3,8...]
+Row10: [8,8,8,8,8,8,8,8,8,8,8,3,3,8...]
+Then lower box rows15-19 cols7-11? Row15: cols7-11 0,0,0,0,0. Row16: col7=0, col8=2, col9=8, col10=7, col11=0. Row17: 0,8,8,8,0. Row18: 0,3,8,4,0. Row19: 0,0,0,0,0.
+Also there is a 3 shape rows8-10 cols10-12? It's not inside 0 box? Actually it's connected to 0 at col11? Let's identify 0 rectangles:
+1. Top-left? A 2x2? row3-4 cols4-6? Input row3 cols4=1,5=0,6=1; row4 col5=1,col6=1? No not full ring. Output changes: object 4? row4 col10=4? Wait row4 has 4 at col10, 0 at col11. That's near right 0 box. Output makes 2x2 block of 4 at rows2-4 cols10-11? Let's see output:
+Row2: ... cols10=4,11=4
+Row3: ... col10=4,col11=0,col12=4
+Row4: ... col10=4,col11=4
+This is a 3x3 square ring? Actually output: around original 4 at (4,10) and 0 at (4,11) etc, fills adjacent cells to make a 2x2? More like 4 forms a U around a 0? Original row4 col10=4, row3 col11=0, row3 col7-11 zeros? Let's map 0 box on right top: row3 cols7-11 all 0; row4 col11=0; row5-7 col11=0; row8-10? Wait row8 col10=3, col11=3; row9 col10=3,col11=0,col12=3; row10 col11=3,col12=3. There's a 3 shape around 0 at row9 col11. Output keeps 3 shape? It fills row8 col5? No.
+
+Let's systematically identify transformations by comparing input-output.
+
+Demo1 output rows:
+0,1 unchanged.
+2: [8,8,8,8,1,1,8,8,8,8,8,4,4,8...] (row2 col11,12? 0-based: row2: indices: 0 1 2 3 4=1 5=1 6 7 8 9 10=8 11=4 12=4 13=8). In input row2 col11,12 were 8. So a 2x2? with row3 col11? row3 output: [8,8,8,8,1,0,1,0,0,0,4,0,4,8...] indices: col10=4, col11=0, col12=4. Row4 output: [8,8,8,8,8,1,1,8,8,8,4,4,8...] col10=4,col11=4. So cells: (2,11),(2,12),(3,10),(3,12),(4,10),(4,11) become 4. Original 4 at (4,10) already. This forms a 3x3 plus? It is 4 at all cells of a 3x3 block rows2-4 cols10-12 except center (3,11) remains 0? Wait (3,11) input was 0? row3 col11=0 yes, remains 0. Also (3,10) input was 0? row3 col10=0, becomes 4. (2,10) was 8 becomes 8? Actually row2 col10 input 8, output 8? output row2 at col10 maybe 8; yes not changed. So 3x3 missing top-left and center? Let's list: rows2-4, cols10-12:
+input:
+(2,10)=8,(2,11)=8,(2,12)=8
+(3,10)=0,(3,11)=0,(3,12)=0
+(4,10)=4,(4,11)=0,(4,12)=8
+output:
+(2,10)=8,(2,11)=4,(2,12)=4
+(3,10)=4,(3,11)=0,(3,12)=4
+(4,10)=4,(4,11)=4,(4,12)=8
+This is not symmetric. Maybe 4 moves to top-right? Original at bottom-left of a 3x3 region? It fills all cells except original? Wait shape: if original 4 at (4,10), it is bottom-left of a 3x3 bounding box (rows2-4, cols10-12), with a 0 at (4,11)? no center? It might fill a 2x2 block at top-right of its position? But includes (3,10) left of original? Hmm.
+
+Also output for object 6 at (8,6): It adds a 2x2? Output row8: [8,8,8,8,8,6,6,8,...] (col5,6=6,6); row9: [8,8,8,8,6,0,6,0,0,0,3,0,3] (col4=6,col6=6); row10: [8,8,8,8,6,6,8...]. So original 6 at (8,6), output 6 forms a 3x3 ring around (8,6)? Cells changed: (8,5),(9,4),(9,6),(10,4),(10,5) plus original (8,6). Actually row10 col5=6? output row10 [8,8,8,8,6,6,8...] yes col4=6,col5=6. Row9 col4=6, col6=6. It forms a 3x3 block rows8-10 cols4-6 except center? Wait original at (8,6) top-right of 3x3? Let's list 3x3 rows8-10 cols4-6:
+input:
+(8,4)=8,(8,5)=0,(8,6)=6
+(9,4)=8? row9: [8,8,8,8,8,0,0,0,0,0,3,0,3] indices: 0-3 8,4=8? Actually row9 length: 0 8,1 8,2 8,3 8,4 8? Let's count: row9: [8,8,8,8,8,0,0,0,0,0,3,0,3,8...] yes col4=8, col5=0, col6=0.
+(10,4)=8,(10,5)=8,(10,6)=8
+output:
+(8,4)=8,(8,5)=6,(8,6)=6
+(9,4)=6,(9,5)=0,(9,6)=6
+(10,4)=6,(10,5)=6,(10,6)=8
+Same pattern as 4? Original at top-right? Wait original 6 at (8,6) (top-right of 3x3 if cols4-6 rows8-10). It filled all cells of 3x3 except top-left (8,4), center (9,5), bottom-right (10,6)? That's a diagonal? It made shape like a C? Coordinates filled: (8,5),(8,6),(9,4),(9,6),(10,4),(10,5). That's 3x3 minus (8,4),(9,5),(10,6). Original at (8,6). This is the set of cells in a 3x3 with row/col parity? It is like all cells except those on the main diagonal? No main diagonal of 3x3 rows8-10 cols4-6: (8,4),(9,5),(10,6) are missing. Filled are off-diagonal. Interesting. For 4 original at (4,10), 3x3 rows2-4 cols10-12. Missing main diagonal? (2,10),(3,11),(4,12). Output: (2,10)=8 missing, (3,11)=0 missing, (4,12)=8 missing. Filled off-diagonal. Yes! For 6 original at (8,6), 3x3 rows8-10 cols4-6 missing main diagonal: (8,4),(9,5),(10,6); output off-diagonal filled. Original is top-right (8,6), which is off-diagonal. So rule maybe: For each "marker" digit adjacent to a 0 rectangle corner? Fill the off-diagonal cells of a 3x3 block centered at a corner? Need more.
+
+Object 3 in demo1: Input has 3 shape around (9,11): cells (8,10)=3,(8,11)=3,(9,10)=3,(9,12)=3,(10,11)=3,(10,12)=3. Output for 3? It fills? Output row8: col10=3,col11=3 unchanged? Row9: col10=3,col12=3. Row10: col11=3,col12=3. It seems no change? But maybe it fills missing diagonal? 3x3 rows8-10 cols10-12:
+input:
+(8,10)=3,(8,11)=3,(8,12)=8
+(9,10)=3,(9,11)=0,(9,12)=3
+(10,10)=8,(10,11)=3,(10,12)=3
+This is exactly off-diagonal of 3x3? Missing diagonal: (8,10)? no that's top-left diagonal? Let's define 3x3 rows8-10 cols10-12: main diagonal (8,10),(9,11),(10,12); anti-diagonal (8,12),(9,11? no), etc. Input has (8,10) diagonal filled, center 0, (10,12) diagonal filled, plus off-diagonal. It is actually full 3x3 except (8,12)=8, (10,10)=8, and center 0? Output unchanged? Wait output row8 col12=8, row10 col10=8. So not same.
+
+Maybe 3 was already a "complete" object? The task might be to complete square frames for colored cells? Let's step back.
+
+There are 0 structures: rectangular rings or lines? In demo1, there are 0 rectangles (hollow squares) of size? Top-right? Let's identify 0 shapes:
+- At top left: row3 col5=0? row4 col5=1? not a ring. There is a 1 shape: row2 col4,5=1; row3 col4=1,col5=0,col6=1; row4 col5=1,col6=1? That's a 2x2? Actually it's a square ring? Input 1s around a 0? Let's list region rows2-4 cols4-6:
+row2: 1,1,8
+row3: 1,0,1
+row4: 8,1,1
+This is a 3x3 with missing top-right (2,6)=8, bottom-left (4,4)=8, center 0. It looks like an off-diagonal? Which diagonal? If 3x3 rows2-4 cols4-6:
+main diagonal (2,4)=1,(3,5)=0,(4,6)=1; anti (2,6)=8,(3,5)=0,(4,4)=8. Filled: (2,5)=1,(3,4)=1,(3,6)=1,(4,5)=1. This is main diagonal endpoints plus off-diagonal? Output for this 1? Let's compare demo1 output row2: cols4,5=1,1; row3: col4=1,col5=0,col6=1; row4: col5=1,col6=1. No change? Actually input row4 col4? Input row4 [8,8,8,8,8,1,1] => col4=8,col5=1,col6=1. Same output. So 1 unchanged.
+
+But output did create similar 1? No.
+
+Maybe each colored object is a "corner piece" of a 3x3 frame missing diagonal; the transformation completes frames for colors that are "connected" to 0 boxes? Need identify all changes:
+Demo1 changes:
+- 4: created off-diagonal 3x3 around a 0? original at (4,10). There is 0 at (3,11) and (4,11) and maybe (3,10)? The 3x3 center at (3,11) is 0. Filled off-diagonal except center.
+- 6: created off-diagonal 3x3 around center (9,5) which is 0? Wait original at (8,6), center (9,5) input 0. Filled off-diagonal.
+- 2 and 7 in lower box: Input lower 0 rectangle rows15-19 cols7-11 (5x5 border 0, interior rows16-18 cols8-10). Objects: row16 col8=2, col10=7; row18 col8=3, col10=4. Output: It creates 2x2? Let's see:
+Output row14: cols7,8=2,2; cols10,11=7,7?
+Row14 output: [8,8,8,8,8,8,2,2,8,8,8,7,7,8...] indices: col6=2? Need count: row14 input all 8. Output: "8,8,8,8,8,8,2,2,8,8,8,7,7,8". Indices: 0-5 8, 6=2,7=2,8=8,9=8,10=8,11=7,12=7. Lower 0 box starts row15 col7? Let's index.
+Input lower:
+row15: [8,8,8,8,8,8,8,0,0,0,0,0,8...] indices col7-11 0.
+row16: [8,8,8,8,8,8,8,0,2,8,7,0,8...] col7=0,col8=2,col9=8,col10=7,col11=0.
+row17: col7=0,col8=8,col9=8,col10=8,col11=0.
+row18: col7=0,col8=3,col9=8,col10=4,col11=0.
+row19: col7-11=0.
+So 5x5 0 box border rows15,19 cols7-11 and cols7,11 rows16-18. Interior 3x3 rows16-18 cols8-10. Objects at four corners of interior: 2 top-left, 7 top-right, 3 bottom-left, 4 bottom-right. Output:
+row14: [8,8,8,8,8,8,2,2,8,8,8,7,7,8] -> 2x2 blocks outside top-left and top-right? Top-left border corner at (15,7); outside diagonal top-left is rows14-? col6-? Let's map: For 2 at interior top-left (16,8), nearest border corner top-left (15,7), outside diagonal 2x2 at rows14-15? cols6-7? Output row14 col6,7=2,2. Row15 output? [8,8,8,8,8,8,2,0,2,0,7,0,7] row15 col6=2, col7=0, col8=2, col10=7,col11=0,col12=7. Wait row15 output: "8,8,8,8,8,8,2,0,2,0,7,0,7". So row15 col6=2, col8=2, col10=7,col12=7. Row16 output: [8,8,8,8,8,8,8,2,2,8,7,7,8] col7=2,col8=2,col10=7,col11=7. Row17: unchanged? [8,8,8,8,8,8,8,0,8,8,8,0,8]
+Row18 output: [8,8,8,8,8,8,3,3,8,8,8,4,4,8] col6,7=3,3; col11,12=4,4.
+Row19 output: [8,8,8,8,8,8,3,0,3,0,4,0,4] col6=3,col8=3,col11=4,col13=4.
+Row20 output: [8,8,8,8,8,8,3,3,8,8,8,4,4,8] col6,7=3,3; col11,12=4,4.
+So each interior corner object produces:
+- adjacent interior? For 2 at (16,8), output adds (15,8)? Actually row15 col8=2, (16,7)=2, and outside 2x2 at (14,6),(14,7),(15,6)? Wait outside diagonal from border corner (15,7) would be rows14-15 cols6-7? That includes row14 col6,7; row15 col6,7. But row15 col7 is border 0 remains 0. So only row14 col6,7 and row15 col6? Hmm output row15 col6=2, col7=0. So 3 cells outside/around? Also (15,8) and (16,7) are adjacent to border corner? These are outside? (15,8) is top border row of 0 box (0) becomes 2, (16,7) left border col (0) becomes 2. So for object at interior corner, it "expands" to fill the two adjacent border cells and a 2x2 outside missing the corner border? For 2: filled top border cell to right of corner (15,8), left border cell below corner (16,7), and outside cells: row14 col6,7; row15 col6. But not row14? outside 2x2 would be row14 col6,7; row15 col6,7. Border corner row15 col7 remains 0. So fill 3 outside cells of 2x2? Actually 2x2 rows14-15 cols6-7: cells (14,6),(14,7),(15,6),(15,7). (15,7) is border corner 0 not filled. So fill other 3. Plus fill top border adjacent (15,8) and left border adjacent (16,7). That's total 5 cells? Output for 2: (15,8),(16,7),(14,6),(14,7),(15,6). yes 5. For 7 at top-right (16,10): filled top border left (15,10), right border below (16,11), outside top-right 2x2 rows14-15 cols11-12 except corner (15,11)? Wait border top-right corner is (15,11). Outside diagonal is rows14-15 cols11-12. Fill (14,11),(14,12),(15,11? corner remains 0), (15,12). Output row14 col11,12=7; row15 col10=7,col12=7; row16 col11=7. yes. For 3 bottom-left (18,8): filled bottom border above? bottom-left corner (19,7), adjacent bottom border right (19,8), left border above (18,7), outside bottom-left 2x2 rows19-20 cols6-7 except corner (19,7). Output row19 col6=3,col8=3; row20 col6,7=3; row18 col7=3. yes. For 4 bottom-right similar.
+
+Demo0: large 0 box border rows3-10 cols3-10 (8x8). Interior rows4-9 cols4-9. Objects: 3 at (5,5) interior not corner? It is one cell from top-left interior corner (4,4). Output for 3: filled top border adjacent? top-left corner (3,3), adjacent top border right (3,4)? Wait output row3: [1,1,3,3,0,0,0,0,0,0,8,8]. Row3 col2,3? Need 0-based. Row3 output: indices 0,1=1, 2=3,3=3,4=0,... So (3,4) is 0, not filled. Hmm I mis-index. Let's index demo0 carefully with 0-based.
+Input row3: [1,1,1,0,0,0,0,0,0,0,8,8,...]
+Indices: 0=1,1=1,2=1,3=0,4=0,5=0,6=0,7=0,8=0,9=0,10=8,11=8.
+So top border row3 has zeros cols3-9? Actually 7 zeros. Left border col3 rows3-10 zeros. Top-left corner (3,3). Interior starts row4 col4.
+Output row3: [1,1,3,3,0,0,0,0,0,0,8,8]
+Indices: 2=3,3=3,4=0... So it filled (3,2) and (3,3)?? Wait (3,3) top-left border corner became 3! That contradicts lower demo where border corner remained 0. But maybe because 3 object not at interior corner? Let's compare.
+Output row2: [1,1,3,3,1...] indices 2,3=3. So 2x2 block rows2-3 cols2-3 fully filled (including border corner (3,3)). It also filled (4,4)? Output row4: [1,1,1,0,3,1,1,1,1,8,0,1] indices 3=0,4=3. So (4,4) top-left interior corner filled. But top border adjacent (3,4) remains 0, left border adjacent (4,3) remains 0. So different from corner object in demo1/lower: there border corner remained 0 and adjacent border cells filled. Here border corner filled, adjacent border not.
+For 4 at (8,5): output filled interior bottom-left? (9,4)? Output row9: [1,1,1,0,4,1,1,1,1,2,0] indices 4=4,9=2. Yes (9,4). Outside bottom-left 2x2? Output row10: [1,1,1,4,4,0,0,0,0,0,2,2] indices 2,3=4, 10,11=2. Row11: [1,1,1,4,4,1,1,1,1,1,2,2] indices 2,3=4,10,11=2. Bottom-left border corner is (10,3). Output row10 col3=4, row10 col2=4; row11 col2,3=4. So 2x2 rows10-11 cols2-3 fully filled including border corner (10,3). Adjacent border cells (10,4) and (9,3) remain 0? Row10 col4=0, row9 col3=0. Yes.
+For 2 at (8,8): bottom-right corner (10,10) filled

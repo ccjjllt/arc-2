@@ -1,0 +1,64 @@
+
+
+```python
+def transform(grid):
+    H = len(grid)
+    W = len(grid[0])
+    g = [row[:] for row in grid]
+    seen = [[False] * W for _ in range(H)]
+    comps = []
+    colors = set()
+
+    for r in range(H):
+        for c in range(W):
+            if grid[r][c] != 0 and not seen[r][c]:
+                col = grid[r][c]
+                colors.add(col)
+                stack = [(r, c)]
+                seen[r][c] = True
+                pts = []
+                while stack:
+                    cr, cc = stack.pop()
+                    pts.append((cr, cc))
+                    for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                        nr, nc = cr + dr, cc + dc
+                        if 0 <= nr < H and 0 <= nc < W and not seen[nr][nc] and grid[nr][nc] == col:
+                            seen[nr][nc] = True
+                            stack.append((nr, nc))
+                comps.append((col, pts))
+
+    for col in colors:
+        same = [pts for c, pts in comps if c == col]
+        if len(same) == 1:
+            continue
+        same.sort(key=lambda p: min(r for r, _ in p))
+        a = same[0]
+        b = same[-1]
+        ar = min(r for r, _ in a)
+        br = min(r for r, _ in b)
+        if ar == br:
+            for dr, dc in ((1, 1), (-1, 1)):
+                if -1 <= min(r for r, _ in a) - min(r for r, _ in b) <= 1:
+                    s, t = a, b
+                elif -1 <= min(r for r, _ in b) - min(r for r, _ in a) <= 1:
+                    s, t = b, a
+                else:
+                    continue
+                sr, sc = min(s, key=lambda x: x[1])
+                for r, c in zip(range(sr + dr, H if dr > 0 else -1, dr), range(sc + dc, W if dc > 0 else -1, dc)):
+                    if 0 <= r < H and 0 <= c < W and g[r][c] == 0:
+                        g[r][c] = col
+        else:
+            for dc, dr in ((1, 1), (-1, 1)):
+                if -1 <= min(c for _, c in a) - min(c for _, c in b) <= 1:
+                    s, t = a, b
+                elif -1 <= min(c for _, c in b) - min(c for _, c in a) <= 1:
+                    s, t = b, a
+                else:
+                    continue
+                sr, sc = min(s, key=lambda x: x[0])
+                for r, c in zip(range(sr + dr, H if dr > 0 else -1, dr), range(sc + dc, W if dc > 0 else -1, dc)):
+                    if 0 <= r < H and 0 <= c < W and g[r][c] == 0:
+                        g[r][c] = col
+    return g
+```

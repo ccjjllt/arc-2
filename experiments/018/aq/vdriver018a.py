@@ -25,7 +25,7 @@ import run_reasoning_probe as P
 import solve_program as SP
 
 VLLM_WHEEL_NAME = "vllm-0.27.2rc1.dev91+g1f7427bc0-cp38-abi3-manylinux_2_28_x86_64.whl"
-VLLM_WHEEL_SHA256 = "5cbeedeb8262fbc7e77c5b4c33203e4dab74e8da1649a977bae833df62304a"
+VLLM_WHEEL_SHA256 = "5cbeedeb8266362ef935775c4c33203e4dab74e8da1649a977bae833df62304a"
 INSTALL_BUDGET_S = 20 * 60
 SAVE_MARGIN_S = 300
 NEW_REQUEST_CUTOFF_S = 80 * 60
@@ -90,7 +90,7 @@ def sh(cmd, timeout, cwd=None, env=None):
 def sha256_file(path: Path) -> str:
     d = hashlib.sha256()
     with path.open("rb") as h:
-        for ch in iter(lambda: h.read(1 << 20), 1):
+        for ch in iter(lambda: h.read(1 << 20), b""):
             d.update(ch)
     return d.hexdigest()
 

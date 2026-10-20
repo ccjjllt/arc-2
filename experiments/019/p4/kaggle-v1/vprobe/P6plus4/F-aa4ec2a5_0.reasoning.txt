@@ -1,0 +1,119 @@
+We need answer with code only final. Need solve transformation. We need analyze demos and infer rule. We have previous attempted program flawed: it didn't add full border rectangle? Let's understand task.
+
+Input grids have background 4, foreground 1 components (shapes). Output same dims: background remains 4 mostly, but for each foreground component? It seems draws bounding rectangle border of color 2 around component? And interior of component filled with 8 if it contains holes? Interior holes filled 6? And solid components remain 1? Let's inspect demos.
+
+Demo0 input: multiple components.
+- Top-left large C-shaped? cells rows 2-6 cols 3-? Let's map.
+Output for that component: bounding box from row1 col2 to row7 col10? Border 2, interior original 1 becomes 8? Inside holes maybe 6. In output, inside C shape: at (3,6)? etc. Let's parse.
+
+Demo0 input components:
+1) Top-left C? row1? Coordinates 0-index.
+Row1: cols16-22? Actually row1: [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,1,1,1,1,1,1,1,4,4] -> component A? horizontal line row1 cols16-22 and vertical down col16 rows1-6? and right vertical col20-22? Let's list.
+Row2: cols3-6? and col16, cols20-22? input row2: [4,4,4,1,1,1,1,4,4,4,4,4,4,4,4,4,1,4,4,4,1,1,1,4,4]
+Row3: cols3-10, col16, cols20-22
+Row4: cols3-6, col9, col16, cols20-22
+Row5: cols3-6, col9, col16, cols17-22? Wait row5: ... 1,1,1,1,4,4,4,4,4,4,1,1,1,1,1,1,1,4,4? Let's count.
+Row6: cols6-9, col16-22? maybe.
+There are separate components: top-left C shape (cols3-10 rows2-6 maybe connected via row3 col7-10? Let's see row2 cols3-6; row3 cols3-10; row4 cols3-6 and col9; row5 cols3-6 and col9; row6 cols6-9. Are they connected? Row3 connects col3-10. Row4 has col9; row5 col9; row6 col6-9; connected to row3 through col9? yes row4 col9 adjacent row3 col9, row5 col9, row6 col9. Row4 col6? input row4 [4,4,4,1,1,1,1,4,4,1...] so col6=4, col7=4, col8=4, col9=1; row5 similar. So shape like C with opening at bottom-left? It encloses a hole? The output for that component: bounding box rows1-7 cols2-10. Border 2. Interior: cells that were 1 become 8, except holes 6. In output row3: [4,4,2,8,8,8,8,8,8,8,2] row4: [4,4,2,8,8,8,8,6,6,8,2], row5 same 6 at cols7-8, row6 [4,4,2,8,8,8,8,6,6,8,2], row7 [4,4,4,4,4,2,8,8,8,8,2]. This suggests interior of bounding box filled with 8, holes (enclosed background 4 inside original shape) filled 6. But note output row6 col5? bounding interior? row7 col5 =2, row7 col6-9=8: below original component? Actually original row6 (index6) has cols6-9 1. Bounding box bottom row7; cells row7 col6-9 are background in input, but output 8? Wait output row7: [4,4,4,4,4,2,8,8,8,8,2...]. Yes row7 col6-9 8. They are not original 1, but are interior of bounding box not holes? They were background 4 inside bounding box below component. So maybe all cells inside bounding box are filled: original 1 -> 8, background holes? -> 6 if enclosed by original component? But row7 col6-9 are background not enclosed? Why 8 not 6? Let's understand.
+
+Maybe transformation: For each connected component of 1s, draw its bounding box border as 2, and fill entire bounding box with 8, except enclosed holes of original shape filled 6? But then row7 col6-9 are in bbox interior and become 8. Yes. What about cells inside bbox that were background not holes? Also 8. In demo0 top-left, bbox rows1-7 cols2-10. Interior (rows2-6 cols3-9) all become 8 except holes (cols7-8 rows4-5? plus maybe row3?) become 6. That matches. Border 2 includes row1? output row1 col2-10? row1 output [4,4,2,2,2,2,2,2,4,4...] yes top border row1 col2-6? Wait bbox col2-10? row1 output col2-6 2? Actually row1 out: [4,4,2,2,2,2,2,2,4,4,...] so col2-7 2? Let's count: indices: 0 4,1 4,2 2,3 2,4 2,5 2,6 2,7 2,8 4,9 4. Bbox left=2 right=10? But top border only to col7? Why not to col10? Because bounding box of component? Let's re-evaluate component cells. Top-left component may have rightmost col9 (0-index), so right=9. Top border row1? component min row=2? output top border row1 col2-7? Hmm.
+
+Let's map demo0 output top-left:
+Row1: col2-7 are 2. Row2: col2=2, col3-6=8? row2 out: [4,4,2,8,8,8,8,2,2,2,2,...] so col2 border, col3-6 8, col7 border? plus col8-10 2? Wait row2 output: indices: 0 4,1 4,2 2,3 8,4 8,5 8,6 8,7 2,8 2,9 2,10 2, ... So top? Row2 has 2 from col7-10. Row3: col2=2, col3-9=8? col10=2. Row4: col2=2, col3-6=8, col7-8=6, col9=8, col10=2. Row5 same. Row6: col2=2, col3-6=8, col7-8=6, col9=8, col10=2. Row7: col5? output [4,4,4,4,4,2,8,8,8,8,2] => col5=2, col6-9=8, col10=2. So bbox left=2, right=10, top=1? bottom=7? But top row only col2-7 2, not col8-10? Wait row1 col8-10 are 4 in output? row1 out: ... after col7: 4,4,4? Let's count row1 full: [[4,4,2,2,2,2,2,2,4,4,4,4,4,4,4,2,8,...]] Actually demo0 out row1: [4,4,2,2,2,2,2,2,4,4,4,4,4,4,4,2,8,8,8,8,8,8,8,2,4]. So col2-7 2, col8-14 4, col15 2. So top border not full bbox if bbox right=10. Why? Maybe bounding box of each *stroke*? Or shape's convex hull? Or outline of component dilated? Let's see original component rightmost: maybe col10? Input row3: [4,4,4,1,1,1,1,1,1,1,4...] indices 3-9? Row3 out has col10=2, but input row3 col10? Let's count row3 in: row3 (0-index 3): [4,4,4,1,1,1,1,1,1,1,4,4,4,4,4,4,1,4,4,4,1,1,1,4,4]
+Indices: 0 4,1 4,2 4,3 1,4 1,5 1,6 1,7 1,8 1,9 1,10 4. So rightmost col9. Bbox left=3? min col=3, max col=9. Output border maybe expanded by 1: left=2, right=10, top=1? min row=2? max row=6? bottom=7. That would full rectangle rows1-7 cols2-10. But output row1 missing col8-10? Why?
+
+Maybe border is not rectangle, but outline of component's *bounding box in 8-neighbor?* Wait row1 col8-10 are 4; row2 col8-10 are 2. That suggests top border follows top of *filled interior*? Or border is generated by taking 1-cell thick outline around the shape after filling interior? Let's visualize output top-left:
+Rows 1-7, cols 2-10:
+r1: 2 2 2 2 2 2 . . .  (col2-7 2, 8-10 empty)
+r2: 2 8 8 8 8 2 2 2 2  (col2 border, 3-6 interior 8, col7-10 border? actually border)
+r3: 2 8 8 8 8 8 8 8 2
+r4: 2 8 8 8 8 6 6 8 2
+r5: 2 8 8 8 8 6 6 8 2
+r6: 2 8 8 8 8 6 6 8 2
+r7: . . . . 2 8 8 8 8 2 (col5=2,6-9 8,col10 2)
+This looks like a border surrounding a filled shape that is not rectangular: the 8 region (including holes 6) has a polygon shape. The 2 border is adjacent to 8/6 region? Let's see 8/6 region cells:
+r2 c3-6, r3 c3-9, r4 c3-8 plus c9? Actually r4 c9=8, r5 c3-8,c9, r6 c3-8,c9, r7 c6-9. This shape is like original component but filled? Original component cells: r2 c3-6, r3 c3-9, r4 c3-6 & c9, r5 c3-6 & c9, r6 c6-9. If we fill holes and maybe extend? Output 8/6 region includes r4 c7-8 = 6 (holes), r5 c7-8=6, r6 c7-8=6, r7 c6-9=8. It's exactly original component plus enclosed holes, plus some extra bottom row r7 c6-9? Original didn't have r7. Maybe original component bottom row was r6 c6-9, so output adds a row below? That's border? No, r7 c6-9 are 8, not border. So filled shape includes original cells, holes, and an extra bottom row? Let's check if original r6 c6-9: yes. Filled shape perhaps is all background cells that are *inside the bounding box and not connected to outside through 1s?* But r7 c6-9 are outside original, below bottom. Are they enclosed by 1s? No bottom open. Maybe because original bottom row at r6 c6-9 is adjacent to output bottom border r7? Wait output bottom border is r7 c5=2 and c10=2, not full. 8 r7 c6-9 are between border? Hmm.
+
+Alternative: Rule might be to find each component, determine its bounding box, then output: border 2 along the *perimeter of the component's bounding box clipped by grid?* and fill inside bounding box with 8 if the component touches all sides? But missing top row segments? Let's inspect other components demo0.
+
+Demo0 has top-right rectangular ring? Input rows1-6 cols16-22 forms rectangle outline with interior holes? Output top-right:
+Row0: col15-22 2? output row0: [4... index15=2,16-22=2,23=2? row0: 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,2,2,2,2,2,2,2,2,2,4] => col15-23? 2. Row1: col15=2, col16-22=8? row1 out: ... col15=2,16-22=8,23=2. Row2: col15=2,16=8,17-19=6,20-22=8,23=2. Row3 same, row4 same? row4 out: col15=2,16=8,17-19=6,20-22=8,23=2. Row5: col15=2,16=8,17-22=8,23=2. Row6: col15=2,16-22=8,23=2. Row7: col15-23=2. This is a full rectangle border rows0-7 cols15-23, interior 8 with hole 6 at rows2-4 cols17-19. The original component was rectangle outline rows1-6 cols16-22? Actually input row1 cols16-22, row2 col16 and 20-22, row3 col16 and 20-22, row4 col16 and20-22, row5 col16-22, row6 col16-22? Wait input row5: ... 1,1,1,1,1,1,1? row5 index? Let's recount demo0 input rows:
+0 all 4
+1: 16-22 =1
+2: 16=1,20-22=1
+3: 16=1,20-22=1
+4: 16=1,20-22=1
+5: 16-22=1 (yes full row)
+6: 16-22=1? row6: [4,4,4,4,4,4,1,1,1,1,4,4,4,4,4,4,1,1,1,1,1,1,1,4,4] => cols6-9 and16-22.
+So top-right component is thick rectangle with top row, bottom two rows? It encloses hole rows2-4 cols17-19. Output border expands by one around original component? Original min row=1,max=6,min col=16,max=22. Expanded bbox rows0-7, cols15-23. Interior rows1-6 cols16-22 filled 8, hole 6. That matches: border full expanded bbox.
+
+For top-left, expanded bbox of original component min row=2,max=6,min col=3,max col=9? Expanded rows1-7, cols2-10. Full border would row1 col2-10 2, row7 col2-10 2, left col2 rows1-7, right col10 rows1-7. But output top-left missing top col8-10 and bottom col2-4? Let's verify maybe I misread output row1/row7 due to other components? Row1 output has another border at col15 from top-right; maybe col8-10 are not 4? It says row1: [4,4,2,2,2,2,2,2,4,4,4,4,4,4,4,2,8,8,8,8,8,8,8,2,4]. Yes col8-14 4. Row7 output: [4,4,4,4,4,2,8,8,8,8,2,4,4,4,4,2,2,2,2,2,2,2,2,2,4]. Row7 col0-4 4, col5=2, col6-9=8, col10=2, col11-14 4, col15-23 2. So missing border segments top right and bottom left. Why? Maybe because border only drawn where it would not cross another component's border? No, other component border top-right starts col15, not overlapping. Or because bounding box is not of entire connected component but of each *filled polygon*? Top-left shape maybe consists of two components connected only diagonally? Let's check connectivity 4-neighbor in input. Top-left cells:
+Rows:
+r2 c3-6
+r3 c3-9
+r4 c3-6 and c9
+r5 c3-6 and c9
+r6 c6-9
+Are c3-6 and c9 connected via r3 only; r4/r5 c3-6 separated from c9 by c7-8=4. But r3 connects across, so 4-neighbor connected yes.
+However maybe the component is interpreted as outline of a polygon; holes/fills based on even-odd? The output 8/6 region appears to be the *interior of the polygon* formed by the 1s as a stroke? Let's think.
+
+Maybe input 1s represent objects (walls) on background 4. Output: for each object, compute its *filled interior* (area enclosed by the object) and color it 8; color holes? Wait output 2 is border around interior? In top-right, original is a rectangular wall with a missing? It encloses an interior hole (background) rows2-4 cols17-19. Output makes interior of wall (inside bounding box) 8, enclosed hole 6? Border 2 outside wall. In top-left, original is an open C-shape? Does it enclose holes? There are two 6x? holes at rows4-6? Let's map original top-left:
+r2: c3 c4 c5 c6
+r3: c3 c4 c5 c6 c7 c8 c9
+r4: c3 c4 c5 c6   c9
+r5: c3 c4 c5 c6   c9
+r6: c6 c7 c8 c9
+This shape actually forms a loop? It is a spiral/closed ring with opening? Let's trace: It is like a rectangle from c3-c9 r2-r6 with missing left middle? It encloses two holes at c7-c8 r4-r6? Are they enclosed? The holes c7,c8 r4-r6 are surrounded by 1s? r3 c7-c8 top, c9 right, r6 c7-c8 bottom, left? c6 r4-r6? r4 c6=1, r5 c6=1, r6 c6=1. Yes enclosed. So holes are c7-c8 r4-r6 (3 rows? output 6 at r4-6 c7-8? Actually output 6 at r4,r5,r6? I saw row6 r6 c7-8=6 yes). Good.
+The original shape itself is a ring with a solid part? If we fill interior (holes) and maybe thicken? The interior of the ring is holes 6. But output 8 includes original 1s and an extra row r7 c6-9? Let's check if r7 c6-9 is actually part of original? Input row7: all 4. Output row7 c6-9=8. Why? Maybe because original bottom row r6 c6-9, and border should be outside at r7; but output border at r7 c5 and c10 only, leaving c6-9 8. Could be that border is drawn on cells *adjacent to the filled interior* but only if the outside neighbor is background? For bottom side, filled interior includes original row r6 c6-9, outside below r7 c6-9 should be border 2. But output 8, not 2. Wait maybe filled interior includes r7 c6-9 because of dilation? Let's consider rule: For each component, take its cells, perform morphological dilation? Then border? Or fill convex hull? Top-left output 8 region is not simply component+holes; it includes bottom row r7 c6-9, but not top row r1 c3-9 or left r? Let's identify 8 region exactly:
+r1: none 8 (all 2/4)
+r2: c3-6 (4 cells)
+r3: c3-9 (7)
+r4: c3-6, c9 (5? plus 6 at c7-8)
+r5: same
+r6: c3-6, c9 plus 6 c7-8
+r7: c6-9
+This 8/6 region is exactly the *filled polygon* if the 1s are considered boundary lines of a polygon? Let's trace boundary of 8/6 region:
+Top boundary at r2 c3-6 (not r1), right boundary c9 rows3-6, bottom boundary r7 c6-9, left boundary c3 rows2-6. There are indentations? The shape is like a L? It includes original solid cells plus holes, plus bottom extension, but missing top extension. It seems the 1s are treated as *wall thickness*? If input walls are 1 thick, output may convert them into *filled region interior to the walls*? Hmm.
+
+Let's examine demo1 to infer.
+Demo1 input components:
+- Top-left big block? Rows2-7 cols1-4? Actually input:
+row2: [4,1,1,1,1,1,1,1,4,...] => c1-7
+row3: c1-7
+row4: c1-7
+row5: c1-7
+row6: c1-4 (then c10-20?)
+row7: c1-4
+So a 6x7 rectangle rows2-5 c1-7 plus vertical c1-4 rows6-7? Maybe connected. Output top-left:
+row1: c0? output row1 [2,2,2,2,2,2,2,2,2,2,8,2,4,2,8,8...]. So border around top-left from row1 c0-8? row2: [2,1,1,1,1,1,1,1,2,2,8,2,2,2,8,6...]. Here original 1s remain 1 (not 8), holes? It has 8 at c10, 6 at c15-18. Border 2 around some components.
+For top-left component, output: original 1s remain 1, border 2 surrounding bounding box? Bbox original rows2-7 c1-7. Expanded rows1-8 c0-8. Output border: row1 c0-8 2? row1 c0-8 yes; row2 c0=2, c8=2; rows3-6 c0,c8? row6 c0=2, c8=2? row6 output [2,1,1,1,1,2,2,2,2,2,8,8,8,8,8,8,8,8,8,8,8,2,4]. c0=2,c8=2, c5-7? Wait row6 c1-4=1, c5-? 2? Let's count row6: indices 0 2,1 1,2 1,3 1,4 1,5 2,6 2,7 2,8 2,9 2,10 8... So border not simple expanded bbox because interior has 2 at c5-7? Actually original row6 c5-7 are 4 (background) to right of c1-4; within bbox c1-7 rows6-7. Output row6 c5-7=2, row7 c0-4? row7 output [2,1,1,1,1,2,4,4,4,2,2,2,2,2,2,2,2,2,2,2,2,2,4]. c5=2, c9? border for other component? This is more complex.
+
+Maybe each component is transformed independently: If component is *hollow* (has enclosed hole), fill inside with 8/6 and border 2 around *convex hull?* If component is solid (no holes), leave original 1s, just draw border 2 around its bounding box? In demo1 top-left solid? It has no enclosed holes? Output leaves 1s. It draws border around some polygon, not rectangle? Let's inspect.
+Original top-left solid shape (rows2-5 c1-7 plus rows6-7 c1-4) like a P shape? It is a connected solid with an indentation at bottom-right. Output for that component:
+Rows1-8 c0-8:
+r1: 2 2 2 2 2 2 2 2 2
+r2: 2 1 1 1 1 1 1 1 2
+r3: 2 1 1 1 1 1 1 1 2
+r4: 2 1 1 1 1 1 1 1 2
+r5: 2 1 1 1 1 1 1 1 2
+r6: 2 1 1 1 1 2 2 2 2
+r7: 2 1 1 1 1 2 4 4 4? plus c9 2? Actually row7 out: [2,1,1,1,1,2,4,4,4,2,...] c6-8=4, c9=2 due other comp. So border around shape: top row1 c0-8, left c0 rows1-7, bottom? row7 c0-4=2? row7 c0-4? row7 output starts [2,1,1,1,1,2] not c0-4 all 2; only c0=2, c1-4=1, c5=2. Wait bottom border missing below c1-4? Maybe because bottom border is at row8? Row8 output [2,2,2,2,2,2,4,4,4,4...]. Row8 c0-5=2. So bottom border is row8 c0-5, not row7. Border surrounds bbox of original? Original min row=2,max=7,min col=1,max col=7. Expanded bbox rows1-8 c0-8. Full border would row8 c0-8 2, row1 c0-8, c0/c8 rows1-8. But output row8 c6-8=4, row7 c6-8=4, row6 c5-8=2? That's not rectangle. Instead border follows shape's exterior (1-cell thick) and fills interior indentation? Let's trace output 2 around top-left shape: It is a 1-cell outline of the *original shape* (not expanded bbox) perhaps with interior original 1s unchanged. For a solid shape, output: original 1s remain 1; background cells adjacent orthogonally to shape become 2? But also some background cells not adjacent? Let's test: original shape cells S. Exterior background cells adjacent to S: top row1 c1-7, left col0 rows2-7, right col8 rows2-6? bottom row8 c1-4, and interior indentation? The shape has a concave indentation at rows6-7 c5-7 (background inside bbox). Cells adjacent to S there: row6 c5 (adjacent to c4), row7 c5 (adjacent to c4), row6 c? top of indentation row5 c5-7 are 1, so row6 c6-7 adjacent to row5 c6-7? Yes row6 c6 adjacent up to row5 c6=1; row6 c7 adjacent up row5 c7=1; row7 c6 adjacent up row6 c6? background but adjacent diagonal? Orthogonal to S? row7 c6 adjacent left row7 c5 bg, up row6 c6 bg, right row7 c7 bg, down row8 c6 bg; not adjacent to S? But output row7 c6-8=4 not 2. So only cells *orthogonally adjacent to original 1* become 2? Let's see: row6 c5 adjacent left c4=1 ->2; row6 c6 adjacent up c6=1 ->2; row6 c7 adjacent up c7=1 ->2; row6 c8 adjacent left? c7=2 but originally c7 bg, up c7=1? c8 up row5 c8? original row5 c8? row5 input c1-7 only, so c8 bg; left c7 bg; so not adjacent. But output row6 c8=2? Wait row6 out [2,1,1,1,1,2,2,2,2,2...] c8=2. Could be adjacent to other component? c8 row6 maybe adjacent to top-right small component? There is component at row6? Input top-right: row1 c10, c14-20, etc. Row6 has c10-20 connected? Let's map later. But c8 row6 might be border of top-left bbox? If simple adjacency, c8 not adjacent to top-left. But output c8=2 could be border around top-left's *bounding box right side*? Bbox right col7? Expanded right col8 rows1-7? For rows2-7 c8 border. Output c8 rows2-7 all 2? row2 c8=2, row3 c8=2, row4 c8=2, row5 c8=2, row6 c8=2, row7 c8=4? row7 c8=4. Hmm row7 c8 not. Could be due other component.
+
+Maybe border is drawn around the *bounding box of each rectangular subcomponent?* Let's systematically infer.
+
+Let's identify all components and output patterns across demos.
+
+Colors: input only 1 and 4. Output uses 1,2,4,6,8. 1 remains for some components (solid? no holes). 8 appears in hollow components? 6 for holes inside hollow components. 2 is border/outline. 4 background unchanged except border.
+
+Potential known ARC task: Identify each connected object made of 1s. For objects that contain a hole (enclosed 4), fill the object's interior (the 1s?) with 8 and holes with 6, and draw a 2 border around the object's bounding box? For solid objects, draw a 2 border around object (maybe bounding box) but keep 1s. However top-left demo0 is hollow, but original 1s became 8, not just holes 6. Top-right demo0 hollow, original 1s became 8. Demo1 has two hollow components? Top-right component in demo1? Input top-right: rows1-6? Let's map.
+Demo1 input rows:
+0 all 4
+1: c10=1, c14-20=1
+2: c10=1, c14=1, c19-20? Actually row2: [4,1,1,1,1,1,1,1,4,4,1,4,4,4,1,4,4,4,4,1,1,4,4] => c10=1, c14=1, c19-20=1
+3: c10-14=1? row3: [4,1,1,1,1,1,1,1,4,4,1,1,1,1,1,4,4,4,4,1,1,4,4] c10-14, c19-20
+4: c10-14, c19-20
+5: c10-14, c19-20
+6: c10-20? row6: [4,1,1,1,1,4,4,4,4,4,1,1,1,1,1,1,1,1,1,1,1,4,4] => c10-20
+7: all? no c? row7 all 4?
+So top-right component is a ring? It has top row c14-20, right vertical c19-20? left vertical c10 rows1-6, bottom row c10-20, interior hole? There is a gap at top c11-13? Actually top row only c14-20 and separate c10 connected via vertical c10 down to bottom. This shape forms a closed loop? Let's trace: left vertical c10 rows1-6, bottom row c10-20 row6, right vertical c19-20 rows1-6? There are two columns c19-20, top row c14-20. The interior maybe c11-18 rows2-5? But top boundary missing c11-13 (gap) so not enclosed? Output top-right: row1 c13-21? [4,4,4,...,4,2,2,2,2,2,2,2,2,2,4]? Let's count row1 out: [4,4,4,4,4,4,4,4,4,2,2,2,4,2,2,2,2,2,2,2,2,2,4] => c9-11=2, c13-21=2. c12=4. Interesting. Row2: c9-13=2? [2,1... c9=2,c10=8,c11=2,c12=4,c13=2,c14=8,c15-18=6,c19=8,c20=8,c21=2]. So there is border 2 at c11? It fills region? Let's map top-right output:
+Original component likely hollow? Output has 8 and 6. 6 at rows2-5 c15-18 (a 4x4 hole). 8 at c10 rows2-6? c14 rows2-6? c
