@@ -1,0 +1,54 @@
+{
+  "created_date_beijing": "2026-10-20",
+  "status": "proposed_not_run",
+  "artifacts": [
+    {
+      "path": "experiments/020/cohorts/confirmation-c24-challenges.json",
+      "sha256": "84496016ad694a8d6d5f336628bd84b378340288820d6b827aac401a451b4ec8",
+      "bytes": 503307
+    },
+    {
+      "path": "experiments/020/cohorts/development-d24-challenges.json",
+      "sha256": "637fb53da005ab4d3354029e03426ad866d0f3294497aeabd510618e6ac16a56",
+      "bytes": 1014900
+    },
+    {
+      "path": "experiments/020/cohorts/confirmation-c24-manifest.json",
+      "sha256": "6859e458e83ad49f5c038dbb6b59fded42f567dcc86c0043e809b7528cca3300",
+      "bytes": 21372
+    },
+    {
+      "path": "experiments/020/cohorts/development-d24-manifest.json",
+      "sha256": "3dcdc1aa274d04ef948994a3d6ff8e4531a1883feca11c7252875bdc3b794327",
+      "bytes": 26406
+    }
+  ],
+  "selection_did_not_read_query_solutions": true,
+  "D24_C24_task_intersection": [],
+  "C24_pilot_task_intersection": [],
+  "D24_P6_or_confirmation_intersection": [],
+  "D24_role": "Develop and compare same-model M0=P0+R and M1=P0+bounded-CPU-repair+conditional-F-or-R with shared P0 and at most three actual research calls per task; freeze both selectors and all budgets before C24. Each deployable policy uses at most two calls per task. No 4B GPU comparison is planned in this round.",
+  "C24_role": "After model/configuration/code/seeds/token/task-time budgets/CPU repair bounds/conditional routing and final two-slot selectors are frozen on D24, run the same-model M0/M1 comparison once on all 26 queries. Share P0; at most three research calls per task and at most two calls for either deployable policy. Report 20 non-ARC1 tasks/22 queries and four old-ARC1-evaluation tasks/four queries separately. No retuning on C24 while continuing to call it confirmation.",
+  "comparison_limit": "013 public 25.69 and historical copied 30.14 are historical references only, not the paired comparator in this round. Exact historical 30.14 source/runtime remains unverified. Local gains of M1 over M0 do not establish a score above either historical submission.",
+  "run_status": "No new inference, no GPU, no training, no formal submission. These files only freeze input-side task selection.",
+  "gold_handling": "Do not mount solutions in solver inputs. Obtain gold only after final predictions are frozen and verify full demo pairs plus query-input identity. Never align only by task ID or query index.",
+  "unknowns": [
+    "Exact 30.14 source and reproducibility",
+    "Upstream/pretraining contamination for both compared models",
+    "Whether future fixed method has positive query gain/loss on D24/C24",
+    "Full hidden task/query distribution and 12-hour final runtime",
+    "Current zhuating quota and authorized team identity are outside this metadata-only operation"
+  ],
+  "comparison_protocol": {
+    "model": "Qwen/Qwen3.8-27B, same frozen model/runtime and common P0 across both policies",
+    "M0": "P0 + one independent restart R; at most two model calls per task",
+    "M1": "P0 + bounded CPU repair + at most one conditional model call F or R; at most two model calls per task",
+    "research_accounting": "Share P0 across M0/M1. If M1 selects R, reuse the same eligible R call; if it selects F, research generates at most P0+R+F, three calls per task. Never charge shared P0 twice in the actual research ledger.",
+    "deployment_accounting": "Each deployable policy has at most two model calls per task; report each policy total including its own P0. A research union of P0/R/F is not itself a deployable two-call policy.",
+    "query_handling": "Generate and validate the program once per task and apply it to every original query input. Each policy uses its own frozen selector to fill at most two final attempts per query.",
+    "confirmation_rule": "Freeze model, code, seeds, token/time limits, CPU repair bounds, conditional F/R routing, and both final selectors after D24; then evaluate M0/M1 on C24 exactly once. Final attempt selection must not use query gold.",
+    "no_4b_gpu_comparison_this_round": true,
+    "historical_reference": "013 public 25.69 and copied historical 30.14 remain historical references only. No current paired comparison against either historical submission is planned, and exact historical 30.14 source/runtime is unverified."
+  },
+  "D24_historical_score_status": "D24 has 36 queries, but its per-query membership in the supplied matched 158-query scored subset has not been verified from a persisted ledger. Do not write 0/36 based on the aggregate 0/158; new policy results are not yet run."
+}

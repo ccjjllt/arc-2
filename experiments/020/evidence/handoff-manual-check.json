@@ -1,0 +1,22 @@
+{
+  "date_beijing": "2026-10-20",
+  "kind": "manual_document_and_input_audit_not_model_experiment",
+  "local_links_missing": [],
+  "cohort_artifact_sha_match": true,
+  "cohort_task_intersection": [],
+  "query_outputs_in_gpu_inputs": 0,
+  "D24": {
+    "tasks": 24,
+    "queries": 36
+  },
+  "C24": {
+    "tasks": 24,
+    "queries": 26
+  },
+  "normal_gpu_budget_wall_hours": 10,
+  "quota_planning_multiplier": 2.3,
+  "quota_planning_including_reserve_hours": 29,
+  "gpu_run": false,
+  "solver_code_changed": false,
+  "competition_submitted": false
+}

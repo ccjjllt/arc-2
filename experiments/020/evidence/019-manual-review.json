@@ -1,0 +1,49 @@
+{
+  "date_beijing": "2026-10-20",
+  "source_head": "92eb44c69ae1d3ea98b13cf26fc742cd0a593778",
+  "source_path": "experiments/019/submit-pilot/kaggle-v1/vprobe/run.json",
+  "source_sha256": "ecad430bbd2bf77d8bb2d8d1cd772cbda2fad0ad77f6f835ec014c9831e77fc1",
+  "user_review_path": "experiments/020/evidence/user-review-20261020.txt",
+  "user_review_sha256": "d23fd4f21920a40073d1cbae436e91f901cb720033c05b2579600069c9ef214b",
+  "manual_recalculation": {
+    "s1_calls": 172,
+    "peak_in_flight": 8,
+    "average_in_flight": 7.876798872406657,
+    "mean_request_seconds": 172.00565697674418,
+    "wave_span_seconds": 3755.964,
+    "reported_aggregate_tok_s": 144.12,
+    "install_load_inclusive_seconds": 662.5,
+    "install_subset_seconds": 262.5,
+    "s2_calls_with_usage": 8,
+    "s2_usage_tokens": 72253,
+    "s2_execution_seconds": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "coverage": {
+      "tasks": 120,
+      "queries": 172,
+      "format_ok": 172,
+      "single_covered": 160,
+      "double_distinct": 0,
+      "placeholder": 12
+    }
+  },
+  "accuracy_claims": {
+    "source": "user-supplied review, not rescored in this turn",
+    "fixed_slots_query_exact": "0/158",
+    "cpu_replayed_s2_query_exact": "0/8",
+    "denominator_note": "158 is input-matched public subset after exclusion; not Kaggle score; does not prove an unseen holdout"
+  },
+  "not_run": [
+    "GPU inference",
+    "training",
+    "competition submission"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "recorded_at_utc": "2026-10-20T11:15:53Z",
+  "recorded_at_beijing": "2026-10-20 19:15:53",
+  "scope": "Read-only CLI identity, installed submission implementation, and current submission-limit inspection. No account switch, GPU run, notebook push, competition submission, or secret output.",
+  "cli": {
+    "executable": "/Users/zhaohuaxiang/.local/bin/kaggle",
+    "version": "2.2.4",
+    "authenticated_username": "qingyu1232",
+    "identity_method": "Authenticated Kaggle API CONFIG_NAME_USER only; no credential values printed.",
+    "zhuating_identity_or_quota_verified": false
+  },
+  "competition": "arc-prize-2026-arc-agi-2",
+  "submission_limits": {
+    "command": "kaggle competitions submission-limits arc-prize-2026-arc-agi-2 --json",
+    "raw_response": {
+      "numTotal": 8,
+      "numAllowedNow": 1
+    },
+    "scope_note": "Observed with current qingyu1232 authentication. Do not attribute this result to zhuating."
+  },
+  "submission_path": {
+    "normal_run": "kaggle kernels push saves and runs a notebook version; its success does not create a competition submission.",
+    "normal_run_timeout_flag": "Installed CLI supports kernels push --timeout SECONDS; source lines 6447-6448 write it to ApiSaveKernelRequest.session_timeout_seconds. Whether the saved value constrains the later competition rerun was not verified.",
+    "code_submission_cli_template": "kaggle competitions submit arc-prize-2026-arc-agi-2 -k OWNER/SLUG -v VERIFIED_VERSION_NUMBER -f submission.json -m DESCRIPTION",
+    "implementation": "competition_submit_cli(kernel=...) dispatches to competition_submit_code, constructs ApiCreateCodeSubmissionRequest, and calls competition_api_client.create_code_submission.",
+    "installed_source": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kaggle/api/kaggle_api_extended.py",
+    "source_lines": {
+      "code_submission_method": [1862, 1907],
+      "cli_dispatch": [1999, 2011]
+    },
+    "success_evidence_required": [
+      "A new competition submission reference returned or recovered from submission listing.",
+      "Notebook owner, slug, version number, scriptVersionId, and output filename match the frozen candidate.",
+      "Subsequent status and public score tracked independently from normal Notebook status."
+    ],
+    "execution_note": "No submission call was made. Static implementation verification does not guarantee server acceptance for a future account/version."
+  },
+  "historical_verified_submission": {
+    "submission_id": 57103498,
+    "notebook": "ccjjllt/arc2-013-bounded-baseline",
+    "kernel_version": 1,
+    "script_version_id": 357613526,
+    "status": "COMPLETE",
+    "public_score": 25.69,
+    "source": "docs/progress/013-submission-strategy.md sections 8-10 and experiments/013/execution/competition-submission-v1.json",
+    "note": "Historical evidence, not a fresh status query."
+  },
+  "billing_sources_checked_20261020": [
+    {
+      "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview/description",
+      "source_type": "Official competition overview, retrieved by web search",
+      "finding": "L4x4 notebook usage consumes weekly GPU quota at twice the older accelerator rate; Kaggle reserves the ability to increase that rate.",
+      "limitation": "Does not explicitly settle whether this competition's hidden scoring rerun consumes normal weekly quota."
+    },
+    {
+      "url": "https://www.kaggle.com/competitions/ai-mathematical-olympiad-progress-prize-3/discussion/635859",
+      "source_type": "Kaggle Staff Ryan Holbrook response in a different competition",
+      "finding": "The response states that AIMO 3 competition-submission execution does not count against weekly GPU quota.",
+      "limitation": "Useful platform evidence, but not direct confirmation for current ARC-AGI-2 L4x4 scoring."
+    }
+  ],
+  "unconfirmed": [
+    "zhuating authentication, team membership, remaining/reserved GPU quota, and model/dataset mount access.",
+    "Whether this competition's current hidden scoring rerun consumes normal weekly GPU quota.",
+    "Current server acceptance of a future code-submission call for the frozen 27B version.",
+    "Whether a short session_timeout_seconds saved on the final Notebook version also constrains its later hidden rerun."
+  ]
+}

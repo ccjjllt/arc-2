@@ -1,0 +1,678 @@
+{
+  "created_date_beijing": "2026-10-20",
+  "status": "proposed_metadata_frozen_not_run",
+  "purpose": "D24 development then freeze policy once and evaluate C24 once; no GPU started and no competition submission",
+  "unit": "task selection, all original query inputs retained; primary scoring unit is query",
+  "fingerprint_rule": "sha256 of UTF-8 JSON using sort_keys=true, separators=(comma,colon), ensure_ascii=false; query_input excludes all query outputs",
+  "sources": [
+    {
+      "role": "holdout_split",
+      "path": "experiments/007/g1/split.json",
+      "sha256": "094089459c4b05f7f0cf67a3f4ad98f79f3f48c78a7dcad6675866a897e476d8"
+    },
+    {
+      "role": "prior_scoring_audit",
+      "path": "experiments/008/local-audit.json",
+      "sha256": "4697ce3e7d69bf33ae62937b4c98d341ed46e59d7f10dcf707962978e3b12a3e"
+    },
+    {
+      "role": "hnew_manifest",
+      "path": "experiments/008/e0_hnew_12.json",
+      "sha256": "a732ba3c8191df16671e5792af9843fd3665f217ff2ed01ca1ca9a299178627f"
+    },
+    {
+      "role": "evaluation_manifest",
+      "path": "experiments/010/evaluation-manifest.json",
+      "sha256": "7d3f4cf672df7542a248bcb4fe1db846fccb377231d8dcd53e135fbb753e3fe5"
+    },
+    {
+      "role": "research_manifest",
+      "path": "experiments/011/research-manifest.json",
+      "sha256": "301c10ad8768c232ba50a2b94cc9b3b4c975da9fdc3ea936b90a02719575ffeb"
+    },
+    {
+      "role": "training_challenges",
+      "path": "experiments/007/raw/arc-prize-2026/arc-agi_training_challenges.json",
+      "sha256": "779eaba89790ebad9af02514a7efc0aefaf2cf8236f046a31bbf8b9ec48f20f5"
+    },
+    {
+      "role": "evaluation_challenges",
+      "path": "experiments/008/raw-eval/arc-agi_evaluation_challenges.json",
+      "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8"
+    },
+    {
+      "role": "pilot_run",
+      "path": "experiments/019/submit-pilot/kaggle-v1/vprobe/run.json",
+      "sha256": "ecad430bbd2bf77d8bb2d8d1cd772cbda2fad0ad77f6f835ec014c9831e77fc1"
+    },
+    {
+      "role": "pilot_submission",
+      "path": "experiments/019/submit-pilot/kaggle-v1/submission.json",
+      "sha256": "f7aef29b4036b9b24e4f5cba0ce3a9f8af1ad27be32ca50651d378e2ce729520"
+    }
+  ],
+  "no_query_solutions_file_read": true,
+  "query_predictions_or_correctness_used_for_selection": false,
+  "scoring_policy": "Freeze each policy final two attempts before reading allowed query gold; count every frozen query, including missing/invalid predictions; compare fixed same-model M0=P0+R versus M1=P0+bounded-CPU-repair+conditional-F-or-R using paired query gain/loss, per-source exact-match, and full cost. These are local method results, not Kaggle scores or proof of exceeding 25.69/30.14.",
+  "limitations": [
+    "These are public tasks; Qwen3.8-27B initialization/pretraining coverage is unknown. This round does not run or compare a 4B model.",
+    "A lack of local use only refers to the checked project run/score records; it is not proof of model-unseen tasks or semantic-rule isolation.",
+    "C24 and D24 come from different official splits; the confirmation demonstrates method transfer on this cohort, not an unbiased estimate of hidden leaderboard performance."
+  ],
+  "cohort": "confirmation_C24_020",
+  "n_tasks": 24,
+  "n_queries": 26,
+  "group_counts": {
+    "non_ARC1": {
+      "tasks": 20,
+      "queries": 22
+    },
+    "old_ARC1_evaluation": {
+      "tasks": 4,
+      "queries": 4
+    }
+  },
+  "input_artifact": {
+    "path": "experiments/020/cohorts/confirmation-c24-challenges.json",
+    "sha256": "84496016ad694a8d6d5f336628bd84b378340288820d6b827aac401a451b4ec8",
+    "bytes": 503307
+  },
+  "selection_rule": "Start from original 007 holdout100. Exclude all 24 task IDs scored in 008 local-audit.queries and the six 010 probe_P12.H_new task IDs (342dd610 overlaps): 29 excluded, 71 remain. Take all 20 remaining non-ARC1 tasks. For the 26 remaining old ARC1 evaluation tasks, sort by (total_input_cells, task_id), split by [i*n//4:(i+1)*n//4], and choose the smallest (sha256(UTF-8 20261020:C24:+task_id), task_id) in each quartile. No query gold or candidate quality is used.",
+  "excluded_task_ids": [
+    "12eac192",
+    "14754a24",
+    "17b80ad2",
+    "18419cfa",
+    "1acc24af",
+    "1c786137",
+    "2204b7a8",
+    "22eb0ac0",
+    "29623171",
+    "2b01abd0",
+    "31aa019c",
+    "3345333e",
+    "342dd610",
+    "36fdfd69",
+    "3c9b0459",
+    "3d31c5b3",
+    "3f23242b",
+    "423a55dc",
+    "44f52bb0",
+    "4522001f",
+    "47c1f68c",
+    "4938f0c2",
+    "4c5c2cf0",
+    "50cb2852",
+    "52df9849",
+    "58c02a16",
+    "db118e2a",
+    "e3f79277",
+    "fc4aaf52"
+  ],
+  "excluded_g1_scored_task_ids": [
+    "12eac192",
+    "14754a24",
+    "17b80ad2",
+    "18419cfa",
+    "1acc24af",
+    "1c786137",
+    "2204b7a8",
+    "22eb0ac0",
+    "29623171",
+    "2b01abd0",
+    "31aa019c",
+    "3345333e",
+    "342dd610",
+    "36fdfd69",
+    "3c9b0459",
+    "3d31c5b3",
+    "3f23242b",
+    "423a55dc",
+    "44f52bb0",
+    "4522001f",
+    "47c1f68c",
+    "4938f0c2",
+    "4c5c2cf0",
+    "50cb2852"
+  ],
+  "excluded_p12_hnew_task_ids": [
+    "342dd610",
+    "52df9849",
+    "58c02a16",
+    "db118e2a",
+    "e3f79277",
+    "fc4aaf52"
+  ],
+  "old_arc1_evaluation_quartiles": [
+    {
+      "quartile": 1,
+      "candidate_task_ids": [
+        "8719f442",
+        "c1990cce",
+        "ed98d772",
+        "f0afb749",
+        "6f473927",
+        "9c56f360"
+      ],
+      "selected_task_id": "9c56f360"
+    },
+    {
+      "quartile": 2,
+      "candidate_task_ids": [
+        "66f2d22f",
+        "c7d4e6ad",
+        "c074846d",
+        "9c1e755f",
+        "ce039d91",
+        "e9ac8c9e",
+        "b942fd60"
+      ],
+      "selected_task_id": "66f2d22f"
+    },
+    {
+      "quartile": 3,
+      "candidate_task_ids": [
+        "9f27f097",
+        "84f2aca1",
+        "6df30ad6",
+        "516b51b7",
+        "963f59bc",
+        "b7fb29bc"
+      ],
+      "selected_task_id": "b7fb29bc"
+    },
+    {
+      "quartile": 4,
+      "candidate_task_ids": [
+        "54db823b",
+        "9b2a60aa",
+        "9772c176",
+        "c62e2108",
+        "52fd389e",
+        "e1d2900e",
+        "ac0c5833"
+      ],
+      "selected_task_id": "52fd389e"
+    }
+  ],
+  "reassigned_from_unrun_original_Hnew_development": [
+    "54dc2872",
+    "68bc2e87",
+    "6bcdb01e",
+    "9344f635",
+    "a416fc5b",
+    "a644e277"
+  ],
+  "historical_confirmation_tasks_retained": [
+    "7e4d4f7c",
+    "878187ab",
+    "c3fa4749",
+    "dce56571",
+    "df9fd884",
+    "e45ef808"
+  ],
+  "historical_confirmation_status_note": "Original public-evaluation C6 tasks were already inferred in 019 pilot; they are not in this C24. This C24 explicitly replaces the earlier confirmation role rather than claiming old C12 remained untouched.",
+  "entries": [
+    {
+      "task_id": "52fd389e",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2716,
+      "max_side": 29,
+      "demo_pairs_sha256": "fd5695dba5296229463fd06a8b29e813538be4d10909b33c4f08086666c17698",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "52fd389e_0",
+          "input_sha256": "bf904e9d6eda9a873de4c9069642d3e059c04f7436c6e1e52a0072dbb4369ec2",
+          "height": 29,
+          "width": 29
+        }
+      ],
+      "source_group": "old_ARC1_evaluation",
+      "quartile": 4
+    },
+    {
+      "task_id": "54dc2872",
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 456,
+      "max_side": 13,
+      "demo_pairs_sha256": "981986ba3e400b4da7a0b81c2c3e7223e27630d8e8f58ffd993cd5ffbc949d58",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "54dc2872_0",
+          "input_sha256": "424c9c6118e6dcb25efa6787015b136af792175ce6b3ca73a0166bc9597dfd67",
+          "height": 12,
+          "width": 13
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "66f2d22f",
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 280,
+      "max_side": 14,
+      "demo_pairs_sha256": "5b39dc79694cfc7053a51586b20107c5893bc177275507a3454e3db5a92438be",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "66f2d22f_0",
+          "input_sha256": "f0809cd54c09387a241013c47c52462a7fa6990412868ba6176a39ccccec6f50",
+          "height": 4,
+          "width": 14
+        }
+      ],
+      "source_group": "old_ARC1_evaluation",
+      "quartile": 2
+    },
+    {
+      "task_id": "68bc2e87",
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 1710,
+      "max_side": 19,
+      "demo_pairs_sha256": "1595496a64ab3d3bf425e5f766a994610d4b1f7628517410ede1c939a033fafc",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "68bc2e87_0",
+          "input_sha256": "ff5dd5abcec8aa40b0a313d16c515e988f9c368063b7106bcfec338790798403",
+          "height": 18,
+          "width": 19
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "6bcdb01e",
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 138,
+      "max_side": 8,
+      "demo_pairs_sha256": "8d10b8a8ac79df7a1e76c7214ec996bc74869f86c6dcb19b98622437eda5c3f8",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "6bcdb01e_0",
+          "input_sha256": "a8de957a16d2dcc254dec82a8f5108afcb9834fdd6e736feeef3a90252c329b0",
+          "height": 8,
+          "width": 8
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "7e4d4f7c",
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 407,
+      "max_side": 13,
+      "demo_pairs_sha256": "25b98a3b213680b582eb93d20376d1b33eb68911b7582ee1305eeca360c7d363",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "7e4d4f7c_0",
+          "input_sha256": "7362367f25c54a3ca9df1719dd5b3a3661608dde74dd255df708d9c8cca41312",
+          "height": 3,
+          "width": 5
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "878187ab",
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 737,
+      "max_side": 16,
+      "demo_pairs_sha256": "4fcf1d598c41ee485f3649462f79a84bce79763cf8668843224b923dda351945",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "878187ab_0",
+          "input_sha256": "8b8ceac04b835f82393ddace3dd16a2f025ec844473fcf3117e32e772a03cca7",
+          "height": 16,
+          "width": 16
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "8886d717",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 498,
+      "max_side": 13,
+      "demo_pairs_sha256": "517a9b381d400073f7497792d1a4f7acd7caa905efab32d8216658abedeafaae",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "8886d717_0",
+          "input_sha256": "b006a3b6a854dccea4ddd9fc7e14910a7098b9912c7a6b0c8217cc48f5adacca",
+          "height": 13,
+          "width": 13
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "9344f635",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 294,
+      "max_side": 10,
+      "demo_pairs_sha256": "a144ab0afe8a8e8e5c5ba15baf44d75ed3044c1d3f7d8b4edab73e9542a0fb2c",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "9344f635_0",
+          "input_sha256": "7e155b59eb5319a912998746f7a7c273ab2d497570f401efff85c6189654f177",
+          "height": 10,
+          "width": 10
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "9841fdad",
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 904,
+      "max_side": 26,
+      "demo_pairs_sha256": "61e5e56916da71475e19a736ad756d52083be5410e020a16819f9310454d49ac",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "9841fdad_0",
+          "input_sha256": "9d64636fe5c20558ea5795b69f9164ebb275548d0873e4008f00956afcefd94b",
+          "height": 12,
+          "width": 26
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "984d8a3e",
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 489,
+      "max_side": 17,
+      "demo_pairs_sha256": "ed6bb028dff69d98fe790e0e090037e2713fe4aa6288103bdc8da6e1bc26f89c",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "984d8a3e_0",
+          "input_sha256": "759553b9bf59502eb6cc5022bbe1452e18bb7f9c2f9163dac4e57712c552cee9",
+          "height": 17,
+          "width": 17
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "9c56f360",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 251,
+      "max_side": 9,
+      "demo_pairs_sha256": "4fc4502d1e18c65b2e4251a12495a8dd66efa712131695589a6572c3fcb76fc5",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "9c56f360_0",
+          "input_sha256": "a306a4aecc4a413fb2ffd715b27272d73ee93744ae231d5b04320ce7e738ba31",
+          "height": 9,
+          "width": 9
+        }
+      ],
+      "source_group": "old_ARC1_evaluation",
+      "quartile": 1
+    },
+    {
+      "task_id": "a416fc5b",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 484,
+      "max_side": 11,
+      "demo_pairs_sha256": "a66d54228cf86333612fabd522c0990b5950bca3041858a21449910f842976ee",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "a416fc5b_0",
+          "input_sha256": "fcecfb09e3d96a5b2728955f5d6f6bffd6021e2905b0ac6ebe31b24b4a272dca",
+          "height": 11,
+          "width": 11
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "a644e277",
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 1133,
+      "max_side": 22,
+      "demo_pairs_sha256": "8d393d2d9e83e65ec3704d0948aae522b79ec9df3ef9f0d9b04b53ad40bb6eb6",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "a644e277_0",
+          "input_sha256": "d5036b9882c5b144ad5a9fdac3ef84503548564d22b10196e1158d4de6f78ed6",
+          "height": 19,
+          "width": 20
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "aa62e3f4",
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 330,
+      "max_side": 16,
+      "demo_pairs_sha256": "598c5b300eb2fc3f80a6941826938273829d8b43aefb1f5cadbedf9c05f48944",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "aa62e3f4_0",
+          "input_sha256": "79e8d0147083fad59900d955b62d3cf3c902304d03046a66400e2866b4091a40",
+          "height": 5,
+          "width": 5
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "aaef0977",
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 192,
+      "max_side": 8,
+      "demo_pairs_sha256": "b3ba714afe9413a5133da50d5ea8855e1965909fd51c1c855765246884f6d433",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "aaef0977_0",
+          "input_sha256": "c0cf81f7ee155c2049896b57cb12001b7d7bac2cd9291fc2c8f0a0c6d4979a72",
+          "height": 8,
+          "width": 8
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "ad173014",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2307,
+      "max_side": 27,
+      "demo_pairs_sha256": "899ab1a2f4d365ef7d2af6d93b23ff6796f3ccad34cfee098fe311ba93ba0395",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "ad173014_0",
+          "input_sha256": "f1a3c686f1a21105251dd9cff8d468c28bd1dbb19a235e86ee69a79f70391858",
+          "height": 27,
+          "width": 27
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "b7fb29bc",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 900,
+      "max_side": 15,
+      "demo_pairs_sha256": "7707a7903fc42f027f57ef61e155d10b74629af88319885132cf23e42d74e100",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "b7fb29bc_0",
+          "input_sha256": "d15a25ced3afe924c489c5495c7e067d8e81a45ed796064795e9a52bb6856eb1",
+          "height": 15,
+          "width": 15
+        }
+      ],
+      "source_group": "old_ARC1_evaluation",
+      "quartile": 3
+    },
+    {
+      "task_id": "c3fa4749",
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 3225,
+      "max_side": 30,
+      "demo_pairs_sha256": "33c1ec9df6a5ff9bf17a2693d5dc0cabf5bcae44bba10cd907e9076a0881f655",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "c3fa4749_0",
+          "input_sha256": "19808759fd281270e3374ba2bd6445b79e70de8fe81ef39c00601a5a67555edf",
+          "height": 30,
+          "width": 30
+        },
+        {
+          "query_index": 1,
+          "query_key": "c3fa4749_1",
+          "input_sha256": "db40ce9eace6bd3115038d101369e5ed00b6b73bf8d6050fb60f0531aa5e9293",
+          "height": 30,
+          "width": 30
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "cc9053aa",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 288,
+      "max_side": 9,
+      "demo_pairs_sha256": "99788f6bace744295842ea6e4ea99c2403daae9f8e18c3b2cd9d5ea5d4db0420",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "cc9053aa_0",
+          "input_sha256": "4b912b22243a9dd1d4579eb20ec9dc6b84aada41d3d049257b563cd99125d318",
+          "height": 9,
+          "width": 9
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "dce56571",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 570,
+      "max_side": 28,
+      "demo_pairs_sha256": "a947b48e4ed401d4e98e160100bbbfe251e40e3352f35fe36a63f7b04d1e72c9",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "dce56571_0",
+          "input_sha256": "0c89c4d53519728b513d677ddb349d37cf3228d8b037de1f9838a5509c249d3b",
+          "height": 11,
+          "width": 28
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "df9fd884",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 290,
+      "max_side": 9,
+      "demo_pairs_sha256": "9e9414a98ee62969963212a9a7d9956fab92e6b18ee29f1c79f16b1d77000138",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "df9fd884_0",
+          "input_sha256": "3fcbbb56fa8a69cc499c197dd59628979a6468c8e6bb98e1202edc97cb665a92",
+          "height": 8,
+          "width": 8
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "e45ef808",
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 432,
+      "max_side": 12,
+      "demo_pairs_sha256": "d0dd5ba8f29381edaebc877bc36ae14e14821d95d0bb937b1b02314226bd3ccf",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "e45ef808_0",
+          "input_sha256": "754226ef494d025b142302826c4d12b4664573b232873d97fc1440d9fda951cc",
+          "height": 12,
+          "width": 12
+        }
+      ],
+      "source_group": "non_ARC1"
+    },
+    {
+      "task_id": "ff2825db",
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 500,
+      "max_side": 10,
+      "demo_pairs_sha256": "cdf2b4cf17ddd66807e799ae11397e96dea6dbb0177d98b654b44141a97fd003",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "ff2825db_0",
+          "input_sha256": "b73cf60f5c5dec87fb1fb1e2fb3cf25ea26caaaaf82fcd6cdc24da4a22814b5e",
+          "height": 10,
+          "width": 10
+        },
+        {
+          "query_index": 1,
+          "query_key": "ff2825db_1",
+          "input_sha256": "8f07f6efffafedc893c63e5f6b8f927f23afc48aebbb342e882d6058e472ac20",
+          "height": 10,
+          "width": 10
+        }
+      ],
+      "source_group": "non_ARC1"
+    }
+  ],
+  "comparison_protocol": {
+    "model": "Qwen/Qwen3.8-27B, same frozen model/runtime and common P0 across both policies",
+    "M0": "P0 + one independent restart R; at most two model calls per task",
+    "M1": "P0 + bounded CPU repair + at most one conditional model call F or R; at most two model calls per task",
+    "research_accounting": "Share P0 across M0/M1. If M1 selects R, reuse the same eligible R call; if it selects F, research generates at most P0+R+F, three calls per task. Never charge shared P0 twice in the actual research ledger.",
+    "deployment_accounting": "Each deployable policy has at most two model calls per task; report each policy total including its own P0. A research union of P0/R/F is not itself a deployable two-call policy.",
+    "query_handling": "Generate and validate the program once per task and apply it to every original query input. Each policy uses its own frozen selector to fill at most two final attempts per query.",
+    "confirmation_rule": "Freeze model, code, seeds, token/time limits, CPU repair bounds, conditional F/R routing, and both final selectors after D24; then evaluate M0/M1 on C24 exactly once. Final attempt selection must not use query gold.",
+    "no_4b_gpu_comparison_this_round": true,
+    "historical_reference": "013 public 25.69 and copied historical 30.14 remain historical references only. No current paired comparison against either historical submission is planned, and exact historical 30.14 source/runtime is unverified."
+  }
+}
