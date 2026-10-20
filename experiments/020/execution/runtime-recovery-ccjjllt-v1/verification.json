@@ -1,0 +1,40 @@
+{
+  "verified_at_utc": "2026-10-20T14:31:14.631889+00:00",
+  "ref": "ccjjllt/arc2-020-runtime-recovery",
+  "version": 1,
+  "version_binding": "Only v1 has been pushed; metadata immediately before output listing confirms current_version_number=1.",
+  "status": "complete_exact_original_wheels",
+  "remote_kernel_status": "COMPLETE",
+  "private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "input_sources": [],
+  "verified_wheels": 193,
+  "verified_wheel_bytes": 4900988522,
+  "recovery_elapsed_s": 36.232,
+  "output_file_count": 200,
+  "script_version_ids_from_output_urls": [
+    "360450255"
+  ],
+  "restore_report_sha256": "31ebdefc09ac4f98d1ceec4c8428513194ed28b459ae3cf714069737f72042e0",
+  "requirements_sha256": "ebb525ba1fda0bc955fc19fe06fa381dd994e5b9a26a6e154a7ecd923f85d133",
+  "output_wheels_paths_complete": true,
+  "original_manifest_matches_all_193_rows": true,
+  "log_contains_exit_zero": true,
+  "log_contains_ready": true,
+  "final_log_events": [
+    {
+      "event": "CPU_EXACT_RUNTIME_RECOVERY_EXIT",
+      "returncode": 0
+    },
+    {
+      "event": "CPU_EXACT_RUNTIME_RECOVERY_READY",
+      "status": "complete_exact_original_wheels",
+      "verified_wheels": 193,
+      "verified_wheel_bytes": 4900988522,
+      "output": "/kaggle/working/qwen38-vllm0272-cu130-wheelhouse-v1"
+    }
+  ],
+  "artifact_directory": "experiments/020/execution/runtime-recovery-ccjjllt-v1"
+}

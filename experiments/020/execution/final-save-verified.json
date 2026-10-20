@@ -1,0 +1,142 @@
+{
+  "verified_at_utc": "2026-10-20T15:10:37.447244+00:00",
+  "stage": "ordinary_Save_and_Run_complete_not_competition_submission",
+  "competition_submission_created_by_this_step": false,
+  "competition_submission_status": "Not established by this verification; Save & Run is distinct from code submission.",
+  "kernel_ref": "ccjjllt/arc2-020-deep-direct-submission",
+  "version": 1,
+  "script_version_id": 360461153,
+  "version_binding": "Current metadata confirms v1; sole scriptVersionId obtained from every listed output URL /kf/ segment.",
+  "remote_kernel_status": "COMPLETE",
+  "notebook_sha256": "10d897e38a7563fabe1246542b903c12344f672ffad20481db808413975c3783",
+  "remote_blob_sha256": "1f7d5f2b17431101c0722a262e4447b1b75378f834ab22ec55147f99beed9d5d",
+  "remote_all_cell_sources_identical_to_frozen_package": true,
+  "remote_metadata": {
+    "id": 139839570,
+    "ref": "ccjjllt/arc2-020-deep-direct-submission",
+    "current_version_number": 1,
+    "is_private": true,
+    "enable_gpu": true,
+    "enable_tpu": false,
+    "enable_internet": false,
+    "machine_shape": "NvidiaL4",
+    "competition_data_sources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "dataset_data_sources": [],
+    "model_data_sources": [
+      "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1"
+    ],
+    "kernel_data_sources": [
+      "ccjjllt/arc2-020-runtime-recovery"
+    ]
+  },
+  "asset_sources_match_frozen_package": true,
+  "source_sha256": {
+    "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+    "ordinary_cpu.py": "47942bb0957f6ed8d6cfe09a31e4a36666416ef92fbc8a60914d45d1c484d7aa",
+    "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+    "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+    "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+    "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124",
+    "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7"
+  },
+  "downloaded_source_hashes_match_remote_embedded_sources": true,
+  "core_six_source_hashes_match_C24": {
+    "c24-direct-ccjjllt-recovered": {
+      "local_repair.py": true,
+      "run_reasoning_probe.py": true,
+      "solve_program.py": true,
+      "submit_lib.py": true,
+      "vdriver020_submit.py": true,
+      "aligned_line_solver.py": true
+    },
+    "c24-direct-qingyu1232-recovered": {
+      "local_repair.py": true,
+      "run_reasoning_probe.py": true,
+      "solve_program.py": true,
+      "submit_lib.py": true,
+      "vdriver020_submit.py": true,
+      "aligned_line_solver.py": true
+    }
+  },
+  "ordinary_branch": {
+    "guard": "ordinary_cpu_only and not research and not rerun",
+    "script": "ordinary_cpu.py",
+    "session_seconds": 300
+  },
+  "hidden_branch": {
+    "script": "vdriver020_submit.py",
+    "session_seconds": 41400,
+    "generation_mode": "direct",
+    "direct_attempts": 1,
+    "line_complement": true,
+    "gen_max": 49152,
+    "thinking_max": 40960,
+    "mtp_tokens": 2,
+    "command_identical_to_frozen_package": true
+  },
+  "platform_timeout": {
+    "requested_seconds": 43200,
+    "evidence_path": "experiments/020/execution/final-save-launch.json",
+    "launch_record_sha256": "92c18a04d752a98086df56d8467c88cc8c8b14099e09379e48b32d742de7cda0",
+    "cli_maps_timeout_to_ApiSaveKernelRequest_session_timeout_seconds": true,
+    "remote_readback_verified": false,
+    "limitation": "ApiKernelMetadata and ApiGetKernelSessionStatusResponse do not expose session_timeout_seconds; 43200 is verified as the recorded push request, not independently read back."
+  },
+  "ordinary_result": {
+    "status": "complete",
+    "phase": "ordinary_cpu_save",
+    "input_path": "/kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_evaluation_challenges.json",
+    "input_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+    "n_tasks": 120,
+    "n_queries": 172,
+    "cpu_applicable_tasks": 1,
+    "cpu_supported_queries": 1,
+    "actual_predicted_queries": 1,
+    "placeholder_queries": 171,
+    "model_inference_performed": false,
+    "model_validation_performed": false,
+    "GPU_compute_not_invoked": true,
+    "gpu_quota_consumption": "not_measured",
+    "query_gold_used": false,
+    "query_score_status": "not_scored",
+    "elapsed_s": 0.479352,
+    "session_elapsed_s": 0.934801,
+    "submission_sha256": "5b9023beccb8c8d206a3098d136cfd3e39448f1a40a11dc56c26d5cf9eb9c430"
+  },
+  "ordinary_score_note": "1/172 means one CPU-predicted query and 171 placeholders, not one confirmed correct answer. No gold scoring was performed.",
+  "ordinary_report_sha256": "774220ff24d0cd876d1c9b818bcf4b025257cff0e976fee761ccc7b73e169f67",
+  "submission_format_validated_independently": true,
+  "full_public_input_keys_and_query_counts_match": true,
+  "log_exit_zero": true,
+  "output_file_count": 16,
+  "output_files": [
+    "020-code/__pycache__/aligned_line_solver.cpython-312.pyc",
+    "020-code/__pycache__/local_repair.cpython-313.pyc",
+    "020-code/__pycache__/run_reasoning_probe.cpython-313.pyc",
+    "020-code/__pycache__/solve_program.cpython-313.pyc",
+    "020-code/__pycache__/submit_lib.cpython-312.pyc",
+    "020-code/__pycache__/submit_lib.cpython-313.pyc",
+    "020-code/__pycache__/vdriver020_submit.cpython-313.pyc",
+    "020-code/aligned_line_solver.py",
+    "020-code/local_repair.py",
+    "020-code/ordinary_cpu.py",
+    "020-code/run_reasoning_probe.py",
+    "020-code/solve_program.py",
+    "020-code/submit_lib.py",
+    "020-code/vdriver020_submit.py",
+    "ordinary-run.json",
+    "submission.json"
+  ],
+  "code_submit_sdk": {
+    "version": "2.2.4",
+    "method": "KaggleApi.competition_submit_code",
+    "signature": "(self, file_name: str, message: str, competition: Optional[str]=None, kernel: Optional[str]=None, kernel_version: Optional[int]=None, quiet: bool=False) -> ApiCreateCodeSubmissionResponse",
+    "response_fields": {
+      "message": "str",
+      "ref": "int"
+    },
+    "invoked_by_this_step": false
+  }
+}

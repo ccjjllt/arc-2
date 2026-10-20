@@ -1,0 +1,87 @@
+{
+  "recorded_at_utc": "2026-10-20T15:39:47.463Z",
+  "scope": "One read-only post-submit snapshot. Four accounts authenticated in four independent processes. No submission creation, GPU start/stop, account default changes, or asset downloads.",
+  "submission": {
+    "checked_at_utc": "2026-10-20T15:38:47.923726+00:00",
+    "ref": 57443913,
+    "status": "PENDING",
+    "public_score": null,
+    "error_description": null,
+    "url": "/submissions/57443913/57443913.raw",
+    "submitted_by_ref": "ccjjllt",
+    "team_name": "ccjjllt",
+    "script_version_id_from_url": null
+  },
+  "accounts": [
+    {
+      "account": "ccjjllt",
+      "authenticated_username": "ccjjllt",
+      "quota_checked_at_utc": "2026-10-20T15:38:47.304213+00:00",
+      "quota_refresh_time_utc": "2026-10-24T00:00:00",
+      "gpu": {
+        "total_seconds": 108000,
+        "used_seconds": 104092.898,
+        "reserved_seconds": 0,
+        "available_seconds": 3907.101999999999,
+        "available_hours": 1.0853061111111109
+      },
+      "l4_wall_hours_if_all_available_quota_used_at_2x": 0.5426530555555554
+    },
+    {
+      "account": "qingyu1232",
+      "authenticated_username": "qingyu1232",
+      "quota_checked_at_utc": "2026-10-20T15:38:50.286279+00:00",
+      "quota_refresh_time_utc": "2026-10-24T00:00:00",
+      "gpu": {
+        "total_seconds": 108000,
+        "used_seconds": 99110.128034,
+        "reserved_seconds": 0,
+        "available_seconds": 8889.871966000006,
+        "available_hours": 2.469408879444446
+      },
+      "l4_wall_hours_if_all_available_quota_used_at_2x": 1.234704439722223
+    },
+    {
+      "account": "jiyujia",
+      "authenticated_username": "jiyujia",
+      "quota_checked_at_utc": "2026-10-20T15:38:48.557480+00:00",
+      "quota_refresh_time_utc": "2026-10-24T00:00:00",
+      "gpu": {
+        "total_seconds": 108000,
+        "used_seconds": 105326.162,
+        "reserved_seconds": 0,
+        "available_seconds": 2673.8380000000034,
+        "available_hours": 0.7427327777777787
+      },
+      "l4_wall_hours_if_all_available_quota_used_at_2x": 0.37136638888888934
+    },
+    {
+      "account": "zhuating",
+      "authenticated_username": "zhuating",
+      "quota_checked_at_utc": "2026-10-20T15:38:47.460075+00:00",
+      "quota_refresh_time_utc": "2026-10-24T00:00:00",
+      "gpu": {
+        "total_seconds": 108000,
+        "used_seconds": 16075.12615,
+        "reserved_seconds": 0,
+        "available_seconds": 91924.87385,
+        "available_hours": 25.534687180555558
+      },
+      "l4_wall_hours_if_all_available_quota_used_at_2x": 12.767343590277779
+    }
+  ],
+  "context_reported_by_root": {
+    "ccjjllt": "ARC2 research shard finished; final ordinary save complete and competition submission 57443913 created.",
+    "qingyu1232": "ARC2 research shard still in its tail at the time this snapshot was requested; balance may continue falling.",
+    "zhuating": "Also used by the separate ARC3 project; not exclusive to ARC2.",
+    "status_note": "These workload notes came from root; this step did not poll or alter other jobs."
+  },
+  "accounting_limits": [
+    "time_used, total_time_allowed and time_reserved were normalized with timedelta.total_seconds().",
+    "available = total - used - reserved; reserved=0 is not evidence that active jobs have stopped or future hidden work is free.",
+    "The 2x L4 wall-hour conversion is a conditional upper bound before setup, teardown and concurrent consumption.",
+    "Whether hidden scoring consumes ordinary weekly GPU quota remains unconfirmed; no causal attribution of all quota differences is made.",
+    "GetSubmission returned a raw-output URL without scriptVersionId; that raw output was not accessed. Exact candidate binding is in competition-submission.json/final-save-verified.json."
+  ],
+  "research_budget_comment": "Prefer analyzing already-running C24 first. Qingyu currently has the largest old-account balance, but is still consuming it. Small ccjjllt/jiyujia balances must include model installation/loading and cleanup, so a fresh block may yield little useful generation. Zhuating is shared with ARC3."
+}

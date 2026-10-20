@@ -1,0 +1,5054 @@
+{
+  "recorded_at_utc": "2026-10-20T14:43:48.551524+00:00",
+  "scope": "Manual CPU input/cell/character budget analysis; no inference, tokenizer, executor, query solutions or new tests.",
+  "input": {
+    "path": "experiments/008/raw-eval/arc-agi_evaluation_challenges.json",
+    "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8"
+  },
+  "driver_source": {
+    "path": "experiments/020/submit/vdriver020_submit.py",
+    "sha256": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+  },
+  "prompt_function": "build_direct_prompt; lengths computed by the current function, without chat-template rendering or tokenization",
+  "query_gold_read": false,
+  "GPU_used": false,
+  "source_or_policy_modified": false,
+  "n_tasks": 120,
+  "n_queries": 172,
+  "query_count_histogram": {
+    "1": 71,
+    "2": 46,
+    "3": 3
+  },
+  "summary": {
+    "demo_output_max_cells": {
+      "min": 20,
+      "median": 278.5,
+      "p90_nearest_rank": 676,
+      "max": 900,
+      "sum": 41271
+    },
+    "task_query_input_cells_total": {
+      "min": 36,
+      "median": 650.0,
+      "p90_nearest_rank": 1476,
+      "max": 1800,
+      "sum": 86976
+    },
+    "prompt_message_content_characters": {
+      "min": 1920,
+      "median": 5691.0,
+      "p90_nearest_rank": 9639,
+      "max": 17342,
+      "sum": 727184
+    },
+    "rough_proxy_cell_tokens": {
+      "min": 200,
+      "median": 1352.0,
+      "p90_nearest_rank": 3076,
+      "max": 3600,
+      "sum": 182730
+    },
+    "tasks_proxy_cell_estimate_above_8192": [],
+    "max_legal_30x30_cell_estimate": 5400
+  },
+  "most_queries": [
+    {
+      "task_id": "1ae2feb7",
+      "n_queries": 3,
+      "demo_output_max_cells": 195,
+      "query_input_cells": [
+        200,
+        120,
+        120
+      ],
+      "prompt_message_content_characters": 3887,
+      "rough_proxy_cell_tokens": 1180,
+      "rough_demo_shape_cell_tokens": 1170
+    },
+    {
+      "task_id": "b6f77b65",
+      "n_queries": 3,
+      "demo_output_max_cells": 144,
+      "query_input_cells": [
+        144,
+        144,
+        144
+      ],
+      "prompt_message_content_characters": 4729,
+      "rough_proxy_cell_tokens": 864,
+      "rough_demo_shape_cell_tokens": 864
+    },
+    {
+      "task_id": "d35bdbdc",
+      "n_queries": 3,
+      "demo_output_max_cells": 100,
+      "query_input_cells": [
+        100,
+        100,
+        100
+      ],
+      "prompt_message_content_characters": 2607,
+      "rough_proxy_cell_tokens": 600,
+      "rough_demo_shape_cell_tokens": 600
+    }
+  ],
+  "largest_estimated_final_json_space_top8": [
+    {
+      "task_id": "13e47133",
+      "n_queries": 2,
+      "demo_output_max_cells": 400,
+      "query_input_cells": [
+        900,
+        900
+      ],
+      "prompt_message_content_characters": 8243,
+      "rough_proxy_cell_tokens": 3600,
+      "rough_demo_shape_cell_tokens": 1600
+    },
+    {
+      "task_id": "195c6913",
+      "n_queries": 2,
+      "demo_output_max_cells": 625,
+      "query_input_cells": [
+        900,
+        900
+      ],
+      "prompt_message_content_characters": 11203,
+      "rough_proxy_cell_tokens": 3600,
+      "rough_demo_shape_cell_tokens": 2500
+    },
+    {
+      "task_id": "4c7dc4dd",
+      "n_queries": 2,
+      "demo_output_max_cells": 25,
+      "query_input_cells": [
+        900,
+        900
+      ],
+      "prompt_message_content_characters": 8120,
+      "rough_proxy_cell_tokens": 3600,
+      "rough_demo_shape_cell_tokens": 100
+    },
+    {
+      "task_id": "62593bfd",
+      "n_queries": 2,
+      "demo_output_max_cells": 900,
+      "query_input_cells": [
+        625,
+        532
+      ],
+      "prompt_message_content_characters": 8942,
+      "rough_proxy_cell_tokens": 3600,
+      "rough_demo_shape_cell_tokens": 3600
+    },
+    {
+      "task_id": "a32d8b75",
+      "n_queries": 2,
+      "demo_output_max_cells": 480,
+      "query_input_cells": [
+        900,
+        900
+      ],
+      "prompt_message_content_characters": 11043,
+      "rough_proxy_cell_tokens": 3600,
+      "rough_demo_shape_cell_tokens": 1920
+    },
+    {
+      "task_id": "e12f9a14",
+      "n_queries": 2,
+      "demo_output_max_cells": 576,
+      "query_input_cells": [
+        900,
+        900
+      ],
+      "prompt_message_content_characters": 9338,
+      "rough_proxy_cell_tokens": 3600,
+      "rough_demo_shape_cell_tokens": 2304
+    },
+    {
+      "task_id": "e3721c99",
+      "n_queries": 2,
+      "demo_output_max_cells": 900,
+      "query_input_cells": [
+        900,
+        900
+      ],
+      "prompt_message_content_characters": 11740,
+      "rough_proxy_cell_tokens": 3600,
+      "rough_demo_shape_cell_tokens": 3600
+    },
+    {
+      "task_id": "20a9e565",
+      "n_queries": 2,
+      "demo_output_max_cells": 51,
+      "query_input_cells": [
+        900,
+        841
+      ],
+      "prompt_message_content_characters": 9925,
+      "rough_proxy_cell_tokens": 3482,
+      "rough_demo_shape_cell_tokens": 204
+    }
+  ],
+  "longest_prompts_top5": [
+    {
+      "task_id": "981571dc",
+      "n_queries": 1,
+      "demo_output_max_cells": 900,
+      "query_input_cells": [
+        900
+      ],
+      "prompt_message_content_characters": 17342,
+      "rough_proxy_cell_tokens": 1800,
+      "rough_demo_shape_cell_tokens": 1800
+    },
+    {
+      "task_id": "d8e07eb2",
+      "n_queries": 2,
+      "demo_output_max_cells": 660,
+      "query_input_cells": [
+        660,
+        660
+      ],
+      "prompt_message_content_characters": 17209,
+      "rough_proxy_cell_tokens": 2640,
+      "rough_demo_shape_cell_tokens": 2640
+    },
+    {
+      "task_id": "9aaea919",
+      "n_queries": 1,
+      "demo_output_max_cells": 900,
+      "query_input_cells": [
+        900
+      ],
+      "prompt_message_content_characters": 13599,
+      "rough_proxy_cell_tokens": 1800,
+      "rough_demo_shape_cell_tokens": 1800
+    },
+    {
+      "task_id": "b99e7126",
+      "n_queries": 1,
+      "demo_output_max_cells": 841,
+      "query_input_cells": [
+        841
+      ],
+      "prompt_message_content_characters": 12759,
+      "rough_proxy_cell_tokens": 1682,
+      "rough_demo_shape_cell_tokens": 1682
+    },
+    {
+      "task_id": "e3721c99",
+      "n_queries": 2,
+      "demo_output_max_cells": 900,
+      "query_input_cells": [
+        900,
+        900
+      ],
+      "prompt_message_content_characters": 11740,
+      "rough_proxy_cell_tokens": 3600,
+      "rough_demo_shape_cell_tokens": 3600
+    }
+  ],
+  "interpretation": [
+    "This public set has at most three queries per task. The broad input/demo-shape proxy peaks at 3600 cell tokens; all 120 remain below 8192 under this explicit rough convention.",
+    "Even three legal 30x30 outputs have 2700 cells, or 5400 tokens at 2/cell before JSON syntax. Multi-query count alone therefore does not show a natural 8192-token final-output bottleneck on these 120 tasks.",
+    "The proxy is not a query-output size bound: the inferred rule may resize beyond observed demo/input shapes. The 30x30 scenario is a format-limit scenario, not an accuracy claim.",
+    "Actual tokenization, formatting, reasoning-to-final transition, malformed/verbose output and remaining context can change available/used final tokens. Character counts are not token counts; no exact tokenizer sufficiency claim is made.",
+    "The requested generation total includes thinking; GEN-THINK=8192 describes nominal final space when thinking uses its cap, not a guaranteed separate token reserve. The current per-request context clipping preserves this gap where possible, but a nearly full prompt can leave less space."
+  ],
+  "known_P0_cost_and_240_task_limit": {
+    "source": {
+      "path": "experiments/020/execution/deep-direct-runtime-summary.json",
+      "sha256": "e31e7e719dcfe5f89a1205587be31c38d3b8b171d794381bbccab26420ce85f8"
+    },
+    "data_scope": "Previous fixed DeepDirect6: 6 tasks/9 queries, one P0 each, MTP2, L4x4; selected public development subset, not representative hidden data.",
+    "physical_calls": 6,
+    "completion_tokens": 246358,
+    "mean_completion_tokens_per_task_call": 41059.667,
+    "observed_generation_aggregate_completion_tokens_per_second": 130.45,
+    "generation_wave_seconds": 1888.5,
+    "requested_generation_cap": 49152,
+    "requested_thinking_cap": 40960,
+    "illustrative_240_task_one_call_each_tokens_at_same_mean": 9854320,
+    "illustrative_240_task_generation_hours_at_same_mean_and_rate": 20.984,
+    "illustrative_240_task_generation_hours_at_49152_every_call": 25.119,
+    "wall_budget_scenarios_at_same_rate": [
+      {
+        "total_wall_hours": 11,
+        "assumed_install_load_seconds": 968.4,
+        "save_and_new_request_allowance_seconds": 600,
+        "generation_seconds_available": 38031.6,
+        "accepted_completion_tokens_at_same_observed_rate": 4961222,
+        "one_call_per_task_completion_allowance_at_240_tasks": 20671.759
+      },
+      {
+        "total_wall_hours": 12,
+        "assumed_install_load_seconds": 968.4,
+        "save_and_new_request_allowance_seconds": 600,
+        "generation_seconds_available": 41631.6,
+        "accepted_completion_tokens_at_same_observed_rate": 5430842,
+        "one_call_per_task_completion_allowance_at_240_tasks": 22628.509
+      }
+    ],
+    "limitations": [
+      "These are arithmetic scenarios, not hidden-runtime predictions or new measured throughput.",
+      "Generation is one shared task-level call for all queries, so do not multiply the per-task cap by public query count.",
+      "Hidden task count, query multiplicity, prompt lengths and early stopping are not established by the public 120/172 inputs.",
+      "Observed six-task workload and concurrency do not prove the rate for a full eight-request queue; MTP acceptance and prefill can vary.",
+      "No source, threshold, route, generation budget or prediction policy was changed by this analysis."
+    ]
+  },
+  "tasks": [
+    {
+      "task_id": "0934a4d8",
+      "n_demos": 4,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        36,
+        20,
+        21,
+        16
+      ],
+      "demo_output_max_cells": 36,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 900,
+      "prompt_characters": {
+        "message_contents_total": 10128,
+        "system_content": 116,
+        "user_content": 10012,
+        "compact_serialized_messages": 10197
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1800,
+        "each_query_at_largest_demo_output_cell_tokens": 72,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 900,
+        "proxy_max_of_input_and_demo_cell_tokens": 1800,
+        "proxy_fraction_of_8192": 0.219727,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "135a2760",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        65,
+        462
+      ],
+      "demo_output_max_cells": 462,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 29,
+          "width": 29,
+          "cells": 841
+        }
+      ],
+      "query_input_cells_total": 841,
+      "prompt_characters": {
+        "message_contents_total": 4508,
+        "system_content": 116,
+        "user_content": 4392,
+        "compact_serialized_messages": 4575
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1682,
+        "each_query_at_largest_demo_output_cell_tokens": 924,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 841,
+        "proxy_max_of_input_and_demo_cell_tokens": 1682,
+        "proxy_fraction_of_8192": 0.205322,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "136b0064",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        105,
+        49,
+        77
+      ],
+      "demo_output_max_cells": 105,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 19,
+          "width": 15,
+          "cells": 285
+        }
+      ],
+      "query_input_cells_total": 285,
+      "prompt_characters": {
+        "message_contents_total": 2771,
+        "system_content": 116,
+        "user_content": 2655,
+        "compact_serialized_messages": 2839
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 570,
+        "each_query_at_largest_demo_output_cell_tokens": 210,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 285,
+        "proxy_max_of_input_and_demo_cell_tokens": 570,
+        "proxy_fraction_of_8192": 0.06958,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "13e47133",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        400,
+        400,
+        130
+      ],
+      "demo_output_max_cells": 400,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        },
+        {
+          "query_index": 1,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 1800,
+      "prompt_characters": {
+        "message_contents_total": 8243,
+        "system_content": 116,
+        "user_content": 8127,
+        "compact_serialized_messages": 8314
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 3600,
+        "each_query_at_largest_demo_output_cell_tokens": 1600,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1800,
+        "proxy_max_of_input_and_demo_cell_tokens": 3600,
+        "proxy_fraction_of_8192": 0.439453,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "142ca369",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        400,
+        324,
+        400
+      ],
+      "demo_output_max_cells": 400,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 18,
+          "width": 18,
+          "cells": 324
+        },
+        {
+          "query_index": 1,
+          "height": 20,
+          "width": 19,
+          "cells": 380
+        }
+      ],
+      "query_input_cells_total": 704,
+      "prompt_characters": {
+        "message_contents_total": 6815,
+        "system_content": 116,
+        "user_content": 6699,
+        "compact_serialized_messages": 6886
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1408,
+        "each_query_at_largest_demo_output_cell_tokens": 1600,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 800,
+        "proxy_max_of_input_and_demo_cell_tokens": 1600,
+        "proxy_fraction_of_8192": 0.195312,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "16b78196",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        900,
+        900
+      ],
+      "demo_output_max_cells": 900,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 900,
+      "prompt_characters": {
+        "message_contents_total": 9856,
+        "system_content": 116,
+        "user_content": 9740,
+        "compact_serialized_messages": 9923
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1800,
+        "each_query_at_largest_demo_output_cell_tokens": 1800,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 900,
+        "proxy_max_of_input_and_demo_cell_tokens": 1800,
+        "proxy_fraction_of_8192": 0.219727,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "16de56c4",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        108,
+        180,
+        105
+      ],
+      "demo_output_max_cells": 180,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 9,
+          "width": 21,
+          "cells": 189
+        },
+        {
+          "query_index": 1,
+          "height": 9,
+          "width": 21,
+          "cells": 189
+        }
+      ],
+      "query_input_cells_total": 378,
+      "prompt_characters": {
+        "message_contents_total": 3079,
+        "system_content": 116,
+        "user_content": 2963,
+        "compact_serialized_messages": 3150
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 756,
+        "each_query_at_largest_demo_output_cell_tokens": 720,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 378,
+        "proxy_max_of_input_and_demo_cell_tokens": 756,
+        "proxy_fraction_of_8192": 0.092285,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "1818057f",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        120,
+        255,
+        144
+      ],
+      "demo_output_max_cells": 255,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 22,
+          "width": 22,
+          "cells": 484
+        }
+      ],
+      "query_input_cells_total": 484,
+      "prompt_characters": {
+        "message_contents_total": 3815,
+        "system_content": 116,
+        "user_content": 3699,
+        "compact_serialized_messages": 3883
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 968,
+        "each_query_at_largest_demo_output_cell_tokens": 510,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 484,
+        "proxy_max_of_input_and_demo_cell_tokens": 968,
+        "proxy_fraction_of_8192": 0.118164,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "195c6913",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        400,
+        625,
+        625
+      ],
+      "demo_output_max_cells": 625,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        },
+        {
+          "query_index": 1,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 1800,
+      "prompt_characters": {
+        "message_contents_total": 11203,
+        "system_content": 116,
+        "user_content": 11087,
+        "compact_serialized_messages": 11274
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 3600,
+        "each_query_at_largest_demo_output_cell_tokens": 2500,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1800,
+        "proxy_max_of_input_and_demo_cell_tokens": 3600,
+        "proxy_fraction_of_8192": 0.439453,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "1ae2feb7",
+      "n_demos": 3,
+      "n_queries": 3,
+      "demo_output_cells_each": [
+        176,
+        176,
+        195
+      ],
+      "demo_output_max_cells": 195,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 10,
+          "width": 20,
+          "cells": 200
+        },
+        {
+          "query_index": 1,
+          "height": 8,
+          "width": 15,
+          "cells": 120
+        },
+        {
+          "query_index": 2,
+          "height": 8,
+          "width": 15,
+          "cells": 120
+        }
+      ],
+      "query_input_cells_total": 440,
+      "prompt_characters": {
+        "message_contents_total": 3887,
+        "system_content": 116,
+        "user_content": 3771,
+        "compact_serialized_messages": 3961
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 880,
+        "each_query_at_largest_demo_output_cell_tokens": 1170,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 590,
+        "proxy_max_of_input_and_demo_cell_tokens": 1180,
+        "proxy_fraction_of_8192": 0.144043,
+        "all_queries_at_legal_30x30_cell_tokens": 5400,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 5614,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 2792
+      }
+    },
+    {
+      "task_id": "20270e3b",
+      "n_demos": 4,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        56,
+        42,
+        18,
+        60
+      ],
+      "demo_output_max_cells": 60,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 11,
+          "width": 10,
+          "cells": 110
+        },
+        {
+          "query_index": 1,
+          "height": 11,
+          "width": 5,
+          "cells": 55
+        }
+      ],
+      "query_input_cells_total": 165,
+      "prompt_characters": {
+        "message_contents_total": 2006,
+        "system_content": 116,
+        "user_content": 1890,
+        "compact_serialized_messages": 2078
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 330,
+        "each_query_at_largest_demo_output_cell_tokens": 240,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 170,
+        "proxy_max_of_input_and_demo_cell_tokens": 340,
+        "proxy_fraction_of_8192": 0.041504,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "20a9e565",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        18,
+        28,
+        51
+      ],
+      "demo_output_max_cells": 51,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        },
+        {
+          "query_index": 1,
+          "height": 29,
+          "width": 29,
+          "cells": 841
+        }
+      ],
+      "query_input_cells_total": 1741,
+      "prompt_characters": {
+        "message_contents_total": 9925,
+        "system_content": 116,
+        "user_content": 9809,
+        "compact_serialized_messages": 9996
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 3482,
+        "each_query_at_largest_demo_output_cell_tokens": 204,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1741,
+        "proxy_max_of_input_and_demo_cell_tokens": 3482,
+        "proxy_fraction_of_8192": 0.425049,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "21897d95",
+      "n_demos": 4,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        192,
+        100,
+        126,
+        100
+      ],
+      "demo_output_max_cells": 192,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        },
+        {
+          "query_index": 1,
+          "height": 24,
+          "width": 24,
+          "cells": 576
+        }
+      ],
+      "query_input_cells_total": 1476,
+      "prompt_characters": {
+        "message_contents_total": 5940,
+        "system_content": 116,
+        "user_content": 5824,
+        "compact_serialized_messages": 6012
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 2952,
+        "each_query_at_largest_demo_output_cell_tokens": 768,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1476,
+        "proxy_max_of_input_and_demo_cell_tokens": 2952,
+        "proxy_fraction_of_8192": 0.360352,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "221dfab4",
+      "n_demos": 2,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        638,
+        638
+      ],
+      "demo_output_max_cells": 638,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 25,
+          "width": 25,
+          "cells": 625
+        },
+        {
+          "query_index": 1,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 1525,
+      "prompt_characters": {
+        "message_contents_total": 9076,
+        "system_content": 116,
+        "user_content": 8960,
+        "compact_serialized_messages": 9146
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 3050,
+        "each_query_at_largest_demo_output_cell_tokens": 2552,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1538,
+        "proxy_max_of_input_and_demo_cell_tokens": 3076,
+        "proxy_fraction_of_8192": 0.375488,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "247ef758",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        216,
+        150,
+        140
+      ],
+      "demo_output_max_cells": 216,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 15,
+          "width": 20,
+          "cells": 300
+        },
+        {
+          "query_index": 1,
+          "height": 12,
+          "width": 18,
+          "cells": 216
+        }
+      ],
+      "query_input_cells_total": 516,
+      "prompt_characters": {
+        "message_contents_total": 3841,
+        "system_content": 116,
+        "user_content": 3725,
+        "compact_serialized_messages": 3912
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1032,
+        "each_query_at_largest_demo_output_cell_tokens": 864,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 516,
+        "proxy_max_of_input_and_demo_cell_tokens": 1032,
+        "proxy_fraction_of_8192": 0.125977,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "269e22fb",
+      "n_demos": 5,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        400,
+        400,
+        400,
+        400,
+        400
+      ],
+      "demo_output_max_cells": 400,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 10,
+          "width": 10,
+          "cells": 100
+        },
+        {
+          "query_index": 1,
+          "height": 11,
+          "width": 10,
+          "cells": 110
+        }
+      ],
+      "query_input_cells_total": 210,
+      "prompt_characters": {
+        "message_contents_total": 6509,
+        "system_content": 116,
+        "user_content": 6393,
+        "compact_serialized_messages": 6582
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 420,
+        "each_query_at_largest_demo_output_cell_tokens": 1600,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 800,
+        "proxy_max_of_input_and_demo_cell_tokens": 1600,
+        "proxy_fraction_of_8192": 0.195312,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "271d71e2",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        64,
+        289,
+        144
+      ],
+      "demo_output_max_cells": 289,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 26,
+          "width": 26,
+          "cells": 676
+        }
+      ],
+      "query_input_cells_total": 676,
+      "prompt_characters": {
+        "message_contents_total": 4119,
+        "system_content": 116,
+        "user_content": 4003,
+        "compact_serialized_messages": 4187
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1352,
+        "each_query_at_largest_demo_output_cell_tokens": 578,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 676,
+        "proxy_max_of_input_and_demo_cell_tokens": 1352,
+        "proxy_fraction_of_8192": 0.165039,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "28a6681f",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        100,
+        100,
+        100
+      ],
+      "demo_output_max_cells": 100,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 10,
+          "width": 10,
+          "cells": 100
+        }
+      ],
+      "query_input_cells_total": 100,
+      "prompt_characters": {
+        "message_contents_total": 2119,
+        "system_content": 116,
+        "user_content": 2003,
+        "compact_serialized_messages": 2187
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 200,
+        "each_query_at_largest_demo_output_cell_tokens": 200,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 100,
+        "proxy_max_of_input_and_demo_cell_tokens": 200,
+        "proxy_fraction_of_8192": 0.024414,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "291dc1e1",
+      "n_demos": 4,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        72,
+        32,
+        112,
+        84
+      ],
+      "demo_output_max_cells": 112,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 28,
+          "width": 8,
+          "cells": 224
+        }
+      ],
+      "query_input_cells_total": 224,
+      "prompt_characters": {
+        "message_contents_total": 3202,
+        "system_content": 116,
+        "user_content": 3086,
+        "compact_serialized_messages": 3271
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 448,
+        "each_query_at_largest_demo_output_cell_tokens": 224,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 224,
+        "proxy_max_of_input_and_demo_cell_tokens": 448,
+        "proxy_fraction_of_8192": 0.054688,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "2b83f449",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        247,
+        176
+      ],
+      "demo_output_max_cells": 247,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 19,
+          "width": 17,
+          "cells": 323
+        }
+      ],
+      "query_input_cells_total": 323,
+      "prompt_characters": {
+        "message_contents_total": 3028,
+        "system_content": 116,
+        "user_content": 2912,
+        "compact_serialized_messages": 3095
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 646,
+        "each_query_at_largest_demo_output_cell_tokens": 494,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 323,
+        "proxy_max_of_input_and_demo_cell_tokens": 646,
+        "proxy_fraction_of_8192": 0.078857,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "2ba387bc",
+      "n_demos": 4,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        128,
+        96,
+        64,
+        96
+      ],
+      "demo_output_max_cells": 128,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 24,
+          "width": 19,
+          "cells": 456
+        }
+      ],
+      "query_input_cells_total": 456,
+      "prompt_characters": {
+        "message_contents_total": 6428,
+        "system_content": 116,
+        "user_content": 6312,
+        "compact_serialized_messages": 6497
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 912,
+        "each_query_at_largest_demo_output_cell_tokens": 256,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 456,
+        "proxy_max_of_input_and_demo_cell_tokens": 912,
+        "proxy_fraction_of_8192": 0.111328,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "2c181942",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        460,
+        378,
+        500
+      ],
+      "demo_output_max_cells": 500,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 24,
+          "width": 26,
+          "cells": 624
+        }
+      ],
+      "query_input_cells_total": 624,
+      "prompt_characters": {
+        "message_contents_total": 7471,
+        "system_content": 116,
+        "user_content": 7355,
+        "compact_serialized_messages": 7539
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1248,
+        "each_query_at_largest_demo_output_cell_tokens": 1000,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 624,
+        "proxy_max_of_input_and_demo_cell_tokens": 1248,
+        "proxy_fraction_of_8192": 0.152344,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "2d0172a1",
+      "n_demos": 4,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        132,
+        25,
+        35,
+        99
+      ],
+      "demo_output_max_cells": 132,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 25,
+          "width": 25,
+          "cells": 625
+        },
+        {
+          "query_index": 1,
+          "height": 25,
+          "width": 25,
+          "cells": 625
+        }
+      ],
+      "query_input_cells_total": 1250,
+      "prompt_characters": {
+        "message_contents_total": 7312,
+        "system_content": 116,
+        "user_content": 7196,
+        "compact_serialized_messages": 7384
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 2500,
+        "each_query_at_largest_demo_output_cell_tokens": 528,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1250,
+        "proxy_max_of_input_and_demo_cell_tokens": 2500,
+        "proxy_fraction_of_8192": 0.305176,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "31f7f899",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        169,
+        225,
+        49
+      ],
+      "demo_output_max_cells": 225,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 17,
+          "width": 17,
+          "cells": 289
+        }
+      ],
+      "query_input_cells_total": 289,
+      "prompt_characters": {
+        "message_contents_total": 3103,
+        "system_content": 116,
+        "user_content": 2987,
+        "compact_serialized_messages": 3171
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 578,
+        "each_query_at_largest_demo_output_cell_tokens": 450,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 289,
+        "proxy_max_of_input_and_demo_cell_tokens": 578,
+        "proxy_fraction_of_8192": 0.070557,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "332f06d7",
+      "n_demos": 4,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        144,
+        196,
+        256,
+        100
+      ],
+      "demo_output_max_cells": 256,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 20,
+          "width": 20,
+          "cells": 400
+        }
+      ],
+      "query_input_cells_total": 400,
+      "prompt_characters": {
+        "message_contents_total": 4434,
+        "system_content": 116,
+        "user_content": 4318,
+        "compact_serialized_messages": 4503
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 800,
+        "each_query_at_largest_demo_output_cell_tokens": 512,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 400,
+        "proxy_max_of_input_and_demo_cell_tokens": 800,
+        "proxy_fraction_of_8192": 0.097656,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "35ab12c3",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        400,
+        324,
+        225
+      ],
+      "demo_output_max_cells": 400,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 21,
+          "width": 21,
+          "cells": 441
+        }
+      ],
+      "query_input_cells_total": 441,
+      "prompt_characters": {
+        "message_contents_total": 5511,
+        "system_content": 116,
+        "user_content": 5395,
+        "compact_serialized_messages": 5579
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 882,
+        "each_query_at_largest_demo_output_cell_tokens": 800,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 441,
+        "proxy_max_of_input_and_demo_cell_tokens": 882,
+        "proxy_fraction_of_8192": 0.107666,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "36a08778",
+      "n_demos": 6,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        196,
+        208,
+        72,
+        70,
+        160,
+        240
+      ],
+      "demo_output_max_cells": 240,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 16,
+          "width": 16,
+          "cells": 256
+        },
+        {
+          "query_index": 1,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 1156,
+      "prompt_characters": {
+        "message_contents_total": 7160,
+        "system_content": 116,
+        "user_content": 7044,
+        "compact_serialized_messages": 7234
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 2312,
+        "each_query_at_largest_demo_output_cell_tokens": 960,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1156,
+        "proxy_max_of_input_and_demo_cell_tokens": 2312,
+        "proxy_fraction_of_8192": 0.282227,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "38007db0",
+      "n_demos": 2,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        133,
+        133
+      ],
+      "demo_output_max_cells": 133,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 29,
+          "width": 29,
+          "cells": 841
+        },
+        {
+          "query_index": 1,
+          "height": 25,
+          "width": 25,
+          "cells": 625
+        }
+      ],
+      "query_input_cells_total": 1466,
+      "prompt_characters": {
+        "message_contents_total": 5976,
+        "system_content": 116,
+        "user_content": 5860,
+        "compact_serialized_messages": 6046
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 2932,
+        "each_query_at_largest_demo_output_cell_tokens": 532,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1466,
+        "proxy_max_of_input_and_demo_cell_tokens": 2932,
+        "proxy_fraction_of_8192": 0.35791,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "3a25b0d8",
+      "n_demos": 2,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        121,
+        91
+      ],
+      "demo_output_max_cells": 121,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        },
+        {
+          "query_index": 1,
+          "height": 28,
+          "width": 28,
+          "cells": 784
+        }
+      ],
+      "query_input_cells_total": 1684,
+      "prompt_characters": {
+        "message_contents_total": 6560,
+        "system_content": 116,
+        "user_content": 6444,
+        "compact_serialized_messages": 6630
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 3368,
+        "each_query_at_largest_demo_output_cell_tokens": 484,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1684,
+        "proxy_max_of_input_and_demo_cell_tokens": 3368,
+        "proxy_fraction_of_8192": 0.411133,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "3dc255db",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        144,
+        100,
+        144
+      ],
+      "demo_output_max_cells": 144,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 12,
+          "width": 13,
+          "cells": 156
+        }
+      ],
+      "query_input_cells_total": 156,
+      "prompt_characters": {
+        "message_contents_total": 2603,
+        "system_content": 116,
+        "user_content": 2487,
+        "compact_serialized_messages": 2671
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 312,
+        "each_query_at_largest_demo_output_cell_tokens": 288,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 156,
+        "proxy_max_of_input_and_demo_cell_tokens": 312,
+        "proxy_fraction_of_8192": 0.038086,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "3e6067c3",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        400,
+        260,
+        729
+      ],
+      "demo_output_max_cells": 729,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 29,
+          "width": 29,
+          "cells": 841
+        },
+        {
+          "query_index": 1,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 1741,
+      "prompt_characters": {
+        "message_contents_total": 9999,
+        "system_content": 116,
+        "user_content": 9883,
+        "compact_serialized_messages": 10070
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 3482,
+        "each_query_at_largest_demo_output_cell_tokens": 2916,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1741,
+        "proxy_max_of_input_and_demo_cell_tokens": 3482,
+        "proxy_fraction_of_8192": 0.425049,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "409aa875",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        256,
+        256,
+        256
+      ],
+      "demo_output_max_cells": 256,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 16,
+          "width": 16,
+          "cells": 256
+        }
+      ],
+      "query_input_cells_total": 256,
+      "prompt_characters": {
+        "message_contents_total": 4387,
+        "system_content": 116,
+        "user_content": 4271,
+        "compact_serialized_messages": 4455
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 512,
+        "each_query_at_largest_demo_output_cell_tokens": 512,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 256,
+        "proxy_max_of_input_and_demo_cell_tokens": 512,
+        "proxy_fraction_of_8192": 0.0625,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "446ef5d2",
+      "n_demos": 2,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        240,
+        100
+      ],
+      "demo_output_max_cells": 240,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 26,
+          "width": 26,
+          "cells": 676
+        },
+        {
+          "query_index": 1,
+          "height": 20,
+          "width": 20,
+          "cells": 400
+        }
+      ],
+      "query_input_cells_total": 1076,
+      "prompt_characters": {
+        "message_contents_total": 4272,
+        "system_content": 116,
+        "user_content": 4156,
+        "compact_serialized_messages": 4342
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 2152,
+        "each_query_at_largest_demo_output_cell_tokens": 960,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1076,
+        "proxy_max_of_input_and_demo_cell_tokens": 2152,
+        "proxy_fraction_of_8192": 0.262695,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "45a5af55",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        676,
+        576
+      ],
+      "demo_output_max_cells": 676,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 14,
+          "width": 11,
+          "cells": 154
+        }
+      ],
+      "query_input_cells_total": 154,
+      "prompt_characters": {
+        "message_contents_total": 4254,
+        "system_content": 116,
+        "user_content": 4138,
+        "compact_serialized_messages": 4321
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 308,
+        "each_query_at_largest_demo_output_cell_tokens": 1352,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 676,
+        "proxy_max_of_input_and_demo_cell_tokens": 1352,
+        "proxy_fraction_of_8192": 0.165039,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "4a21e3da",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        324,
+        324,
+        324
+      ],
+      "demo_output_max_cells": 324,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 21,
+          "width": 21,
+          "cells": 441
+        },
+        {
+          "query_index": 1,
+          "height": 20,
+          "width": 20,
+          "cells": 400
+        }
+      ],
+      "query_input_cells_total": 841,
+      "prompt_characters": {
+        "message_contents_total": 6471,
+        "system_content": 116,
+        "user_content": 6355,
+        "compact_serialized_messages": 6542
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1682,
+        "each_query_at_largest_demo_output_cell_tokens": 1296,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 841,
+        "proxy_max_of_input_and_demo_cell_tokens": 1682,
+        "proxy_fraction_of_8192": 0.205322,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "4c3d4a41",
+      "n_demos": 2,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        160,
+        160
+      ],
+      "demo_output_max_cells": 160,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 8,
+          "width": 20,
+          "cells": 160
+        },
+        {
+          "query_index": 1,
+          "height": 8,
+          "width": 20,
+          "cells": 160
+        }
+      ],
+      "query_input_cells_total": 320,
+      "prompt_characters": {
+        "message_contents_total": 2596,
+        "system_content": 116,
+        "user_content": 2480,
+        "compact_serialized_messages": 2666
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 640,
+        "each_query_at_largest_demo_output_cell_tokens": 640,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 320,
+        "proxy_max_of_input_and_demo_cell_tokens": 640,
+        "proxy_fraction_of_8192": 0.078125,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "4c416de3",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        441,
+        529,
+        441
+      ],
+      "demo_output_max_cells": 529,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 19,
+          "width": 22,
+          "cells": 418
+        }
+      ],
+      "query_input_cells_total": 418,
+      "prompt_characters": {
+        "message_contents_total": 7357,
+        "system_content": 116,
+        "user_content": 7241,
+        "compact_serialized_messages": 7425
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 836,
+        "each_query_at_largest_demo_output_cell_tokens": 1058,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 529,
+        "proxy_max_of_input_and_demo_cell_tokens": 1058,
+        "proxy_fraction_of_8192": 0.12915,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "4c7dc4dd",
+      "n_demos": 2,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        25,
+        16
+      ],
+      "demo_output_max_cells": 25,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        },
+        {
+          "query_index": 1,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 1800,
+      "prompt_characters": {
+        "message_contents_total": 8120,
+        "system_content": 116,
+        "user_content": 8004,
+        "compact_serialized_messages": 8190
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 3600,
+        "each_query_at_largest_demo_output_cell_tokens": 100,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1800,
+        "proxy_max_of_input_and_demo_cell_tokens": 3600,
+        "proxy_fraction_of_8192": 0.439453,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "4e34c42c",
+      "n_demos": 2,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        60,
+        110
+      ],
+      "demo_output_max_cells": 110,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 26,
+          "width": 20,
+          "cells": 520
+        },
+        {
+          "query_index": 1,
+          "height": 20,
+          "width": 20,
+          "cells": 400
+        }
+      ],
+      "query_input_cells_total": 920,
+      "prompt_characters": {
+        "message_contents_total": 5328,
+        "system_content": 116,
+        "user_content": 5212,
+        "compact_serialized_messages": 5398
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1840,
+        "each_query_at_largest_demo_output_cell_tokens": 440,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 920,
+        "proxy_max_of_input_and_demo_cell_tokens": 1840,
+        "proxy_fraction_of_8192": 0.224609,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "53fb4810",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        336,
+        299
+      ],
+      "demo_output_max_cells": 336,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 25,
+          "width": 18,
+          "cells": 450
+        }
+      ],
+      "query_input_cells_total": 450,
+      "prompt_characters": {
+        "message_contents_total": 4234,
+        "system_content": 116,
+        "user_content": 4118,
+        "compact_serialized_messages": 4301
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 900,
+        "each_query_at_largest_demo_output_cell_tokens": 672,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 450,
+        "proxy_max_of_input_and_demo_cell_tokens": 900,
+        "proxy_fraction_of_8192": 0.109863,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "5545f144",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        80,
+        48,
+        144
+      ],
+      "demo_output_max_cells": 144,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 15,
+          "width": 15,
+          "cells": 225
+        }
+      ],
+      "query_input_cells_total": 225,
+      "prompt_characters": {
+        "message_contents_total": 3275,
+        "system_content": 116,
+        "user_content": 3159,
+        "compact_serialized_messages": 3343
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 450,
+        "each_query_at_largest_demo_output_cell_tokens": 288,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 225,
+        "proxy_max_of_input_and_demo_cell_tokens": 450,
+        "proxy_fraction_of_8192": 0.054932,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "581f7754",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        144,
+        210,
+        242
+      ],
+      "demo_output_max_cells": 242,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 14,
+          "width": 20,
+          "cells": 280
+        },
+        {
+          "query_index": 1,
+          "height": 11,
+          "width": 22,
+          "cells": 242
+        }
+      ],
+      "query_input_cells_total": 522,
+      "prompt_characters": {
+        "message_contents_total": 4281,
+        "system_content": 116,
+        "user_content": 4165,
+        "compact_serialized_messages": 4352
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1044,
+        "each_query_at_largest_demo_output_cell_tokens": 968,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 522,
+        "proxy_max_of_input_and_demo_cell_tokens": 1044,
+        "proxy_fraction_of_8192": 0.127441,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "58490d8a",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        49,
+        84,
+        25
+      ],
+      "demo_output_max_cells": 84,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 22,
+          "width": 25,
+          "cells": 550
+        }
+      ],
+      "query_input_cells_total": 550,
+      "prompt_characters": {
+        "message_contents_total": 4983,
+        "system_content": 116,
+        "user_content": 4867,
+        "compact_serialized_messages": 5051
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1100,
+        "each_query_at_largest_demo_output_cell_tokens": 168,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 550,
+        "proxy_max_of_input_and_demo_cell_tokens": 1100,
+        "proxy_fraction_of_8192": 0.134277,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "58f5dbd5",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        133,
+        133,
+        169
+      ],
+      "demo_output_max_cells": 169,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 19,
+          "width": 23,
+          "cells": 437
+        }
+      ],
+      "query_input_cells_total": 437,
+      "prompt_characters": {
+        "message_contents_total": 4871,
+        "system_content": 116,
+        "user_content": 4755,
+        "compact_serialized_messages": 4939
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 874,
+        "each_query_at_largest_demo_output_cell_tokens": 338,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 437,
+        "proxy_max_of_input_and_demo_cell_tokens": 874,
+        "proxy_fraction_of_8192": 0.106689,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "5961cc34",
+      "n_demos": 4,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        195,
+        575,
+        506,
+        506
+      ],
+      "demo_output_max_cells": 575,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 27,
+          "width": 27,
+          "cells": 729
+        }
+      ],
+      "query_input_cells_total": 729,
+      "prompt_characters": {
+        "message_contents_total": 9570,
+        "system_content": 116,
+        "user_content": 9454,
+        "compact_serialized_messages": 9639
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1458,
+        "each_query_at_largest_demo_output_cell_tokens": 1150,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 729,
+        "proxy_max_of_input_and_demo_cell_tokens": 1458,
+        "proxy_fraction_of_8192": 0.177979,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "5dbc8537",
+      "n_demos": 2,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        105,
+        180
+      ],
+      "demo_output_max_cells": 180,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 25,
+          "width": 25,
+          "cells": 625
+        },
+        {
+          "query_index": 1,
+          "height": 20,
+          "width": 20,
+          "cells": 400
+        }
+      ],
+      "query_input_cells_total": 1025,
+      "prompt_characters": {
+        "message_contents_total": 4658,
+        "system_content": 116,
+        "user_content": 4542,
+        "compact_serialized_messages": 4728
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 2050,
+        "each_query_at_largest_demo_output_cell_tokens": 720,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1025,
+        "proxy_max_of_input_and_demo_cell_tokens": 2050,
+        "proxy_fraction_of_8192": 0.250244,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "62593bfd",
+      "n_demos": 2,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        532,
+        900
+      ],
+      "demo_output_max_cells": 900,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 25,
+          "width": 25,
+          "cells": 625
+        },
+        {
+          "query_index": 1,
+          "height": 19,
+          "width": 28,
+          "cells": 532
+        }
+      ],
+      "query_input_cells_total": 1157,
+      "prompt_characters": {
+        "message_contents_total": 8942,
+        "system_content": 116,
+        "user_content": 8826,
+        "compact_serialized_messages": 9012
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 2314,
+        "each_query_at_largest_demo_output_cell_tokens": 3600,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1800,
+        "proxy_max_of_input_and_demo_cell_tokens": 3600,
+        "proxy_fraction_of_8192": 0.439453,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "64efde09",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        754,
+        567
+      ],
+      "demo_output_max_cells": 754,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 29,
+          "width": 29,
+          "cells": 841
+        }
+      ],
+      "query_input_cells_total": 841,
+      "prompt_characters": {
+        "message_contents_total": 7768,
+        "system_content": 116,
+        "user_content": 7652,
+        "compact_serialized_messages": 7835
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1682,
+        "each_query_at_largest_demo_output_cell_tokens": 1508,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 841,
+        "proxy_max_of_input_and_demo_cell_tokens": 1682,
+        "proxy_fraction_of_8192": 0.205322,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "65b59efc",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        81,
+        81,
+        625
+      ],
+      "demo_output_max_cells": 625,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 16,
+          "width": 30,
+          "cells": 480
+        },
+        {
+          "query_index": 1,
+          "height": 12,
+          "width": 20,
+          "cells": 240
+        }
+      ],
+      "query_input_cells_total": 720,
+      "prompt_characters": {
+        "message_contents_total": 4743,
+        "system_content": 116,
+        "user_content": 4627,
+        "compact_serialized_messages": 4814
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1440,
+        "each_query_at_largest_demo_output_cell_tokens": 2500,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1250,
+        "proxy_max_of_input_and_demo_cell_tokens": 2500,
+        "proxy_fraction_of_8192": 0.305176,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "67e490f4",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        121,
+        169
+      ],
+      "demo_output_max_cells": 169,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 900,
+      "prompt_characters": {
+        "message_contents_total": 6764,
+        "system_content": 116,
+        "user_content": 6648,
+        "compact_serialized_messages": 6831
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1800,
+        "each_query_at_largest_demo_output_cell_tokens": 338,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 900,
+        "proxy_max_of_input_and_demo_cell_tokens": 1800,
+        "proxy_fraction_of_8192": 0.219727,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "6e453dd6",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        256,
+        160,
+        200
+      ],
+      "demo_output_max_cells": 256,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 25,
+          "width": 12,
+          "cells": 300
+        }
+      ],
+      "query_input_cells_total": 300,
+      "prompt_characters": {
+        "message_contents_total": 3901,
+        "system_content": 116,
+        "user_content": 3785,
+        "compact_serialized_messages": 3969
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 600,
+        "each_query_at_largest_demo_output_cell_tokens": 512,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 300,
+        "proxy_max_of_input_and_demo_cell_tokens": 600,
+        "proxy_fraction_of_8192": 0.073242,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "6e4f6532",
+      "n_demos": 2,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        338,
+        676
+      ],
+      "demo_output_max_cells": 676,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 28,
+          "cells": 840
+        },
+        {
+          "query_index": 1,
+          "height": 30,
+          "width": 16,
+          "cells": 480
+        }
+      ],
+      "query_input_cells_total": 1320,
+      "prompt_characters": {
+        "message_contents_total": 7552,
+        "system_content": 116,
+        "user_content": 7436,
+        "compact_serialized_messages": 7622
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 2640,
+        "each_query_at_largest_demo_output_cell_tokens": 2704,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1516,
+        "proxy_max_of_input_and_demo_cell_tokens": 3032,
+        "proxy_fraction_of_8192": 0.370117,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "6ffbe589",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        169,
+        100,
+        100
+      ],
+      "demo_output_max_cells": 169,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 20,
+          "width": 20,
+          "cells": 400
+        }
+      ],
+      "query_input_cells_total": 400,
+      "prompt_characters": {
+        "message_contents_total": 4743,
+        "system_content": 116,
+        "user_content": 4627,
+        "compact_serialized_messages": 4811
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 800,
+        "each_query_at_largest_demo_output_cell_tokens": 338,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 400,
+        "proxy_max_of_input_and_demo_cell_tokens": 800,
+        "proxy_fraction_of_8192": 0.097656,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "71e489b6",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        323,
+        256,
+        256
+      ],
+      "demo_output_max_cells": 323,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 16,
+          "width": 16,
+          "cells": 256
+        },
+        {
+          "query_index": 1,
+          "height": 18,
+          "width": 19,
+          "cells": 342
+        }
+      ],
+      "query_input_cells_total": 598,
+      "prompt_characters": {
+        "message_contents_total": 5411,
+        "system_content": 116,
+        "user_content": 5295,
+        "compact_serialized_messages": 5482
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1196,
+        "each_query_at_largest_demo_output_cell_tokens": 1292,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 665,
+        "proxy_max_of_input_and_demo_cell_tokens": 1330,
+        "proxy_fraction_of_8192": 0.162354,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "7491f3cf",
+      "n_demos": 4,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        175,
+        175,
+        175,
+        175
+      ],
+      "demo_output_max_cells": 175,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 7,
+          "width": 25,
+          "cells": 175
+        }
+      ],
+      "query_input_cells_total": 175,
+      "prompt_characters": {
+        "message_contents_total": 3878,
+        "system_content": 116,
+        "user_content": 3762,
+        "compact_serialized_messages": 3947
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 350,
+        "each_query_at_largest_demo_output_cell_tokens": 350,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 175,
+        "proxy_max_of_input_and_demo_cell_tokens": 350,
+        "proxy_fraction_of_8192": 0.042725,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "7666fa5d",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        256,
+        256
+      ],
+      "demo_output_max_cells": 256,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 16,
+          "width": 16,
+          "cells": 256
+        }
+      ],
+      "query_input_cells_total": 256,
+      "prompt_characters": {
+        "message_contents_total": 3276,
+        "system_content": 116,
+        "user_content": 3160,
+        "compact_serialized_messages": 3343
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 512,
+        "each_query_at_largest_demo_output_cell_tokens": 512,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 256,
+        "proxy_max_of_input_and_demo_cell_tokens": 512,
+        "proxy_fraction_of_8192": 0.0625,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "78332cb0",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        115,
+        85,
+        85
+      ],
+      "demo_output_max_cells": 115,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 11,
+          "width": 11,
+          "cells": 121
+        },
+        {
+          "query_index": 1,
+          "height": 23,
+          "width": 5,
+          "cells": 115
+        }
+      ],
+      "query_input_cells_total": 236,
+      "prompt_characters": {
+        "message_contents_total": 2451,
+        "system_content": 116,
+        "user_content": 2335,
+        "compact_serialized_messages": 2522
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 472,
+        "each_query_at_largest_demo_output_cell_tokens": 460,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 236,
+        "proxy_max_of_input_and_demo_cell_tokens": 472,
+        "proxy_fraction_of_8192": 0.057617,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "7b0280bc",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        324,
+        225,
+        400
+      ],
+      "demo_output_max_cells": 400,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 900,
+      "prompt_characters": {
+        "message_contents_total": 6447,
+        "system_content": 116,
+        "user_content": 6331,
+        "compact_serialized_messages": 6515
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1800,
+        "each_query_at_largest_demo_output_cell_tokens": 800,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 900,
+        "proxy_max_of_input_and_demo_cell_tokens": 1800,
+        "proxy_fraction_of_8192": 0.219727,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "7b3084d4",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        36,
+        100,
+        16
+      ],
+      "demo_output_max_cells": 100,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 20,
+          "width": 20,
+          "cells": 400
+        }
+      ],
+      "query_input_cells_total": 400,
+      "prompt_characters": {
+        "message_contents_total": 4283,
+        "system_content": 116,
+        "user_content": 4167,
+        "compact_serialized_messages": 4351
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 800,
+        "each_query_at_largest_demo_output_cell_tokens": 200,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 400,
+        "proxy_max_of_input_and_demo_cell_tokens": 800,
+        "proxy_fraction_of_8192": 0.097656,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "7b5033c1",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        22,
+        24
+      ],
+      "demo_output_max_cells": 24,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 16,
+          "width": 16,
+          "cells": 256
+        }
+      ],
+      "query_input_cells_total": 256,
+      "prompt_characters": {
+        "message_contents_total": 2372,
+        "system_content": 116,
+        "user_content": 2256,
+        "compact_serialized_messages": 2439
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 512,
+        "each_query_at_largest_demo_output_cell_tokens": 48,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 256,
+        "proxy_max_of_input_and_demo_cell_tokens": 512,
+        "proxy_fraction_of_8192": 0.0625,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "7b80bb43",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        480,
+        672
+      ],
+      "demo_output_max_cells": 672,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 29,
+          "width": 17,
+          "cells": 493
+        }
+      ],
+      "query_input_cells_total": 493,
+      "prompt_characters": {
+        "message_contents_total": 6384,
+        "system_content": 116,
+        "user_content": 6268,
+        "compact_serialized_messages": 6451
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 986,
+        "each_query_at_largest_demo_output_cell_tokens": 1344,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 672,
+        "proxy_max_of_input_and_demo_cell_tokens": 1344,
+        "proxy_fraction_of_8192": 0.164062,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "7c66cb00",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        720,
+        720,
+        720
+      ],
+      "demo_output_max_cells": 720,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 24,
+          "cells": 720
+        }
+      ],
+      "query_input_cells_total": 720,
+      "prompt_characters": {
+        "message_contents_total": 11079,
+        "system_content": 116,
+        "user_content": 10963,
+        "compact_serialized_messages": 11147
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1440,
+        "each_query_at_largest_demo_output_cell_tokens": 1440,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 720,
+        "proxy_max_of_input_and_demo_cell_tokens": 1440,
+        "proxy_fraction_of_8192": 0.175781,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "7ed72f31",
+      "n_demos": 2,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        324,
+        324
+      ],
+      "demo_output_max_cells": 324,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 18,
+          "width": 18,
+          "cells": 324
+        },
+        {
+          "query_index": 1,
+          "height": 28,
+          "width": 28,
+          "cells": 784
+        }
+      ],
+      "query_input_cells_total": 1108,
+      "prompt_characters": {
+        "message_contents_total": 5624,
+        "system_content": 116,
+        "user_content": 5508,
+        "compact_serialized_messages": 5694
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 2216,
+        "each_query_at_largest_demo_output_cell_tokens": 1296,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1108,
+        "proxy_max_of_input_and_demo_cell_tokens": 2216,
+        "proxy_fraction_of_8192": 0.270508,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "800d221b",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        256,
+        100,
+        400
+      ],
+      "demo_output_max_cells": 400,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 900,
+      "prompt_characters": {
+        "message_contents_total": 5647,
+        "system_content": 116,
+        "user_content": 5531,
+        "compact_serialized_messages": 5715
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1800,
+        "each_query_at_largest_demo_output_cell_tokens": 800,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 900,
+        "proxy_max_of_input_and_demo_cell_tokens": 1800,
+        "proxy_fraction_of_8192": 0.219727,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "80a900e0",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        280,
+        720
+      ],
+      "demo_output_max_cells": 720,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 22,
+          "width": 21,
+          "cells": 462
+        }
+      ],
+      "query_input_cells_total": 462,
+      "prompt_characters": {
+        "message_contents_total": 5700,
+        "system_content": 116,
+        "user_content": 5584,
+        "compact_serialized_messages": 5767
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 924,
+        "each_query_at_largest_demo_output_cell_tokens": 1440,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 720,
+        "proxy_max_of_input_and_demo_cell_tokens": 1440,
+        "proxy_fraction_of_8192": 0.175781,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "8698868d",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        72,
+        256
+      ],
+      "demo_output_max_cells": 256,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 900,
+      "prompt_characters": {
+        "message_contents_total": 5616,
+        "system_content": 116,
+        "user_content": 5500,
+        "compact_serialized_messages": 5683
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1800,
+        "each_query_at_largest_demo_output_cell_tokens": 512,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 900,
+        "proxy_max_of_input_and_demo_cell_tokens": 1800,
+        "proxy_fraction_of_8192": 0.219727,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "88bcf3b4",
+      "n_demos": 5,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        49,
+        144,
+        289,
+        100,
+        81
+      ],
+      "demo_output_max_cells": 289,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 22,
+          "width": 22,
+          "cells": 484
+        },
+        {
+          "query_index": 1,
+          "height": 27,
+          "width": 27,
+          "cells": 729
+        }
+      ],
+      "query_input_cells_total": 1213,
+      "prompt_characters": {
+        "message_contents_total": 6045,
+        "system_content": 116,
+        "user_content": 5929,
+        "compact_serialized_messages": 6118
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 2426,
+        "each_query_at_largest_demo_output_cell_tokens": 1156,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1213,
+        "proxy_max_of_input_and_demo_cell_tokens": 2426,
+        "proxy_fraction_of_8192": 0.296143,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "88e364bc",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        400,
+        400,
+        400
+      ],
+      "demo_output_max_cells": 400,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 20,
+          "width": 20,
+          "cells": 400
+        },
+        {
+          "query_index": 1,
+          "height": 20,
+          "width": 20,
+          "cells": 400
+        }
+      ],
+      "query_input_cells_total": 800,
+      "prompt_characters": {
+        "message_contents_total": 7323,
+        "system_content": 116,
+        "user_content": 7207,
+        "compact_serialized_messages": 7394
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1600,
+        "each_query_at_largest_demo_output_cell_tokens": 1600,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 800,
+        "proxy_max_of_input_and_demo_cell_tokens": 1600,
+        "proxy_fraction_of_8192": 0.195312,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "89565ca0",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        12,
+        20,
+        16
+      ],
+      "demo_output_max_cells": 20,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 29,
+          "width": 30,
+          "cells": 870
+        }
+      ],
+      "query_input_cells_total": 870,
+      "prompt_characters": {
+        "message_contents_total": 5973,
+        "system_content": 116,
+        "user_content": 5857,
+        "compact_serialized_messages": 6041
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1740,
+        "each_query_at_largest_demo_output_cell_tokens": 40,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 870,
+        "proxy_max_of_input_and_demo_cell_tokens": 1740,
+        "proxy_fraction_of_8192": 0.212402,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "898e7135",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        144,
+        560
+      ],
+      "demo_output_max_cells": 560,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 900,
+      "prompt_characters": {
+        "message_contents_total": 5722,
+        "system_content": 116,
+        "user_content": 5606,
+        "compact_serialized_messages": 5789
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1800,
+        "each_query_at_largest_demo_output_cell_tokens": 1120,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 900,
+        "proxy_max_of_input_and_demo_cell_tokens": 1800,
+        "proxy_fraction_of_8192": 0.219727,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "8b7bacbf",
+      "n_demos": 4,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        432,
+        240,
+        320,
+        64
+      ],
+      "demo_output_max_cells": 432,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        },
+        {
+          "query_index": 1,
+          "height": 22,
+          "width": 26,
+          "cells": 572
+        }
+      ],
+      "query_input_cells_total": 1472,
+      "prompt_characters": {
+        "message_contents_total": 8114,
+        "system_content": 116,
+        "user_content": 7998,
+        "compact_serialized_messages": 8186
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 2944,
+        "each_query_at_largest_demo_output_cell_tokens": 1728,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1472,
+        "proxy_max_of_input_and_demo_cell_tokens": 2944,
+        "proxy_fraction_of_8192": 0.359375,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "8b9c3697",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        418,
+        418,
+        418
+      ],
+      "demo_output_max_cells": 418,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 23,
+          "width": 27,
+          "cells": 621
+        }
+      ],
+      "query_input_cells_total": 621,
+      "prompt_characters": {
+        "message_contents_total": 7111,
+        "system_content": 116,
+        "user_content": 6995,
+        "compact_serialized_messages": 7179
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1242,
+        "each_query_at_largest_demo_output_cell_tokens": 836,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 621,
+        "proxy_max_of_input_and_demo_cell_tokens": 1242,
+        "proxy_fraction_of_8192": 0.151611,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "8e5c0c38",
+      "n_demos": 2,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        484,
+        484
+      ],
+      "demo_output_max_cells": 484,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 22,
+          "width": 22,
+          "cells": 484
+        },
+        {
+          "query_index": 1,
+          "height": 22,
+          "width": 22,
+          "cells": 484
+        }
+      ],
+      "query_input_cells_total": 968,
+      "prompt_characters": {
+        "message_contents_total": 6652,
+        "system_content": 116,
+        "user_content": 6536,
+        "compact_serialized_messages": 6722
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1936,
+        "each_query_at_largest_demo_output_cell_tokens": 1936,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 968,
+        "proxy_max_of_input_and_demo_cell_tokens": 1936,
+        "proxy_fraction_of_8192": 0.236328,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "8f215267",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        529,
+        529,
+        460
+      ],
+      "demo_output_max_cells": 529,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 27,
+          "width": 23,
+          "cells": 621
+        }
+      ],
+      "query_input_cells_total": 621,
+      "prompt_characters": {
+        "message_contents_total": 8211,
+        "system_content": 116,
+        "user_content": 8095,
+        "compact_serialized_messages": 8279
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1242,
+        "each_query_at_largest_demo_output_cell_tokens": 1058,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 621,
+        "proxy_max_of_input_and_demo_cell_tokens": 1242,
+        "proxy_fraction_of_8192": 0.151611,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "8f3a5a89",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        256,
+        100,
+        400
+      ],
+      "demo_output_max_cells": 400,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 12,
+          "width": 12,
+          "cells": 144
+        }
+      ],
+      "query_input_cells_total": 144,
+      "prompt_characters": {
+        "message_contents_total": 4099,
+        "system_content": 116,
+        "user_content": 3983,
+        "compact_serialized_messages": 4167
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 288,
+        "each_query_at_largest_demo_output_cell_tokens": 800,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 400,
+        "proxy_max_of_input_and_demo_cell_tokens": 800,
+        "proxy_fraction_of_8192": 0.097656,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "9385bd28",
+      "n_demos": 4,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        100,
+        100,
+        204,
+        270
+      ],
+      "demo_output_max_cells": 270,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 19,
+          "width": 13,
+          "cells": 247
+        },
+        {
+          "query_index": 1,
+          "height": 13,
+          "width": 19,
+          "cells": 247
+        }
+      ],
+      "query_input_cells_total": 494,
+      "prompt_characters": {
+        "message_contents_total": 4562,
+        "system_content": 116,
+        "user_content": 4446,
+        "compact_serialized_messages": 4634
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 988,
+        "each_query_at_largest_demo_output_cell_tokens": 1080,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 540,
+        "proxy_max_of_input_and_demo_cell_tokens": 1080,
+        "proxy_fraction_of_8192": 0.131836,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "97d7923e",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        150,
+        100,
+        150
+      ],
+      "demo_output_max_cells": 150,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 10,
+          "width": 20,
+          "cells": 200
+        }
+      ],
+      "query_input_cells_total": 200,
+      "prompt_characters": {
+        "message_contents_total": 2719,
+        "system_content": 116,
+        "user_content": 2603,
+        "compact_serialized_messages": 2787
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 400,
+        "each_query_at_largest_demo_output_cell_tokens": 300,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 200,
+        "proxy_max_of_input_and_demo_cell_tokens": 400,
+        "proxy_fraction_of_8192": 0.048828,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "981571dc",
+      "n_demos": 4,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        900,
+        900,
+        900,
+        900
+      ],
+      "demo_output_max_cells": 900,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 900,
+      "prompt_characters": {
+        "message_contents_total": 17342,
+        "system_content": 116,
+        "user_content": 17226,
+        "compact_serialized_messages": 17411
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1800,
+        "each_query_at_largest_demo_output_cell_tokens": 1800,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 900,
+        "proxy_max_of_input_and_demo_cell_tokens": 1800,
+        "proxy_fraction_of_8192": 0.219727,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "9aaea919",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        900,
+        900,
+        900
+      ],
+      "demo_output_max_cells": 900,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 900,
+      "prompt_characters": {
+        "message_contents_total": 13599,
+        "system_content": 116,
+        "user_content": 13483,
+        "compact_serialized_messages": 13667
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1800,
+        "each_query_at_largest_demo_output_cell_tokens": 1800,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 900,
+        "proxy_max_of_input_and_demo_cell_tokens": 1800,
+        "proxy_fraction_of_8192": 0.219727,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "9bbf930d",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        272,
+        266,
+        272
+      ],
+      "demo_output_max_cells": 272,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 23,
+          "width": 21,
+          "cells": 483
+        }
+      ],
+      "query_input_cells_total": 483,
+      "prompt_characters": {
+        "message_contents_total": 5043,
+        "system_content": 116,
+        "user_content": 4927,
+        "compact_serialized_messages": 5111
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 966,
+        "each_query_at_largest_demo_output_cell_tokens": 544,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 483,
+        "proxy_max_of_input_and_demo_cell_tokens": 966,
+        "proxy_fraction_of_8192": 0.11792,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "a251c730",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        180,
+        152
+      ],
+      "demo_output_max_cells": 180,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 900,
+      "prompt_characters": {
+        "message_contents_total": 6856,
+        "system_content": 116,
+        "user_content": 6740,
+        "compact_serialized_messages": 6923
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1800,
+        "each_query_at_largest_demo_output_cell_tokens": 360,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 900,
+        "proxy_max_of_input_and_demo_cell_tokens": 1800,
+        "proxy_fraction_of_8192": 0.219727,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "a25697e4",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        450,
+        450,
+        450
+      ],
+      "demo_output_max_cells": 450,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        },
+        {
+          "query_index": 1,
+          "height": 30,
+          "width": 25,
+          "cells": 750
+        }
+      ],
+      "query_input_cells_total": 1650,
+      "prompt_characters": {
+        "message_contents_total": 9639,
+        "system_content": 116,
+        "user_content": 9523,
+        "compact_serialized_messages": 9710
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 3300,
+        "each_query_at_largest_demo_output_cell_tokens": 1800,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1650,
+        "proxy_max_of_input_and_demo_cell_tokens": 3300,
+        "proxy_fraction_of_8192": 0.402832,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "a32d8b75",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        480,
+        480,
+        480
+      ],
+      "demo_output_max_cells": 480,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        },
+        {
+          "query_index": 1,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 1800,
+      "prompt_characters": {
+        "message_contents_total": 11043,
+        "system_content": 116,
+        "user_content": 10927,
+        "compact_serialized_messages": 11114
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 3600,
+        "each_query_at_largest_demo_output_cell_tokens": 1920,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1800,
+        "proxy_max_of_input_and_demo_cell_tokens": 3600,
+        "proxy_fraction_of_8192": 0.439453,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "a395ee82",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        484,
+        484,
+        484
+      ],
+      "demo_output_max_cells": 484,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 22,
+          "width": 22,
+          "cells": 484
+        }
+      ],
+      "query_input_cells_total": 484,
+      "prompt_characters": {
+        "message_contents_total": 7663,
+        "system_content": 116,
+        "user_content": 7547,
+        "compact_serialized_messages": 7731
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 968,
+        "each_query_at_largest_demo_output_cell_tokens": 968,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 484,
+        "proxy_max_of_input_and_demo_cell_tokens": 968,
+        "proxy_fraction_of_8192": 0.118164,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "a47bf94d",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        484,
+        418,
+        484
+      ],
+      "demo_output_max_cells": 484,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 26,
+          "width": 26,
+          "cells": 676
+        }
+      ],
+      "query_input_cells_total": 676,
+      "prompt_characters": {
+        "message_contents_total": 7779,
+        "system_content": 116,
+        "user_content": 7663,
+        "compact_serialized_messages": 7847
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1352,
+        "each_query_at_largest_demo_output_cell_tokens": 968,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 676,
+        "proxy_max_of_input_and_demo_cell_tokens": 1352,
+        "proxy_fraction_of_8192": 0.165039,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "a6f40cea",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        28,
+        182,
+        56
+      ],
+      "demo_output_max_cells": 182,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 24,
+          "width": 24,
+          "cells": 576
+        }
+      ],
+      "query_input_cells_total": 576,
+      "prompt_characters": {
+        "message_contents_total": 6071,
+        "system_content": 116,
+        "user_content": 5955,
+        "compact_serialized_messages": 6139
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1152,
+        "each_query_at_largest_demo_output_cell_tokens": 364,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 576,
+        "proxy_max_of_input_and_demo_cell_tokens": 1152,
+        "proxy_fraction_of_8192": 0.140625,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "aa4ec2a5",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        575,
+        644,
+        300
+      ],
+      "demo_output_max_cells": 644,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 26,
+          "width": 27,
+          "cells": 702
+        }
+      ],
+      "query_input_cells_total": 702,
+      "prompt_characters": {
+        "message_contents_total": 8395,
+        "system_content": 116,
+        "user_content": 8279,
+        "compact_serialized_messages": 8463
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1404,
+        "each_query_at_largest_demo_output_cell_tokens": 1288,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 702,
+        "proxy_max_of_input_and_demo_cell_tokens": 1404,
+        "proxy_fraction_of_8192": 0.171387,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "abc82100",
+      "n_demos": 4,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        25,
+        225,
+        400,
+        64
+      ],
+      "demo_output_max_cells": 400,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 20,
+          "width": 20,
+          "cells": 400
+        },
+        {
+          "query_index": 1,
+          "height": 20,
+          "width": 20,
+          "cells": 400
+        }
+      ],
+      "query_input_cells_total": 800,
+      "prompt_characters": {
+        "message_contents_total": 5354,
+        "system_content": 116,
+        "user_content": 5238,
+        "compact_serialized_messages": 5426
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1600,
+        "each_query_at_largest_demo_output_cell_tokens": 1600,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 800,
+        "proxy_max_of_input_and_demo_cell_tokens": 1600,
+        "proxy_fraction_of_8192": 0.195312,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "b0039139",
+      "n_demos": 4,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        10,
+        33,
+        60,
+        14
+      ],
+      "demo_output_max_cells": 60,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 26,
+          "width": 7,
+          "cells": 182
+        },
+        {
+          "query_index": 1,
+          "height": 7,
+          "width": 29,
+          "cells": 203
+        }
+      ],
+      "query_input_cells_total": 385,
+      "prompt_characters": {
+        "message_contents_total": 2672,
+        "system_content": 116,
+        "user_content": 2556,
+        "compact_serialized_messages": 2744
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 770,
+        "each_query_at_largest_demo_output_cell_tokens": 240,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 385,
+        "proxy_max_of_input_and_demo_cell_tokens": 770,
+        "proxy_fraction_of_8192": 0.093994,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "b10624e5",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        729,
+        729
+      ],
+      "demo_output_max_cells": 729,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 27,
+          "width": 27,
+          "cells": 729
+        }
+      ],
+      "query_input_cells_total": 729,
+      "prompt_characters": {
+        "message_contents_total": 8116,
+        "system_content": 116,
+        "user_content": 8000,
+        "compact_serialized_messages": 8183
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1458,
+        "each_query_at_largest_demo_output_cell_tokens": 1458,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 729,
+        "proxy_max_of_input_and_demo_cell_tokens": 1458,
+        "proxy_fraction_of_8192": 0.177979,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "b5ca7ac4",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        484,
+        484,
+        484
+      ],
+      "demo_output_max_cells": 484,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 22,
+          "width": 22,
+          "cells": 484
+        }
+      ],
+      "query_input_cells_total": 484,
+      "prompt_characters": {
+        "message_contents_total": 7663,
+        "system_content": 116,
+        "user_content": 7547,
+        "compact_serialized_messages": 7731
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 968,
+        "each_query_at_largest_demo_output_cell_tokens": 968,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 484,
+        "proxy_max_of_input_and_demo_cell_tokens": 968,
+        "proxy_fraction_of_8192": 0.118164,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "b6f77b65",
+      "n_demos": 5,
+      "n_queries": 3,
+      "demo_output_cells_each": [
+        144,
+        144,
+        144,
+        144,
+        144
+      ],
+      "demo_output_max_cells": 144,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 12,
+          "width": 12,
+          "cells": 144
+        },
+        {
+          "query_index": 1,
+          "height": 12,
+          "width": 12,
+          "cells": 144
+        },
+        {
+          "query_index": 2,
+          "height": 12,
+          "width": 12,
+          "cells": 144
+        }
+      ],
+      "query_input_cells_total": 432,
+      "prompt_characters": {
+        "message_contents_total": 4729,
+        "system_content": 116,
+        "user_content": 4613,
+        "compact_serialized_messages": 4805
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 864,
+        "each_query_at_largest_demo_output_cell_tokens": 864,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 432,
+        "proxy_max_of_input_and_demo_cell_tokens": 864,
+        "proxy_fraction_of_8192": 0.105469,
+        "all_queries_at_legal_30x30_cell_tokens": 5400,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 5614,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 2792
+      }
+    },
+    {
+      "task_id": "b99e7126",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        841,
+        841,
+        841
+      ],
+      "demo_output_max_cells": 841,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 29,
+          "width": 29,
+          "cells": 841
+        }
+      ],
+      "query_input_cells_total": 841,
+      "prompt_characters": {
+        "message_contents_total": 12759,
+        "system_content": 116,
+        "user_content": 12643,
+        "compact_serialized_messages": 12827
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1682,
+        "each_query_at_largest_demo_output_cell_tokens": 1682,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 841,
+        "proxy_max_of_input_and_demo_cell_tokens": 1682,
+        "proxy_fraction_of_8192": 0.205322,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "b9e38dc0",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        225,
+        120,
+        288
+      ],
+      "demo_output_max_cells": 288,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 15,
+          "width": 19,
+          "cells": 285
+        }
+      ],
+      "query_input_cells_total": 285,
+      "prompt_characters": {
+        "message_contents_total": 3875,
+        "system_content": 116,
+        "user_content": 3759,
+        "compact_serialized_messages": 3943
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 570,
+        "each_query_at_largest_demo_output_cell_tokens": 576,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 288,
+        "proxy_max_of_input_and_demo_cell_tokens": 576,
+        "proxy_fraction_of_8192": 0.070312,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "bf45cf4b",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        108,
+        108,
+        144
+      ],
+      "demo_output_max_cells": 144,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 14,
+          "width": 13,
+          "cells": 182
+        }
+      ],
+      "query_input_cells_total": 182,
+      "prompt_characters": {
+        "message_contents_total": 2813,
+        "system_content": 116,
+        "user_content": 2697,
+        "compact_serialized_messages": 2881
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 364,
+        "each_query_at_largest_demo_output_cell_tokens": 288,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 182,
+        "proxy_max_of_input_and_demo_cell_tokens": 364,
+        "proxy_fraction_of_8192": 0.044434,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "c4d067a0",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        529,
+        529,
+        529
+      ],
+      "demo_output_max_cells": 529,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 27,
+          "width": 27,
+          "cells": 729
+        }
+      ],
+      "query_input_cells_total": 729,
+      "prompt_characters": {
+        "message_contents_total": 8715,
+        "system_content": 116,
+        "user_content": 8599,
+        "compact_serialized_messages": 8783
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1458,
+        "each_query_at_largest_demo_output_cell_tokens": 1058,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 729,
+        "proxy_max_of_input_and_demo_cell_tokens": 1458,
+        "proxy_fraction_of_8192": 0.177979,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "c7f57c3e",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        324,
+        324
+      ],
+      "demo_output_max_cells": 324,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 28,
+          "width": 28,
+          "cells": 784
+        }
+      ],
+      "query_input_cells_total": 784,
+      "prompt_characters": {
+        "message_contents_total": 4916,
+        "system_content": 116,
+        "user_content": 4800,
+        "compact_serialized_messages": 4983
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1568,
+        "each_query_at_largest_demo_output_cell_tokens": 648,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 784,
+        "proxy_max_of_input_and_demo_cell_tokens": 1568,
+        "proxy_fraction_of_8192": 0.191406,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "cb2d8a2c",
+      "n_demos": 4,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        247,
+        323,
+        361,
+        228
+      ],
+      "demo_output_max_cells": 361,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 14,
+          "width": 26,
+          "cells": 364
+        },
+        {
+          "query_index": 1,
+          "height": 29,
+          "width": 16,
+          "cells": 464
+        }
+      ],
+      "query_input_cells_total": 828,
+      "prompt_characters": {
+        "message_contents_total": 7272,
+        "system_content": 116,
+        "user_content": 7156,
+        "compact_serialized_messages": 7344
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1656,
+        "each_query_at_largest_demo_output_cell_tokens": 1444,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 828,
+        "proxy_max_of_input_and_demo_cell_tokens": 1656,
+        "proxy_fraction_of_8192": 0.202148,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "cbebaa4b",
+      "n_demos": 2,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        484,
+        484
+      ],
+      "demo_output_max_cells": 484,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 26,
+          "width": 26,
+          "cells": 676
+        },
+        {
+          "query_index": 1,
+          "height": 26,
+          "width": 26,
+          "cells": 676
+        }
+      ],
+      "query_input_cells_total": 1352,
+      "prompt_characters": {
+        "message_contents_total": 7436,
+        "system_content": 116,
+        "user_content": 7320,
+        "compact_serialized_messages": 7506
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 2704,
+        "each_query_at_largest_demo_output_cell_tokens": 1936,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1352,
+        "proxy_max_of_input_and_demo_cell_tokens": 2704,
+        "proxy_fraction_of_8192": 0.330078,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "d35bdbdc",
+      "n_demos": 3,
+      "n_queries": 3,
+      "demo_output_cells_each": [
+        100,
+        100,
+        100
+      ],
+      "demo_output_max_cells": 100,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 10,
+          "width": 10,
+          "cells": 100
+        },
+        {
+          "query_index": 1,
+          "height": 10,
+          "width": 10,
+          "cells": 100
+        },
+        {
+          "query_index": 2,
+          "height": 10,
+          "width": 10,
+          "cells": 100
+        }
+      ],
+      "query_input_cells_total": 300,
+      "prompt_characters": {
+        "message_contents_total": 2607,
+        "system_content": 116,
+        "user_content": 2491,
+        "compact_serialized_messages": 2681
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 600,
+        "each_query_at_largest_demo_output_cell_tokens": 600,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 300,
+        "proxy_max_of_input_and_demo_cell_tokens": 600,
+        "proxy_fraction_of_8192": 0.073242,
+        "all_queries_at_legal_30x30_cell_tokens": 5400,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 5614,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 2792
+      }
+    },
+    {
+      "task_id": "d59b0160",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        256,
+        256,
+        256
+      ],
+      "demo_output_max_cells": 256,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 16,
+          "width": 16,
+          "cells": 256
+        }
+      ],
+      "query_input_cells_total": 256,
+      "prompt_characters": {
+        "message_contents_total": 4387,
+        "system_content": 116,
+        "user_content": 4271,
+        "compact_serialized_messages": 4455
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 512,
+        "each_query_at_largest_demo_output_cell_tokens": 512,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 256,
+        "proxy_max_of_input_and_demo_cell_tokens": 512,
+        "proxy_fraction_of_8192": 0.0625,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "d8e07eb2",
+      "n_demos": 5,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        660,
+        660,
+        660,
+        660,
+        660
+      ],
+      "demo_output_max_cells": 660,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 22,
+          "cells": 660
+        },
+        {
+          "query_index": 1,
+          "height": 30,
+          "width": 22,
+          "cells": 660
+        }
+      ],
+      "query_input_cells_total": 1320,
+      "prompt_characters": {
+        "message_contents_total": 17209,
+        "system_content": 116,
+        "user_content": 17093,
+        "compact_serialized_messages": 17282
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 2640,
+        "each_query_at_largest_demo_output_cell_tokens": 2640,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1320,
+        "proxy_max_of_input_and_demo_cell_tokens": 2640,
+        "proxy_fraction_of_8192": 0.322266,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "da515329",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        144,
+        484,
+        256
+      ],
+      "demo_output_max_cells": 484,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 26,
+          "width": 26,
+          "cells": 676
+        }
+      ],
+      "query_input_cells_total": 676,
+      "prompt_characters": {
+        "message_contents_total": 5719,
+        "system_content": 116,
+        "user_content": 5603,
+        "compact_serialized_messages": 5787
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1352,
+        "each_query_at_largest_demo_output_cell_tokens": 968,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 676,
+        "proxy_max_of_input_and_demo_cell_tokens": 1352,
+        "proxy_fraction_of_8192": 0.165039,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "db0c5428",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        324,
+        256,
+        361
+      ],
+      "demo_output_max_cells": 361,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 17,
+          "width": 17,
+          "cells": 289
+        }
+      ],
+      "query_input_cells_total": 289,
+      "prompt_characters": {
+        "message_contents_total": 5167,
+        "system_content": 116,
+        "user_content": 5051,
+        "compact_serialized_messages": 5235
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 578,
+        "each_query_at_largest_demo_output_cell_tokens": 722,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 361,
+        "proxy_max_of_input_and_demo_cell_tokens": 722,
+        "proxy_fraction_of_8192": 0.088135,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "db695cfb",
+      "n_demos": 5,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        180,
+        88,
+        108,
+        240,
+        81
+      ],
+      "demo_output_max_cells": 240,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 25,
+          "width": 21,
+          "cells": 525
+        }
+      ],
+      "query_input_cells_total": 525,
+      "prompt_characters": {
+        "message_contents_total": 4737,
+        "system_content": 116,
+        "user_content": 4621,
+        "compact_serialized_messages": 4807
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1050,
+        "each_query_at_largest_demo_output_cell_tokens": 480,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 525,
+        "proxy_max_of_input_and_demo_cell_tokens": 1050,
+        "proxy_fraction_of_8192": 0.128174,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "dbff022c",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        144,
+        100,
+        60
+      ],
+      "demo_output_max_cells": 144,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 13,
+          "width": 13,
+          "cells": 169
+        }
+      ],
+      "query_input_cells_total": 169,
+      "prompt_characters": {
+        "message_contents_total": 2263,
+        "system_content": 116,
+        "user_content": 2147,
+        "compact_serialized_messages": 2331
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 338,
+        "each_query_at_largest_demo_output_cell_tokens": 288,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 169,
+        "proxy_max_of_input_and_demo_cell_tokens": 338,
+        "proxy_fraction_of_8192": 0.04126,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "dd6b8c4b",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        121,
+        121,
+        121
+      ],
+      "demo_output_max_cells": 121,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 11,
+          "width": 11,
+          "cells": 121
+        },
+        {
+          "query_index": 1,
+          "height": 11,
+          "width": 11,
+          "cells": 121
+        }
+      ],
+      "query_input_cells_total": 242,
+      "prompt_characters": {
+        "message_contents_total": 2715,
+        "system_content": 116,
+        "user_content": 2599,
+        "compact_serialized_messages": 2786
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 484,
+        "each_query_at_largest_demo_output_cell_tokens": 484,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 242,
+        "proxy_max_of_input_and_demo_cell_tokens": 484,
+        "proxy_fraction_of_8192": 0.059082,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "de809cff",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        400,
+        400
+      ],
+      "demo_output_max_cells": 400,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 900,
+      "prompt_characters": {
+        "message_contents_total": 5776,
+        "system_content": 116,
+        "user_content": 5660,
+        "compact_serialized_messages": 5843
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1800,
+        "each_query_at_largest_demo_output_cell_tokens": 800,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 900,
+        "proxy_max_of_input_and_demo_cell_tokens": 1800,
+        "proxy_fraction_of_8192": 0.219727,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "dfadab01",
+      "n_demos": 4,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        400,
+        100,
+        100,
+        400
+      ],
+      "demo_output_max_cells": 400,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 20,
+          "width": 20,
+          "cells": 400
+        }
+      ],
+      "query_input_cells_total": 400,
+      "prompt_characters": {
+        "message_contents_total": 5682,
+        "system_content": 116,
+        "user_content": 5566,
+        "compact_serialized_messages": 5751
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 800,
+        "each_query_at_largest_demo_output_cell_tokens": 800,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 400,
+        "proxy_max_of_input_and_demo_cell_tokens": 800,
+        "proxy_fraction_of_8192": 0.097656,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "e12f9a14",
+      "n_demos": 4,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        576,
+        64,
+        400,
+        144
+      ],
+      "demo_output_max_cells": 576,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        },
+        {
+          "query_index": 1,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 1800,
+      "prompt_characters": {
+        "message_contents_total": 9338,
+        "system_content": 116,
+        "user_content": 9222,
+        "compact_serialized_messages": 9410
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 3600,
+        "each_query_at_largest_demo_output_cell_tokens": 2304,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1800,
+        "proxy_max_of_input_and_demo_cell_tokens": 3600,
+        "proxy_fraction_of_8192": 0.439453,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "e3721c99",
+      "n_demos": 2,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        900,
+        900
+      ],
+      "demo_output_max_cells": 900,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        },
+        {
+          "query_index": 1,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 1800,
+      "prompt_characters": {
+        "message_contents_total": 11740,
+        "system_content": 116,
+        "user_content": 11624,
+        "compact_serialized_messages": 11810
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 3600,
+        "each_query_at_largest_demo_output_cell_tokens": 3600,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1800,
+        "proxy_max_of_input_and_demo_cell_tokens": 3600,
+        "proxy_fraction_of_8192": 0.439453,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "e376de54",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        256,
+        256,
+        256
+      ],
+      "demo_output_max_cells": 256,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 16,
+          "width": 16,
+          "cells": 256
+        }
+      ],
+      "query_input_cells_total": 256,
+      "prompt_characters": {
+        "message_contents_total": 4387,
+        "system_content": 116,
+        "user_content": 4271,
+        "compact_serialized_messages": 4455
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 512,
+        "each_query_at_largest_demo_output_cell_tokens": 512,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 256,
+        "proxy_max_of_input_and_demo_cell_tokens": 512,
+        "proxy_fraction_of_8192": 0.0625,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "e8686506",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        25,
+        40
+      ],
+      "demo_output_max_cells": 40,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 15,
+          "width": 15,
+          "cells": 225
+        }
+      ],
+      "query_input_cells_total": 225,
+      "prompt_characters": {
+        "message_contents_total": 1920,
+        "system_content": 116,
+        "user_content": 1804,
+        "compact_serialized_messages": 1987
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 450,
+        "each_query_at_largest_demo_output_cell_tokens": 80,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 225,
+        "proxy_max_of_input_and_demo_cell_tokens": 450,
+        "proxy_fraction_of_8192": 0.054932,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "e87109e9",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        456,
+        456,
+        456
+      ],
+      "demo_output_max_cells": 456,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 24,
+          "cells": 720
+        }
+      ],
+      "query_input_cells_total": 720,
+      "prompt_characters": {
+        "message_contents_total": 8679,
+        "system_content": 116,
+        "user_content": 8563,
+        "compact_serialized_messages": 8747
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1440,
+        "each_query_at_largest_demo_output_cell_tokens": 912,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 720,
+        "proxy_max_of_input_and_demo_cell_tokens": 1440,
+        "proxy_fraction_of_8192": 0.175781,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "edb79dae",
+      "n_demos": 2,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        285,
+        234
+      ],
+      "demo_output_max_cells": 285,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        }
+      ],
+      "query_input_cells_total": 900,
+      "prompt_characters": {
+        "message_contents_total": 5716,
+        "system_content": 116,
+        "user_content": 5600,
+        "compact_serialized_messages": 5783
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1800,
+        "each_query_at_largest_demo_output_cell_tokens": 570,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 900,
+        "proxy_max_of_input_and_demo_cell_tokens": 1800,
+        "proxy_fraction_of_8192": 0.219727,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "eee78d87",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        256,
+        256,
+        256
+      ],
+      "demo_output_max_cells": 256,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 6,
+          "width": 6,
+          "cells": 36
+        }
+      ],
+      "query_input_cells_total": 36,
+      "prompt_characters": {
+        "message_contents_total": 2547,
+        "system_content": 116,
+        "user_content": 2431,
+        "compact_serialized_messages": 2615
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 72,
+        "each_query_at_largest_demo_output_cell_tokens": 512,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 256,
+        "proxy_max_of_input_and_demo_cell_tokens": 512,
+        "proxy_fraction_of_8192": 0.0625,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    },
+    {
+      "task_id": "f560132c",
+      "n_demos": 2,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        64,
+        100
+      ],
+      "demo_output_max_cells": 100,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 30,
+          "width": 30,
+          "cells": 900
+        },
+        {
+          "query_index": 1,
+          "height": 26,
+          "width": 26,
+          "cells": 676
+        }
+      ],
+      "query_input_cells_total": 1576,
+      "prompt_characters": {
+        "message_contents_total": 5888,
+        "system_content": 116,
+        "user_content": 5772,
+        "compact_serialized_messages": 5958
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 3152,
+        "each_query_at_largest_demo_output_cell_tokens": 400,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 1576,
+        "proxy_max_of_input_and_demo_cell_tokens": 3152,
+        "proxy_fraction_of_8192": 0.384766,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "f931b4a8",
+      "n_demos": 5,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        64,
+        256,
+        100,
+        16,
+        12
+      ],
+      "demo_output_max_cells": 256,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 8,
+          "width": 8,
+          "cells": 64
+        },
+        {
+          "query_index": 1,
+          "height": 4,
+          "width": 4,
+          "cells": 16
+        }
+      ],
+      "query_input_cells_total": 80,
+      "prompt_characters": {
+        "message_contents_total": 2947,
+        "system_content": 116,
+        "user_content": 2831,
+        "compact_serialized_messages": 3020
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 160,
+        "each_query_at_largest_demo_output_cell_tokens": 1024,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 512,
+        "proxy_max_of_input_and_demo_cell_tokens": 1024,
+        "proxy_fraction_of_8192": 0.125,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "faa9f03d",
+      "n_demos": 3,
+      "n_queries": 2,
+      "demo_output_cells_each": [
+        144,
+        144,
+        144
+      ],
+      "demo_output_max_cells": 144,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 20,
+          "width": 20,
+          "cells": 400
+        },
+        {
+          "query_index": 1,
+          "height": 12,
+          "width": 12,
+          "cells": 144
+        }
+      ],
+      "query_input_cells_total": 544,
+      "prompt_characters": {
+        "message_contents_total": 3627,
+        "system_content": 116,
+        "user_content": 3511,
+        "compact_serialized_messages": 3698
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1088,
+        "each_query_at_largest_demo_output_cell_tokens": 576,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 544,
+        "proxy_max_of_input_and_demo_cell_tokens": 1088,
+        "proxy_fraction_of_8192": 0.132812,
+        "all_queries_at_legal_30x30_cell_tokens": 3600,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 3743,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 4592
+      }
+    },
+    {
+      "task_id": "fc7cae8d",
+      "n_demos": 3,
+      "n_queries": 1,
+      "demo_output_cells_each": [
+        165,
+        100,
+        25
+      ],
+      "demo_output_max_cells": 165,
+      "query_input_shapes_and_cells": [
+        {
+          "query_index": 0,
+          "height": 29,
+          "width": 29,
+          "cells": 841
+        }
+      ],
+      "query_input_cells_total": 841,
+      "prompt_characters": {
+        "message_contents_total": 5987,
+        "system_content": 116,
+        "user_content": 5871,
+        "compact_serialized_messages": 6055
+      },
+      "rough_final_json_space": {
+        "basis": "2 tokens/cell; no tokenizer used; unknown query output dimensions",
+        "query_input_shape_cell_tokens": 1682,
+        "each_query_at_largest_demo_output_cell_tokens": 330,
+        "proxy_max_of_each_query_input_and_largest_demo_output_cells": 841,
+        "proxy_max_of_input_and_demo_cell_tokens": 1682,
+        "proxy_fraction_of_8192": 0.205322,
+        "all_queries_at_legal_30x30_cell_tokens": 1800,
+        "legal_30x30_compact_JSON_characters_synthetic_zero_grids": 1872,
+        "legal_30x30_cell_estimate_headroom_before_JSON_syntax_tokens": 6392
+      }
+    }
+  ]
+}

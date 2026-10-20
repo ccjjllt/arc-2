@@ -1,0 +1,114 @@
+{
+  "checked_at_utc": "2026-10-20T15:17:21.426860+00:00",
+  "account": "ccjjllt",
+  "competition": "arc-prize-2026-arc-agi-2",
+  "scope": "Read-only pre-code-submit snapshot; no code submission, GPU operation, asset fetch, final-selection change, or C24 gold access.",
+  "submission_limits": {
+    "num_today": 0,
+    "num_total": 8,
+    "num_allowed_now": 1,
+    "limited_by_total": false
+  },
+  "pending_or_scoring_submissions": [],
+  "latest_history": [
+    {
+      "ref": 57103498,
+      "date": "2026-10-12T09:56:36.720000",
+      "status": "COMPLETE",
+      "public_score": "25.69",
+      "error_description": null,
+      "url": "/code/ccjjllt/arc2-013-bounded-baseline?scriptVersionId=357613526",
+      "script_version_id": "357613526"
+    },
+    {
+      "ref": 52379974,
+      "date": "2026-05-06T07:44:23.877000",
+      "status": "COMPLETE",
+      "public_score": "27.92",
+      "error_description": null,
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316972179",
+      "script_version_id": "316972179"
+    },
+    {
+      "ref": 52267289,
+      "date": "2026-05-02T16:27:45.827000",
+      "status": "COMPLETE",
+      "public_score": "29.72",
+      "error_description": null,
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316064507",
+      "script_version_id": "316064507"
+    },
+    {
+      "ref": 52166443,
+      "date": "2026-04-29T11:41:33.787000",
+      "status": "COMPLETE",
+      "public_score": "28.19",
+      "error_description": null,
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=315301517",
+      "script_version_id": "315301517"
+    },
+    {
+      "ref": 52116910,
+      "date": "2026-04-28T01:56:33.943000",
+      "status": "COMPLETE",
+      "public_score": "27.36",
+      "error_description": null,
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314755063",
+      "script_version_id": "314755063"
+    },
+    {
+      "ref": 52089422,
+      "date": "2026-04-27T06:48:57.117000",
+      "status": "COMPLETE",
+      "public_score": "0.83",
+      "error_description": null,
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314731536",
+      "script_version_id": "314731536"
+    },
+    {
+      "ref": 52072735,
+      "date": "2026-04-26T17:02:33.323000",
+      "status": "COMPLETE",
+      "public_score": "30.14",
+      "error_description": null,
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319",
+      "script_version_id": "314617319"
+    },
+    {
+      "ref": 51954464,
+      "date": "2026-04-23T02:35:59.440000",
+      "status": "COMPLETE",
+      "public_score": "25.69",
+      "error_description": null,
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=313752727",
+      "script_version_id": "313752727"
+    }
+  ],
+  "history_rows_returned": 8,
+  "history_covers_reported_num_total": true,
+  "frozen_candidate": {
+    "kernel_ref": "ccjjllt/arc2-020-deep-direct-submission",
+    "version": 1,
+    "script_version_id": 360461153,
+    "filename": "submission.json"
+  },
+  "candidate_already_present_in_history": false,
+  "actual_submission_created_by_this_step": false,
+  "post_submit_query": {
+    "sdk": "2.2.4",
+    "request_type": "kagglesdk.competitions.types.competition_api_service.ApiGetSubmissionRequest",
+    "request_field": "ref: int (the competition_submit_code response ref, not scriptVersionId)",
+    "method": "client.competitions.competition_api_client.get_submission(request)",
+    "response_fields": [
+      "ref",
+      "url",
+      "status",
+      "public_score",
+      "error_description"
+    ],
+    "status_rendering": "submission.status.name",
+    "url_note": "ListSubmissions and GetSubmission may differ in populating url. If GetSubmission url is missing, locate the same ref using api.competition_submissions and use that row url; do not infer a URL from score or ordering.",
+    "version_check": "Parse scriptVersionId from returned url and compare with 360461153. Notebook number remains kernel_version=1 for the submission call.",
+    "completion_note": "A created ref or PENDING/SCORING state proves acceptance only. Record COMPLETE with public_score, or the terminal error_description; do not repeat create_code_submission to poll."
+  }
+}

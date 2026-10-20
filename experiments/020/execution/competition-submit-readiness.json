@@ -1,0 +1,4271 @@
+{
+  "checked_at_utc": "2026-10-20T11:53:49.939966+00:00",
+  "scope": "Read-only code-competition readiness and fixed model/wheel metadata. No Notebook push, cancellation, competition submission, query-gold read, or default-account modification.",
+  "accounts": [
+    {
+      "expected_username": "ccjjllt",
+      "authenticated_username": "ccjjllt",
+      "identity_matches": true,
+      "checked_at_utc": "2026-10-20T11:53:41.837608+00:00",
+      "submission_limits": {
+        "num_today": 0,
+        "num_total": 8,
+        "num_allowed_now": 1,
+        "limited_by_total": false
+      },
+      "submissions": [
+        {
+          "ref": 57103498,
+          "status": "COMPLETE",
+          "public_score": "25.69",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-10-12T09:56:36.720000",
+          "url": "/code/ccjjllt/arc2-013-bounded-baseline?scriptVersionId=357613526"
+        },
+        {
+          "ref": 52379974,
+          "status": "COMPLETE",
+          "public_score": "27.92",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-05-06T07:44:23.877000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316972179"
+        },
+        {
+          "ref": 52267289,
+          "status": "COMPLETE",
+          "public_score": "29.72",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-05-02T16:27:45.827000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316064507"
+        },
+        {
+          "ref": 52166443,
+          "status": "COMPLETE",
+          "public_score": "28.19",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-29T11:41:33.787000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=315301517"
+        },
+        {
+          "ref": 52116910,
+          "status": "COMPLETE",
+          "public_score": "27.36",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-28T01:56:33.943000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314755063"
+        },
+        {
+          "ref": 52089422,
+          "status": "COMPLETE",
+          "public_score": "0.83",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-27T06:48:57.117000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314731536"
+        },
+        {
+          "ref": 52072735,
+          "status": "COMPLETE",
+          "public_score": "30.14",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-26T17:02:33.323000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319"
+        },
+        {
+          "ref": 51954464,
+          "status": "COMPLETE",
+          "public_score": "25.69",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-23T02:35:59.440000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=313752727"
+        }
+      ],
+      "pending_or_scoring_refs": [],
+      "all_listed_submissions_complete": true,
+      "competition": {
+        "id": 133469,
+        "ref": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2",
+        "user_has_entered": true,
+        "user_rank": 1049,
+        "max_daily_submissions": 1,
+        "max_team_size": 5,
+        "is_kernels_submissions_only": true,
+        "submissions_disabled": false
+      },
+      "team_membership": {
+        "status": "not_directly_exposed_by_queried_SDK_endpoints",
+        "current_team_id": null,
+        "current_team_members": null
+      },
+      "model_access": {
+        "status": "metadata_and_version_file_listing_accessible",
+        "instance": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8",
+        "requested_version": 1,
+        "instance_id": 730092,
+        "current_version_id": 966079,
+        "current_version_number": 1,
+        "license_name": "Apache 2.0",
+        "total_uncompressed_bytes": 30890069847,
+        "files": [
+          {
+            "name": ".gitattributes",
+            "size": 1570
+          },
+          {
+            "name": "LICENSE",
+            "size": 11544
+          },
+          {
+            "name": "README.md",
+            "size": 65249
+          },
+          {
+            "name": "chat_template.jinja",
+            "size": 8952
+          },
+          {
+            "name": "config.json",
+            "size": 51350
+          },
+          {
+            "name": "generation_config.json",
+            "size": 202
+          },
+          {
+            "name": "merges.txt",
+            "size": 3353259
+          },
+          {
+            "name": "model-layers-00001-of-00016.safetensors",
+            "size": 1523910096
+          },
+          {
+            "name": "model-layers-00002-of-00016.safetensors",
+            "size": 1523910096
+          },
+          {
+            "name": "model-layers-00003-of-00016.safetensors",
+            "size": 1523910128
+          },
+          {
+            "name": "model-layers-00004-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00005-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00006-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00007-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00008-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00009-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00010-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00011-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00012-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00013-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00014-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00015-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00016-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model.safetensors.index.json",
+            "size": 159995
+          },
+          {
+            "name": "mtp.safetensors",
+            "size": 477202224
+          },
+          {
+            "name": "outside.safetensors",
+            "size": 6007102112
+          },
+          {
+            "name": "preprocessor_config.json",
+            "size": 390
+          },
+          {
+            "name": "tokenizer.json",
+            "size": 12809320
+          },
+          {
+            "name": "tokenizer_config.json",
+            "size": 17928
+          },
+          {
+            "name": "video_preprocessor_config.json",
+            "size": 385
+          },
+          {
+            "name": "vocab.json",
+            "size": 6722759
+          }
+        ],
+        "has_more_files": false
+      },
+      "wheelhouse_access": {
+        "status": "version_file_listing_accessible",
+        "dataset": "nick2187/qwen38-vllm0272-cu130-wheelhouse-v1",
+        "requested_version": 1,
+        "files": [
+          {
+            "name": "QWEN38_VLLM_MANIFEST.json",
+            "size": 39718
+          },
+          {
+            "name": "README.md",
+            "size": 238
+          },
+          {
+            "name": "THIRD_PARTY_NOTICE.md",
+            "size": 276
+          },
+          {
+            "name": "install_qwen38_vllm.py",
+            "size": 1003
+          },
+          {
+            "name": "requirements-qwen38-runtime.txt",
+            "size": 3900
+          },
+          {
+            "name": "wheels/aiohappyeyeballs-2.7.1-py3-none-any.whl",
+            "size": 15038
+          },
+          {
+            "name": "wheels/aiohttp-3.14.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 1792122
+          },
+          {
+            "name": "wheels/aiosignal-1.4.0-py3-none-any.whl",
+            "size": 7490
+          },
+          {
+            "name": "wheels/annotated_doc-0.0.5-py3-none-any.whl",
+            "size": 5302
+          },
+          {
+            "name": "wheels/annotated_types-0.8.0-py3-none-any.whl",
+            "size": 13427
+          },
+          {
+            "name": "wheels/anthropic-0.122.0-py3-none-any.whl",
+            "size": 1041853
+          },
+          {
+            "name": "wheels/anyio-4.14.2-py3-none-any.whl",
+            "size": 125813
+          },
+          {
+            "name": "wheels/apache_tvm_ffi-0.1.11-cp312-abi3-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 2697683
+          },
+          {
+            "name": "wheels/astor-0.8.1-py2.py3-none-any.whl",
+            "size": 27488
+          },
+          {
+            "name": "wheels/attrs-26.1.0-py3-none-any.whl",
+            "size": 67548
+          },
+          {
+            "name": "wheels/blake3-1.0.9-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 383851
+          },
+          {
+            "name": "wheels/cachetools-7.1.7-py3-none-any.whl",
+            "size": 16830
+          },
+          {
+            "name": "wheels/cbor2-6.1.4-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 461193
+          },
+          {
+            "name": "wheels/certifi-2026.7.22-py3-none-any.whl",
+            "size": 136983
+          },
+          {
+            "name": "wheels/cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 221822
+          },
+          {
+            "name": "wheels/charset_normalizer-3.5.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 247547
+          },
+          {
+            "name": "wheels/click-8.4.2-py3-none-any.whl",
+            "size": 119243
+          },
+          {
+            "name": "wheels/cloudpickle-3.1.2-py3-none-any.whl",
+            "size": 22228
+          },
+          {
+            "name": "wheels/compressed_tensors-0.17.0-py3-none-any.whl",
+            "size": 211714
+          },
+          {
+            "name": "wheels/cryptography-50.0.0-cp311-abi3-manylinux_2_34_x86_64.whl",
+            "size": 4734462
+          },
+          {
+            "name": "wheels/cuda_bindings-13.3.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 6657965
+          },
+          {
+            "name": "wheels/cuda_core-1.0.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 5106023
+          },
+          {
+            "name": "wheels/cuda_pathfinder-1.6.0-py3-none-any.whl",
+            "size": 54591
+          },
+          {
+            "name": "wheels/cuda_python-13.3.1-py3-none-any.whl",
+            "size": 8295
+          },
+          {
+            "name": "wheels/cuda_tile-1.5.0-cp312-cp312-manylinux2014_x86_64.whl",
+            "size": 324990
+          },
+          {
+            "name": "wheels/cuda_toolkit-13.0.3.0-py2.py3-none-any.whl",
+            "size": 2512
+          },
+          {
+            "name": "wheels/depyf-0.20.0-py3-none-any.whl",
+            "size": 39381
+          },
+          {
+            "name": "wheels/detect_installer-0.1.0-py3-none-any.whl",
+            "size": 4539
+          },
+          {
+            "name": "wheels/dill-0.4.1-py3-none-any.whl",
+            "size": 120019
+          },
+          {
+            "name": "wheels/distro-1.9.0-py3-none-any.whl",
+            "size": 20277
+          },
+          {
+            "name": "wheels/dnspython-2.8.0-py3-none-any.whl",
+            "size": 331094
+          },
+          {
+            "name": "wheels/docstring_parser-0.18.0-py3-none-any.whl",
+            "size": 22484
+          },
+          {
+            "name": "wheels/einops-0.8.2-py3-none-any.whl",
+            "size": 65638
+          },
+          {
+            "name": "wheels/email_validator-2.3.0-py3-none-any.whl",
+            "size": 35604
+          },
+          {
+            "name": "wheels/fastapi-0.136.3-py3-none-any.whl",
+            "size": 117481
+          },
+          {
+            "name": "wheels/fastapi_cli-0.0.32-py3-none-any.whl",
+            "size": 14670
+          },
+          {
+            "name": "wheels/fastapi_cloud_cli-0.23.0-py3-none-any.whl",
+            "size": 78058
+          },
+          {
+            "name": "wheels/fastar-0.11.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 819382
+          },
+          {
+            "name": "wheels/fastsafetensors-0.3.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 1915478
+          },
+          {
+            "name": "wheels/filelock-3.32.3-py3-none-any.whl",
+            "size": 98901
+          },
+          {
+            "name": "wheels/flashinfer_cubin-0.6.16.post3-py3-none-any.whl",
+            "size": 1062693258
+          },
+          {
+            "name": "wheels/flashinfer_python-0.6.16.post3-py3-none-any.whl",
+            "size": 15836034
+          },
+          {
+            "name": "wheels/frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 242411
+          },
+          {
+            "name": "wheels/fsspec-2026.7.0-py3-none-any.whl",
+            "size": 206583
+          },
+          {
+            "name": "wheels/googleapis_common_protos-1.75.1-py3-none-any.whl",
+            "size": 300626
+          },
+          {
+            "name": "wheels/grpcio-1.83.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 7040616
+          },
+          {
+            "name": "wheels/h11-0.16.0-py3-none-any.whl",
+            "size": 37515
+          },
+          {
+            "name": "wheels/hf_xet-1.6.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 4464663
+          },
+          {
+            "name": "wheels/httpcore-1.0.9-py3-none-any.whl",
+            "size": 78784
+          },
+          {
+            "name": "wheels/httpcore2-2.10.0-py3-none-any.whl",
+            "size": 83000
+          },
+          {
+            "name": "wheels/httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 523851
+          },
+          {
+            "name": "wheels/httpx-0.28.1-py3-none-any.whl",
+            "size": 73517
+          },
+          {
+            "name": "wheels/httpx2-2.10.0-py3-none-any.whl",
+            "size": 94355
+          },
+          {
+            "name": "wheels/huggingface_hub-1.27.0-py3-none-any.whl",
+            "size": 784926
+          },
+          {
+            "name": "wheels/humming_kernels-0.1.12-py3-none-manylinux_2_28_x86_64.whl",
+            "size": 322656
+          },
+          {
+            "name": "wheels/idna-3.18-py3-none-any.whl",
+            "size": 65455
+          },
+          {
+            "name": "wheels/ijson-3.5.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 149848
+          },
+          {
+            "name": "wheels/interegular-0.3.3-py37-none-any.whl",
+            "size": 23635
+          },
+          {
+            "name": "wheels/jinja2-3.1.6-py3-none-any.whl",
+            "size": 134899
+          },
+          {
+            "name": "wheels/jiter-0.16.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 343805
+          },
+          {
+            "name": "wheels/jmespath-1.1.0-py3-none-any.whl",
+            "size": 20419
+          },
+          {
+            "name": "wheels/jsonschema-4.26.0-py3-none-any.whl",
+            "size": 90630
+          },
+          {
+            "name": "wheels/jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "size": 18437
+          },
+          {
+            "name": "wheels/lark-1.2.2-py3-none-any.whl",
+            "size": 111036
+          },
+          {
+            "name": "wheels/llguidance-1.7.6-cp39-abi3-manylinux_2_31_x86_64.whl",
+            "size": 3074809
+          },
+          {
+            "name": "wheels/llvmlite-0.47.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 56275178
+          },
+          {
+            "name": "wheels/lm_format_enforcer-0.11.3-py3-none-any.whl",
+            "size": 45418
+          },
+          {
+            "name": "wheels/loguru-0.7.3-py3-none-any.whl",
+            "size": 61595
+          },
+          {
+            "name": "wheels/markdown_it_py-4.2.0-py3-none-any.whl",
+            "size": 91687
+          },
+          {
+            "name": "wheels/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 22947
+          },
+          {
+            "name": "wheels/mcp-2.0.0-py3-none-any.whl",
+            "size": 349980
+          },
+          {
+            "name": "wheels/mcp_types-2.0.0-py3-none-any.whl",
+            "size": 69649
+          },
+          {
+            "name": "wheels/mdurl-0.1.2-py3-none-any.whl",
+            "size": 9979
+          },
+          {
+            "name": "wheels/mistral_common-1.11.7-py3-none-any.whl",
+            "size": 6553583
+          },
+          {
+            "name": "wheels/ml_dtypes-0.6.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 409890
+          },
+          {
+            "name": "wheels/model_hosting_container_standards-0.1.16-py3-none-any.whl",
+            "size": 125666
+          },
+          {
+            "name": "wheels/mpmath-1.3.0-py3-none-any.whl",
+            "size": 536198
+          },
+          {
+            "name": "wheels/msgspec-0.21.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 225025
+          },
+          {
+            "name": "wheels/multidict-6.7.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 256322
+          },
+          {
+            "name": "wheels/nccl4py-0.4.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 2897696
+          },
+          {
+            "name": "wheels/networkx-3.6.1-py3-none-any.whl",
+            "size": 2068504
+          },
+          {
+            "name": "wheels/ninja-1.13.0-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 180716
+          },
+          {
+            "name": "wheels/numba-0.65.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 3801411
+          },
+          {
+            "name": "wheels/numpy-2.3.5-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 16606086
+          },
+          {
+            "name": "wheels/nvidia_cublas-13.1.1.3-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 423138758
+          },
+          {
+            "name": "wheels/nvidia_cuda_cccl-13.3.3.4.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 3454034
+          },
+          {
+            "name": "wheels/nvidia_cuda_crt-13.3.73-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 157352
+          },
+          {
+            "name": "wheels/nvidia_cuda_cupti-13.0.85-py3-none-manylinux_2_25_x86_64.whl",
+            "size": 10715597
+          },
+          {
+            "name": "wheels/nvidia_cuda_nvcc-13.3.73-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 44942138
+          },
+          {
+            "name": "wheels/nvidia_cuda_nvdisasm-13.3.73-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 4782824
+          },
+          {
+            "name": "wheels/nvidia_cuda_nvrtc-13.0.88-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+            "size": 90215200
+          },
+          {
+            "name": "wheels/nvidia_cuda_runtime-13.0.96-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 2243632
+          },
+          {
+            "name": "wheels/nvidia_cudnn_cu13-9.20.0.48-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 366173588
+          },
+          {
+            "name": "wheels/nvidia_cudnn_frontend-1.27.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 4749917
+          },
+          {
+            "name": "wheels/nvidia_cufft-12.0.0.61-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 214085489
+          },
+          {
+            "name": "wheels/nvidia_cufile-1.15.1.6-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 1223672
+          },
+          {
+            "name": "wheels/nvidia_curand-10.4.0.35-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 59544258
+          },
+          {
+            "name": "wheels/nvidia_cusolver-12.0.4.66-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 200941980
+          },
+          {
+            "name": "wheels/nvidia_cusparse-12.6.3.3-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 145942937
+          },
+          {
+            "name": "wheels/nvidia_cusparselt_cu13-0.8.1-py3-none-manylinux2014_x86_64.whl",
+            "size": 170148586
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl-4.6.2-py3-none-any.whl",
+            "size": 10460
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_base-4.6.2-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 2824987
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_core-4.6.2-py3-none-any.whl",
+            "size": 772393
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_cu12-4.6.2-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 88454261
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_cu13-4.6.2-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 88036030
+          },
+          {
+            "name": "wheels/nvidia_ml_py-13.610.43-py3-none-any.whl",
+            "size": 53163
+          },
+          {
+            "name": "wheels/nvidia_nccl_cu13-2.29.7-py3-none-manylinux_2_18_x86_64.whl",
+            "size": 205976000
+          },
+          {
+            "name": "wheels/nvidia_nvjitlink-13.3.33-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+            "size": 40742423
+          },
+          {
+            "name": "wheels/nvidia_nvshmem_cu13-3.4.5-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 60412546
+          },
+          {
+            "name": "wheels/nvidia_nvtx-13.0.85-py3-none-manylinux1_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 148047
+          },
+          {
+            "name": "wheels/nvidia_nvvm-13.3.73-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+            "size": 69250424
+          },
+          {
+            "name": "wheels/nvtx-0.2.15-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 806187
+          },
+          {
+            "name": "wheels/openai-3.0.0-py3-none-any.whl",
+            "size": 1665775
+          },
+          {
+            "name": "wheels/openai_harmony-0.0.8-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 2953260
+          },
+          {
+            "name": "wheels/opencv_python_headless-5.0.0.93-cp37-abi3-manylinux_2_28_x86_64.whl",
+            "size": 61204038
+          },
+          {
+            "name": "wheels/opentelemetry_api-1.44.0-py3-none-any.whl",
+            "size": 60018
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp-1.44.0-py3-none-any.whl",
+            "size": 6727
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp_proto_common-1.44.0-py3-none-any.whl",
+            "size": 17045
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp_proto_grpc-1.44.0-py3-none-any.whl",
+            "size": 19624
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp_proto_http-1.44.0-py3-none-any.whl",
+            "size": 21850
+          },
+          {
+            "name": "wheels/opentelemetry_proto-1.44.0-py3-none-any.whl",
+            "size": 72483
+          },
+          {
+            "name": "wheels/opentelemetry_sdk-1.44.0-py3-none-any.whl",
+            "size": 137221
+          },
+          {
+            "name": "wheels/opentelemetry_semantic_conventions-0.65b0-py3-none-any.whl",
+            "size": 204645
+          },
+          {
+            "name": "wheels/opentelemetry_semantic_conventions_ai-0.5.1-py3-none-any.whl",
+            "size": 11250
+          },
+          {
+            "name": "wheels/outlines_core-0.2.14-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 2341426
+          },
+          {
+            "name": "wheels/packaging-26.3-py3-none-any.whl",
+            "size": 129956
+          },
+          {
+            "name": "wheels/partial_json_parser-0.2.1.1.post7-py3-none-any.whl",
+            "size": 10877
+          },
+          {
+            "name": "wheels/pillow-12.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 6940830
+          },
+          {
+            "name": "wheels/prometheus_client-0.26.0-py3-none-any.whl",
+            "size": 64494
+          },
+          {
+            "name": "wheels/prometheus_fastapi_instrumentator-8.1.0-py3-none-any.whl",
+            "size": 19649
+          },
+          {
+            "name": "wheels/propcache-0.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 61639
+          },
+          {
+            "name": "wheels/protobuf-6.33.6-cp39-abi3-manylinux2014_x86_64.whl",
+            "size": 323436
+          },
+          {
+            "name": "wheels/psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 155560
+          },
+          {
+            "name": "wheels/py_cpuinfo-9.0.0-py3-none-any.whl",
+            "size": 22335
+          },
+          {
+            "name": "wheels/pybase64-1.5.0-cp312-cp312-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 94681
+          },
+          {
+            "name": "wheels/pycountry-26.2.16-py3-none-any.whl",
+            "size": 8044600
+          },
+          {
+            "name": "wheels/pycparser-3.0-py3-none-any.whl",
+            "size": 48172
+          },
+          {
+            "name": "wheels/pydantic-2.13.4-py3-none-any.whl",
+            "size": 472262
+          },
+          {
+            "name": "wheels/pydantic_core-2.46.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 2094516
+          },
+          {
+            "name": "wheels/pydantic_extra_types-2.11.1-py3-none-any.whl",
+            "size": 79526
+          },
+          {
+            "name": "wheels/pydantic_settings-2.15.0-py3-none-any.whl",
+            "size": 69413
+          },
+          {
+            "name": "wheels/pygments-2.20.0-py3-none-any.whl",
+            "size": 1231151
+          },
+          {
+            "name": "wheels/pyjwt-2.13.0-py3-none-any.whl",
+            "size": 31274
+          },
+          {
+            "name": "wheels/python_dotenv-1.2.2-py3-none-any.whl",
+            "size": 22101
+          },
+          {
+            "name": "wheels/python_json_logger-4.1.0-py3-none-any.whl",
+            "size": 15021
+          },
+          {
+            "name": "wheels/python_multipart-0.0.32-py3-none-any.whl",
+            "size": 30042
+          },
+          {
+            "name": "wheels/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 807870
+          },
+          {
+            "name": "wheels/pyzmq-27.1.0-cp312-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 840995
+          },
+          {
+            "name": "wheels/quack_kernels-0.6.4-py3-none-any.whl",
+            "size": 728458
+          },
+          {
+            "name": "wheels/referencing-0.37.0-py3-none-any.whl",
+            "size": 26766
+          },
+          {
+            "name": "wheels/regex-2026.7.19-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 801798
+          },
+          {
+            "name": "wheels/requests-2.34.2-py3-none-any.whl",
+            "size": 73075
+          },
+          {
+            "name": "wheels/rich-15.0.0-py3-none-any.whl",
+            "size": 310654
+          },
+          {
+            "name": "wheels/rich_toolkit-0.20.3-py3-none-any.whl",
+            "size": 36195
+          },
+          {
+            "name": "wheels/rignore-0.8.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 927835
+          },
+          {
+            "name": "wheels/rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 366189
+          },
+          {
+            "name": "wheels/safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 516040
+          },
+          {
+            "name": "wheels/sentencepiece-0.2.2-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 1397736
+          },
+          {
+            "name": "wheels/sentry_sdk-2.68.0-py3-none-any.whl",
+            "size": 518670
+          },
+          {
+            "name": "wheels/setproctitle-1.3.7-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 32932
+          },
+          {
+            "name": "wheels/setuptools-80.10.2-py3-none-any.whl",
+            "size": 1064234
+          },
+          {
+            "name": "wheels/shellingham-1.5.4-py2.py3-none-any.whl",
+            "size": 9755
+          },
+          {
+            "name": "wheels/six-1.17.0-py2.py3-none-any.whl",
+            "size": 11050
+          },
+          {
+            "name": "wheels/sniffio-1.3.1-py3-none-any.whl",
+            "size": 10235
+          },
+          {
+            "name": "wheels/sse_starlette-3.4.8-py3-none-any.whl",
+            "size": 16516
+          },
+          {
+            "name": "wheels/starlette-1.6.0-py3-none-any.whl",
+            "size": 75969
+          },
+          {
+            "name": "wheels/supervisor-4.3.0-py2.py3-none-any.whl",
+            "size": 320736
+          },
+          {
+            "name": "wheels/sympy-1.14.0-py3-none-any.whl",
+            "size": 6299353
+          },
+          {
+            "name": "wheels/tabulate-0.10.0-py3-none-any.whl",
+            "size": 39814
+          },
+          {
+            "name": "wheels/tiktoken-0.13.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 1136523
+          },
+          {
+            "name": "wheels/tilelang-0.1.12-cp38-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 50501074
+          },
+          {
+            "name": "wheels/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 3274982
+          },
+          {
+            "name": "wheels/tokenspeed_mla-0.1.8-py3-none-manylinux_2_28_x86_64.whl",
+            "size": 755827
+          },
+          {
+            "name": "wheels/tokenspeed_triton-3.8.10.post20260721-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 87210295
+          },
+          {
+            "name": "wheels/torch-2.13.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 526605292
+          },
+          {
+            "name": "wheels/torch_c_dlpack_ext-0.1.5-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 897846
+          },
+          {
+            "name": "wheels/torchvision-0.28.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 7675040
+          },
+          {
+            "name": "wheels/tqdm-4.70.0-py3-none-any.whl",
+            "size": 80184
+          },
+          {
+            "name": "wheels/transformers-5.15.0-py3-none-any.whl",
+            "size": 11749280
+          },
+          {
+            "name": "wheels/triton-3.7.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 197719725
+          },
+          {
+            "name": "wheels/truststore-0.10.4-py3-none-any.whl",
+            "size": 18660
+          },
+          {
+            "name": "wheels/typer-0.27.1-py3-none-any.whl",
+            "size": 122874
+          },
+          {
+            "name": "wheels/typing_extensions-4.16.0-py3-none-any.whl",
+            "size": 45571
+          },
+          {
+            "name": "wheels/typing_inspection-0.4.4-py3-none-any.whl",
+            "size": 14750
+          },
+          {
+            "name": "wheels/urllib3-2.7.0-py3-none-any.whl",
+            "size": 131087
+          },
+          {
+            "name": "wheels/uvicorn-0.52.3-py3-none-any.whl",
+            "size": 79859
+          },
+          {
+            "name": "wheels/uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 4426307
+          },
+          {
+            "name": "wheels/vllm-0.27.2rc1.dev91+g1f7427bc0-cp38-abi3-manylinux_2_28_x86_64.whl",
+            "size": 314186529
+          },
+          {
+            "name": "wheels/watchfiles-1.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 456398
+          },
+          {
+            "name": "wheels/websockets-17.0.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 220150
+          },
+          {
+            "name": "wheels/xgrammar-0.2.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 44855110
+          },
+          {
+            "name": "wheels/yarl-1.24.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 109835
+          },
+          {
+            "name": "wheels/z3_solver-4.15.4.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 29268352
+          }
+        ],
+        "has_more_files": false,
+        "listing_error_message_present": false,
+        "metadata_accessible": true,
+        "metadata_scalar_fields": {
+          "title": "qwen38-vllm0272-cu130-wheelhouse-v1",
+          "subtitle": "",
+          "is_private": false
+        },
+        "pages_read": 2,
+        "dataset_metadata": {
+          "id": 11654954,
+          "ref": "nick2187/qwen38-vllm0272-cu130-wheelhouse-v1",
+          "current_version_number": 1,
+          "total_bytes": 4901033657,
+          "is_private": false,
+          "license_name": "Unknown"
+        },
+        "expected_vllm_wheel_present": true,
+        "expected_vllm_wheel_sha256": "5cbeedeb8266362ef935775c4c33203e4dab74e8da1649a977bae833df62304a",
+        "wheel_hash_verified_by_this_metadata_query": false
+      }
+    },
+    {
+      "expected_username": "qingyu1232",
+      "authenticated_username": "qingyu1232",
+      "identity_matches": true,
+      "checked_at_utc": "2026-10-20T11:53:41.862229+00:00",
+      "submission_limits": {
+        "num_today": 0,
+        "num_total": 8,
+        "num_allowed_now": 1,
+        "limited_by_total": false
+      },
+      "submissions": [
+        {
+          "ref": 57103498,
+          "status": "COMPLETE",
+          "public_score": "25.69",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-10-12T09:56:36.720000",
+          "url": "/code/ccjjllt/arc2-013-bounded-baseline?scriptVersionId=357613526"
+        },
+        {
+          "ref": 52379974,
+          "status": "COMPLETE",
+          "public_score": "27.92",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-05-06T07:44:23.877000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316972179"
+        },
+        {
+          "ref": 52267289,
+          "status": "COMPLETE",
+          "public_score": "29.72",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-05-02T16:27:45.827000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316064507"
+        },
+        {
+          "ref": 52166443,
+          "status": "COMPLETE",
+          "public_score": "28.19",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-29T11:41:33.787000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=315301517"
+        },
+        {
+          "ref": 52116910,
+          "status": "COMPLETE",
+          "public_score": "27.36",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-28T01:56:33.943000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314755063"
+        },
+        {
+          "ref": 52089422,
+          "status": "COMPLETE",
+          "public_score": "0.83",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-27T06:48:57.117000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314731536"
+        },
+        {
+          "ref": 52072735,
+          "status": "COMPLETE",
+          "public_score": "30.14",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-26T17:02:33.323000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319"
+        },
+        {
+          "ref": 51954464,
+          "status": "COMPLETE",
+          "public_score": "25.69",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-23T02:35:59.440000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=313752727"
+        }
+      ],
+      "pending_or_scoring_refs": [],
+      "all_listed_submissions_complete": true,
+      "competition": {
+        "id": 133469,
+        "ref": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2",
+        "user_has_entered": true,
+        "user_rank": 1049,
+        "max_daily_submissions": 1,
+        "max_team_size": 5,
+        "is_kernels_submissions_only": true,
+        "submissions_disabled": false
+      },
+      "team_membership": {
+        "status": "not_directly_exposed_by_queried_SDK_endpoints",
+        "current_team_id": null,
+        "current_team_members": null
+      },
+      "model_access": {
+        "status": "metadata_and_version_file_listing_accessible",
+        "instance": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8",
+        "requested_version": 1,
+        "instance_id": 730092,
+        "current_version_id": 966079,
+        "current_version_number": 1,
+        "license_name": "Apache 2.0",
+        "total_uncompressed_bytes": 30890069847,
+        "files": [
+          {
+            "name": ".gitattributes",
+            "size": 1570
+          },
+          {
+            "name": "LICENSE",
+            "size": 11544
+          },
+          {
+            "name": "README.md",
+            "size": 65249
+          },
+          {
+            "name": "chat_template.jinja",
+            "size": 8952
+          },
+          {
+            "name": "config.json",
+            "size": 51350
+          },
+          {
+            "name": "generation_config.json",
+            "size": 202
+          },
+          {
+            "name": "merges.txt",
+            "size": 3353259
+          },
+          {
+            "name": "model-layers-00001-of-00016.safetensors",
+            "size": 1523910096
+          },
+          {
+            "name": "model-layers-00002-of-00016.safetensors",
+            "size": 1523910096
+          },
+          {
+            "name": "model-layers-00003-of-00016.safetensors",
+            "size": 1523910128
+          },
+          {
+            "name": "model-layers-00004-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00005-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00006-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00007-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00008-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00009-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00010-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00011-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00012-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00013-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00014-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00015-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00016-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model.safetensors.index.json",
+            "size": 159995
+          },
+          {
+            "name": "mtp.safetensors",
+            "size": 477202224
+          },
+          {
+            "name": "outside.safetensors",
+            "size": 6007102112
+          },
+          {
+            "name": "preprocessor_config.json",
+            "size": 390
+          },
+          {
+            "name": "tokenizer.json",
+            "size": 12809320
+          },
+          {
+            "name": "tokenizer_config.json",
+            "size": 17928
+          },
+          {
+            "name": "video_preprocessor_config.json",
+            "size": 385
+          },
+          {
+            "name": "vocab.json",
+            "size": 6722759
+          }
+        ],
+        "has_more_files": false
+      },
+      "wheelhouse_access": {
+        "status": "version_file_listing_accessible",
+        "dataset": "nick2187/qwen38-vllm0272-cu130-wheelhouse-v1",
+        "requested_version": 1,
+        "files": [
+          {
+            "name": "QWEN38_VLLM_MANIFEST.json",
+            "size": 39718
+          },
+          {
+            "name": "README.md",
+            "size": 238
+          },
+          {
+            "name": "THIRD_PARTY_NOTICE.md",
+            "size": 276
+          },
+          {
+            "name": "install_qwen38_vllm.py",
+            "size": 1003
+          },
+          {
+            "name": "requirements-qwen38-runtime.txt",
+            "size": 3900
+          },
+          {
+            "name": "wheels/aiohappyeyeballs-2.7.1-py3-none-any.whl",
+            "size": 15038
+          },
+          {
+            "name": "wheels/aiohttp-3.14.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 1792122
+          },
+          {
+            "name": "wheels/aiosignal-1.4.0-py3-none-any.whl",
+            "size": 7490
+          },
+          {
+            "name": "wheels/annotated_doc-0.0.5-py3-none-any.whl",
+            "size": 5302
+          },
+          {
+            "name": "wheels/annotated_types-0.8.0-py3-none-any.whl",
+            "size": 13427
+          },
+          {
+            "name": "wheels/anthropic-0.122.0-py3-none-any.whl",
+            "size": 1041853
+          },
+          {
+            "name": "wheels/anyio-4.14.2-py3-none-any.whl",
+            "size": 125813
+          },
+          {
+            "name": "wheels/apache_tvm_ffi-0.1.11-cp312-abi3-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 2697683
+          },
+          {
+            "name": "wheels/astor-0.8.1-py2.py3-none-any.whl",
+            "size": 27488
+          },
+          {
+            "name": "wheels/attrs-26.1.0-py3-none-any.whl",
+            "size": 67548
+          },
+          {
+            "name": "wheels/blake3-1.0.9-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 383851
+          },
+          {
+            "name": "wheels/cachetools-7.1.7-py3-none-any.whl",
+            "size": 16830
+          },
+          {
+            "name": "wheels/cbor2-6.1.4-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 461193
+          },
+          {
+            "name": "wheels/certifi-2026.7.22-py3-none-any.whl",
+            "size": 136983
+          },
+          {
+            "name": "wheels/cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 221822
+          },
+          {
+            "name": "wheels/charset_normalizer-3.5.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 247547
+          },
+          {
+            "name": "wheels/click-8.4.2-py3-none-any.whl",
+            "size": 119243
+          },
+          {
+            "name": "wheels/cloudpickle-3.1.2-py3-none-any.whl",
+            "size": 22228
+          },
+          {
+            "name": "wheels/compressed_tensors-0.17.0-py3-none-any.whl",
+            "size": 211714
+          },
+          {
+            "name": "wheels/cryptography-50.0.0-cp311-abi3-manylinux_2_34_x86_64.whl",
+            "size": 4734462
+          },
+          {
+            "name": "wheels/cuda_bindings-13.3.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 6657965
+          },
+          {
+            "name": "wheels/cuda_core-1.0.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 5106023
+          },
+          {
+            "name": "wheels/cuda_pathfinder-1.6.0-py3-none-any.whl",
+            "size": 54591
+          },
+          {
+            "name": "wheels/cuda_python-13.3.1-py3-none-any.whl",
+            "size": 8295
+          },
+          {
+            "name": "wheels/cuda_tile-1.5.0-cp312-cp312-manylinux2014_x86_64.whl",
+            "size": 324990
+          },
+          {
+            "name": "wheels/cuda_toolkit-13.0.3.0-py2.py3-none-any.whl",
+            "size": 2512
+          },
+          {
+            "name": "wheels/depyf-0.20.0-py3-none-any.whl",
+            "size": 39381
+          },
+          {
+            "name": "wheels/detect_installer-0.1.0-py3-none-any.whl",
+            "size": 4539
+          },
+          {
+            "name": "wheels/dill-0.4.1-py3-none-any.whl",
+            "size": 120019
+          },
+          {
+            "name": "wheels/distro-1.9.0-py3-none-any.whl",
+            "size": 20277
+          },
+          {
+            "name": "wheels/dnspython-2.8.0-py3-none-any.whl",
+            "size": 331094
+          },
+          {
+            "name": "wheels/docstring_parser-0.18.0-py3-none-any.whl",
+            "size": 22484
+          },
+          {
+            "name": "wheels/einops-0.8.2-py3-none-any.whl",
+            "size": 65638
+          },
+          {
+            "name": "wheels/email_validator-2.3.0-py3-none-any.whl",
+            "size": 35604
+          },
+          {
+            "name": "wheels/fastapi-0.136.3-py3-none-any.whl",
+            "size": 117481
+          },
+          {
+            "name": "wheels/fastapi_cli-0.0.32-py3-none-any.whl",
+            "size": 14670
+          },
+          {
+            "name": "wheels/fastapi_cloud_cli-0.23.0-py3-none-any.whl",
+            "size": 78058
+          },
+          {
+            "name": "wheels/fastar-0.11.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 819382
+          },
+          {
+            "name": "wheels/fastsafetensors-0.3.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 1915478
+          },
+          {
+            "name": "wheels/filelock-3.32.3-py3-none-any.whl",
+            "size": 98901
+          },
+          {
+            "name": "wheels/flashinfer_cubin-0.6.16.post3-py3-none-any.whl",
+            "size": 1062693258
+          },
+          {
+            "name": "wheels/flashinfer_python-0.6.16.post3-py3-none-any.whl",
+            "size": 15836034
+          },
+          {
+            "name": "wheels/frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 242411
+          },
+          {
+            "name": "wheels/fsspec-2026.7.0-py3-none-any.whl",
+            "size": 206583
+          },
+          {
+            "name": "wheels/googleapis_common_protos-1.75.1-py3-none-any.whl",
+            "size": 300626
+          },
+          {
+            "name": "wheels/grpcio-1.83.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 7040616
+          },
+          {
+            "name": "wheels/h11-0.16.0-py3-none-any.whl",
+            "size": 37515
+          },
+          {
+            "name": "wheels/hf_xet-1.6.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 4464663
+          },
+          {
+            "name": "wheels/httpcore-1.0.9-py3-none-any.whl",
+            "size": 78784
+          },
+          {
+            "name": "wheels/httpcore2-2.10.0-py3-none-any.whl",
+            "size": 83000
+          },
+          {
+            "name": "wheels/httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 523851
+          },
+          {
+            "name": "wheels/httpx-0.28.1-py3-none-any.whl",
+            "size": 73517
+          },
+          {
+            "name": "wheels/httpx2-2.10.0-py3-none-any.whl",
+            "size": 94355
+          },
+          {
+            "name": "wheels/huggingface_hub-1.27.0-py3-none-any.whl",
+            "size": 784926
+          },
+          {
+            "name": "wheels/humming_kernels-0.1.12-py3-none-manylinux_2_28_x86_64.whl",
+            "size": 322656
+          },
+          {
+            "name": "wheels/idna-3.18-py3-none-any.whl",
+            "size": 65455
+          },
+          {
+            "name": "wheels/ijson-3.5.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 149848
+          },
+          {
+            "name": "wheels/interegular-0.3.3-py37-none-any.whl",
+            "size": 23635
+          },
+          {
+            "name": "wheels/jinja2-3.1.6-py3-none-any.whl",
+            "size": 134899
+          },
+          {
+            "name": "wheels/jiter-0.16.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 343805
+          },
+          {
+            "name": "wheels/jmespath-1.1.0-py3-none-any.whl",
+            "size": 20419
+          },
+          {
+            "name": "wheels/jsonschema-4.26.0-py3-none-any.whl",
+            "size": 90630
+          },
+          {
+            "name": "wheels/jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "size": 18437
+          },
+          {
+            "name": "wheels/lark-1.2.2-py3-none-any.whl",
+            "size": 111036
+          },
+          {
+            "name": "wheels/llguidance-1.7.6-cp39-abi3-manylinux_2_31_x86_64.whl",
+            "size": 3074809
+          },
+          {
+            "name": "wheels/llvmlite-0.47.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 56275178
+          },
+          {
+            "name": "wheels/lm_format_enforcer-0.11.3-py3-none-any.whl",
+            "size": 45418
+          },
+          {
+            "name": "wheels/loguru-0.7.3-py3-none-any.whl",
+            "size": 61595
+          },
+          {
+            "name": "wheels/markdown_it_py-4.2.0-py3-none-any.whl",
+            "size": 91687
+          },
+          {
+            "name": "wheels/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 22947
+          },
+          {
+            "name": "wheels/mcp-2.0.0-py3-none-any.whl",
+            "size": 349980
+          },
+          {
+            "name": "wheels/mcp_types-2.0.0-py3-none-any.whl",
+            "size": 69649
+          },
+          {
+            "name": "wheels/mdurl-0.1.2-py3-none-any.whl",
+            "size": 9979
+          },
+          {
+            "name": "wheels/mistral_common-1.11.7-py3-none-any.whl",
+            "size": 6553583
+          },
+          {
+            "name": "wheels/ml_dtypes-0.6.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 409890
+          },
+          {
+            "name": "wheels/model_hosting_container_standards-0.1.16-py3-none-any.whl",
+            "size": 125666
+          },
+          {
+            "name": "wheels/mpmath-1.3.0-py3-none-any.whl",
+            "size": 536198
+          },
+          {
+            "name": "wheels/msgspec-0.21.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 225025
+          },
+          {
+            "name": "wheels/multidict-6.7.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 256322
+          },
+          {
+            "name": "wheels/nccl4py-0.4.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 2897696
+          },
+          {
+            "name": "wheels/networkx-3.6.1-py3-none-any.whl",
+            "size": 2068504
+          },
+          {
+            "name": "wheels/ninja-1.13.0-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 180716
+          },
+          {
+            "name": "wheels/numba-0.65.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 3801411
+          },
+          {
+            "name": "wheels/numpy-2.3.5-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 16606086
+          },
+          {
+            "name": "wheels/nvidia_cublas-13.1.1.3-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 423138758
+          },
+          {
+            "name": "wheels/nvidia_cuda_cccl-13.3.3.4.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 3454034
+          },
+          {
+            "name": "wheels/nvidia_cuda_crt-13.3.73-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 157352
+          },
+          {
+            "name": "wheels/nvidia_cuda_cupti-13.0.85-py3-none-manylinux_2_25_x86_64.whl",
+            "size": 10715597
+          },
+          {
+            "name": "wheels/nvidia_cuda_nvcc-13.3.73-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 44942138
+          },
+          {
+            "name": "wheels/nvidia_cuda_nvdisasm-13.3.73-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 4782824
+          },
+          {
+            "name": "wheels/nvidia_cuda_nvrtc-13.0.88-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+            "size": 90215200
+          },
+          {
+            "name": "wheels/nvidia_cuda_runtime-13.0.96-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 2243632
+          },
+          {
+            "name": "wheels/nvidia_cudnn_cu13-9.20.0.48-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 366173588
+          },
+          {
+            "name": "wheels/nvidia_cudnn_frontend-1.27.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 4749917
+          },
+          {
+            "name": "wheels/nvidia_cufft-12.0.0.61-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 214085489
+          },
+          {
+            "name": "wheels/nvidia_cufile-1.15.1.6-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 1223672
+          },
+          {
+            "name": "wheels/nvidia_curand-10.4.0.35-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 59544258
+          },
+          {
+            "name": "wheels/nvidia_cusolver-12.0.4.66-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 200941980
+          },
+          {
+            "name": "wheels/nvidia_cusparse-12.6.3.3-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 145942937
+          },
+          {
+            "name": "wheels/nvidia_cusparselt_cu13-0.8.1-py3-none-manylinux2014_x86_64.whl",
+            "size": 170148586
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl-4.6.2-py3-none-any.whl",
+            "size": 10460
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_base-4.6.2-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 2824987
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_core-4.6.2-py3-none-any.whl",
+            "size": 772393
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_cu12-4.6.2-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 88454261
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_cu13-4.6.2-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 88036030
+          },
+          {
+            "name": "wheels/nvidia_ml_py-13.610.43-py3-none-any.whl",
+            "size": 53163
+          },
+          {
+            "name": "wheels/nvidia_nccl_cu13-2.29.7-py3-none-manylinux_2_18_x86_64.whl",
+            "size": 205976000
+          },
+          {
+            "name": "wheels/nvidia_nvjitlink-13.3.33-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+            "size": 40742423
+          },
+          {
+            "name": "wheels/nvidia_nvshmem_cu13-3.4.5-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 60412546
+          },
+          {
+            "name": "wheels/nvidia_nvtx-13.0.85-py3-none-manylinux1_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 148047
+          },
+          {
+            "name": "wheels/nvidia_nvvm-13.3.73-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+            "size": 69250424
+          },
+          {
+            "name": "wheels/nvtx-0.2.15-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 806187
+          },
+          {
+            "name": "wheels/openai-3.0.0-py3-none-any.whl",
+            "size": 1665775
+          },
+          {
+            "name": "wheels/openai_harmony-0.0.8-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 2953260
+          },
+          {
+            "name": "wheels/opencv_python_headless-5.0.0.93-cp37-abi3-manylinux_2_28_x86_64.whl",
+            "size": 61204038
+          },
+          {
+            "name": "wheels/opentelemetry_api-1.44.0-py3-none-any.whl",
+            "size": 60018
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp-1.44.0-py3-none-any.whl",
+            "size": 6727
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp_proto_common-1.44.0-py3-none-any.whl",
+            "size": 17045
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp_proto_grpc-1.44.0-py3-none-any.whl",
+            "size": 19624
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp_proto_http-1.44.0-py3-none-any.whl",
+            "size": 21850
+          },
+          {
+            "name": "wheels/opentelemetry_proto-1.44.0-py3-none-any.whl",
+            "size": 72483
+          },
+          {
+            "name": "wheels/opentelemetry_sdk-1.44.0-py3-none-any.whl",
+            "size": 137221
+          },
+          {
+            "name": "wheels/opentelemetry_semantic_conventions-0.65b0-py3-none-any.whl",
+            "size": 204645
+          },
+          {
+            "name": "wheels/opentelemetry_semantic_conventions_ai-0.5.1-py3-none-any.whl",
+            "size": 11250
+          },
+          {
+            "name": "wheels/outlines_core-0.2.14-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 2341426
+          },
+          {
+            "name": "wheels/packaging-26.3-py3-none-any.whl",
+            "size": 129956
+          },
+          {
+            "name": "wheels/partial_json_parser-0.2.1.1.post7-py3-none-any.whl",
+            "size": 10877
+          },
+          {
+            "name": "wheels/pillow-12.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 6940830
+          },
+          {
+            "name": "wheels/prometheus_client-0.26.0-py3-none-any.whl",
+            "size": 64494
+          },
+          {
+            "name": "wheels/prometheus_fastapi_instrumentator-8.1.0-py3-none-any.whl",
+            "size": 19649
+          },
+          {
+            "name": "wheels/propcache-0.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 61639
+          },
+          {
+            "name": "wheels/protobuf-6.33.6-cp39-abi3-manylinux2014_x86_64.whl",
+            "size": 323436
+          },
+          {
+            "name": "wheels/psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 155560
+          },
+          {
+            "name": "wheels/py_cpuinfo-9.0.0-py3-none-any.whl",
+            "size": 22335
+          },
+          {
+            "name": "wheels/pybase64-1.5.0-cp312-cp312-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 94681
+          },
+          {
+            "name": "wheels/pycountry-26.2.16-py3-none-any.whl",
+            "size": 8044600
+          },
+          {
+            "name": "wheels/pycparser-3.0-py3-none-any.whl",
+            "size": 48172
+          },
+          {
+            "name": "wheels/pydantic-2.13.4-py3-none-any.whl",
+            "size": 472262
+          },
+          {
+            "name": "wheels/pydantic_core-2.46.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 2094516
+          },
+          {
+            "name": "wheels/pydantic_extra_types-2.11.1-py3-none-any.whl",
+            "size": 79526
+          },
+          {
+            "name": "wheels/pydantic_settings-2.15.0-py3-none-any.whl",
+            "size": 69413
+          },
+          {
+            "name": "wheels/pygments-2.20.0-py3-none-any.whl",
+            "size": 1231151
+          },
+          {
+            "name": "wheels/pyjwt-2.13.0-py3-none-any.whl",
+            "size": 31274
+          },
+          {
+            "name": "wheels/python_dotenv-1.2.2-py3-none-any.whl",
+            "size": 22101
+          },
+          {
+            "name": "wheels/python_json_logger-4.1.0-py3-none-any.whl",
+            "size": 15021
+          },
+          {
+            "name": "wheels/python_multipart-0.0.32-py3-none-any.whl",
+            "size": 30042
+          },
+          {
+            "name": "wheels/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 807870
+          },
+          {
+            "name": "wheels/pyzmq-27.1.0-cp312-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 840995
+          },
+          {
+            "name": "wheels/quack_kernels-0.6.4-py3-none-any.whl",
+            "size": 728458
+          },
+          {
+            "name": "wheels/referencing-0.37.0-py3-none-any.whl",
+            "size": 26766
+          },
+          {
+            "name": "wheels/regex-2026.7.19-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 801798
+          },
+          {
+            "name": "wheels/requests-2.34.2-py3-none-any.whl",
+            "size": 73075
+          },
+          {
+            "name": "wheels/rich-15.0.0-py3-none-any.whl",
+            "size": 310654
+          },
+          {
+            "name": "wheels/rich_toolkit-0.20.3-py3-none-any.whl",
+            "size": 36195
+          },
+          {
+            "name": "wheels/rignore-0.8.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 927835
+          },
+          {
+            "name": "wheels/rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 366189
+          },
+          {
+            "name": "wheels/safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 516040
+          },
+          {
+            "name": "wheels/sentencepiece-0.2.2-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 1397736
+          },
+          {
+            "name": "wheels/sentry_sdk-2.68.0-py3-none-any.whl",
+            "size": 518670
+          },
+          {
+            "name": "wheels/setproctitle-1.3.7-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 32932
+          },
+          {
+            "name": "wheels/setuptools-80.10.2-py3-none-any.whl",
+            "size": 1064234
+          },
+          {
+            "name": "wheels/shellingham-1.5.4-py2.py3-none-any.whl",
+            "size": 9755
+          },
+          {
+            "name": "wheels/six-1.17.0-py2.py3-none-any.whl",
+            "size": 11050
+          },
+          {
+            "name": "wheels/sniffio-1.3.1-py3-none-any.whl",
+            "size": 10235
+          },
+          {
+            "name": "wheels/sse_starlette-3.4.8-py3-none-any.whl",
+            "size": 16516
+          },
+          {
+            "name": "wheels/starlette-1.6.0-py3-none-any.whl",
+            "size": 75969
+          },
+          {
+            "name": "wheels/supervisor-4.3.0-py2.py3-none-any.whl",
+            "size": 320736
+          },
+          {
+            "name": "wheels/sympy-1.14.0-py3-none-any.whl",
+            "size": 6299353
+          },
+          {
+            "name": "wheels/tabulate-0.10.0-py3-none-any.whl",
+            "size": 39814
+          },
+          {
+            "name": "wheels/tiktoken-0.13.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 1136523
+          },
+          {
+            "name": "wheels/tilelang-0.1.12-cp38-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 50501074
+          },
+          {
+            "name": "wheels/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 3274982
+          },
+          {
+            "name": "wheels/tokenspeed_mla-0.1.8-py3-none-manylinux_2_28_x86_64.whl",
+            "size": 755827
+          },
+          {
+            "name": "wheels/tokenspeed_triton-3.8.10.post20260721-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 87210295
+          },
+          {
+            "name": "wheels/torch-2.13.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 526605292
+          },
+          {
+            "name": "wheels/torch_c_dlpack_ext-0.1.5-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 897846
+          },
+          {
+            "name": "wheels/torchvision-0.28.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 7675040
+          },
+          {
+            "name": "wheels/tqdm-4.70.0-py3-none-any.whl",
+            "size": 80184
+          },
+          {
+            "name": "wheels/transformers-5.15.0-py3-none-any.whl",
+            "size": 11749280
+          },
+          {
+            "name": "wheels/triton-3.7.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 197719725
+          },
+          {
+            "name": "wheels/truststore-0.10.4-py3-none-any.whl",
+            "size": 18660
+          },
+          {
+            "name": "wheels/typer-0.27.1-py3-none-any.whl",
+            "size": 122874
+          },
+          {
+            "name": "wheels/typing_extensions-4.16.0-py3-none-any.whl",
+            "size": 45571
+          },
+          {
+            "name": "wheels/typing_inspection-0.4.4-py3-none-any.whl",
+            "size": 14750
+          },
+          {
+            "name": "wheels/urllib3-2.7.0-py3-none-any.whl",
+            "size": 131087
+          },
+          {
+            "name": "wheels/uvicorn-0.52.3-py3-none-any.whl",
+            "size": 79859
+          },
+          {
+            "name": "wheels/uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 4426307
+          },
+          {
+            "name": "wheels/vllm-0.27.2rc1.dev91+g1f7427bc0-cp38-abi3-manylinux_2_28_x86_64.whl",
+            "size": 314186529
+          },
+          {
+            "name": "wheels/watchfiles-1.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 456398
+          },
+          {
+            "name": "wheels/websockets-17.0.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 220150
+          },
+          {
+            "name": "wheels/xgrammar-0.2.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 44855110
+          },
+          {
+            "name": "wheels/yarl-1.24.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 109835
+          },
+          {
+            "name": "wheels/z3_solver-4.15.4.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 29268352
+          }
+        ],
+        "has_more_files": false,
+        "listing_error_message_present": false,
+        "metadata_accessible": true,
+        "metadata_scalar_fields": {
+          "title": "qwen38-vllm0272-cu130-wheelhouse-v1",
+          "subtitle": "",
+          "is_private": false
+        },
+        "pages_read": 2,
+        "dataset_metadata": {
+          "id": 11654954,
+          "ref": "nick2187/qwen38-vllm0272-cu130-wheelhouse-v1",
+          "current_version_number": 1,
+          "total_bytes": 4901033657,
+          "is_private": false,
+          "license_name": "Unknown"
+        },
+        "expected_vllm_wheel_present": true,
+        "expected_vllm_wheel_sha256": "5cbeedeb8266362ef935775c4c33203e4dab74e8da1649a977bae833df62304a",
+        "wheel_hash_verified_by_this_metadata_query": false
+      }
+    },
+    {
+      "expected_username": "jiyujia",
+      "authenticated_username": "jiyujia",
+      "identity_matches": true,
+      "checked_at_utc": "2026-10-20T11:53:41.888949+00:00",
+      "submission_limits": {
+        "num_today": 0,
+        "num_total": 8,
+        "num_allowed_now": 1,
+        "limited_by_total": false
+      },
+      "submissions": [
+        {
+          "ref": 57103498,
+          "status": "COMPLETE",
+          "public_score": "25.69",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-10-12T09:56:36.720000",
+          "url": "/code/ccjjllt/arc2-013-bounded-baseline?scriptVersionId=357613526"
+        },
+        {
+          "ref": 52379974,
+          "status": "COMPLETE",
+          "public_score": "27.92",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-05-06T07:44:23.877000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316972179"
+        },
+        {
+          "ref": 52267289,
+          "status": "COMPLETE",
+          "public_score": "29.72",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-05-02T16:27:45.827000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316064507"
+        },
+        {
+          "ref": 52166443,
+          "status": "COMPLETE",
+          "public_score": "28.19",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-29T11:41:33.787000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=315301517"
+        },
+        {
+          "ref": 52116910,
+          "status": "COMPLETE",
+          "public_score": "27.36",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-28T01:56:33.943000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314755063"
+        },
+        {
+          "ref": 52089422,
+          "status": "COMPLETE",
+          "public_score": "0.83",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-27T06:48:57.117000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314731536"
+        },
+        {
+          "ref": 52072735,
+          "status": "COMPLETE",
+          "public_score": "30.14",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-26T17:02:33.323000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319"
+        },
+        {
+          "ref": 51954464,
+          "status": "COMPLETE",
+          "public_score": "25.69",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-23T02:35:59.440000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=313752727"
+        }
+      ],
+      "pending_or_scoring_refs": [],
+      "all_listed_submissions_complete": true,
+      "competition": {
+        "id": 133469,
+        "ref": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2",
+        "user_has_entered": true,
+        "user_rank": 1049,
+        "max_daily_submissions": 1,
+        "max_team_size": 5,
+        "is_kernels_submissions_only": true,
+        "submissions_disabled": false
+      },
+      "team_membership": {
+        "status": "not_directly_exposed_by_queried_SDK_endpoints",
+        "current_team_id": null,
+        "current_team_members": null
+      },
+      "model_access": {
+        "status": "metadata_and_version_file_listing_accessible",
+        "instance": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8",
+        "requested_version": 1,
+        "instance_id": 730092,
+        "current_version_id": 966079,
+        "current_version_number": 1,
+        "license_name": "Apache 2.0",
+        "total_uncompressed_bytes": 30890069847,
+        "files": [
+          {
+            "name": ".gitattributes",
+            "size": 1570
+          },
+          {
+            "name": "LICENSE",
+            "size": 11544
+          },
+          {
+            "name": "README.md",
+            "size": 65249
+          },
+          {
+            "name": "chat_template.jinja",
+            "size": 8952
+          },
+          {
+            "name": "config.json",
+            "size": 51350
+          },
+          {
+            "name": "generation_config.json",
+            "size": 202
+          },
+          {
+            "name": "merges.txt",
+            "size": 3353259
+          },
+          {
+            "name": "model-layers-00001-of-00016.safetensors",
+            "size": 1523910096
+          },
+          {
+            "name": "model-layers-00002-of-00016.safetensors",
+            "size": 1523910096
+          },
+          {
+            "name": "model-layers-00003-of-00016.safetensors",
+            "size": 1523910128
+          },
+          {
+            "name": "model-layers-00004-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00005-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00006-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00007-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00008-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00009-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00010-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00011-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00012-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00013-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00014-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00015-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00016-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model.safetensors.index.json",
+            "size": 159995
+          },
+          {
+            "name": "mtp.safetensors",
+            "size": 477202224
+          },
+          {
+            "name": "outside.safetensors",
+            "size": 6007102112
+          },
+          {
+            "name": "preprocessor_config.json",
+            "size": 390
+          },
+          {
+            "name": "tokenizer.json",
+            "size": 12809320
+          },
+          {
+            "name": "tokenizer_config.json",
+            "size": 17928
+          },
+          {
+            "name": "video_preprocessor_config.json",
+            "size": 385
+          },
+          {
+            "name": "vocab.json",
+            "size": 6722759
+          }
+        ],
+        "has_more_files": false
+      },
+      "wheelhouse_access": {
+        "status": "version_file_listing_accessible",
+        "dataset": "nick2187/qwen38-vllm0272-cu130-wheelhouse-v1",
+        "requested_version": 1,
+        "files": [
+          {
+            "name": "QWEN38_VLLM_MANIFEST.json",
+            "size": 39718
+          },
+          {
+            "name": "README.md",
+            "size": 238
+          },
+          {
+            "name": "THIRD_PARTY_NOTICE.md",
+            "size": 276
+          },
+          {
+            "name": "install_qwen38_vllm.py",
+            "size": 1003
+          },
+          {
+            "name": "requirements-qwen38-runtime.txt",
+            "size": 3900
+          },
+          {
+            "name": "wheels/aiohappyeyeballs-2.7.1-py3-none-any.whl",
+            "size": 15038
+          },
+          {
+            "name": "wheels/aiohttp-3.14.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 1792122
+          },
+          {
+            "name": "wheels/aiosignal-1.4.0-py3-none-any.whl",
+            "size": 7490
+          },
+          {
+            "name": "wheels/annotated_doc-0.0.5-py3-none-any.whl",
+            "size": 5302
+          },
+          {
+            "name": "wheels/annotated_types-0.8.0-py3-none-any.whl",
+            "size": 13427
+          },
+          {
+            "name": "wheels/anthropic-0.122.0-py3-none-any.whl",
+            "size": 1041853
+          },
+          {
+            "name": "wheels/anyio-4.14.2-py3-none-any.whl",
+            "size": 125813
+          },
+          {
+            "name": "wheels/apache_tvm_ffi-0.1.11-cp312-abi3-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 2697683
+          },
+          {
+            "name": "wheels/astor-0.8.1-py2.py3-none-any.whl",
+            "size": 27488
+          },
+          {
+            "name": "wheels/attrs-26.1.0-py3-none-any.whl",
+            "size": 67548
+          },
+          {
+            "name": "wheels/blake3-1.0.9-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 383851
+          },
+          {
+            "name": "wheels/cachetools-7.1.7-py3-none-any.whl",
+            "size": 16830
+          },
+          {
+            "name": "wheels/cbor2-6.1.4-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 461193
+          },
+          {
+            "name": "wheels/certifi-2026.7.22-py3-none-any.whl",
+            "size": 136983
+          },
+          {
+            "name": "wheels/cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 221822
+          },
+          {
+            "name": "wheels/charset_normalizer-3.5.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 247547
+          },
+          {
+            "name": "wheels/click-8.4.2-py3-none-any.whl",
+            "size": 119243
+          },
+          {
+            "name": "wheels/cloudpickle-3.1.2-py3-none-any.whl",
+            "size": 22228
+          },
+          {
+            "name": "wheels/compressed_tensors-0.17.0-py3-none-any.whl",
+            "size": 211714
+          },
+          {
+            "name": "wheels/cryptography-50.0.0-cp311-abi3-manylinux_2_34_x86_64.whl",
+            "size": 4734462
+          },
+          {
+            "name": "wheels/cuda_bindings-13.3.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 6657965
+          },
+          {
+            "name": "wheels/cuda_core-1.0.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 5106023
+          },
+          {
+            "name": "wheels/cuda_pathfinder-1.6.0-py3-none-any.whl",
+            "size": 54591
+          },
+          {
+            "name": "wheels/cuda_python-13.3.1-py3-none-any.whl",
+            "size": 8295
+          },
+          {
+            "name": "wheels/cuda_tile-1.5.0-cp312-cp312-manylinux2014_x86_64.whl",
+            "size": 324990
+          },
+          {
+            "name": "wheels/cuda_toolkit-13.0.3.0-py2.py3-none-any.whl",
+            "size": 2512
+          },
+          {
+            "name": "wheels/depyf-0.20.0-py3-none-any.whl",
+            "size": 39381
+          },
+          {
+            "name": "wheels/detect_installer-0.1.0-py3-none-any.whl",
+            "size": 4539
+          },
+          {
+            "name": "wheels/dill-0.4.1-py3-none-any.whl",
+            "size": 120019
+          },
+          {
+            "name": "wheels/distro-1.9.0-py3-none-any.whl",
+            "size": 20277
+          },
+          {
+            "name": "wheels/dnspython-2.8.0-py3-none-any.whl",
+            "size": 331094
+          },
+          {
+            "name": "wheels/docstring_parser-0.18.0-py3-none-any.whl",
+            "size": 22484
+          },
+          {
+            "name": "wheels/einops-0.8.2-py3-none-any.whl",
+            "size": 65638
+          },
+          {
+            "name": "wheels/email_validator-2.3.0-py3-none-any.whl",
+            "size": 35604
+          },
+          {
+            "name": "wheels/fastapi-0.136.3-py3-none-any.whl",
+            "size": 117481
+          },
+          {
+            "name": "wheels/fastapi_cli-0.0.32-py3-none-any.whl",
+            "size": 14670
+          },
+          {
+            "name": "wheels/fastapi_cloud_cli-0.23.0-py3-none-any.whl",
+            "size": 78058
+          },
+          {
+            "name": "wheels/fastar-0.11.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 819382
+          },
+          {
+            "name": "wheels/fastsafetensors-0.3.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 1915478
+          },
+          {
+            "name": "wheels/filelock-3.32.3-py3-none-any.whl",
+            "size": 98901
+          },
+          {
+            "name": "wheels/flashinfer_cubin-0.6.16.post3-py3-none-any.whl",
+            "size": 1062693258
+          },
+          {
+            "name": "wheels/flashinfer_python-0.6.16.post3-py3-none-any.whl",
+            "size": 15836034
+          },
+          {
+            "name": "wheels/frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 242411
+          },
+          {
+            "name": "wheels/fsspec-2026.7.0-py3-none-any.whl",
+            "size": 206583
+          },
+          {
+            "name": "wheels/googleapis_common_protos-1.75.1-py3-none-any.whl",
+            "size": 300626
+          },
+          {
+            "name": "wheels/grpcio-1.83.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 7040616
+          },
+          {
+            "name": "wheels/h11-0.16.0-py3-none-any.whl",
+            "size": 37515
+          },
+          {
+            "name": "wheels/hf_xet-1.6.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 4464663
+          },
+          {
+            "name": "wheels/httpcore-1.0.9-py3-none-any.whl",
+            "size": 78784
+          },
+          {
+            "name": "wheels/httpcore2-2.10.0-py3-none-any.whl",
+            "size": 83000
+          },
+          {
+            "name": "wheels/httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 523851
+          },
+          {
+            "name": "wheels/httpx-0.28.1-py3-none-any.whl",
+            "size": 73517
+          },
+          {
+            "name": "wheels/httpx2-2.10.0-py3-none-any.whl",
+            "size": 94355
+          },
+          {
+            "name": "wheels/huggingface_hub-1.27.0-py3-none-any.whl",
+            "size": 784926
+          },
+          {
+            "name": "wheels/humming_kernels-0.1.12-py3-none-manylinux_2_28_x86_64.whl",
+            "size": 322656
+          },
+          {
+            "name": "wheels/idna-3.18-py3-none-any.whl",
+            "size": 65455
+          },
+          {
+            "name": "wheels/ijson-3.5.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 149848
+          },
+          {
+            "name": "wheels/interegular-0.3.3-py37-none-any.whl",
+            "size": 23635
+          },
+          {
+            "name": "wheels/jinja2-3.1.6-py3-none-any.whl",
+            "size": 134899
+          },
+          {
+            "name": "wheels/jiter-0.16.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 343805
+          },
+          {
+            "name": "wheels/jmespath-1.1.0-py3-none-any.whl",
+            "size": 20419
+          },
+          {
+            "name": "wheels/jsonschema-4.26.0-py3-none-any.whl",
+            "size": 90630
+          },
+          {
+            "name": "wheels/jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "size": 18437
+          },
+          {
+            "name": "wheels/lark-1.2.2-py3-none-any.whl",
+            "size": 111036
+          },
+          {
+            "name": "wheels/llguidance-1.7.6-cp39-abi3-manylinux_2_31_x86_64.whl",
+            "size": 3074809
+          },
+          {
+            "name": "wheels/llvmlite-0.47.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 56275178
+          },
+          {
+            "name": "wheels/lm_format_enforcer-0.11.3-py3-none-any.whl",
+            "size": 45418
+          },
+          {
+            "name": "wheels/loguru-0.7.3-py3-none-any.whl",
+            "size": 61595
+          },
+          {
+            "name": "wheels/markdown_it_py-4.2.0-py3-none-any.whl",
+            "size": 91687
+          },
+          {
+            "name": "wheels/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 22947
+          },
+          {
+            "name": "wheels/mcp-2.0.0-py3-none-any.whl",
+            "size": 349980
+          },
+          {
+            "name": "wheels/mcp_types-2.0.0-py3-none-any.whl",
+            "size": 69649
+          },
+          {
+            "name": "wheels/mdurl-0.1.2-py3-none-any.whl",
+            "size": 9979
+          },
+          {
+            "name": "wheels/mistral_common-1.11.7-py3-none-any.whl",
+            "size": 6553583
+          },
+          {
+            "name": "wheels/ml_dtypes-0.6.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 409890
+          },
+          {
+            "name": "wheels/model_hosting_container_standards-0.1.16-py3-none-any.whl",
+            "size": 125666
+          },
+          {
+            "name": "wheels/mpmath-1.3.0-py3-none-any.whl",
+            "size": 536198
+          },
+          {
+            "name": "wheels/msgspec-0.21.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 225025
+          },
+          {
+            "name": "wheels/multidict-6.7.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 256322
+          },
+          {
+            "name": "wheels/nccl4py-0.4.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 2897696
+          },
+          {
+            "name": "wheels/networkx-3.6.1-py3-none-any.whl",
+            "size": 2068504
+          },
+          {
+            "name": "wheels/ninja-1.13.0-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 180716
+          },
+          {
+            "name": "wheels/numba-0.65.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 3801411
+          },
+          {
+            "name": "wheels/numpy-2.3.5-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 16606086
+          },
+          {
+            "name": "wheels/nvidia_cublas-13.1.1.3-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 423138758
+          },
+          {
+            "name": "wheels/nvidia_cuda_cccl-13.3.3.4.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 3454034
+          },
+          {
+            "name": "wheels/nvidia_cuda_crt-13.3.73-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 157352
+          },
+          {
+            "name": "wheels/nvidia_cuda_cupti-13.0.85-py3-none-manylinux_2_25_x86_64.whl",
+            "size": 10715597
+          },
+          {
+            "name": "wheels/nvidia_cuda_nvcc-13.3.73-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 44942138
+          },
+          {
+            "name": "wheels/nvidia_cuda_nvdisasm-13.3.73-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 4782824
+          },
+          {
+            "name": "wheels/nvidia_cuda_nvrtc-13.0.88-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+            "size": 90215200
+          },
+          {
+            "name": "wheels/nvidia_cuda_runtime-13.0.96-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 2243632
+          },
+          {
+            "name": "wheels/nvidia_cudnn_cu13-9.20.0.48-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 366173588
+          },
+          {
+            "name": "wheels/nvidia_cudnn_frontend-1.27.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 4749917
+          },
+          {
+            "name": "wheels/nvidia_cufft-12.0.0.61-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 214085489
+          },
+          {
+            "name": "wheels/nvidia_cufile-1.15.1.6-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 1223672
+          },
+          {
+            "name": "wheels/nvidia_curand-10.4.0.35-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 59544258
+          },
+          {
+            "name": "wheels/nvidia_cusolver-12.0.4.66-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 200941980
+          },
+          {
+            "name": "wheels/nvidia_cusparse-12.6.3.3-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 145942937
+          },
+          {
+            "name": "wheels/nvidia_cusparselt_cu13-0.8.1-py3-none-manylinux2014_x86_64.whl",
+            "size": 170148586
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl-4.6.2-py3-none-any.whl",
+            "size": 10460
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_base-4.6.2-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 2824987
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_core-4.6.2-py3-none-any.whl",
+            "size": 772393
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_cu12-4.6.2-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 88454261
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_cu13-4.6.2-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 88036030
+          },
+          {
+            "name": "wheels/nvidia_ml_py-13.610.43-py3-none-any.whl",
+            "size": 53163
+          },
+          {
+            "name": "wheels/nvidia_nccl_cu13-2.29.7-py3-none-manylinux_2_18_x86_64.whl",
+            "size": 205976000
+          },
+          {
+            "name": "wheels/nvidia_nvjitlink-13.3.33-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+            "size": 40742423
+          },
+          {
+            "name": "wheels/nvidia_nvshmem_cu13-3.4.5-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 60412546
+          },
+          {
+            "name": "wheels/nvidia_nvtx-13.0.85-py3-none-manylinux1_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 148047
+          },
+          {
+            "name": "wheels/nvidia_nvvm-13.3.73-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+            "size": 69250424
+          },
+          {
+            "name": "wheels/nvtx-0.2.15-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 806187
+          },
+          {
+            "name": "wheels/openai-3.0.0-py3-none-any.whl",
+            "size": 1665775
+          },
+          {
+            "name": "wheels/openai_harmony-0.0.8-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 2953260
+          },
+          {
+            "name": "wheels/opencv_python_headless-5.0.0.93-cp37-abi3-manylinux_2_28_x86_64.whl",
+            "size": 61204038
+          },
+          {
+            "name": "wheels/opentelemetry_api-1.44.0-py3-none-any.whl",
+            "size": 60018
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp-1.44.0-py3-none-any.whl",
+            "size": 6727
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp_proto_common-1.44.0-py3-none-any.whl",
+            "size": 17045
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp_proto_grpc-1.44.0-py3-none-any.whl",
+            "size": 19624
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp_proto_http-1.44.0-py3-none-any.whl",
+            "size": 21850
+          },
+          {
+            "name": "wheels/opentelemetry_proto-1.44.0-py3-none-any.whl",
+            "size": 72483
+          },
+          {
+            "name": "wheels/opentelemetry_sdk-1.44.0-py3-none-any.whl",
+            "size": 137221
+          },
+          {
+            "name": "wheels/opentelemetry_semantic_conventions-0.65b0-py3-none-any.whl",
+            "size": 204645
+          },
+          {
+            "name": "wheels/opentelemetry_semantic_conventions_ai-0.5.1-py3-none-any.whl",
+            "size": 11250
+          },
+          {
+            "name": "wheels/outlines_core-0.2.14-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 2341426
+          },
+          {
+            "name": "wheels/packaging-26.3-py3-none-any.whl",
+            "size": 129956
+          },
+          {
+            "name": "wheels/partial_json_parser-0.2.1.1.post7-py3-none-any.whl",
+            "size": 10877
+          },
+          {
+            "name": "wheels/pillow-12.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 6940830
+          },
+          {
+            "name": "wheels/prometheus_client-0.26.0-py3-none-any.whl",
+            "size": 64494
+          },
+          {
+            "name": "wheels/prometheus_fastapi_instrumentator-8.1.0-py3-none-any.whl",
+            "size": 19649
+          },
+          {
+            "name": "wheels/propcache-0.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 61639
+          },
+          {
+            "name": "wheels/protobuf-6.33.6-cp39-abi3-manylinux2014_x86_64.whl",
+            "size": 323436
+          },
+          {
+            "name": "wheels/psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 155560
+          },
+          {
+            "name": "wheels/py_cpuinfo-9.0.0-py3-none-any.whl",
+            "size": 22335
+          },
+          {
+            "name": "wheels/pybase64-1.5.0-cp312-cp312-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 94681
+          },
+          {
+            "name": "wheels/pycountry-26.2.16-py3-none-any.whl",
+            "size": 8044600
+          },
+          {
+            "name": "wheels/pycparser-3.0-py3-none-any.whl",
+            "size": 48172
+          },
+          {
+            "name": "wheels/pydantic-2.13.4-py3-none-any.whl",
+            "size": 472262
+          },
+          {
+            "name": "wheels/pydantic_core-2.46.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 2094516
+          },
+          {
+            "name": "wheels/pydantic_extra_types-2.11.1-py3-none-any.whl",
+            "size": 79526
+          },
+          {
+            "name": "wheels/pydantic_settings-2.15.0-py3-none-any.whl",
+            "size": 69413
+          },
+          {
+            "name": "wheels/pygments-2.20.0-py3-none-any.whl",
+            "size": 1231151
+          },
+          {
+            "name": "wheels/pyjwt-2.13.0-py3-none-any.whl",
+            "size": 31274
+          },
+          {
+            "name": "wheels/python_dotenv-1.2.2-py3-none-any.whl",
+            "size": 22101
+          },
+          {
+            "name": "wheels/python_json_logger-4.1.0-py3-none-any.whl",
+            "size": 15021
+          },
+          {
+            "name": "wheels/python_multipart-0.0.32-py3-none-any.whl",
+            "size": 30042
+          },
+          {
+            "name": "wheels/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 807870
+          },
+          {
+            "name": "wheels/pyzmq-27.1.0-cp312-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 840995
+          },
+          {
+            "name": "wheels/quack_kernels-0.6.4-py3-none-any.whl",
+            "size": 728458
+          },
+          {
+            "name": "wheels/referencing-0.37.0-py3-none-any.whl",
+            "size": 26766
+          },
+          {
+            "name": "wheels/regex-2026.7.19-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 801798
+          },
+          {
+            "name": "wheels/requests-2.34.2-py3-none-any.whl",
+            "size": 73075
+          },
+          {
+            "name": "wheels/rich-15.0.0-py3-none-any.whl",
+            "size": 310654
+          },
+          {
+            "name": "wheels/rich_toolkit-0.20.3-py3-none-any.whl",
+            "size": 36195
+          },
+          {
+            "name": "wheels/rignore-0.8.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 927835
+          },
+          {
+            "name": "wheels/rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 366189
+          },
+          {
+            "name": "wheels/safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 516040
+          },
+          {
+            "name": "wheels/sentencepiece-0.2.2-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 1397736
+          },
+          {
+            "name": "wheels/sentry_sdk-2.68.0-py3-none-any.whl",
+            "size": 518670
+          },
+          {
+            "name": "wheels/setproctitle-1.3.7-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 32932
+          },
+          {
+            "name": "wheels/setuptools-80.10.2-py3-none-any.whl",
+            "size": 1064234
+          },
+          {
+            "name": "wheels/shellingham-1.5.4-py2.py3-none-any.whl",
+            "size": 9755
+          },
+          {
+            "name": "wheels/six-1.17.0-py2.py3-none-any.whl",
+            "size": 11050
+          },
+          {
+            "name": "wheels/sniffio-1.3.1-py3-none-any.whl",
+            "size": 10235
+          },
+          {
+            "name": "wheels/sse_starlette-3.4.8-py3-none-any.whl",
+            "size": 16516
+          },
+          {
+            "name": "wheels/starlette-1.6.0-py3-none-any.whl",
+            "size": 75969
+          },
+          {
+            "name": "wheels/supervisor-4.3.0-py2.py3-none-any.whl",
+            "size": 320736
+          },
+          {
+            "name": "wheels/sympy-1.14.0-py3-none-any.whl",
+            "size": 6299353
+          },
+          {
+            "name": "wheels/tabulate-0.10.0-py3-none-any.whl",
+            "size": 39814
+          },
+          {
+            "name": "wheels/tiktoken-0.13.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 1136523
+          },
+          {
+            "name": "wheels/tilelang-0.1.12-cp38-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 50501074
+          },
+          {
+            "name": "wheels/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 3274982
+          },
+          {
+            "name": "wheels/tokenspeed_mla-0.1.8-py3-none-manylinux_2_28_x86_64.whl",
+            "size": 755827
+          },
+          {
+            "name": "wheels/tokenspeed_triton-3.8.10.post20260721-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 87210295
+          },
+          {
+            "name": "wheels/torch-2.13.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 526605292
+          },
+          {
+            "name": "wheels/torch_c_dlpack_ext-0.1.5-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 897846
+          },
+          {
+            "name": "wheels/torchvision-0.28.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 7675040
+          },
+          {
+            "name": "wheels/tqdm-4.70.0-py3-none-any.whl",
+            "size": 80184
+          },
+          {
+            "name": "wheels/transformers-5.15.0-py3-none-any.whl",
+            "size": 11749280
+          },
+          {
+            "name": "wheels/triton-3.7.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 197719725
+          },
+          {
+            "name": "wheels/truststore-0.10.4-py3-none-any.whl",
+            "size": 18660
+          },
+          {
+            "name": "wheels/typer-0.27.1-py3-none-any.whl",
+            "size": 122874
+          },
+          {
+            "name": "wheels/typing_extensions-4.16.0-py3-none-any.whl",
+            "size": 45571
+          },
+          {
+            "name": "wheels/typing_inspection-0.4.4-py3-none-any.whl",
+            "size": 14750
+          },
+          {
+            "name": "wheels/urllib3-2.7.0-py3-none-any.whl",
+            "size": 131087
+          },
+          {
+            "name": "wheels/uvicorn-0.52.3-py3-none-any.whl",
+            "size": 79859
+          },
+          {
+            "name": "wheels/uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 4426307
+          },
+          {
+            "name": "wheels/vllm-0.27.2rc1.dev91+g1f7427bc0-cp38-abi3-manylinux_2_28_x86_64.whl",
+            "size": 314186529
+          },
+          {
+            "name": "wheels/watchfiles-1.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 456398
+          },
+          {
+            "name": "wheels/websockets-17.0.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 220150
+          },
+          {
+            "name": "wheels/xgrammar-0.2.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 44855110
+          },
+          {
+            "name": "wheels/yarl-1.24.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 109835
+          },
+          {
+            "name": "wheels/z3_solver-4.15.4.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 29268352
+          }
+        ],
+        "has_more_files": false,
+        "listing_error_message_present": false,
+        "metadata_accessible": true,
+        "metadata_scalar_fields": {
+          "title": "qwen38-vllm0272-cu130-wheelhouse-v1",
+          "subtitle": "",
+          "is_private": false
+        },
+        "pages_read": 2,
+        "dataset_metadata": {
+          "id": 11654954,
+          "ref": "nick2187/qwen38-vllm0272-cu130-wheelhouse-v1",
+          "current_version_number": 1,
+          "total_bytes": 4901033657,
+          "is_private": false,
+          "license_name": "Unknown"
+        },
+        "expected_vllm_wheel_present": true,
+        "expected_vllm_wheel_sha256": "5cbeedeb8266362ef935775c4c33203e4dab74e8da1649a977bae833df62304a",
+        "wheel_hash_verified_by_this_metadata_query": false
+      }
+    },
+    {
+      "expected_username": "zhuating",
+      "authenticated_username": "zhuating",
+      "identity_matches": true,
+      "checked_at_utc": "2026-10-20T11:53:41.852341+00:00",
+      "submission_limits": {
+        "num_today": 0,
+        "num_total": 8,
+        "num_allowed_now": 1,
+        "limited_by_total": false
+      },
+      "submissions": [
+        {
+          "ref": 57103498,
+          "status": "COMPLETE",
+          "public_score": "25.69",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-10-12T09:56:36.720000",
+          "url": "/code/ccjjllt/arc2-013-bounded-baseline?scriptVersionId=357613526"
+        },
+        {
+          "ref": 52379974,
+          "status": "COMPLETE",
+          "public_score": "27.92",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-05-06T07:44:23.877000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316972179"
+        },
+        {
+          "ref": 52267289,
+          "status": "COMPLETE",
+          "public_score": "29.72",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-05-02T16:27:45.827000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316064507"
+        },
+        {
+          "ref": 52166443,
+          "status": "COMPLETE",
+          "public_score": "28.19",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-29T11:41:33.787000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=315301517"
+        },
+        {
+          "ref": 52116910,
+          "status": "COMPLETE",
+          "public_score": "27.36",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-28T01:56:33.943000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314755063"
+        },
+        {
+          "ref": 52089422,
+          "status": "COMPLETE",
+          "public_score": "0.83",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-27T06:48:57.117000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314731536"
+        },
+        {
+          "ref": 52072735,
+          "status": "COMPLETE",
+          "public_score": "30.14",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-26T17:02:33.323000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319"
+        },
+        {
+          "ref": 51954464,
+          "status": "COMPLETE",
+          "public_score": "25.69",
+          "team_name": "ccjjllt",
+          "submitted_by_ref": "ccjjllt",
+          "date": "2026-04-23T02:35:59.440000",
+          "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=313752727"
+        }
+      ],
+      "pending_or_scoring_refs": [],
+      "all_listed_submissions_complete": true,
+      "competition": {
+        "id": 133469,
+        "ref": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2",
+        "user_has_entered": true,
+        "user_rank": 1049,
+        "max_daily_submissions": 1,
+        "max_team_size": 5,
+        "is_kernels_submissions_only": true,
+        "submissions_disabled": false
+      },
+      "team_membership": {
+        "status": "not_directly_exposed_by_queried_SDK_endpoints",
+        "current_team_id": null,
+        "current_team_members": null
+      },
+      "model_access": {
+        "status": "metadata_and_version_file_listing_accessible",
+        "instance": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8",
+        "requested_version": 1,
+        "instance_id": 730092,
+        "current_version_id": 966079,
+        "current_version_number": 1,
+        "license_name": "Apache 2.0",
+        "total_uncompressed_bytes": 30890069847,
+        "files": [
+          {
+            "name": ".gitattributes",
+            "size": 1570
+          },
+          {
+            "name": "LICENSE",
+            "size": 11544
+          },
+          {
+            "name": "README.md",
+            "size": 65249
+          },
+          {
+            "name": "chat_template.jinja",
+            "size": 8952
+          },
+          {
+            "name": "config.json",
+            "size": 51350
+          },
+          {
+            "name": "generation_config.json",
+            "size": 202
+          },
+          {
+            "name": "merges.txt",
+            "size": 3353259
+          },
+          {
+            "name": "model-layers-00001-of-00016.safetensors",
+            "size": 1523910096
+          },
+          {
+            "name": "model-layers-00002-of-00016.safetensors",
+            "size": 1523910096
+          },
+          {
+            "name": "model-layers-00003-of-00016.safetensors",
+            "size": 1523910128
+          },
+          {
+            "name": "model-layers-00004-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00005-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00006-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00007-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00008-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00009-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00010-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00011-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00012-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00013-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00014-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00015-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model-layers-00016-of-00016.safetensors",
+            "size": 1523910176
+          },
+          {
+            "name": "model.safetensors.index.json",
+            "size": 159995
+          },
+          {
+            "name": "mtp.safetensors",
+            "size": 477202224
+          },
+          {
+            "name": "outside.safetensors",
+            "size": 6007102112
+          },
+          {
+            "name": "preprocessor_config.json",
+            "size": 390
+          },
+          {
+            "name": "tokenizer.json",
+            "size": 12809320
+          },
+          {
+            "name": "tokenizer_config.json",
+            "size": 17928
+          },
+          {
+            "name": "video_preprocessor_config.json",
+            "size": 385
+          },
+          {
+            "name": "vocab.json",
+            "size": 6722759
+          }
+        ],
+        "has_more_files": false
+      },
+      "wheelhouse_access": {
+        "status": "version_file_listing_accessible",
+        "dataset": "nick2187/qwen38-vllm0272-cu130-wheelhouse-v1",
+        "requested_version": 1,
+        "files": [
+          {
+            "name": "QWEN38_VLLM_MANIFEST.json",
+            "size": 39718
+          },
+          {
+            "name": "README.md",
+            "size": 238
+          },
+          {
+            "name": "THIRD_PARTY_NOTICE.md",
+            "size": 276
+          },
+          {
+            "name": "install_qwen38_vllm.py",
+            "size": 1003
+          },
+          {
+            "name": "requirements-qwen38-runtime.txt",
+            "size": 3900
+          },
+          {
+            "name": "wheels/aiohappyeyeballs-2.7.1-py3-none-any.whl",
+            "size": 15038
+          },
+          {
+            "name": "wheels/aiohttp-3.14.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 1792122
+          },
+          {
+            "name": "wheels/aiosignal-1.4.0-py3-none-any.whl",
+            "size": 7490
+          },
+          {
+            "name": "wheels/annotated_doc-0.0.5-py3-none-any.whl",
+            "size": 5302
+          },
+          {
+            "name": "wheels/annotated_types-0.8.0-py3-none-any.whl",
+            "size": 13427
+          },
+          {
+            "name": "wheels/anthropic-0.122.0-py3-none-any.whl",
+            "size": 1041853
+          },
+          {
+            "name": "wheels/anyio-4.14.2-py3-none-any.whl",
+            "size": 125813
+          },
+          {
+            "name": "wheels/apache_tvm_ffi-0.1.11-cp312-abi3-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 2697683
+          },
+          {
+            "name": "wheels/astor-0.8.1-py2.py3-none-any.whl",
+            "size": 27488
+          },
+          {
+            "name": "wheels/attrs-26.1.0-py3-none-any.whl",
+            "size": 67548
+          },
+          {
+            "name": "wheels/blake3-1.0.9-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 383851
+          },
+          {
+            "name": "wheels/cachetools-7.1.7-py3-none-any.whl",
+            "size": 16830
+          },
+          {
+            "name": "wheels/cbor2-6.1.4-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 461193
+          },
+          {
+            "name": "wheels/certifi-2026.7.22-py3-none-any.whl",
+            "size": 136983
+          },
+          {
+            "name": "wheels/cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 221822
+          },
+          {
+            "name": "wheels/charset_normalizer-3.5.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 247547
+          },
+          {
+            "name": "wheels/click-8.4.2-py3-none-any.whl",
+            "size": 119243
+          },
+          {
+            "name": "wheels/cloudpickle-3.1.2-py3-none-any.whl",
+            "size": 22228
+          },
+          {
+            "name": "wheels/compressed_tensors-0.17.0-py3-none-any.whl",
+            "size": 211714
+          },
+          {
+            "name": "wheels/cryptography-50.0.0-cp311-abi3-manylinux_2_34_x86_64.whl",
+            "size": 4734462
+          },
+          {
+            "name": "wheels/cuda_bindings-13.3.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 6657965
+          },
+          {
+            "name": "wheels/cuda_core-1.0.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 5106023
+          },
+          {
+            "name": "wheels/cuda_pathfinder-1.6.0-py3-none-any.whl",
+            "size": 54591
+          },
+          {
+            "name": "wheels/cuda_python-13.3.1-py3-none-any.whl",
+            "size": 8295
+          },
+          {
+            "name": "wheels/cuda_tile-1.5.0-cp312-cp312-manylinux2014_x86_64.whl",
+            "size": 324990
+          },
+          {
+            "name": "wheels/cuda_toolkit-13.0.3.0-py2.py3-none-any.whl",
+            "size": 2512
+          },
+          {
+            "name": "wheels/depyf-0.20.0-py3-none-any.whl",
+            "size": 39381
+          },
+          {
+            "name": "wheels/detect_installer-0.1.0-py3-none-any.whl",
+            "size": 4539
+          },
+          {
+            "name": "wheels/dill-0.4.1-py3-none-any.whl",
+            "size": 120019
+          },
+          {
+            "name": "wheels/distro-1.9.0-py3-none-any.whl",
+            "size": 20277
+          },
+          {
+            "name": "wheels/dnspython-2.8.0-py3-none-any.whl",
+            "size": 331094
+          },
+          {
+            "name": "wheels/docstring_parser-0.18.0-py3-none-any.whl",
+            "size": 22484
+          },
+          {
+            "name": "wheels/einops-0.8.2-py3-none-any.whl",
+            "size": 65638
+          },
+          {
+            "name": "wheels/email_validator-2.3.0-py3-none-any.whl",
+            "size": 35604
+          },
+          {
+            "name": "wheels/fastapi-0.136.3-py3-none-any.whl",
+            "size": 117481
+          },
+          {
+            "name": "wheels/fastapi_cli-0.0.32-py3-none-any.whl",
+            "size": 14670
+          },
+          {
+            "name": "wheels/fastapi_cloud_cli-0.23.0-py3-none-any.whl",
+            "size": 78058
+          },
+          {
+            "name": "wheels/fastar-0.11.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 819382
+          },
+          {
+            "name": "wheels/fastsafetensors-0.3.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 1915478
+          },
+          {
+            "name": "wheels/filelock-3.32.3-py3-none-any.whl",
+            "size": 98901
+          },
+          {
+            "name": "wheels/flashinfer_cubin-0.6.16.post3-py3-none-any.whl",
+            "size": 1062693258
+          },
+          {
+            "name": "wheels/flashinfer_python-0.6.16.post3-py3-none-any.whl",
+            "size": 15836034
+          },
+          {
+            "name": "wheels/frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 242411
+          },
+          {
+            "name": "wheels/fsspec-2026.7.0-py3-none-any.whl",
+            "size": 206583
+          },
+          {
+            "name": "wheels/googleapis_common_protos-1.75.1-py3-none-any.whl",
+            "size": 300626
+          },
+          {
+            "name": "wheels/grpcio-1.83.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 7040616
+          },
+          {
+            "name": "wheels/h11-0.16.0-py3-none-any.whl",
+            "size": 37515
+          },
+          {
+            "name": "wheels/hf_xet-1.6.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 4464663
+          },
+          {
+            "name": "wheels/httpcore-1.0.9-py3-none-any.whl",
+            "size": 78784
+          },
+          {
+            "name": "wheels/httpcore2-2.10.0-py3-none-any.whl",
+            "size": 83000
+          },
+          {
+            "name": "wheels/httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 523851
+          },
+          {
+            "name": "wheels/httpx-0.28.1-py3-none-any.whl",
+            "size": 73517
+          },
+          {
+            "name": "wheels/httpx2-2.10.0-py3-none-any.whl",
+            "size": 94355
+          },
+          {
+            "name": "wheels/huggingface_hub-1.27.0-py3-none-any.whl",
+            "size": 784926
+          },
+          {
+            "name": "wheels/humming_kernels-0.1.12-py3-none-manylinux_2_28_x86_64.whl",
+            "size": 322656
+          },
+          {
+            "name": "wheels/idna-3.18-py3-none-any.whl",
+            "size": 65455
+          },
+          {
+            "name": "wheels/ijson-3.5.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 149848
+          },
+          {
+            "name": "wheels/interegular-0.3.3-py37-none-any.whl",
+            "size": 23635
+          },
+          {
+            "name": "wheels/jinja2-3.1.6-py3-none-any.whl",
+            "size": 134899
+          },
+          {
+            "name": "wheels/jiter-0.16.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 343805
+          },
+          {
+            "name": "wheels/jmespath-1.1.0-py3-none-any.whl",
+            "size": 20419
+          },
+          {
+            "name": "wheels/jsonschema-4.26.0-py3-none-any.whl",
+            "size": 90630
+          },
+          {
+            "name": "wheels/jsonschema_specifications-2025.9.1-py3-none-any.whl",
+            "size": 18437
+          },
+          {
+            "name": "wheels/lark-1.2.2-py3-none-any.whl",
+            "size": 111036
+          },
+          {
+            "name": "wheels/llguidance-1.7.6-cp39-abi3-manylinux_2_31_x86_64.whl",
+            "size": 3074809
+          },
+          {
+            "name": "wheels/llvmlite-0.47.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 56275178
+          },
+          {
+            "name": "wheels/lm_format_enforcer-0.11.3-py3-none-any.whl",
+            "size": 45418
+          },
+          {
+            "name": "wheels/loguru-0.7.3-py3-none-any.whl",
+            "size": 61595
+          },
+          {
+            "name": "wheels/markdown_it_py-4.2.0-py3-none-any.whl",
+            "size": 91687
+          },
+          {
+            "name": "wheels/markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 22947
+          },
+          {
+            "name": "wheels/mcp-2.0.0-py3-none-any.whl",
+            "size": 349980
+          },
+          {
+            "name": "wheels/mcp_types-2.0.0-py3-none-any.whl",
+            "size": 69649
+          },
+          {
+            "name": "wheels/mdurl-0.1.2-py3-none-any.whl",
+            "size": 9979
+          },
+          {
+            "name": "wheels/mistral_common-1.11.7-py3-none-any.whl",
+            "size": 6553583
+          },
+          {
+            "name": "wheels/ml_dtypes-0.6.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 409890
+          },
+          {
+            "name": "wheels/model_hosting_container_standards-0.1.16-py3-none-any.whl",
+            "size": 125666
+          },
+          {
+            "name": "wheels/mpmath-1.3.0-py3-none-any.whl",
+            "size": 536198
+          },
+          {
+            "name": "wheels/msgspec-0.21.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 225025
+          },
+          {
+            "name": "wheels/multidict-6.7.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 256322
+          },
+          {
+            "name": "wheels/nccl4py-0.4.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 2897696
+          },
+          {
+            "name": "wheels/networkx-3.6.1-py3-none-any.whl",
+            "size": 2068504
+          },
+          {
+            "name": "wheels/ninja-1.13.0-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 180716
+          },
+          {
+            "name": "wheels/numba-0.65.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 3801411
+          },
+          {
+            "name": "wheels/numpy-2.3.5-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 16606086
+          },
+          {
+            "name": "wheels/nvidia_cublas-13.1.1.3-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 423138758
+          },
+          {
+            "name": "wheels/nvidia_cuda_cccl-13.3.3.4.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 3454034
+          },
+          {
+            "name": "wheels/nvidia_cuda_crt-13.3.73-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 157352
+          },
+          {
+            "name": "wheels/nvidia_cuda_cupti-13.0.85-py3-none-manylinux_2_25_x86_64.whl",
+            "size": 10715597
+          },
+          {
+            "name": "wheels/nvidia_cuda_nvcc-13.3.73-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 44942138
+          },
+          {
+            "name": "wheels/nvidia_cuda_nvdisasm-13.3.73-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 4782824
+          },
+          {
+            "name": "wheels/nvidia_cuda_nvrtc-13.0.88-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+            "size": 90215200
+          },
+          {
+            "name": "wheels/nvidia_cuda_runtime-13.0.96-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 2243632
+          },
+          {
+            "name": "wheels/nvidia_cudnn_cu13-9.20.0.48-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 366173588
+          },
+          {
+            "name": "wheels/nvidia_cudnn_frontend-1.27.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 4749917
+          },
+          {
+            "name": "wheels/nvidia_cufft-12.0.0.61-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 214085489
+          },
+          {
+            "name": "wheels/nvidia_cufile-1.15.1.6-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 1223672
+          },
+          {
+            "name": "wheels/nvidia_curand-10.4.0.35-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 59544258
+          },
+          {
+            "name": "wheels/nvidia_cusolver-12.0.4.66-py3-none-manylinux_2_27_x86_64.whl",
+            "size": 200941980
+          },
+          {
+            "name": "wheels/nvidia_cusparse-12.6.3.3-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 145942937
+          },
+          {
+            "name": "wheels/nvidia_cusparselt_cu13-0.8.1-py3-none-manylinux2014_x86_64.whl",
+            "size": 170148586
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl-4.6.2-py3-none-any.whl",
+            "size": 10460
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_base-4.6.2-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 2824987
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_core-4.6.2-py3-none-any.whl",
+            "size": 772393
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_cu12-4.6.2-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 88454261
+          },
+          {
+            "name": "wheels/nvidia_cutlass_dsl_libs_cu13-4.6.2-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 88036030
+          },
+          {
+            "name": "wheels/nvidia_ml_py-13.610.43-py3-none-any.whl",
+            "size": 53163
+          },
+          {
+            "name": "wheels/nvidia_nccl_cu13-2.29.7-py3-none-manylinux_2_18_x86_64.whl",
+            "size": 205976000
+          },
+          {
+            "name": "wheels/nvidia_nvjitlink-13.3.33-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+            "size": 40742423
+          },
+          {
+            "name": "wheels/nvidia_nvshmem_cu13-3.4.5-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "size": 60412546
+          },
+          {
+            "name": "wheels/nvidia_nvtx-13.0.85-py3-none-manylinux1_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 148047
+          },
+          {
+            "name": "wheels/nvidia_nvvm-13.3.73-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+            "size": 69250424
+          },
+          {
+            "name": "wheels/nvtx-0.2.15-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 806187
+          },
+          {
+            "name": "wheels/openai-3.0.0-py3-none-any.whl",
+            "size": 1665775
+          },
+          {
+            "name": "wheels/openai_harmony-0.0.8-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 2953260
+          },
+          {
+            "name": "wheels/opencv_python_headless-5.0.0.93-cp37-abi3-manylinux_2_28_x86_64.whl",
+            "size": 61204038
+          },
+          {
+            "name": "wheels/opentelemetry_api-1.44.0-py3-none-any.whl",
+            "size": 60018
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp-1.44.0-py3-none-any.whl",
+            "size": 6727
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp_proto_common-1.44.0-py3-none-any.whl",
+            "size": 17045
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp_proto_grpc-1.44.0-py3-none-any.whl",
+            "size": 19624
+          },
+          {
+            "name": "wheels/opentelemetry_exporter_otlp_proto_http-1.44.0-py3-none-any.whl",
+            "size": 21850
+          },
+          {
+            "name": "wheels/opentelemetry_proto-1.44.0-py3-none-any.whl",
+            "size": 72483
+          },
+          {
+            "name": "wheels/opentelemetry_sdk-1.44.0-py3-none-any.whl",
+            "size": 137221
+          },
+          {
+            "name": "wheels/opentelemetry_semantic_conventions-0.65b0-py3-none-any.whl",
+            "size": 204645
+          },
+          {
+            "name": "wheels/opentelemetry_semantic_conventions_ai-0.5.1-py3-none-any.whl",
+            "size": 11250
+          },
+          {
+            "name": "wheels/outlines_core-0.2.14-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 2341426
+          },
+          {
+            "name": "wheels/packaging-26.3-py3-none-any.whl",
+            "size": 129956
+          },
+          {
+            "name": "wheels/partial_json_parser-0.2.1.1.post7-py3-none-any.whl",
+            "size": 10877
+          },
+          {
+            "name": "wheels/pillow-12.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 6940830
+          },
+          {
+            "name": "wheels/prometheus_client-0.26.0-py3-none-any.whl",
+            "size": 64494
+          },
+          {
+            "name": "wheels/prometheus_fastapi_instrumentator-8.1.0-py3-none-any.whl",
+            "size": 19649
+          },
+          {
+            "name": "wheels/propcache-0.5.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 61639
+          },
+          {
+            "name": "wheels/protobuf-6.33.6-cp39-abi3-manylinux2014_x86_64.whl",
+            "size": 323436
+          },
+          {
+            "name": "wheels/psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 155560
+          },
+          {
+            "name": "wheels/py_cpuinfo-9.0.0-py3-none-any.whl",
+            "size": 22335
+          },
+          {
+            "name": "wheels/pybase64-1.5.0-cp312-cp312-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 94681
+          },
+          {
+            "name": "wheels/pycountry-26.2.16-py3-none-any.whl",
+            "size": 8044600
+          },
+          {
+            "name": "wheels/pycparser-3.0-py3-none-any.whl",
+            "size": 48172
+          },
+          {
+            "name": "wheels/pydantic-2.13.4-py3-none-any.whl",
+            "size": 472262
+          },
+          {
+            "name": "wheels/pydantic_core-2.46.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 2094516
+          },
+          {
+            "name": "wheels/pydantic_extra_types-2.11.1-py3-none-any.whl",
+            "size": 79526
+          },
+          {
+            "name": "wheels/pydantic_settings-2.15.0-py3-none-any.whl",
+            "size": 69413
+          },
+          {
+            "name": "wheels/pygments-2.20.0-py3-none-any.whl",
+            "size": 1231151
+          },
+          {
+            "name": "wheels/pyjwt-2.13.0-py3-none-any.whl",
+            "size": 31274
+          },
+          {
+            "name": "wheels/python_dotenv-1.2.2-py3-none-any.whl",
+            "size": 22101
+          },
+          {
+            "name": "wheels/python_json_logger-4.1.0-py3-none-any.whl",
+            "size": 15021
+          },
+          {
+            "name": "wheels/python_multipart-0.0.32-py3-none-any.whl",
+            "size": 30042
+          },
+          {
+            "name": "wheels/pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 807870
+          },
+          {
+            "name": "wheels/pyzmq-27.1.0-cp312-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 840995
+          },
+          {
+            "name": "wheels/quack_kernels-0.6.4-py3-none-any.whl",
+            "size": 728458
+          },
+          {
+            "name": "wheels/referencing-0.37.0-py3-none-any.whl",
+            "size": 26766
+          },
+          {
+            "name": "wheels/regex-2026.7.19-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 801798
+          },
+          {
+            "name": "wheels/requests-2.34.2-py3-none-any.whl",
+            "size": 73075
+          },
+          {
+            "name": "wheels/rich-15.0.0-py3-none-any.whl",
+            "size": 310654
+          },
+          {
+            "name": "wheels/rich_toolkit-0.20.3-py3-none-any.whl",
+            "size": 36195
+          },
+          {
+            "name": "wheels/rignore-0.8.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 927835
+          },
+          {
+            "name": "wheels/rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 366189
+          },
+          {
+            "name": "wheels/safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 516040
+          },
+          {
+            "name": "wheels/sentencepiece-0.2.2-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 1397736
+          },
+          {
+            "name": "wheels/sentry_sdk-2.68.0-py3-none-any.whl",
+            "size": 518670
+          },
+          {
+            "name": "wheels/setproctitle-1.3.7-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 32932
+          },
+          {
+            "name": "wheels/setuptools-80.10.2-py3-none-any.whl",
+            "size": 1064234
+          },
+          {
+            "name": "wheels/shellingham-1.5.4-py2.py3-none-any.whl",
+            "size": 9755
+          },
+          {
+            "name": "wheels/six-1.17.0-py2.py3-none-any.whl",
+            "size": 11050
+          },
+          {
+            "name": "wheels/sniffio-1.3.1-py3-none-any.whl",
+            "size": 10235
+          },
+          {
+            "name": "wheels/sse_starlette-3.4.8-py3-none-any.whl",
+            "size": 16516
+          },
+          {
+            "name": "wheels/starlette-1.6.0-py3-none-any.whl",
+            "size": 75969
+          },
+          {
+            "name": "wheels/supervisor-4.3.0-py2.py3-none-any.whl",
+            "size": 320736
+          },
+          {
+            "name": "wheels/sympy-1.14.0-py3-none-any.whl",
+            "size": 6299353
+          },
+          {
+            "name": "wheels/tabulate-0.10.0-py3-none-any.whl",
+            "size": 39814
+          },
+          {
+            "name": "wheels/tiktoken-0.13.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 1136523
+          },
+          {
+            "name": "wheels/tilelang-0.1.12-cp38-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 50501074
+          },
+          {
+            "name": "wheels/tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 3274982
+          },
+          {
+            "name": "wheels/tokenspeed_mla-0.1.8-py3-none-manylinux_2_28_x86_64.whl",
+            "size": 755827
+          },
+          {
+            "name": "wheels/tokenspeed_triton-3.8.10.post20260721-cp312-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 87210295
+          },
+          {
+            "name": "wheels/torch-2.13.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 526605292
+          },
+          {
+            "name": "wheels/torch_c_dlpack_ext-0.1.5-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 897846
+          },
+          {
+            "name": "wheels/torchvision-0.28.0-cp312-cp312-manylinux_2_28_x86_64.whl",
+            "size": 7675040
+          },
+          {
+            "name": "wheels/tqdm-4.70.0-py3-none-any.whl",
+            "size": 80184
+          },
+          {
+            "name": "wheels/transformers-5.15.0-py3-none-any.whl",
+            "size": 11749280
+          },
+          {
+            "name": "wheels/triton-3.7.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 197719725
+          },
+          {
+            "name": "wheels/truststore-0.10.4-py3-none-any.whl",
+            "size": 18660
+          },
+          {
+            "name": "wheels/typer-0.27.1-py3-none-any.whl",
+            "size": 122874
+          },
+          {
+            "name": "wheels/typing_extensions-4.16.0-py3-none-any.whl",
+            "size": 45571
+          },
+          {
+            "name": "wheels/typing_inspection-0.4.4-py3-none-any.whl",
+            "size": 14750
+          },
+          {
+            "name": "wheels/urllib3-2.7.0-py3-none-any.whl",
+            "size": 131087
+          },
+          {
+            "name": "wheels/uvicorn-0.52.3-py3-none-any.whl",
+            "size": 79859
+          },
+          {
+            "name": "wheels/uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 4426307
+          },
+          {
+            "name": "wheels/vllm-0.27.2rc1.dev91+g1f7427bc0-cp38-abi3-manylinux_2_28_x86_64.whl",
+            "size": 314186529
+          },
+          {
+            "name": "wheels/watchfiles-1.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 456398
+          },
+          {
+            "name": "wheels/websockets-17.0.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+            "size": 220150
+          },
+          {
+            "name": "wheels/xgrammar-0.2.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 44855110
+          },
+          {
+            "name": "wheels/yarl-1.24.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+            "size": 109835
+          },
+          {
+            "name": "wheels/z3_solver-4.15.4.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+            "size": 29268352
+          }
+        ],
+        "has_more_files": false,
+        "listing_error_message_present": false,
+        "metadata_accessible": true,
+        "metadata_scalar_fields": {
+          "title": "qwen38-vllm0272-cu130-wheelhouse-v1",
+          "subtitle": "",
+          "is_private": false
+        },
+        "pages_read": 2,
+        "dataset_metadata": {
+          "id": 11654954,
+          "ref": "nick2187/qwen38-vllm0272-cu130-wheelhouse-v1",
+          "current_version_number": 1,
+          "total_bytes": 4901033657,
+          "is_private": false,
+          "license_name": "Unknown"
+        },
+        "expected_vllm_wheel_present": true,
+        "expected_vllm_wheel_sha256": "5cbeedeb8266362ef935775c4c33203e4dab74e8da1649a977bae833df62304a",
+        "wheel_hash_verified_by_this_metadata_query": false
+      }
+    }
+  ],
+  "shared_history": {
+    "all_four_queries_succeeded": true,
+    "all_four_submission_ref_sets_identical": true,
+    "submission_refs": [
+      51954464,
+      52072735,
+      52089422,
+      52116910,
+      52166443,
+      52267289,
+      52379974,
+      57103498
+    ],
+    "note": "Matching authorized team-submission views and team-named limits are evidence of a shared submission history, but queried SDK responses do not directly expose current team ID or complete membership. Do not infer a verified membership roster."
+  },
+  "final_zhuating_readiness": {
+    "status": "account_is_entered_with_available_submission_slot_and_asset_metadata_access; final_saved_version_still_required",
+    "actual_code_submission_not_called": true,
+    "final_notebook_version_not_yet_created": true,
+    "user_has_entered": true,
+    "num_allowed_now": 1,
+    "pending_or_scoring_refs": [],
+    "current_team_id_verified": false,
+    "complete_team_roster_verified": false,
+    "shared_submission_history_verified": true,
+    "limitation": "These read-only checks support preparing the final version on zhuating, but do not exercise CreateCodeSubmission or directly prove current team membership. Recheck the final version ownership/access and live limits before the single submit call."
+  },
+  "metadata_limit": "Asset listing access does not prove a future Notebook mounted exact files successfully; retain actual runtime model/wheel hashes and mount checks. Dataset metadata is not pinned by a source slug alone.",
+  "metadata_pagination_completed_at_utc": "2026-10-20T11:55:08.093757+00:00"
+}

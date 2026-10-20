@@ -1,0 +1,83 @@
+{
+  "requested_at_utc": "2026-10-20T15:28:57.054123+00:00",
+  "competition": "arc-prize-2026-arc-agi-2",
+  "authenticated_username": "ccjjllt",
+  "kernel_ref": "ccjjllt/arc2-020-deep-direct-submission",
+  "kernel_version": 1,
+  "script_version_id": 360461153,
+  "file_name": "submission.json",
+  "purpose": "First Qwen3.8-27B competition scoring experiment; not a claim of exceeding historical 30.14",
+  "notebook_sha256": "10d897e38a7563fabe1246542b903c12344f672ffad20481db808413975c3783",
+  "C24_scored_before_create": false,
+  "preflight": {
+    "num_today": 0,
+    "num_total": 8,
+    "num_allowed_now": 1,
+    "pending_or_scoring": [],
+    "prior_refs": [
+      57103498,
+      52379974,
+      52267289,
+      52166443,
+      52116910,
+      52089422,
+      52072735,
+      51954464
+    ]
+  },
+  "stage": "submission_list_verified",
+  "final_selection_manually_modified": false,
+  "response": {
+    "ref": 57443913
+  },
+  "response_received_at_utc": "2026-10-20T15:29:00.508446+00:00",
+  "verification": {
+    "verified_at_utc": "2026-10-20T15:30:18.742932+00:00",
+    "direct_submission": {
+      "ref": 57443913,
+      "url": "/submissions/57443913/57443913.raw",
+      "public_score": "",
+      "private_score": "",
+      "error_description": "",
+      "date": "2026-10-20 15:28:59.223000",
+      "team_name": "ccjjllt",
+      "submitted_by_ref": "ccjjllt",
+      "status": "PENDING"
+    },
+    "competition_list_submission": {
+      "ref": 57443913,
+      "url": "/code/ccjjllt/arc2-020-deep-direct-submission?scriptVersionId=360461153",
+      "public_score": "",
+      "private_score": "",
+      "error_description": "",
+      "date": "2026-10-20 15:28:59.223000",
+      "team_name": "ccjjllt",
+      "submitted_by_ref": "ccjjllt",
+      "status": "PENDING"
+    },
+    "ref_seen_in_competition_list": true,
+    "script_version_link_matches": true,
+    "historical_30_14_ref_still_listed": true,
+    "final_selection_manually_modified": false
+  },
+  "latest_status_check": {
+    "checked_at_utc": "2026-10-20T15:51:36.568383+00:00",
+    "authenticated_username": "ccjjllt",
+    "ref": 57443913,
+    "status": "PENDING",
+    "public_score": null,
+    "error_description": null,
+    "url": "/submissions/57443913/57443913.raw",
+    "script_version_id_from_url": null,
+    "method": "official SDK get_submission (read-only; raw output not accessed)"
+  },
+  "final_handoff_status_check": {
+    "checked_at_utc": "2026-10-20T15:59:07.006584+00:00",
+    "ref": 57443913,
+    "status": "PENDING",
+    "public_score": "",
+    "private_score": "",
+    "error_description": "",
+    "source": "official SDK get_submission; no create call"
+  }
+}
