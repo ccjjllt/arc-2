@@ -8,7 +8,7 @@
 
 历史试提交：[用户指定 Notebook 版本 314617319](https://www.kaggle.com/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319)。用户说明 30.14 分来自未修改的公开方案复制提交，不作为自主研究效果，也不限定后续方向。
 
-**当前入口（2026-10-19）**：[018计划](docs/plan/018-f291-feedback-and-constrained-generation.md)为唯一执行入口：A线v4已推RUNNING（teammateb身份，含看门狗）；探针已验平台正常；B线驱动就绪、B-verify待推。主C6未动。
+**当前入口（2026-10-20）**：[018计划](docs/plan/018-f291-feedback-and-constrained-generation.md)：A线v6成功——F-fix在291拿下旧组合没有的exact，门控开+4（协议/预算/身份待定）；B-verify待推。主C6未动。
 
 [012实际进展](docs/progress/012-kernel-program-completion.md)记录上一轮：K短探针不采用快速后端；P-v2四次均3072 token截断，没有完整程序或实际执行，D/L各0/2，已按预定止损结束。历史配额快照不替代013的最新查询。
 

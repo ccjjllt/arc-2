@@ -1,0 +1,947 @@
+[01:27:41] alive phase=wheelcheck
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 1167 in _wait_for_tstate_lock
+  File "/usr/lib/python3.12/threading.py", line 1151 in join
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 372 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:28:41] alive phase=wheelcheck
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 94 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 1167 in _wait_for_tstate_lock
+  File "/usr/lib/python3.12/threading.py", line 1151 in join
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 372 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:29:41] alive phase=wheelcheck
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 1167 in _wait_for_tstate_lock
+  File "/usr/lib/python3.12/threading.py", line 1151 in join
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 372 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:30:41] alive phase=wheelcheck
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 1167 in _wait_for_tstate_lock
+  File "/usr/lib/python3.12/threading.py", line 1151 in join
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 372 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:31:41] alive phase=wheelcheck
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 1167 in _wait_for_tstate_lock
+  File "/usr/lib/python3.12/threading.py", line 1151 in join
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 372 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:32:41] alive phase=pip-req
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/selectors.py", line 415 in select
+  File "/usr/lib/python3.12/subprocess.py", line 2115 in _communicate
+  File "/usr/lib/python3.12/subprocess.py", line 1209 in communicate
+  File "/usr/lib/python3.12/subprocess.py", line 550 in run
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 87 in sh
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 401 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:33:41] alive phase=pip-req
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/selectors.py", line 415 in select
+  File "/usr/lib/python3.12/subprocess.py", line 2115 in _communicate
+  File "/usr/lib/python3.12/subprocess.py", line 1209 in communicate
+  File "/usr/lib/python3.12/subprocess.py", line 550 in run
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 87 in sh
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 401 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:34:41] alive phase=pip-req
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/selectors.py", line 415 in select
+  File "/usr/lib/python3.12/subprocess.py", line 2115 in _communicate
+  File "/usr/lib/python3.12/subprocess.py", line 1209 in communicate
+  File "/usr/lib/python3.12/subprocess.py", line 550 in run
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 87 in sh
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 401 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:35:41] alive phase=pip-req
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/selectors.py", line 415 in select
+  File "/usr/lib/python3.12/subprocess.py", line 2115 in _communicate
+  File "/usr/lib/python3.12/subprocess.py", line 1209 in communicate
+  File "/usr/lib/python3.12/subprocess.py", line 550 in run
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 87 in sh
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 401 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:36:41] alive phase=pip-req
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/selectors.py", line 415 in select
+  File "/usr/lib/python3.12/subprocess.py", line 2115 in _communicate
+  File "/usr/lib/python3.12/subprocess.py", line 1209 in communicate
+  File "/usr/lib/python3.12/subprocess.py", line 550 in run
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 87 in sh
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 401 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:37:41] alive phase=pip-req
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/selectors.py", line 415 in select
+  File "/usr/lib/python3.12/subprocess.py", line 2115 in _communicate
+  File "/usr/lib/python3.12/subprocess.py", line 1209 in communicate
+  File "/usr/lib/python3.12/subprocess.py", line 550 in run
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 87 in sh
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 401 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:38:41] alive phase=pip-req
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/selectors.py", line 415 in select
+  File "/usr/lib/python3.12/subprocess.py", line 2115 in _communicate
+  File "/usr/lib/python3.12/subprocess.py", line 1209 in communicate
+  File "/usr/lib/python3.12/subprocess.py", line 550 in run
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 87 in sh
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 401 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:39:41] alive phase=import
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/selectors.py", line 415 in select
+  File "/usr/lib/python3.12/subprocess.py", line 2115 in _communicate
+  File "/usr/lib/python3.12/subprocess.py", line 1209 in communicate
+  File "/usr/lib/python3.12/subprocess.py", line 550 in run
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 87 in sh
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 426 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:40:41] alive phase=template
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 148 in start_server
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 451 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:41:41] alive phase=template
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 148 in start_server
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 451 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:42:41] alive phase=template
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 94 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 148 in start_server
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 451 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:43:41] alive phase=template
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 148 in start_server
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 451 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:44:41] alive phase=template
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 148 in start_server
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 451 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:45:41] alive phase=template
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 148 in start_server
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 451 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:46:41] alive phase=calls
+Thread 0x00007bf31654e6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf316d4f6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3175506c0 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 359 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 178 in gpu_sampler
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 243 in as_completed
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 313 in chat_wave
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 510 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:47:41] alive phase=calls
+Thread 0x00007bf31654e6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf316d4f6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3175506c0 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 359 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 178 in gpu_sampler
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 243 in as_completed
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 313 in chat_wave
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 510 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:48:41] alive phase=calls
+Thread 0x00007bf31654e6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf316d4f6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3175506c0 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 359 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 178 in gpu_sampler
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 243 in as_completed
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 313 in chat_wave
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 510 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:49:41] alive phase=calls
+Thread 0x00007bf31654e6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf316d4f6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3175506c0 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 359 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 178 in gpu_sampler
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 243 in as_completed
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 313 in chat_wave
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 510 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:50:41] alive phase=calls
+Thread 0x00007bf31654e6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf316d4f6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3175506c0 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 359 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 178 in gpu_sampler
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 243 in as_completed
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 313 in chat_wave
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 510 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:51:41] alive phase=calls
+Thread 0x00007bf31654e6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf316d4f6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3175506c0 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 359 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 178 in gpu_sampler
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 243 in as_completed
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 313 in chat_wave
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 510 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:52:41] alive phase=calls
+Thread 0x00007bf31654e6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf316d4f6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3175506c0 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 359 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 178 in gpu_sampler
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 243 in as_completed
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 313 in chat_wave
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 510 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:53:41] alive phase=calls
+Thread 0x00007bf31654e6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf316d4f6c0 (most recent call first):
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 89 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3175506c0 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 359 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 178 in gpu_sampler
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 243 in as_completed
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 313 in chat_wave
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 510 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---
+[01:54:41] alive phase=calls
+Thread 0x00007bf31654e6c0 (most recent call first):
+  File "/usr/lib/python3.12/socket.py", line 707 in readinto
+  File "/usr/lib/python3.12/http/client.py", line 544 in _read_next_chunk_size
+  File "/usr/lib/python3.12/http/client.py", line 584 in _get_chunk_left
+  File "/usr/lib/python3.12/http/client.py", line 736 in _peek_chunked
+  File "/usr/lib/python3.12/http/client.py", line 698 in peek
+  File "/usr/lib/python3.12/http/client.py", line 706 in readline
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 230 in chat_once
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 300 in run_one
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58 in run
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 92 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf316d4f6c0 (most recent call first):
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 89 in _worker
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3175506c0 (most recent call first):
+  File "/usr/lib/python3.12/selectors.py", line 415 in select
+  File "/usr/lib/python3.12/subprocess.py", line 2115 in _communicate
+  File "/usr/lib/python3.12/subprocess.py", line 1209 in communicate
+  File "/usr/lib/python3.12/subprocess.py", line 550 in run
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 164 in gpu_sampler
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf317d516c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 94 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 366 in _hash_wheel
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Current thread 0x00007bf3185526c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007bf3197ca140 (most recent call first):
+  File "/usr/lib/python3.12/threading.py", line 355 in wait
+  File "/usr/lib/python3.12/threading.py", line 655 in wait
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 243 in as_completed
+  File "/kaggle/working/018-aq-code/run_reasoning_probe.py", line 313 in chat_wave
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 510 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 547 in <module>
+---

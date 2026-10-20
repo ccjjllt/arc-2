@@ -1,0 +1,550 @@
+[15:41:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:42:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:43:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:44:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 94 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:45:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:46:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:47:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 94 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:48:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 94 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:49:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:50:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:51:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:52:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:53:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:54:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:55:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:56:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 94 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:57:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:58:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[15:59:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:00:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:01:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:02:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:03:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:04:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:05:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:06:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:07:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:08:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 94 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:09:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:10:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:11:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:12:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:13:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:14:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 94 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:15:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:16:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 94 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:17:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:18:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:19:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 94 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:20:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:21:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 94 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:22:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---
+[16:23:56] alive phase=frozen
+Current thread 0x00007e939ab086c0 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 69 in watchdog
+  File "/usr/lib/python3.12/threading.py", line 1010 in run
+  File "/usr/lib/python3.12/threading.py", line 1073 in _bootstrap_inner
+  File "/usr/lib/python3.12/threading.py", line 1030 in _bootstrap
+
+Thread 0x00007e939bd80140 (most recent call first):
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in <lambda>
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 93 in sha256_file
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 358 in main
+  File "/kaggle/working/018-aq-code/vdriver018a.py", line 524 in <module>
+---

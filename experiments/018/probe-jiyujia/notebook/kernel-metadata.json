@@ -1,0 +1,20 @@
+{
+ "id": "jiyujia/arc2-018a-read-probe",
+ "title": "ARC2 018A Read Probe",
+ "code_file": "probe-sanity.ipynb",
+ "language": "python",
+ "kernel_type": "notebook",
+ "is_private": true,
+ "enable_gpu": true,
+ "enable_tpu": false,
+ "enable_internet": false,
+ "competition_sources": [
+  "arc-prize-2026-arc-agi-2"
+ ],
+ "dataset_sources": [
+  "nick2187/qwen38-vllm0272-cu130-wheelhouse-v1"
+ ],
+ "kernel_sources": [],
+ "model_sources": [],
+ "machine_shape": "NvidiaL4"
+}

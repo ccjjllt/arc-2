@@ -1,0 +1,37 @@
+{
+ "config": {
+  "tp": 4,
+  "max_model_len": 65536,
+  "service_max_num_seqs": 8,
+  "gpu_mem_util": 0.9,
+  "kv_dtype": "default",
+  "mtp": false,
+  "sampling": {
+   "temperature": 1.0,
+   "top_p": 0.95,
+   "top_k": 20
+  },
+  "effort": "xhigh",
+  "gen_max": 12288,
+  "think_budget": 8192,
+  "seed": 5103,
+  "vllm_wheel": "vllm-0.27.2rc1.dev91+g1f7427bc0-cp38-abi3-manylinux_2_28_x86_64.whl",
+  "vllm_wheel_sha256": "5cbeedeb8262fbc7e77c5b4c33203e4dab74e8da1649a977bae833df62304a",
+  "query": "291dc1e1_0",
+  "new_call_budget": 24576,
+  "sunk_completion_tokens": 22130
+ },
+ "budgets": {
+  "session_s": 5400.0,
+  "save_margin_s": 300,
+  "new_cutoff_s": 4800
+ },
+ "calls": [],
+ "host": {
+  "python": "3.12.3",
+  "nvidia_smi": "NVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB",
+  "pip_pkgs": {}
+ },
+ "status": "signal_15",
+ "elapsed_s": 5339.7
+}

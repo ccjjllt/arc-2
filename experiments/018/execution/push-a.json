@@ -78,5 +78,65 @@
    "used_h": 6.15
   },
   "probe": "qingyu1232/arc2-018a-probe-sanity v1 COMPLETE, L4 healthy, platform path OK"
+ },
+ "v5": {
+  "status": "PUSHED_RUNNING",
+  "notebook_dir": "experiments/018/aq3/notebook",
+  "session_seconds": 2700,
+  "driver_sha": "2c8adf46436fd4541bca7053ee3c9779021fe6602e11968e7edd3d25ad89ab25",
+  "blocker": "SaveKernel 403 x2 on teammateb identity",
+  "quota_at_block": {
+   "remaining_h": 4.59,
+   "used_h": 25.41
+  },
+  "gate_exception": "2700s worst-case 3h < 4.59h remaining; documented, moot until push works",
+  "version": 3,
+  "identity": "teammateb file (c47d)=qingyu1232, user-directed",
+  "quota_at_push": {
+   "remaining_h": 20.87,
+   "used_h": 9.13
+  },
+  "probe_gate": "probe-sanity v2 COMPLETE + probe-ok.txt present, then pushed"
+ },
+ "token_map": {
+  "734f": "teammatea=jiyujia (config view confirms)",
+  "c47d": "teammateb=qingyu1232 (push URL ground truth)",
+  "18c5": "ccjjllt.bak/bak2=ccjjllt",
+  "note": "403s were namespace mismatches from token rotation, not throttling. Always match token file to kernel namespace."
+ },
+ "v6": {
+  "slug": "jiyujia/arc2-018a-f291-fix-restart",
+  "version": 1,
+  "identity": "teammatea (734f)=jiyujia, user rule: teammatea if enough",
+  "notebook_dir": "experiments/018/aq-jiyujia/notebook",
+  "session_seconds": 2700,
+  "status_at_push": "RUNNING",
+  "driver_sha": "9292c23de710",
+  "quota_at_push": {
+   "remaining_h": 4.27
+  },
+  "probe_gate": "jiyujia read-probe v1 COMPLETE: working write/read 0.0s, input glob 0.9s, 15KB whl read 0.3s clean EOF",
+  "status": "COMPLETE_FFIX_EXACT",
+  "result": {
+   "f-fix": {
+    "finish": "stop",
+    "parse": "program_ready",
+    "demo": "4/4",
+    "query": "EXACT_291_new",
+    "ctok": 9596
+   },
+   "R2": {
+    "finish": "length",
+    "parse": "generation_not_ok",
+    "ctok": 12288
+   },
+   "ledger": {
+    "sunk": 22130,
+    "new": 21884,
+    "budget": 24576
+   },
+   "elapsed_s": 1706.8,
+   "preempt": 0
+  }
  }
 }
