@@ -1,0 +1,87 @@
+{
+  "date_beijing": "2026-10-20",
+  "kind": "manual_synthetic_driver_check",
+  "driver_sha256": "b87411d45d739e67ae3a5136068f23ba9c677efe3f5cae42f825c646d14fc62d",
+  "scope": "Synthetic two-task/three-query in-memory mocks; no real executor, model, GPU, Kaggle run, or query gold. Temporary output files removed after inspection.",
+  "earlier_check": "Initial driver checked at 19:45 Beijing; current driver rerun after setup/CPU/funnel changes.",
+  "successful_flow": {
+    "phase_calls": [
+      [
+        "b",
+        "P0"
+      ],
+      [
+        "a",
+        "P0"
+      ],
+      [
+        "b",
+        "R"
+      ],
+      [
+        "a",
+        "F"
+      ],
+      [
+        "a",
+        "R"
+      ]
+    ],
+    "task_a_all_queries_in_both_pools": true,
+    "M0_no_F_or_CPU": true,
+    "M1_no_R_when_route_F_or_stop": true,
+    "F_contains_executed_CPU_program": true,
+    "first_completed_callback_persisted": true,
+    "shared_cpu_deadline_used": true,
+    "status": "complete_with_evidence",
+    "p0_funnel": {
+      "planned": 2,
+      "returned_slots": 2,
+      "http_issued": 2,
+      "generation_finished": 2,
+      "admitted_programs": 2,
+      "all_demos_pass": 1
+    }
+  },
+  "expired_flow": {
+    "status": "partial_with_evidence",
+    "completed_p0_tasks": 0,
+    "p0_funnel": {
+      "planned": 2,
+      "returned_slots": 2,
+      "http_issued": 0,
+      "generation_finished": 0,
+      "admitted_programs": 0,
+      "all_demos_pass": 0
+    },
+    "placeholder_queries": 3
+  },
+  "setup_timeout_clipping": {
+    "requested_seconds": 1200,
+    "timeout_passed_to_subprocess": 0.049991416999999996,
+    "expired_prevents_subprocess": true
+  },
+  "status": "passed_synthetic_checks",
+  "dynamic_followup_flow": {
+    "scope": "One synthetic driver flow using actual dynamic chat_wave and mocked chat_once/executor; no model, GPU, Kaggle run, or real query gold. Temporary outputs removed.",
+    "calls": [
+      "P0-b",
+      "P0-a",
+      "F-a",
+      "R-a",
+      "R-b"
+    ],
+    "per_task_calls": {
+      "a": 3,
+      "b": 2
+    },
+    "M0_M1_isolation": true,
+    "task_a_two_queries_preserved": true,
+    "R_and_F_overlap_tail_P0": true,
+    "wave_count": 1,
+    "wave_n": 5,
+    "driver_sha256": "8856ce92eeba2b81e84de1e3acb0e3e517d587bfd933a4292b67ca6e3f3db326",
+    "transport_sha256": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+    "status": "complete_with_evidence"
+  }
+}

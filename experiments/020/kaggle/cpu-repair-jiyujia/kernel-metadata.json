@@ -1,0 +1,15 @@
+{
+  "id": "jiyujia/arc2-020-cpu-repair-replay",
+  "title": "arc2-020-cpu-repair-replay",
+  "code_file": "arc2-020-cpu-repair-replay.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "competition_sources": [],
+  "dataset_sources": [],
+  "model_sources": [],
+  "kernel_sources": []
+}

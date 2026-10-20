@@ -1,0 +1,58 @@
+{
+  "cohort": "D24_two_demo_motivated_repairs",
+  "n_tasks": 2,
+  "n_queries": 3,
+  "entries": [
+    {
+      "task_id": "e376de54",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1024,
+      "max_side": 16,
+      "demo_pairs_sha256": "3dfad2b26605b56e28cbeeeb7b40dd6b30ae0d453d9ba9f57ac15b7cde6cbe9a",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "e376de54_0",
+          "input_sha256": "71d1d8bc46173b8eb49985550e8a3d55bf63f285d8abff57a009c7a1e9607edf",
+          "height": 16,
+          "width": 16
+        }
+      ],
+      "source_group": "public_evaluation_non_ARC1",
+      "tier": "S"
+    },
+    {
+      "task_id": "f931b4a8",
+      "n_demo": 5,
+      "n_test_queries": 2,
+      "total_input_cells": 592,
+      "max_side": 16,
+      "demo_pairs_sha256": "4d9527d89d22931e7b5b2930a9714b91668c875d3c26795089b483e3d8353fb6",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "f931b4a8_0",
+          "input_sha256": "253ed07bf136664ee361bdcd51b93cf60aa4de935101437599df4317a82d6c53",
+          "height": 8,
+          "width": 8
+        },
+        {
+          "query_index": 1,
+          "query_key": "f931b4a8_1",
+          "input_sha256": "147f1bca717970270f2a13b08ab141c929af770ffc6df4a09b254157c383343d",
+          "height": 4,
+          "width": 4
+        }
+      ],
+      "source_group": "public_evaluation_non_ARC1",
+      "tier": "S"
+    }
+  ],
+  "input_artifact": {
+    "path": "experiments/020/manual-demo-repair/challenges.json",
+    "sha256": "bdebbe7004a95338b224ae0102dc778567bca850b25017ea115ff42cf909e29c"
+  },
+  "source_manifest_sha256": "3dcdc1aa274d04ef948994a3d6ff8e4531a1883feca11c7252875bdc3b794327",
+  "selection_note": "Two concrete errors selected using demos before first D24 gold read; execution wrapper repaired after first read, source and inputs unchanged."
+}

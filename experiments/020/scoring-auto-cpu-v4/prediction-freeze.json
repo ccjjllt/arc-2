@@ -1,0 +1,88 @@
+{
+  "frozen_at_utc": "2026-10-20T13:31:53.294935+00:00",
+  "cohort": "development_D24_020",
+  "planned_tasks": 24,
+  "planned_queries": 36,
+  "artifacts": {
+    "manifest": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/020/cohorts/development-d24-manifest.json",
+      "sha256": "3dcdc1aa274d04ef948994a3d6ff8e4531a1883feca11c7252875bdc3b794327",
+      "bytes": 26406
+    },
+    "challenges": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/020/cohorts/development-d24-challenges.json",
+      "sha256": "637fb53da005ab4d3354029e03426ad866d0f3294497aeabd510618e6ac16a56",
+      "bytes": 1014900
+    },
+    "predictions": [
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/020/cpu-repair-jiyujia-v1/cpu-replay/submission-baseline.json",
+        "sha256": "52d6ec97891bf1d5ea0fc07d9df4fe39ff890f87c7148fba1cda12881d0408e3",
+        "bytes": 57222,
+        "policy": "Original",
+        "task_ids": [
+          "135a2760",
+          "195c6913",
+          "21897d95",
+          "247ef758",
+          "2b83f449",
+          "2c181942",
+          "3e6067c3",
+          "4c3d4a41",
+          "58f5dbd5",
+          "5961cc34",
+          "6e453dd6",
+          "800d221b",
+          "8698868d",
+          "8e5c0c38",
+          "abc82100",
+          "b6f77b65",
+          "bf45cf4b",
+          "cbebaa4b",
+          "de809cff",
+          "e3721c99",
+          "e376de54",
+          "e87109e9",
+          "f931b4a8",
+          "fc7cae8d"
+        ]
+      },
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/020/cpu-auto-repair-jiyujia-v4/cpu-replay/submission-cpu.json",
+        "sha256": "f794100d3ca3a8eaf3a0e44bb23b6ffc52af02bb98b7c2e00fcb582dbca3fe1e",
+        "bytes": 57222,
+        "policy": "AutoCPU",
+        "task_ids": [
+          "135a2760",
+          "195c6913",
+          "21897d95",
+          "247ef758",
+          "2b83f449",
+          "2c181942",
+          "3e6067c3",
+          "4c3d4a41",
+          "58f5dbd5",
+          "5961cc34",
+          "6e453dd6",
+          "800d221b",
+          "8698868d",
+          "8e5c0c38",
+          "abc82100",
+          "b6f77b65",
+          "bf45cf4b",
+          "cbebaa4b",
+          "de809cff",
+          "e3721c99",
+          "e376de54",
+          "e87109e9",
+          "f931b4a8",
+          "fc7cae8d"
+        ]
+      }
+    ],
+    "candidate_pools": []
+  },
+  "official_revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+  "official_split": "evaluation",
+  "note": "All supplied policy predictions were loaded and hashed before any gold access."
+}

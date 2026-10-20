@@ -1,0 +1,1288 @@
+{
+  "date_beijing": "2026-10-20",
+  "scope": "CPU replay v1 only. Read existing frozen predictions and known-demo execution metrics; no program/model execution and no query gold read during this summary. Concurrent CPU v2 manual demo corrections are excluded.",
+  "kernel_ref": "jiyujia/arc2-020-cpu-repair-replay",
+  "kernel_version": 1,
+  "status": "complete",
+  "sources": {
+    "run": {
+      "path": "experiments/020/cpu-repair-jiyujia-v1/cpu-replay/run.json",
+      "sha256": "b0783e85aabf8fcdd6d2690594b33e7f608515240c70178cff11f74131303112"
+    },
+    "input_sha256": "6ec1ea168320a7d06ed29c830313fcd98ee8612dd166ec0faaaede0fe36f7d21",
+    "script_sha256": "23ed680e02f1057c3e63bd628e569e02cfc677b06b5526f2042ab8bf57292835",
+    "solver_source_sha256": {
+      "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+      "local_repair.py": "b94297f4053aeecee2ef06f70ca1d71357e89d6c460b4169fac0ba124fef56ae",
+      "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e"
+    },
+    "original_M0_shards": [
+      {
+        "path": "experiments/020/d24-jiyujia-v1/vprobe/submission-M0.json",
+        "sha256": "e10e5100997f430a781a1460562cf7cd17f76d415bddf7a2c19380dac418a9cb"
+      },
+      {
+        "path": "experiments/020/d24-qingyu1232-v1/vprobe/submission-M0.json",
+        "sha256": "c50c35400e4f22eb0b66f325184215f6b7c4544a1dd8e886693d51524e70d75e"
+      }
+    ],
+    "merged_M0_canonical_sha256": "f543d1f6e63ffd55eca5f327b4d34b4c7ae2c59c471f1a791b10866f068c57d3",
+    "merge_method": "Disjoint task dictionary union in memory; canonical SHA uses sorted keys and compact separators."
+  },
+  "runtime": {
+    "elapsed_wall_seconds": 17.087326,
+    "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+    "platform": "Linux-6.18.48+-x86_64-with-glibc2.39",
+    "cpu_count": 4,
+    "workers": 4,
+    "gpu_used": false,
+    "new_model_calls": 0,
+    "new_completion_tokens": 0,
+    "cost_sums_not_wall_seconds": {
+      "initial_demo_execution_seconds": 26.795991,
+      "repair_search_wall_seconds": 19.877009,
+      "baseline_query_execution_seconds": 15.079195,
+      "cpu_incremental_query_execution_seconds": 2.598333,
+      "task_wall_seconds": 64.60217
+    },
+    "task_wall_seconds_sum": 64.60217,
+    "query_programs_executed": 47
+  },
+  "denominator": {
+    "tasks": 24,
+    "queries": 36,
+    "initial_program_slots": 48,
+    "nonmissing_initial_programs": 39,
+    "original_shard_task_overlap": [],
+    "merged_M0_task_keys_match_cpu": true,
+    "completed_tasks": 24,
+    "task_errors": {}
+  },
+  "search": {
+    "near_filter_used": false,
+    "variants_tried": 23,
+    "tasks_with_variants": 10,
+    "initial_programs_with_variants": 14,
+    "status_counts_per_initial_program": {
+      "missing_initial_program": 9,
+      "ineligible_no_local_demo_evidence": 16,
+      "complete": 14,
+      "no_supported_variants": 9
+    },
+    "tasks_demo_exact_improved": [],
+    "original_programs_all_demos_pass": 0,
+    "cpu_selected_programs_all_demos_pass": 0,
+    "note": "Best exact-demo counts did not improve; partial shape/foreground changes and changed query predictions do not establish query correctness.",
+    "original_D24_M1_route_counts": {
+      "R": 24
+    },
+    "initial_programs_with_variants_by_source": {
+      "P0": 5,
+      "R": 9
+    },
+    "variants_tried_by_source": {
+      "P0": 12,
+      "R": 11
+    }
+  },
+  "comparison": {
+    "cpu_baseline_vs_original_D24_M0": {
+      "queries_compared": 36,
+      "queries_equal_ordered": 36,
+      "queries_different_ordered": 0,
+      "queries_same_unordered_grid_set": 36,
+      "changed_slots": {
+        "attempt_1": 0,
+        "attempt_2": 0
+      },
+      "differences": []
+    },
+    "cpu_final_vs_cpu_baseline": {
+      "queries_compared": 36,
+      "queries_equal_ordered": 35,
+      "queries_different_ordered": 1,
+      "queries_same_unordered_grid_set": 35,
+      "changed_slots": {
+        "attempt_1": 0,
+        "attempt_2": 1
+      },
+      "differences": [
+        {
+          "query_key": "21897d95_0",
+          "changed_slots": [
+            "attempt_2"
+          ],
+          "same_grid_set": false,
+          "left_distinct_candidates": 1,
+          "right_distinct_candidates": 2,
+          "removed_candidate_count": 0,
+          "added_candidate_count": 1
+        }
+      ]
+    },
+    "cpu_final_vs_original_D24_M0": {
+      "queries_compared": 36,
+      "queries_equal_ordered": 35,
+      "queries_different_ordered": 1,
+      "queries_same_unordered_grid_set": 35,
+      "changed_slots": {
+        "attempt_1": 0,
+        "attempt_2": 1
+      },
+      "differences": [
+        {
+          "query_key": "21897d95_0",
+          "changed_slots": [
+            "attempt_2"
+          ],
+          "same_grid_set": false,
+          "left_distinct_candidates": 1,
+          "right_distinct_candidates": 2,
+          "removed_candidate_count": 0,
+          "added_candidate_count": 1
+        }
+      ]
+    }
+  },
+  "coverage": {
+    "baseline": {
+      "tasks": 24,
+      "queries": 36,
+      "format_ok": 36,
+      "single_covered": 30,
+      "double_distinct": 9,
+      "placeholder": 6,
+      "updated_keys": 30
+    },
+    "cpu": {
+      "tasks": 24,
+      "queries": 36,
+      "format_ok": 36,
+      "single_covered": 30,
+      "double_distinct": 10,
+      "placeholder": 6,
+      "updated_keys": 30
+    }
+  },
+  "outputs": [
+    {
+      "path": "experiments/020/cpu-repair-jiyujia-v1/cpu-replay/submission-baseline.json",
+      "sha256": "52d6ec97891bf1d5ea0fc07d9df4fe39ff890f87c7148fba1cda12881d0408e3",
+      "reported_sha_matches": true
+    },
+    {
+      "path": "experiments/020/cpu-repair-jiyujia-v1/cpu-replay/submission-cpu.json",
+      "sha256": "fa3a399fe46a195871e1e297b79624e20bef468e513cdc19aac700d77fbf427a",
+      "reported_sha_matches": true
+    }
+  ],
+  "per_task_demo_changes": [
+    {
+      "task_id": "135a2760",
+      "n_queries": 1,
+      "demo_total": 2,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 0,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": false,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "missing_initial_program"
+        },
+        {
+          "source": "R",
+          "code_present": false,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "missing_initial_program"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 0.0,
+        "repair_search_wall_seconds": 3e-06,
+        "baseline_query_execution_seconds": 0.0,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 0,
+        "task_wall_seconds": 0.001667
+      }
+    },
+    {
+      "task_id": "195c6913",
+      "n_queries": 2,
+      "demo_total": 3,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 0,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        },
+        {
+          "source": "R",
+          "code_present": false,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "missing_initial_program"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 0.752409,
+        "repair_search_wall_seconds": 0.026559,
+        "baseline_query_execution_seconds": 0.441862,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 1,
+        "task_wall_seconds": 1.242263
+      }
+    },
+    {
+      "task_id": "21897d95",
+      "n_queries": 2,
+      "demo_total": 4,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 2,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.5,
+          "best_shape_rate": 0.5,
+          "baseline_foreground_accuracy": 0.12208333333333335,
+          "best_foreground_accuracy": 0.12208333333333335,
+          "baseline_changed_accuracy": 0.12208333333333335,
+          "best_changed_accuracy": 0.12208333333333335,
+          "variants_tried": 2,
+          "search_status": "complete"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 2.49936,
+        "repair_search_wall_seconds": 1.792071,
+        "baseline_query_execution_seconds": 4.467608,
+        "cpu_incremental_query_execution_seconds": 0.405936,
+        "query_programs_executed": 3,
+        "task_wall_seconds": 9.185909
+      }
+    },
+    {
+      "task_id": "247ef758",
+      "n_queries": 2,
+      "demo_total": 3,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 2,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.6728531438685463,
+          "best_foreground_accuracy": 0.6728531438685463,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 1,
+          "search_status": "complete"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.7284035409035409,
+          "best_foreground_accuracy": 0.7284035409035409,
+          "baseline_changed_accuracy": 0.29990421455938693,
+          "best_changed_accuracy": 0.29990421455938693,
+          "variants_tried": 1,
+          "search_status": "complete"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 1.356613,
+        "repair_search_wall_seconds": 1.454055,
+        "baseline_query_execution_seconds": 0.808042,
+        "cpu_incremental_query_execution_seconds": 0.405097,
+        "query_programs_executed": 3,
+        "task_wall_seconds": 4.031059
+      }
+    },
+    {
+      "task_id": "2b83f449",
+      "n_queries": 1,
+      "demo_total": 2,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 0,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.886405109489051,
+          "best_foreground_accuracy": 0.886405109489051,
+          "baseline_changed_accuracy": 0.7625482625482626,
+          "best_changed_accuracy": 0.7625482625482626,
+          "variants_tried": 0,
+          "search_status": "no_supported_variants"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.7182634730538922,
+          "best_foreground_accuracy": 0.7182634730538922,
+          "baseline_changed_accuracy": 0.5157342657342657,
+          "best_changed_accuracy": 0.5157342657342657,
+          "variants_tried": 0,
+          "search_status": "no_supported_variants"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 0.791585,
+        "repair_search_wall_seconds": 0.042053,
+        "baseline_query_execution_seconds": 0.390083,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 2,
+        "task_wall_seconds": 1.230499
+      }
+    },
+    {
+      "task_id": "2c181942",
+      "n_queries": 1,
+      "demo_total": 3,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 1,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.1592185592185592,
+          "best_foreground_accuracy": 0.1592185592185592,
+          "baseline_changed_accuracy": 0.033011272141706925,
+          "best_changed_accuracy": 0.033011272141706925,
+          "variants_tried": 1,
+          "search_status": "complete"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 1.26515,
+        "repair_search_wall_seconds": 0.787537,
+        "baseline_query_execution_seconds": 0.409001,
+        "cpu_incremental_query_execution_seconds": 0.2048,
+        "query_programs_executed": 3,
+        "task_wall_seconds": 2.668716
+      }
+    },
+    {
+      "task_id": "3e6067c3",
+      "n_queries": 2,
+      "demo_total": 3,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 2,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.8837387586613593,
+          "best_foreground_accuracy": 0.8837387586613593,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 1,
+          "search_status": "complete"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.8837387586613593,
+          "best_foreground_accuracy": 0.8837387586613593,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 1,
+          "search_status": "complete"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 1.390409,
+        "repair_search_wall_seconds": 1.603721,
+        "baseline_query_execution_seconds": 0.849259,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 2,
+        "task_wall_seconds": 3.867394
+      }
+    },
+    {
+      "task_id": "4c3d4a41",
+      "n_queries": 2,
+      "demo_total": 2,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 0,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.5570524596856501,
+          "best_foreground_accuracy": 0.5570524596856501,
+          "baseline_changed_accuracy": 0.11428571428571428,
+          "best_changed_accuracy": 0.11428571428571428,
+          "variants_tried": 0,
+          "search_status": "no_supported_variants"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 0.864644,
+        "repair_search_wall_seconds": 0.022758,
+        "baseline_query_execution_seconds": 0.820066,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 2,
+        "task_wall_seconds": 1.727636
+      }
+    },
+    {
+      "task_id": "58f5dbd5",
+      "n_queries": 1,
+      "demo_total": 3,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 1,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.6666666666666666,
+          "best_shape_rate": 0.6666666666666666,
+          "baseline_foreground_accuracy": 0.4977777777777778,
+          "best_foreground_accuracy": 0.4977777777777778,
+          "baseline_changed_accuracy": 0.5714285714285714,
+          "best_changed_accuracy": 0.5714285714285714,
+          "variants_tried": 1,
+          "search_status": "complete"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 1.433649,
+        "repair_search_wall_seconds": 0.804987,
+        "baseline_query_execution_seconds": 0.484114,
+        "cpu_incremental_query_execution_seconds": 0.218315,
+        "query_programs_executed": 3,
+        "task_wall_seconds": 2.993834
+      }
+    },
+    {
+      "task_id": "5961cc34",
+      "n_queries": 1,
+      "demo_total": 4,
+      "original_best_demo_matches": 1,
+      "cpu_best_demo_matches": 1,
+      "variants_tried": 8,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 1,
+          "best_demo_matches": 1,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.3687206049714025,
+          "best_foreground_accuracy": 0.3687206049714025,
+          "baseline_changed_accuracy": 0.40245723251341226,
+          "best_changed_accuracy": 0.40245723251341226,
+          "variants_tried": 7,
+          "search_status": "complete"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.08013939592886962,
+          "best_foreground_accuracy": 0.08013939592886962,
+          "baseline_changed_accuracy": 0.21689888886089345,
+          "best_changed_accuracy": 0.21689888886089345,
+          "variants_tried": 1,
+          "search_status": "complete"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 1.938014,
+        "repair_search_wall_seconds": 8.276471,
+        "baseline_query_execution_seconds": 0.367151,
+        "cpu_incremental_query_execution_seconds": 0.160158,
+        "query_programs_executed": 3,
+        "task_wall_seconds": 10.770557
+      }
+    },
+    {
+      "task_id": "6e453dd6",
+      "n_queries": 1,
+      "demo_total": 3,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 1,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.6363500597371565,
+          "best_foreground_accuracy": 0.6363500597371565,
+          "baseline_changed_accuracy": 0.6474401967359713,
+          "best_changed_accuracy": 0.6474401967359713,
+          "variants_tried": 0,
+          "search_status": "no_supported_variants"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.4358025941300215,
+          "best_foreground_accuracy": 0.4358025941300215,
+          "baseline_changed_accuracy": 0.1757118998498309,
+          "best_changed_accuracy": 0.1757118998498309,
+          "variants_tried": 1,
+          "search_status": "complete"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 1.260414,
+        "repair_search_wall_seconds": 0.663627,
+        "baseline_query_execution_seconds": 0.401418,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 2,
+        "task_wall_seconds": 2.335062
+      }
+    },
+    {
+      "task_id": "800d221b",
+      "n_queries": 1,
+      "demo_total": 3,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 3,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.4757296286505908,
+          "best_foreground_accuracy": 0.4757296286505908,
+          "baseline_changed_accuracy": 0.23159722222222223,
+          "best_changed_accuracy": 0.23159722222222223,
+          "variants_tried": 3,
+          "search_status": "complete"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 1.428576,
+        "repair_search_wall_seconds": 2.196826,
+        "baseline_query_execution_seconds": 0.476282,
+        "cpu_incremental_query_execution_seconds": 0.204711,
+        "query_programs_executed": 3,
+        "task_wall_seconds": 4.308518
+      }
+    },
+    {
+      "task_id": "8698868d",
+      "n_queries": 1,
+      "demo_total": 2,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 0,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 1.13389,
+        "repair_search_wall_seconds": 0.038551,
+        "baseline_query_execution_seconds": 0.504265,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 2,
+        "task_wall_seconds": 1.683653
+      }
+    },
+    {
+      "task_id": "8e5c0c38",
+      "n_queries": 2,
+      "demo_total": 2,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 2,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.7327898550724637,
+          "best_foreground_accuracy": 0.7490338164251208,
+          "baseline_changed_accuracy": 0.17420814479638008,
+          "best_changed_accuracy": 0.3476190476190476,
+          "variants_tried": 1,
+          "search_status": "complete"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.8284313725490196,
+          "best_foreground_accuracy": 0.8688725490196079,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 1,
+          "search_status": "complete"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 0.824575,
+        "repair_search_wall_seconds": 0.861676,
+        "baseline_query_execution_seconds": 0.800447,
+        "cpu_incremental_query_execution_seconds": 0.405837,
+        "query_programs_executed": 3,
+        "task_wall_seconds": 2.894267
+      }
+    },
+    {
+      "task_id": "abc82100",
+      "n_queries": 2,
+      "demo_total": 4,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 0,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.39868312964777775,
+          "best_changed_accuracy": 0.39868312964777775,
+          "variants_tried": 0,
+          "search_status": "no_supported_variants"
+        },
+        {
+          "source": "R",
+          "code_present": false,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "missing_initial_program"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 0.806219,
+        "repair_search_wall_seconds": 0.008093,
+        "baseline_query_execution_seconds": 0.379383,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 1,
+        "task_wall_seconds": 1.20112
+      }
+    },
+    {
+      "task_id": "b6f77b65",
+      "n_queries": 3,
+      "demo_total": 5,
+      "original_best_demo_matches": 1,
+      "cpu_best_demo_matches": 1,
+      "variants_tried": 1,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": false,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "missing_initial_program"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 1,
+          "best_demo_matches": 1,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.4357598978288634,
+          "best_foreground_accuracy": 0.4357598978288634,
+          "baseline_changed_accuracy": 0.3731203007518797,
+          "best_changed_accuracy": 0.3731203007518797,
+          "variants_tried": 1,
+          "search_status": "complete"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 1.062269,
+        "repair_search_wall_seconds": 1.09348,
+        "baseline_query_execution_seconds": 0.731919,
+        "cpu_incremental_query_execution_seconds": 0.593479,
+        "query_programs_executed": 2,
+        "task_wall_seconds": 3.485126
+      }
+    },
+    {
+      "task_id": "bf45cf4b",
+      "n_queries": 1,
+      "demo_total": 3,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 0,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 1.458306,
+        "repair_search_wall_seconds": 0.036073,
+        "baseline_query_execution_seconds": 0.451701,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 2,
+        "task_wall_seconds": 1.947193
+      }
+    },
+    {
+      "task_id": "cbebaa4b",
+      "n_queries": 2,
+      "demo_total": 2,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 0,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": false,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "missing_initial_program"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.08371324367449282,
+          "best_foreground_accuracy": 0.08371324367449282,
+          "baseline_changed_accuracy": 0.1762295081967213,
+          "best_changed_accuracy": 0.1762295081967213,
+          "variants_tried": 0,
+          "search_status": "no_supported_variants"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 0.429114,
+        "repair_search_wall_seconds": 0.019948,
+        "baseline_query_execution_seconds": 0.404107,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 1,
+        "task_wall_seconds": 0.856716
+      }
+    },
+    {
+      "task_id": "de809cff",
+      "n_queries": 1,
+      "demo_total": 2,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 0,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.060363924050632914,
+          "best_foreground_accuracy": 0.060363924050632914,
+          "baseline_changed_accuracy": 0.011898096304591266,
+          "best_changed_accuracy": 0.011898096304591266,
+          "variants_tried": 0,
+          "search_status": "no_supported_variants"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.4135511796042618,
+          "best_foreground_accuracy": 0.4135511796042618,
+          "baseline_changed_accuracy": 0.2706640876853643,
+          "best_changed_accuracy": 0.2706640876853643,
+          "variants_tried": 0,
+          "search_status": "no_supported_variants"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 0.932136,
+        "repair_search_wall_seconds": 0.033651,
+        "baseline_query_execution_seconds": 0.375557,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 2,
+        "task_wall_seconds": 1.347459
+      }
+    },
+    {
+      "task_id": "e3721c99",
+      "n_queries": 2,
+      "demo_total": 2,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 0,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": false,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "missing_initial_program"
+        },
+        {
+          "source": "R",
+          "code_present": false,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "missing_initial_program"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 0.0,
+        "repair_search_wall_seconds": 4e-06,
+        "baseline_query_execution_seconds": 0.0,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 0,
+        "task_wall_seconds": 0.012894
+      }
+    },
+    {
+      "task_id": "e376de54",
+      "n_queries": 1,
+      "demo_total": 3,
+      "original_best_demo_matches": 1,
+      "cpu_best_demo_matches": 1,
+      "variants_tried": 0,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 1,
+          "best_demo_matches": 1,
+          "baseline_shape_rate": 1.0,
+          "best_shape_rate": 1.0,
+          "baseline_foreground_accuracy": 0.8030303030303031,
+          "best_foreground_accuracy": 0.8030303030303031,
+          "baseline_changed_accuracy": 0.3333333333333333,
+          "best_changed_accuracy": 0.3333333333333333,
+          "variants_tried": 0,
+          "search_status": "no_supported_variants"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 1.362349,
+        "repair_search_wall_seconds": 0.057496,
+        "baseline_query_execution_seconds": 0.439537,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 2,
+        "task_wall_seconds": 1.861549
+      }
+    },
+    {
+      "task_id": "e87109e9",
+      "n_queries": 1,
+      "demo_total": 3,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 0,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": false,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "missing_initial_program"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 0.761222,
+        "repair_search_wall_seconds": 0.016146,
+        "baseline_query_execution_seconds": 0.232008,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 1,
+        "task_wall_seconds": 1.014806
+      }
+    },
+    {
+      "task_id": "f931b4a8",
+      "n_queries": 2,
+      "demo_total": 5,
+      "original_best_demo_matches": 1,
+      "cpu_best_demo_matches": 1,
+      "variants_tried": 0,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 1,
+          "best_demo_matches": 1,
+          "baseline_shape_rate": 0.2,
+          "best_shape_rate": 0.2,
+          "baseline_foreground_accuracy": 0.2,
+          "best_foreground_accuracy": 0.2,
+          "baseline_changed_accuracy": 0.2,
+          "best_changed_accuracy": 0.2,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 1.925079,
+        "repair_search_wall_seconds": 0.013456,
+        "baseline_query_execution_seconds": 0.57198,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 2,
+        "task_wall_seconds": 2.511494
+      }
+    },
+    {
+      "task_id": "fc7cae8d",
+      "n_queries": 1,
+      "demo_total": 3,
+      "original_best_demo_matches": 0,
+      "cpu_best_demo_matches": 0,
+      "variants_tried": 0,
+      "by_initial_source": [
+        {
+          "source": "P0",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        },
+        {
+          "source": "R",
+          "code_present": true,
+          "baseline_demo_matches": 0,
+          "best_demo_matches": 0,
+          "baseline_shape_rate": 0.0,
+          "best_shape_rate": 0.0,
+          "baseline_foreground_accuracy": 0.0,
+          "best_foreground_accuracy": 0.0,
+          "baseline_changed_accuracy": 0.0,
+          "best_changed_accuracy": 0.0,
+          "variants_tried": 0,
+          "search_status": "ineligible_no_local_demo_evidence"
+        }
+      ],
+      "cost": {
+        "initial_demo_execution_seconds": 1.120009,
+        "repair_search_wall_seconds": 0.027767,
+        "baseline_query_execution_seconds": 0.273405,
+        "cpu_incremental_query_execution_seconds": 0.0,
+        "query_programs_executed": 2,
+        "task_wall_seconds": 1.422779
+      }
+    }
+  ],
+  "query_gold_used": false,
+  "query_exact_score": "not evaluated in this summary",
+  "v2_included": false
+}

@@ -1,0 +1,349 @@
+{
+  "date_beijing": "2026-10-20",
+  "scope": "Manually invoked local CPU verification; no added tests/framework, no model/GPU, no C24 solutions read, no Kaggle changes",
+  "python": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "checks": [
+    {
+      "name": "demo_exact_and_failure_denominators",
+      "passed": true,
+      "detail": {
+        "exact": {
+          "demo_total": 2,
+          "demo_matches": 2,
+          "matches": 2,
+          "all_demos_pass": true,
+          "demo_exact_rate": 1.0,
+          "shape_matches": 2,
+          "shape_rate": 1.0,
+          "foreground_accuracy": 1.0,
+          "changed_accuracy": 1.0,
+          "pixel_accuracy": 1.0,
+          "valid_demo_outputs": 2,
+          "execution_failures": 0,
+          "demo_evidence": true,
+          "per_demo": [
+            {
+              "demo_index": 0,
+              "status": "ok",
+              "exact": true,
+              "shape_match": true,
+              "foreground_accuracy": 1.0,
+              "changed_accuracy": 1.0,
+              "pixel_accuracy": 1.0,
+              "background": 0,
+              "foreground_cells": 2,
+              "changed_cells": 1
+            },
+            {
+              "demo_index": 1,
+              "status": "ok",
+              "exact": true,
+              "shape_match": true,
+              "foreground_accuracy": 1.0,
+              "changed_accuracy": 1.0,
+              "pixel_accuracy": 1.0,
+              "background": 3,
+              "foreground_cells": 2,
+              "changed_cells": 2
+            }
+          ]
+        },
+        "near": {
+          "demo_total": 2,
+          "demo_matches": 0,
+          "matches": 0,
+          "all_demos_pass": false,
+          "demo_exact_rate": 0.0,
+          "shape_matches": 1,
+          "shape_rate": 0.5,
+          "foreground_accuracy": 0.25,
+          "changed_accuracy": 0.0,
+          "pixel_accuracy": 0.375,
+          "valid_demo_outputs": 1,
+          "execution_failures": 1,
+          "demo_evidence": true,
+          "per_demo": [
+            {
+              "demo_index": 0,
+              "status": "ok",
+              "exact": false,
+              "shape_match": true,
+              "foreground_accuracy": 0.5,
+              "changed_accuracy": 0.0,
+              "pixel_accuracy": 0.75,
+              "background": 0,
+              "foreground_cells": 2,
+              "changed_cells": 1
+            },
+            {
+              "demo_index": 1,
+              "status": "execution_timeout",
+              "exact": false,
+              "shape_match": false,
+              "foreground_accuracy": 0.0,
+              "changed_accuracy": 0.0,
+              "pixel_accuracy": 0.0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "changed_cell_penalty",
+      "passed": true,
+      "detail": {
+        "changed": 0.0,
+        "foreground": 0.25,
+        "pixel": 0.375
+      }
+    },
+    {
+      "name": "source_independence_and_grid_dedup",
+      "passed": true,
+      "detail": {
+        "slots": [
+          [
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2
+            ]
+          ]
+        ],
+        "renamed_slots": [
+          [
+            [
+              1
+            ]
+          ],
+          [
+            [
+              2
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "name": "equal_evidence_keeps_earlier_candidate",
+      "passed": true,
+      "detail": {
+        "slots": [
+          [
+            [
+              4
+            ]
+          ],
+          [
+            [
+              5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "name": "placeholder_and_single_candidate",
+      "passed": true,
+      "detail": "[[0]] can be a legitimate prediction: use known candidate provenance for coverage in driver; JSON slots alone cannot distinguish it."
+    },
+    {
+      "name": "AST_frozenset",
+      "passed": true,
+      "detail": {
+        "accepted": true,
+        "error": null
+      }
+    },
+    {
+      "name": "AST_literal_power",
+      "passed": true,
+      "detail": {
+        "accepted": true,
+        "error": null
+      }
+    },
+    {
+      "name": "AST_variable_power",
+      "passed": true,
+      "detail": {
+        "accepted": false,
+        "error": "power requires bounded integer literals"
+      }
+    },
+    {
+      "name": "AST_nested_power",
+      "passed": true,
+      "detail": {
+        "accepted": false,
+        "error": "power requires bounded integer literals"
+      }
+    },
+    {
+      "name": "AST_oversize_power",
+      "passed": true,
+      "detail": {
+        "accepted": false,
+        "error": "constant power result exceeds 64 bits"
+      }
+    },
+    {
+      "name": "AST_negative_power",
+      "passed": true,
+      "detail": {
+        "accepted": false,
+        "error": "power requires bounded integer literals"
+      }
+    },
+    {
+      "name": "AST_pow_call",
+      "passed": true,
+      "detail": {
+        "accepted": false,
+        "error": "pow() is forbidden; only bounded literal ** is allowed"
+      }
+    },
+    {
+      "name": "AST_import",
+      "passed": true,
+      "detail": {
+        "accepted": false,
+        "error": "top level permits only function definitions and assignments"
+      }
+    },
+    {
+      "name": "AST_dunder",
+      "passed": true,
+      "detail": {
+        "accepted": false,
+        "error": "forbidden attribute: __class__"
+      }
+    },
+    {
+      "name": "aa_border_mutation_present",
+      "passed": true,
+      "detail": {
+        "labels": [
+          "neighbors4_to8:L34:C26",
+          "neighbors4_to8:L61:C26",
+          "neighbors4_to8:L20:C34",
+          "neighbors4_to8:L43:C38"
+        ],
+        "count": 4,
+        "source_sha256": "68dc2e67bcb40fbf95ec370f423c042adb20e027e9cba10ac628c5612632cd71"
+      }
+    },
+    {
+      "name": "aa_single_neighbor_site_change",
+      "passed": true,
+      "detail": {
+        "before": [
+          [
+            4,
+            34
+          ],
+          [
+            4,
+            61
+          ],
+          [
+            4,
+            20
+          ],
+          [
+            4,
+            43
+          ]
+        ],
+        "after": [
+          [
+            4,
+            32
+          ],
+          [
+            8,
+            59
+          ],
+          [
+            4,
+            19
+          ],
+          [
+            4,
+            41
+          ]
+        ],
+        "query_or_demo_outputs_executed": false
+      }
+    },
+    {
+      "name": "variant_count_cap",
+      "passed": true,
+      "detail": {
+        "default_count": 4,
+        "cap_one": 1
+      }
+    },
+    {
+      "name": "explicit_sort_reverse_variant",
+      "passed": true,
+      "detail": {
+        "label": "reverse_sort:L2:C6"
+      }
+    },
+    {
+      "name": "expired_repair_budget_does_not_execute",
+      "passed": true,
+      "detail": {
+        "variants": [],
+        "variants_tried": 0,
+        "variants_generated": 0,
+        "elapsed_s": 4e-06,
+        "status": "budget_interrupted",
+        "best": null,
+        "max_variants": 32,
+        "max_seconds": 30.0,
+        "query_results_computed": false
+      }
+    },
+    {
+      "name": "actual_restricted_worker_identity",
+      "passed": false,
+      "blocking_environment": true,
+      "detail": {
+        "status": "executor_unavailable",
+        "error": "current limit exceeds maximum limit",
+        "elapsed_s": 0.098471
+      }
+    },
+    {
+      "name": "all_query_inputs_preserved_at_cutoff",
+      "passed": true,
+      "detail": {
+        "demo_statuses": [
+          "budget_interrupted"
+        ],
+        "query_statuses": [
+          "budget_interrupted",
+          "budget_interrupted"
+        ],
+        "query_output_sentinels_ignored": true
+      }
+    }
+  ],
+  "files": {
+    "experiments/020/submit/submit_lib.py": "805ae24b4a4f945686b7edeffdc2becb44671c1536c3273b26d9a1d789c64cc0",
+    "experiments/020/submit/solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+    "experiments/020/submit/local_repair.py": "b94297f4053aeecee2ef06f70ca1d71357e89d6c460b4169fac0ba124fef56ae"
+  },
+  "limitations": [
+    "This macOS host cannot install the inherited RLIMIT boundary; actual restricted identity execution returned executor_unavailable. No fallback or weaker boundary was used.",
+    "AST enumeration confirms the aa border 4-to-8 mutation exists; no local aa demo/query exact result is claimed. Verify on Kaggle Linux before model generation.",
+    "Local repair currently supports exact 4/8-neighbor tables and explicit literal sort reverse only; rotation/translation operators were not added without a reliable source pattern.",
+    "JSON [[0]] is both initial placeholder and a valid grid. Driver should track candidate provenance when reporting real coverage."
+  ]
+}

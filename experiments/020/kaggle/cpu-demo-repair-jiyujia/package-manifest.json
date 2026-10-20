@@ -1,0 +1,21 @@
+{
+  "account": "jiyujia",
+  "kernel_ref": "jiyujia/arc2-020-cpu-repair-replay",
+  "proposed_version": 3,
+  "input_path": "experiments/020/manual-demo-repair/input.json",
+  "source_sha256": {
+    "replay_local_repair.py": "23ed680e02f1057c3e63bd628e569e02cfc677b06b5526f2042ab8bf57292835",
+    "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+    "local_repair.py": "b94297f4053aeecee2ef06f70ca1d71357e89d6c460b4169fac0ba124fef56ae",
+    "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+    "input.json": "f2866404d8125b7fab0c659efd6458c706239588fcc93158f38454163d730707"
+  },
+  "notebook_sha256": "5adce0faeb591eeb0e7f05c4e44ce5e138a617b02be0eb0d1d750b6ce650e7ff",
+  "gpu_used": false,
+  "query_gold_used": false,
+  "n_tasks": 2,
+  "n_queries": 3,
+  "max_session_seconds": 1800,
+  "research_only": true,
+  "packaging_repair": "v2 mistakenly replaced inner base64 decoding of each file; v3 preserves dynamic value decoding. Input and all research source bytes unchanged."
+}

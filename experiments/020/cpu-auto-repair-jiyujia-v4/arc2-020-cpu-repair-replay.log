@@ -1,0 +1,68 @@
+[{"stream_name":"stderr","time":8.951737919,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":8.951797108,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":10.276389258,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":10.276442213,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":10.276449199,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":10.276454123,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":11.182141685,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.182183285,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.182189407,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.182194802,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":12.77343932,"data":"{\"event\": \"CPU_REPAIR_BEGIN\", \"source_sha256\": {\"replay_local_repair.py\": \"23ed680e02f1057c3e63bd628e569e02cfc677b06b5526f2042ab8bf57292835\", \"solve_program.py\": \"405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88\", \"local_repair.py\": \"0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0\", \"submit_lib.py\": \"53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e\", \"input.json\": \"6ec1ea168320a7d06ed29c830313fcd98ee8612dd166ec0faaaede0fe36f7d21\"}}\n"}
+,{"stream_name":"stdout","time":13.032236574,"data":"135a2760 demo 0 -\u003e 0 variants=0 wall=0.002s\n"}
+,{"stream_name":"stdout","time":13.238717313,"data":"135a2760 demo 0 -\u003e 0 variants=0 wall=0.002s\n"}
+,{"stream_name":"stdout","time":14.37564267,"data":"2b83f449 demo 0 -\u003e 0 variants=0 wall=1.288s\n"}
+,{"stream_name":"stdout","time":14.437541009,"data":"195c6913 demo 0 -\u003e 0 variants=0 wall=1.382s\n"}
+,{"stream_name":"stdout","time":14.581901786,"data":"2b83f449 demo 0 -\u003e 0 variants=0 wall=1.288s\n"}
+,{"stream_name":"stdout","time":14.58193593,"data":"195c6913 demo 0 -\u003e 0 variants=0 wall=1.382s\n"}
+,{"stream_name":"stdout","time":17.155788985,"data":"2c181942 demo 0 -\u003e 0 variants=1 wall=2.760s\n"}
+,{"stream_name":"stdout","time":17.358238539,"data":"247ef758 demo 0 -\u003e 0 variants=2 wall=4.285s\n"}
+,{"stream_name":"stdout","time":17.364265796,"data":"2c181942 demo 0 -\u003e 0 variants=1 wall=2.760s\n"}
+,{"stream_name":"stdout","time":17.364301534,"data":"247ef758 demo 0 -\u003e 0 variants=2 wall=4.285s\n"}
+,{"stream_name":"stdout","time":18.752667155,"data":"3e6067c3 demo 0 -\u003e 0 variants=2 wall=4.202s\n"}
+,{"stream_name":"stdout","time":18.948878395,"data":"3e6067c3 demo 0 -\u003e 0 variants=2 wall=4.202s\n"}
+,{"stream_name":"stdout","time":18.99560079,"data":"4c3d4a41 demo 0 -\u003e 0 variants=0 wall=1.895s\n"}
+,{"stream_name":"stdout","time":19.199064379,"data":"4c3d4a41 demo 0 -\u003e 0 variants=0 wall=1.895s\n"}
+,{"stream_name":"stdout","time":20.50484256,"data":"58f5dbd5 demo 0 -\u003e 0 variants=1 wall=3.194s\n"}
+,{"stream_name":"stdout","time":20.707700766,"data":"58f5dbd5 demo 0 -\u003e 0 variants=1 wall=3.194s\n"}
+,{"stream_name":"stdout","time":21.631597539,"data":"6e453dd6 demo 0 -\u003e 0 variants=1 wall=2.586s\n"}
+,{"stream_name":"stdout","time":21.83049131,"data":"6e453dd6 demo 0 -\u003e 0 variants=1 wall=2.586s\n"}
+,{"stream_name":"stdout","time":22.411815272,"data":"21897d95 demo 0 -\u003e 0 variants=2 wall=9.320s\n"}
+,{"stream_name":"stdout","time":22.60687061,"data":"21897d95 demo 0 -\u003e 0 variants=2 wall=9.320s\n"}
+,{"stream_name":"stdout","time":23.299924246,"data":"8698868d demo 0 -\u003e 0 variants=0 wall=1.685s\n"}
+,{"stream_name":"stdout","time":23.502790659,"data":"8698868d demo 0 -\u003e 0 variants=0 wall=1.685s\n"}
+,{"stream_name":"stdout","time":24.578975487,"data":"abc82100 demo 0 -\u003e 0 variants=0 wall=1.282s\n"}
+,{"stream_name":"stdout","time":24.782315749,"data":"abc82100 demo 0 -\u003e 0 variants=0 wall=1.282s\n"}
+,{"stream_name":"stdout","time":25.068115187,"data":"800d221b demo 0 -\u003e 0 variants=3 wall=4.493s\n"}
+,{"stream_name":"stdout","time":25.273311437,"data":"800d221b demo 0 -\u003e 0 variants=3 wall=4.493s\n"}
+,{"stream_name":"stdout","time":25.444135641,"data":"8e5c0c38 demo 0 -\u003e 0 variants=2 wall=3.034s\n"}
+,{"stream_name":"stdout","time":25.638738758,"data":"8e5c0c38 demo 0 -\u003e 0 variants=2 wall=3.034s\n"}
+,{"stream_name":"stdout","time":26.313849908,"data":"cbebaa4b demo 0 -\u003e 0 variants=0 wall=0.944s\n"}
+,{"stream_name":"stdout","time":26.516394659,"data":"cbebaa4b demo 0 -\u003e 0 variants=0 wall=0.944s\n"}
+,{"stream_name":"stdout","time":27.077625129,"data":"bf45cf4b demo 0 -\u003e 0 variants=0 wall=2.080s\n"}
+,{"stream_name":"stdout","time":27.271575284,"data":"bf45cf4b demo 0 -\u003e 0 variants=0 wall=2.080s\n"}
+,{"stream_name":"stdout","time":27.34764804,"data":"e3721c99 demo 0 -\u003e 0 variants=0 wall=0.015s\n"}
+,{"stream_name":"stdout","time":27.549002354,"data":"e3721c99 demo 0 -\u003e 0 variants=0 wall=0.015s\n"}
+,{"stream_name":"stdout","time":27.829315236,"data":"de809cff demo 0 -\u003e 0 variants=0 wall=1.458s\n"}
+,{"stream_name":"stdout","time":28.036313767,"data":"de809cff demo 0 -\u003e 0 variants=0 wall=1.458s\n"}
+,{"stream_name":"stdout","time":28.462681505,"data":"b6f77b65 demo 1 -\u003e 1 variants=1 wall=3.867s\n"}
+,{"stream_name":"stdout","time":28.666036058,"data":"b6f77b65 demo 1 -\u003e 1 variants=1 wall=3.867s\n"}
+,{"stream_name":"stdout","time":28.811670579,"data":"e87109e9 demo 0 -\u003e 0 variants=0 wall=1.047s\n"}
+,{"stream_name":"stdout","time":29.014796809,"data":"e87109e9 demo 0 -\u003e 0 variants=0 wall=1.047s\n"}
+,{"stream_name":"stdout","time":30.134993872,"data":"e376de54 demo 1 -\u003e 3 variants=1 wall=3.059s\n"}
+,{"stream_name":"stdout","time":30.338315689,"data":"e376de54 demo 1 -\u003e 3 variants=1 wall=3.059s\n"}
+,{"stream_name":"stdout","time":30.425000282,"data":"5961cc34 demo 1 -\u003e 1 variants=8 wall=11.793s\n"}
+,{"stream_name":"stdout","time":30.627492659,"data":"5961cc34 demo 1 -\u003e 1 variants=8 wall=11.793s\n"}
+,{"stream_name":"stdout","time":30.631511911,"data":"fc7cae8d demo 0 -\u003e 0 variants=0 wall=1.828s\n"}
+,{"stream_name":"stdout","time":30.834432841,"data":"fc7cae8d demo 0 -\u003e 0 variants=0 wall=1.828s\n"}
+,{"stream_name":"stdout","time":31.236496895,"data":"f931b4a8 demo 1 -\u003e 1 variants=0 wall=2.846s\n"}
+,{"stream_name":"stdout","time":31.438696817,"data":"f931b4a8 demo 1 -\u003e 1 variants=0 wall=2.846s\n"}
+,{"stream_name":"stderr","time":35.029636244,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":35.029687464,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":35.262210247,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":35.26223803,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":36.24956008,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":36.351861037,"data":"[NbConvertApp] Writing 184329 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":39.72469935,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":40.408619657,"data":"[NbConvertApp] Writing 459705 bytes to __results__.html\n"}
+]
