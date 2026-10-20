@@ -1,0 +1,70 @@
+{
+  "scope": "D24 6-task shard, no query gold read",
+  "run_sha256": "71a9a22f2392f587a15dd55937aa67f0e58da4d9f6f1928ef34df3a4eb4ffe4e",
+  "status": "complete_with_evidence",
+  "elapsed_s": 1963.937,
+  "install_load_s": 768.5,
+  "completion_tokens": 116697,
+  "coverage": {
+    "M0": {
+      "tasks": 6,
+      "queries": 10,
+      "format_ok": 10,
+      "single_covered": 7,
+      "double_distinct": 3,
+      "placeholder": 3,
+      "updated_keys": 7
+    },
+    "M1": {
+      "tasks": 6,
+      "queries": 10,
+      "format_ok": 10,
+      "single_covered": 7,
+      "double_distinct": 3,
+      "placeholder": 3,
+      "updated_keys": 7
+    }
+  },
+  "waves": [
+    {
+      "wave_wall_s": 608.06,
+      "concurrency": 6,
+      "client_concurrency": 6,
+      "service_max_seqs": 8,
+      "wave_start_wall_s": 1792497641.192,
+      "completion_tokens_sum": 58425,
+      "usage_missing": 0,
+      "agg_tok_s": 96.08,
+      "name": "P0",
+      "n": 6
+    },
+    {
+      "wave_wall_s": 586.99,
+      "concurrency": 6,
+      "client_concurrency": 6,
+      "service_max_seqs": 8,
+      "wave_start_wall_s": 1792498249.259,
+      "completion_tokens_sum": 58272,
+      "usage_missing": 0,
+      "agg_tok_s": 99.27,
+      "name": "secondary",
+      "n": 6
+    }
+  ],
+  "gpu_sampling_scope": "after model ready until process cleanup; includes CPU callbacks; nvidia-smi utilization is busy-time, not SM occupancy or proof of peak achievable throughput",
+  "gpu_samples": 236,
+  "gpu_mean_utilization_percent": [
+    99.576,
+    99.576,
+    99.568,
+    99.576
+  ],
+  "aa_demo_preflight": {
+    "fixture_sha256": "b960d885c85373d99dff5dec48866af0757c48a7e61995edfcc7268bdad96bcc",
+    "baseline_matches": 0,
+    "best_matches": 3,
+    "variants_tried": 2,
+    "elapsed_s": 0.729523
+  },
+  "score_status": "Not scored until all D24 shard predictions frozen"
+}

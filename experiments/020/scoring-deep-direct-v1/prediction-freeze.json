@@ -1,0 +1,52 @@
+{
+  "frozen_at_utc": "2026-10-20T14:31:34.886285+00:00",
+  "cohort": "D24_DeepDirect_6",
+  "planned_tasks": 6,
+  "planned_queries": 9,
+  "artifacts": {
+    "manifest": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/020/deep-direct/manifest.json",
+      "sha256": "046287d2c65d42de901c40ae903ededbce54e00e740ffc9be8ad14649d3a5273",
+      "bytes": 6066
+    },
+    "challenges": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/020/deep-p0/challenges.json",
+      "sha256": "5e50d56ea56f81e72a50a4b7fb5bff0f4b73548ad0618b0d43f7e0a95d5e0848",
+      "bytes": 283974
+    },
+    "predictions": [
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/020/deep-p0/frozen-baseline-M0.json",
+        "sha256": "dd03078ff739a15d5566cfd155d13877471f9f9d25899c52431007802e735c5c",
+        "bytes": 137581,
+        "policy": "TwoShort",
+        "task_ids": [
+          "3e6067c3",
+          "5961cc34",
+          "800d221b",
+          "b6f77b65",
+          "de809cff",
+          "e376de54"
+        ]
+      },
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/020/deep-direct-qingyu1232-v1/vprobe/submission-M1.json",
+        "sha256": "b25e468fa9bbae44925bbaea872c62a3a12e7ba964f32477162d2ffc67442dca",
+        "bytes": 17126,
+        "policy": "DeepDirect",
+        "task_ids": [
+          "3e6067c3",
+          "5961cc34",
+          "800d221b",
+          "b6f77b65",
+          "de809cff",
+          "e376de54"
+        ]
+      }
+    ],
+    "candidate_pools": []
+  },
+  "official_revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+  "official_split": "evaluation",
+  "note": "All supplied policy predictions were loaded and hashed before any gold access."
+}

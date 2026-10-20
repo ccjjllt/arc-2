@@ -1,0 +1,265 @@
+{
+  "checked_at_utc": "2026-10-20T11:40:58Z",
+  "checked_at_beijing": "2026-10-20 19:40:58",
+  "scope": "Read-only authentication, weekly GPU quota, ARC2 submission limits, and latest Notebook statuses for the three user-prioritized accounts. No GPU start, notebook push, code submission, account-default change, or credential-file modification.",
+  "cli_version": "2.2.4",
+  "competition": "arc-prize-2026-arc-agi-2",
+  "authentication": {
+    "method": "Each account is queried in its own subprocess. KAGGLE_API_TOKEN is set only in that subprocess environment to the existing credential file path. Installed kagglesdk get_access_token_from_env reads that file internally.",
+    "credential_values_printed_or_saved": false,
+    "global_default_changed": false,
+    "credential_files_overwritten": false,
+    "command_template": "env KAGGLE_API_TOKEN=/Users/zhaohuaxiang/.kaggle/ACCOUNT_CREDENTIAL_FILE kaggle ...",
+    "sdk_source": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/kaggle_env.py",
+    "sdk_source_lines": [
+      91,
+      105
+    ],
+    "note": "KAGGLE_API_TOKEN accepts an existing path in this installed SDK. Do not interpolate the credential contents into shell command text. Verify authenticated username before every mutation."
+  },
+  "quota_semantics": {
+    "source": "Kaggle API quota_view / get_accelerator_quota_statistics",
+    "available_formula": "max(0, total_time_allowed - time_used - time_reserved)",
+    "planning_quota_multiplier": 2.3,
+    "multiplier_note": "Planning buffer, not observed billing. No six-hour reserve is imposed on each old account.",
+    "refresh_time_api": "2026-10-24T00:00:00",
+    "refresh_time_interpretation": "2026-10-24 00:00 UTC, 2026-10-24 08:00 Asia/Shanghai",
+    "live_balance_note": "The balances are a snapshot shared with other projects on each account. Recheck immediately before launch."
+  },
+  "accounts": [
+    {
+      "expected_username": "ccjjllt",
+      "authenticated_username": "ccjjllt",
+      "identity_matches": true,
+      "credential_file": "/Users/zhaohuaxiang/.kaggle/access_token_ccjjllt_check",
+      "gpu": {
+        "total_seconds": 108000.0,
+        "minimum_seconds": 108000.0,
+        "used_seconds": 86986.104,
+        "reserved_seconds": 0.0,
+        "unreserved_available_seconds": 21013.896,
+        "unreserved_available_hours": 5.837193333333333,
+        "planning_max_wall_hours_at_2_3": 2.537910144927536
+      },
+      "competition_submission_limits": {
+        "num_total": 8,
+        "num_allowed_now": 1
+      },
+      "recent_notebook_statuses": [
+        {
+          "ref": "ccjjllt/enveda-020-e006-repro",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "ccjjllt/p013-12b-behavior-sft-34",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "ccjjllt/p013-31b-diag-pair-v3",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "ccjjllt/p013-31b-diag-cpu-prepare-v3",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "ccjjllt/p013-31b-diag-pair-v2",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "ccjjllt/p013-31b-diag-pair",
+          "status": "ERROR"
+        },
+        {
+          "ref": "ccjjllt/p013-31b-diag-cpu-prepare-v2",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "ccjjllt/p013-31b-diag-pair-cpu-prepare",
+          "status": "ERROR"
+        },
+        {
+          "ref": "ccjjllt/arc2-019-p2-plus4",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "ccjjllt/p012-eval-fcd12",
+          "status": "COMPLETE"
+        }
+      ],
+      "observed_active_recent_notebooks": [],
+      "recent_status_unknown_count": 0
+    },
+    {
+      "expected_username": "qingyu1232",
+      "authenticated_username": "qingyu1232",
+      "identity_matches": true,
+      "credential_file": "/Users/zhaohuaxiang/.kaggle/access_token_qingyu1232",
+      "gpu": {
+        "total_seconds": 108000.0,
+        "minimum_seconds": 108000.0,
+        "used_seconds": 78768.576,
+        "reserved_seconds": 0.0,
+        "unreserved_available_seconds": 29231.424,
+        "unreserved_available_hours": 8.11984,
+        "planning_max_wall_hours_at_2_3": 3.530365217391305
+      },
+      "competition_submission_limits": {
+        "num_total": 8,
+        "num_allowed_now": 1
+      },
+      "recent_notebook_statuses": [
+        {
+          "ref": "qingyu1232/p013-preverify-cpu-clone",
+          "status": "ERROR"
+        },
+        {
+          "ref": "qingyu1232/p013-preverify-v3-net",
+          "status": "ERROR"
+        },
+        {
+          "ref": "",
+          "status": "UNKNOWN",
+          "reason": "List returned an empty ref; no valid Notebook identity to query."
+        },
+        {
+          "ref": "qingyu1232/p013-preverify-v2-flat",
+          "status": "ERROR"
+        },
+        {
+          "ref": "qingyu1232/p013-gpu-preverify-v1-v4",
+          "status": "ERROR"
+        },
+        {
+          "ref": "qingyu1232/arc3-027-tail-confirm",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "qingyu1232/arc2-019-p1-pilot",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "qingyu1232/arc3-025-admission-order",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "qingyu1232/arc2-018a-f291-fix-restart-v3",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "qingyu1232/arc2-018a-probe-sanity",
+          "status": "COMPLETE"
+        }
+      ],
+      "observed_active_recent_notebooks": [],
+      "recent_status_unknown_count": 1
+    },
+    {
+      "expected_username": "jiyujia",
+      "authenticated_username": "jiyujia",
+      "identity_matches": true,
+      "credential_file": "/Users/zhaohuaxiang/.kaggle/access_token_jiyujia",
+      "gpu": {
+        "total_seconds": 108000.0,
+        "minimum_seconds": 108000.0,
+        "used_seconds": 101351.132,
+        "reserved_seconds": 0.0,
+        "unreserved_available_seconds": 6648.868,
+        "unreserved_available_hours": 1.846907777777778,
+        "planning_max_wall_hours_at_2_3": 0.8030033816425122
+      },
+      "competition_submission_limits": {
+        "num_total": 8,
+        "num_allowed_now": 1
+      },
+      "recent_notebook_statuses": [
+        {
+          "ref": "jiyujia/arc3-026-failure-repair",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "jiyujia/arc2-018a-f291-fix-restart",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "jiyujia/arc2-018a-read-probe",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "jiyujia/arc3-024-level-stall",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "jiyujia/arc3-023-stall-probe",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "jiyujia/arc3-022-community-dev",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "jiyujia/arc3-019-fp8-ple",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "jiyujia/notebook2ee83a5c1c",
+          "status": "UNKNOWN",
+          "reason": "Status endpoint returned HTTPError; not classified as active."
+        },
+        {
+          "ref": "jiyujia/arc3-022-expect-check",
+          "status": "COMPLETE"
+        },
+        {
+          "ref": "jiyujia/arc3-019-fp8-ple-cpu",
+          "status": "COMPLETE"
+        }
+      ],
+      "observed_active_recent_notebooks": [],
+      "recent_status_unknown_count": 1
+    },
+    {
+      "expected_username": "zhuating",
+      "authenticated_username": "zhuating",
+      "identity_matches": true,
+      "checked_at_utc": "2026-10-20T11:43:59.288489+00:00",
+      "credential_file": "/Users/zhaohuaxiang/.kaggle/access_token_zhuating",
+      "quota_refresh_time": "2026-10-24T00:00:00",
+      "gpu": {
+        "total_seconds": 108000.0,
+        "used_seconds": 0.0,
+        "reserved_seconds": 0.0,
+        "unreserved_available_seconds": 108000.0,
+        "unreserved_available_hours": 30.0,
+        "planning_max_wall_hours_at_2_3": 13.043478260869566
+      },
+      "competition_submission_limits": {
+        "num_total": 8,
+        "num_allowed_now": 1
+      },
+      "role": "verified fallback; no GPU launched",
+      "recent_notebooks_not_queried": true
+    }
+  ],
+  "active_job_limits": [
+    "Only each account's ten most recently run Notebook list entries were inspected.",
+    "This is not an exhaustive inventory of interactive sessions or other projects.",
+    "Account-wide GPU reserved was zero for all three accounts at the snapshot.",
+    "Notebook-list fields version=0, enable_gpu=false, and blank machine_shape were omitted because that listing did not reliably populate those metadata fields."
+  ],
+  "recommended_allocation": {
+    "d24": "User-authorized frozen 6/18 task split: jiyujia 2850 seconds and qingyu1232 7200 seconds, including separate loading. See cohorts/shards/d24-sharding-manifest.json.",
+    "c24": "ccjjllt: principal confirmation session within its refreshed quota balance, provisionally no more than 2.4 wall-clock hours. Use measured D24 throughput to decide whether the fixed C24 fits; if necessary freeze task shards before confirmation results are scored.",
+    "jiyujia": "Use only for a useful unfinished frozen shard that fits roughly 0.8 wall-clock hours including loading and safe shutdown. Do not launch solely to exhaust quota or repeat completed tasks.",
+    "final_save_run": "zhuating verified full 30h available and reserved=0 at 11:43:59Z. Preserve as fallback for one complete frozen 4-hour Save & Run; no old account currently meets the conservative 9.2h allowance at multiplier 2.3.",
+    "zhuating_queried": true,
+    "extra_loading": "Every added shard/session incurs additional loading cost; 3+3+4 hours is not preserved automatically after splitting.",
+    "submission_limits": "Do not sum the three num_allowed_now values or infer separate team submission allowances. Verify the final submitting identity and team once at the actual submit step."
+  },
+  "unconfirmed": [
+    "Whether every account is on the same current competition team.",
+    "Exhaustive interactive-session inventory.",
+    "Current hidden competition rerun charging against ordinary weekly GPU quota.",
+    "zhuating team association and final model/wheel mount access remain to be checked before launch."
+  ]
+}

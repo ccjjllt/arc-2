@@ -1,0 +1,30 @@
+{
+  "date_beijing": "2026-10-20",
+  "stage": "D24",
+  "query_gold_read": false,
+  "launches": [
+    {
+      "owner": "jiyujia",
+      "ref": "jiyujia/arc2-020-d24-ji",
+      "version": 1,
+      "status": "RUNNING",
+      "session_seconds": 2850,
+      "package_manifest": "experiments/020/kaggle/d24-jiyujia/package-manifest.json",
+      "launch_ack_at_utc": "2026-10-20T11:48:15.296765+00:00",
+      "note": "6task/10query frozen shard; research only, not competition submission",
+      "preinstall_gate": "passed: reached requirements installation; numeric AA results pending artifact download",
+      "phase": "model_ready_and_generating",
+      "model_ready_log_utc": "2026-10-20 12:00:41"
+    },
+    {
+      "owner": "qingyu1232",
+      "ref": "qingyu1232/arc2-020-d24-qingyu",
+      "version": 1,
+      "status": "RUNNING",
+      "session_seconds": 7200,
+      "package_manifest": "experiments/020/kaggle/d24-qingyu1232/package-manifest.json",
+      "launch_ack_at_utc": "2026-10-20T11:51:00.798079+00:00",
+      "note": "18task/26query fixed shard; 400 source >1MB before accepted v1; compressed packaging only, source/input SHAs unchanged"
+    }
+  ]
+}

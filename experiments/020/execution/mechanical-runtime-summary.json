@@ -1,0 +1,220 @@
+{
+  "status": "complete_runtime_analysis_query_unscored",
+  "scope": "Read-only analysis of existing run, F source and telemetry; no program replay, no GPU, no query gold or C24 solutions read.",
+  "source_run": {
+    "path": "experiments/020/mechanical-ccjjllt-v1/vprobe/run.json",
+    "sha256": "ba2f8a75f75342c3543c187001127c9874375288ea001db5506b7d9813022031"
+  },
+  "source_gpu_samples": {
+    "path": "experiments/020/mechanical-ccjjllt-v1/vprobe/gpu-samples.jsonl",
+    "sha256": "c20760be73a502c431835899d010d6626db5ae3ee70d6d87f407eed2c709f6ed"
+  },
+  "run_started_beijing": "2026-10-20T20:37:59.425503+08:00",
+  "owner": "ccjjllt",
+  "hardware": "NVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB",
+  "tasks": 3,
+  "queries": 4,
+  "session_wall_seconds": 959.778,
+  "install_seconds_subset": 311.5,
+  "install_load_seconds_inclusive": 751.5,
+  "install_load_share_of_session": 0.7829935672624294,
+  "generation_wave_wall_seconds": 207.31,
+  "generation_aggregate_token_per_second": 86.77,
+  "new_physical_calls": 6,
+  "new_completion_tokens": 17989,
+  "usage_missing": 0,
+  "historical_initial_completion_tokens": 28595,
+  "historical_initial_plus_new_research_completion_tokens": 46584,
+  "cost_note": "The new session shared frozen P0s. Historical 28595 P0 completion tokens remain necessary deployment cost; do not call frozen initials free. Sum of request seconds is not GPU wall time. New normal-session quota before/after was not available in these outputs.",
+  "arms": {
+    "F": {
+      "calls": 3,
+      "completion_tokens": 7659,
+      "request_seconds_sum_not_wall": 422.6,
+      "admitted_programs": 3,
+      "admitted_program_denominator": 3,
+      "all_demo_passing_programs": 0,
+      "all_demo_program_denominator": 3,
+      "exact_demo_cases": 0,
+      "planned_demo_cases": 9,
+      "actual_executed_demo_cases": 9,
+      "valid_demo_outputs": 3,
+      "actual_demo_status_counts": {
+        "execution_error": 6,
+        "ok": 3
+      },
+      "valid_query_outputs": 1,
+      "fixed_query_denominator": 4,
+      "finish_reason_counts": {
+        "stop": 3
+      },
+      "policy_costs": {
+        "logical_calls": 3,
+        "completion_tokens": 7659,
+        "request_seconds_sum_not_wall": 422.6,
+        "cpu_repair_seconds": 0,
+        "historical_initial_tokens": 28595,
+        "deployment_tokens_including_initial": 36254
+      },
+      "per_task": [
+        {
+          "task_id": "195c6913",
+          "completion_tokens": 1833,
+          "gen_ok": true,
+          "demo_matches": 0,
+          "query_legal": 0
+        },
+        {
+          "task_id": "e87109e9",
+          "completion_tokens": 2778,
+          "gen_ok": true,
+          "demo_matches": 0,
+          "query_legal": 1
+        },
+        {
+          "task_id": "2c181942",
+          "completion_tokens": 3048,
+          "gen_ok": true,
+          "demo_matches": 0,
+          "query_legal": 0
+        }
+      ]
+    },
+    "R": {
+      "calls": 3,
+      "completion_tokens": 10330,
+      "request_seconds_sum_not_wall": 537.3,
+      "admitted_programs": 1,
+      "admitted_program_denominator": 3,
+      "all_demo_passing_programs": 0,
+      "all_demo_program_denominator": 3,
+      "exact_demo_cases": 0,
+      "planned_demo_cases": 9,
+      "actual_executed_demo_cases": 3,
+      "valid_demo_outputs": 3,
+      "actual_demo_status_counts": {
+        "ok": 3
+      },
+      "valid_query_outputs": 2,
+      "fixed_query_denominator": 4,
+      "finish_reason_counts": {
+        "stop": 1,
+        "length": 2
+      },
+      "policy_costs": {
+        "logical_calls": 3,
+        "completion_tokens": 10330,
+        "request_seconds_sum_not_wall": 537.3,
+        "cpu_repair_seconds": 0,
+        "historical_initial_tokens": 28595,
+        "deployment_tokens_including_initial": 38925
+      },
+      "per_task": [
+        {
+          "task_id": "195c6913",
+          "completion_tokens": 2138,
+          "gen_ok": true,
+          "demo_matches": 0,
+          "query_legal": 2
+        },
+        {
+          "task_id": "2c181942",
+          "completion_tokens": 4096,
+          "gen_ok": false,
+          "demo_matches": 0,
+          "query_legal": 0
+        },
+        {
+          "task_id": "e87109e9",
+          "completion_tokens": 4096,
+          "gen_ok": false,
+          "demo_matches": 0,
+          "query_legal": 0
+        }
+      ]
+    }
+  },
+  "coverage": {
+    "M0": {
+      "tasks": 3,
+      "queries": 4,
+      "format_ok": 4,
+      "single_covered": 2,
+      "double_distinct": 0,
+      "placeholder": 2,
+      "updated_keys": 2
+    },
+    "M1": {
+      "tasks": 3,
+      "queries": 4,
+      "format_ok": 4,
+      "single_covered": 1,
+      "double_distinct": 0,
+      "placeholder": 3,
+      "updated_keys": 1
+    }
+  },
+  "gpu_busy": {
+    "metric": "nvidia-smi utilization.gpu sample mean; not useful-work efficiency or tensor occupancy",
+    "generation_window_epoch": [
+      1792500631.762,
+      1792500839.072
+    ],
+    "generation_sample_times": 41,
+    "generation_gpu_observations": 164,
+    "generation_mean_percent": 100.0,
+    "generation_per_gpu_mean_percent": {
+      "0": 100.0,
+      "1": 100.0,
+      "2": 100.0,
+      "3": 100.0
+    },
+    "all_sample_times": 42,
+    "all_samples_mean_percent": 97.61904761904762,
+    "note": "All-samples mean includes one 0-percent pre-generation sample; generation-window mean is 100% over 41 sample times x four GPUs."
+  },
+  "F_source_findings": [
+    {
+      "task_id": "2c181942",
+      "F_outcome": "The old tuple index access was replaced by draw(cells,top,left,color), but all three demos now fail with NameError color1. color7 is also referenced without definition.",
+      "failure_type": "mechanical_failure_replaced_by_new_mechanical_failure",
+      "original_error_eliminated_in_source": true,
+      "F_valid_demo_outputs": 0,
+      "F_demo_matches": 0,
+      "F_query_legal": 0,
+      "source_path": "experiments/020/mechanical-ccjjllt-v1/vprobe/programs/F-2c181942.code.py",
+      "source_sha256": "c15e994ed3b065c0ad24704c8c253b3f3ab2821f12d4cf4650057ebcb764505a"
+    },
+    {
+      "task_id": "195c6913",
+      "F_outcome": "The mixed component list/unpacking logic was rewritten, but sc is always +1 or -1. The while loop always advances c and never r, causing list-assignment IndexError on all three demos when routing between anchors.",
+      "failure_type": "mechanical_failure_replaced_by_new_mechanical_failure",
+      "original_error_eliminated_in_source": true,
+      "F_valid_demo_outputs": 0,
+      "F_demo_matches": 0,
+      "F_query_legal": 0,
+      "source_path": "experiments/020/mechanical-ccjjllt-v1/vprobe/programs/F-195c6913.code.py",
+      "source_sha256": "35ed5bcee281e2335b303e5839a63698831411050f6d71b0cd41c066c8e3a4fe"
+    },
+    {
+      "task_id": "e87109e9",
+      "F_outcome": "Removed the prohibited import and executes all three demos with correct output shapes, but matches none. Foreground accuracy 0.5610 and changed-cell accuracy 0.6133. Source includes paint(top_row,bot_row,left_col,right_col), which paints the full rectangle despite the outer-frame comment; this is a concrete semantic discrepancy, not a proved single causal fix.",
+      "failure_type": "execution_recovered_but_rule_wrong",
+      "original_error_eliminated_in_source": true,
+      "F_valid_demo_outputs": 3,
+      "F_demo_matches": 0,
+      "F_query_legal": 1,
+      "source_path": "experiments/020/mechanical-ccjjllt-v1/vprobe/programs/F-e87109e9.code.py",
+      "source_sha256": "f430401bfee5a493b3f4c16b38ae1590d03e6381924816c52debce0c1e57c20a"
+    }
+  ],
+  "research_conclusion": "Short feedback generated complete accepted code for 3/3 versus 1/3 for short restart and used fewer new tokens (7659 vs 10330), but only 1/3 feedback programs became executable on all demos; the other two replaced old runtime bugs with new ones. Neither arm produced a single exact demonstration. The only executable F program remains semantically wrong. This experiment supports cheaper code completion, not solution quality or query gain; do not expand repeated repair merely because admission improved.",
+  "next_decision": "Use the already-running deeper-P0 and remaining D24 results to decide whether clearer object representation / stronger initial rule formation produces demo-consistent programs. Keep these three mechanically selected tasks as a diagnostic; do not retune or append repeated F calls until correctness evidence changes.",
+  "fixed_query_scoring": {
+    "status": "not_scored",
+    "n_queries": 4,
+    "M0_EM_at_2": null,
+    "M1_EM_at_2": null,
+    "warning": "M0 2/4 and M1 1/4 are legal-output coverage only, never exact-match scores. Zero exact demos does not establish zero query exact."
+  }
+}

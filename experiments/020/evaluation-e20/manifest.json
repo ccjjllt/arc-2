@@ -1,0 +1,962 @@
+{
+  "created_date_beijing": "2026-10-20",
+  "status": "input_selection_frozen_proposed_not_run",
+  "purpose": "Prepare a possible follow-up public-evaluation accuracy/cost observation using remaining qingyu1232 resources. Execution is undecided pending C24 completion and quota evidence; no GPU launch and no change to submitted formal Notebook v1.",
+  "unit": "task selection, all original query inputs retained; primary scoring unit is query",
+  "fingerprint_rule": "sha256 of UTF-8 JSON using sort_keys=true, separators=(comma,colon), ensure_ascii=false; query_input excludes all query outputs",
+  "sources": [
+    {
+      "role": "public_evaluation_challenges",
+      "path": "experiments/008/raw-eval/arc-agi_evaluation_challenges.json",
+      "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "bytes": 984679
+    },
+    {
+      "role": "linked_split_provenance",
+      "path": "experiments/020/cohorts/split-notes.json",
+      "sha256": "aacc45510aac28265c4338634e47b095a2abc9d9d6a872aab30a15070977c4f8",
+      "bytes": 4609
+    },
+    {
+      "role": "D24_development_and_prior_exclusions",
+      "path": "experiments/020/cohorts/development-d24-manifest.json",
+      "sha256": "3dcdc1aa274d04ef948994a3d6ff8e4531a1883feca11c7252875bdc3b794327",
+      "bytes": 26406
+    },
+    {
+      "role": "C24_reservation_and_other_prior_development_exclusions",
+      "path": "experiments/020/cohorts/confirmation-c24-manifest.json",
+      "sha256": "6859e458e83ad49f5c038dbb6b59fded42f567dcc86c0043e809b7528cca3300",
+      "bytes": 21372
+    }
+  ],
+  "no_query_solutions_file_read": true,
+  "query_predictions_or_correctness_used_for_selection": false,
+  "scoring_policy": "If execution is later authorized, freeze complete predictions before allowed gold scoring; match full demos and each query input, retain failures/placeholders in the matched denominator, and report unmatched inputs separately. No old aggregate score is assigned to E20. Public evaluation results are not Kaggle hidden/public leaderboard scores.",
+  "limitations": [
+    "This public evaluation source was already used by the 019 full pilot and ordinary public-file/CPU runs. Exclusions avoid the explicitly recorded local development/confirmation task IDs; they do not undo historical inference exposure or prove that all other project use has been audited. Upstream model pretraining and fine-tuning contamination are unknown. E20 is a public-evaluation accuracy/cost observation cohort, not model-unseen data, C24, or an unbiased hidden-score estimate.",
+    "Selection is stratified by input cell count, not task difficulty or tokenizer length. No current model token/latency prediction is measured for E20.",
+    "Only the exclusion records linked from the existing 020 cohort manifests were used; lack of intersection is not proof that a task was never inspected or inferred.",
+    "The already submitted v1/ref 57443913 is unchanged; future E20 outcomes cannot alter that frozen run."
+  ],
+  "cohort": "public_evaluation_E20_020",
+  "n_tasks": 20,
+  "n_queries": 27,
+  "input_artifact": {
+    "path": "experiments/020/evaluation-e20/challenges.json",
+    "sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda",
+    "bytes": 859142
+  },
+  "selection_rule": "Start from all 120 tasks / 172 queries in the exact public evaluation challenge source. Exclude the union of recorded D24, P6, historical confirmation/981571dc, previously developed/scored C24 exclusion IDs, and current C24 IDs. Sort the remaining tasks by (total_input_cells, task_id), where total_input_cells is the number of cells in all demo inputs plus all query inputs (demo outputs excluded from length). Split into [i*n//3:(i+1)*n//3] S/M/L buckets. Within each tier sort by (sha256(UTF-8 \"020:E20:20261020:\"+task_id), task_id), then choose 7/7/6 tasks. Keep every original query in original order. No predictions, query answers, scores or solver applicability enter selection.",
+  "selection_seed": "020:E20:20261020",
+  "selection_hash_input": "UTF-8 seed + \":\" + task_id",
+  "source_task_count": 120,
+  "source_query_count": 172,
+  "eligible_task_count": 87,
+  "excluded_task_ids": [
+    "12eac192",
+    "135a2760",
+    "14754a24",
+    "17b80ad2",
+    "18419cfa",
+    "195c6913",
+    "1acc24af",
+    "1c786137",
+    "20270e3b",
+    "21897d95",
+    "2204b7a8",
+    "22eb0ac0",
+    "247ef758",
+    "291dc1e1",
+    "29623171",
+    "2b01abd0",
+    "2b83f449",
+    "2c181942",
+    "31aa019c",
+    "3345333e",
+    "342dd610",
+    "36fdfd69",
+    "38007db0",
+    "3c9b0459",
+    "3d31c5b3",
+    "3e6067c3",
+    "3f23242b",
+    "423a55dc",
+    "44f52bb0",
+    "4522001f",
+    "47c1f68c",
+    "4938f0c2",
+    "4c3d4a41",
+    "4c416de3",
+    "4c5c2cf0",
+    "50cb2852",
+    "52df9849",
+    "52fd389e",
+    "54dc2872",
+    "581f7754",
+    "58c02a16",
+    "58f5dbd5",
+    "5961cc34",
+    "66f2d22f",
+    "68bc2e87",
+    "6bcdb01e",
+    "6e453dd6",
+    "7e4d4f7c",
+    "800d221b",
+    "8698868d",
+    "878187ab",
+    "8886d717",
+    "8e5c0c38",
+    "9344f635",
+    "981571dc",
+    "9841fdad",
+    "984d8a3e",
+    "9c56f360",
+    "a416fc5b",
+    "a644e277",
+    "aa4ec2a5",
+    "aa62e3f4",
+    "aaef0977",
+    "abc82100",
+    "ad173014",
+    "b6f77b65",
+    "b7fb29bc",
+    "bf45cf4b",
+    "c3fa4749",
+    "cbebaa4b",
+    "cc9053aa",
+    "db0c5428",
+    "db118e2a",
+    "dce56571",
+    "de809cff",
+    "df9fd884",
+    "dfadab01",
+    "e3721c99",
+    "e376de54",
+    "e3f79277",
+    "e45ef808",
+    "e87109e9",
+    "f931b4a8",
+    "fc4aaf52",
+    "fc7cae8d",
+    "ff2825db"
+  ],
+  "excluded_task_ids_in_source": [
+    "135a2760",
+    "195c6913",
+    "20270e3b",
+    "21897d95",
+    "247ef758",
+    "291dc1e1",
+    "2b83f449",
+    "2c181942",
+    "38007db0",
+    "3e6067c3",
+    "4c3d4a41",
+    "4c416de3",
+    "581f7754",
+    "58f5dbd5",
+    "5961cc34",
+    "6e453dd6",
+    "800d221b",
+    "8698868d",
+    "8e5c0c38",
+    "981571dc",
+    "aa4ec2a5",
+    "abc82100",
+    "b6f77b65",
+    "bf45cf4b",
+    "cbebaa4b",
+    "db0c5428",
+    "de809cff",
+    "dfadab01",
+    "e3721c99",
+    "e376de54",
+    "e87109e9",
+    "f931b4a8",
+    "fc7cae8d"
+  ],
+  "exclusion_groups": {
+    "development_D24": {
+      "path": "experiments/020/cohorts/development-d24-manifest.json",
+      "field": "entries[].task_id",
+      "task_ids": [
+        "135a2760",
+        "195c6913",
+        "21897d95",
+        "247ef758",
+        "2b83f449",
+        "2c181942",
+        "3e6067c3",
+        "4c3d4a41",
+        "58f5dbd5",
+        "5961cc34",
+        "6e453dd6",
+        "800d221b",
+        "8698868d",
+        "8e5c0c38",
+        "abc82100",
+        "b6f77b65",
+        "bf45cf4b",
+        "cbebaa4b",
+        "de809cff",
+        "e3721c99",
+        "e376de54",
+        "e87109e9",
+        "f931b4a8",
+        "fc7cae8d"
+      ],
+      "task_count": 24,
+      "task_ids_in_public_evaluation": [
+        "135a2760",
+        "195c6913",
+        "21897d95",
+        "247ef758",
+        "2b83f449",
+        "2c181942",
+        "3e6067c3",
+        "4c3d4a41",
+        "58f5dbd5",
+        "5961cc34",
+        "6e453dd6",
+        "800d221b",
+        "8698868d",
+        "8e5c0c38",
+        "abc82100",
+        "b6f77b65",
+        "bf45cf4b",
+        "cbebaa4b",
+        "de809cff",
+        "e3721c99",
+        "e376de54",
+        "e87109e9",
+        "f931b4a8",
+        "fc7cae8d"
+      ]
+    },
+    "probe_P6": {
+      "path": "experiments/020/cohorts/development-d24-manifest.json",
+      "field": "excluded_p6_task_ids",
+      "task_ids": [
+        "291dc1e1",
+        "4c416de3",
+        "58c02a16",
+        "aa4ec2a5",
+        "db118e2a",
+        "fc4aaf52"
+      ],
+      "task_count": 6,
+      "task_ids_in_public_evaluation": [
+        "291dc1e1",
+        "4c416de3",
+        "aa4ec2a5"
+      ]
+    },
+    "historical_main_reserve_confirmation_and_extra_981571dc": {
+      "path": "experiments/020/cohorts/development-d24-manifest.json",
+      "field": "excluded_historical_confirmation_task_ids",
+      "task_ids": [
+        "20270e3b",
+        "38007db0",
+        "581f7754",
+        "7e4d4f7c",
+        "878187ab",
+        "981571dc",
+        "c3fa4749",
+        "db0c5428",
+        "dce56571",
+        "df9fd884",
+        "dfadab01",
+        "e45ef808"
+      ],
+      "task_count": 12,
+      "task_ids_in_public_evaluation": [
+        "20270e3b",
+        "38007db0",
+        "581f7754",
+        "981571dc",
+        "db0c5428",
+        "dfadab01"
+      ]
+    },
+    "other_previously_developed_or_scored_in_C24_exclusions": {
+      "path": "experiments/020/cohorts/confirmation-c24-manifest.json",
+      "field": "excluded_task_ids (G1 prior scored tasks plus P12 H_new)",
+      "task_ids": [
+        "12eac192",
+        "14754a24",
+        "17b80ad2",
+        "18419cfa",
+        "1acc24af",
+        "1c786137",
+        "2204b7a8",
+        "22eb0ac0",
+        "29623171",
+        "2b01abd0",
+        "31aa019c",
+        "3345333e",
+        "342dd610",
+        "36fdfd69",
+        "3c9b0459",
+        "3d31c5b3",
+        "3f23242b",
+        "423a55dc",
+        "44f52bb0",
+        "4522001f",
+        "47c1f68c",
+        "4938f0c2",
+        "4c5c2cf0",
+        "50cb2852",
+        "52df9849",
+        "58c02a16",
+        "db118e2a",
+        "e3f79277",
+        "fc4aaf52"
+      ],
+      "task_count": 29,
+      "task_ids_in_public_evaluation": []
+    },
+    "current_confirmation_C24": {
+      "path": "experiments/020/cohorts/confirmation-c24-manifest.json",
+      "field": "entries[].task_id",
+      "task_ids": [
+        "52fd389e",
+        "54dc2872",
+        "66f2d22f",
+        "68bc2e87",
+        "6bcdb01e",
+        "7e4d4f7c",
+        "878187ab",
+        "8886d717",
+        "9344f635",
+        "9841fdad",
+        "984d8a3e",
+        "9c56f360",
+        "a416fc5b",
+        "a644e277",
+        "aa62e3f4",
+        "aaef0977",
+        "ad173014",
+        "b7fb29bc",
+        "c3fa4749",
+        "cc9053aa",
+        "dce56571",
+        "df9fd884",
+        "e45ef808",
+        "ff2825db"
+      ],
+      "task_count": 24,
+      "task_ids_in_public_evaluation": []
+    }
+  },
+  "length_buckets": [
+    {
+      "tier": "S",
+      "requested_count": 7,
+      "candidate_task_ids": [
+        "eee78d87",
+        "28a6681f",
+        "dbff022c",
+        "45a5af55",
+        "78332cb0",
+        "3dc255db",
+        "e8686506",
+        "97d7923e",
+        "d35bdbdc",
+        "dd6b8c4b",
+        "31f7f899",
+        "269e22fb",
+        "7666fa5d",
+        "7b5033c1",
+        "16de56c4",
+        "136b0064",
+        "b0039139",
+        "7491f3cf",
+        "8f3a5a89",
+        "b9e38dc0",
+        "faa9f03d",
+        "1ae2feb7",
+        "5545f144",
+        "1818057f",
+        "409aa875",
+        "d59b0160",
+        "53fb4810",
+        "332f06d7",
+        "9385bd28"
+      ],
+      "candidate_count": 29,
+      "input_cells_min": 144,
+      "input_cells_max": 1168,
+      "selected_task_ids": [
+        "28a6681f",
+        "7491f3cf",
+        "16de56c4",
+        "53fb4810",
+        "3dc255db",
+        "45a5af55",
+        "136b0064"
+      ],
+      "selected_count": 7
+    },
+    {
+      "tier": "M",
+      "requested_count": 7,
+      "candidate_task_ids": [
+        "271d71e2",
+        "65b59efc",
+        "db695cfb",
+        "9bbf930d",
+        "35ab12c3",
+        "446ef5d2",
+        "c7f57c3e",
+        "71e489b6",
+        "80a900e0",
+        "da515329",
+        "6ffbe589",
+        "7b3084d4",
+        "7b80bb43",
+        "5dbc8537",
+        "7ed72f31",
+        "898e7135",
+        "4a21e3da",
+        "142ca369",
+        "7b0280bc",
+        "8b9c3697",
+        "88bcf3b4",
+        "a395ee82",
+        "b5ca7ac4",
+        "58490d8a",
+        "edb79dae",
+        "cb2d8a2c",
+        "88e364bc",
+        "a47bf94d",
+        "4e34c42c"
+      ],
+      "candidate_count": 29,
+      "input_cells_min": 1173,
+      "input_cells_max": 2095,
+      "selected_task_ids": [
+        "a395ee82",
+        "142ca369",
+        "edb79dae",
+        "6ffbe589",
+        "4e34c42c",
+        "da515329",
+        "db695cfb"
+      ],
+      "selected_count": 7
+    },
+    {
+      "tier": "L",
+      "requested_count": 6,
+      "candidate_task_ids": [
+        "36a08778",
+        "8f215267",
+        "64efde09",
+        "b10624e5",
+        "c4d067a0",
+        "6e4f6532",
+        "a6f40cea",
+        "2ba387bc",
+        "f560132c",
+        "8b7bacbf",
+        "89565ca0",
+        "62593bfd",
+        "3a25b0d8",
+        "16b78196",
+        "67e490f4",
+        "a251c730",
+        "13e47133",
+        "221dfab4",
+        "7c66cb00",
+        "2d0172a1",
+        "e12f9a14",
+        "a25697e4",
+        "b99e7126",
+        "4c7dc4dd",
+        "9aaea919",
+        "a32d8b75",
+        "20a9e565",
+        "0934a4d8",
+        "d8e07eb2"
+      ],
+      "candidate_count": 29,
+      "input_cells_min": 2102,
+      "input_cells_max": 4620,
+      "selected_task_ids": [
+        "c4d067a0",
+        "8f215267",
+        "d8e07eb2",
+        "3a25b0d8",
+        "a25697e4",
+        "13e47133"
+      ],
+      "selected_count": 6
+    }
+  ],
+  "exposure_note": "This public evaluation source was already used by the 019 full pilot and ordinary public-file/CPU runs. Exclusions avoid the explicitly recorded local development/confirmation task IDs; they do not undo historical inference exposure or prove that all other project use has been audited. Upstream model pretraining and fine-tuning contamination are unknown. E20 is a public-evaluation accuracy/cost observation cohort, not model-unseen data, C24, or an unbiased hidden-score estimate.",
+  "intersections": {
+    "development_D24": [],
+    "probe_P6": [],
+    "historical_main_reserve_confirmation_and_extra_981571dc": [],
+    "other_previously_developed_or_scored_in_C24_exclusions": [],
+    "current_confirmation_C24": []
+  },
+  "entries": [
+    {
+      "task_id": "136b0064",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 780,
+      "max_side": 19,
+      "demo_pairs_sha256": "83888d40ccd3cca031887610919dd0dda5cfaa7ac40d2410d4e3d617b467c7b9",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "136b0064_0",
+          "input_sha256": "9f3e65b1a5298a869336654ca8089c0e8b33259c0b1ec3351fea413150f09bc5",
+          "height": 19,
+          "width": 15
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "S",
+      "selection_sha256": "2bbc0675165e963220375f73612b828858e7d2b6754923546ae49a23e27e76fd"
+    },
+    {
+      "task_id": "13e47133",
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 2730,
+      "max_side": 30,
+      "demo_pairs_sha256": "56a64125a17c59651e66ea9aa80a24e753f8a88cd38da30845957f3d23f52aab",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "13e47133_0",
+          "input_sha256": "1060e0809ddf6b911840b0874eac951855fa58ed65f559715a532f00dd986c50",
+          "height": 30,
+          "width": 30
+        },
+        {
+          "query_index": 1,
+          "query_key": "13e47133_1",
+          "input_sha256": "d8bd5e7081272eae209d2c48452973126b9bb9208520159cea1ec5e9c329f3f6",
+          "height": 30,
+          "width": 30
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "L",
+      "selection_sha256": "112a25b7094cb0516601ac5707e4c82a5841cd5fb8294bd906e981badcfd6533"
+    },
+    {
+      "task_id": "142ca369",
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 1828,
+      "max_side": 20,
+      "demo_pairs_sha256": "a93829e46ab48ce9d86661db0101fbcee0146439ecc3aaf00a3db5afd074278d",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "142ca369_0",
+          "input_sha256": "f2c7a0ed0e99592ce88581cc772cbb87c934f23527e87ea5057521fe65d9a380",
+          "height": 18,
+          "width": 18
+        },
+        {
+          "query_index": 1,
+          "query_key": "142ca369_1",
+          "input_sha256": "9cab79894af6c0e4a11e635605cb8be79d8ec0231913f34e14e82b32ab8af6a3",
+          "height": 20,
+          "width": 19
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "M",
+      "selection_sha256": "120507db679e046001bc30c0f16816b9c4f3d376a6bf01bbd14d900762377e0a"
+    },
+    {
+      "task_id": "16de56c4",
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 771,
+      "max_side": 21,
+      "demo_pairs_sha256": "38b531e02cad592c70bbea077f46c35f97b9f94900a33784600f2e63324b24a4",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "16de56c4_0",
+          "input_sha256": "ceaf207862f836ff36d73568c02998220b0c0a47b57513883ff5e22e616ae292",
+          "height": 9,
+          "width": 21
+        },
+        {
+          "query_index": 1,
+          "query_key": "16de56c4_1",
+          "input_sha256": "31d70b14a8f2b161cb11655e51ad8728644c9f2f56e86858d4f68cc46e91f975",
+          "height": 9,
+          "width": 21
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "S",
+      "selection_sha256": "1dc8cff71caef040ee97a5cc93e339f01a10cf6dd3c305daa29353834aa9ae2c"
+    },
+    {
+      "task_id": "28a6681f",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 400,
+      "max_side": 10,
+      "demo_pairs_sha256": "c399e54fd8964412be493990be2d8cd764f3c028bead51788237916a8d6a637d",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "28a6681f_0",
+          "input_sha256": "ff06bcaad076c84ba8196b70878ef712c7d6d415342ce6c94b280dbee0fcdbd6",
+          "height": 10,
+          "width": 10
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "S",
+      "selection_sha256": "09900a886690d6a8a1d46748d19e947b2d096ac7d15d769ed0a4ad11e6ffd3fc"
+    },
+    {
+      "task_id": "3a25b0d8",
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 2652,
+      "max_side": 30,
+      "demo_pairs_sha256": "5a7ac5751327f52aec84e4441f458ac4da67b2984be4392a051fc1f41fdf37b7",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "3a25b0d8_0",
+          "input_sha256": "64a8227c22552283d3ba591de267804e53823aba9eb28664b4619b790e249fbf",
+          "height": 30,
+          "width": 30
+        },
+        {
+          "query_index": 1,
+          "query_key": "3a25b0d8_1",
+          "input_sha256": "703c69b1410ffccc7a07b5bf95ebf9b289e865efe1729e5f9651cbdac611ef76",
+          "height": 28,
+          "width": 28
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "L",
+      "selection_sha256": "0f9e44e3066c344d89873a0967d0bcc7bf2498424035d420dfc6d9813ce6bb6b"
+    },
+    {
+      "task_id": "3dc255db",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 544,
+      "max_side": 13,
+      "demo_pairs_sha256": "65dee6b25d57797b406cc30d928796c1ab8e18833b50d5df707118e537924806",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "3dc255db_0",
+          "input_sha256": "38d8cee2400b41092dfe9a1abcb0d6f7093e127823a5fa96bc314b40172dd7ee",
+          "height": 12,
+          "width": 13
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "S",
+      "selection_sha256": "210e17cbcc4a22a25516c43c6bc474c84231dbd8d59f009aac00b0626c2a2307"
+    },
+    {
+      "task_id": "45a5af55",
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 506,
+      "max_side": 14,
+      "demo_pairs_sha256": "e3c9de3d40b6797118e6ca5d261a7249db7f2fa1d3ba5a27c6fdc1244413c83e",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "45a5af55_0",
+          "input_sha256": "b9ba369138086f300048c8bd0937c5528154e3baf62e1afefba83ec89d719fc0",
+          "height": 14,
+          "width": 11
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "S",
+      "selection_sha256": "23ab25008fad82cb2d7d8d884e6a6c095abd102f4546a58853bcdfce4e03f7cd"
+    },
+    {
+      "task_id": "4e34c42c",
+      "n_demo": 2,
+      "n_test_queries": 2,
+      "total_input_cells": 2095,
+      "max_side": 30,
+      "demo_pairs_sha256": "32debf9d9b154964be95ec1976f5fd36ebfaec135621a4173fc071297bd05795",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "4e34c42c_0",
+          "input_sha256": "ccd0bbda932b705ed57a301d30a39882ee16b7f381b0c4912c97e558b8d0be3f",
+          "height": 26,
+          "width": 20
+        },
+        {
+          "query_index": 1,
+          "query_key": "4e34c42c_1",
+          "input_sha256": "211d7416dd6c685bb6d7e37482f59d8cf1a45ddef1dc2a86318b4c795cc8d506",
+          "height": 20,
+          "width": 20
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "M",
+      "selection_sha256": "415442b4ad8c9a96ea3fa93f067765e8a4982cc6fbc60166fc37abcb3560fdda"
+    },
+    {
+      "task_id": "53fb4810",
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 1085,
+      "max_side": 25,
+      "demo_pairs_sha256": "8be1614e6ecf12c65318e93792481b66cdf3029a909656c80f5e909453f1c374",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "53fb4810_0",
+          "input_sha256": "1867522cc7b616e155794a6ed8b2352543fa598f7e2ebd439cd8fd3baf80ebd8",
+          "height": 25,
+          "width": 18
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "S",
+      "selection_sha256": "1e25744341f294e6a3b5d6ee9d51649f5c5f2cbad0135f37dab78f8ab00acfb4"
+    },
+    {
+      "task_id": "6ffbe589",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1600,
+      "max_side": 20,
+      "demo_pairs_sha256": "89da6919b95cb1980041259f1d3d7b421396d32dc670f65e1f2a0bf4fdfcdbc4",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "6ffbe589_0",
+          "input_sha256": "f704a6071e2b3b559af3ef7abb27e31fc5228395eae3aafa6b8a5bfd63c131c7",
+          "height": 20,
+          "width": 20
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "M",
+      "selection_sha256": "26d1f0b395e1243554d9150e08d87a19fb4d2d58bee6e7bb5f0adf2fe23ae0dd"
+    },
+    {
+      "task_id": "7491f3cf",
+      "n_demo": 4,
+      "n_test_queries": 1,
+      "total_input_cells": 875,
+      "max_side": 25,
+      "demo_pairs_sha256": "b8865f9180c98ee44e618cc1d202b8ce58c55134a4823de777cdfc0990113ffb",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "7491f3cf_0",
+          "input_sha256": "4fab6aac2ed8b0eb655a432403bd3f7488a1e76e901a0d331d7686625c8e288a",
+          "height": 7,
+          "width": 25
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "S",
+      "selection_sha256": "10617a1031f644160f17a6a435f75a919b505e31970853722d2af8c59359da54"
+    },
+    {
+      "task_id": "8f215267",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2139,
+      "max_side": 27,
+      "demo_pairs_sha256": "d0f4dc4bd1bf944deea120a442eefcd80e962d8c55fa5f00df19a57e2cbf5ad3",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "8f215267_0",
+          "input_sha256": "0106c2ee023b080f7a26003103a001e23f249d2f784ec71eff64e0ecfd23fb17",
+          "height": 27,
+          "width": 23
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "L",
+      "selection_sha256": "049d2bb8d59fa8d4047ae4b0bb36419cffc42673765aa2ef4772740a8a7af868"
+    },
+    {
+      "task_id": "a25697e4",
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 3000,
+      "max_side": 30,
+      "demo_pairs_sha256": "67e24728c7dc646d979bb434a6b9973476187b3939cc51ceaeb65033bc93e655",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "a25697e4_0",
+          "input_sha256": "2e810f2274e39b1caf08f5d5bc1f238d9765deb172069cf31c6c6e3ca65c9826",
+          "height": 30,
+          "width": 30
+        },
+        {
+          "query_index": 1,
+          "query_key": "a25697e4_1",
+          "input_sha256": "eac4f270a99040813120607e74e0875230533789b1de69ba9c73641a6a69a924",
+          "height": 30,
+          "width": 25
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "L",
+      "selection_sha256": "1062476de01a77e3f775ebf11ec20c34b1528eee0579140cb717b0706cea494f"
+    },
+    {
+      "task_id": "a395ee82",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1936,
+      "max_side": 22,
+      "demo_pairs_sha256": "278b4c47c393695a9fc566f8dbf90f556f0068e3a3605069cb65e662f57e78ef",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "a395ee82_0",
+          "input_sha256": "70e3141668ed962f279d4f49c93437def8b1403b7958ce266d3c14e0b32c6e97",
+          "height": 22,
+          "width": 22
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "M",
+      "selection_sha256": "062cb69cd70e5ab92f4b056e242478e4f4db9678c3abd176591c9b62286db6d6"
+    },
+    {
+      "task_id": "c4d067a0",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2316,
+      "max_side": 27,
+      "demo_pairs_sha256": "c49360cc95f450a8caa505d4a7f5c49ffb68818c658b7418d397b65f03695d37",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "c4d067a0_0",
+          "input_sha256": "eceb1e510400895f614144fb1008ee4de446ebba9e25076e18cccac5456f850d",
+          "height": 27,
+          "width": 27
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "L",
+      "selection_sha256": "04856ada74e5a2e7e45e46f84d17815281b76eb1cd5a627da1e1c87281410ccd"
+    },
+    {
+      "task_id": "d8e07eb2",
+      "n_demo": 5,
+      "n_test_queries": 2,
+      "total_input_cells": 4620,
+      "max_side": 30,
+      "demo_pairs_sha256": "bdf1081f6a44f41568fb9e6cd84c33bdc50620a717a9dfbd2832900842d186d4",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "d8e07eb2_0",
+          "input_sha256": "50c788ab30115ed66238b450c43057fc12dd4270a8708ed7b65ffbf00661462e",
+          "height": 30,
+          "width": 22
+        },
+        {
+          "query_index": 1,
+          "query_key": "d8e07eb2_1",
+          "input_sha256": "de52eafab161e5da3742b8c20dd2025f400902bbb6a90a7384e248bce58333f0",
+          "height": 30,
+          "width": 22
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "L",
+      "selection_sha256": "0d22e74ae528e31b75f0eac2eec7f08bd9226acc3783d63e563436019e7bc3d1"
+    },
+    {
+      "task_id": "da515329",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1560,
+      "max_side": 26,
+      "demo_pairs_sha256": "a8141fd8299305c5067e3ae122085863684a396f63ee267d813264cdf0bbed6d",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "da515329_0",
+          "input_sha256": "83b634bffe51785197a7892ab9df324304b9e89877106c2a8f18d1980c93defa",
+          "height": 26,
+          "width": 26
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "M",
+      "selection_sha256": "5cd6864f0aecb4d57ac731abbe5f59df52639ebc1c0a038b55f9bdce504abdb8"
+    },
+    {
+      "task_id": "db695cfb",
+      "n_demo": 5,
+      "n_test_queries": 1,
+      "total_input_cells": 1222,
+      "max_side": 25,
+      "demo_pairs_sha256": "24a5afcbf31817cd0c7f9d1ca2c4401f52297c1e6b62e4cb06342cb815ccbbe8",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "db695cfb_0",
+          "input_sha256": "8e4182486ee22c6446e4c750c38f3cd1723249789ef9d7198ecd3534d1a3035d",
+          "height": 25,
+          "width": 21
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "M",
+      "selection_sha256": "5fae1a1e5cdd76165673c88a143cb78550563194c88e3695b12f91506c8ddfb2"
+    },
+    {
+      "task_id": "edb79dae",
+      "n_demo": 2,
+      "n_test_queries": 1,
+      "total_input_cells": 1958,
+      "max_side": 30,
+      "demo_pairs_sha256": "13a8bf38bbcd82e1c69e5e6e28af27aa4d8ac6834dd4c18c8f17a7659dd6f7c0",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "edb79dae_0",
+          "input_sha256": "b15006458d485ace1f6cd27d0e318189e7a314c93d3f8abad8c717fec71a0ee1",
+          "height": 30,
+          "width": 30
+        }
+      ],
+      "source_group": "public_evaluation",
+      "tier": "M",
+      "selection_sha256": "2645363d45ebbc8cdcd357d8642c5a388bd8315b7f6265f9b2826bee5b47dcf0"
+    }
+  ],
+  "query_gold_read": false,
+  "query_prediction_grid_read_for_selection": false,
+  "GPU_started": false,
+  "run_status": "not_run",
+  "execution_decision": "pending_parent_decision_after_C24_and_quota_snapshot",
+  "formal_submission_modified": false
+}

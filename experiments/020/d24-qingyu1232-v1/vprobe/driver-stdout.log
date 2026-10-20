@@ -1,0 +1,43 @@
+[020 12:00:48] input tasks=18 queries=26 sha=70ab5baad7b4e72d5fd3617982dd9ae2aa7ae63755c62cfa2917428afdc5ba00
+[020 12:00:52] wheel hash match (sync)
+[020 12:00:52] phase: requirements install start
+[020 12:04:35] phase: requirements install rc=0
+[020 12:04:55] phase: vllm wheel install start
+[020 12:05:09] phase: vllm wheel install rc=0
+[020 12:19:58] P0 4c3d4a41 gen=True demo=0/2 query=0 route=R
+[020 12:20:03] P0 f931b4a8 gen=True demo=0/5 query=2 route=R
+[020 12:20:25] P0 6e453dd6 gen=True demo=0/3 query=1 route=R
+[020 12:20:30] P0 e376de54 gen=True demo=1/3 query=1 route=R
+[020 12:20:43] P0 bf45cf4b gen=True demo=0/3 query=0 route=R
+[020 12:20:51] P0 247ef758 gen=True demo=0/3 query=2 route=R
+[020 12:21:01] P0 58f5dbd5 gen=True demo=0/3 query=0 route=R
+[020 12:23:14] P0 135a2760 gen=False demo=0/2 query=0 route=R
+[020 12:27:46] P0 abc82100 gen=True demo=0/4 query=2 route=R
+[020 12:28:24] P0 de809cff gen=True demo=0/2 query=1 route=R
+[020 12:28:31] P0 800d221b gen=True demo=0/3 query=0 route=R
+[020 12:29:08] P0 21897d95 gen=True demo=0/4 query=2 route=R
+[020 12:29:38] P0 fc7cae8d gen=True demo=0/3 query=1 route=R
+[020 12:29:58] P0 8698868d gen=True demo=0/2 query=0 route=R
+[020 12:31:43] P0 cbebaa4b gen=False demo=0/2 query=0 route=R
+[020 12:32:11] P0 5961cc34 gen=True demo=1/4 query=1 route=R
+[020 12:35:44] P0 3e6067c3 gen=True demo=0/3 query=2 route=R
+[020 12:37:33] P0 e3721c99 gen=False demo=0/2 query=0 route=R
+[020 12:45:16] R 6e453dd6 gen=True demo=0/3 query=1 route=R
+[020 12:45:24] R f931b4a8 gen=True demo=1/5 query=0 route=R
+[020 12:45:28] R 247ef758 gen=True demo=0/3 query=2 route=R
+[020 12:45:32] R 135a2760 gen=False demo=0/2 query=0 route=R
+[020 12:46:02] R e376de54 gen=True demo=0/3 query=0 route=R
+[020 12:46:17] R 4c3d4a41 gen=True demo=0/2 query=2 route=R
+[020 12:46:20] R 58f5dbd5 gen=True demo=0/3 query=1 route=R
+[020 12:46:31] R bf45cf4b gen=True demo=0/3 query=1 route=R
+[020 12:53:13] R de809cff gen=True demo=0/2 query=1 route=R
+[020 12:53:54] R 800d221b gen=True demo=0/3 query=1 route=R
+[020 12:54:03] R fc7cae8d gen=True demo=0/3 query=1 route=R
+[020 12:54:07] R cbebaa4b gen=True demo=0/2 query=2 route=R
+[020 12:54:26] R 8698868d gen=True demo=0/2 query=1 route=R
+[020 12:54:40] R 21897d95 gen=True demo=0/4 query=0 route=R
+[020 12:54:52] R 5961cc34 gen=True demo=0/4 query=1 route=R
+[020 12:55:57] R abc82100 gen=False demo=0/4 query=0 route=R
+[020 13:00:39] R e3721c99 gen=False demo=0/2 query=0 route=R
+[020 13:00:45] R 3e6067c3 gen=True demo=0/3 query=2 route=R
+[020 13:00:49] EVIDENCE-EXIT complete_with_evidence

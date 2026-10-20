@@ -1,0 +1,463 @@
+{
+  "status": "complete_runtime_analysis_no_query_gold",
+  "scope": "Reads run metadata, generated replies, generated submissions and hardware/server logs only. No query solutions, gold ledger, new model/GPU call, generated-program execution or source edit. Exact query scoring is performed separately by parent on fixed outputs.",
+  "sources": {
+    "run": {
+      "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/run.json",
+      "sha256": "0d68976425f9a4b8eb7c0fdd99152e2d48c10865974d928c5fb4147827e0605d"
+    },
+    "gpu_samples": {
+      "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/gpu-samples.jsonl",
+      "sha256": "3c6b475f340f33551feee21d6c4904c6f36ca50ee9f011fa7addb118f561d001"
+    },
+    "vllm_server_log": {
+      "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/vllm-server.log",
+      "sha256": "aef45e5d812615c918c690d2cadba69ecfc88bbff8d547148ede14b074b9ea55"
+    },
+    "submission_M0": {
+      "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/submission-M0.json",
+      "sha256": "b25e468fa9bbae44925bbaea872c62a3a12e7ba964f32477162d2ffc67442dca"
+    },
+    "submission_M1": {
+      "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/submission-M1.json",
+      "sha256": "b25e468fa9bbae44925bbaea872c62a3a12e7ba964f32477162d2ffc67442dca"
+    },
+    "matched_TwoShort_runs": [
+      {
+        "path": "experiments/020/d24-jiyujia-v1/vprobe/run.json",
+        "sha256": "71a9a22f2392f587a15dd55937aa67f0e58da4d9f6f1928ef34df3a4eb4ffe4e"
+      },
+      {
+        "path": "experiments/020/d24-qingyu1232-v1/vprobe/run.json",
+        "sha256": "15c341a670410f586a6525e8a55953fc72ffe1ca7c0db9b78ee6933450a773c8"
+      }
+    ],
+    "DeepP0_run": {
+      "path": "experiments/020/deep-p0-ccjjllt-v1/vprobe/run.json",
+      "sha256": "609384536e8dab4d498873b9cfc963cfb44a70bb8025dc1ee87be15880dcd6bd"
+    }
+  },
+  "owner": "qingyu1232",
+  "result_label": "DeepDirect",
+  "generation_mode": "direct",
+  "p0_only": true,
+  "tasks": 6,
+  "queries": 9,
+  "task_ids": [
+    "3e6067c3",
+    "5961cc34",
+    "800d221b",
+    "b6f77b65",
+    "de809cff",
+    "e376de54"
+  ],
+  "actual_hardware": {
+    "python": "3.12.3",
+    "nvidia_smi": "NVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB\nNVIDIA L4, 580.178.04, 23034 MiB",
+    "pip_pkgs": {}
+  },
+  "config": {
+    "tp": 4,
+    "concurrency": 8,
+    "generation_max": 49152,
+    "thinking_max": 40960,
+    "generation_mode": "direct",
+    "effort": "xhigh",
+    "sampling": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20
+    },
+    "seeds": {
+      "P0": 5101,
+      "F": 5103,
+      "R": 5105
+    },
+    "mtp_tokens": 2,
+    "speculative_config": {
+      "method": "mtp",
+      "num_speculative_tokens": 2
+    },
+    "mamba_cache_mode": "align",
+    "near_rule": {
+      "exact_min": 0.5,
+      "shape_min": 0.75,
+      "foreground_min": 0.8,
+      "changed_min": 0.8
+    },
+    "cpu_scope": "disabled for direct grids",
+    "cpu_max_variants": 32,
+    "cpu_max_seconds": 30,
+    "vllm_wheel_sha256": "5cbeedeb8266362ef935775c4c33203e4dab74e8da1649a977bae833df62304a"
+  },
+  "executed_source_sha256": {
+    "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+    "vdriver020_submit.py": "55a597ce523d8a234966ede3860723022efb015d678925e70ee8abba757f0280",
+    "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+    "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+    "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88"
+  },
+  "input_challenges_sha256": "5e50d56ea56f81e72a50a4b7fb5bff0f4b73548ad0618b0d43f7e0a95d5e0848",
+  "timing": {
+    "session_wall_seconds": 2857.084,
+    "install_seconds_subset": 498.3,
+    "install_load_seconds_inclusive": 968.4,
+    "generation_wave_wall_seconds": 1888.5,
+    "generation_aggregate_completion_tokens_per_second": 130.45,
+    "request_seconds_sum_not_wall": 9352.1,
+    "note": "install_load includes installation; do not add install twice. Request seconds overlap under concurrent execution."
+  },
+  "tokens": {
+    "physical_calls": 6,
+    "completion_tokens": 246358,
+    "prompt_tokens_sum": 35924,
+    "usage_missing": 0,
+    "normal_stop_calls": 5,
+    "length_calls": 1
+  },
+  "actual_concurrency": {
+    "configured_client_and_service_max": 8,
+    "issued_wave_client_limit": 6,
+    "peak_outstanding_requests": 6,
+    "time_weighted_outstanding_requests": 4.952301899980936,
+    "first_issue_to_last_done_seconds": 1888.44,
+    "server_running_request_log_samples": 189,
+    "server_running_request_sample_peak": 6,
+    "server_running_request_sample_mean": 4.920634920634921,
+    "server_running_request_sample_histogram": {
+      "1": 17,
+      "2": 8,
+      "3": 3,
+      "4": 4,
+      "5": 70,
+      "6": 87
+    },
+    "note": "Client mean integrates issued-to-done intervals; server mean is unweighted sampled Running requests, not proven simultaneous token execution."
+  },
+  "GPU": {
+    "generation_sample_rows": 374,
+    "generation_GPU_observations": 1496,
+    "generation_utilization_sample_mean_percent": 99.73262032085562,
+    "per_GPU_utilization_sample_mean_percent": {
+      "0": 99.73262032085562,
+      "1": 99.73262032085562,
+      "2": 99.73262032085562,
+      "3": 99.73262032085562
+    },
+    "minimum_percent": 0.0,
+    "maximum_percent": 100.0,
+    "note": "nvidia-smi utilization.gpu samples in the generation window; not a measure of useful reasoning or query correctness."
+  },
+  "MTP_observed": {
+    "logger_intervals": 189,
+    "accepted_draft_tokens_logged": 145556,
+    "drafted_tokens_logged": 201516,
+    "weighted_logged_draft_acceptance_percent": 72.2304928640902,
+    "reported_mean_acceptance_length_min": 1.83,
+    "reported_mean_acceptance_length_median": 2.46,
+    "reported_mean_acceptance_length_max": 3.0,
+    "log_examples": [
+      "(APIServer pid=224) INFO 10-20 13:56:33 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 3.00, Accepted throughput: 0.17 tokens/s, Drafted throughput: 0.17 tokens/s, Accepted: 2 tokens, Drafted: 2 tokens, Per-position acceptance rate: 1.000, 1.000, Avg Draft acceptance rate: 100.0%",
+      "(APIServer pid=224) INFO 10-20 14:12:13 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.37, Accepted throughput: 71.39 tokens/s, Drafted throughput: 103.99 tokens/s, Accepted: 714 tokens, Drafted: 1040 tokens, Per-position acceptance rate: 0.779, 0.594, Avg Draft acceptance rate: 68.7%",
+      "(APIServer pid=224) INFO 10-20 14:27:53 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.88, Accepted throughput: 21.20 tokens/s, Drafted throughput: 22.60 tokens/s, Accepted: 212 tokens, Drafted: 226 tokens, Per-position acceptance rate: 0.965, 0.912, Avg Draft acceptance rate: 93.8%"
+    ],
+    "note": "Sums observed periodic logger intervals, not an exact server-total counter. Accepted/drafted is the draft acceptance rate, not a speed multiplier. No same-prompt MTP-off A/B was run, so throughput differences cannot be attributed to MTP alone."
+  },
+  "coverage": {
+    "p0_funnel_recorded": {
+      "planned": 6,
+      "returned_slots": 6,
+      "http_issued": 6,
+      "generation_finished": 6,
+      "admitted_programs": 0,
+      "admitted_direct_predictions": 5,
+      "all_demos_pass": 0
+    },
+    "admitted_direct_tasks": 5,
+    "legal_query_outputs": 8,
+    "M0_M1_identical": true,
+    "policies": {
+      "M0": {
+        "tasks": 6,
+        "queries": 9,
+        "format_ok": 9,
+        "single_covered": 8,
+        "double_distinct": 0,
+        "placeholder": 1,
+        "updated_keys": 8
+      },
+      "M1": {
+        "tasks": 6,
+        "queries": 9,
+        "format_ok": 9,
+        "single_covered": 8,
+        "double_distinct": 0,
+        "placeholder": 1,
+        "updated_keys": 8
+      }
+    },
+    "final_format_validation": {
+      "M0": [
+        true,
+        {
+          "tasks": 6,
+          "queries": 9
+        }
+      ],
+      "M1": [
+        true,
+        {
+          "tasks": 6,
+          "queries": 9
+        }
+      ]
+    },
+    "demo_exact": null,
+    "all_demo_pass": null,
+    "note": "The recorded funnel all_demos_pass=0 is not a measured direct-grid failure: direct mode does not execute programs on demos, and call/task demo evidence is unknown. Eight legal query grids and format_ok=9 are not exact query correctness; one placeholder remains."
+  },
+  "policy_costs": {
+    "M0": {
+      "logical_calls": 6,
+      "completion_tokens": 246358,
+      "request_seconds_sum_not_wall": 9352.1,
+      "cpu_repair_seconds": 0
+    },
+    "M1": {
+      "logical_calls": 6,
+      "completion_tokens": 246358,
+      "request_seconds_sum_not_wall": 9352.1,
+      "cpu_repair_seconds": 0
+    }
+  },
+  "per_task": [
+    {
+      "task_id": "e376de54",
+      "queries": 1,
+      "completion_tokens": 24077,
+      "prompt_tokens": 3769,
+      "request_seconds": 892.2,
+      "time_to_first_token_seconds": 7.84,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "demo_evidence": "unknown: direct output, no demo execution",
+      "validation_error": null,
+      "content_chars": 646,
+      "reasoning_chars": 66038,
+      "source_reply": {
+        "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/programs/P0-e376de54.reply.json",
+        "sha256": "542076e1b509b315705677127893b2c63f236be300cc62ccb416c78f460035d3"
+      },
+      "reported_usage_fields": [
+        "completion_tokens",
+        "prompt_tokens",
+        "total_tokens"
+      ]
+    },
+    {
+      "task_id": "de809cff",
+      "queries": 1,
+      "completion_tokens": 43551,
+      "prompt_tokens": 5178,
+      "request_seconds": 1584.5,
+      "time_to_first_token_seconds": 13.83,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "demo_evidence": "unknown: direct output, no demo execution",
+      "validation_error": null,
+      "content_chars": 2709,
+      "reasoning_chars": 82278,
+      "source_reply": {
+        "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/programs/P0-de809cff.reply.json",
+        "sha256": "cd9106fc3dd37cc70c39ca9c8da40780c24f6d564e47a4752fa1ec7dd2ebb679"
+      },
+      "reported_usage_fields": [
+        "completion_tokens",
+        "prompt_tokens",
+        "total_tokens"
+      ]
+    },
+    {
+      "task_id": "3e6067c3",
+      "queries": 2,
+      "completion_tokens": 44644,
+      "prompt_tokens": 9231,
+      "request_seconds": 1623.9,
+      "time_to_first_token_seconds": 24.17,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 2,
+      "demo_evidence": "unknown: direct output, no demo execution",
+      "validation_error": null,
+      "content_chars": 3935,
+      "reasoning_chars": 84186,
+      "source_reply": {
+        "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/programs/P0-3e6067c3.reply.json",
+        "sha256": "efec63067928f84a6805e8341d3e352ae9f7edfa8241de5bf6ef58c3143d2c1c"
+      },
+      "reported_usage_fields": [
+        "completion_tokens",
+        "prompt_tokens",
+        "total_tokens"
+      ]
+    },
+    {
+      "task_id": "5961cc34",
+      "queries": 1,
+      "completion_tokens": 42571,
+      "prompt_tokens": 8778,
+      "request_seconds": 1645.5,
+      "time_to_first_token_seconds": 18.56,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 1,
+      "demo_evidence": "unknown: direct output, no demo execution",
+      "validation_error": null,
+      "content_chars": 1729,
+      "reasoning_chars": 100873,
+      "source_reply": {
+        "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/programs/P0-5961cc34.reply.json",
+        "sha256": "4a2933d8c3ce6502cbb0f09b650fc3082625cc1de77047bd35b16f319f221e2c"
+      },
+      "reported_usage_fields": [
+        "completion_tokens",
+        "prompt_tokens",
+        "total_tokens"
+      ]
+    },
+    {
+      "task_id": "b6f77b65",
+      "queries": 3,
+      "completion_tokens": 42363,
+      "prompt_tokens": 3959,
+      "request_seconds": 1717.6,
+      "time_to_first_token_seconds": 3.43,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "generation_admitted": true,
+      "legal_query_outputs": 3,
+      "demo_evidence": "unknown: direct output, no demo execution",
+      "validation_error": null,
+      "content_chars": 1569,
+      "reasoning_chars": 115945,
+      "source_reply": {
+        "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/programs/P0-b6f77b65.reply.json",
+        "sha256": "209fe8beb43360cf0b3c2f16fd4c79353ae26b8a0e742c85769a90451c5351cb"
+      },
+      "reported_usage_fields": [
+        "completion_tokens",
+        "prompt_tokens",
+        "total_tokens"
+      ]
+    },
+    {
+      "task_id": "800d221b",
+      "queries": 1,
+      "completion_tokens": 49152,
+      "prompt_tokens": 5009,
+      "request_seconds": 1888.4,
+      "time_to_first_token_seconds": 10.78,
+      "finish_reason": "length",
+      "parse_status": "direct_invalid",
+      "generation_admitted": false,
+      "legal_query_outputs": 0,
+      "demo_evidence": "unknown: direct output, no demo execution",
+      "validation_error": "Expecting value: line 1 column 1 (char 0)",
+      "content_chars": 18490,
+      "reasoning_chars": 94759,
+      "source_reply": {
+        "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/programs/P0-800d221b.reply.json",
+        "sha256": "96b3b099b3394a633bf864ba0be975bccf085c62df50ad014106f353520ab760"
+      },
+      "reported_usage_fields": [
+        "completion_tokens",
+        "prompt_tokens",
+        "total_tokens"
+      ]
+    }
+  ],
+  "failure_800d221b": {
+    "classification": "token limit with unresolved analysis in final/content channel; no valid JSON prediction",
+    "finish_reason": "length",
+    "total_completion_tokens": 49152,
+    "requested_thinking_token_budget": 40960,
+    "requested_thinking_token_budget_sent": 40960,
+    "content_chars": 18490,
+    "reasoning_chars": 94759,
+    "code_fence_count_in_content": 0,
+    "validation_error": "Expecting value: line 1 column 1 (char 0)",
+    "content_opening_excerpt": "\nWe need solve. We have in prior analysis started but got to cutoff. Need continue from where? We must produce final JSON. Need complete reasoning. Let's restart systematically perhaps with more rigorous inference and compute query output.\n\nWe h",
+    "content_tail_description": "Ends partway through enumerating demo row 17 cells and color counts; no complete final prediction JSON.",
+    "observed_conclusion": "genFalse is caused by content that cannot parse as a prediction, not a valid grid being discarded solely because finish_reason is length. The final/content channel repeats and continues rule analysis.",
+    "thinking_budget_measurement_limit": "All six requests recorded thinking_token_budget_sent=40960, and this response has both reasoning and content. Usage reports only prompt_tokens/completion_tokens/total_tokens, with no reasoning token count, channel token IDs or transition token position. Character counts cannot establish whether a hard 40960 reasoning-token boundary actually applied. A nonempty content channel did not ensure final answer JSON."
+  },
+  "matched_cost_comparison": {
+    "scope": "Same six task IDs / nine query inputs. Actual generation costs and format/execution coverage only; no query correctness scored here.",
+    "TwoShort": {
+      "physical_calls": 12,
+      "maximum_completion_per_call": 12288,
+      "thinking_budget_per_call": 8192,
+      "MTP_enabled": false,
+      "completion_tokens": 116823,
+      "request_seconds_sum_not_wall": 5968.6,
+      "exclusive_matched_generation_wall_seconds": null,
+      "per_arm": {
+        "P0": {
+          "calls": 6,
+          "completion_tokens": 59671,
+          "request_seconds_sum_not_wall": 3069.2,
+          "admitted_programs": 5,
+          "legal_query_outputs": 5,
+          "all_demos_passing_programs": 0
+        },
+        "R": {
+          "calls": 6,
+          "completion_tokens": 57152,
+          "request_seconds_sum_not_wall": 2899.4,
+          "admitted_programs": 6,
+          "legal_query_outputs": 8,
+          "all_demos_passing_programs": 0
+        }
+      },
+      "union_legal_query_keys": 9,
+      "query_keys_with_two_distinct_legal_grids": 2,
+      "note": "Matched calls were embedded in two larger shard queues. Request sums overlap and cannot be presented as the exclusive wall time of a six-task run."
+    },
+    "DeepP0": {
+      "physical_calls": 6,
+      "maximum_completion_per_call": 24576,
+      "thinking_budget_per_call": 16384,
+      "MTP_enabled": false,
+      "completion_tokens": 113272,
+      "session_wall_seconds": 1942.441,
+      "install_load_seconds_inclusive": 725.7,
+      "generation_wave_wall_seconds": 1216.5,
+      "generation_aggregate_completion_tokens_per_second": 93.11,
+      "request_seconds_sum_not_wall": 5911.7,
+      "legal_query_outputs": 1,
+      "admitted_programs": 4,
+      "all_demo_passing_programs": 0
+    },
+    "DeepDirect_over_TwoShort_actual_completion_ratio": 2.1088141889867575,
+    "DeepDirect_over_DeepP0_actual_completion_ratio": 2.174924076559079,
+    "causal_limit": "Not an equal-cost ablation. DeepDirect changes output mode, total/thinking budgets, MTP/cache settings, run/account and queue composition. Actual completions are over twice both comparators. Legal-output coverage cannot establish query-score improvement or isolate which change caused it."
+  },
+  "fixed_query_scoring": {
+    "status": "not_scored_here_parent_scores_frozen_outputs",
+    "denominator": 9,
+    "DeepDirect_EM_at_2": null,
+    "TwoShort_EM_at_2": null,
+    "DeepP0_EM_at_2": null
+  },
+  "research_implications": [
+    "Direct output removes generated-program execution failures on five of six tasks and supplies eight legal query grids; the remaining failure is prolonged, unresolved rule analysis. Whether that representation change improves exact answers is a separate fixed-output score.",
+    "Do not label the 40960 request field as a measured hard final-answer limit. For 800d221b, extra final-channel text remained analysis until the total token cap.",
+    "Use the fixed-output score together with these actual token costs before extending the expensive setting; this run cannot justify a general gain from longer thinking or MTP by itself."
+  ]
+}

@@ -1,0 +1,297 @@
+{
+  "checked_at_utc": "2026-10-20T15:24:19.177723+00:00",
+  "scope": "Official read-only metadata, first public leaderboard page only, and one historical submission; no GPU or submission actions.",
+  "sources": [
+    {
+      "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2",
+      "method": "official SDK get_competition"
+    },
+    {
+      "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/leaderboard",
+      "method": "official SDK get_leaderboard with override_public=true, page_size=25; one page"
+    },
+    {
+      "url": "https://www.kaggle.com/progression/competitions",
+      "checked_at_utc": "2026-10-20T15:25:50.094653+00:00",
+      "retrieval": "Official-page search-index body; crawl labeled last month, direct page returned no usable body.",
+      "current_live_page_reverified": false
+    },
+    {
+      "url": "https://www.kaggle.com/docs/competitions",
+      "checked_at_utc": "2026-10-20T15:25:50.094653+00:00",
+      "retrieval": "Official-page search-index body; private leaderboard definition.",
+      "current_live_page_reverified": false
+    },
+    {
+      "url": "https://www.kaggle.com/docs/competitions-setup",
+      "checked_at_utc": "2026-10-20T15:25:50.094653+00:00",
+      "retrieval": "Official-page search-index body; final ranking context.",
+      "current_live_page_reverified": false
+    }
+  ],
+  "competition_metadata": {
+    "id": 133469,
+    "title": "ARC Prize 2026 - ARC-AGI-2",
+    "team_count": 3090,
+    "user_has_entered": true,
+    "user_rank": 1053,
+    "awards_points": true,
+    "deadline": "2026-11-02 23:59:00"
+  },
+  "public_leaderboard_first_page": {
+    "has_more_pages": true,
+    "rows": [
+      {
+        "returned_position": 1,
+        "team_name": "Tufa Labs",
+        "team_id": 16756524,
+        "score": "88.06",
+        "submission_date": "2026-10-19T17:49:58.400000"
+      },
+      {
+        "returned_position": 2,
+        "team_name": "Yi-Chia Chen",
+        "team_id": 15501171,
+        "score": "84.72",
+        "submission_date": "2026-10-19T20:09:32.560000"
+      },
+      {
+        "returned_position": 3,
+        "team_name": "rabbithole",
+        "team_id": 15789060,
+        "score": "80.83",
+        "submission_date": "2026-10-19T14:30:55.353000"
+      },
+      {
+        "returned_position": 4,
+        "team_name": "nvbanana",
+        "team_id": 15486939,
+        "score": "79.17",
+        "submission_date": "2026-10-19T11:22:32.666000"
+      },
+      {
+        "returned_position": 5,
+        "team_name": "Majkel1337",
+        "team_id": 16373916,
+        "score": "75.56",
+        "submission_date": "2026-10-19T21:26:42.210000"
+      },
+      {
+        "returned_position": 6,
+        "team_name": "ｶﾎｳｼｭｳｾｲ",
+        "team_id": 16297545,
+        "score": "72.50",
+        "submission_date": "2026-10-19T16:42:36.690000"
+      },
+      {
+        "returned_position": 7,
+        "team_name": "_hans",
+        "team_id": 16768245,
+        "score": "71.81",
+        "submission_date": "2026-10-19T15:12:41.973000"
+      },
+      {
+        "returned_position": 8,
+        "team_name": "Domdolus Tolus",
+        "team_id": 16559402,
+        "score": "71.53",
+        "submission_date": "2026-10-20T00:01:55.476000"
+      },
+      {
+        "returned_position": 9,
+        "team_name": "ALbert RUehlman",
+        "team_id": 16671221,
+        "score": "71.39",
+        "submission_date": "2026-10-19T12:57:17.450000"
+      },
+      {
+        "returned_position": 10,
+        "team_name": "Dawid Kopiczko",
+        "team_id": 16461211,
+        "score": "70.83",
+        "submission_date": "2026-10-20T00:02:02.103000"
+      },
+      {
+        "returned_position": 11,
+        "team_name": "ARC Raiders",
+        "team_id": 15526034,
+        "score": "68.33",
+        "submission_date": "2026-10-19T17:07:11.813000"
+      },
+      {
+        "returned_position": 12,
+        "team_name": "Sakayori Lab",
+        "team_id": 16442485,
+        "score": "68.06",
+        "submission_date": "2026-10-19T23:34:32.370000"
+      },
+      {
+        "returned_position": 13,
+        "team_name": "mikelou1",
+        "team_id": 16513754,
+        "score": "66.39",
+        "submission_date": "2026-10-18T12:11:38.553000"
+      },
+      {
+        "returned_position": 14,
+        "team_name": "ibyyue",
+        "team_id": 16684035,
+        "score": "65.56",
+        "submission_date": "2026-10-20T00:15:41.613000"
+      },
+      {
+        "returned_position": 15,
+        "team_name": "artificialagencylab.com",
+        "team_id": 17077331,
+        "score": "65.56",
+        "submission_date": "2026-10-19T21:30:33.300000"
+      },
+      {
+        "returned_position": 16,
+        "team_name": "guoqin gu",
+        "team_id": 16505371,
+        "score": "64.72",
+        "submission_date": "2026-10-19T16:22:40.143000"
+      },
+      {
+        "returned_position": 17,
+        "team_name": "matu997",
+        "team_id": 17017585,
+        "score": "64.31",
+        "submission_date": "2026-10-19T14:24:50.740000"
+      },
+      {
+        "returned_position": 18,
+        "team_name": "Enes Kulak",
+        "team_id": 17037977,
+        "score": "63.61",
+        "submission_date": "2026-10-19T22:06:21.146000"
+      },
+      {
+        "returned_position": 19,
+        "team_name": "okiek",
+        "team_id": 16942017,
+        "score": "63.47",
+        "submission_date": "2026-10-19T14:18:11.723000"
+      },
+      {
+        "returned_position": 20,
+        "team_name": "Youssef Nader",
+        "team_id": 16095234,
+        "score": "62.22",
+        "submission_date": "2026-10-19T22:28:32.186000"
+      },
+      {
+        "returned_position": 21,
+        "team_name": "ARCward Intelligence",
+        "team_id": 16797706,
+        "score": "60.69",
+        "submission_date": "2026-10-19T22:29:43.960000"
+      },
+      {
+        "returned_position": 22,
+        "team_name": "Kajetan Schweighofer",
+        "team_id": 16761662,
+        "score": "58.06",
+        "submission_date": "2026-10-19T23:39:00.193000"
+      },
+      {
+        "returned_position": 23,
+        "team_name": "Flying Pandas",
+        "team_id": 15601881,
+        "score": "57.92",
+        "submission_date": "2026-10-19T20:00:37.113000"
+      },
+      {
+        "returned_position": 24,
+        "team_name": "Daniel Franzen",
+        "team_id": 15607618,
+        "score": "57.64",
+        "submission_date": "2026-10-19T22:47:22.613000"
+      },
+      {
+        "returned_position": 25,
+        "team_name": "Ravi Teja Chilakala",
+        "team_id": 17021430,
+        "score": "55.97",
+        "submission_date": "2026-10-19T20:36:35.446000"
+      }
+    ],
+    "rank_field_exposed": false,
+    "note": "Returned position is list position, not a separately reported official rank. Public score snapshot is not the final private medal boundary."
+  },
+  "historical_30_14_submission": {
+    "ref": 52072735,
+    "public_score": "30.14",
+    "url": "/submissions/52072735/52072735.raw",
+    "submitted_by_ref": "ccjjllt",
+    "team_name": "ccjjllt",
+    "error_description": "",
+    "status": "COMPLETE",
+    "raw_output_url_opened": false,
+    "known_notebook_version_url_from_prior_same_day_list": "https://www.kaggle.com/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319",
+    "prior_list_evidence": "experiments/020/execution/pre-code-submit-readiness.json"
+  },
+  "participant_count": "not exposed by get_competition; not inferred from team_count",
+  "entrants_count": "not exposed by get_competition; not inferred from team_count",
+  "own_team_current_public_row": "not located on fetched first page; no additional pages crawled",
+  "medal_rules_status": "Official indexed rules verified; whether the live progression page changed today is not independently confirmed.",
+  "medal_rules": {
+    "applies_to_team_count_bracket": "1000+ teams",
+    "gold": "Top 10 + floor(0.002 * number_of_teams)",
+    "silver": "Top floor(0.05 * number_of_teams)",
+    "bronze": "Top floor(0.10 * number_of_teams)",
+    "short_official_quotes": [
+      "Top 10 + 0.2%",
+      "Percentage calculations are rounded down."
+    ],
+    "source_url": "https://www.kaggle.com/progression/competitions",
+    "medals_depend_on_rank_not_fixed_score": true,
+    "final_private_ranking_basis": "Inference from official medals-by-place rules plus official competition documentation defining the private leaderboard as final ranking on the remaining test data."
+  },
+  "conditional_rank_positions_at_current_team_count": {
+    "team_count": 3090,
+    "gold_top_teams": 16,
+    "silver_top_teams": 154,
+    "bronze_top_teams": 309,
+    "status": "Arithmetic illustration using currently observed team_count and indexed standard rules. Not awarded medals or final eligible-team counts."
+  },
+  "public_gold_neighborhood_snapshot": {
+    "leaderboard_checked_at_utc": "2026-10-20T15:24:19.177723+00:00",
+    "rows": [
+      {
+        "returned_position": 14,
+        "score": "65.56"
+      },
+      {
+        "returned_position": 15,
+        "score": "65.56"
+      },
+      {
+        "returned_position": 16,
+        "score": "64.72"
+      },
+      {
+        "returned_position": 17,
+        "score": "64.31"
+      },
+      {
+        "returned_position": 18,
+        "score": "63.61"
+      }
+    ],
+    "computed_current_gold_position": 16,
+    "score_at_returned_position_16": "64.72",
+    "is_final_private_gold_score_threshold": false,
+    "note": "Public leaderboard list position and displayed score only. API row type does not expose rank or medal label; no fixed gold score is inferred."
+  },
+  "own_rank_evidence": {
+    "metadata_user_rank": 1053,
+    "source": "get_competition authenticated as ccjjllt",
+    "current_public_team_row_obtained": false,
+    "rank_to_30_14_current_row_link_independently_verified": false,
+    "note": "Historical submission 52072735 still returns COMPLETE and public_score=30.14. The current own-team leaderboard row was not fetched; no additional leaderboard pages were crawled."
+  },
+  "participation_count_limit": "Entrants and individual participants are not exposed by this SDK metadata. Search-index overview counts are older and were deliberately not substituted for current counts.",
+  "finished_at_utc": "2026-10-20T15:25:50.094653+00:00"
+}

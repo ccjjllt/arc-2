@@ -1,0 +1,1457 @@
+{
+  "status": "complete_runtime_summary_query_unscored",
+  "scope": "Read-only downloaded D24 run, telemetry and predictions; no program execution, no query gold, no C24 solutions. This file does not score final attempts.",
+  "mother_manifest": {
+    "path": "experiments/020/cohorts/development-d24-manifest.json",
+    "sha256": "3dcdc1aa274d04ef948994a3d6ff8e4531a1883feca11c7252875bdc3b794327"
+  },
+  "shards": {
+    "jiyujia": {
+      "source_run": {
+        "path": "experiments/020/d24-jiyujia-v1/vprobe/run.json",
+        "sha256": "71a9a22f2392f587a15dd55937aa67f0e58da4d9f6f1928ef34df3a4eb4ffe4e"
+      },
+      "source_gpu": {
+        "path": "experiments/020/d24-jiyujia-v1/vprobe/gpu-samples.jsonl",
+        "sha256": "ba29f080285d957a08c87cde5f8c1c275b3b187ec6d7657a44f45cf062706076"
+      },
+      "status": "complete_with_evidence",
+      "n_tasks": 6,
+      "n_queries": 10,
+      "session_wall_seconds": 1963.937,
+      "install_seconds_subset": 338.5,
+      "install_load_seconds_inclusive": 768.5,
+      "generation_waves_wall_seconds_sum": 1195.05,
+      "new_completion_tokens": 116697,
+      "generation_aggregate_tokens_per_second": 97.65030751851387,
+      "waves": [
+        {
+          "wave_wall_s": 608.06,
+          "concurrency": 6,
+          "client_concurrency": 6,
+          "service_max_seqs": 8,
+          "wave_start_wall_s": 1792497641.192,
+          "completion_tokens_sum": 58425,
+          "usage_missing": 0,
+          "agg_tok_s": 96.08,
+          "name": "P0",
+          "n": 6,
+          "actual_http_concurrency": {
+            "observed_calls": 6,
+            "peak_in_flight": 6,
+            "mean_in_flight_time_weighted": 4.973921395771108,
+            "issued_to_last_done_seconds": 608.008,
+            "sum_in_flight_seconds": 3024.184,
+            "scope": "HTTP issued until returned; excludes queued waiting; not number of CUDA kernels"
+          }
+        },
+        {
+          "wave_wall_s": 586.99,
+          "concurrency": 6,
+          "client_concurrency": 6,
+          "service_max_seqs": 8,
+          "wave_start_wall_s": 1792498249.259,
+          "completion_tokens_sum": 58272,
+          "usage_missing": 0,
+          "agg_tok_s": 99.27,
+          "name": "secondary",
+          "n": 6,
+          "actual_http_concurrency": {
+            "observed_calls": 6,
+            "peak_in_flight": 6,
+            "mean_in_flight_time_weighted": 4.9379206351910865,
+            "issued_to_last_done_seconds": 586.9099999999999,
+            "sum_in_flight_seconds": 2898.115,
+            "scope": "HTTP issued until returned; excludes queued waiting; not number of CUDA kernels"
+          }
+        }
+      ],
+      "actual_http_concurrency": {
+        "observed_calls": 12,
+        "peak_in_flight": 6,
+        "mean_in_flight_time_weighted": 4.955994132104635,
+        "issued_to_last_done_seconds": 1194.9769999999999,
+        "sum_in_flight_seconds": 5922.299,
+        "scope": "HTTP issued until returned; excludes queued waiting; not number of CUDA kernels"
+      },
+      "gpu_busy": {
+        "all_sample_times": 236,
+        "all_samples_mean_percent": 99.57415254237289,
+        "generation_sample_times": 236,
+        "generation_mean_percent": 99.57415254237289,
+        "generation_per_gpu_mean_percent": {
+          "0": 99.57627118644068,
+          "1": 99.57627118644068,
+          "2": 99.5677966101695,
+          "3": 99.57627118644068
+        }
+      },
+      "arms": {
+        "P0": {
+          "planned_task_programs": 6,
+          "physical_calls": 6,
+          "completion_tokens": 58425,
+          "admitted_programs": 4,
+          "all_demo_passing_programs": 0,
+          "planned_demo_cases": 18,
+          "actually_executed_demo_cases": 10,
+          "exact_demo_cases": 0,
+          "valid_demo_outputs": 4,
+          "actual_demo_status_counts": {
+            "execution_error": 6,
+            "ok": 4
+          },
+          "legal_query_outputs": 3,
+          "fixed_query_denominator": 10,
+          "actual_query_status_counts": {
+            "execution_error": 3,
+            "ok": 3
+          },
+          "finish_reason_counts": {
+            "stop": 5,
+            "length": 1
+          },
+          "actual_concurrency": {
+            "observed_calls": 6,
+            "peak_in_flight": 6,
+            "mean_in_flight_time_weighted": 4.973921395771108,
+            "issued_to_last_done_seconds": 608.008,
+            "sum_in_flight_seconds": 3024.184,
+            "scope": "HTTP issued until returned; excludes queued waiting; not number of CUDA kernels"
+          }
+        },
+        "R": {
+          "planned_task_programs": 6,
+          "physical_calls": 6,
+          "completion_tokens": 58272,
+          "admitted_programs": 5,
+          "all_demo_passing_programs": 0,
+          "planned_demo_cases": 18,
+          "actually_executed_demo_cases": 15,
+          "exact_demo_cases": 1,
+          "valid_demo_outputs": 12,
+          "actual_demo_status_counts": {
+            "ok": 12,
+            "execution_error": 3
+          },
+          "legal_query_outputs": 7,
+          "fixed_query_denominator": 10,
+          "actual_query_status_counts": {
+            "ok": 7,
+            "execution_error": 1
+          },
+          "finish_reason_counts": {
+            "stop": 5,
+            "length": 1
+          },
+          "actual_concurrency": {
+            "observed_calls": 6,
+            "peak_in_flight": 6,
+            "mean_in_flight_time_weighted": 4.9379206351910865,
+            "issued_to_last_done_seconds": 586.9099999999999,
+            "sum_in_flight_seconds": 2898.115,
+            "scope": "HTTP issued until returned; excludes queued waiting; not number of CUDA kernels"
+          }
+        }
+      },
+      "classification_counts": {
+        "all_demo_executions_failed": 3,
+        "all_demo_outputs_legal_but_rule_not_fully_correct": 6,
+        "generation_incomplete": 2,
+        "program_rejected": 1
+      },
+      "coverage": {
+        "M0": {
+          "tasks": 6,
+          "queries": 10,
+          "format_ok": 10,
+          "single_covered": 7,
+          "double_distinct": 3,
+          "placeholder": 3,
+          "updated_keys": 7
+        },
+        "M1": {
+          "tasks": 6,
+          "queries": 10,
+          "format_ok": 10,
+          "single_covered": 7,
+          "double_distinct": 3,
+          "placeholder": 3,
+          "updated_keys": 7
+        }
+      },
+      "policy_costs": {
+        "M0": {
+          "logical_calls": 12,
+          "completion_tokens": 116697,
+          "request_seconds_sum_not_wall": 5922.1,
+          "cpu_repair_seconds": 0
+        },
+        "M1": {
+          "logical_calls": 12,
+          "completion_tokens": 116697,
+          "request_seconds_sum_not_wall": 5922.1,
+          "cpu_repair_seconds": 0
+        }
+      },
+      "M0_M1_submission_equal": true,
+      "submission_sha256": {
+        "M0": "e10e5100997f430a781a1460562cf7cd17f76d415bddf7a2c19380dac418a9cb",
+        "M1": "e10e5100997f430a781a1460562cf7cd17f76d415bddf7a2c19380dac418a9cb"
+      },
+      "routes_M1": {
+        "R": 6
+      },
+      "actual_F_calls": 0,
+      "actual_cpu_repair_tasks": 0,
+      "calls_missing_usage": 0
+    },
+    "qingyu1232": {
+      "source_run": {
+        "path": "experiments/020/d24-qingyu1232-v1/vprobe/run.json",
+        "sha256": "15c341a670410f586a6525e8a55953fc72ffe1ca7c0db9b78ee6933450a773c8"
+      },
+      "source_gpu": {
+        "path": "experiments/020/d24-qingyu1232-v1/vprobe/gpu-samples.jsonl",
+        "sha256": "50715406616659cc28594fc964a0a90bd4b6524c515db99aebcdd96d15b7af48"
+      },
+      "status": "complete_with_evidence",
+      "n_tasks": 18,
+      "n_queries": 26,
+      "session_wall_seconds": 3597.699,
+      "install_seconds_subset": 273.9,
+      "install_load_seconds_inclusive": 694.0,
+      "generation_waves_wall_seconds_sum": 2903.3,
+      "new_completion_tokens": 352717,
+      "generation_aggregate_tokens_per_second": 121.4883064099473,
+      "waves": [
+        {
+          "wave_wall_s": 1510.74,
+          "concurrency": 8,
+          "client_concurrency": 8,
+          "service_max_seqs": 8,
+          "wave_start_wall_s": 1792498342.533,
+          "completion_tokens_sum": 178604,
+          "usage_missing": 0,
+          "agg_tok_s": 118.22,
+          "name": "P0",
+          "n": 18,
+          "actual_http_concurrency": {
+            "observed_calls": 18,
+            "peak_in_flight": 8,
+            "mean_in_flight_time_weighted": 6.171919859923672,
+            "issued_to_last_done_seconds": 1510.605,
+            "sum_in_flight_seconds": 9323.332999999999,
+            "scope": "HTTP issued until returned; excludes queued waiting; not number of CUDA kernels"
+          }
+        },
+        {
+          "wave_wall_s": 1392.56,
+          "concurrency": 8,
+          "client_concurrency": 8,
+          "service_max_seqs": 8,
+          "wave_start_wall_s": 1792499853.305,
+          "completion_tokens_sum": 174113,
+          "usage_missing": 0,
+          "agg_tok_s": 125.03,
+          "name": "secondary",
+          "n": 18,
+          "actual_http_concurrency": {
+            "observed_calls": 18,
+            "peak_in_flight": 8,
+            "mean_in_flight_time_weighted": 6.41856032439508,
+            "issued_to_last_done_seconds": 1391.8830000000003,
+            "sum_in_flight_seconds": 8933.884999999998,
+            "scope": "HTTP issued until returned; excludes queued waiting; not number of CUDA kernels"
+          }
+        }
+      ],
+      "actual_http_concurrency": {
+        "observed_calls": 36,
+        "peak_in_flight": 8,
+        "mean_in_flight_time_weighted": 6.289833962355153,
+        "issued_to_last_done_seconds": 2902.655,
+        "sum_in_flight_seconds": 18257.217999999997,
+        "scope": "HTTP issued until returned; excludes queued waiting; not number of CUDA kernels"
+      },
+      "gpu_busy": {
+        "all_sample_times": 574,
+        "all_samples_mean_percent": 99.81533101045297,
+        "generation_sample_times": 574,
+        "generation_mean_percent": 99.81533101045297,
+        "generation_per_gpu_mean_percent": {
+          "0": 99.82229965156795,
+          "1": 99.78919860627178,
+          "2": 99.82404181184668,
+          "3": 99.82578397212544
+        }
+      },
+      "arms": {
+        "P0": {
+          "planned_task_programs": 18,
+          "physical_calls": 18,
+          "completion_tokens": 178604,
+          "admitted_programs": 15,
+          "all_demo_passing_programs": 0,
+          "planned_demo_cases": 53,
+          "actually_executed_demo_cases": 47,
+          "exact_demo_cases": 2,
+          "valid_demo_outputs": 32,
+          "actual_demo_status_counts": {
+            "execution_error": 15,
+            "ok": 32
+          },
+          "legal_query_outputs": 15,
+          "fixed_query_denominator": 26,
+          "actual_query_status_counts": {
+            "execution_error": 6,
+            "ok": 15
+          },
+          "finish_reason_counts": {
+            "stop": 15,
+            "length": 3
+          },
+          "actual_concurrency": {
+            "observed_calls": 18,
+            "peak_in_flight": 8,
+            "mean_in_flight_time_weighted": 6.171919859923672,
+            "issued_to_last_done_seconds": 1510.605,
+            "sum_in_flight_seconds": 9323.332999999999,
+            "scope": "HTTP issued until returned; excludes queued waiting; not number of CUDA kernels"
+          }
+        },
+        "R": {
+          "planned_task_programs": 18,
+          "physical_calls": 18,
+          "completion_tokens": 174113,
+          "admitted_programs": 15,
+          "all_demo_passing_programs": 0,
+          "planned_demo_cases": 53,
+          "actually_executed_demo_cases": 45,
+          "exact_demo_cases": 1,
+          "valid_demo_outputs": 38,
+          "actual_demo_status_counts": {
+            "ok": 38,
+            "execution_error": 7
+          },
+          "legal_query_outputs": 16,
+          "fixed_query_denominator": 26,
+          "actual_query_status_counts": {
+            "ok": 16,
+            "execution_error": 3,
+            "execution_timeout": 2
+          },
+          "finish_reason_counts": {
+            "stop": 17,
+            "length": 1
+          },
+          "actual_concurrency": {
+            "observed_calls": 18,
+            "peak_in_flight": 8,
+            "mean_in_flight_time_weighted": 6.41856032439508,
+            "issued_to_last_done_seconds": 1391.8830000000003,
+            "sum_in_flight_seconds": 8933.884999999998,
+            "scope": "HTTP issued until returned; excludes queued waiting; not number of CUDA kernels"
+          }
+        }
+      },
+      "classification_counts": {
+        "all_demo_executions_failed": 6,
+        "all_demo_outputs_legal_but_rule_not_fully_correct": 22,
+        "mixed_demo_execution_and_rule_failures": 2,
+        "generation_incomplete": 4,
+        "program_rejected": 2
+      },
+      "coverage": {
+        "M0": {
+          "tasks": 18,
+          "queries": 26,
+          "format_ok": 26,
+          "single_covered": 23,
+          "double_distinct": 6,
+          "placeholder": 3,
+          "updated_keys": 23
+        },
+        "M1": {
+          "tasks": 18,
+          "queries": 26,
+          "format_ok": 26,
+          "single_covered": 23,
+          "double_distinct": 6,
+          "placeholder": 3,
+          "updated_keys": 23
+        }
+      },
+      "policy_costs": {
+        "M0": {
+          "logical_calls": 36,
+          "completion_tokens": 352717,
+          "request_seconds_sum_not_wall": 18257.2,
+          "cpu_repair_seconds": 0
+        },
+        "M1": {
+          "logical_calls": 36,
+          "completion_tokens": 352717,
+          "request_seconds_sum_not_wall": 18257.2,
+          "cpu_repair_seconds": 0
+        }
+      },
+      "M0_M1_submission_equal": true,
+      "submission_sha256": {
+        "M0": "c50c35400e4f22eb0b66f325184215f6b7c4544a1dd8e886693d51524e70d75e",
+        "M1": "c50c35400e4f22eb0b66f325184215f6b7c4544a1dd8e886693d51524e70d75e"
+      },
+      "routes_M1": {
+        "R": 18
+      },
+      "actual_F_calls": 0,
+      "actual_cpu_repair_tasks": 0,
+      "calls_missing_usage": 0
+    }
+  },
+  "combined": {
+    "tasks": 24,
+    "queries": 36,
+    "disjoint_task_partition_matches_D24_manifest": true,
+    "physical_calls": 48,
+    "new_completion_tokens": 469414,
+    "session_wall_seconds_sum_across_two_runs": 5561.636,
+    "generation_wall_seconds_sum_across_two_runs": 4098.35,
+    "pooled_generation_tokens_per_second": 114.53731379701586,
+    "calendar_span_start_to_latest_finish_seconds": 4373.414518356323,
+    "timing_note": "Runs overlap across accounts. Summed session/wave seconds are aggregate job wall-times, not one chronological wait or four-GPU single-session throughput. Pooled throughput is total tokens divided by sum of job generation wall-times.",
+    "gpu_generation_samples_mean_percent": 99.74506172839506,
+    "gpu_generation_observations": 3240,
+    "gpu_note": "nvidia-smi utilization.gpu sample mean during recorded generation waves; not SM occupancy, token quality, or proof of attainable peak throughput.",
+    "arms": {
+      "P0": {
+        "planned_task_programs": 24,
+        "physical_calls": 24,
+        "completion_tokens": 237029,
+        "admitted_programs": 19,
+        "all_demo_passing_programs": 0,
+        "planned_demo_cases": 71,
+        "actually_executed_demo_cases": 57,
+        "exact_demo_cases": 2,
+        "valid_demo_outputs": 36,
+        "legal_query_outputs": 18,
+        "fixed_query_denominator": 36,
+        "actual_demo_status_counts": {
+          "execution_error": 21,
+          "ok": 36
+        },
+        "actual_query_status_counts": {
+          "execution_error": 9,
+          "ok": 18
+        },
+        "finish_reason_counts": {
+          "stop": 20,
+          "length": 4
+        }
+      },
+      "R": {
+        "planned_task_programs": 24,
+        "physical_calls": 24,
+        "completion_tokens": 232385,
+        "admitted_programs": 20,
+        "all_demo_passing_programs": 0,
+        "planned_demo_cases": 71,
+        "actually_executed_demo_cases": 60,
+        "exact_demo_cases": 2,
+        "valid_demo_outputs": 50,
+        "legal_query_outputs": 23,
+        "fixed_query_denominator": 36,
+        "actual_demo_status_counts": {
+          "ok": 50,
+          "execution_error": 10
+        },
+        "actual_query_status_counts": {
+          "ok": 23,
+          "execution_error": 4,
+          "execution_timeout": 2
+        },
+        "finish_reason_counts": {
+          "stop": 22,
+          "length": 2
+        }
+      }
+    },
+    "classification_counts": {
+      "all_demo_executions_failed": 9,
+      "all_demo_outputs_legal_but_rule_not_fully_correct": 28,
+      "generation_incomplete": 6,
+      "program_rejected": 3,
+      "mixed_demo_execution_and_rule_failures": 2
+    },
+    "actual_demo_error_counts": {
+      "IndexError: tuple index out of range": 3,
+      "TypeError: cannot unpack non-iterable int object": 3,
+      "NameError: name 'out' is not defined": 3,
+      "NameError: name 'i' is not defined": 2,
+      "NameError: name 'next' is not defined": 4,
+      "TypeError: list indices must be integers or slices, not tuple": 3,
+      "ValueError: grid height must be 1..30": 5,
+      "TypeError: 'tuple' object does not support item assignment": 3,
+      "ValueError: too many values to unpack (expected 2)": 3,
+      "IndexError: list index out of range": 2
+    },
+    "coverage": {
+      "M0": {
+        "tasks": 24,
+        "queries": 36,
+        "format_ok": 36,
+        "single_covered": 30,
+        "double_distinct": 9,
+        "placeholder": 6,
+        "updated_keys": 30
+      },
+      "M1": {
+        "tasks": 24,
+        "queries": 36,
+        "format_ok": 36,
+        "single_covered": 30,
+        "double_distinct": 9,
+        "placeholder": 6,
+        "updated_keys": 30
+      }
+    },
+    "M0_M1_equal_on_each_shard": true,
+    "M1_R_routes": 24,
+    "F_calls": 0,
+    "cpu_repair_tasks": 0,
+    "total_cost_per_policy": {
+      "M0": {
+        "logical_calls": 48,
+        "completion_tokens": 469414,
+        "cpu_repair_seconds": 0
+      },
+      "M1": {
+        "logical_calls": 48,
+        "completion_tokens": 469414,
+        "cpu_repair_seconds": 0
+      }
+    },
+    "query_scoring": {
+      "status": "not_scored",
+      "fixed_denominator": 36,
+      "M0_EM_at_2": null,
+      "M1_EM_at_2": null,
+      "reason": "Await DeepP0 and fixed CPU replay outputs before querying official gold. Legal query coverage is not exact-match."
+    }
+  },
+  "program_outcomes": [
+    {
+      "owner": "jiyujia",
+      "task_id": "2c181942",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_executions_failed",
+      "demo_total": 3,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [
+        {
+          "demo_index": 0,
+          "status": "execution_error",
+          "error": "IndexError: tuple index out of range"
+        },
+        {
+          "demo_index": 1,
+          "status": "execution_error",
+          "error": "IndexError: tuple index out of range"
+        },
+        {
+          "demo_index": 2,
+          "status": "execution_error",
+          "error": "IndexError: tuple index out of range"
+        }
+      ],
+      "query_error_messages": [
+        "IndexError: tuple index out of range"
+      ],
+      "legal_query_outputs": 0,
+      "source_code_path": "experiments/020/d24-jiyujia-v1/vprobe/programs/P0-2c181942.code.py"
+    },
+    {
+      "owner": "jiyujia",
+      "task_id": "2c181942",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-jiyujia-v1/vprobe/programs/R-2c181942.code.py"
+    },
+    {
+      "owner": "jiyujia",
+      "task_id": "8e5c0c38",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 2,
+      "valid_demo_outputs": 2,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 2,
+      "source_code_path": "experiments/020/d24-jiyujia-v1/vprobe/programs/P0-8e5c0c38.code.py"
+    },
+    {
+      "owner": "jiyujia",
+      "task_id": "8e5c0c38",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 2,
+      "valid_demo_outputs": 2,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 2,
+      "source_code_path": "experiments/020/d24-jiyujia-v1/vprobe/programs/R-8e5c0c38.code.py"
+    },
+    {
+      "owner": "jiyujia",
+      "task_id": "2b83f449",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 2,
+      "valid_demo_outputs": 2,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-jiyujia-v1/vprobe/programs/P0-2b83f449.code.py"
+    },
+    {
+      "owner": "jiyujia",
+      "task_id": "2b83f449",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 2,
+      "valid_demo_outputs": 2,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-jiyujia-v1/vprobe/programs/R-2b83f449.code.py"
+    },
+    {
+      "owner": "jiyujia",
+      "task_id": "195c6913",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_executions_failed",
+      "demo_total": 3,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [
+        {
+          "demo_index": 0,
+          "status": "execution_error",
+          "error": "TypeError: cannot unpack non-iterable int object"
+        },
+        {
+          "demo_index": 1,
+          "status": "execution_error",
+          "error": "TypeError: cannot unpack non-iterable int object"
+        },
+        {
+          "demo_index": 2,
+          "status": "execution_error",
+          "error": "TypeError: cannot unpack non-iterable int object"
+        }
+      ],
+      "query_error_messages": [
+        "TypeError: cannot unpack non-iterable int object"
+      ],
+      "legal_query_outputs": 0,
+      "source_code_path": "experiments/020/d24-jiyujia-v1/vprobe/programs/P0-195c6913.code.py"
+    },
+    {
+      "owner": "jiyujia",
+      "task_id": "195c6913",
+      "arm": "R",
+      "status": "generation_incomplete",
+      "category": "generation_incomplete",
+      "demo_total": 3,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 0,
+      "source_code_path": null
+    },
+    {
+      "owner": "jiyujia",
+      "task_id": "e87109e9",
+      "arm": "P0",
+      "status": "program_rejected",
+      "category": "program_rejected",
+      "demo_total": 3,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 0,
+      "source_code_path": null
+    },
+    {
+      "owner": "jiyujia",
+      "task_id": "e87109e9",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_executions_failed",
+      "demo_total": 3,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [
+        {
+          "demo_index": 0,
+          "status": "execution_error",
+          "error": "NameError: name 'out' is not defined"
+        },
+        {
+          "demo_index": 1,
+          "status": "execution_error",
+          "error": "NameError: name 'out' is not defined"
+        },
+        {
+          "demo_index": 2,
+          "status": "execution_error",
+          "error": "NameError: name 'out' is not defined"
+        }
+      ],
+      "query_error_messages": [
+        "NameError: name 'out' is not defined"
+      ],
+      "legal_query_outputs": 0,
+      "source_code_path": "experiments/020/d24-jiyujia-v1/vprobe/programs/R-e87109e9.code.py"
+    },
+    {
+      "owner": "jiyujia",
+      "task_id": "b6f77b65",
+      "arm": "P0",
+      "status": "generation_incomplete",
+      "category": "generation_incomplete",
+      "demo_total": 5,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 0,
+      "source_code_path": null
+    },
+    {
+      "owner": "jiyujia",
+      "task_id": "b6f77b65",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 5,
+      "valid_demo_outputs": 5,
+      "exact_demo_cases": 1,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 3,
+      "source_code_path": "experiments/020/d24-jiyujia-v1/vprobe/programs/R-b6f77b65.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "4c3d4a41",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_executions_failed",
+      "demo_total": 2,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [
+        {
+          "demo_index": 0,
+          "status": "execution_error",
+          "error": "NameError: name 'i' is not defined"
+        },
+        {
+          "demo_index": 1,
+          "status": "execution_error",
+          "error": "NameError: name 'i' is not defined"
+        }
+      ],
+      "query_error_messages": [
+        "NameError: name 'i' is not defined"
+      ],
+      "legal_query_outputs": 0,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/P0-4c3d4a41.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "4c3d4a41",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 2,
+      "valid_demo_outputs": 2,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 2,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/R-4c3d4a41.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "f931b4a8",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 5,
+      "valid_demo_outputs": 5,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 2,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/P0-f931b4a8.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "f931b4a8",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "mixed_demo_execution_and_rule_failures",
+      "demo_total": 5,
+      "valid_demo_outputs": 1,
+      "exact_demo_cases": 1,
+      "all_demos_pass": false,
+      "demo_errors": [
+        {
+          "demo_index": 0,
+          "status": "execution_error",
+          "error": "NameError: name 'next' is not defined"
+        },
+        {
+          "demo_index": 1,
+          "status": "execution_error",
+          "error": "NameError: name 'next' is not defined"
+        },
+        {
+          "demo_index": 2,
+          "status": "execution_error",
+          "error": "NameError: name 'next' is not defined"
+        },
+        {
+          "demo_index": 4,
+          "status": "execution_error",
+          "error": "NameError: name 'next' is not defined"
+        }
+      ],
+      "query_error_messages": [
+        "NameError: name 'next' is not defined"
+      ],
+      "legal_query_outputs": 0,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/R-f931b4a8.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "6e453dd6",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/P0-6e453dd6.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "6e453dd6",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/R-6e453dd6.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "e376de54",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "exact_demo_cases": 1,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/P0-e376de54.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "e376de54",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_executions_failed",
+      "demo_total": 3,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [
+        {
+          "demo_index": 0,
+          "status": "execution_error",
+          "error": "TypeError: list indices must be integers or slices, not tuple"
+        },
+        {
+          "demo_index": 1,
+          "status": "execution_error",
+          "error": "TypeError: list indices must be integers or slices, not tuple"
+        },
+        {
+          "demo_index": 2,
+          "status": "execution_error",
+          "error": "TypeError: list indices must be integers or slices, not tuple"
+        }
+      ],
+      "query_error_messages": [
+        "TypeError: list indices must be integers or slices, not tuple"
+      ],
+      "legal_query_outputs": 0,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/R-e376de54.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "bf45cf4b",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_executions_failed",
+      "demo_total": 3,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [
+        {
+          "demo_index": 0,
+          "status": "execution_error",
+          "error": "ValueError: grid height must be 1..30"
+        },
+        {
+          "demo_index": 1,
+          "status": "execution_error",
+          "error": "ValueError: grid height must be 1..30"
+        },
+        {
+          "demo_index": 2,
+          "status": "execution_error",
+          "error": "ValueError: grid height must be 1..30"
+        }
+      ],
+      "query_error_messages": [
+        "ValueError: grid height must be 1..30"
+      ],
+      "legal_query_outputs": 0,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/P0-bf45cf4b.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "bf45cf4b",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/R-bf45cf4b.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "247ef758",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 2,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/P0-247ef758.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "247ef758",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 2,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/R-247ef758.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "58f5dbd5",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_executions_failed",
+      "demo_total": 3,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [
+        {
+          "demo_index": 0,
+          "status": "execution_error",
+          "error": "TypeError: 'tuple' object does not support item assignment"
+        },
+        {
+          "demo_index": 1,
+          "status": "execution_error",
+          "error": "TypeError: 'tuple' object does not support item assignment"
+        },
+        {
+          "demo_index": 2,
+          "status": "execution_error",
+          "error": "TypeError: 'tuple' object does not support item assignment"
+        }
+      ],
+      "query_error_messages": [
+        "IndexError: list index out of range"
+      ],
+      "legal_query_outputs": 0,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/P0-58f5dbd5.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "58f5dbd5",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/R-58f5dbd5.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "135a2760",
+      "arm": "P0",
+      "status": "generation_incomplete",
+      "category": "generation_incomplete",
+      "demo_total": 2,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 0,
+      "source_code_path": null
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "135a2760",
+      "arm": "R",
+      "status": "program_rejected",
+      "category": "program_rejected",
+      "demo_total": 2,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 0,
+      "source_code_path": null
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "abc82100",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 4,
+      "valid_demo_outputs": 4,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 2,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/P0-abc82100.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "abc82100",
+      "arm": "R",
+      "status": "generation_incomplete",
+      "category": "generation_incomplete",
+      "demo_total": 4,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 0,
+      "source_code_path": null
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "de809cff",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 2,
+      "valid_demo_outputs": 2,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/P0-de809cff.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "de809cff",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 2,
+      "valid_demo_outputs": 2,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/R-de809cff.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "800d221b",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_executions_failed",
+      "demo_total": 3,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [
+        {
+          "demo_index": 0,
+          "status": "execution_error",
+          "error": "ValueError: too many values to unpack (expected 2)"
+        },
+        {
+          "demo_index": 1,
+          "status": "execution_error",
+          "error": "ValueError: too many values to unpack (expected 2)"
+        },
+        {
+          "demo_index": 2,
+          "status": "execution_error",
+          "error": "ValueError: too many values to unpack (expected 2)"
+        }
+      ],
+      "query_error_messages": [
+        "ValueError: too many values to unpack (expected 2)"
+      ],
+      "legal_query_outputs": 0,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/P0-800d221b.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "800d221b",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/R-800d221b.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "21897d95",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "mixed_demo_execution_and_rule_failures",
+      "demo_total": 4,
+      "valid_demo_outputs": 2,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [
+        {
+          "demo_index": 1,
+          "status": "execution_error",
+          "error": "IndexError: list index out of range"
+        },
+        {
+          "demo_index": 2,
+          "status": "execution_error",
+          "error": "IndexError: list index out of range"
+        }
+      ],
+      "query_error_messages": [],
+      "legal_query_outputs": 2,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/P0-21897d95.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "21897d95",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 4,
+      "valid_demo_outputs": 4,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 0,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/R-21897d95.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "fc7cae8d",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/P0-fc7cae8d.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "fc7cae8d",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/R-fc7cae8d.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "8698868d",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_executions_failed",
+      "demo_total": 2,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [
+        {
+          "demo_index": 0,
+          "status": "execution_error",
+          "error": "ValueError: grid height must be 1..30"
+        },
+        {
+          "demo_index": 1,
+          "status": "execution_error",
+          "error": "ValueError: grid height must be 1..30"
+        }
+      ],
+      "query_error_messages": [
+        "ValueError: grid height must be 1..30"
+      ],
+      "legal_query_outputs": 0,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/P0-8698868d.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "8698868d",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 2,
+      "valid_demo_outputs": 2,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/R-8698868d.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "cbebaa4b",
+      "arm": "P0",
+      "status": "generation_incomplete",
+      "category": "generation_incomplete",
+      "demo_total": 2,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 0,
+      "source_code_path": null
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "cbebaa4b",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 2,
+      "valid_demo_outputs": 2,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 2,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/R-cbebaa4b.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "5961cc34",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 4,
+      "valid_demo_outputs": 4,
+      "exact_demo_cases": 1,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/P0-5961cc34.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "5961cc34",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 4,
+      "valid_demo_outputs": 4,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 1,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/R-5961cc34.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "3e6067c3",
+      "arm": "P0",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 2,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/P0-3e6067c3.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "3e6067c3",
+      "arm": "R",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 2,
+      "source_code_path": "experiments/020/d24-qingyu1232-v1/vprobe/programs/R-3e6067c3.code.py"
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "e3721c99",
+      "arm": "P0",
+      "status": "generation_incomplete",
+      "category": "generation_incomplete",
+      "demo_total": 2,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 0,
+      "source_code_path": null
+    },
+    {
+      "owner": "qingyu1232",
+      "task_id": "e3721c99",
+      "arm": "R",
+      "status": "program_rejected",
+      "category": "program_rejected",
+      "demo_total": 2,
+      "valid_demo_outputs": 0,
+      "exact_demo_cases": 0,
+      "all_demos_pass": false,
+      "demo_errors": [],
+      "query_error_messages": [],
+      "legal_query_outputs": 0,
+      "source_code_path": null
+    }
+  ],
+  "interpretation": [
+    "All 24 tasks routed to independent R, with zero F and zero task-specific CPU repairs; M0 and M1 are exactly identical here. This does not evaluate the proposed repair mechanism on new D24 tasks.",
+    "Among 48 proposed P0/R programs, 28 execute every demo legally but fail at least one demo; 9 fail every demo execution; 2 mix legal and failed execution; 6 are incomplete and 3 rejected before execution. No program passes all demos.",
+    "R-21897d95 has legal outputs on every demo but runtime failures on both query inputs; distinguish query execution generalization from demo-rule fit.",
+    "Four demo exact matches across 142 planned demo cases are individual examples, not four solved tasks or any claimed query exact matches.",
+    "Previously generated P0/R outputs should be reused for CPU replay. No additional generation or protocol experiment was run to create this summary."
+  ]
+}

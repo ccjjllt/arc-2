@@ -1,0 +1,182 @@
+{
+  "created_date_beijing": "2026-10-20",
+  "status": "prepared_not_run",
+  "cohort": "D24_jiyujia_mechanical_P0_three",
+  "research_question": "Can one short mechanical-error feedback call turn an already complete but mechanically failing P0 into a useful final candidate, versus one same-budget independent restart?",
+  "selection_rule": "Predeclare the three original P0 programs from the completed jiyujia D24 shard that ended normally with complete code but failed on every demo due to runtime exceptions (2c181942,195c6913) or AST ImportFrom rejection (e87109e9). Do not include truncated P0-b6f77b65, any R-based selection, or query-score information. Selection uses generation/completion and known-demo execution evidence only.",
+  "n_tasks": 3,
+  "n_queries": 4,
+  "n_demos": 9,
+  "task_ids": [
+    "2c181942",
+    "195c6913",
+    "e87109e9"
+  ],
+  "entries": [
+    {
+      "task_id": "2c181942",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 1962,
+      "max_side": 26,
+      "demo_pairs_sha256": "2246c50cf10511447eb938d80aa13a2c0958f5f47913050b61908047d506ce99",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "2c181942_0",
+          "input_sha256": "6fa20ec641119c4a6f136afeba067cb8cdde584992ddfa49c0edfece686a4264",
+          "height": 24,
+          "width": 26
+        }
+      ],
+      "source_group": "public_evaluation_non_ARC1",
+      "tier": "M"
+    },
+    {
+      "task_id": "195c6913",
+      "n_demo": 3,
+      "n_test_queries": 2,
+      "total_input_cells": 3450,
+      "max_side": 30,
+      "demo_pairs_sha256": "2766901222f144be19bb9ca501d2bdd2a8ae7236a2b60e6b1f6a1a960526c2ec",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "195c6913_0",
+          "input_sha256": "70ad752b1b079d0e75b34fbbf8f710a3ea3f72baad87ca508060cf253d3f81fe",
+          "height": 30,
+          "width": 30
+        },
+        {
+          "query_index": 1,
+          "query_key": "195c6913_1",
+          "input_sha256": "2450d069c2c4783e4ea093e11a6f4032990ad345440346bf49733ba901e58707",
+          "height": 30,
+          "width": 30
+        }
+      ],
+      "source_group": "public_evaluation_non_ARC1",
+      "tier": "L"
+    },
+    {
+      "task_id": "e87109e9",
+      "n_demo": 3,
+      "n_test_queries": 1,
+      "total_input_cells": 2520,
+      "max_side": 30,
+      "demo_pairs_sha256": "08868707c14192f79fe94ac80a92ed7f8b5e5b5a7f26c9dd0afe55f637b5c575",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "e87109e9_0",
+          "input_sha256": "6806afdbdce334a277eaa9afdbc09e5e0a85bae9e71e83b827d4c9801321278e",
+          "height": 30,
+          "width": 24
+        }
+      ],
+      "source_group": "public_evaluation_non_ARC1",
+      "tier": "L"
+    }
+  ],
+  "sources": {
+    "mother_manifest": {
+      "path": "experiments/020/cohorts/development-d24-manifest.json",
+      "sha256": "3dcdc1aa274d04ef948994a3d6ff8e4531a1883feca11c7252875bdc3b794327"
+    },
+    "mother_challenges": {
+      "path": "experiments/020/cohorts/development-d24-challenges.json",
+      "sha256": "637fb53da005ab4d3354029e03426ad866d0f3294497aeabd510618e6ac16a56"
+    },
+    "shard_challenges": {
+      "path": "experiments/020/cohorts/shards/d24-jiyujia-challenges.json",
+      "sha256": "9d90644613d1b2896880c719f10a4966d3d0c813404da25f5115948d22c78830"
+    },
+    "run": {
+      "path": "experiments/020/d24-jiyujia-v1/vprobe/run.json",
+      "sha256": "71a9a22f2392f587a15dd55937aa67f0e58da4d9f6f1928ef34df3a4eb4ffe4e"
+    },
+    "executor": {
+      "path": "experiments/020/submit/solve_program.py",
+      "sha256": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88"
+    }
+  },
+  "input_artifact": {
+    "path": "experiments/020/mechanical/challenges.json",
+    "sha256": "b8d93b96a4cdd5454a1b441a041181eaf0501824de31a4bc523d4ecde6aece9c",
+    "bytes": 197553
+  },
+  "frozen_initial_artifact": {
+    "path": "experiments/020/mechanical/frozen-initial.json",
+    "sha256": "525a20cd6407e7c281fc81b0c9b6b16aa25175374617208fd1fbc4e3a92be912",
+    "bytes": 15758
+  },
+  "query_gold_read": false,
+  "query_gold_used_for_selection": false,
+  "original_initial_code_modified": false,
+  "confirmation_C24_touched": false,
+  "historical_initial_cost": {
+    "owner": "jiyujia",
+    "calls": [
+      {
+        "task_id": "2c181942",
+        "arm": "P0",
+        "request_id": "P0-2c181942",
+        "seed": 5101,
+        "completion_tokens": 8600,
+        "prompt_tokens": 6942,
+        "request_seconds": 454.5,
+        "finish_reason": "stop",
+        "parse_status": "program_ready"
+      },
+      {
+        "task_id": "195c6913",
+        "arm": "P0",
+        "request_id": "P0-195c6913",
+        "seed": 5101,
+        "completion_tokens": 9576,
+        "prompt_tokens": 10547,
+        "request_seconds": 500.3,
+        "finish_reason": "stop",
+        "parse_status": "program_ready"
+      },
+      {
+        "task_id": "e87109e9",
+        "arm": "P0",
+        "request_id": "P0-e87109e9",
+        "seed": 5101,
+        "completion_tokens": 10419,
+        "prompt_tokens": 8118,
+        "request_seconds": 536.1,
+        "finish_reason": "stop",
+        "parse_status": "program_rejected"
+      }
+    ],
+    "physical_calls": 3,
+    "completion_tokens": 28595,
+    "request_seconds_sum_not_wall": 1490.9,
+    "original_source_session_total_completion_tokens": 116697,
+    "original_source_session_elapsed_seconds": 1963.937,
+    "accounting_note": "Three P0 calls already ran within a concurrent six-task shard. Their request seconds are a sum, not exclusive GPU wall time. Shared installation/loading and exact per-call quota cannot be uniquely allocated from this record. Prior R calls are not charged as initial P0 and are not a matched short-budget comparator."
+  },
+  "new_experiment": {
+    "model": "Same frozen Qwen3.8-27B FP8/runtime as completed D24 shard; root driver must record actual loaded assets",
+    "arms": {
+      "F": "Full frozen P0 code plus its real known-demo parse/runtime error and original challenge; one short mechanical feedback call, no manually repaired code.",
+      "R": "Original challenge only; one independent short restart. No P0, F output, or execution feedback in its prompt."
+    },
+    "calls_per_task_per_arm": 1,
+    "max_new_calls": 6,
+    "max_tokens_per_call": 4096,
+    "thinking_token_budget_per_call": 1024,
+    "max_new_completion_tokens": 24576,
+    "seed_policy": "Root driver must freeze explicit F/R seeds before launching and record them. Neither seed nor samples are selected by query scores.",
+    "no_automatic_extra_repair_calls": true
+  },
+  "deployment_accounting": {
+    "F_policy": "Frozen P0 + one F; include historical initial cost plus new F and CPU execution when reporting deployable cost.",
+    "R_policy": "Same shared initial P0 + one independent short R for fixed two-attempt comparison; also report standalone short-R exact/cost separately if useful.",
+    "warning": "Reusing frozen initial code makes this research increment cheap, not deployment free. New research ledger counts shared P0 zero additional GPU calls but must separately disclose the 28595 historical initial completion tokens."
+  },
+  "selection_and_scoring": "Freeze each policy two-slot selector using known-demo evidence. Keep original P0 whenever it yields legal candidates after ordinary execution; do not manually fix it for the F baseline. Query scoring only after predictions freeze, on all matched original queries; report legal execution recovery, all-demo passes, final EM@2, added/lost queries, and cost. Do not substitute all-candidate oracle for selected-slot performance.",
+  "scope_limit": "Three mechanically selected development tasks diagnose this failure class only; results are not unbiased D24/C24 accuracy, a Kaggle score, or proof of beating historical 30.14."
+}

@@ -1,0 +1,110 @@
+{
+  "checked_at_utc": "2026-10-20T12:54:34Z",
+  "checked_at_beijing": "2026-10-20 20:54:34",
+  "scope": "Read-only official Kaggle discussion/API and public Notebook source research. No GPU, submission, model/runtime change, D24/C24 gold read, or evaluation-output read.",
+  "discussion": {
+    "topic_id": 750546,
+    "title": "Qwen3.8 or something else?",
+    "author": "Anil Thomas",
+    "posted_at_utc": "2026-10-18T19:43:49.856Z",
+    "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/discussion/750546",
+    "retrieval_method": "Official SDK discussions.discussion_api_client.get_topic and competitions.competition_api_client.list_topic_messages",
+    "claims": [
+      {
+        "message_id": 3540747,
+        "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/discussion/750546#3540747",
+        "posted_at_utc": "2026-10-18T19:43:49.857Z",
+        "evidence_level": "Author self-report, no bound Notebook version or independent score record",
+        "short_exact_quote": "go from 35 to 45",
+        "paraphrase": "The author says an ensemble of his NVARC-based solution and Qwen3.8-27B increased the score from approximately 35 to 45. He suggests a Python REPL can help 27B but fitting it into 12 hours on four L4 GPUs is difficult.",
+        "code_link_supplied": false,
+        "runtime_allocation_supplied": false,
+        "precise_version_score_verified": false
+      },
+      {
+        "message_id": 3540789,
+        "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/discussion/750546#3540789",
+        "posted_at_utc": "2026-10-18T22:33:19.537Z",
+        "author_identity": "Not supplied by the competition message response; not inferred",
+        "evidence_level": "Reply self-report on public CV, not a Kaggle submission result",
+        "short_exact_quotes": [
+          "median 70k tokens for pass@2",
+          "so 35k per slot"
+        ],
+        "paraphrase": "The reply reports xhigh full-policy median usage of about 70,000 tokens per task for two attempts, approximately 45 percent solved (roughly 52 of 120 averaged across runs), and inability to fit that configuration in the available runtime. It also reports a separate NVARC run across 240 tasks in about four hours, without supplying that implementation.",
+        "token_statistic_is_median_not_mean": true,
+        "code_link_supplied": false,
+        "precise_version_score_verified": false,
+        "relevance": "Supports investigating depth at fixed total cost rather than assuming the current 8,192-thinking/12,288-total limit measures the model capability ceiling. It does not justify copying 70K per task into the final budget."
+      }
+    ],
+    "higher_unbound_score_reports_not_used_for_selection": true
+  },
+  "readable_program_source": {
+    "ref": "abisheksrivastav/arc-prize-2026-program-repair-v1",
+    "url": "https://www.kaggle.com/code/abisheksrivastav/arc-prize-2026-program-repair-v1/3",
+    "version_number": 3,
+    "metadata_id": 137476953,
+    "version_identity_note": "The official get_kernel response identified current_version_number=3 at retrieval; metadata id is not claimed to be a scriptVersionId. This is source-version evidence, not an exact-version leaderboard score.",
+    "listed_last_run_time_utc": "2026-10-07T18:56:18.837Z",
+    "novelty_note": "First inspected in this project during this update; already existed on October 7, not a newly published October 20 result.",
+    "raw_api_blob_sha256": "23e998cc922b61d7e9b76e7e5de8c98b786b8958b508d2772bdb5a64491116b4",
+    "saved_code_only_source": {
+      "path": "experiments/020/evidence/external-program-repair-v3.source.py",
+      "sha256": "5ad4b04ec58de22881883d05ded0ee84a8a068266a7ca34d26b027c2f747390c",
+      "bytes": 44747,
+      "note": "Concatenated code cells from the API Notebook blob, excluding saved output cells. Embedded SOURCES dictionary retained exactly."
+    },
+    "embedded_module_sha256": {
+      "arc_program_worker.py": "7a9210c201c34989be4f24e17eb6d988ede199b2f55214091dfd9742bfe915dd",
+      "arc_program_runtime.py": "f8682b944d6dc3e8efe57f045a1dbc616b4ec657e6f1c6cc0478e05cffe65530",
+      "arc_reasoning_setup.py": "f21c3740476f7c18446d8673f6f0a9c4b2015198d7bfcc4f97efec8f49050811"
+    },
+    "configuration": {
+      "workers": 8,
+      "first_total_tokens": 49152,
+      "repair_total_tokens": 16384,
+      "max_repairs": 2,
+      "first_fraction_of_remaining_solver_wall": 0.65,
+      "first_request_wall_cap_seconds": 1200,
+      "repair_request_wall_cap_seconds": 420,
+      "commit_total_tokens": 4096,
+      "reasoning_effort": "xhigh",
+      "separate_thinking_token_budget": null,
+      "hidden_notebook_budget_seconds": 42120
+    },
+    "implementation_findings": [
+      "Program generation is per task; all original query inputs enter the same task prompt and a reusable transform is executed on the entire task.",
+      "The loop is generate a complete program, execute it externally, then send actual demonstration failures and the preceding program back. It is not an unrestricted interactive Python tool-call REPL during a single generation.",
+      "A missing complete program can trigger one extra no-thinking commit call using the existing reasoning trace. That call is additional generation cost.",
+      "If a verified candidate already exists, refinement seeks an alternative supported rule using reversed demonstration order and the prior program; this alternative is not an independent restart because it sees the prior source.",
+      "The first pass receives 65 percent of remaining solver wall time. Per-request time is capped by remaining batch count; remaining time is divided between two refinement sweeps.",
+      "The client sets xhigh with preserve_thinking but does not separately cap thinking at 8K. The total first-call token limit is four times the current 12,288 default.",
+      "The runtime is different (another wheelhouse, FP8 KV cache, MTP); no runtime change is recommended from this read-only review."
+    ],
+    "prompt_excerpts": {
+      "system_prompt": "Solve an ARC grid transformation by inferring a general rule from\nthe demonstration input/output pairs. Colors are integers 0..9. Grids can change\nsize. Think carefully about objects, spatial relations, counts and exceptional\ncases. All demonstrations must be explained by the same rule.\nReturn a complete Python program in a single ```python block, defining\ntransform(grid). It receives a list of lists and returns an integer grid of at\nmost 30x30. The program must also work on new inputs. Do not hardcode the given\ninputs or look up task identifiers. Allowed imports: numpy, collections,\nitertools, math, functools, heapq, copy. No files, network, dynamic code,\nclasses, dunder attributes or external libraries. Ordinary helper functions\nare allowed. Avoid casting float or boolean output to conceal invalid grids.\nIf useful, represent objects explicitly and verify the inferred relation\nagainst each demonstration before writing the final program.",
+      "task_prompt_function": "def task_prompt(task: dict, alternate: bool = False, previous: str = \"\") -> str:\n    data = public_task(task)\n    if alternate:\n        data[\"train\"] = list(reversed(data[\"train\"]))\n    text = \"Infer transform(grid) for these demonstrations and test inputs:\\n\" + json.dumps(data, separators=(\",\", \":\"))\n    if alternate:\n        text += \"\\nFind an independently justified rule. Examine ambiguities, background choice, object decomposition and invariances.\"\n        if previous:\n            text += \"\\nAn earlier hypothesis was:\\n```python\\n\" + previous[:12000] + \"\\n```\\nOnly propose a different rule if the demonstrations support it.\"\n    return text",
+      "real_demo_feedback_function": "def repair_feedback(result: dict, task: dict) -> str:\n    if \"error\" in result:\n        return \"Execution failed: \" + result[\"error\"] + \"\\nReturn the complete corrected transform program.\"\n    failures = []\n    for row in result.get(\"train\", []):\n        if not row[\"correct\"]:\n            failures.append({**row, \"expected\": task[\"train\"][row[\"index\"]][\"output\"]})\n    if not failures:\n        failures.append({\"error\": \"Some test outputs are invalid\", \"predictions\": result.get(\"predictions\")})\n    return \"The program failed these checks:\\n\" + json.dumps(failures, separators=(\",\", \":\")) + \"\\nReconsider the rule using all demonstrations. Return a complete corrected program.\"",
+      "feedback_conversation": "Original task messages, then assistant message containing the preceding source, then user message with repair_feedback(last, task)."
+    },
+    "score_status": "No exact-version leaderboard score or successful 12-hour runtime verified; source itself labels the candidate unscored. Passing demonstrations is not a score.",
+    "code_executed": false
+  },
+  "screened_but_not_recommended": [
+    {
+      "ref": "delongyang/arc-agi-2-inference-qwen3-8-27b-fp8-within-4-hours",
+      "version_number": 1,
+      "source_sha256": "8331aefc87e956ee7fa7c645715a35a918896a3c372265f2b37700cc64184f7c",
+      "finding": "Readable 27B direct inference, medium effort, 120000 total-token request ceiling, C16, FP8 KV and MTP6. Title says within four hours but source defaults to 690-minute deadline and MODE=eval while reading test challenges; no bound four-hour success or score established. Not a verified 12-hour ensemble recipe."
+    },
+    {
+      "ref": "rajrajak99/cprs-arc-agi-2-apex-sota-engine-v7",
+      "version_number": 3,
+      "source_sha256": "064f6cb872dee7e45078dc41432ad36d9ccc8eef305f77351a3258c9ba63fdad",
+      "finding": "Actual induction branch uses Qwen2.5-Coder-7B plus a 4B baseline, not selected Qwen3.8-27B. Excluded from model-specific recommendations. Comment claiming a verified program replacing attempt_1 cannot reduce score is not a guarantee: it can remove a previously correct baseline attempt."
+    }
+  ],
+  "conclusion": "Two useful signals only: a newly reported larger reasoning-cost regime and a readable per-task long-first-program/shorter-repair implementation. Neither establishes a reproducible high-score 27B configuration. No verified NVARC+27B full-12-hour high-score source was obtained.",
+  "evaluation_boundaries": "No D24/C24 gold was requested. A public discussion screened during the search contained an unrelated training walkthrough ac0c2ac3; manifest-only membership check confirmed that task belongs to neither D24 nor C24. No walkthrough images or linked task answers were opened."
+}

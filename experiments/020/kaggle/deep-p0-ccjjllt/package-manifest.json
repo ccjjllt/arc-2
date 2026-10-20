@@ -1,0 +1,21 @@
+{
+  "owner": "ccjjllt",
+  "slug": "arc2-020-deep-p0-equal-cap",
+  "cohort": "experiments/020/deep-p0/challenges.json",
+  "p0_only": true,
+  "result_label": "DeepP0",
+  "frozen_initial": null,
+  "gen_max": 24576,
+  "thinking_max": 16384,
+  "policy": "M1",
+  "source_sha256": {
+    "local_repair.py": "b94297f4053aeecee2ef06f70ca1d71357e89d6c460b4169fac0ba124fef56ae",
+    "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+    "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+    "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+    "vdriver020_submit.py": "4f249771522a844abcb0539eeff9df135f4b66f987afdc785394b536132a995b",
+    "cohort-challenges.json": "5e50d56ea56f81e72a50a4b7fb5bff0f4b73548ad0618b0d43f7e0a95d5e0848"
+  },
+  "notebook_sha256": "ceed978dcf0d523074b82e754499e9995901e8e75cc4447fba8ef285c6ad5abd",
+  "session_seconds": 3600
+}

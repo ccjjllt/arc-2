@@ -1,0 +1,103 @@
+{
+  "recorded_at_utc": "2026-10-20T15:53:16.866157+00:00",
+  "scope": "Manual CPU retokenization of one already frozen DeepDirect failure; no new inference, installation, model weight download or C24 query-gold read. Not a submission gate.",
+  "query_gold_read": false,
+  "GPU_started": false,
+  "submission_modified": false,
+  "tokenizer": {
+    "asset_ref": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1",
+    "asset_version_id": 966079,
+    "relative_file_path": "tokenizer.json",
+    "local_path": "/private/tmp/arc2-020-tokenizer-v1/tokenizer.json",
+    "bytes": 12809320,
+    "sha256": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+    "download_method": "Installed Kaggle SDK ApiDownloadModelInstanceVersionRequest with version_number=1 and path=tokenizer.json; response size capped20MB; matched original12809320-byte metadata.",
+    "download_elapsed_seconds": 7.956,
+    "weights_downloaded": false,
+    "library": "tokenizers",
+    "library_version": "0.22.2",
+    "library_origin": "/Users/zhaohuaxiang/Library/Python/3.9/lib/python/site-packages/tokenizers/__init__.py",
+    "python_version": "3.9.6",
+    "library_installation": "Already available; nothing installed.",
+    "encoding_method": "tokenizers.Tokenizer.from_file; encode each saved string independently, add_special_tokens=False; also record True for comparison.",
+    "normalizer": {
+      "type": "NFC"
+    },
+    "post_processor": {
+      "type": "ByteLevel",
+      "add_prefix_space": false,
+      "trim_offsets": false,
+      "use_regex": false
+    },
+    "truncation": null,
+    "padding": null
+  },
+  "frozen_reply": {
+    "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/programs/P0-800d221b.reply.json",
+    "sha256": "96b3b099b3394a633bf864ba0be975bccf085c62df50ad014106f353520ab760",
+    "request": {
+      "effort": "xhigh",
+      "seed": 5101,
+      "max_tokens": 49152,
+      "enable_thinking": true,
+      "thinking_token_budget": 40960,
+      "request_id": "P0-800d221b",
+      "sampling": {
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 20
+      },
+      "stream_options": {
+        "include_usage": true
+      },
+      "chat_template_kwargs": {
+        "enable_thinking": true,
+        "reasoning_effort": "xhigh"
+      },
+      "thinking_token_budget_sent": 40960
+    },
+    "finish_reason": "length",
+    "usage": {
+      "prompt_tokens": 5009,
+      "total_tokens": 54161,
+      "completion_tokens": 49152
+    }
+  },
+  "exact_saved_text_retokenization": {
+    "reasoning": {
+      "characters": 94759,
+      "UTF8_bytes": 94759,
+      "reencoded_tokens_add_special_tokens_false": 40959,
+      "reencoded_tokens_add_special_tokens_true": 40959,
+      "recognized_special_tokens_in_reencoded_text": [],
+      "first_160_characters": "We need solve ARC-style grid transformation puzzle. We must infer rule from 3 demos and apply to query0. Need output JSON object {\"query0\": [[...]]}. We need an",
+      "last_160_characters": "4-6 output 3,3,3. So top-middle corridor assigned 3, not right 4. But r2c11 etc assigned 4. How separated? There is a gap? Let's map top-middle: input row0 c4=8"
+    },
+    "content": {
+      "characters": 18490,
+      "UTF8_bytes": 18490,
+      "reencoded_tokens_add_special_tokens_false": 8192,
+      "reencoded_tokens_add_special_tokens_true": 8192,
+      "recognized_special_tokens_in_reencoded_text": [],
+      "first_160_characters": "\nWe need solve. We have in prior analysis started but got to cutoff. Need continue from where? We must produce final JSON. Need complete reasoning. Let's restar",
+      "last_160_characters": "10 5. output r14 [6,5,6,6,6,6,6,6,6,8,5,8...] add 6:46,5:38.\nr15: c6 6,c10 5. add 6:47,5:39.\nr16: c6 6,c10 5. add 6:48,5:40.\nr17: c6 6,c9 5,c10 5,c11 5,c12 5,c1"
+    }
+  },
+  "accounting": {
+    "reasoning_plus_content_reencoded_tokens": 49151,
+    "usage_completion_tokens": 49152,
+    "usage_minus_separate_retokenization": 1,
+    "end_think_token_ids": [
+      248069
+    ],
+    "end_think_token_count": 1,
+    "reasoning_plus_literal_end_think_plus_content_reencoded_tokens": 49152,
+    "reasoning_plus_one_end_think_tokens": 40960
+  },
+  "interpretation": {
+    "strong_supported_inference": "40959 reasoning tokens plus one </think> token exactly matches thinking_token_budget40960; remaining content is8192 tokens and the full accounting matches usage49152. This strongly supports a reasoning-to-content channel switch at the configured budget, rather than an entirely unenforced thinking limit.",
+    "observed_semantic_failure": "The content channel begins by saying prior analysis reached a cutoff and continues reasoning, then ends mid-analysis at the total-token cap. A channel switch did not make the model obey the final JSON requirement.",
+    "what_is_not_proven": "Retokenizing decoded channel strings alone cannot prove original generated-token IDs, exact stream order, forced versus naturally sampled </think>, or the precise server counter boundary. BPE boundary changes, normalization and parser-removed tokens can affect reconstructed counts. The inserted closing token is an accounting hypothesis, not recovered raw-stream evidence.",
+    "conclusion_scope": "Exact counts apply to these saved strings under this exact fixed-v1 tokenizer backend. They are not a new model run or an independent proof of server-side budget implementation."
+  }
+}

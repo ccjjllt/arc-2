@@ -1,0 +1,284 @@
+{
+  "planned_queries": 36,
+  "input_matched_queries": 34,
+  "unresolved_or_mismatched_queries": 2,
+  "policies": {
+    "M0": {
+      "exact_queries": 0,
+      "matched_denominator": 34,
+      "em2": 0.0,
+      "prediction_present_queries": 36,
+      "valid_queries": 36,
+      "different_valid_attempts_queries": 9,
+      "fully_matched_tasks": 22,
+      "all_queries_exact_tasks": 0
+    },
+    "M1": {
+      "exact_queries": 0,
+      "matched_denominator": 34,
+      "em2": 0.0,
+      "prediction_present_queries": 36,
+      "valid_queries": 36,
+      "different_valid_attempts_queries": 9,
+      "fully_matched_tasks": 22,
+      "all_queries_exact_tasks": 0
+    },
+    "CPU": {
+      "exact_queries": 0,
+      "matched_denominator": 34,
+      "em2": 0.0,
+      "prediction_present_queries": 36,
+      "valid_queries": 36,
+      "different_valid_attempts_queries": 10,
+      "fully_matched_tasks": 22,
+      "all_queries_exact_tasks": 0
+    },
+    "CPUReplayBase": {
+      "exact_queries": 0,
+      "matched_denominator": 34,
+      "em2": 0.0,
+      "prediction_present_queries": 36,
+      "valid_queries": 36,
+      "different_valid_attempts_queries": 9,
+      "fully_matched_tasks": 22,
+      "all_queries_exact_tasks": 0
+    }
+  },
+  "M1_vs_M0": {
+    "gained_queries": [],
+    "lost_queries": [],
+    "net_queries": 0,
+    "gain_task_ids": [],
+    "loss_task_ids": []
+  },
+  "cohort": "development_D24_020",
+  "planned_tasks": 24,
+  "official_sources": [
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/135a2760.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/135a2760.json",
+      "sha256": "741c09a152695c50320cd1d15af2aeeff067e40b187251466057942368625356",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/195c6913.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/195c6913.json",
+      "sha256": "b69cf73e011cd9bd1fef6856f297dfccbc08d1da5430be944eb037041be237af",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/21897d95.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/21897d95.json",
+      "sha256": "848c38845e862eab0750ff6dcb65be36563b64852c62c1bd0e9e5125aa603b0f",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/247ef758.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/247ef758.json",
+      "sha256": "909a518c9d7b3785176db1b2ec94d3734e4427f4be93a7a286ce4b1f63582698",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/2b83f449.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/2b83f449.json",
+      "sha256": "3f2493f76b6953e545d7c867caa194dec8e0fb2f81ee27244b9455b5348bea7e",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/2c181942.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/2c181942.json",
+      "sha256": "5966f7fd43917bcbdf601fbec539578a51449559050c4bac73b69d5a04aac6f2",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/3e6067c3.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/3e6067c3.json",
+      "sha256": "10f51036492e1ab0d06e51abcee691d7103fb1ffb008d3a284ded01a7d188640",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/4c3d4a41.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/4c3d4a41.json",
+      "sha256": "3b2d8107e932660e0663b7f0596455d21305553027757ef5899f780fdd127fa8",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/58f5dbd5.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/58f5dbd5.json",
+      "sha256": "d9c7fb621324ae1bdbe5a79396707a7e8570d9270de3d0206b2ca95135ae3f11",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/5961cc34.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/5961cc34.json",
+      "sha256": "20acafcbeaa18c2b22dd8701a2aab55202bee833854d4a260ff77e9464364059",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/6e453dd6.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/6e453dd6.json",
+      "sha256": "bb0ec296421dfd4c28b89704be6eb679d205b8782594ba790155cd5e78f92c13",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/800d221b.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/800d221b.json",
+      "sha256": "c936f858d7eb96fd6e5ae9e0630d5f1e008bcb4725625f57e2ed05658bbd266d",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/8698868d.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/8698868d.json",
+      "sha256": "bd54316e6e18c6fd2acada9ef429ffc88556c7a6a9c8bc276af6e455da3b1b11",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/8e5c0c38.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/8e5c0c38.json",
+      "sha256": "515d9bdc6692c95f3dcaaace4eea28ff875e8b321c5588ba3e1cb0055a9cb95f",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/abc82100.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/abc82100.json",
+      "sha256": "d9c169ccbf3ed1daed6ba87daf2de4983fa685fa81961217c336a7deac30528b",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/b6f77b65.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/b6f77b65.json",
+      "sha256": "f597ff3fa1fa6c7c063364a47f12f689fdded5229cf945f4aecfc5ce0d700cc8",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/bf45cf4b.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/bf45cf4b.json",
+      "sha256": "665e1a655bab427f0eb6aff321c9ff87c567eae4b85fbd7ff54b25cb63fd2c7b",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/cbebaa4b.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/cbebaa4b.json",
+      "sha256": "16bc66a5cc18ccb1d8a4b7b5491c576dd00af44ad3a047c64deac48839dbaad2",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/de809cff.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/de809cff.json",
+      "sha256": "8586c4800ee0ed6bc7c332960a3e08138d0ff08d45cf3f968d57b74b098e6c20",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/e3721c99.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/e3721c99.json",
+      "sha256": "fff58d4b2e7116f47d5516187322d6cb1a7a22ac94c07d319a5983eff883fbdb",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/e376de54.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/e376de54.json",
+      "sha256": "2d40d65df2185aff088d8ba02d80b712d3256536c87b7550b9926307183a79e1",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/e87109e9.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/e87109e9.json",
+      "sha256": "827ac7f0209e7d8b4880c009396aee3fdb8857cd92ec8abcbf2e049c931c7a8d",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/f931b4a8.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/f931b4a8.json",
+      "sha256": "1b7d60a3690cc9f4c941af013f80e3d22053383ff013f815776d4374cfdbea8b",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/fc7cae8d.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/fc7cae8d.json",
+      "sha256": "110187c9bf9d045c75df95e5041cf86f167651dcca0242a92ddc5a98fe298414",
+      "status": "loaded"
+    }
+  ],
+  "by_source_group": {
+    "public_evaluation_non_ARC1": {
+      "planned_queries": 36,
+      "input_matched_queries": 34,
+      "unresolved_or_mismatched_queries": 2,
+      "policies": {
+        "M0": {
+          "exact_queries": 0,
+          "matched_denominator": 34,
+          "em2": 0.0,
+          "prediction_present_queries": 36,
+          "valid_queries": 36,
+          "different_valid_attempts_queries": 9,
+          "fully_matched_tasks": 22,
+          "all_queries_exact_tasks": 0
+        },
+        "M1": {
+          "exact_queries": 0,
+          "matched_denominator": 34,
+          "em2": 0.0,
+          "prediction_present_queries": 36,
+          "valid_queries": 36,
+          "different_valid_attempts_queries": 9,
+          "fully_matched_tasks": 22,
+          "all_queries_exact_tasks": 0
+        },
+        "CPU": {
+          "exact_queries": 0,
+          "matched_denominator": 34,
+          "em2": 0.0,
+          "prediction_present_queries": 36,
+          "valid_queries": 36,
+          "different_valid_attempts_queries": 10,
+          "fully_matched_tasks": 22,
+          "all_queries_exact_tasks": 0
+        },
+        "CPUReplayBase": {
+          "exact_queries": 0,
+          "matched_denominator": 34,
+          "em2": 0.0,
+          "prediction_present_queries": 36,
+          "valid_queries": 36,
+          "different_valid_attempts_queries": 9,
+          "fully_matched_tasks": 22,
+          "all_queries_exact_tasks": 0
+        }
+      },
+      "M1_vs_M0": {
+        "gained_queries": [],
+        "lost_queries": [],
+        "net_queries": 0,
+        "gain_task_ids": [],
+        "loss_task_ids": []
+      }
+    }
+  },
+  "interpretation": "Local fixed-two-slot exact-match only; not a Kaggle score or evidence of exceeding 30.14.",
+  "denominator_note": "Every original manifest query is in the ledger. Missing/invalid predictions count as failures when inputs match. Official input/version mismatches and unavailable gold are separate unresolved rows, never silently counted wrong or removed from the planned cohort."
+}

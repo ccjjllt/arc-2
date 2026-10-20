@@ -1,0 +1,65 @@
+[{"stream_name":"stderr","time":8.968679232,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":8.968722544,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":10.278940361,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":10.278965645,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":10.278968875,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":10.278970958,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":11.021725868,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.021747016,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.021750105,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.021752416,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":12.789263157,"data":"{\"event\": \"boot\", \"owner\": \"jiyujia\", \"rerun\": false, \"experiment\": \"paired\", \"session_seconds\": 2850, \"challenges_path\": \"/kaggle/working/020-code/cohort-challenges.json\", \"challenges_sha256\": \"9d90644613d1b2896880c719f10a4966d3d0c813404da25f5115948d22c78830\", \"source_sha256\": {\"local_repair.py\": \"b94297f4053aeecee2ef06f70ca1d71357e89d6c460b4169fac0ba124fef56ae\", \"run_reasoning_probe.py\": \"adaad745a3016ca3160b8145f2386ab90a6e7be07dd4082632c177bb11b6d89c\", \"solve_program.py\": \"405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88\", \"submit_lib.py\": \"53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e\", \"vdriver020_submit.py\": \"b87411d45d739e67ae3a5136068f23ba9c677efe3f5cae42f825c646d14fc62d\", \"cohort-challenges.json\": \"9d90644613d1b2896880c719f10a4966d3d0c813404da25f5115948d22c78830\", \"aa-demo-preflight.json\": \"b960d885c85373d99dff5dec48866af0757c48a7e61995edfcc7268bdad96bcc\"}, \"notebook_start_wall\": 1792496872.5601523}\n"}
+,{"stream_name":"stdout","time":13.215426993,"data":"[020 11:47:53] input tasks=6 queries=10 sha=9d90644613d1b2896880c719f10a4966d3d0c813404da25f5115948d22c78830\n"}
+,{"stream_name":"stdout","time":13.41734308,"data":"[020 11:47:53] input tasks=6 queries=10 sha=9d90644613d1b2896880c719f10a4966d3d0c813404da25f5115948d22c78830\n"}
+,{"stream_name":"stdout","time":20.101262901,"data":"[020 11:48:00] wheel hash match (sync)\n"}
+,{"stream_name":"stdout","time":20.169759754,"data":"[020 11:48:00] phase: requirements install start\n"}
+,{"stream_name":"stdout","time":20.303222649,"data":"[020 11:48:00] wheel hash match (sync)\n"}
+,{"stream_name":"stdout","time":20.303236259,"data":"[020 11:48:00] phase: requirements install start\n"}
+,{"stream_name":"stdout","time":304.388650642,"data":"[020 11:52:44] phase: requirements install rc=0\n"}
+,{"stream_name":"stdout","time":304.597238099,"data":"[020 11:52:44] phase: requirements install rc=0\n"}
+,{"stream_name":"stdout","time":323.151166334,"data":"[020 11:53:03] phase: vllm wheel install start\n"}
+,{"stream_name":"stdout","time":323.353201954,"data":"[020 11:53:03] phase: vllm wheel install start\n"}
+,{"stream_name":"stdout","time":335.901929439,"data":"[020 11:53:16] phase: vllm wheel install rc=0\n"}
+,{"stream_name":"stdout","time":336.110330475,"data":"[020 11:53:16] phase: vllm wheel install rc=0\n"}
+,{"stream_name":"stdout","time":350.884560786,"data":"[probe 11:53:31] libcuda hits: ['/usr/local/nvidia/lib64/libcuda.so', '/usr/local/nvidia/lib64/libcuda.so.1', '/usr/local/nvidia/lib64/libcuda.so.580.178.04', '/usr/local/cuda/compat/libcuda.so']\n"}
+,{"stream_name":"stdout","time":350.884747936,"data":"[probe 11:53:31] serve: /usr/bin/python3.12 -m vllm.entrypoints.openai.api_server --model /kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1 --served-model-name qwen --host 127.0.0.1 --port 1234 --tensor-parallel-size 4 --max-model-len 65536 --gpu-memory-utilization 0.9 --max-num-seqs 8 --enable-prefix-caching --reasoning-parser qwen3 --language-model-only\n"}
+,{"stream_name":"stdout","time":351.086676278,"data":"[probe 11:53:31] libcuda hits: ['/usr/local/nvidia/lib64/libcuda.so', '/usr/local/nvidia/lib64/libcuda.so.1', '/usr/local/nvidia/lib64/libcuda.so.580.178.04', '/usr/local/cuda/compat/libcuda.so']\n"}
+,{"stream_name":"stdout","time":351.086706253,"data":"[probe 11:53:31] serve: /usr/bin/python3.12 -m vllm.entrypoints.openai.api_server --model /kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1 --served-model-name qwen --host 127.0.0.1 --port 1234 --tensor-parallel-size 4 --max-model-len 65536 --gpu-memory-utilization 0.9 --max-num-seqs 8 --enable-prefix-caching --reasoning-parser qwen3 --language-model-only\n"}
+,{"stream_name":"stdout","time":780.93331708,"data":"[probe 12:00:41] server ready after 430s\n"}
+,{"stream_name":"stdout","time":781.142672383,"data":"[probe 12:00:41] server ready after 430s\n"}
+,{"stream_name":"stdout","time":1235.881077278,"data":"[020 12:08:16] P0 2c181942 gen=True demo=0/3 query=0 route=R\n"}
+,{"stream_name":"stdout","time":1236.089645236,"data":"[020 12:08:16] P0 2c181942 gen=True demo=0/3 query=0 route=R\n"}
+,{"stream_name":"stdout","time":1237.777378695,"data":"[020 12:08:17] P0 8e5c0c38 gen=True demo=0/2 query=2 route=R\n"}
+,{"stream_name":"stdout","time":1237.979349375,"data":"[020 12:08:17] P0 8e5c0c38 gen=True demo=0/2 query=2 route=R\n"}
+,{"stream_name":"stdout","time":1250.11133877,"data":"[020 12:08:30] P0 2b83f449 gen=True demo=0/2 query=1 route=R\n"}
+,{"stream_name":"stdout","time":1250.313374462,"data":"[020 12:08:30] P0 2b83f449 gen=True demo=0/2 query=1 route=R\n"}
+,{"stream_name":"stdout","time":1281.806838195,"data":"[020 12:09:01] P0 195c6913 gen=True demo=0/3 query=0 route=R\n"}
+,{"stream_name":"stdout","time":1282.015282443,"data":"[020 12:09:01] P0 195c6913 gen=True demo=0/3 query=0 route=R\n"}
+,{"stream_name":"stdout","time":1317.153570524,"data":"[020 12:09:37] P0 e87109e9 gen=False demo=0/3 query=0 route=R\n"}
+,{"stream_name":"stdout","time":1317.362200853,"data":"[020 12:09:37] P0 e87109e9 gen=False demo=0/3 query=0 route=R\n"}
+,{"stream_name":"stdout","time":1389.071548536,"data":"[020 12:10:49] P0 b6f77b65 gen=False demo=0/5 query=0 route=R\n"}
+,{"stream_name":"stdout","time":1389.280410991,"data":"[020 12:10:49] P0 b6f77b65 gen=False demo=0/5 query=0 route=R\n"}
+,{"stream_name":"stdout","time":1827.196575113,"data":"[020 12:18:07] R 8e5c0c38 gen=True demo=0/2 query=2 route=R\n"}
+,{"stream_name":"stdout","time":1827.405558721,"data":"[020 12:18:07] R 8e5c0c38 gen=True demo=0/2 query=2 route=R\n"}
+,{"stream_name":"stdout","time":1828.887758493,"data":"[020 12:18:09] R 2b83f449 gen=True demo=0/2 query=1 route=R\n"}
+,{"stream_name":"stdout","time":1829.089736116,"data":"[020 12:18:09] R 2b83f449 gen=True demo=0/2 query=1 route=R\n"}
+,{"stream_name":"stdout","time":1861.326219576,"data":"[020 12:18:41] R 2c181942 gen=True demo=0/3 query=1 route=R\n"}
+,{"stream_name":"stdout","time":1861.534920009,"data":"[020 12:18:41] R 2c181942 gen=True demo=0/3 query=1 route=R\n"}
+,{"stream_name":"stdout","time":1862.892987402,"data":"[020 12:18:43] R b6f77b65 gen=True demo=1/5 query=3 route=R\n"}
+,{"stream_name":"stdout","time":1863.095007002,"data":"[020 12:18:43] R b6f77b65 gen=True demo=1/5 query=3 route=R\n"}
+,{"stream_name":"stdout","time":1878.490809396,"data":"[020 12:18:58] R e87109e9 gen=True demo=0/3 query=0 route=R\n"}
+,{"stream_name":"stdout","time":1878.692718331,"data":"[020 12:18:58] R e87109e9 gen=True demo=0/3 query=0 route=R\n"}
+,{"stream_name":"stdout","time":1976.07623716,"data":"[020 12:20:36] R 195c6913 gen=False demo=0/3 query=0 route=R\n"}
+,{"stream_name":"stdout","time":1976.286102642,"data":"[020 12:20:36] R 195c6913 gen=False demo=0/3 query=0 route=R\n"}
+,{"stream_name":"stdout","time":1979.225016449,"data":"[020 12:20:39] EVIDENCE-EXIT complete_with_evidence\n"}
+,{"stream_name":"stdout","time":1979.293604858,"data":"[020 12:20:39] EVIDENCE-EXIT complete_with_evidence\n"}
+,{"stream_name":"stdout","time":1979.293632887,"data":"VDRIVER_RETURN_CODE 0\n"}
+,{"stream_name":"stderr","time":1982.113016741,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1982.113054225,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1982.317583795,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1982.317609446,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1983.285373751,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1983.372767905,"data":"[NbConvertApp] Writing 834052 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1986.000005099,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1986.566893087,"data":"[NbConvertApp] Writing 1117137 bytes to __results__.html\n"}
+]

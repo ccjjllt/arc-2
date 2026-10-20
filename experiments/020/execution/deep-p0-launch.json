@@ -1,0 +1,20 @@
+{
+  "recorded_at_utc": "2026-10-20T12:47:18.482527+00:00",
+  "account": "ccjjllt",
+  "kernel_ref": "ccjjllt/arc2-020-deep-p0-equal-cap",
+  "kernel_version": 1,
+  "publication_response": "Kernel version 1 successfully pushed",
+  "package_manifest": "experiments/020/kaggle/deep-p0-ccjjllt/package-manifest.json",
+  "cohort_manifest": "experiments/020/deep-p0/manifest.json",
+  "research_only": true,
+  "competition_submission": false,
+  "max_session_seconds": 3600,
+  "config": {
+    "gen_max": 24576,
+    "thinking_max": 16384,
+    "p0_only": true,
+    "P0_seed": 5101,
+    "same_maximum_completion_allowance_as_baseline": true
+  },
+  "quota_snapshot": "experiments/020/execution/pre-deep-p0-quota.json"
+}

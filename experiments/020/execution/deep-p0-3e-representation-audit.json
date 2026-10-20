@@ -1,0 +1,138 @@
+{
+  "status": "source_audit_complete_no_new_experiment",
+  "task_id": "3e6067c3",
+  "source_program": {
+    "path": "experiments/020/deep-p0-ccjjllt-v1/vprobe/programs/P0-3e6067c3.code.py",
+    "sha256": "0e8afdb9c3ce9cc944db7fe44aeefeef47cad5e808c5e9b5e658387e42ff761f"
+  },
+  "source_run": {
+    "path": "experiments/020/deep-p0-ccjjllt-v1/vprobe/run.json",
+    "sha256": "609384536e8dab4d498873b9cfc963cfb44a70bb8025dc1ee87be15880dcd6bd"
+  },
+  "challenge_only_source": {
+    "path": "experiments/020/deep-p0/challenges.json",
+    "sha256": "5e50d56ea56f81e72a50a4b7fb5bff0f4b73548ad0618b0d43f7e0a95d5e0848"
+  },
+  "scope": "Read the original generated source, its previously recorded demo errors, and the challenge-only task with train input/output and query inputs. No query output grid, solution, gold ledger, direct-model prediction or query score artifact was read. No program execution, model call, GPU job, candidate creation or production source change.",
+  "recorded_prior_demo_execution": {
+    "cases": 3,
+    "statuses": [
+      "execution_error",
+      "execution_error",
+      "execution_error"
+    ],
+    "errors": [
+      "IndexError: tuple index out of range",
+      "IndexError: tuple index out of range",
+      "IndexError: tuple index out of range"
+    ],
+    "note": "These are historical run results, not a new execution in this audit."
+  },
+  "observations": [
+    {
+      "issue": "incompatible_patch_record_layouts",
+      "source_lines": [
+        [
+          79,
+          79
+        ],
+        [
+          83,
+          86
+        ],
+        [
+          89,
+          92
+        ],
+        [
+          127,
+          136
+        ],
+        [
+          149,
+          150
+        ]
+      ],
+      "evidence": "patches appends (r,c,value), and in_patch unpacks exactly those three fields. Pair selection initially treats index 2 as color, then accesses indices 3 and 4. paint unpacks four bounds and reads color at index 5. The later intersection instead assumes indices 0..3 are row/column bounds.",
+      "implication": "The historical tuple IndexError is real, but there is no single consistent pre-existing rectangle schema to recover by padding the tuple. Record construction, color selectors, geometry and painting require coordinated semantic choices."
+    },
+    {
+      "issue": "isolated_pixel_extraction_discards_real_demo_patches",
+      "source_lines": [
+        [
+          67,
+          79
+        ]
+      ],
+      "evidence": "A cell is rejected if an orthogonal neighbor has the same color. Demo 0 contains eight 2x2 colored cores inside separate containers: every core cell has same-color neighbors and is rejected. Its separated legend pixels satisfy the isolation predicate and are retained because the extraction does not exclude the legend row.",
+      "implication": "Fixing record length cannot recover missing rectangular colored objects or their spans. A bbox over a retained singleton is insufficient to represent demo 0 objects."
+    },
+    {
+      "issue": "containers_are_not_component_objects_and_are_not_attached_to_patches",
+      "source_lines": [
+        [
+          47,
+          65
+        ],
+        [
+          71,
+          74
+        ],
+        [
+          79,
+          79
+        ]
+      ],
+      "evidence": "The code takes one row range per color across the whole grid and requires that color in every intervening row. The separated frame rows in these demos include blank inter-object rows, so the frame color cannot become separate container records through this code. Membership checks compare an integer color to whole tuples (including a comprehension that returns those same tuples), and patches are appended without reference to a container.",
+      "implication": "The intended distinction between container extent and inner colored payload is absent from the actual representation, rather than merely misplaced in one tuple field."
+    },
+    {
+      "issue": "geometry_mixes_row_and_column_fields",
+      "source_lines": [
+        [
+          90,
+          92
+        ],
+        [
+          107,
+          115
+        ],
+        [
+          132,
+          146
+        ]
+      ],
+      "evidence": "paint names s1/s2 as the second object row bounds and t1/t2 as its column bounds, but its vertical branches compare the first object row bounds with t1/t2 and use them to derive vertical row ranges. The pairing block also mixes positional fields that cannot share the color and bbox interpretations used elsewhere.",
+      "implication": "Even after making tuples long enough, axis and field semantics remain wrong; successful execution would not establish the intended connection rule."
+    },
+    {
+      "issue": "endpoint_locking_prevents_required_chain_reuse",
+      "source_lines": [
+        [
+          122,
+          130
+        ],
+        [
+          156,
+          159
+        ]
+      ],
+      "evidence": "After one selected pair, both endpoints are marked used and excluded from every later legend pair. Demo 2 explicitly requires the top-middle colored object to participate in both the preceding and following connection (the legend starts 3,2,9). One object therefore has to be reusable as a destination and later a source.",
+      "implication": "The selection state implements disjoint pairs, while the demonstrated relation includes a chain. Repairing that state is a rule/selection change beyond tuple-length correction."
+    }
+  ],
+  "conclusion": "The cheaper DeepP0 output loses the object representation, field contract and connection semantics in multiple places. This source does not support the claim that a single mechanical tuple fix would recover the correct rule or save the longer direct-generation budget. A coherent rewrite would become a manually developed solver, not a clean test of isolated representation repair.",
+  "decision": "Stop manual candidate and Notebook preparation for this case; retain this source audit only. No candidate or new full solution was created.",
+  "limitations": [
+    "Static deductions are grounded in existing source and known demos; no repaired behavior was measured.",
+    "The task was selected after parent reported an outcome difference, so any later manual development on it would be a diagnostic development case, not independent generalization evidence.",
+    "No inference about query correctness is made from these observations."
+  ],
+  "query_gold_read": false,
+  "query_output_grids_read": false,
+  "new_experiment_run": false,
+  "candidate_created": false,
+  "algorithms_modified": false,
+  "GPU_used": false,
+  "C24_touched": false
+}

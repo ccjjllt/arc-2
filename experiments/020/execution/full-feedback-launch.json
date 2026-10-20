@@ -1,0 +1,19 @@
+{
+  "recorded_at_utc": "2026-10-20T13:31:26.139394+00:00",
+  "kernel_ref": "ccjjllt/arc2-020-full-feedback-mtp2",
+  "kernel_version": 1,
+  "publication_response": "Kernel version 1 successfully pushed",
+  "package_manifest": "experiments/020/kaggle/full-feedback-ccjjllt/package-manifest.json",
+  "notebook_sha256": "2836a9c2ec3921874a70eccfdbbe634a13ca58ce386785f90f3b7de36f08629f",
+  "research_only": true,
+  "competition_submission": false,
+  "max_session_seconds": 4200,
+  "n_tasks": 19,
+  "n_queries": 27,
+  "new_calls": "F only, 19 calls at max 12288 total / 8192 thinking, seed5103",
+  "reused_P0_tokens": 177458,
+  "reused_R_tokens": 185983,
+  "mtp_tokens": 2,
+  "interpretation": "Full feedback + current CPU corrections + MTP, not a single-factor causal comparison against old non-MTP R",
+  "quota_snapshot": "experiments/020/execution/pre-full-feedback-quota.json"
+}

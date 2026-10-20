@@ -1,0 +1,23 @@
+{
+  "at_utc": "2026-10-20T12:30:50.349605+00:00",
+  "ref": "ccjjllt/arc2-020-short-mechanical-feedback",
+  "version": 1,
+  "status": "PUSH_ACCEPTED",
+  "session_seconds": 2700,
+  "n_tasks": 3,
+  "n_queries": 4,
+  "historical_initial_completion_tokens": 28595,
+  "new_calls_max": 6,
+  "new_output_tokens_max": 24576,
+  "per_call_max_tokens": 4096,
+  "per_call_thinking_tokens": 1024,
+  "seeds": {
+    "F": 5103,
+    "R": 5105
+  },
+  "question": "Does one short real mechanical execution feedback repair add fixed-slot query exact at matched new token budget, compared with an independent short restart?",
+  "initials": "experiments/020/mechanical/frozen-initial.json",
+  "package": "experiments/020/kaggle/mechanical-ccjjllt/package-manifest.json",
+  "query_gold_read": false,
+  "note": "Uses already generated initial programs. Includes their historical token cost when reporting deployable policy. Ordinary research Notebook, not competition submission."
+}

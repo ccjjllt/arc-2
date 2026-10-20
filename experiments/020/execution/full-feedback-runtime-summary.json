@@ -1,0 +1,749 @@
+{
+  "status": "complete_runtime_summary_query_not_scored_here",
+  "scope": "FullF frozen 19-task subset only, not the whole 24-task D24. Read existing runtime/source metadata and speculative-decoding logs; no new query gold, program replay, model execution, or source modification.",
+  "source_run": {
+    "path": "experiments/020/full-feedback-ccjjllt-v1/vprobe/run.json",
+    "sha256": "cd535058364085724163b14356f0d4b948704ec012ee1afef8e898e8739c51a2"
+  },
+  "source_gpu_samples": {
+    "path": "experiments/020/full-feedback-ccjjllt-v1/vprobe/gpu-samples.jsonl",
+    "sha256": "bfa8cd6efeb1def664df860e792f1f51f21056acf926c7bc463d4c3ff3f6c274"
+  },
+  "source_server_log": {
+    "path": "experiments/020/full-feedback-ccjjllt-v1/vprobe/vllm-server.log",
+    "sha256": "ea0aa4351b403e18bfee75a483e20a39eef70524e5f27a28c18f194be4f137eb"
+  },
+  "owner": "ccjjllt",
+  "task_ids": [
+    "195c6913",
+    "21897d95",
+    "247ef758",
+    "2b83f449",
+    "2c181942",
+    "3e6067c3",
+    "4c3d4a41",
+    "58f5dbd5",
+    "5961cc34",
+    "6e453dd6",
+    "800d221b",
+    "8698868d",
+    "8e5c0c38",
+    "abc82100",
+    "bf45cf4b",
+    "de809cff",
+    "e376de54",
+    "f931b4a8",
+    "fc7cae8d"
+  ],
+  "task_count": 19,
+  "query_count": 27,
+  "session_wall_seconds": 1847.37,
+  "install_seconds_subset": 316.0,
+  "install_load_seconds_inclusive": 796.1,
+  "wave_wall_seconds": 1025.17,
+  "new_calls": 19,
+  "new_arm": "F",
+  "new_completion_tokens": 179685,
+  "actual_aggregate_tokens_per_second": 175.27336929484864,
+  "all_new_call_finish_reasons": {
+    "stop": 19
+  },
+  "actual_concurrency": {
+    "peak_http_in_flight": 8,
+    "time_weighted_mean_http_in_flight": 6.354402261909524,
+    "first_issue_to_last_return_seconds": 1024.621
+  },
+  "gpu_busy": {
+    "generation_sample_times": 202,
+    "generation_sample_mean_percent": 99.38613861386139,
+    "generation_per_gpu_mean_percent": {
+      "0": 99.47524752475248,
+      "1": 99.5049504950495,
+      "2": 99.05940594059406,
+      "3": 99.5049504950495
+    },
+    "all_sample_times": 208,
+    "all_sample_mean_percent": 96.51923076923077,
+    "note": "nvidia-smi utilization.gpu sample mean, not useful-work efficiency or SM occupancy."
+  },
+  "arms": {
+    "P0": {
+      "program_denominator": 19,
+      "admitted_programs": 19,
+      "all_demos_executable_programs": 11,
+      "all_demos_exact_programs": 0,
+      "demo_exact_cases": 2,
+      "planned_demo_cases": 57,
+      "actual_demo_execution_cases": 57,
+      "valid_demo_outputs": 36,
+      "actual_demo_status_counts": {
+        "execution_error": 21,
+        "ok": 36
+      },
+      "legal_query_outputs": 18,
+      "fixed_query_denominator": 27,
+      "classification_counts": {
+        "all_demo_executions_failed": 7,
+        "all_demo_outputs_legal_but_rule_not_fully_correct": 11,
+        "mixed_demo_execution_and_rule_failures": 1
+      }
+    },
+    "R": {
+      "program_denominator": 19,
+      "admitted_programs": 17,
+      "all_demos_executable_programs": 15,
+      "all_demos_exact_programs": 0,
+      "demo_exact_cases": 1,
+      "planned_demo_cases": 57,
+      "actual_demo_execution_cases": 50,
+      "valid_demo_outputs": 43,
+      "actual_demo_status_counts": {
+        "ok": 43,
+        "execution_error": 7
+      },
+      "legal_query_outputs": 18,
+      "fixed_query_denominator": 27,
+      "classification_counts": {
+        "all_demo_outputs_legal_but_rule_not_fully_correct": 15,
+        "mixed_demo_execution_and_rule_failures": 1,
+        "all_demo_executions_failed": 1,
+        "reused_restart_without_program": 2
+      }
+    },
+    "F": {
+      "program_denominator": 19,
+      "admitted_programs": 17,
+      "all_demos_executable_programs": 9,
+      "all_demos_exact_programs": 0,
+      "demo_exact_cases": 3,
+      "planned_demo_cases": 57,
+      "actual_demo_execution_cases": 51,
+      "valid_demo_outputs": 30,
+      "actual_demo_status_counts": {
+        "ok": 30,
+        "execution_error": 21
+      },
+      "legal_query_outputs": 15,
+      "fixed_query_denominator": 27,
+      "classification_counts": {
+        "all_demo_outputs_legal_but_rule_not_fully_correct": 9,
+        "mixed_demo_execution_and_rule_failures": 3,
+        "incomplete_final_program": 1,
+        "all_demo_executions_failed": 5,
+        "program_rejected": 1
+      }
+    }
+  },
+  "F_program_details": [
+    {
+      "task_id": "4c3d4a41",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_exact": 0,
+      "demo_total": 2,
+      "valid_demo_outputs": 2,
+      "legal_query_outputs": 2,
+      "errors": []
+    },
+    {
+      "task_id": "bf45cf4b",
+      "status": "program_ready",
+      "category": "mixed_demo_execution_and_rule_failures",
+      "demo_exact": 2,
+      "demo_total": 3,
+      "valid_demo_outputs": 2,
+      "legal_query_outputs": 0,
+      "errors": [
+        "ValueError: grid width must be 1..30"
+      ]
+    },
+    {
+      "task_id": "f931b4a8",
+      "status": "program_ready",
+      "category": "mixed_demo_execution_and_rule_failures",
+      "demo_exact": 1,
+      "demo_total": 5,
+      "valid_demo_outputs": 1,
+      "legal_query_outputs": 0,
+      "errors": [
+        "TypeError: unhashable type: 'list'"
+      ]
+    },
+    {
+      "task_id": "2b83f449",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_exact": 0,
+      "demo_total": 2,
+      "valid_demo_outputs": 2,
+      "legal_query_outputs": 1,
+      "errors": []
+    },
+    {
+      "task_id": "247ef758",
+      "status": "incomplete_final_program",
+      "category": "incomplete_final_program",
+      "demo_exact": 0,
+      "demo_total": 3,
+      "valid_demo_outputs": 0,
+      "legal_query_outputs": 0,
+      "errors": []
+    },
+    {
+      "task_id": "6e453dd6",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_exact": 0,
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "legal_query_outputs": 1,
+      "errors": []
+    },
+    {
+      "task_id": "e376de54",
+      "status": "program_ready",
+      "category": "all_demo_executions_failed",
+      "demo_exact": 0,
+      "demo_total": 3,
+      "valid_demo_outputs": 0,
+      "legal_query_outputs": 0,
+      "errors": [
+        "ValueError: grid cells must be integers 0..9",
+        "TypeError: list indices must be integers or slices, not tuple"
+      ]
+    },
+    {
+      "task_id": "58f5dbd5",
+      "status": "program_ready",
+      "category": "all_demo_executions_failed",
+      "demo_exact": 0,
+      "demo_total": 3,
+      "valid_demo_outputs": 0,
+      "legal_query_outputs": 0,
+      "errors": [
+        "ValueError: not enough values to unpack (expected 5, got 4)"
+      ]
+    },
+    {
+      "task_id": "abc82100",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_exact": 0,
+      "demo_total": 4,
+      "valid_demo_outputs": 4,
+      "legal_query_outputs": 2,
+      "errors": []
+    },
+    {
+      "task_id": "8698868d",
+      "status": "program_ready",
+      "category": "all_demo_executions_failed",
+      "demo_exact": 0,
+      "demo_total": 2,
+      "valid_demo_outputs": 0,
+      "legal_query_outputs": 0,
+      "errors": [
+        "NameError: name 'id' is not defined"
+      ]
+    },
+    {
+      "task_id": "800d221b",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_exact": 0,
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "legal_query_outputs": 1,
+      "errors": []
+    },
+    {
+      "task_id": "de809cff",
+      "status": "program_ready",
+      "category": "all_demo_executions_failed",
+      "demo_exact": 0,
+      "demo_total": 2,
+      "valid_demo_outputs": 0,
+      "legal_query_outputs": 0,
+      "errors": [
+        "KeyError: 0"
+      ]
+    },
+    {
+      "task_id": "21897d95",
+      "status": "program_ready",
+      "category": "mixed_demo_execution_and_rule_failures",
+      "demo_exact": 0,
+      "demo_total": 4,
+      "valid_demo_outputs": 2,
+      "legal_query_outputs": 2,
+      "errors": [
+        "IndexError: list index out of range"
+      ]
+    },
+    {
+      "task_id": "fc7cae8d",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_exact": 0,
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "legal_query_outputs": 1,
+      "errors": []
+    },
+    {
+      "task_id": "8e5c0c38",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_exact": 0,
+      "demo_total": 2,
+      "valid_demo_outputs": 2,
+      "legal_query_outputs": 2,
+      "errors": []
+    },
+    {
+      "task_id": "2c181942",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_exact": 0,
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "legal_query_outputs": 1,
+      "errors": []
+    },
+    {
+      "task_id": "5961cc34",
+      "status": "program_ready",
+      "category": "all_demo_executions_failed",
+      "demo_exact": 0,
+      "demo_total": 4,
+      "valid_demo_outputs": 0,
+      "legal_query_outputs": 0,
+      "errors": [
+        "TypeError: cannot unpack non-iterable int object"
+      ]
+    },
+    {
+      "task_id": "3e6067c3",
+      "status": "program_ready",
+      "category": "all_demo_outputs_legal_but_rule_not_fully_correct",
+      "demo_exact": 0,
+      "demo_total": 3,
+      "valid_demo_outputs": 3,
+      "legal_query_outputs": 2,
+      "errors": []
+    },
+    {
+      "task_id": "195c6913",
+      "status": "program_rejected",
+      "category": "program_rejected",
+      "demo_exact": 0,
+      "demo_total": 3,
+      "valid_demo_outputs": 0,
+      "legal_query_outputs": 0,
+      "errors": []
+    }
+  ],
+  "coverage": {
+    "M0": {
+      "tasks": 19,
+      "queries": 27,
+      "format_ok": 27,
+      "single_covered": 25,
+      "double_distinct": 9,
+      "placeholder": 2,
+      "updated_keys": 25
+    },
+    "M1": {
+      "tasks": 19,
+      "queries": 27,
+      "format_ok": 27,
+      "single_covered": 22,
+      "double_distinct": 10,
+      "placeholder": 5,
+      "updated_keys": 22
+    }
+  },
+  "policy_costs": {
+    "M0": {
+      "logical_calls": 0,
+      "completion_tokens": 0,
+      "request_seconds_sum_not_wall": 0,
+      "cpu_repair_seconds": 0,
+      "historical_initial_tokens": 177458,
+      "historical_restart_tokens": 185983,
+      "logical_calls_including_reused": 38,
+      "deployment_tokens_including_initial": 363441
+    },
+    "M1": {
+      "logical_calls": 19,
+      "completion_tokens": 179685,
+      "request_seconds_sum_not_wall": 6510.8,
+      "cpu_repair_seconds": 5.680784,
+      "historical_initial_tokens": 177458,
+      "historical_restart_tokens": 0,
+      "logical_calls_including_reused": 38,
+      "deployment_tokens_including_initial": 357143
+    }
+  },
+  "matched_historical_subset": {
+    "scope": "The exact same 19 task IDs, 27 queries in original JI/QI D24 runs; excludes five other D24 tasks.",
+    "sources": [
+      {
+        "path": "experiments/020/d24-jiyujia-v1/vprobe/run.json",
+        "sha256": "71a9a22f2392f587a15dd55937aa67f0e58da4d9f6f1928ef34df3a4eb4ffe4e"
+      },
+      {
+        "path": "experiments/020/d24-qingyu1232-v1/vprobe/run.json",
+        "sha256": "15c341a670410f586a6525e8a55953fc72ffe1ca7c0db9b78ee6933450a773c8"
+      }
+    ],
+    "costs": {
+      "P0": {
+        "physical_calls": 19,
+        "completion_tokens": 177458,
+        "request_seconds_sum_not_wall": 9361.500000000002
+      },
+      "R": {
+        "physical_calls": 19,
+        "completion_tokens": 185983,
+        "request_seconds_sum_not_wall": 9519.4
+      }
+    },
+    "P0_plus_R_completion_tokens": 363441,
+    "P0_plus_F_completion_tokens": 357143,
+    "P0_plus_F_minus_P0_plus_R_tokens": -6298,
+    "historical_P0_R_plus_new_F_research_total_tokens": 543126,
+    "note": "M0 was reused with zero NEW GPU calls, not zero deployment cost. Request-second sums are not exclusive GPU wall-times; old requests ran within different shared queues."
+  },
+  "CPU_repairs": {
+    "invocations": 36,
+    "variants_tried_total": 17,
+    "elapsed_seconds_sum": 5.680784,
+    "all_demo_exact_candidates": [
+      {
+        "task_id": "e376de54",
+        "candidate": "CPU_P0_0",
+        "demo_matches": 3,
+        "demo_total": 3
+      }
+    ],
+    "details": [
+      {
+        "task_id": "4c3d4a41",
+        "parent_arm": "P0",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.003571
+      },
+      {
+        "task_id": "4c3d4a41",
+        "parent_arm": "F",
+        "variants_tried": 0,
+        "status": "no_supported_variants",
+        "elapsed_s": 0.006247
+      },
+      {
+        "task_id": "bf45cf4b",
+        "parent_arm": "P0",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.006895
+      },
+      {
+        "task_id": "bf45cf4b",
+        "parent_arm": "F",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.00946
+      },
+      {
+        "task_id": "f931b4a8",
+        "parent_arm": "P0",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.00509
+      },
+      {
+        "task_id": "f931b4a8",
+        "parent_arm": "F",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.007949
+      },
+      {
+        "task_id": "2b83f449",
+        "parent_arm": "P0",
+        "variants_tried": 0,
+        "status": "no_supported_variants",
+        "elapsed_s": 0.00822
+      },
+      {
+        "task_id": "2b83f449",
+        "parent_arm": "F",
+        "variants_tried": 0,
+        "status": "no_supported_variants",
+        "elapsed_s": 0.010583
+      },
+      {
+        "task_id": "247ef758",
+        "parent_arm": "P0",
+        "variants_tried": 1,
+        "status": "complete",
+        "elapsed_s": 0.281783
+      },
+      {
+        "task_id": "6e453dd6",
+        "parent_arm": "P0",
+        "variants_tried": 0,
+        "status": "no_supported_variants",
+        "elapsed_s": 0.011853
+      },
+      {
+        "task_id": "6e453dd6",
+        "parent_arm": "F",
+        "variants_tried": 1,
+        "status": "complete",
+        "elapsed_s": 0.266001
+      },
+      {
+        "task_id": "e376de54",
+        "parent_arm": "P0",
+        "variants_tried": 1,
+        "status": "all_demos_pass",
+        "elapsed_s": 0.255149
+      },
+      {
+        "task_id": "e376de54",
+        "parent_arm": "F",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.006552
+      },
+      {
+        "task_id": "58f5dbd5",
+        "parent_arm": "P0",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.007096
+      },
+      {
+        "task_id": "58f5dbd5",
+        "parent_arm": "F",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.006047
+      },
+      {
+        "task_id": "abc82100",
+        "parent_arm": "P0",
+        "variants_tried": 0,
+        "status": "no_supported_variants",
+        "elapsed_s": 0.007707
+      },
+      {
+        "task_id": "abc82100",
+        "parent_arm": "F",
+        "variants_tried": 0,
+        "status": "no_supported_variants",
+        "elapsed_s": 0.016036
+      },
+      {
+        "task_id": "8698868d",
+        "parent_arm": "P0",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.011403
+      },
+      {
+        "task_id": "8698868d",
+        "parent_arm": "F",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.010447
+      },
+      {
+        "task_id": "800d221b",
+        "parent_arm": "P0",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.004587
+      },
+      {
+        "task_id": "800d221b",
+        "parent_arm": "F",
+        "variants_tried": 0,
+        "status": "no_supported_variants",
+        "elapsed_s": 0.012899
+      },
+      {
+        "task_id": "de809cff",
+        "parent_arm": "P0",
+        "variants_tried": 0,
+        "status": "no_supported_variants",
+        "elapsed_s": 0.009667
+      },
+      {
+        "task_id": "de809cff",
+        "parent_arm": "F",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.004493
+      },
+      {
+        "task_id": "21897d95",
+        "parent_arm": "P0",
+        "variants_tried": 2,
+        "status": "complete",
+        "elapsed_s": 0.661515
+      },
+      {
+        "task_id": "21897d95",
+        "parent_arm": "F",
+        "variants_tried": 0,
+        "status": "no_supported_variants",
+        "elapsed_s": 0.006522
+      },
+      {
+        "task_id": "fc7cae8d",
+        "parent_arm": "P0",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.008868
+      },
+      {
+        "task_id": "fc7cae8d",
+        "parent_arm": "F",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.006635
+      },
+      {
+        "task_id": "8e5c0c38",
+        "parent_arm": "P0",
+        "variants_tried": 1,
+        "status": "complete",
+        "elapsed_s": 0.155221
+      },
+      {
+        "task_id": "8e5c0c38",
+        "parent_arm": "F",
+        "variants_tried": 0,
+        "status": "no_supported_variants",
+        "elapsed_s": 0.013499
+      },
+      {
+        "task_id": "2c181942",
+        "parent_arm": "P0",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.004343
+      },
+      {
+        "task_id": "2c181942",
+        "parent_arm": "F",
+        "variants_tried": 2,
+        "status": "complete",
+        "elapsed_s": 0.557052
+      },
+      {
+        "task_id": "5961cc34",
+        "parent_arm": "P0",
+        "variants_tried": 7,
+        "status": "complete",
+        "elapsed_s": 2.664206
+      },
+      {
+        "task_id": "5961cc34",
+        "parent_arm": "F",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.011017
+      },
+      {
+        "task_id": "3e6067c3",
+        "parent_arm": "P0",
+        "variants_tried": 1,
+        "status": "complete",
+        "elapsed_s": 0.313449
+      },
+      {
+        "task_id": "3e6067c3",
+        "parent_arm": "F",
+        "variants_tried": 1,
+        "status": "complete",
+        "elapsed_s": 0.298957
+      },
+      {
+        "task_id": "195c6913",
+        "parent_arm": "P0",
+        "variants_tried": 0,
+        "status": "ineligible_no_local_demo_evidence",
+        "elapsed_s": 0.009765
+      }
+    ],
+    "interpretation": "The full-demo match comes from the existing e376 P0 CPU repair, not newly generated F. Do not count duplicated CPU candidates as independent new solved tasks."
+  },
+  "MTP": {
+    "configured": {
+      "method": "mtp",
+      "num_speculative_tokens": 2
+    },
+    "server_extra_args": [
+      "--speculative-config",
+      "{\"method\":\"mtp\",\"num_speculative_tokens\":2}",
+      "--mamba-cache-mode",
+      "align"
+    ],
+    "actual_speculative_metrics_present": true,
+    "logged_intervals": 102,
+    "logged_accepted_tokens_sum": 105505,
+    "logged_drafted_tokens_sum": 148298,
+    "logged_weighted_draft_acceptance_percent": 71.14391293206921,
+    "mean_acceptance_length_range": [
+      1.71,
+      2.75
+    ],
+    "median_logged_mean_acceptance_length": 2.42,
+    "sample_log_lines": [
+      {
+        "line": 377,
+        "mean_acceptance_length": 1.71,
+        "accepted_tokens": 17,
+        "drafted_tokens": 48,
+        "reported_acceptance_percent": 35.4,
+        "log_text": "(APIServer pid=225) INFO 10-20 13:45:37 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 1.71, Accepted throughput: 0.41 tokens/s, Drafted throughput: 1.15 tokens/s, Accepted: 17 tokens, Drafted: 48 tokens, Per-position acceptance rate: 0.375, 0.333, Avg Draft acceptance rate: 35.4%"
+      },
+      {
+        "line": 488,
+        "mean_acceptance_length": 2.43,
+        "accepted_tokens": 1388,
+        "drafted_tokens": 1936,
+        "reported_acceptance_percent": 71.7,
+        "log_text": "(APIServer pid=225) INFO 10-20 13:54:07 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.43, Accepted throughput: 138.79 tokens/s, Drafted throughput: 193.58 tokens/s, Accepted: 1388 tokens, Drafted: 1936 tokens, Per-position acceptance rate: 0.791, 0.643, Avg Draft acceptance rate: 71.7%"
+      },
+      {
+        "line": 591,
+        "mean_acceptance_length": 2.75,
+        "accepted_tokens": 263,
+        "drafted_tokens": 300,
+        "reported_acceptance_percent": 87.7,
+        "log_text": "(APIServer pid=225) INFO 10-20 14:02:27 [metrics.py:120] SpecDecoding metrics: Mean acceptance length: 2.75, Accepted throughput: 26.30 tokens/s, Drafted throughput: 30.00 tokens/s, Accepted: 263 tokens, Drafted: 300 tokens, Per-position acceptance rate: 0.913, 0.840, Avg Draft acceptance rate: 87.7%"
+      }
+    ],
+    "evidence_note": "Reported Accepted/Drafted numbers vary per logger interval rather than cumulative totals; sums describe observed log intervals. Acceptance length is not an end-to-end speed multiplier.",
+    "attribution_limit": "179685 tokens / 1025.17 seconds = 175.27 aggregate tokens/s is a real FullF measurement with MTP enabled and accepted speculative tokens observed. It is not a same-prompt MTP-on/off A/B: task subset, feedback prompts, generated content, prefix reuse, queue shape and mamba cache alignment differ from prior runs. Do not assign the whole throughput difference to MTP."
+  },
+  "research_interpretation": [
+    "All 19 F calls stopped normally, but 17 produced admitted programs; nine run all demos legally, five fail every demo, three mix successes and errors, and two are incomplete/rejected. No F program passes all demos.",
+    "F-bf45cf4b reaches 2/3 exact demos but one demo and its query yield invalid width; F-f931b4a8 has 1/5 exact with unhashable-list failures elsewhere. These are specific partial signals, not complete solutions.",
+    "Representative recurrent errors include tuple/list record mismatches, undefined id, KeyError 0, and invalid grid shape/value output. The cheap CPU e376 repair remains the only all-demo-passing candidate here.",
+    "The fixed final M1 coverage is 22/27 versus M0 25/27; this is output coverage only. Correctness and net added/lost query answers must come from the separate frozen-prediction scoring."
+  ],
+  "query_scoring": {
+    "status": "not_scored_in_this_analysis",
+    "fixed_query_denominator": 27,
+    "M0_EM_at_2": null,
+    "M1_EM_at_2": null,
+    "warning": "No new gold read. Root task is scoring separately. FullF19 results must not be reported as full D24 denominator36."
+  }
+}

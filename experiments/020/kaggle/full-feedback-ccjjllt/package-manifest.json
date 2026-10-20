@@ -1,0 +1,28 @@
+{
+  "owner": "ccjjllt",
+  "slug": "arc2-020-full-feedback-mtp2",
+  "cohort": "experiments/020/full-feedback/challenges.json",
+  "p0_only": false,
+  "result_label": "paired",
+  "frozen_initial": "experiments/020/full-feedback/frozen-initial.json",
+  "gen_max": 12288,
+  "thinking_max": 8192,
+  "mtp_tokens": 2,
+  "speculative_config": {
+    "method": "mtp",
+    "num_speculative_tokens": 2
+  },
+  "mamba_cache_mode": "align",
+  "policy": "M1",
+  "source_sha256": {
+    "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+    "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+    "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+    "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+    "vdriver020_submit.py": "fc631bc29c2d7945bd86387481ee4364df9b4d2873d7e7d55843f0844c64bec0",
+    "cohort-challenges.json": "a2704c9ab1d4eaca706713f75f27ec565f4dfab6e357ef3186d317c06aec0b0d",
+    "frozen-initial.json": "7b8dd03077eebd70c8ead9898b95e99584c2a848d06ee045e0d2e550b2d80639"
+  },
+  "notebook_sha256": "2836a9c2ec3921874a70eccfdbbe634a13ca58ce386785f90f3b7de36f08629f",
+  "session_seconds": 4200
+}

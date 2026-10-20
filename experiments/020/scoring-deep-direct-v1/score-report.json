@@ -1,0 +1,104 @@
+{
+  "planned_queries": 9,
+  "input_matched_queries": 8,
+  "unresolved_or_mismatched_queries": 1,
+  "policies": {
+    "TwoShort": {
+      "exact_queries": 0,
+      "matched_denominator": 8,
+      "em2": 0.0,
+      "prediction_present_queries": 9,
+      "valid_queries": 9,
+      "different_valid_attempts_queries": 2,
+      "fully_matched_tasks": 5,
+      "all_queries_exact_tasks": 0
+    },
+    "DeepDirect": {
+      "exact_queries": 2,
+      "matched_denominator": 8,
+      "em2": 0.25,
+      "prediction_present_queries": 9,
+      "valid_queries": 9,
+      "different_valid_attempts_queries": 0,
+      "fully_matched_tasks": 5,
+      "all_queries_exact_tasks": 1
+    }
+  },
+  "cohort": "D24_DeepDirect_6",
+  "planned_tasks": 6,
+  "official_sources": [
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/3e6067c3.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/3e6067c3.json",
+      "sha256": "10f51036492e1ab0d06e51abcee691d7103fb1ffb008d3a284ded01a7d188640",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/5961cc34.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/5961cc34.json",
+      "sha256": "20acafcbeaa18c2b22dd8701a2aab55202bee833854d4a260ff77e9464364059",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/800d221b.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/800d221b.json",
+      "sha256": "c936f858d7eb96fd6e5ae9e0630d5f1e008bcb4725625f57e2ed05658bbd266d",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/b6f77b65.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/b6f77b65.json",
+      "sha256": "f597ff3fa1fa6c7c063364a47f12f689fdded5229cf945f4aecfc5ce0d700cc8",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/de809cff.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/de809cff.json",
+      "sha256": "8586c4800ee0ed6bc7c332960a3e08138d0ff08d45cf3f968d57b74b098e6c20",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/e376de54.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/e376de54.json",
+      "sha256": "2d40d65df2185aff088d8ba02d80b712d3256536c87b7550b9926307183a79e1",
+      "status": "loaded"
+    }
+  ],
+  "by_source_group": {
+    "public_evaluation_non_ARC1": {
+      "planned_queries": 9,
+      "input_matched_queries": 8,
+      "unresolved_or_mismatched_queries": 1,
+      "policies": {
+        "TwoShort": {
+          "exact_queries": 0,
+          "matched_denominator": 8,
+          "em2": 0.0,
+          "prediction_present_queries": 9,
+          "valid_queries": 9,
+          "different_valid_attempts_queries": 2,
+          "fully_matched_tasks": 5,
+          "all_queries_exact_tasks": 0
+        },
+        "DeepDirect": {
+          "exact_queries": 2,
+          "matched_denominator": 8,
+          "em2": 0.25,
+          "prediction_present_queries": 9,
+          "valid_queries": 9,
+          "different_valid_attempts_queries": 0,
+          "fully_matched_tasks": 5,
+          "all_queries_exact_tasks": 1
+        }
+      }
+    }
+  },
+  "interpretation": "Local fixed-two-slot exact-match only; not a Kaggle score or evidence of exceeding 30.14.",
+  "denominator_note": "Every original manifest query is in the ledger. Missing/invalid predictions count as failures when inputs match. Official input/version mismatches and unavailable gold are separate unresolved rows, never silently counted wrong or removed from the planned cohort."
+}

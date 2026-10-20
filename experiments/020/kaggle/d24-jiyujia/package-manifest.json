@@ -1,0 +1,17 @@
+{
+  "owner": "jiyujia",
+  "slug": "arc2-020-d24-ji",
+  "cohort": "experiments/020/cohorts/shards/d24-jiyujia-challenges.json",
+  "policy": "M1",
+  "source_sha256": {
+    "local_repair.py": "b94297f4053aeecee2ef06f70ca1d71357e89d6c460b4169fac0ba124fef56ae",
+    "run_reasoning_probe.py": "adaad745a3016ca3160b8145f2386ab90a6e7be07dd4082632c177bb11b6d89c",
+    "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+    "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+    "vdriver020_submit.py": "b87411d45d739e67ae3a5136068f23ba9c677efe3f5cae42f825c646d14fc62d",
+    "cohort-challenges.json": "9d90644613d1b2896880c719f10a4966d3d0c813404da25f5115948d22c78830",
+    "aa-demo-preflight.json": "b960d885c85373d99dff5dec48866af0757c48a7e61995edfcc7268bdad96bcc"
+  },
+  "notebook_sha256": "9bb4aba77049f37f324cc5080bfdcf02220ac9ae9324457deb687a423050a998",
+  "session_seconds": 2850
+}

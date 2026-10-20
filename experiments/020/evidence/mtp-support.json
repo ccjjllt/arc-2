@@ -1,0 +1,178 @@
+{
+  "recorded_at_utc": "2026-10-20T13:49:34.048983+00:00",
+  "scope": "Read-only asset metadata/index and pinned official runtime-source evidence for the existing fixed Qwen27B FP8 v1; no model download, GPU run, source edit or query-gold read for this record.",
+  "query_gold_used": false,
+  "fixed_asset": {
+    "model_source": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1",
+    "instance_id": 730092,
+    "version_id": 966079,
+    "version_number": 1,
+    "config_evidence": {
+      "path": "experiments/013/qwen-public/dependency-evidence/model-v1-config.json",
+      "sha256": "74227dd615bf1ea975aa676bdf355a0379858c12f394b5365cd9dfa5fc2c70bc"
+    },
+    "index_evidence": {
+      "path": "experiments/013/qwen-public/dependency-evidence/model-v1-model.safetensors.index.json",
+      "sha256": "fbc786a85a39a12018b532c640d6673185f1a4081735a9e6ddb128392c370697"
+    },
+    "file_metadata_evidence": {
+      "path": "experiments/013/qwen-public/dependency-readiness-evidence.json",
+      "sha256": "73c5782506dbbb60068ccd08056be2bda7721d0054b008e2c1419ad0038d7a16"
+    },
+    "config_fields": {
+      "architectures": [
+        "Qwen3_5ForConditionalGeneration"
+      ],
+      "model_type": "qwen3_5",
+      "text_model_type": "qwen3_5_text",
+      "num_hidden_layers": 64,
+      "mtp_num_hidden_layers": 1,
+      "mtp_use_dedicated_embeddings": false,
+      "quant_method": "fp8",
+      "weight_block_size": [
+        128,
+        128
+      ]
+    },
+    "total_index_tensor_keys": 1606,
+    "mtp_index_tensor_key_count": 22,
+    "mtp_tensor_keys_and_shards": {
+      "mtp.fc.weight": "mtp.safetensors",
+      "mtp.layers.0.input_layernorm.weight": "mtp.safetensors",
+      "mtp.layers.0.mlp.down_proj.weight": "mtp.safetensors",
+      "mtp.layers.0.mlp.down_proj.weight_scale_inv": "mtp.safetensors",
+      "mtp.layers.0.mlp.gate_proj.weight": "mtp.safetensors",
+      "mtp.layers.0.mlp.gate_proj.weight_scale_inv": "mtp.safetensors",
+      "mtp.layers.0.mlp.up_proj.weight": "mtp.safetensors",
+      "mtp.layers.0.mlp.up_proj.weight_scale_inv": "mtp.safetensors",
+      "mtp.layers.0.post_attention_layernorm.weight": "mtp.safetensors",
+      "mtp.layers.0.self_attn.k_norm.weight": "mtp.safetensors",
+      "mtp.layers.0.self_attn.k_proj.weight": "mtp.safetensors",
+      "mtp.layers.0.self_attn.k_proj.weight_scale_inv": "mtp.safetensors",
+      "mtp.layers.0.self_attn.o_proj.weight": "mtp.safetensors",
+      "mtp.layers.0.self_attn.o_proj.weight_scale_inv": "mtp.safetensors",
+      "mtp.layers.0.self_attn.q_norm.weight": "mtp.safetensors",
+      "mtp.layers.0.self_attn.q_proj.weight": "mtp.safetensors",
+      "mtp.layers.0.self_attn.q_proj.weight_scale_inv": "mtp.safetensors",
+      "mtp.layers.0.self_attn.v_proj.weight": "mtp.safetensors",
+      "mtp.layers.0.self_attn.v_proj.weight_scale_inv": "mtp.safetensors",
+      "mtp.norm.weight": "mtp.safetensors",
+      "mtp.pre_fc_norm_embedding.weight": "mtp.safetensors",
+      "mtp.pre_fc_norm_hidden.weight": "mtp.safetensors"
+    },
+    "mtp_file": {
+      "name": "mtp.safetensors",
+      "metadata_reported_size_bytes": 477202224,
+      "size_source": "model_files metadata, not a locally downloaded shard",
+      "tensor_bytes_validated": false
+    },
+    "conclusion": "The fixed v1 asset declares and indexes an MTP head, rather than only advertising MTP in config. Numerical tensor contents and official/repacked tensor-byte identity were not revalidated here."
+  },
+  "fixed_runtime": {
+    "wheel_manifest_evidence": {
+      "path": "experiments/014/public-sources/qwen38-vllm0272-manifest.json",
+      "sha256": "c9a31a531c2ec9e703de936859906a2db2a78a8987419de744e2bd3c0e2861e1"
+    },
+    "vllm_commit": "1f7427bc0ad31fdad1b0933c77ea5acae15da2e0",
+    "vllm_version": "0.27.2rc1.dev91+g1f7427bc0",
+    "wheel_filename": "vllm-0.27.2rc1.dev91+g1f7427bc0-cp38-abi3-manylinux_2_28_x86_64.whl",
+    "wheel_sha256": "5cbeedeb8266362ef935775c4c33203e4dab74e8da1649a977bae833df62304a",
+    "publisher_manifest_mtp_fix_present": true,
+    "publisher_check_limitation": "Publisher metadata is supporting provenance, not our runtime acceptance/throughput measurement.",
+    "official_source_review_date": "2026-10-20",
+    "official_pinned_sources": [
+      {
+        "url": "https://raw.githubusercontent.com/vllm-project/vllm/1f7427bc0ad31fdad1b0933c77ea5acae15da2e0/vllm/config/speculative.py",
+        "findings": [
+          "SpeculativeConfig accepts method=mtp and the legacy qwen3_5_mtp alias; the legacy alias is normalized to mtp.",
+          "For method=mtp without a separate draft model, reuse the target model path and target quantization.",
+          "Qwen3.5 text/conditional configs are mapped to qwen3_5_mtp and Qwen3_5MTP using mtp_num_hidden_layers.",
+          "More than one speculative token reuses the same MTP layer; source warns that acceptance may decrease. K=2 is not a promised speedup.",
+          "Use standard rejection verification, not synthetic acceptance settings."
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/vllm-project/vllm/1f7427bc0ad31fdad1b0933c77ea5acae15da2e0/vllm/model_executor/models/registry.py",
+        "findings": [
+          "Qwen3_5MTP is registered to the qwen3_5_mtp module."
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/vllm-project/vllm/1f7427bc0ad31fdad1b0933c77ea5acae15da2e0/vllm/model_executor/models/qwen3_5_mtp.py",
+        "findings": [
+          "Qwen3_5MTP loads mtp.* checkpoint weights through its MTP model namespace.",
+          "Constructor raises NotImplementedError when mamba_cache_mode=all and explicitly asks for --mamba-cache-mode=align."
+        ]
+      },
+      {
+        "url": "https://raw.githubusercontent.com/vllm-project/vllm/1f7427bc0ad31fdad1b0933c77ea5acae15da2e0/docs/features/speculative_decoding/mtp.md",
+        "findings": [
+          "Documents the --speculative-config JSON syntax using method=mtp and num_speculative_tokens."
+        ]
+      }
+    ],
+    "mamba_limitation": {
+      "unsupported": "all prefix-caching mode in Qwen3_5MTP",
+      "required_explicit_setting": "align",
+      "source": "https://raw.githubusercontent.com/vllm-project/vllm/1f7427bc0ad31fdad1b0933c77ea5acae15da2e0/vllm/model_executor/models/qwen3_5_mtp.py"
+    },
+    "conclusion": "The exact pinned runtime has a Qwen3.5 MTP implementation and configuration path. Code support alone does not establish acceleration on L4x4 or successful long-context decoding."
+  },
+  "startup": {
+    "driver_and_packager_argument": "--mtp-tokens 2",
+    "default_mtp_tokens": 0,
+    "server_extra_argv": [
+      "--speculative-config",
+      "{\"method\":\"mtp\",\"num_speculative_tokens\":2}",
+      "--mamba-cache-mode",
+      "align"
+    ],
+    "retained_configuration": {
+      "model": "same fixed 27B FP8 v1",
+      "runtime": "same pinned vLLM wheel",
+      "tensor_parallel_size": 4,
+      "max_model_len": 65536,
+      "max_num_seqs": 8
+    },
+    "recorded_by": [
+      "run.config.mtp_tokens",
+      "run.config.speculative_config",
+      "run.config.mamba_cache_mode",
+      "run.server_extra_args",
+      "package-manifest.json",
+      "notebook boot event"
+    ]
+  },
+  "runtime_evidence_as_of_parent_report": {
+    "full_feedback_run": "CC fullF v1, MTP=2",
+    "server_ready_log_time": "2026-10-20 13:44:57",
+    "time_note": "Log time as reported by root; not converted between time zones.",
+    "reported_status": "server ready; F generation has begun",
+    "provenance": "Parent task message during this evidence write",
+    "accepted_output_tokens_per_second": null,
+    "mtp_acceptance_rate": null,
+    "measured_speedup": null,
+    "conclusion": "Startup was reported successful, but no completed-wave throughput or MTP speedup evidence was available at this point."
+  },
+  "unverified": [
+    "Net accepted-output-token throughput and acceptance rate for the useful fullF/direct research workload.",
+    "Whether MTP improves aggregate throughput at concurrency 8; extra drafting/verification can consume already busy GPU capacity.",
+    "Long 49152-token direct-generation stability, memory/cache behavior and actual final-output quality.",
+    "Whether an acceleration sufficient for the full competition workload fits its total wall budget; no speedup is inferred from GPU busy percentage or draft proposal rate."
+  ],
+  "direct_context_budget": {
+    "cohort": "fixed Deep6, 6 tasks / 9 query inputs",
+    "cohort_manifest_evidence": {
+      "path": "experiments/020/deep-p0/manifest.json",
+      "sha256": "5e129ca9246715a4da2926ee8c50a87c536d92c6a32ba2e76c562d7f12a1d70d"
+    },
+    "generation_max_tokens": 49152,
+    "thinking_max_tokens": 40960,
+    "max_model_len_tokens": 65536,
+    "known_selected_six_prompt_upper_bound_tokens_approx": 10600,
+    "estimated_prompt_plus_generation_tokens_upper_bound": 59752,
+    "remaining_context_tokens_at_this_bound": 5784,
+    "bound_provenance": "Known six-task prompt bound supplied by root; actual direct request prompt_tokens should still be recorded from server usage.",
+    "note": "49152 total generated tokens already includes up to 40960 thinking tokens; do not add thinking a second time. The selected six prompts fit below 65536 at the known <=10.6K bound. This is not a guarantee for all 240 tasks: use actual rendered/tokenized prompt lengths, retain formatting/special-token overhead, and reduce the generation cap or handle oversized tasks before applying this setting to the full set."
+  }
+}

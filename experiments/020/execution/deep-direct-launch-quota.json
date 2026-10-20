@@ -1,0 +1,10 @@
+{
+  "queried_at_utc": "2026-10-20T13:40:35.661762+00:00",
+  "account": "qingyu1232",
+  "timing": "immediately after publishing deep-direct v1",
+  "total_seconds": 108000.0,
+  "used_seconds": 86055.160425,
+  "reserved_seconds": 0.0,
+  "available_seconds": 21944.839575000005,
+  "available_hours": 6.095788770833335
+}

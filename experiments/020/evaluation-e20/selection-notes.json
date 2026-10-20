@@ -1,0 +1,271 @@
+{
+  "created_date_beijing": "2026-10-20",
+  "status": "selection_complete_not_run",
+  "artifacts": [
+    {
+      "path": "experiments/020/evaluation-e20/challenges.json",
+      "sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda",
+      "bytes": 859142
+    },
+    {
+      "path": "experiments/020/evaluation-e20/manifest.json",
+      "sha256": "6a169f382e70c2cdf81194d648485bf25471666192dc4396ec44d4112ca4f21d",
+      "bytes": 28488
+    }
+  ],
+  "sources": [
+    {
+      "role": "public_evaluation_challenges",
+      "path": "experiments/008/raw-eval/arc-agi_evaluation_challenges.json",
+      "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "bytes": 984679
+    },
+    {
+      "role": "linked_split_provenance",
+      "path": "experiments/020/cohorts/split-notes.json",
+      "sha256": "aacc45510aac28265c4338634e47b095a2abc9d9d6a872aab30a15070977c4f8",
+      "bytes": 4609
+    },
+    {
+      "role": "D24_development_and_prior_exclusions",
+      "path": "experiments/020/cohorts/development-d24-manifest.json",
+      "sha256": "3dcdc1aa274d04ef948994a3d6ff8e4531a1883feca11c7252875bdc3b794327",
+      "bytes": 26406
+    },
+    {
+      "role": "C24_reservation_and_other_prior_development_exclusions",
+      "path": "experiments/020/cohorts/confirmation-c24-manifest.json",
+      "sha256": "6859e458e83ad49f5c038dbb6b59fded42f567dcc86c0043e809b7528cca3300",
+      "bytes": 21372
+    }
+  ],
+  "source_tasks": 120,
+  "source_queries": 172,
+  "excluded_union_task_count": 86,
+  "excluded_in_source_task_count": 33,
+  "eligible_task_count": 87,
+  "selected_tasks": 20,
+  "selected_queries": 27,
+  "selection_rule": "Start from all 120 tasks / 172 queries in the exact public evaluation challenge source. Exclude the union of recorded D24, P6, historical confirmation/981571dc, previously developed/scored C24 exclusion IDs, and current C24 IDs. Sort the remaining tasks by (total_input_cells, task_id), where total_input_cells is the number of cells in all demo inputs plus all query inputs (demo outputs excluded from length). Split into [i*n//3:(i+1)*n//3] S/M/L buckets. Within each tier sort by (sha256(UTF-8 \"020:E20:20261020:\"+task_id), task_id), then choose 7/7/6 tasks. Keep every original query in original order. No predictions, query answers, scores or solver applicability enter selection.",
+  "selection_seed": "020:E20:20261020",
+  "length_measure": "sum(height*width) over train inputs and test inputs only; identical to D24 total_input_cells",
+  "tier_counts": {
+    "S": {
+      "eligible": 29,
+      "selected_tasks": 7,
+      "selected_queries": 8,
+      "input_cells_min": 144,
+      "input_cells_max": 1168
+    },
+    "M": {
+      "eligible": 29,
+      "selected_tasks": 7,
+      "selected_queries": 9,
+      "input_cells_min": 1173,
+      "input_cells_max": 2095
+    },
+    "L": {
+      "eligible": 29,
+      "selected_tasks": 6,
+      "selected_queries": 10,
+      "input_cells_min": 2102,
+      "input_cells_max": 4620
+    }
+  },
+  "exclusion_groups": {
+    "development_D24": {
+      "path": "experiments/020/cohorts/development-d24-manifest.json",
+      "field": "entries[].task_id",
+      "task_ids": [
+        "135a2760",
+        "195c6913",
+        "21897d95",
+        "247ef758",
+        "2b83f449",
+        "2c181942",
+        "3e6067c3",
+        "4c3d4a41",
+        "58f5dbd5",
+        "5961cc34",
+        "6e453dd6",
+        "800d221b",
+        "8698868d",
+        "8e5c0c38",
+        "abc82100",
+        "b6f77b65",
+        "bf45cf4b",
+        "cbebaa4b",
+        "de809cff",
+        "e3721c99",
+        "e376de54",
+        "e87109e9",
+        "f931b4a8",
+        "fc7cae8d"
+      ],
+      "task_count": 24,
+      "task_ids_in_public_evaluation": [
+        "135a2760",
+        "195c6913",
+        "21897d95",
+        "247ef758",
+        "2b83f449",
+        "2c181942",
+        "3e6067c3",
+        "4c3d4a41",
+        "58f5dbd5",
+        "5961cc34",
+        "6e453dd6",
+        "800d221b",
+        "8698868d",
+        "8e5c0c38",
+        "abc82100",
+        "b6f77b65",
+        "bf45cf4b",
+        "cbebaa4b",
+        "de809cff",
+        "e3721c99",
+        "e376de54",
+        "e87109e9",
+        "f931b4a8",
+        "fc7cae8d"
+      ]
+    },
+    "probe_P6": {
+      "path": "experiments/020/cohorts/development-d24-manifest.json",
+      "field": "excluded_p6_task_ids",
+      "task_ids": [
+        "291dc1e1",
+        "4c416de3",
+        "58c02a16",
+        "aa4ec2a5",
+        "db118e2a",
+        "fc4aaf52"
+      ],
+      "task_count": 6,
+      "task_ids_in_public_evaluation": [
+        "291dc1e1",
+        "4c416de3",
+        "aa4ec2a5"
+      ]
+    },
+    "historical_main_reserve_confirmation_and_extra_981571dc": {
+      "path": "experiments/020/cohorts/development-d24-manifest.json",
+      "field": "excluded_historical_confirmation_task_ids",
+      "task_ids": [
+        "20270e3b",
+        "38007db0",
+        "581f7754",
+        "7e4d4f7c",
+        "878187ab",
+        "981571dc",
+        "c3fa4749",
+        "db0c5428",
+        "dce56571",
+        "df9fd884",
+        "dfadab01",
+        "e45ef808"
+      ],
+      "task_count": 12,
+      "task_ids_in_public_evaluation": [
+        "20270e3b",
+        "38007db0",
+        "581f7754",
+        "981571dc",
+        "db0c5428",
+        "dfadab01"
+      ]
+    },
+    "other_previously_developed_or_scored_in_C24_exclusions": {
+      "path": "experiments/020/cohorts/confirmation-c24-manifest.json",
+      "field": "excluded_task_ids (G1 prior scored tasks plus P12 H_new)",
+      "task_ids": [
+        "12eac192",
+        "14754a24",
+        "17b80ad2",
+        "18419cfa",
+        "1acc24af",
+        "1c786137",
+        "2204b7a8",
+        "22eb0ac0",
+        "29623171",
+        "2b01abd0",
+        "31aa019c",
+        "3345333e",
+        "342dd610",
+        "36fdfd69",
+        "3c9b0459",
+        "3d31c5b3",
+        "3f23242b",
+        "423a55dc",
+        "44f52bb0",
+        "4522001f",
+        "47c1f68c",
+        "4938f0c2",
+        "4c5c2cf0",
+        "50cb2852",
+        "52df9849",
+        "58c02a16",
+        "db118e2a",
+        "e3f79277",
+        "fc4aaf52"
+      ],
+      "task_count": 29,
+      "task_ids_in_public_evaluation": []
+    },
+    "current_confirmation_C24": {
+      "path": "experiments/020/cohorts/confirmation-c24-manifest.json",
+      "field": "entries[].task_id",
+      "task_ids": [
+        "52fd389e",
+        "54dc2872",
+        "66f2d22f",
+        "68bc2e87",
+        "6bcdb01e",
+        "7e4d4f7c",
+        "878187ab",
+        "8886d717",
+        "9344f635",
+        "9841fdad",
+        "984d8a3e",
+        "9c56f360",
+        "a416fc5b",
+        "a644e277",
+        "aa62e3f4",
+        "aaef0977",
+        "ad173014",
+        "b7fb29bc",
+        "c3fa4749",
+        "cc9053aa",
+        "dce56571",
+        "df9fd884",
+        "e45ef808",
+        "ff2825db"
+      ],
+      "task_count": 24,
+      "task_ids_in_public_evaluation": []
+    }
+  },
+  "selected_intersections": {
+    "development_D24": [],
+    "probe_P6": [],
+    "historical_main_reserve_confirmation_and_extra_981571dc": [],
+    "other_previously_developed_or_scored_in_C24_exclusions": [],
+    "current_confirmation_C24": []
+  },
+  "known_old_ARC1_ids_in_selected": [
+    "136b0064",
+    "da515329"
+  ],
+  "ARC1_note": "The request samples the full remaining public evaluation pool; ARC1 identity alone is not treated as proof of local task development or as an exclusion. Known ARC1 IDs listed in the D24 manifest are reported here when selected.",
+  "query_output_fields_in_source": 0,
+  "query_output_fields_in_written_challenges": 0,
+  "all_original_query_inputs_retained": true,
+  "input_selection_only": true,
+  "no_query_answers_or_prediction_quality_used": true,
+  "no_solver_execution": true,
+  "no_GPU_or_model_call": true,
+  "no_network_or_new_download": true,
+  "no_change_to_formal_submission": true,
+  "exposure_and_inference_limit": "This public evaluation source was already used by the 019 full pilot and ordinary public-file/CPU runs. Exclusions avoid the explicitly recorded local development/confirmation task IDs; they do not undo historical inference exposure or prove that all other project use has been audited. Upstream model pretraining and fine-tuning contamination are unknown. E20 is a public-evaluation accuracy/cost observation cohort, not model-unseen data, C24, or an unbiased hidden-score estimate.",
+  "pending_decision": "Parent will decide whether to run after C24 returns and account quota is inspected. This file is not authorization or a claim that a run exists."
+}

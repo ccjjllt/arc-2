@@ -1,0 +1,190 @@
+{
+  "recorded_at_utc": "2026-10-20T15:30:02.742327+00:00",
+  "scope": "Read-only hypothesis for later throughput research on the same four L4s; not a gate for C24 or real submission. No GPU run, source/policy change or query gold.",
+  "facts": {
+    "evidence": [
+      {
+        "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/vllm-server.log",
+        "sha256": "9473bcd1f573ebff28d002b699912a20a225b2ec98d03c3a24db966873ea0320"
+      },
+      {
+        "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/gpu-samples.jsonl",
+        "sha256": "8dcf5b564e46254df65aea39a76dc4184726eba60c39481365ad4e959ec9ae5d"
+      },
+      {
+        "path": "experiments/013/qwen-public/dependency-evidence/model-v1-config.json",
+        "sha256": "74227dd615bf1ea975aa676bdf355a0379858c12f394b5365cd9dfa5fc2c70bc"
+      }
+    ],
+    "hardware": "4 NVIDIA L4, nvidia-smi total23034MiB each; engine reports22.03GiB device memory",
+    "current_runtime": {
+      "tp": 4,
+      "max_num_seqs": 8,
+      "max_model_len": 65536,
+      "generation_max": 49152,
+      "thinking_max": 40960,
+      "mtp_tokens": 2,
+      "weight_quantization": "fp8",
+      "model_dtype": "bfloat16",
+      "kv_cache_dtype": "auto (model dtype, not automatically FP8)",
+      "mamba_cache_mode": "align",
+      "gpu_memory_utilization": 0.9
+    },
+    "log_values": {
+      "model_loading_memory_GiB_per_TP_rank": 7.25,
+      "consumed_weights_plus_non_torch_GiB": 7.52,
+      "peak_activation_GiB": 1.02,
+      "CUDA_graph_estimated_GiB": 0.35,
+      "CUDA_graph_actual_GiB": 0.28,
+      "desired_budget_GiB": 19.83,
+      "available_KV_cache_GiB_per_TP_rank": 11.29,
+      "reported_GPU_KV_cache_tokens": 606556,
+      "reported_maximum_concurrency_at_65536": 9.26,
+      "attention_block_tokens_for_Mamba_alignment": 800,
+      "hybrid_padding_layers": 3,
+      "logged_max_padding_waste_percent": 6.25,
+      "post_profile_suggested_KV_GiB_to_fit_requested_utilization": 10.86,
+      "note": "Profiled/cache/GPU allocated memory counters use different accounting and rounding; do not treat their sum as an exact nvidia-smi decomposition."
+    },
+    "log_line_references": {
+      "PCIe_custom_allreduce_disabled_and_PYNCCL": [
+        44,
+        48
+      ],
+      "Mamba_attention_block_alignment": [
+        144,
+        147
+      ],
+      "model_loading": [
+        146
+      ],
+      "hybrid_padding": [
+        235,
+        252
+      ],
+      "cache_and_concurrency": [
+        246,
+        253
+      ],
+      "memory_breakdown": [
+        262,
+        269
+      ]
+    },
+    "GPU_samples": {
+      "count": 319,
+      "minimum_memory_MiB_each": 20057.0,
+      "maximum_memory_MiB_each": 20223.0,
+      "last_memory_MiB_each": [
+        20223.0,
+        20223.0,
+        20223.0,
+        20223.0
+      ],
+      "last_utilization_percent_each": [
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "note": "These are saved C24 run observations, not current live GPU inspection or a throughput measurement."
+    },
+    "architecture": {
+      "hidden_size": 5120,
+      "intermediate_size": 17408,
+      "layers": 64,
+      "full_attention_layers": 16,
+      "GDN_linear_attention_layers": 48,
+      "attention_heads": 24,
+      "KV_heads": 4,
+      "attention_head_dim": 256,
+      "GDN_key_heads": 16,
+      "GDN_value_heads": 48,
+      "GDN_head_dims": [
+        128,
+        128
+      ],
+      "conv_kernel_dim": 4,
+      "MTP_layers": 1
+    },
+    "communication": "Actual TP4 log disables custom allreduce on >2 PCIe-only GPUs and selects PYNCCL."
+  },
+  "estimates": {
+    "assumptions": "Same FP8 checkpoint, BF16/auto attention KV, MTP2/align, no offload or new cache precision. Approximate TP-sharded weights and cache bytes double per GPU when TP4 becomes TP2; replicated tensors, page grouping and profiling can deviate.",
+    "TP2_loaded_weight_GiB_per_GPU": 14.5,
+    "TP2_KV_estimate_scenarios": [
+      {
+        "estimated_KV_GiB_per_GPU": 3.76,
+        "estimated_cache_tokens_per_replica": 101003,
+        "full_65536_request_equivalents_per_replica": 1.541,
+        "four_request_average_total_context_tokens_without_cache_pressure": 25251
+      },
+      {
+        "estimated_KV_GiB_per_GPU": 4.04,
+        "estimated_cache_tokens_per_replica": 108525,
+        "full_65536_request_equivalents_per_replica": 1.656,
+        "four_request_average_total_context_tokens_without_cache_pressure": 27131
+      }
+    ],
+    "full_attention_only_lower_bound": {
+      "formula": "16 full layers * (K+V=2) * (4 KV heads / TP2=2) * head_dim256 * BF16_2bytes",
+      "bytes_per_token_per_GPU": 32768,
+      "four_65536_contexts_KV_GiB_per_GPU": 8.0,
+      "weights_plus_that_KV_GiB_per_GPU": 22.5,
+      "excluded": "All48 GDN state/checkpoints, MTP cache, CUDA graphs, activations and non-torch buffers are excluded; real demand is larger."
+    },
+    "judgement": "Loading one TP2 replica with max_model_len65536 is plausible from the memory envelope. Two replicas, each promising four simultaneously long49K/40K generations up to65536 total context, are not a credible cache-fit assumption at the current precision. max_num_seqs4 limits scheduling, not four fully resident65536 contexts.",
+    "likely_failure_mode": "An engine may start and run four short requests, then encounter KV pressure/preemption/recomputation or lower effective concurrency as outputs grow. This can erase the communication benefit."
+  },
+  "hybrid_Mamba_and_MTP_limits": [
+    "TP2 has no obvious head-count divisibility blocker: attention24/KV4/GDNkey16/GDNvalue48 are all divisible by2. Actual kernels/loading with this exact FP8 wheel atTP2 remain unrun.",
+    "GDN recurrent/conv states depend on TP size and speculative-token count. Prefix-cache checkpoints and unified page padding add memory beyond the pure full-attention formula.",
+    "The actual TP4 engine chooses attention block800 and adds3 padding layers; simple dense-attention KV arithmetic alone understates the observed memory layout.",
+    "Pinned Qwen3.5 and Qwen3.5MTP reject mamba-cache-mode all; retain align with prefix caching. Changing TP does not remove this restriction.",
+    "Cache blocks and prefix-cache state are local to each replica; the two TP2 engines cannot pool their spare KV memory.",
+    "Reducing max_num_seqs8 to4 can reduce graph/buffer costs, but a few hundred MiB of savings do not supply the several GiB needed for four long contexts."
+  ],
+  "concrete_later_hypothesis": {
+    "potential_benefit": "Two-rank PCIe collectives may be cheaper than four-rank PYNCCL, and a two-GPU group may qualify for custom allreduce if P2P checks pass; this is not yet established on the Kaggle allocation.",
+    "memory_condition": "Any meaningful twoTP2 comparison must observe actual cache capacity and long-request residency. The evidence points toward about1-2 full contexts per replica, or four much shorter contexts, rather than four full-length contexts.",
+    "non_gate": "No new run is requested or started here; proceed with frozen C24 then the real submission before any later throughput study."
+  },
+  "unconfirmed": [
+    "Actual TP2 weight memory, activation peak, CUDA graph size, allocator block count and engine startup with MTP2.",
+    "Whether TP2 P2P/custom allreduce is enabled, and its benefit at useful ARC prefill/decode lengths.",
+    "Actual two-replica accepted-output-token throughput, MTP acceptance, preemption count, tail latency and output quality.",
+    "Linear extrapolation of the TP4 hybrid cache-token figure to TP2; estimates are not a measured capacity guarantee."
+  ],
+  "primary_sources": [
+    {
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/1f7427bc0ad31fdad1b0933c77ea5acae15da2e0/vllm/model_executor/models/qwen3_5.py",
+      "reviewed": "2026-10-20",
+      "supports": "TP size and speculative count feed GDN state shape; all prefix mode rejected."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/1f7427bc0ad31fdad1b0933c77ea5acae15da2e0/vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py",
+      "reviewed": "2026-10-20",
+      "supports": "GDN heads/states are partitioned by TP; do not transfer Marlin-specific constraints to observed TritonFP8 kernel."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/1f7427bc0ad31fdad1b0933c77ea5acae15da2e0/vllm/config/cache.py",
+      "reviewed": "2026-10-20",
+      "supports": "Pinned align/all/none semantics and separate Mamba cache dtype settings."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/vllm-project/vllm/1f7427bc0ad31fdad1b0933c77ea5acae15da2e0/docs/design/hybrid_kv_cache_manager.md",
+      "reviewed": "2026-10-20",
+      "supports": "Unified page sizes and Mamba state padding can waste memory."
+    },
+    {
+      "url": "https://docs.vllm.ai/en/v0.18.0/serving/parallelism_scaling/",
+      "reviewed": "2026-10-20",
+      "supports": "Cache-token/concurrency log interpretation; generic documentation, not the exact pinned version."
+    },
+    {
+      "url": "https://docs.vllm.ai/en/latest/serving/data_parallel_deployment/",
+      "reviewed": "2026-10-20",
+      "supports": "TP and replicas can combine; max_num_seqs applies per replica/rank; latest docs are not proof of pinned runtime behavior."
+    }
+  ]
+}
