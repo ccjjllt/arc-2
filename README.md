@@ -4,17 +4,17 @@
 
 比赛：[Kaggle ARC Prize 2026 — ARC-AGI-2](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview)。
 
-**当前进展**：[018 — F-291反馈对照与受约束程序生成](docs/plan/018-f291-feedback-and-constrained-generation.md)：A线GPU会话运行中（冻结F-291一次反馈修复 vs 同预算重启，2次调用）；B线CPU原语+搜索已实现并干跑，待B-verify会话。017结论见[017实际进展](docs/progress/017-program-feedback-and-submission-entry.md)§8。
+**当前进展**：[019 — 全量可提交候选打通、首稿形成率与+4完整流程验证](docs/plan/019-submission-and-first-draft-pipeline.md)：承接[018实际进展](docs/progress/018-f291-feedback-and-constrained-generation.md)（A线v6中F-fix在`291dc1e1`通过4/4 demo并拿下官方答案exact，R2在final通道写满分析文字截断；同时复核定位了`sha256_file`哨兵`1`死循环、62位wheel哈希截断、B线约束字段/画布尺寸/choices协议脱节及`update_slots`双槽覆盖四项缺陷）。
 
 历史试提交：[用户指定 Notebook 版本 314617319](https://www.kaggle.com/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319)。用户说明 30.14 分来自未修改的公开方案复制提交，不作为自主研究效果，也不限定后续方向。
 
-**当前入口（2026-10-20）**：[018计划](docs/plan/018-f291-feedback-and-constrained-generation.md)：A线v6成功——F-fix在291拿下旧组合没有的exact，门控开+4（协议/预算/身份待定）；B-verify待推。主C6未动。
+**当前入口（2026-10-20）**：[019计划](docs/plan/019-submission-and-first-draft-pipeline.md)：先清零哈希死循环、64位wheel哈希与候选池双槽更新缺陷；第一优先级完成27B全量可提交Notebook与公开集端到端演练；第二优先级在单次加载会话中批量验证P6其余四题（+4）的“短首稿+一次真实反馈”；第三优先级完成B线CPU最小修复并在同会话附带极小约束探针验证。主C6未动。
 
 [012实际进展](docs/progress/012-kernel-program-completion.md)记录上一轮：K短探针不采用快速后端；P-v2四次均3072 token截断，没有完整程序或实际执行，D/L各0/2，已按预定止损结束。历史配额快照不替代013的最新查询。
 
 [011实际进展](docs/progress/011-budget-efficient-adaptation.md)记录已完成结果：F0-25 P12为0/14，多视角完整配对0/5；TTT每题4次真实更新后，A0/A4仍均0/2。程序4次均耗尽1536 token、未产出代码，repair实际0次。10月11日15:00北京时间账户快照剩15.23138配额小时、reserved=0；未来开机前重查，保留至少6小时。无新比赛分数，C6/C12确认未运行；首GPU v1的取消原因和成本保留。
 
-**下一步**：沿用C8与现有运行栈做完整程序和一次demo反馈研究，先补vLLM final解析适配；P2复用进P6，总上限221184新输出token。程序吞吐从实际先导重新估计，不保证达到016的123.41 tok/s。同时本地接入保留demos、完整双attempt占位及逐步更新的提交入口；不重跑016、不训练、不提交。
+**下一步**：按[019计划](docs/plan/019-submission-and-first-draft-pipeline.md)先在本地完成阶段0确定性缺陷修复，随后推进P1全量提交端到端演练、P2其余四题完整流程验证与P3受约束生成修复。
 
 ## 研究文档
 
@@ -37,7 +37,8 @@
 | 015 完整推理与程序反馈 | [plan/015-qwen38-reasoning-research.md](docs/plan/015-qwen38-reasoning-research.md) | [progress/015-qwen38-reasoning-research.md](docs/progress/015-qwen38-reasoning-research.md)；P6 两臂各 1/6，多数调用截断 |
 | 016 有限思考与赛前提交 | [plan/016-budgeted-final-submission.md](docs/plan/016-budgeted-final-submission.md) | [progress/016-budgeted-final-submission.md](docs/progress/016-budgeted-final-submission.md)；v1 COMPLETE：C8选中、硬预算生效、B16合法6/6但无新增正确解、恢复EM@2持平、用户四项确认入§12 |
 | 017 程序反馈对照与提交入口 | [plan/017-program-feedback-and-submission-entry.md](docs/plan/017-program-feedback-and-submission-entry.md) | [progress/017-program-feedback-and-submission-entry.md](docs/progress/017-program-feedback-and-submission-entry.md)；v1跑完：P2门未过+4未跑，F-db程序exact；原问题未答，已由018接替 |
-| 018 F-291反馈对照与受约束程序生成 | [plan/018-f291-feedback-and-constrained-generation.md](docs/plan/018-f291-feedback-and-constrained-generation.md) | [progress/018-f291-feedback-and-constrained-generation.md](docs/progress/018-f291-feedback-and-constrained-generation.md)；A线v1–v3空转，v4(teammateb,RUNNING)带看门狗；B线驱动+离线验证完成 |
+| 018 F-291反馈对照与受约束程序生成 | [plan/018-f291-feedback-and-constrained-generation.md](docs/plan/018-f291-feedback-and-constrained-generation.md) | [progress/018-f291-feedback-and-constrained-generation.md](docs/progress/018-f291-feedback-and-constrained-generation.md)；A线v6中F-fix在291拿下exact、R2截断；复核更正哈希死循环与B线四项阻断缺陷，转入019 |
+| 019 全量提交候选打通、首稿形成率与+4流程验证 | [plan/019-submission-and-first-draft-pipeline.md](docs/plan/019-submission-and-first-draft-pipeline.md) | [progress/019-submission-and-first-draft-pipeline.md](docs/progress/019-submission-and-first-draft-pipeline.md)；已完成018复核与019计划建档，代码修复与实验待执行 |
 
 ## Kaggle 操作链（2026-09-29 实测结论）
 
