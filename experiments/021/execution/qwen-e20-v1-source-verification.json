@@ -1,0 +1,100 @@
+{
+  "checked_at_utc": "2026-10-21T14:29:55.598313+00:00",
+  "original_freeze_unchanged": true,
+  "remote_version": 1,
+  "session_id": "360788173",
+  "all_code_and_input_hashes_match": true,
+  "code_input_comparison": [
+    {
+      "file": "local_repair.py",
+      "sha256": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+      "expected_sha256": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+      "match": true
+    },
+    {
+      "file": "ordinary_cpu.py",
+      "sha256": "47942bb0957f6ed8d6cfe09a31e4a36666416ef92fbc8a60914d45d1c484d7aa",
+      "expected_sha256": "47942bb0957f6ed8d6cfe09a31e4a36666416ef92fbc8a60914d45d1c484d7aa",
+      "match": true
+    },
+    {
+      "file": "run_reasoning_probe.py",
+      "sha256": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+      "expected_sha256": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+      "match": true
+    },
+    {
+      "file": "solve_program.py",
+      "sha256": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+      "expected_sha256": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+      "match": true
+    },
+    {
+      "file": "submit_lib.py",
+      "sha256": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+      "expected_sha256": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+      "match": true
+    },
+    {
+      "file": "vdriver020_submit.py",
+      "sha256": "2a86d880710a6992d30b96e1423551ed3349a29313a1fdffc28c07045cc29d58",
+      "expected_sha256": "2a86d880710a6992d30b96e1423551ed3349a29313a1fdffc28c07045cc29d58",
+      "match": true
+    },
+    {
+      "file": "cohort-challenges.json",
+      "sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda",
+      "expected_sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda",
+      "match": true
+    }
+  ],
+  "remote_files_total": 48,
+  "not_downloaded": [
+    "021-qwen-code/__pycache__/local_repair.cpython-312.pyc",
+    "021-qwen-code/__pycache__/local_repair.cpython-313.pyc",
+    "021-qwen-code/__pycache__/run_reasoning_probe.cpython-312.pyc",
+    "021-qwen-code/__pycache__/run_reasoning_probe.cpython-313.pyc",
+    "021-qwen-code/__pycache__/solve_program.cpython-312.pyc",
+    "021-qwen-code/__pycache__/solve_program.cpython-313.pyc",
+    "021-qwen-code/__pycache__/submit_lib.cpython-312.pyc",
+    "021-qwen-code/__pycache__/submit_lib.cpython-313.pyc",
+    "021-qwen-code/__pycache__/vdriver020_submit.cpython-313.pyc"
+  ],
+  "supplement_files": [
+    {
+      "path": "experiments/021/qwen-e20-output-v1/021-qwen-code/cohort-challenges.json",
+      "bytes": 859142,
+      "sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/021-qwen-code/local_repair.py",
+      "bytes": 13619,
+      "sha256": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/021-qwen-code/ordinary_cpu.py",
+      "bytes": 7263,
+      "sha256": "47942bb0957f6ed8d6cfe09a31e4a36666416ef92fbc8a60914d45d1c484d7aa"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/021-qwen-code/run_reasoning_probe.py",
+      "bytes": 27927,
+      "sha256": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/021-qwen-code/solve_program.py",
+      "bytes": 37737,
+      "sha256": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/021-qwen-code/submit_lib.py",
+      "bytes": 17014,
+      "sha256": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/021-qwen-code/vdriver020_submit.py",
+      "bytes": 48024,
+      "sha256": "2a86d880710a6992d30b96e1423551ed3349a29313a1fdffc28c07045cc29d58"
+    }
+  ]
+}

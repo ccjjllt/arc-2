@@ -1,0 +1,175 @@
+{
+  "frozen_at_utc": "2026-10-21T14:25:20.560169+00:00",
+  "ref": "zhuating/arc2-021-qwen-e20-direct32k",
+  "version": 1,
+  "platform_status": "COMPLETE",
+  "download_scope": "submission.json, all vprobe/ artifacts, kernel log",
+  "files": [
+    {
+      "path": "experiments/021/qwen-e20-output-v1/arc2-021-qwen-e20-direct32k.log",
+      "bytes": 32006,
+      "sha256": "0ebd454503e2ede0e6d096e75bf4d0eff4bfd2991c5a8465cb56e2c38b77c7dd"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/submission.json",
+      "bytes": 33504,
+      "sha256": "3367f1cac955520dfb46a45a04296a290e1984999ffce62478df9779022a1e22"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/candidate-pools.json",
+      "bytes": 44426,
+      "sha256": "79cd7ac7a5fd582d12ede3f999806ca12d1a2af885c983e2e62970c82a59632a"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/driver-stdout.log",
+      "bytes": 8278,
+      "sha256": "b39003f67b1ebdfdca0a78d7f11599d7e974949673016042ba984a30da4bbe73"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/ensurepip.log",
+      "bytes": 61,
+      "sha256": "1b6b12408c94730828d3e102c391b083b037a273ea5ab12a3e85a08d7dd42790"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/gpu-samples.jsonl",
+      "bytes": 81381,
+      "sha256": "ddd02b73c369df9a2849f9da73b393c3e10b11e1003b62eb641ce5c1def1e2f3"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/pip-install.log",
+      "bytes": 12014,
+      "sha256": "ecdf7213e3c19c1b293a6f54d132a5242a8144cc3732021650aa40aa4321a6ac"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/pip-vllm.log",
+      "bytes": 520,
+      "sha256": "d1122820af7ceff8ef04f373e17953b2e4f0ea2cab2ad82ac9b037c2e0000784"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-136b0064.reply.json",
+      "bytes": 71496,
+      "sha256": "dcf6f449b94cc0baaacb7f740bed5a760290d1c6ffcb2da755830ea92e12c61b"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-13e47133.reply.json",
+      "bytes": 91345,
+      "sha256": "4820155949826a969d509fa18df36d2fda17cfee6b0ee370bd0811fe3f3271bb"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-142ca369.reply.json",
+      "bytes": 69058,
+      "sha256": "80560b1676c57d25d5cb9556248d4d1c9983da9401a8a31284973d718c95065f"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-16de56c4.reply.json",
+      "bytes": 80972,
+      "sha256": "137dbf3267c28bc1668c2c42b3a55c957a6538a7e255a494e1e0dc9d9e369fa8"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-28a6681f.reply.json",
+      "bytes": 102498,
+      "sha256": "5b64633d5bcdef485253c984dd0aaab6f458cfccf220c56a43a4198217816029"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-3a25b0d8.reply.json",
+      "bytes": 87547,
+      "sha256": "ea7a7a8ce6d83d95b5cd2af2cc567a97131b0246059c9acc70808842cf0daee9"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-3dc255db.reply.json",
+      "bytes": 71588,
+      "sha256": "60e0bcdccfea937b0296920d50a67cb6ad8cd15c179717af5a52f0151d315d64"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-45a5af55.reply.json",
+      "bytes": 56262,
+      "sha256": "29d981f0b42dac03d141ffb7ce907329a98af4347940edbcaacb82c250e557ee"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-4e34c42c.reply.json",
+      "bytes": 56360,
+      "sha256": "188d1cdf8af2bdb374dfa950d66ea09ad20cc19cea653d20b5e90b6a81ec3ac2"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-53fb4810.reply.json",
+      "bytes": 81574,
+      "sha256": "2770cdb75233c90e875eee4f11970d587393bfe5c5a9980357b07d6e1564eab6"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-6ffbe589.reply.json",
+      "bytes": 77247,
+      "sha256": "bf2997ac85f7ed35dfdf1b32bbe532281d5b54ada8606a1290daa780ac14c25d"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-7491f3cf.reply.json",
+      "bytes": 70770,
+      "sha256": "1f1707f436edea6cff075dbeda46d45408aac81c0e3fe7452e1f10388b9fb00c"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-8f215267.reply.json",
+      "bytes": 55613,
+      "sha256": "8933496db7274cbd140640c54672d0042668b33f1a9087511dcb5dc84eec205e"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-a25697e4.reply.json",
+      "bytes": 73332,
+      "sha256": "3d2a52e37d843150ddad0262decd9ed3788836bdf3f363f01eb31c82cec75480"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-a395ee82.reply.json",
+      "bytes": 69829,
+      "sha256": "f22cc85dc7090b3a78386d2ba8e044a957b52032c1ff5053584636ff0e8240ca"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-c4d067a0.reply.json",
+      "bytes": 80931,
+      "sha256": "e06d712a11d59b96a1c6cd954b3ed54eb1ebb41b147177932156e035b0658556"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-d8e07eb2.reply.json",
+      "bytes": 78345,
+      "sha256": "d61e31f91140405da572b1c1470c52cca60dcf8bdb9b3411201b23c51212a1c3"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-da515329.reply.json",
+      "bytes": 69728,
+      "sha256": "2ae40b3f7339e04d11d8d93363d2677def2ebebfab79e84b604b3e9fbbdf6571"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-db695cfb.reply.json",
+      "bytes": 48168,
+      "sha256": "766ea76478570c81e8108e5ff06fe9b26573c3a8ca2096c459b91308696389ad"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-edb79dae.reply.json",
+      "bytes": 54845,
+      "sha256": "ac4801434aa9355907af1c3c5b7bdf2eb955b872db7ee53b2733fc42abec8b9c"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/run.json",
+      "bytes": 63279,
+      "sha256": "579701dab332a6bd676efe0a8f559ee9e32f604703cd8482958ac34b38bb0dad"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/server-pgid.txt",
+      "bytes": 3,
+      "sha256": "84a5092e4a5b6fe968fd523fb2fc917dbffae44105f82b6b94c8ed5b9a800223"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/submission-M0.json",
+      "bytes": 33504,
+      "sha256": "3367f1cac955520dfb46a45a04296a290e1984999ffce62478df9779022a1e22"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/submission-M1.json",
+      "bytes": 33504,
+      "sha256": "3367f1cac955520dfb46a45a04296a290e1984999ffce62478df9779022a1e22"
+    },
+    {
+      "path": "experiments/021/qwen-e20-output-v1/vprobe/vllm-server.log",
+      "bytes": 243153,
+      "sha256": "8cc0f6d21357eff248620a88a1aaf2dfdad4f95c602132398c653789796d5c81"
+    }
+  ],
+  "note": "All downloaded outputs hashed before new E20 gold access. M0/M1 are duplicate views of P0, not independent policies."
+}

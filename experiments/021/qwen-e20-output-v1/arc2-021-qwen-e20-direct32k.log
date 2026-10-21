@@ -1,0 +1,191 @@
+[{"stream_name":"stderr","time":6.156939029,"data":"/usr/local/lib/python3.13/dist-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.156999176,"data":"  _validate(nbdict, ref, version, version_minor, relax_add_props)\n"}
+,{"stream_name":"stderr","time":7.053042632,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.053079175,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.053082299,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.053084703,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.645013234,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.64503642,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.645039388,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.645041553,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":8.911360081,"data":"{\"event\": \"boot\", \"owner\": \"zhuating\", \"rerun\": false, \"experiment\": \"paired\", \"session_seconds\": 7200, \"ordinary_cpu_only\": false, \"mtp_tokens\": 2, \"generation_mode\": \"direct\", \"direct_attempts\": 1, \"line_complement\": false, \"p0_only\": true, \"result_label\": \"DeepDirect\", \"challenges_path\": \"/kaggle/working/021-qwen-code/cohort-challenges.json\", \"challenges_sha256\": \"ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda\", \"source_sha256\": {\"local_repair.py\": \"0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0\", \"ordinary_cpu.py\": \"47942bb0957f6ed8d6cfe09a31e4a36666416ef92fbc8a60914d45d1c484d7aa\", \"run_reasoning_probe.py\": \"377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9\", \"solve_program.py\": \"405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88\", \"submit_lib.py\": \"53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e\", \"vdriver020_submit.py\": \"2a86d880710a6992d30b96e1423551ed3349a29313a1fdffc28c07045cc29d58\", \"cohort-challenges.json\": \"ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda\"}, \"notebook_start_wall\": 1792587587.8362434}\n"}
+,{"stream_name":"stdout","time":9.226617546,"data":"[020 12:59:48] input tasks=20 queries=27 sha=ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda\n"}
+,{"stream_name":"stdout","time":9.428511975,"data":"[020 12:59:48] input tasks=20 queries=27 sha=ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda\n"}
+,{"stream_name":"stdout","time":12.609491079,"data":"[020 12:59:51] wheel hash match (sync)\n"}
+,{"stream_name":"stdout","time":12.674612429,"data":"[020 12:59:51] phase: requirements install start\n"}
+,{"stream_name":"stdout","time":12.811447675,"data":"[020 12:59:51] wheel hash match (sync)\n"}
+,{"stream_name":"stdout","time":12.811467755,"data":"[020 12:59:51] phase: requirements install start\n"}
+,{"stream_name":"stdout","time":219.193164372,"data":"[020 13:03:18] phase: requirements install rc=0\n"}
+,{"stream_name":"stdout","time":219.39705082,"data":"[020 13:03:18] phase: requirements install rc=0\n"}
+,{"stream_name":"stdout","time":242.243387069,"data":"[020 13:03:41] phase: vllm wheel install start\n"}
+,{"stream_name":"stdout","time":242.445390202,"data":"[020 13:03:41] phase: vllm wheel install start\n"}
+,{"stream_name":"stdout","time":257.226352212,"data":"[020 13:03:56] phase: vllm wheel install rc=0\n"}
+,{"stream_name":"stdout","time":257.430376285,"data":"[020 13:03:56] phase: vllm wheel install rc=0\n"}
+,{"stream_name":"stdout","time":270.362514935,"data":"[probe 13:04:09] libcuda hits: ['/usr/local/nvidia/lib64/libcuda.so', '/usr/local/nvidia/lib64/libcuda.so.1', '/usr/local/nvidia/lib64/libcuda.so.580.178.04', '/usr/local/cuda/compat/libcuda.so']\n"}
+,{"stream_name":"stdout","time":270.362754233,"data":"[probe 13:04:09] serve: /usr/bin/python3.12 -m vllm.entrypoints.openai.api_server --model /kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1 --served-model-name qwen --host 127.0.0.1 --port 1234 --tensor-parallel-size 4 --max-model-len 65536 --gpu-memory-utilization 0.9 --max-num-seqs 8 --enable-prefix-caching --reasoning-parser qwen3 --language-model-only --speculative-config {\"method\":\"mtp\",\"num_speculative_tokens\":2} --mamba-cache-mode align\n"}
+,{"stream_name":"stdout","time":270.564717147,"data":"[probe 13:04:09] libcuda hits: ['/usr/local/nvidia/lib64/libcuda.so', '/usr/local/nvidia/lib64/libcuda.so.1', '/usr/local/nvidia/lib64/libcuda.so.580.178.04', '/usr/local/cuda/compat/libcuda.so']\n"}
+,{"stream_name":"stdout","time":270.564747185,"data":"[probe 13:04:09] serve: /usr/bin/python3.12 -m vllm.entrypoints.openai.api_server --model /kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1 --served-model-name qwen --host 127.0.0.1 --port 1234 --tensor-parallel-size 4 --max-model-len 65536 --gpu-memory-utilization 0.9 --max-num-seqs 8 --enable-prefix-caching --reasoning-parser qwen3 --language-model-only --speculative-config {\"method\":\"mtp\",\"num_speculative_tokens\":2} --mamba-cache-mode align\n"}
+,{"stream_name":"stdout","time":720.411642089,"data":"[probe 13:11:39] server ready after 450s\n"}
+,{"stream_name":"stdout","time":720.615420928,"data":"[probe 13:11:39] server ready after 450s\n"}
+,{"stream_name":"stdout","time":776.129149029,"data":"[020 13:12:35] GPU runtime utilization means=[77.4, 75.3, 77.2, 75.0] memory-used-MiB=[20206, 20206, 20206, 20206]\n"}
+,{"stream_name":"stdout","time":776.333326864,"data":"[020 13:12:35] GPU runtime utilization means=[77.4, 75.3, 77.2, 75.0] memory-used-MiB=[20206, 20206, 20206, 20206]\n"}
+,{"stream_name":"stdout","time":836.885305636,"data":"[020 13:13:35] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":837.089187498,"data":"[020 13:13:35] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":897.636480045,"data":"[020 13:14:36] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":897.840390099,"data":"[020 13:14:36] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":958.377999696,"data":"[020 13:15:37] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":958.582107482,"data":"[020 13:15:37] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1019.124562382,"data":"[020 13:16:38] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1019.328415007,"data":"[020 13:16:38] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1079.880359663,"data":"[020 13:17:38] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1080.084231858,"data":"[020 13:17:38] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1140.624568759,"data":"[020 13:18:39] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1140.828730703,"data":"[020 13:18:39] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1201.361016823,"data":"[020 13:19:40] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1201.565126581,"data":"[020 13:19:40] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1262.114113608,"data":"[020 13:20:41] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1262.31817954,"data":"[020 13:20:41] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1322.861901708,"data":"[020 13:21:41] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1323.066048859,"data":"[020 13:21:41] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1383.591285033,"data":"[020 13:22:42] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1383.795365687,"data":"[020 13:22:42] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1444.326531566,"data":"[020 13:23:43] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1444.530900924,"data":"[020 13:23:43] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1505.055693125,"data":"[020 13:24:44] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1505.259828361,"data":"[020 13:24:44] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1565.784741384,"data":"[020 13:25:44] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1565.989070826,"data":"[020 13:25:44] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1581.132011868,"data":"[020 13:26:00] P0 db695cfb gen=True demo=None/5 query=1 route=None\n"}
+,{"stream_name":"stdout","time":1581.334260806,"data":"[020 13:26:00] P0 db695cfb gen=True demo=None/5 query=1 route=None\n"}
+,{"stream_name":"stdout","time":1626.527110674,"data":"[020 13:26:45] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1626.731323522,"data":"[020 13:26:45] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1651.06738333,"data":"[020 13:27:10] P0 45a5af55 gen=True demo=None/2 query=1 route=None\n"}
+,{"stream_name":"stdout","time":1651.269627518,"data":"[020 13:27:10] P0 45a5af55 gen=True demo=None/2 query=1 route=None\n"}
+,{"stream_name":"stdout","time":1687.258208526,"data":"[020 13:27:46] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1687.462898235,"data":"[020 13:27:46] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1687.77843188,"data":"[020 13:27:46] P0 136b0064 gen=True demo=None/3 query=1 route=None\n"}
+,{"stream_name":"stdout","time":1687.980597454,"data":"[020 13:27:46] P0 136b0064 gen=True demo=None/3 query=1 route=None\n"}
+,{"stream_name":"stdout","time":1702.364554998,"data":"[020 13:28:01] P0 7491f3cf gen=False demo=None/4 query=0 route=None\n"}
+,{"stream_name":"stdout","time":1702.566608052,"data":"[020 13:28:01] P0 7491f3cf gen=False demo=None/4 query=0 route=None\n"}
+,{"stream_name":"stdout","time":1705.687639809,"data":"[020 13:28:04] P0 3dc255db gen=True demo=None/3 query=1 route=None\n"}
+,{"stream_name":"stdout","time":1705.889821181,"data":"[020 13:28:04] P0 3dc255db gen=True demo=None/3 query=1 route=None\n"}
+,{"stream_name":"stdout","time":1747.987009577,"data":"[020 13:28:47] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1748.191735453,"data":"[020 13:28:47] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1752.103005606,"data":"[020 13:28:51] P0 53fb4810 gen=True demo=None/2 query=1 route=None\n"}
+,{"stream_name":"stdout","time":1752.305127753,"data":"[020 13:28:51] P0 53fb4810 gen=True demo=None/2 query=1 route=None\n"}
+,{"stream_name":"stdout","time":1777.126821493,"data":"[020 13:29:16] P0 16de56c4 gen=True demo=None/3 query=2 route=None\n"}
+,{"stream_name":"stdout","time":1777.328931989,"data":"[020 13:29:16] P0 16de56c4 gen=True demo=None/3 query=2 route=None\n"}
+,{"stream_name":"stdout","time":1808.723831917,"data":"[020 13:29:47] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1808.928326934,"data":"[020 13:29:47] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1869.455100325,"data":"[020 13:30:48] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1869.659587268,"data":"[020 13:30:48] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1930.175641186,"data":"[020 13:31:49] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1930.380282025,"data":"[020 13:31:49] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1990.890191706,"data":"[020 13:32:49] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":1991.095124145,"data":"[020 13:32:49] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2051.598913056,"data":"[020 13:33:50] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2051.803601386,"data":"[020 13:33:50] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2097.463774588,"data":"[020 13:34:36] P0 28a6681f gen=False demo=None/3 query=0 route=None\n"}
+,{"stream_name":"stdout","time":2097.668653834,"data":"[020 13:34:36] P0 28a6681f gen=False demo=None/3 query=0 route=None\n"}
+,{"stream_name":"stdout","time":2112.331328957,"data":"[020 13:34:51] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2112.533358279,"data":"[020 13:34:51] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2173.073463327,"data":"[020 13:35:52] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2173.278332176,"data":"[020 13:35:52] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2233.82360026,"data":"[020 13:36:52] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2234.028366687,"data":"[020 13:36:52] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2294.574494683,"data":"[020 13:37:53] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2294.779401278,"data":"[020 13:37:53] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2355.314035095,"data":"[020 13:38:54] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2355.518834111,"data":"[020 13:38:54] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2416.051671771,"data":"[020 13:39:55] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2416.256667435,"data":"[020 13:39:55] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2476.77288737,"data":"[020 13:40:55] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2476.977786101,"data":"[020 13:40:55] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2537.502265717,"data":"[020 13:41:56] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2537.70710086,"data":"[020 13:41:56] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2598.235942468,"data":"[020 13:42:57] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2598.44086698,"data":"[020 13:42:57] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2658.966296261,"data":"[020 13:43:58] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2659.171566072,"data":"[020 13:43:58] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2663.66471628,"data":"[020 13:44:02] P0 4e34c42c gen=True demo=None/2 query=2 route=None\n"}
+,{"stream_name":"stdout","time":2663.866879897,"data":"[020 13:44:02] P0 4e34c42c gen=True demo=None/2 query=2 route=None\n"}
+,{"stream_name":"stdout","time":2693.07936327,"data":"[020 13:44:32] P0 edb79dae gen=True demo=None/2 query=1 route=None\n"}
+,{"stream_name":"stdout","time":2693.284582203,"data":"[020 13:44:32] P0 edb79dae gen=True demo=None/2 query=1 route=None\n"}
+,{"stream_name":"stdout","time":2719.703888522,"data":"[020 13:44:58] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2719.905912027,"data":"[020 13:44:58] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2780.437173898,"data":"[020 13:45:59] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2780.64250927,"data":"[020 13:45:59] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2801.715673512,"data":"[020 13:46:20] P0 da515329 gen=True demo=None/3 query=1 route=None\n"}
+,{"stream_name":"stdout","time":2801.91769876,"data":"[020 13:46:20] P0 da515329 gen=True demo=None/3 query=1 route=None\n"}
+,{"stream_name":"stdout","time":2834.835083615,"data":"[020 13:46:53] P0 142ca369 gen=True demo=None/3 query=2 route=None\n"}
+,{"stream_name":"stdout","time":2835.041160615,"data":"[020 13:46:53] P0 142ca369 gen=True demo=None/3 query=2 route=None\n"}
+,{"stream_name":"stdout","time":2841.171450923,"data":"[020 13:47:00] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2841.373537284,"data":"[020 13:47:00] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2850.380686766,"data":"[020 13:47:09] P0 a395ee82 gen=True demo=None/3 query=1 route=None\n"}
+,{"stream_name":"stdout","time":2850.582657312,"data":"[020 13:47:09] P0 a395ee82 gen=True demo=None/3 query=1 route=None\n"}
+,{"stream_name":"stdout","time":2901.895317233,"data":"[020 13:48:00] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2902.100754112,"data":"[020 13:48:00] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2914.478757383,"data":"[020 13:48:13] P0 6ffbe589 gen=False demo=None/3 query=0 route=None\n"}
+,{"stream_name":"stdout","time":2914.680947317,"data":"[020 13:48:13] P0 6ffbe589 gen=False demo=None/3 query=0 route=None\n"}
+,{"stream_name":"stdout","time":2962.617463004,"data":"[020 13:49:01] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":2962.822954398,"data":"[020 13:49:01] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3023.343313699,"data":"[020 13:50:02] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3023.548638746,"data":"[020 13:50:02] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3084.070784153,"data":"[020 13:51:03] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3084.276079104,"data":"[020 13:51:03] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3109.708093572,"data":"[020 13:51:28] P0 3a25b0d8 gen=False demo=None/2 query=0 route=None\n"}
+,{"stream_name":"stdout","time":3109.910103572,"data":"[020 13:51:28] P0 3a25b0d8 gen=False demo=None/2 query=0 route=None\n"}
+,{"stream_name":"stdout","time":3119.273008208,"data":"[020 13:51:38] P0 8f215267 gen=True demo=None/3 query=1 route=None\n"}
+,{"stream_name":"stdout","time":3119.47834473,"data":"[020 13:51:38] P0 8f215267 gen=True demo=None/3 query=1 route=None\n"}
+,{"stream_name":"stdout","time":3144.804650164,"data":"[020 13:52:03] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3145.006819455,"data":"[020 13:52:03] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3205.546979464,"data":"[020 13:53:04] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3205.752639917,"data":"[020 13:53:04] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3266.269267871,"data":"[020 13:54:05] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3266.474680382,"data":"[020 13:54:05] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3327.007000172,"data":"[020 13:55:06] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3327.212391628,"data":"[020 13:55:06] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3387.735443377,"data":"[020 13:56:06] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3387.941039188,"data":"[020 13:56:06] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3448.472183848,"data":"[020 13:57:07] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3448.677906403,"data":"[020 13:57:07] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3509.210882061,"data":"[020 13:58:08] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3509.416652953,"data":"[020 13:58:08] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3569.937662098,"data":"[020 13:59:09] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3570.143488467,"data":"[020 13:59:09] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3630.660518061,"data":"[020 14:00:09] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3630.866448723,"data":"[020 14:00:09] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3691.377700777,"data":"[020 14:01:10] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3691.586230509,"data":"[020 14:01:10] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3752.094658325,"data":"[020 14:02:11] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3752.300597811,"data":"[020 14:02:11] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3791.552250624,"data":"[020 14:02:50] P0 c4d067a0 gen=True demo=None/3 query=1 route=None\n"}
+,{"stream_name":"stdout","time":3791.757905091,"data":"[020 14:02:50] P0 c4d067a0 gen=True demo=None/3 query=1 route=None\n"}
+,{"stream_name":"stdout","time":3812.808445416,"data":"[020 14:03:11] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3813.010444665,"data":"[020 14:03:11] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3873.525266917,"data":"[020 14:04:12] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3873.730995207,"data":"[020 14:04:12] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3900.611292848,"data":"[020 14:04:39] P0 a25697e4 gen=True demo=None/3 query=2 route=None\n"}
+,{"stream_name":"stdout","time":3900.813373365,"data":"[020 14:04:39] P0 a25697e4 gen=True demo=None/3 query=2 route=None\n"}
+,{"stream_name":"stdout","time":3934.243284447,"data":"[020 14:05:13] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3934.449182506,"data":"[020 14:05:13] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3994.964214167,"data":"[020 14:06:14] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3995.170232101,"data":"[020 14:06:14] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":3998.265909128,"data":"[020 14:06:17] P0 13e47133 gen=False demo=None/3 query=0 route=None\n"}
+,{"stream_name":"stdout","time":3998.467882281,"data":"[020 14:06:17] P0 13e47133 gen=False demo=None/3 query=0 route=None\n"}
+,{"stream_name":"stdout","time":4055.662687271,"data":"[020 14:07:14] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":4055.86879065,"data":"[020 14:07:14] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]\n"}
+,{"stream_name":"stdout","time":4072.036341453,"data":"[020 14:07:31] P0 d8e07eb2 gen=False demo=None/5 query=0 route=None\n"}
+,{"stream_name":"stdout","time":4072.238400614,"data":"[020 14:07:31] P0 d8e07eb2 gen=False demo=None/5 query=0 route=None\n"}
+,{"stream_name":"stdout","time":4075.233156779,"data":"[020 14:07:34] EVIDENCE-EXIT complete_with_evidence\n"}
+,{"stream_name":"stdout","time":4075.292405365,"data":"[020 14:07:34] EVIDENCE-EXIT complete_with_evidence\n"}
+,{"stream_name":"stdout","time":4075.292427698,"data":"VDRIVER_RETURN_CODE 0\n"}
+,{"stream_name":"stderr","time":4077.819598448,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":4077.819631494,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":4077.98312792,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":4077.983150286,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":4078.788834494,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":4078.875466144,"data":"[NbConvertApp] Writing 128882 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":4081.41514185,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":4081.938457489,"data":"[NbConvertApp] Writing 415443 bytes to __results__.html\n"}
+]

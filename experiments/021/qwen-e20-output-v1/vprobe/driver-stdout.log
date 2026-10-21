@@ -1,0 +1,82 @@
+[020 12:59:48] input tasks=20 queries=27 sha=ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda
+[020 12:59:51] wheel hash match (sync)
+[020 12:59:51] phase: requirements install start
+[020 13:03:18] phase: requirements install rc=0
+[020 13:03:41] phase: vllm wheel install start
+[020 13:03:56] phase: vllm wheel install rc=0
+[020 13:12:35] GPU runtime utilization means=[77.4, 75.3, 77.2, 75.0] memory-used-MiB=[20206, 20206, 20206, 20206]
+[020 13:13:35] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:14:36] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:15:37] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:16:38] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:17:38] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:18:39] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:19:40] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:20:41] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:21:41] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:22:42] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:23:43] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:24:44] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:25:44] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:26:00] P0 db695cfb gen=True demo=None/5 query=1 route=None
+[020 13:26:45] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:27:10] P0 45a5af55 gen=True demo=None/2 query=1 route=None
+[020 13:27:46] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:27:46] P0 136b0064 gen=True demo=None/3 query=1 route=None
+[020 13:28:01] P0 7491f3cf gen=False demo=None/4 query=0 route=None
+[020 13:28:04] P0 3dc255db gen=True demo=None/3 query=1 route=None
+[020 13:28:47] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:28:51] P0 53fb4810 gen=True demo=None/2 query=1 route=None
+[020 13:29:16] P0 16de56c4 gen=True demo=None/3 query=2 route=None
+[020 13:29:47] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:30:48] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:31:49] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:32:49] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:33:50] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:34:36] P0 28a6681f gen=False demo=None/3 query=0 route=None
+[020 13:34:51] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:35:52] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:36:52] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:37:53] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:38:54] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:39:55] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:40:55] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:41:56] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:42:57] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:43:58] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:44:02] P0 4e34c42c gen=True demo=None/2 query=2 route=None
+[020 13:44:32] P0 edb79dae gen=True demo=None/2 query=1 route=None
+[020 13:44:58] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:45:59] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:46:20] P0 da515329 gen=True demo=None/3 query=1 route=None
+[020 13:46:53] P0 142ca369 gen=True demo=None/3 query=2 route=None
+[020 13:47:00] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:47:09] P0 a395ee82 gen=True demo=None/3 query=1 route=None
+[020 13:48:00] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:48:13] P0 6ffbe589 gen=False demo=None/3 query=0 route=None
+[020 13:49:01] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:50:02] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:51:03] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:51:28] P0 3a25b0d8 gen=False demo=None/2 query=0 route=None
+[020 13:51:38] P0 8f215267 gen=True demo=None/3 query=1 route=None
+[020 13:52:03] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:53:04] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:54:05] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:55:06] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:56:06] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:57:07] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:58:08] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 13:59:09] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 14:00:09] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 14:01:10] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 14:02:11] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 14:02:50] P0 c4d067a0 gen=True demo=None/3 query=1 route=None
+[020 14:03:11] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 14:04:12] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 14:04:39] P0 a25697e4 gen=True demo=None/3 query=2 route=None
+[020 14:05:13] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 14:06:14] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 14:06:17] P0 13e47133 gen=False demo=None/3 query=0 route=None
+[020 14:07:14] GPU runtime utilization means=[100.0, 100.0, 100.0, 100.0] memory-used-MiB=[20231, 20231, 20231, 20231]
+[020 14:07:31] P0 d8e07eb2 gen=False demo=None/5 query=0 route=None
+[020 14:07:34] EVIDENCE-EXIT complete_with_evidence

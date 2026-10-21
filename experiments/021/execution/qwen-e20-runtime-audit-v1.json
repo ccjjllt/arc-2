@@ -1,0 +1,486 @@
+{
+  "checked_date_beijing": "2026-10-21",
+  "scope": "Read-only runtime/manifest/log audit. No gold files or correctness scores read; no GPU/model execution; no source/raw-output edits.",
+  "source_freeze": {
+    "path": "experiments/021/execution/qwen-e20-v1-artifact-freeze.json",
+    "all_recorded_artifact_hashes_match": true,
+    "files_checked": 33
+  },
+  "identity": {
+    "ref": "zhuating/arc2-021-qwen-e20-direct32k",
+    "version": 1,
+    "platform_status_from_frozen_observation": "COMPLETE",
+    "driver_status": "complete_with_evidence",
+    "exit_code": 0,
+    "notebook_sha256": "c69c98b6caf4960b866464e6a1944f0b0ee88a706185c3e2622194fbd78d6cdb",
+    "package_source_hashes_match_runtime": {
+      "submit_lib.py": true,
+      "vdriver020_submit.py": true,
+      "run_reasoning_probe.py": true,
+      "local_repair.py": true,
+      "ordinary_cpu.py": true,
+      "solve_program.py": true
+    },
+    "model_root": "/kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1",
+    "model_small_files_sha256": {
+      "config.json": "74227dd615bf1ea975aa676bdf355a0379858c12f394b5365cd9dfa5fc2c70bc",
+      "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+      "chat_template.jinja": "c3cf9e34abf4f9e36c2d72165aa9c132d3e2a725b6c2586aaa3a8af9d7a81041"
+    },
+    "wheel_sha256": "5cbeedeb8266362ef935775c4c33203e4dab74e8da1649a977bae833df62304a",
+    "runtime_requirements_sha256": "ebb525ba1fda0bc955fc19fe06fa381dd994e5b9a26a6e154a7ecd923f85d133",
+    "vllm_version_observed": "0.27.2rc1.dev91+g1f7427bc0",
+    "python_driver": "3.12.3"
+  },
+  "hardware": {
+    "gpu_count": 4,
+    "gpu_names": [
+      "NVIDIA L4",
+      "NVIDIA L4",
+      "NVIDIA L4",
+      "NVIDIA L4"
+    ],
+    "driver": "580.178.04",
+    "gpu_total_mib_each": 23034,
+    "tensor_parallel_size": 4,
+    "client_concurrency": 8,
+    "service_max_num_seqs": 8,
+    "weight_quantization": "FP8",
+    "compute_dtype": "bfloat16",
+    "kv_cache_dtype": "auto",
+    "max_model_len": 65536,
+    "mtp_speculative_tokens": 2,
+    "mamba_cache_mode": "align",
+    "server_reported_model_load_memory_gib_per_rank_TP0": 7.25,
+    "server_reported_weights_load_seconds_TP0": 36.013888,
+    "server_reported_available_kv_memory_gib_per_rank_TP0": 11.29,
+    "server_reported_kv_capacity_tokens": 606556
+  },
+  "timings": {
+    "session_clock_start_utc": "2026-10-21T12:59:47.836243+00:00",
+    "session_clock_start_beijing": "2026-10-21T20:59:47.836243+08:00",
+    "generation_first_request_utc": "2026-10-21T13:11:39.793000+00:00",
+    "generation_last_request_done_utc": "2026-10-21T14:07:31.005000+00:00",
+    "elapsed_through_installs_seconds": 261.6,
+    "elapsed_through_installs_plus_server_ready_seconds": 711.6,
+    "post_install_server_setup_load_compile_seconds": 450.0,
+    "pre_first_request_seconds": 711.9568012560001,
+    "generation_wave_recorded_seconds": 3351.32,
+    "generation_first_issue_to_last_done_seconds": 3351.2120000000004,
+    "driver_session_elapsed_seconds": 4063.551,
+    "driver_session_elapsed_hours": 1.1287641666666666,
+    "kernel_log_last_export_relative_seconds": 4081.938457489,
+    "note": "install_load_s includes install_s; never add them. The 450s remainder includes server process startup, imports, load, compilation and readiness, not weights loading alone. Kernel export time includes outer notebook and conversion overhead and is not queue wait."
+  },
+  "calls_and_tokens": {
+    "planned_tasks": 20,
+    "planned_queries": 27,
+    "calls": 20,
+    "unique_task_ids": 20,
+    "http_status_counts": {
+      "200": 20
+    },
+    "arms": {
+      "P0": 20
+    },
+    "prompt_tokens": 109012,
+    "completion_tokens": 551365,
+    "all_usage_tokens": 660377,
+    "usage_missing": 0,
+    "mean_completion_tokens_per_task": 27568.25,
+    "median_completion_tokens_per_task": 25924.5,
+    "mean_prompt_tokens_per_task": 5450.6,
+    "max_prompt_tokens": 16047,
+    "finish_reason_counts": {
+      "stop": 15,
+      "length": 5
+    },
+    "parse_status_counts": {
+      "direct_ready": 14,
+      "direct_invalid": 6
+    },
+    "invalid_task_ids": [
+      "7491f3cf",
+      "28a6681f",
+      "6ffbe589",
+      "3a25b0d8",
+      "13e47133",
+      "d8e07eb2"
+    ],
+    "invalid_task_completion_tokens": 189130,
+    "invalid_task_completion_token_fraction": 0.34302141049939694,
+    "length_cap_task_ids": [
+      "28a6681f",
+      "6ffbe589",
+      "3a25b0d8",
+      "13e47133",
+      "d8e07eb2"
+    ],
+    "length_cap_completion_tokens": 163840,
+    "length_cap_fraction_tasks": 0.25,
+    "distinct_answer_slots": 0,
+    "real_query_predictions": 18,
+    "placeholder_queries": 9,
+    "M0_M1_note": "Duplicate views of one P0 candidate; logical cost must not be doubled."
+  },
+  "performance": {
+    "aggregate_completion_tokens_per_second": 164.5217406872516,
+    "aggregate_completion_tokens_per_second_from_timestamps": 164.52704275348736,
+    "sum_request_seconds_not_wall": 21989.71,
+    "max_inflight_requests": 8,
+    "time_weighted_mean_inflight_requests": 6.561718566297804,
+    "mean_request_wall_seconds": 1099.485,
+    "median_request_wall_seconds": 1064.75,
+    "max_request_wall_seconds": 1403.9,
+    "mean_completion_spacing_seconds_not_request_latency": 167.56060000000002,
+    "mean_ttft_seconds": 6.714,
+    "median_ttft_seconds": 5.0,
+    "max_ttft_seconds": 17.05,
+    "generation_gpu_samples": {
+      "0": {
+        "samples": 662,
+        "mean_busy_percent_unweighted": 99.74169184290031,
+        "samples_at_100_percent_fraction": 0.9969788519637462,
+        "peak_used_mib": 20231.0,
+        "total_mib": 23034.0
+      },
+      "1": {
+        "samples": 662,
+        "mean_busy_percent_unweighted": 99.70392749244714,
+        "samples_at_100_percent_fraction": 0.9969788519637462,
+        "peak_used_mib": 20231.0,
+        "total_mib": 23034.0
+      },
+      "2": {
+        "samples": 662,
+        "mean_busy_percent_unweighted": 99.73716012084593,
+        "samples_at_100_percent_fraction": 0.9969788519637462,
+        "peak_used_mib": 20231.0,
+        "total_mib": 23034.0
+      },
+      "3": {
+        "samples": 662,
+        "mean_busy_percent_unweighted": 99.69788519637463,
+        "samples_at_100_percent_fraction": 0.9969788519637462,
+        "peak_used_mib": 20231.0,
+        "total_mib": 23034.0
+      }
+    },
+    "mtp_log_windows": 335,
+    "mtp_accepted_draft_tokens_sum": 317787,
+    "mtp_drafted_tokens_sum": 466816,
+    "mtp_weighted_draft_acceptance_ratio": 0.6807543014806691,
+    "mtp_limit": "Acceptance proves MTP activity; no matched MTP-off run, so no causal speedup factor is established.",
+    "gpu_limit": "nvidia-smi busy-time sampling is not SM occupancy, MFU or answer quality."
+  },
+  "budget": {
+    "session_seconds": 7200.0,
+    "stop_new_margin_seconds": 600,
+    "stop_generation_margin_seconds": 300,
+    "all_20_requests_finished": true,
+    "global_budget_truncation_observed": false,
+    "last_issue_elapsed_seconds": 2825.993801256,
+    "stop_new_elapsed_seconds": 6600.0,
+    "last_done_elapsed_seconds": 4063.1688012560003,
+    "stop_generation_elapsed_seconds": 6900.0,
+    "context_budget_status_counts": {
+      "unchanged": 20
+    },
+    "per_call_total_token_cap": 32768,
+    "per_call_thinking_cap": 24576,
+    "token_cap_truncation_tasks": 5,
+    "note": "Five length finishes hit the per-call 32,768 ceiling; they are not session-deadline cancellations. One further stop-finish response was invalid."
+  },
+  "server_diagnostics": {
+    "preemption_keyword_occurrences": 0,
+    "out_of_memory_keyword_occurrences": 0,
+    "notes": [
+      "No matching preemption/OOM diagnostics observed; absence of log entries is not an exhaustive event counter.",
+      "Qwen3VL processor docstring ERROR-labelled warnings appear during startup, but the text-only service subsequently initialized and all20 requests returned HTTP200.",
+      "TP4 custom allreduce was disabled on >2 PCIe-only GPUs; server used the remaining supported collective path."
+    ]
+  },
+  "conditional_12h_scenarios": {
+    "formula": "assumed_tasks * observed_mean_completion_tokens_per_task / observed_aggregate_completion_tokens_per_second + observed_install_load_seconds + 300 finalization_seconds",
+    "mean_cost_cases": [
+      {
+        "assumed_tasks": 120,
+        "assumed_mean_completion_tokens_per_task": 27568.25,
+        "assumed_aggregate_completion_tokens_per_second": 164.5217406872516,
+        "assumed_install_and_load_seconds": 711.6,
+        "assumed_finalization_reserve_seconds": 300,
+        "estimated_total_seconds": 21119.519999999997,
+        "estimated_total_hours": 5.866533333333332,
+        "slack_to_41400_seconds": 20280.480000000003,
+        "slack_to_43200_seconds": 22080.480000000003
+      },
+      {
+        "assumed_tasks": 240,
+        "assumed_mean_completion_tokens_per_task": 27568.25,
+        "assumed_aggregate_completion_tokens_per_second": 164.5217406872516,
+        "assumed_install_and_load_seconds": 711.6,
+        "assumed_finalization_reserve_seconds": 300,
+        "estimated_total_seconds": 41227.439999999995,
+        "estimated_total_hours": 11.452066666666665,
+        "slack_to_41400_seconds": 172.56000000000495,
+        "slack_to_43200_seconds": 1972.560000000005
+      }
+    ],
+    "all_240_at_32768_cap_case": {
+      "estimated_total_seconds": 48812.698913423956,
+      "estimated_total_hours": 13.559083031506654,
+      "required_aggregate_tokens_per_second_for_41400_total": 194.71729506491963
+    },
+    "limits": [
+      "These are conditional arithmetic extrapolations, not measured hidden coverage or a score forecast.",
+      "E20 is a small public cohort already exposed in019; its grid/query mix and token costs need not match hidden240 tasks.",
+      "Observed mean concurrency6.56 includes the20-task tail; full240 may fill batches better, while larger prompts/outputs and scheduling tails may lower throughput.",
+      "The mean-cost240 case has very little slack to an11.5h policy; it does not establish a robust full-coverage submission.",
+      "Coverage18/27 is prediction delivery, not correctness; accuracy scoring is outside this audit.",
+      "Repeating attempts, program feedback, ensembling or changing runtime invalidates the one-pass cost estimate."
+    ]
+  },
+  "per_call_metadata": [
+    {
+      "task_id": "db695cfb",
+      "issued_monotonic": 1013.08,
+      "done_monotonic": 1873.447,
+      "wall_s": 860.4,
+      "ttft_s": 17.05,
+      "prompt_tokens": 4037,
+      "completion_tokens": 25671,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "legal_query_predictions": 1
+    },
+    {
+      "task_id": "45a5af55",
+      "issued_monotonic": 1013.079,
+      "done_monotonic": 1943.377,
+      "wall_s": 930.3,
+      "ttft_s": 14.65,
+      "prompt_tokens": 3694,
+      "completion_tokens": 25936,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "legal_query_predictions": 1
+    },
+    {
+      "task_id": "136b0064",
+      "issued_monotonic": 1013.076,
+      "done_monotonic": 1980.09,
+      "wall_s": 967.0,
+      "ttft_s": 6.82,
+      "prompt_tokens": 2207,
+      "completion_tokens": 24982,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "legal_query_predictions": 1
+    },
+    {
+      "task_id": "7491f3cf",
+      "issued_monotonic": 1013.08,
+      "done_monotonic": 1994.675,
+      "wall_s": 981.6,
+      "ttft_s": 12.93,
+      "prompt_tokens": 3342,
+      "completion_tokens": 25290,
+      "finish_reason": "stop",
+      "parse_status": "direct_invalid",
+      "legal_query_predictions": 0
+    },
+    {
+      "task_id": "3dc255db",
+      "issued_monotonic": 1013.076,
+      "done_monotonic": 1997.996,
+      "wall_s": 984.9,
+      "ttft_s": 6.0,
+      "prompt_tokens": 2049,
+      "completion_tokens": 24939,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "legal_query_predictions": 1
+    },
+    {
+      "task_id": "53fb4810",
+      "issued_monotonic": 1013.079,
+      "done_monotonic": 2044.404,
+      "wall_s": 1031.3,
+      "ttft_s": 10.88,
+      "prompt_tokens": 3618,
+      "completion_tokens": 25935,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "legal_query_predictions": 1
+    },
+    {
+      "task_id": "16de56c4",
+      "issued_monotonic": 1013.077,
+      "done_monotonic": 2069.424,
+      "wall_s": 1056.3,
+      "ttft_s": 8.76,
+      "prompt_tokens": 2521,
+      "completion_tokens": 25771,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "legal_query_predictions": 2
+    },
+    {
+      "task_id": "28a6681f",
+      "issued_monotonic": 1013.075,
+      "done_monotonic": 2389.763,
+      "wall_s": 1376.7,
+      "ttft_s": 1.99,
+      "prompt_tokens": 1585,
+      "completion_tokens": 32768,
+      "finish_reason": "length",
+      "parse_status": "direct_invalid",
+      "legal_query_predictions": 0
+    },
+    {
+      "task_id": "4e34c42c",
+      "issued_monotonic": 1943.378,
+      "done_monotonic": 2955.962,
+      "wall_s": 1012.6,
+      "ttft_s": 3.06,
+      "prompt_tokens": 4716,
+      "completion_tokens": 25097,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "legal_query_predictions": 2
+    },
+    {
+      "task_id": "edb79dae",
+      "issued_monotonic": 1980.091,
+      "done_monotonic": 2985.37,
+      "wall_s": 1005.3,
+      "ttft_s": 3.36,
+      "prompt_tokens": 5132,
+      "completion_tokens": 25491,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "legal_query_predictions": 1
+    },
+    {
+      "task_id": "da515329",
+      "issued_monotonic": 1994.677,
+      "done_monotonic": 3093.956,
+      "wall_s": 1099.3,
+      "ttft_s": 3.32,
+      "prompt_tokens": 5073,
+      "completion_tokens": 25834,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "legal_query_predictions": 1
+    },
+    {
+      "task_id": "142ca369",
+      "issued_monotonic": 2044.405,
+      "done_monotonic": 3127.111,
+      "wall_s": 1082.7,
+      "ttft_s": 3.88,
+      "prompt_tokens": 6097,
+      "completion_tokens": 26789,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "legal_query_predictions": 2
+    },
+    {
+      "task_id": "a395ee82",
+      "issued_monotonic": 2069.426,
+      "done_monotonic": 3142.656,
+      "wall_s": 1073.2,
+      "ttft_s": 4.43,
+      "prompt_tokens": 6961,
+      "completion_tokens": 25552,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "legal_query_predictions": 1
+    },
+    {
+      "task_id": "6ffbe589",
+      "issued_monotonic": 1873.449,
+      "done_monotonic": 3206.756,
+      "wall_s": 1333.3,
+      "ttft_s": 2.74,
+      "prompt_tokens": 4123,
+      "completion_tokens": 32768,
+      "finish_reason": "length",
+      "parse_status": "direct_invalid",
+      "legal_query_predictions": 0
+    },
+    {
+      "task_id": "3a25b0d8",
+      "issued_monotonic": 1997.997,
+      "done_monotonic": 3401.943,
+      "wall_s": 1403.9,
+      "ttft_s": 3.77,
+      "prompt_tokens": 5914,
+      "completion_tokens": 32768,
+      "finish_reason": "length",
+      "parse_status": "direct_invalid",
+      "legal_query_predictions": 0
+    },
+    {
+      "task_id": "8f215267",
+      "issued_monotonic": 2389.764,
+      "done_monotonic": 3411.539,
+      "wall_s": 1021.8,
+      "ttft_s": 4.71,
+      "prompt_tokens": 7499,
+      "completion_tokens": 25914,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "legal_query_predictions": 1
+    },
+    {
+      "task_id": "c4d067a0",
+      "issued_monotonic": 2985.371,
+      "done_monotonic": 4083.799,
+      "wall_s": 1098.4,
+      "ttft_s": 5.12,
+      "prompt_tokens": 7991,
+      "completion_tokens": 26243,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "legal_query_predictions": 1
+    },
+    {
+      "task_id": "a25697e4",
+      "issued_monotonic": 3093.959,
+      "done_monotonic": 4192.853,
+      "wall_s": 1098.9,
+      "ttft_s": 5.71,
+      "prompt_tokens": 8893,
+      "completion_tokens": 28081,
+      "finish_reason": "stop",
+      "parse_status": "direct_ready",
+      "legal_query_predictions": 2
+    },
+    {
+      "task_id": "13e47133",
+      "issued_monotonic": 2955.963,
+      "done_monotonic": 4290.516,
+      "wall_s": 1334.6,
+      "ttft_s": 4.88,
+      "prompt_tokens": 7513,
+      "completion_tokens": 32768,
+      "finish_reason": "length",
+      "parse_status": "direct_invalid",
+      "legal_query_predictions": 0
+    },
+    {
+      "task_id": "d8e07eb2",
+      "issued_monotonic": 3127.112,
+      "done_monotonic": 4364.287,
+      "wall_s": 1237.2,
+      "ttft_s": 10.22,
+      "prompt_tokens": 16047,
+      "completion_tokens": 32768,
+      "finish_reason": "length",
+      "parse_status": "direct_invalid",
+      "legal_query_predictions": 0
+    }
+  ],
+  "query_gold_read": false
+}
