@@ -56,5 +56,6 @@
     "V2 progress includes each worker latest compact stage event, without forwarding training logs."
   ],
   "research_status": "packaged_not_launched",
+  "upstream_license_status": "No license declaration found in the upstream repository root or ARChitects directory on 2026-10-21; source copies and derived notebook are not retained.",
   "gold_read": false
 }

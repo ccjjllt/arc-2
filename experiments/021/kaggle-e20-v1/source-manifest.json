@@ -51,6 +51,7 @@
     "Original placeholder [[0]] slots are retained; true candidate provenance is exported separately.",
     "Adds TTT/DFS/scoring timing, model-load events, GPU sampling and per-query candidate pools."
   ],
-  "research_status": "packaged_not_launched",
+  "research_status": "completed_infrastructure_failure_before_ttt",
+  "upstream_license_status": "No license declaration found in the upstream repository root or ARChitects directory on 2026-10-21; source copies and derived notebook are not retained.",
   "gold_read": false
 }
