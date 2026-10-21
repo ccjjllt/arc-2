@@ -1,0 +1,131 @@
+{
+  "checked_at_utc": "2026-10-21T09:20:00.313341+00:00",
+  "account": "ccjjllt",
+  "submission_ref": 57443913,
+  "scope": "Read-only SDK observability inspection; no create/cancel/GPU/final-selection action.",
+  "download_submission": {
+    "error_type": "HTTPError",
+    "http_status": 403
+  },
+  "list_submission_episodes": {
+    "count": 0,
+    "episodes": []
+  },
+  "direct_raw_url": {
+    "checked_at_utc": "2026-10-21T09:20:42.252761+00:00",
+    "url": "https://www.kaggle.com/submissions/57443913/57443913.raw",
+    "authentication": "Bearer from established ccjjllt token; secret not recorded",
+    "http_status": 401,
+    "content_type": "application/json; charset=utf-8",
+    "content_length": null
+  },
+  "finished_at_utc": "2026-10-21T09:21:39.204712+00:00",
+  "sdk_version": "2.2.4",
+  "sdk_observed_request_and_response_fields": {
+    "ApiDownloadSubmissionRequest": {
+      "file": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/competitions/types/competition_api_service.py",
+      "line": 2463,
+      "properties": [
+        "submission_id"
+      ]
+    },
+    "ApiListSubmissionEpisodesRequest": {
+      "file": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/competitions/types/competition_api_service.py",
+      "line": 3936,
+      "properties": [
+        "submission_id"
+      ]
+    },
+    "ApiSubmission": {
+      "file": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/competitions/types/competition_api_service.py",
+      "line": 4636,
+      "properties": [
+        "ref",
+        "total_bytes",
+        "date",
+        "description",
+        "error_description",
+        "file_name",
+        "public_score",
+        "private_score",
+        "status",
+        "submitted_by",
+        "submitted_by_ref",
+        "team_name",
+        "url"
+      ]
+    },
+    "ApiGetKernelSessionLogsStreamRequest": {
+      "file": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/kernels/types/kernels_api_service.py",
+      "line": 686,
+      "properties": [
+        "kernel_session_id",
+        "user_name",
+        "kernel_slug",
+        "version_label",
+        "wait_for_logs_url_seconds"
+      ]
+    },
+    "ApiGetKernelSessionStatusResponse": {
+      "file": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/kernels/types/kernels_api_service.py",
+      "line": 848,
+      "properties": [
+        "status",
+        "failure_message",
+        "failureMessage"
+      ]
+    },
+    "ApiListKernelSessionOutputRequest": {
+      "file": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/kernels/types/kernels_api_service.py",
+      "line": 1528,
+      "properties": [
+        "user_name",
+        "kernel_slug",
+        "page_size",
+        "page_token",
+        "version_label"
+      ]
+    }
+  },
+  "ordinary_saved_output_reference": {
+    "path": "experiments/020/final-direct-ccjjllt-v1/submission.json",
+    "sha256": "5b9023beccb8c8d206a3098d136cfd3e39448f1a40a11dc56c26d5cf9eb9c430",
+    "bytes": 9178,
+    "tasks": 120,
+    "queries": 172,
+    "placeholder_both_queries": 171,
+    "scope": "Ordinary Save & Run output only; not hidden rerun output."
+  },
+  "root_reported_current_submission": {
+    "ref": 57443913,
+    "status": "COMPLETE",
+    "public_score": "12.50",
+    "total_bytes": 253680,
+    "script_version_id": 360461153,
+    "error_description": "",
+    "source": "Parent root reported independent get_submission and list_submissions results during this task; parent retains raw evidence."
+  },
+  "observability_conclusions": {
+    "actual_rerun_prediction_json_obtained": false,
+    "actual_rerun_prediction_stats": "unavailable; could not compare hash, task/query counts, placeholders or independent slots against ordinary output",
+    "hidden_rerun_logs_obtained": false,
+    "hidden_rerun_elapsed_time_obtained": false,
+    "hidden_rerun_session_id_obtained": false,
+    "get_submission_fields_include_runtime_logs_or_session_id": false,
+    "kernel_log_and_output_scope": "Kernels APIs accept an ordinary kernel ref/version or a known kernel_session_id; no submission-ref to hidden-rerun-session mapping was found in this SDK. Existing kernel output is ordinary Save & Run evidence and must not be relabeled as hidden evidence.",
+    "episodes_scope": "Official CLI describes list_submission_episodes as a simulation-competition endpoint; this ARC2 submission returned an empty list.",
+    "download_api_access": "Authenticated official SDK DownloadSubmission for the owned ref returned HTTP403. No data read.",
+    "website_raw_access": "The exact raw URL supplied by get_submission returned HTTP401 with the same established API bearer credential; this does not establish whether an already signed-in browser session can access it. No bypass or guessed private endpoint was attempted.",
+    "score_interpretation": "COMPLETE and an empty error_description establish a scored submission, not complete model coverage, intended branch execution, token count, or inference wall time. Reported totalBytes alone cannot establish model execution."
+  },
+  "next_evidence_options": [
+    "If the signed-in official submissions UI offers Download or rerun runtime/details for this owned submission, inspect that exposed UI only; availability not confirmed here.",
+    "Use frozen code and already recorded C24 run evidence to bound likely causes, while explicitly separating inference from inaccessible hidden-run measurements."
+  ],
+  "actions_not_performed": [
+    "No create/cancel/selection mutation",
+    "No GPU or notebook launch",
+    "No gold or unrelated raw output read",
+    "No repeated broad endpoint probing"
+  ]
+}

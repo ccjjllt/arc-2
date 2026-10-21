@@ -1,0 +1,242 @@
+{
+  "status": "read_only_evidence_summary_no_new_experiment",
+  "sources": {
+    "input_files": {
+      "C24": {
+        "path": "experiments/020/cohorts/confirmation-c24-challenges.json",
+        "sha256": "84496016ad694a8d6d5f336628bd84b378340288820d6b827aac401a451b4ec8"
+      },
+      "public_evaluation_120": {
+        "path": "experiments/008/raw-eval/arc-agi_evaluation_challenges.json",
+        "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8"
+      },
+      "Deep6_evaluation_development": {
+        "path": "experiments/020/deep-p0/challenges.json",
+        "sha256": "5e50d56ea56f81e72a50a4b7fb5bff0f4b73548ad0618b0d43f7e0a95d5e0848"
+      }
+    },
+    "runs": {
+      "C24_cc": {
+        "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/run.json",
+        "sha256": "7a2c3dc3da787becdd702bd88587253f1fea08a3b17131298eb6d1d59c625008"
+      },
+      "C24_qi": {
+        "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/run.json",
+        "sha256": "9d0fed092b2859f232840720a2643b717fab0281e9da24ffbf6765145539f723"
+      },
+      "Deep6": {
+        "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/run.json",
+        "sha256": "0d68976425f9a4b8eb7c0fdd99152e2d48c10865974d928c5fb4147827e0605d"
+      }
+    },
+    "C24_manifest": {
+      "path": "experiments/020/cohorts/confirmation-c24-manifest.json",
+      "sha256": "6859e458e83ad49f5c038dbb6b59fded42f567dcc86c0043e809b7528cca3300"
+    },
+    "project_007_split": {
+      "path": "experiments/007/g1/split.json",
+      "sha256": "094089459c4b05f7f0cf67a3f4ad98f79f3f48c78a7dcad6675866a897e476d8"
+    },
+    "C24_score_report": {
+      "path": "experiments/020/scoring-c24-v1/score-report.json",
+      "sha256": "4d4e67b28ed8a68555ba71cf35773a01c53496f36f52603350f552052a1423d7"
+    },
+    "C24_prediction_freeze": {
+      "path": "experiments/020/scoring-c24-v1/prediction-freeze.json",
+      "sha256": "fcfe5fe75dcf67907442eac448514fc165412bb93ff0afb335ce3bd3beb4ec63"
+    },
+    "C24_runtime_summary": {
+      "path": "experiments/020/execution/c24-combined-runtime-summary.json",
+      "sha256": "e02324314d822a9469088823515e83ebd64d83230bf380a614fdd3fc600c8c58"
+    },
+    "Deep6_direct_score_report": {
+      "path": "experiments/020/scoring-deep-direct-v1/score-report.json",
+      "sha256": "a7021a9c301f3e042e136aebc2bb7bc52a83ae3b7b7cf2687e87923f6f36d927"
+    },
+    "Deep6_plus_line_score_report": {
+      "path": "experiments/020/scoring-deep-direct-line-v1/score-report.json",
+      "sha256": "06706bae1377423e110ce9aae073fa262fbda76dc4049e21107819a3bcbdecf1"
+    },
+    "formal_save_verification": {
+      "path": "experiments/020/execution/final-save-verified.json",
+      "sha256": "80d78a10ee6502e67453d71a527b11a624e23d89e36d653acb459aaad161f955"
+    }
+  },
+  "input_metric_definitions": {
+    "task_input_cells": "sum of cells in every demo input and every query input; no demo outputs included",
+    "prompt_grid_cells": "sum of cells in every demo input/output and every query input; grid-cell count, not tokenizer count",
+    "query_input_cells": "number of cells per query input",
+    "actual_prompt_tokens": "reported per-call usage.prompt_tokens, includes serialized prompt/template"
+  },
+  "input_metrics": {
+    "C24": {
+      "tasks": 24,
+      "queries": 26,
+      "queries_per_task": 1.0833333333333333,
+      "task_input_cells_mean": 813.7916666666666,
+      "task_input_cells_median": 486.5,
+      "prompt_grid_cells_mean": 1253,
+      "prompt_grid_cells_median": 778.0,
+      "query_input_cells_mean": 262.38461538461536,
+      "query_input_cells_median": 150.0,
+      "queries_at_least_600_cells": 4,
+      "queries_30_by_30": 2
+    },
+    "public_evaluation_120": {
+      "tasks": 120,
+      "queries": 172,
+      "queries_per_task": 1.4333333333333333,
+      "task_input_cells_mean": 1776.625,
+      "task_input_cells_median": 1678.0,
+      "prompt_grid_cells_mean": 2606.5916666666667,
+      "prompt_grid_cells_median": 2436.0,
+      "query_input_cells_mean": 505.6744186046512,
+      "query_input_cells_median": 481.5,
+      "queries_at_least_600_cells": 71,
+      "queries_30_by_30": 33
+    },
+    "Deep6_evaluation_development": {
+      "tasks": 6,
+      "queries": 9,
+      "queries_per_task": 1.5,
+      "task_input_cells_mean": 1862.1666666666667,
+      "task_input_cells_median": 1678.0,
+      "prompt_grid_cells_mean": 2898,
+      "prompt_grid_cells_median": 2456.0,
+      "query_input_cells_mean": 550.8888888888889,
+      "query_input_cells_median": 729,
+      "queries_at_least_600_cells": 5,
+      "queries_30_by_30": 3
+    }
+  },
+  "public_evaluation_over_C24_ratios": {
+    "median_task_input_cells": 3.44912641315519,
+    "median_prompt_grid_cells": 3.1311053984575836,
+    "median_query_input_cells": 3.21
+  },
+  "actual_generation_metrics": {
+    "C24": {
+      "calls": 24,
+      "prompt_tokens_sum": 64558,
+      "prompt_tokens_per_task_mean": 2689.9166666666665,
+      "prompt_tokens_per_task_median": 1741.5,
+      "completion_tokens": 680338,
+      "completion_tokens_per_task_mean": 28347.416666666668,
+      "completion_tokens_per_task_median": 32823.5,
+      "account_session_wall_seconds_sum": 6330.508,
+      "account_install_load_seconds_sum_inclusive": 1506.1,
+      "account_generation_seconds_sum": 4823.7,
+      "tokens_per_summed_account_generation_second": 141.04069490225345,
+      "invalid_task_count": 4,
+      "length_finish_count": 3
+    },
+    "Deep6_evaluation_development": {
+      "calls": 6,
+      "prompt_tokens_sum": 35924,
+      "prompt_tokens_per_task_mean": 5987.333333333333,
+      "prompt_tokens_per_task_median": 5093.5,
+      "completion_tokens": 246358,
+      "completion_tokens_per_task_mean": 41059.666666666664,
+      "completion_tokens_per_task_median": 43061.0,
+      "account_session_wall_seconds_sum": 2857.084,
+      "account_install_load_seconds_sum_inclusive": 968.4,
+      "account_generation_seconds_sum": 1888.5,
+      "tokens_per_summed_account_generation_second": 130.4516812284882,
+      "invalid_task_count": 1,
+      "length_finish_count": 1
+    }
+  },
+  "C24_scoring_and_coverage": {
+    "planned_queries": 26,
+    "input_matched_queries": 26,
+    "unmatched_queries": 0,
+    "exact_queries": 17,
+    "fixed_denominator_EM_at_2": 0.6538461538461539,
+    "all_queries_exact_tasks": 16,
+    "planned_tasks": 24,
+    "actual_prediction_queries": 21,
+    "placeholder_queries": 5,
+    "placeholder_fraction": 0.19230769230769232,
+    "exact_among_actual_prediction_queries": 17,
+    "actual_prediction_conditional_exact_fraction": 0.8095238095238095,
+    "conditional_fraction_warning": "17/21 conditions on producing a valid non-placeholder prediction and excludes five failures. It is diagnostic only; it must not replace the fixed 17/26 score or be used as a competition accuracy estimate.",
+    "invalid_task_count": 4,
+    "invalid_task_completion_tokens": 189062,
+    "invalid_task_fraction_of_total_completion_tokens": 0.2778942231655442,
+    "invalid_breakdown": {
+      "ragged_JSON_grid": {
+        "tasks": 1,
+        "queries": 1
+      },
+      "length_capped_analysis_without_final_JSON": {
+        "tasks": 3,
+        "queries": 4,
+        "completion_tokens": 147456
+      }
+    },
+    "CPU_line_admitted_tasks": 0,
+    "M0_M1_identical": true,
+    "different_valid_two_slot_predictions": 0,
+    "interpretation": "Absolute accuracy of the fixed direct policy on this public-training cohort, not measured CPU gain or an independent M0/M1 comparison."
+  },
+  "provenance_and_selection_limits": {
+    "C24_in_007_holdout": 24,
+    "C24_in_007_train": 0,
+    "C24_public_evaluation_intersection": [],
+    "C24_selection_rule": "Start from original 007 holdout100. Exclude all 24 task IDs scored in 008 local-audit.queries and the six 010 probe_P12.H_new task IDs (342dd610 overlaps): 29 excluded, 71 remain. Take all 20 remaining non-ARC1 tasks. For the 26 remaining old ARC1 evaluation tasks, sort by (total_input_cells, task_id), split by [i*n//4:(i+1)*n//4], and choose the smallest (sha256(UTF-8 20261020:C24:+task_id), task_id) in each quartile. No query gold or candidate quality is used.",
+    "upstream_model_training_exposure": "unknown: project holdout membership does not establish absence from upstream pretraining or fine-tuning; neither contamination nor model-unseen status is proven",
+    "training_vs_evaluation_difficulty": "A substantial input-size and query-count distribution shift is measured. Those statistics alone do not establish intrinsic semantic difficulty or a causal explanation for leaderboard performance.",
+    "Deep6_scope": "Six development tasks/nine original queries, eight matched queries. Direct1 got 2/8 from one task; CPU addition produced 3/8 across two tasks, including the manually developed e376 rule. No matched comparison against historical 30.14 and no representative evaluation expansion were completed before the submitted v1.",
+    "ordinary_Save_and_Run": "CPU-only output generation: one predicted query plus 171 placeholders, no model validation. Completion of that branch does not establish full hidden model coverage."
+  },
+  "budget_scenario_definitions": {
+    "session_budget_seconds": 41400,
+    "generation_stop_margin_seconds": 300,
+    "stop_new_request_margin_seconds": 600,
+    "formulas": {
+      "usable_generation_seconds": "41400 - assumed_load_seconds - 300",
+      "equivalent_tasks": "usable_generation_seconds * observed_aggregate_completion_tokens_per_second / observed_mean_completion_tokens_per_task",
+      "estimated_session_hours": "(assumed_task_count * observed_mean_completion_tokens_per_task / observed_aggregate_completion_tokens_per_second + assumed_load_seconds + 300) / 3600"
+    },
+    "important_limit": "240 tasks is explicitly a conditional scenario, not a verified hidden task count. These two estimates are neither measured hidden coverage nor guaranteed bounds. They ignore changed hidden task lengths, dynamic batching, deadline tails and stochastic costs; stopping new requests 600 seconds before session end may further limit completion. A 120-task scenario differs materially."
+  },
+  "conditional_budget_scenarios": {
+    "C24": {
+      "assumed_model_policy": "same frozen Direct1 configuration",
+      "assumed_task_count": 240,
+      "assumed_loading_seconds": 753.05,
+      "loading_basis": "mean of the two observed C24 account loads",
+      "assumed_generation_tokens_per_second": 141.04069490225345,
+      "assumed_completion_tokens_per_task": 28347.416666666668,
+      "available_generation_seconds": 40346.95,
+      "equivalent_tasks_at_observed_mean_cost": 200.7435785807575,
+      "equivalent_fraction_of_assumed_240_tasks": 0.8364315774198229,
+      "estimated_240_task_generation_hours": 13.399166666666666,
+      "estimated_240_task_session_hours_including_load_and_margin": 13.691680555555557,
+      "estimated_120_task_session_hours_including_load_and_margin": 6.992097222222222
+    },
+    "Deep6_evaluation_development": {
+      "assumed_model_policy": "same frozen Direct1 configuration",
+      "assumed_task_count": 240,
+      "assumed_loading_seconds": 968.4,
+      "loading_basis": "observed Deep6 account load",
+      "assumed_generation_tokens_per_second": 130.4516812284882,
+      "assumed_completion_tokens_per_task": 41059.666666666664,
+      "available_generation_seconds": 40131.6,
+      "equivalent_tasks_at_observed_mean_cost": 127.50309769658459,
+      "equivalent_fraction_of_assumed_240_tasks": 0.5312629070691025,
+      "estimated_240_task_generation_hours": 20.983333333333334,
+      "estimated_240_task_session_hours_including_load_and_margin": 21.335666666666665,
+      "estimated_120_task_session_hours_including_load_and_margin": 10.844000000000001
+    }
+  },
+  "causal_conclusion": "These artifacts establish a validation-distribution gap and unresolved full-run coverage risk. They do not prove that upstream contamination, harder hidden tasks, time truncation, or any one of these caused the actual competition score. Hidden runtime observables are required for attribution.",
+  "actions_in_this_summary": {
+    "new_GPU_or_model_calls": 0,
+    "new_solver_experiments": 0,
+    "query_answer_grids_read": false,
+    "source_or_frozen_prediction_edits": false,
+    "documentation_edits": false,
+    "competition_actions": false
+  }
+}

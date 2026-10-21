@@ -1,0 +1,319 @@
+{
+  "recorded_at_utc": "2026-10-21T09:21:37.367042+00:00",
+  "scope": "Read-only audit of the submitted frozen v1, plus manual in-memory branch evaluation; no source or submission edits, GPU, new submit, or hidden query gold.",
+  "candidate": {
+    "kernel_ref": "ccjjllt/arc2-020-deep-direct-submission",
+    "kernel_version": 1,
+    "script_version_id": 360461153,
+    "competition_submission_ref": 57443913,
+    "notebook_evidence": {
+      "path": "experiments/020/kaggle/final-direct-ccjjllt/arc2-020-deep-direct-submission.ipynb",
+      "sha256": "10d897e38a7563fabe1246542b903c12344f672ffad20481db808413975c3783"
+    },
+    "verified_remote_source_match_evidence": {
+      "path": "experiments/020/execution/final-save-verified.json",
+      "sha256": "80d78a10ee6502e67453d71a527b11a624e23d89e36d653acb459aaad161f955"
+    },
+    "embedded_source_SHA256": {
+      "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+      "ordinary_cpu.py": "47942bb0957f6ed8d6cfe09a31e4a36666416ef92fbc8a60914d45d1c484d7aa",
+      "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+      "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+      "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+      "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124",
+      "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7"
+    },
+    "submitted_binding_evidence": {
+      "path": "experiments/020/execution/competition-submission.json",
+      "sha256": "f5e139fa34fb3a9798395104179b4735e1f3745916f66b6b24d9375337d24969"
+    }
+  },
+  "rerun_branch": {
+    "environment_key": "KAGGLE_IS_COMPETITION_RERUN",
+    "environment_written_by_notebook": false,
+    "ordinary_condition": "True and not IS_RESEARCH and not rerun; frozen IS_RESEARCH=False",
+    "exact_frozen_function": "def rerun_mode(value):\n    if value is None or value == '':\n        return False\n    normalized = value.strip().lower()\n    if normalized in ('1', 'true', 'yes'):\n        return True\n    if normalized in ('0', 'false', 'no'):\n        return False\n    raise ValueError('unexpected nonempty KAGGLE_IS_COMPETITION_RERUN')",
+    "manual_in_memory_results": [
+      {
+        "environment_value": null,
+        "rerun": false,
+        "ordinary_cpu": true,
+        "script": "ordinary_cpu.py",
+        "session_seconds": 300,
+        "input_filename": "arc-agi_evaluation_challenges.json"
+      },
+      {
+        "environment_value": "",
+        "rerun": false,
+        "ordinary_cpu": true,
+        "script": "ordinary_cpu.py",
+        "session_seconds": 300,
+        "input_filename": "arc-agi_evaluation_challenges.json"
+      },
+      {
+        "environment_value": "false",
+        "rerun": false,
+        "ordinary_cpu": true,
+        "script": "ordinary_cpu.py",
+        "session_seconds": 300,
+        "input_filename": "arc-agi_evaluation_challenges.json"
+      },
+      {
+        "environment_value": "False",
+        "rerun": false,
+        "ordinary_cpu": true,
+        "script": "ordinary_cpu.py",
+        "session_seconds": 300,
+        "input_filename": "arc-agi_evaluation_challenges.json"
+      },
+      {
+        "environment_value": "0",
+        "rerun": false,
+        "ordinary_cpu": true,
+        "script": "ordinary_cpu.py",
+        "session_seconds": 300,
+        "input_filename": "arc-agi_evaluation_challenges.json"
+      },
+      {
+        "environment_value": "no",
+        "rerun": false,
+        "ordinary_cpu": true,
+        "script": "ordinary_cpu.py",
+        "session_seconds": 300,
+        "input_filename": "arc-agi_evaluation_challenges.json"
+      },
+      {
+        "environment_value": "true",
+        "rerun": true,
+        "ordinary_cpu": false,
+        "script": "vdriver020_submit.py",
+        "session_seconds": 41400,
+        "input_filename": "arc-agi_test_challenges.json"
+      },
+      {
+        "environment_value": "True",
+        "rerun": true,
+        "ordinary_cpu": false,
+        "script": "vdriver020_submit.py",
+        "session_seconds": 41400,
+        "input_filename": "arc-agi_test_challenges.json"
+      },
+      {
+        "environment_value": "1",
+        "rerun": true,
+        "ordinary_cpu": false,
+        "script": "vdriver020_submit.py",
+        "session_seconds": 41400,
+        "input_filename": "arc-agi_test_challenges.json"
+      },
+      {
+        "environment_value": "yes",
+        "rerun": true,
+        "ordinary_cpu": false,
+        "script": "vdriver020_submit.py",
+        "session_seconds": 41400,
+        "input_filename": "arc-agi_test_challenges.json"
+      },
+      {
+        "environment_value": " TRUE ",
+        "rerun": true,
+        "ordinary_cpu": false,
+        "script": "vdriver020_submit.py",
+        "session_seconds": 41400,
+        "input_filename": "arc-agi_test_challenges.json"
+      },
+      {
+        "environment_value": "unexpected",
+        "exception": "ValueError:unexpected nonempty KAGGLE_IS_COMPETITION_RERUN",
+        "generation_started": false
+      },
+      {
+        "environment_value": " ",
+        "exception": "ValueError:unexpected nonempty KAGGLE_IS_COMPETITION_RERUN",
+        "generation_started": false
+      }
+    ],
+    "finding": "No supported true value accidentally selects ordinary CPU. Only absent/empty/recognized false values select ordinary; unknown nonempty values raise. We do not possess the actual hidden-run environment or boot record, so cannot prove the flag received for submission57443913.",
+    "evidence_limitation": "Prior public Notebook conventions and our ordinary boot are not primary proof of the current hidden flag. The official platform documentation confirms private reruns, not this run's actual environment."
+  },
+  "input_selection": {
+    "hidden_exact_name": "arc-agi_test_challenges.json",
+    "ordinary_exact_name": "arc-agi_evaluation_challenges.json",
+    "root": "/kaggle/input",
+    "uniqueness": "Path.rglob exact filename; require exactly1 file, else ValueError; no fallback from missing hidden test to evaluation.",
+    "query_gold_used_by_driver": false,
+    "finding": "With rerun=True the code cannot silently choose the public evaluation file. With rerun=False it deliberately chooses evaluation and ordinary CPU; whether hidden scoring received false/absent is unknown."
+  },
+  "timer": {
+    "first_code_cell_clock": "time.monotonic before unpacking/install/load",
+    "hidden_total_seconds": 41400,
+    "setup_deadline_seconds_from_first_cell": 1200,
+    "stop_new_HTTP_seconds_from_first_cell": 40800,
+    "stop_generation_seconds_from_first_cell": 41100,
+    "parent_first_wait_limit_seconds_from_first_cell": 41355,
+    "parent_cleanup": "SIGTERM driver group; if still alive bounded wait then SIGKILL recorded server-pgid and driver group.",
+    "finding": "Clock is not reset after model load. The hidden budget includes install, load, prompt tokenization and CPU work. This handles time but does not allocate per-task completion tokens for full coverage."
+  },
+  "assets_and_startup": {
+    "frozen_sources": {
+      "id": 139839570,
+      "ref": "ccjjllt/arc2-020-deep-direct-submission",
+      "current_version_number": 1,
+      "is_private": true,
+      "enable_gpu": true,
+      "enable_tpu": false,
+      "enable_internet": false,
+      "machine_shape": "NvidiaL4",
+      "competition_data_sources": [
+        "arc-prize-2026-arc-agi-2"
+      ],
+      "dataset_data_sources": [],
+      "model_data_sources": [
+        "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1"
+      ],
+      "kernel_data_sources": [
+        "ccjjllt/arc2-020-runtime-recovery"
+      ]
+    },
+    "carrier": "ccjjllt/arc2-020-runtime-recovery v1; private, same owner as submitted notebook",
+    "carrier_verification": {
+      "path": "experiments/020/execution/runtime-recovery-carriers.json",
+      "sha256": "d4e9463e3721fc9c05ce8c4df66eace958493aa4a0d9e0fb6628c0c304324763"
+    },
+    "model": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1",
+    "working_mount_evidence": {
+      "C24_cc_run": {
+        "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/run.json",
+        "sha256": "7a2c3dc3da787becdd702bd88587253f1fea08a3b17131298eb6d1d59c625008"
+      },
+      "C24_cc_status": "complete_with_evidence",
+      "C24_cc_model_calls": 8,
+      "C24_cc_install_load_seconds": 719.5,
+      "C24_cc_server_log": {
+        "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/vllm-server.log",
+        "sha256": "9473bcd1f573ebff28d002b699912a20a225b2ec98d03c3a24db966873ea0320"
+      }
+    },
+    "finding": "Same-owner private kernel output mounted and served successfully in C24, and official v1 remote metadata retained that kernel source and model. Ordinary CPU Save success did not load them. Current hidden-run input permissions, mounts and startup are not visible in these artifacts."
+  },
+  "concrete_fail_open_mechanism": {
+    "status": "Code-confirmed mechanism; actual trigger in submission57443913 unconfirmed",
+    "sequence": [
+      "Initialize complete task/query submission slots as [[0]] before model mounts, wheel validation or installation.",
+      "Most infrastructure failures return finish(status) without a nonzero code; finish defaults to0.",
+      "Notebook only asserts process rc==0, so such an infrastructure failure can complete normally and leave placeholders as the scoring file.",
+      "Trusted CPU line complement is after server startup, so startup failures do not even populate that complement."
+    ],
+    "examples": [
+      "env_incompatible_python_*",
+      "mount_missing",
+      "vllm_wheel_missing",
+      "vllm_wheel_hash_mismatch",
+      "install_failed",
+      "import_vllm_failed",
+      "serve_failed"
+    ],
+    "finish_return_sites": [
+      {
+        "line": 379,
+        "status": "executor_infra_failed_before_install",
+        "return_code_argument": "2"
+      },
+      {
+        "line": 392,
+        "status": "cpu_repair_mechanism_failed_before_install",
+        "return_code_argument": "2"
+      },
+      {
+        "line": 395,
+        "status": "f\"env_incompatible_python_{py.major}_{py.minor}\"",
+        "return_code_argument": 0
+      },
+      {
+        "line": 401,
+        "status": "mount_missing",
+        "return_code_argument": 0
+      },
+      {
+        "line": 412,
+        "status": "vllm_wheel_missing",
+        "return_code_argument": 0
+      },
+      {
+        "line": 419,
+        "status": "vllm_wheel_hash_mismatch",
+        "return_code_argument": 0
+      },
+      {
+        "line": 429,
+        "status": "no_pip_for_312_and_no_fallback",
+        "return_code_argument": 0
+      },
+      {
+        "line": 443,
+        "status": "install_timeout_over_20min",
+        "return_code_argument": 0
+      },
+      {
+        "line": 448,
+        "status": "install_failed",
+        "return_code_argument": 0
+      },
+      {
+        "line": 455,
+        "status": "vllm_wheel_install_timeout",
+        "return_code_argument": 0
+      },
+      {
+        "line": 460,
+        "status": "vllm_wheel_install_failed",
+        "return_code_argument": 0
+      },
+      {
+        "line": 468,
+        "status": "import_vllm_failed",
+        "return_code_argument": 0
+      },
+      {
+        "line": 473,
+        "status": "install_load_over_20min",
+        "return_code_argument": 0
+      },
+      {
+        "line": 481,
+        "status": "serve_failed",
+        "return_code_argument": 0
+      },
+      {
+        "line": 493,
+        "status": "executor_infra_failed",
+        "return_code_argument": 0
+      },
+      {
+        "line": 844,
+        "status": "('partial_with_evidence' if partial else 'complete_with_evidence') if ok else 'execution_incomplete'",
+        "return_code_argument": "0 if ok else 2"
+      }
+    ],
+    "diagnostic_implication": "A low completed score alone cannot establish model inference or distinguish poor reasoning from hidden startup failure. Require hidden boot/run status, model-call count or equivalent telemetry before assigning cause."
+  },
+  "submission_API": {
+    "local_official_SDK_evidence": {
+      "path": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kaggle/api/kaggle_api_extended.py",
+      "sha256": "210e589ab1f7359ffb560aacfe1c003ac1bc844c366f4ff709bf3d13de4d5458"
+    },
+    "installed_cli_version": "2.2.4",
+    "method_used": "competition_submit_code -> create_code_submission(ApiCreateCodeSubmissionRequest)",
+    "bound_kernel_version": 1,
+    "bound_script_version_id_from_listed_submission_URL": 360461153,
+    "not_used": "competition_submit local-file upload -> start_submission_upload/create_submission",
+    "finding": "The accepted competition record binds the code version. A warning inside a third-party public source about CLI floor submission does not prove this code-submission method uploaded the ordinary artifact."
+  },
+  "official_platform_source": {
+    "url": "https://www.kaggle.com/code-competition-debugging",
+    "reviewed": "2026-10-21",
+    "supports": "Kaggle privately executes the notebook end-to-end with a replaced hidden dataset, validates the run, then extracts and scores the output file.",
+    "does_not_establish": "Actual flag value, hidden execution telemetry, private-input mount success or model startup for this particular submission."
+  },
+  "conclusion": "The frozen branch selector is internally consistent, but hidden execution is unverified. The strongest concrete code risk found is fail-open infrastructure exits leaving a valid placeholder submission, alongside already-known budget/coverage risk; no observed artifact establishes which cause produced the reported low score."
+}

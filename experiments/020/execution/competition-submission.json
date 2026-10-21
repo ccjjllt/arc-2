@@ -25,7 +25,7 @@
       51954464
     ]
   },
-  "stage": "submission_list_verified",
+  "stage": "competition_score_complete",
   "final_selection_manually_modified": false,
   "response": {
     "ref": 57443913
@@ -79,5 +79,23 @@
     "private_score": "",
     "error_description": "",
     "source": "official SDK get_submission; no create call"
+  },
+  "completed_score_observation": {
+    "checked_at_utc": "2026-10-21T09:18:18.513867+00:00",
+    "source": "official SDK get_submission(ref57443913) and competition_submissions; captured this turn",
+    "ref": 57443913,
+    "status": "COMPLETE",
+    "public_score": "12.50",
+    "private_score": null,
+    "error_description": null,
+    "total_bytes": 253680,
+    "linked_script_version_id": 360461153,
+    "historical_public_scores": {
+      "52072735": "30.14",
+      "57103498": "25.69"
+    },
+    "delta_vs_historical_best_points": -17.64,
+    "hidden_runtime_coverage_and_predictions": "not_obtained; download SDK403/raw401; see submission-rerun-observability-20261021.json",
+    "final_selection_manually_modified": false
   }
 }

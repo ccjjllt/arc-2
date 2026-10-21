@@ -6,7 +6,7 @@
 
 金牌仍是项目目标；近期先争取超过历史公榜 **30.14**，再依据新成绩和实际名次决定冲牌投入。**目前没有证据证明现有27B方案能超过30.14或拿牌。** 本计划将方法增益、公开集准确率、公榜变化分开验证，不用合法输出覆盖率代替解题能力。
 
-本文件记录本轮实施方案。**执行结果：单次长思考Direct1加CPU补槽已正式提交，submission `57443913`，Notebook `ccjjllt/arc2-020-deep-direct-submission` v1 / scriptVersionId `360461153`，15:59:07 UTC回查PENDING，尚无榜分。C24两片全部完成，固定预测为17/26（65.38%），非ARC1部分14/22、旧ARC1部分3/4；它来自项目training留出，不是隐藏成绩。** 见[真实提交凭据](../../experiments/020/execution/competition-submission.json)、[C24评分](../../experiments/020/scoring-c24-v1/score-report.json)和[020进展](../progress/020-score-validation-and-real-submission.md)最新章节。原程序反馈配置已结束；开发Deep6的直出2/8、CPU补槽3/8不作为泛化确认。普通Save & Run仅CPU产文件（1预测、171占位，无模型），隐藏评分使用同一C24模型政策、41400秒；平台timeout请求43200秒。正式提交先于C24评分发出，以并行计分与研究尾部；未用C24答案修改该版本。
+本文件记录本轮实施方案。**最新实际结果：正式提交57443913已COMPLETE，公榜12.50，低于历史30.14，本轮未实现提分。** 固定v1/scriptVersionId360461153；C24的17/26仅为training项目留出，未构成隐藏榜分或奖牌证据。详见[020进展§27低分复盘](../progress/020-score-validation-and-real-submission.md#27-正式公榜1250与低分复盘)及[平台得分记录](../../experiments/020/execution/competition-submission.json)。下文保留执行方案与此前时间点结论；隐藏实际覆盖和运行日志仍未取得，不能把预算估算写成已发生根因。
 
 ## 1 必须继承的研究结论
 
@@ -206,3 +206,7 @@ D已读取全量task/query并初始化完整文件，CPU真实预测与占位分
 最新已读额度为ccjjllt **1.0853h**、jiyujia **0.7427h**、zhuating **25.5347h**（约15:38 UTC），qingyu1232 **2.2787h**（15:51:39 UTC，C24已完成、reserved0）。均为配额小时，不是L4墙钟；账号不相加为单会话额度。先用qi能完成的有用研究块，cc/ji小尾数需含加载、有效生成和收尾，不为清零空跑；之后必要时用zhuating，注意其ARC3并发与实时余额。隐藏评分是否扣普通quota仍未确认，当前PENDING不能证明免费。见[提交后快照](../../experiments/020/execution/post-submit-state-and-quota.json)与[qi完成后快照](../../experiments/020/execution/quota-after-c24-qingyu1232.json)。
 
 奖牌差距参照：[10月20日23:24北京时间快照](../../experiments/020/evidence/medal-snapshot-20261020.json)中官方metadata为3090队，本账号rank1053；按官方索引的标准规则算金牌前16个位置，公榜第16个返回位置64.72。实时榜行不提供独立rank字段；标准规则页面实时更新未完全回读，且最终私榜与人数仍会变化，**64.72不是最终金牌线，也不能与C24的65.38%相比较**。只在真实新public_score返回后判断本轮是否超过历史30.14，再制定冲牌投入。
+
+## 11 正式分数返回后的结论修订
+
+2026-10-21 17:18北京时间实查正式公榜12.50；第10节“尚未取得榜分”是此前交接快照，已被本节与progress§27更新。停止原样重投此配置，不将它视为已经证明提分的方案。后续重点是代表性evaluation准确率、最终网格交付和完整预算分配，并验证实际双槽组合；不以training留出分数、模型更大、GPU忙碌率或文件合法作为提高榜分的替代证据。本次复盘未启动新GPU或修改冻结提交。

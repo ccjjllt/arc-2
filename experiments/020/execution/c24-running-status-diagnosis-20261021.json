@@ -1,0 +1,30 @@
+{
+  "checked_at_utc": "2026-10-21T00:56:43.379760+00:00",
+  "username": "ccjjllt",
+  "kernel_ref": "ccjjllt/arc2-020-c24-deep-direct",
+  "latest_saved_status": {
+    "status": "COMPLETE"
+  },
+  "metadata_summary": {
+    "id": 139832079,
+    "ref": "ccjjllt/arc2-020-c24-deep-direct",
+    "title": "arc2-020-c24-deep-direct",
+    "lastRunTime": "2026-10-18T00:56:40.081Z",
+    "enableGpu": true,
+    "currentVersionNumber": 3,
+    "machineShape": "NvidiaL4"
+  },
+  "version_label_status_lookup": "version_label=3 returned404; default latest status COMPLETE; not interpreted as deleted or failed",
+  "GPU_quota": {
+    "total_seconds": 108000.0,
+    "used_seconds": 106541.149,
+    "reserved_seconds": 0.0,
+    "available_seconds": 1458.850999999995,
+    "earlier_check_utc": "2026-10-21T00:55:14Z",
+    "earlier_used_seconds": 106541.149,
+    "used_seconds_delta_since_earlier_check": 0.0
+  },
+  "local_run_exit_utc": "2026-10-20T15:18:09Z",
+  "local_driver_exit": "complete_with_evidence; VDRIVER_RETURN_CODE 0 and nbconvert completed",
+  "diagnosis": "Saved latest run is COMPLETE. User-reported UI Running could be stale display or a separate interactive draft session; current UI not accessible through enabled browser tools. No session cancelled."
+}
