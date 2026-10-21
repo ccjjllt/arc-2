@@ -4,7 +4,7 @@
 
 比赛：[Kaggle ARC Prize 2026 — ARC-AGI-2](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview)。
 
-**当前研究入口（2026-10-21）**：[021交接方案](docs/plan/021-nvarc-complementarity-handoff.md)与[021调研进展](docs/progress/021-nvarc-complementarity-handoff.md)。已核对官方条件、归档33.89对应的Failed in AIMO V1并保存109个新增生成器清单。NVARC V1 E20已获接受，但最近日志仍为0/27生成且输出状态未确认；三臂对照与续训尚未运行。
+**当前研究入口（2026-10-21）**：[021交接方案](docs/plan/021-nvarc-complementarity-handoff.md)与[021实际进展](docs/progress/021-nvarc-complementarity-handoff.md#7-27b-e20执行结束与源码归档范围)。4B E20首轮V1因模型加载超时结束，未进入TTT/搜索，不评价模型得分；V3本地复制与串行加载方案已准备但未运行。20:59北京时间启动的27B E20单轮32K候选观察已执行结束，候选输出尚未评分，不代表比赛成绩。CPU解析回放新增合法/正确均0。
 
 **最新实际成绩**：[020低分复盘](docs/progress/020-score-validation-and-real-submission.md#27-正式公榜1250与低分复盘)。正式提交 **57443913** 已COMPLETE，公榜 **12.50**，低于历史30.14，未实现提分。C24固定17/26为training来源项目留出，不能外推榜分；隐藏实际覆盖/日志尚未取得。
 

@@ -1,0 +1,13 @@
+{
+  "checked_at_utc": "2026-10-21T13:01:19.465964+00:00",
+  "account": "zhuating",
+  "quota_refresh_time_utc": "2026-10-24T00:00:00",
+  "gpu": {
+    "total_seconds": 108000.0,
+    "used_seconds": 46086.559522,
+    "reserved_seconds": 86149.546985,
+    "available_seconds": 0,
+    "available_hours": 0.0
+  },
+  "scope": "Read-only identity and quota; no credential values recorded, no job launch."
+}

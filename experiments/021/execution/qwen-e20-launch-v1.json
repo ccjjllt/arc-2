@@ -1,0 +1,21 @@
+{
+  "requested_at_utc": "2026-10-21T12:59:10.331951+00:00",
+  "account": "zhuating",
+  "intended_ref": "zhuating/arc2-021-qwen-e20-direct32k",
+  "notebook_sha256": "c69c98b6caf4960b866464e6a1944f0b0ee88a706185c3e2622194fbd78d6cdb",
+  "session_seconds": 7200,
+  "platform_timeout_requested": 7800,
+  "available_quota_seconds_before": 62293.029723,
+  "reserved_quota_seconds_before": 0.0,
+  "tasks": 20,
+  "queries": 27,
+  "purpose": "Independent E20 27B Direct1 candidate coverage diagnosis, not budget-equivalent deployment B2 or competition submission.",
+  "state": "accepted",
+  "response": {
+    "ref": "/code/zhuating/arc2-021-qwen-e20-direct32k",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-021-qwen-e20-direct32k",
+    "versionNumber": 1,
+    "kernelId": 140024619
+  },
+  "returned_at_utc": "2026-10-21T12:59:13.544926+00:00"
+}

@@ -71,9 +71,57 @@ Deep6原9个query中1个未匹配，仍另列，未强行纳入分母。旧解�
 
 结论：此项解析改动在这两组实际产物上没有新增合法或正确预测，不为它单开GPU。后续27B候选研究沿用已核实解析，将预算用于完整4B和候选互补。
 
-## 3 E20 V1 启动状态（2026-10-21）
+## 3 完整4B首轮已启动
+
+2026-10-21 **20:30:54北京时间**，按实时余额在zhuating发起私有研究Notebook [arc2-021-nvarc-v1-e20](https://www.kaggle.com/code/zhuating/arc2-021-nvarc-v1-e20) **V1**，平台返回kernelId `140020539`。这是公开E20研究，未调用比赛提交接口。
+
+- 冻结Notebook SHA `d92bbf69aeb815f407a21bc8e12258df1e5b3b36006ecf494875a9dfbdd3b346`，输入20task／27query，模型与Unsloth Utility Script、旧镜像均与原V1对应。
+- 原`arc_loader.py`、`arc_decoder.py`字节相同，直接使用原`score_kgmon`；其余改动为显式输入/挂载、每task及总截止、真实TTT与候选计量、落盘和错误退出。
+- 启动前可用配额66401.861秒；研究上限6000秒，向平台请求6600秒上限；每task660秒，180秒收尾。
+- [启动凭据](../../experiments/021/execution/nvarc-e20-launch-v1.json)、[远端版本与挂载](../../experiments/021/execution/nvarc-e20-v1-remote-metadata.json)、[打包manifest](../../experiments/021/kaggle-e20-v1/source-manifest.json)分别保存。实时API已观察RUNNING；效果未评分。
+
+运行日志确认原Utility Script实际挂载为`/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch`，首个进度事件出现在首cell时钟约329秒。此时尚无已落盘候选；不能把该时点的零覆盖写成最终正确率，也未据此确认所有worker已完成模型加载。
+
+源码审阅发现每task660秒可能被DFS耗尽，导致其返回候选来不及重评分。已另备[V2研究包](../../experiments/021/kaggle-e20-v2/source-manifest.json)：DFS预留60秒评分，额外保存未重评分raw beams，优先检查已确认的utility路径，并在progress列出worker阶段。**V2未启动**，已运行V1保持冻结；切换与否待首轮实际证据，不在运行中改文件。
+
+另已准备[27B E20单臂候选观察包](../../experiments/021/qwen-e20/README.md)，32K总生成、24K思考、原FP8/TP4/C8/MTP2。它是全E20候选覆盖研究，不是部署等预算的B2；尚未启动，不计作互补结果。
+
+## 4 E20 V1 启动状态补记（2026-10-21）
 
 - V1 E20 Notebook `zhuating/arc2-021-nvarc-v1-e20` 已被平台接受，申请6000秒研究会话；该任务不是比赛提交。启动和包信息见 `experiments/021/execution/nvarc-e20-launch-v1.json`。
 - 最近归档的日志事件在elapsed 602.15秒时仍为0/27已生成query、27个占位、0个候选文件；日志轮询曾报告连接丢失并重连。输出枚举当时返回空文件列表，见 `nvarc-e20-v1-direct-live.log`、`nvarc-e20-v1-live.log` 与 `nvarc-e20-v1-output-status.json`。
 - 因此截至该次取证，远端最终状态、训练/搜索是否继续、结果文件和评分均未确认；没有声称COMPLETE或模型效果。后续应先恢复只读状态与输出检查，避免重复启动或重跑。
 - V2 Notebook及其时钟/进度改动已打包，但尚无推送或运行证据。V1/提取源码归档附Apache-2.0许可副本。
+
+官方比赛挂载本身包含公开solutions文件；本次研究包仅内嵌固定challenge输入，代码没有读取这些solutions，也没有把query答案交给模型。源码注释中“no solutions are mounted”表述过宽，不能据该注释声称整个官方挂载不存在答案。
+
+本机系统代理在执行中出现Kaggle API连接重置；进程级直连曾成功回查RUNNING及V1挂载，随后也有握手超时。没有修改系统代理、TLS验证或凭据。因无法取得新的可靠配额快照，未追加27B或V2 GPU作业；[有界只读网络诊断](../../experiments/021/execution/network-diagnosis.json)单独记录各次尝试。日志中的阶段零候选不是最终评分。V1平台6600秒与内部6000秒上限均已记录。
+
+## 5 V1结束为加载超时与27B独立观察启动
+
+**前节的中途状态已被本节更新。** 2026-10-21 20:54北京时间重新读到V1为ERROR，并下载本次完整运行记录。精确输出URL会话ID为`360780134`；[结果摘要与文件哈希](../../experiments/021/execution/nvarc-e20-v1-result.json)、[原运行记录](../../experiments/021/kaggle-e20-output-v1/021-run/run.json)、[worker日志](../../experiments/021/kaggle-e20-output-v1/021-run/worker.log)均保留。
+
+- 首cell总耗时1229.14秒，`stop_reason=model_load_deadline`，900秒加载阶段结束时`loaded_workers=[]`。
+- 三个worker停在`Loading checkpoint shards: 0/2`，第四个只到Unsloth import banner；GPU0—2各峰7166MiB、GPU3峰3MiB，89次采样的GPU忙碌率接近零。
+- **未进入TTT或搜索，0个真实候选，27query均占位。** 不读取gold给全占位作“模型0分”，该轮无解题效果评价。
+- 加载函数参数和实际库版本与013成功版一致；013曾记录约119秒完成一个worker的完整加载。现有证据支持查冷挂载I/O或宿主机资源争用，但没有充分证据确定根因。
+
+准备V3修复包：先将同一权重完整复制一份到`/kaggle/temp`，记录每文件bytes/哈希/耗时，再按完整model-loaded顺序加载四个worker，全部ready后同时开始TTT；增加加载阶段host RAM信息。保留V2的60秒评分预留。V2不单独启动；V3启动与结果另记，不能把复制与串行加载组合成功归因于其中某一项。
+
+20:57北京时间复核zhuating余额为17.3255配额小时、reserved为0，余额变动含平台准备或其他项目用量，不能全部归为1229秒内部运行成本。20:59:10北京时间发起独立[27B E20 Direct32K](https://www.kaggle.com/code/zhuating/arc2-021-qwen-e20-direct32k) **V1**，平台已接受，kernelId `140024619`，见[启动凭据](../../experiments/021/execution/qwen-e20-launch-v1.json)。
+
+该27B会话沿用已运行的FP8/TP4/C8/MTP2与固定依赖，20task／27query每task一次Direct1，xhigh、24576思考／32768总token，总7200秒含安装加载，平台请求7800秒。它与4B加载修复的工作独立；只用于互补候选覆盖诊断，不能直接当作12小时B2融合成绩。尚无新评分，未作正式比赛提交。
+
+## 6 V3修复包与运行中的资源安排
+
+[V3研究包](../../experiments/021/kaggle-e20-v3/source-manifest.json)曾完成准备但未启动；Notebook SHA `6b83c09e04b5ffafffb5b859015bdab49bf46183227cabe0eeaaaee21bdeb67a`。设计为先向本地盘复制权重（最多600秒），再依次完整加载四个模型，全部ready后才开始求解；仍保留900秒总模型加载上限、每task660秒和6000秒总会话。模型、TTT、增强及原选2不变，保留V2的评分预留。生成源码与Notebook因上游许可未明已移除，研究设计和文件哈希仅作记录。
+
+21:01北京时间[配额快照](../../experiments/021/execution/quota-zhuating-before-v3.json)显示27B会话运行期间reserved为86149.55秒，按`total − used − reserved`计算可用为0。这个预留不是实际已消耗时长，也不是本次7200秒内部预算的计量结果；不据此并发开V3，不把17小时起始余额重复分配给多个会话。先观察当前27B作业，结束后重查释放与实际余额，再运行加载修复。
+
+27B实时日志已确认固定wheel SHA匹配、requirements安装返回0；截至21:03北京时间正在安装vLLM wheel，尚未取得推理结果。依赖或服务成功与模型提分分别记录。[实时日志](../../experiments/021/execution/qwen-e20-v1-live.log)持续保存，候选评分仍未运行。
+
+## 7 27B E20执行结束与源码归档范围
+
+22:07:34北京时间，27B E20日志记录`EVIDENCE-EXIT complete_with_evidence`且`VDRIVER_RETURN_CODE 0`。日志有若干P0生成事件，但当前仓库没有冻结的完整候选输出或评分报告；因此只确认执行流程正常结束，不报告候选覆盖率、准确率或比赛分数。未启动V3，需在配额释放后重新核对余额再决定。
+
+复核上游[NVARC仓库](https://github.com/1ytic/NVARC)时，仓库根目录及`ARChitects`目录均未见许可证声明。为避免继续分发授权状态不明的上游实现，仓库不再保留NVARC派生的V1/V2/V3源码副本及其打包Notebook；V1实际运行日志、结果元数据、配置与源码哈希仍保留用于研究追溯。未来如需复现，应先确认上游许可或取得授权，再从有权获取的源码重新打包。V3仍是未运行的研究设计，不是已验证修复。

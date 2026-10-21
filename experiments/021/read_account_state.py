@@ -10,6 +10,12 @@ def main():
     parser.add_argument('--account', required=True)
     parser.add_argument('--out', required=True)
     args = parser.parse_args()
+    import requests
+    original_send = requests.Session.send
+    def bounded_send(session, request, **kwargs):
+        kwargs.setdefault('timeout', (10, 20))
+        return original_send(session, request, **kwargs)
+    requests.Session.send = bounded_send
     from kaggle.api.kaggle_api_extended import KaggleApi
     api = KaggleApi()
     api.authenticate()

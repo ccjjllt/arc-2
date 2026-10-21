@@ -1,0 +1,148 @@
+{
+  "checked_at_utc": "2026-10-21T12:49:23.040915+00:00",
+  "elapsed_seconds": 5.143,
+  "scope": "Read-only transport diagnosis; existing token used solely by official SDK; no job mutation, no TLS weakening, no system changes.",
+  "timeouts": {
+    "connect_seconds": 5,
+    "read_seconds": 12
+  },
+  "resolved_api_ips": [
+    "198.18.1.50"
+  ],
+  "system_proxy_snapshot": "<dictionary> {\n  FTPPassive : 1\n  HTTPEnable : 1\n  HTTPPort : 12450\n  HTTPProxy : 127.0.0.1\n  HTTPSEnable : 1\n  HTTPSPort : 12450\n  HTTPSProxy : 127.0.0.1\n  ProxyAutoConfigEnable : 0\n  SOCKSEnable : 1\n  SOCKSPort : 12450\n  SOCKSProxy : 127.0.0.1\n}\n",
+  "routes": [
+    {
+      "route": "direct_no_system_proxy",
+      "calls": [
+        {
+          "type": "unauthenticated_root_GET",
+          "http_status": 404,
+          "elapsed_seconds": 1.016
+        },
+        {
+          "type": "kernel_status",
+          "success": true,
+          "elapsed_seconds": 1.219,
+          "response": {
+            "status": "RUNNING"
+          }
+        },
+        {
+          "type": "quota",
+          "success": true,
+          "elapsed_seconds": 0.504,
+          "available_seconds": 20994.548090000004,
+          "reserved_seconds": 42314.713544
+        }
+      ]
+    },
+    {
+      "route": "system_proxy_discovery",
+      "calls": [
+        {
+          "type": "unauthenticated_root_GET",
+          "http_status": 404,
+          "elapsed_seconds": 1.743
+        },
+        {
+          "type": "kernel_status",
+          "success": true,
+          "elapsed_seconds": 1.765,
+          "response": {
+            "status": "RUNNING"
+          }
+        },
+        {
+          "type": "quota",
+          "success": true,
+          "elapsed_seconds": 1.145,
+          "available_seconds": 20990.637020000002,
+          "reserved_seconds": 42312.758009
+        }
+      ]
+    },
+    {
+      "route": "explicit_local_proxy",
+      "calls": [
+        {
+          "type": "unauthenticated_root_GET",
+          "http_status": 404,
+          "elapsed_seconds": 1.72
+        },
+        {
+          "type": "kernel_status",
+          "success": true,
+          "elapsed_seconds": 2.245,
+          "response": {
+            "status": "RUNNING"
+          }
+        },
+        {
+          "type": "quota",
+          "success": true,
+          "elapsed_seconds": 1.166,
+          "available_seconds": 20989.715035,
+          "reserved_seconds": 42312.297016
+        }
+      ]
+    }
+  ],
+  "credential_values_recorded": false,
+  "persistent_session_followup": {
+    "checked_at_utc": "2026-10-21T12:50:21.131518+00:00",
+    "route": "direct_no_system_proxy",
+    "calls": [
+      {
+        "type": "introspect_identity",
+        "success": false,
+        "elapsed_seconds": 0.539,
+        "error_type": "SSLError",
+        "http_status": null
+      },
+      {
+        "type": "kernel_status_1",
+        "success": false,
+        "elapsed_seconds": 0.55,
+        "error_type": "SSLError",
+        "http_status": null
+      },
+      {
+        "type": "kernel_status_2",
+        "success": false,
+        "elapsed_seconds": 0.551,
+        "error_type": "SSLError",
+        "http_status": null
+      },
+      {
+        "type": "kernel_status_3",
+        "success": false,
+        "elapsed_seconds": 0.601,
+        "error_type": "SSLError",
+        "http_status": null
+      }
+    ]
+  },
+  "conclusions": [
+    "All three routes worked at 12:49:23Z, but direct persistent-session followup failed every TLS call at 12:50:21Z. No stable route was established; a process-global TLS/proxy path is intermittent.",
+    "api.kaggle.com resolved to 198.18.1.50 in the fake-IP/benchmarking range; trust_env=False bypasses system HTTP proxy discovery but does not prove bypass of lower-level local routing/TUN.",
+    "Reusing an authenticated SDK session may reduce new handshakes, but it did not restore connectivity in the followup; use bounded backoff instead of tight new-CLI polling.",
+    "Apply timeout=(5,12) to each session.send in process; SDK call() lacks an explicit timeout. Keep normal TLS verification and bounded retries; do not change system proxy/certificates."
+  ],
+  "unauthenticated_followup": {
+    "checked_at_utc": "2026-10-21T12:50:50.702140+00:00",
+    "calls": [
+      {
+        "route": "direct",
+        "error_type": "SSLError",
+        "transport_error_message": "HTTPSConnectionPool(host='api.kaggle.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1032)')))",
+        "elapsed_seconds": 0.752
+      },
+      {
+        "route": "explicit_proxy",
+        "error_type": "SSLError",
+        "transport_error_message": "HTTPSConnectionPool(host='api.kaggle.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1032)')))",
+        "elapsed_seconds": 0.502
+      }
+    ]
+  }
+}
