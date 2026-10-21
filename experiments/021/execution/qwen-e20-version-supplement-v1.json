@@ -1,0 +1,99 @@
+{
+  "created_at_utc": "2026-10-21T14:30:50.457557+00:00",
+  "purpose": "Version-aligned supplemental scoring for the two originally demo-mismatched E20 queries only. Primary fixed-revision score and all predictions remain unchanged.",
+  "version_selection_basis": "Selected prior official revision solely because full ordered demonstrations and query inputs exactly match frozen Kaggle E20; no correctness or answer values used to select revision.",
+  "source": {
+    "repository": "arcprize/ARC-AGI-2",
+    "revision": "bebec789c46f4be8f690a321ad852ecdb1f3f362",
+    "commit_date_utc": "2025-03-25T22:43:42Z",
+    "url": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/bebec789c46f4be8f690a321ad852ecdb1f3f362/data/evaluation/d8e07eb2.json",
+    "github_url": "https://github.com/arcprize/ARC-AGI-2/blob/bebec789c46f4be8f690a321ad852ecdb1f3f362/data/evaluation/d8e07eb2.json",
+    "official_file_bytes": 33330,
+    "official_file_sha256": "379936df2dfb2a2ad650164d74616c6941d70656438ccfd9ed3768192149654c",
+    "official_git_blob_sha1": "9a004868baffd75a5234f1057e99cef7f2d540d3"
+  },
+  "frozen_inputs": {
+    "challenge_path": "experiments/020/evaluation-e20/challenges.json",
+    "challenge_sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda",
+    "task_demonstrations_sha256": "bdf1081f6a44f41568fb9e6cd84c33bdc50620a717a9dfbd2832900842d186d4",
+    "prediction_path": "experiments/021/qwen-e20-output-v1/submission.json",
+    "prediction_sha256": "3367f1cac955520dfb46a45a04296a290e1984999ffce62478df9779022a1e22",
+    "scorer_path": "experiments/020/score_frozen_outputs.py",
+    "scorer_sha256": "56f6a54e1544882ac01ccbaeb3527b5a2c03b0ae6ebd7c00e1c24ff0aef92d35",
+    "artifact_freeze": "experiments/021/execution/qwen-e20-v1-artifact-freeze.json"
+  },
+  "matching_checks": {
+    "all_ordered_demonstrations_equal": true,
+    "all_query_inputs_equal": true,
+    "demo_pairs": 5,
+    "queries": 2
+  },
+  "queries": [
+    {
+      "query_key": "d8e07eb2_0",
+      "query_index": 0,
+      "gold_match_status": "matched",
+      "official_matching_indices": [
+        0
+      ],
+      "query_input_sha256": "50c788ab30115ed66238b450c43057fc12dd4270a8708ed7b65ffbf00661462e",
+      "official_gold_sha256": "640ac61bac7bc004320f62e6b2f9c57e323548743e571d19246cb7896e99ca94",
+      "original_frozen_prediction_score": {
+        "prediction_present": true,
+        "attempt_1_valid": true,
+        "attempt_2_valid": true,
+        "both_attempt_keys_exact": true,
+        "distinct_valid_attempts": false,
+        "prediction_status": "valid",
+        "both_placeholder": true,
+        "attempt_sha256": [
+          "db407f11d7ede59abaab0e98e097ff2dae10a048207b801745d7199ef19c2387",
+          "db407f11d7ede59abaab0e98e097ff2dae10a048207b801745d7199ef19c2387"
+        ],
+        "attempt_1_exact": false,
+        "attempt_2_exact": false,
+        "exact": false
+      }
+    },
+    {
+      "query_key": "d8e07eb2_1",
+      "query_index": 1,
+      "gold_match_status": "matched",
+      "official_matching_indices": [
+        1
+      ],
+      "query_input_sha256": "de52eafab161e5da3742b8c20dd2025f400902bbb6a90a7384e248bce58333f0",
+      "official_gold_sha256": "e1597882191b79b7822bc2ac72c6e6705604a4f79b5521698aa8aa38ef6568ac",
+      "original_frozen_prediction_score": {
+        "prediction_present": true,
+        "attempt_1_valid": true,
+        "attempt_2_valid": true,
+        "both_attempt_keys_exact": true,
+        "distinct_valid_attempts": false,
+        "prediction_status": "valid",
+        "both_placeholder": true,
+        "attempt_sha256": [
+          "db407f11d7ede59abaab0e98e097ff2dae10a048207b801745d7199ef19c2387",
+          "db407f11d7ede59abaab0e98e097ff2dae10a048207b801745d7199ef19c2387"
+        ],
+        "attempt_1_exact": false,
+        "attempt_2_exact": false,
+        "exact": false
+      }
+    }
+  ],
+  "summary": {
+    "matched_queries": 2,
+    "exact_queries": 0,
+    "em2": 0.0,
+    "real_model_candidate_queries": 0,
+    "both_predictions_are_initialization_fillers": true,
+    "primary_fixed_revision_exact": 2,
+    "primary_fixed_revision_matched_queries": 25,
+    "primary_fixed_revision_unmatched_queries": 2,
+    "version_aligned_full_E20_exact": 2,
+    "version_aligned_full_E20_queries": 27,
+    "version_aligned_full_E20_em2": 0.07407407407407407,
+    "interpretation": "Supplement establishes both old-version d8e07eb2 filler predictions are wrong; combining explicitly version-matched rows gives 2/27. This is local public-E20 diagnosis, not a Kaggle score."
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "cohort": "public_evaluation_E20_020",
+  "baseline": "Original32K",
+  "planned_tasks": 20,
+  "planned_queries": 27,
+  "input_matched_queries": 25,
+  "unresolved_queries": 2,
+  "fully_input_matched_tasks": 19,
+  "input_match_status_counts": {
+    "matched": 25,
+    "demo_mismatch": 2
+  },
+  "sources": {
+    "score_report": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/021/scoring-qwen-e20-tail-json-v1/score-report.json",
+      "sha256": "1866beccb021e39b1738f7629a5ac8b3ee6dc08332893512a699d568f09af6ca"
+    },
+    "query_ledger": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/021/scoring-qwen-e20-tail-json-v1/query-ledger.jsonl",
+      "sha256": "73a33a67bfac0707a058e555a338450af4c23037c5687726c5bc8c808b289e9e"
+    },
+    "candidate_pools": []
+  },
+  "policies": {
+    "Original32K": {
+      "exact_queries": 2,
+      "matched_query_denominator": 25,
+      "query_micro_em2": 0.08,
+      "all_queries_exact_tasks": 2,
+      "fully_matched_task_denominator": 19,
+      "full_task_exact_rate": 0.10526315789473684,
+      "prediction_status_counts": {
+        "valid": 27
+      },
+      "prediction_present_queries": 27,
+      "valid_queries": 27,
+      "distinct_valid_two_slots_queries": 0,
+      "both_slots_equal_zero_1x1_queries": 9,
+      "exact_queries_with_both_slots_zero_1x1": 0,
+      "slot_1_exact_queries": 2,
+      "slot_2_exclusive_exact_queries": 0
+    },
+    "TailJSON32K": {
+      "exact_queries": 2,
+      "matched_query_denominator": 25,
+      "query_micro_em2": 0.08,
+      "all_queries_exact_tasks": 2,
+      "fully_matched_task_denominator": 19,
+      "full_task_exact_rate": 0.10526315789473684,
+      "prediction_status_counts": {
+        "valid": 27
+      },
+      "prediction_present_queries": 27,
+      "valid_queries": 27,
+      "distinct_valid_two_slots_queries": 0,
+      "both_slots_equal_zero_1x1_queries": 8,
+      "exact_queries_with_both_slots_zero_1x1": 0,
+      "slot_1_exact_queries": 2,
+      "slot_2_exclusive_exact_queries": 0
+    }
+  },
+  "comparisons": {
+    "TailJSON32K_vs_Original32K": {
+      "new_queries": 0,
+      "lost_queries": 0,
+      "net_queries": 0,
+      "micro_em2_delta": 0.0,
+      "new_query_keys": [],
+      "lost_query_keys": [],
+      "new_task_ids": [],
+      "lost_task_ids": [],
+      "baseline_slot_2_exclusive_lost_query_keys": []
+    },
+    "Original32K_vs_TailJSON32K": {
+      "new_queries": 0,
+      "lost_queries": 0,
+      "net_queries": 0,
+      "micro_em2_delta": 0.0,
+      "new_query_keys": [],
+      "lost_query_keys": [],
+      "new_task_ids": [],
+      "lost_task_ids": [],
+      "baseline_slot_2_exclusive_lost_query_keys": []
+    }
+  },
+  "interpretation": "Public input-matched diagnostic results, not a Kaggle leaderboard score.",
+  "limitations": [
+    "Matched queries form the exact-match denominator; unresolved inputs remain separately counted.",
+    "The [[0]] flag is a grid-value heuristic, not proof of placeholder provenance.",
+    "A ranked source candidate pool is needed to distinguish generated slots from filler grids.",
+    "This summary reads scored booleans and hashes; no official query answer grids are read."
+  ]
+}

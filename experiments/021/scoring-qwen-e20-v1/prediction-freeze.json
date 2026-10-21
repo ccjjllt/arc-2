@@ -1,0 +1,52 @@
+{
+  "frozen_at_utc": "2026-10-21T14:25:30.286009+00:00",
+  "cohort": "public_evaluation_E20_020",
+  "planned_tasks": 20,
+  "planned_queries": 27,
+  "artifacts": {
+    "manifest": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/020/evaluation-e20/manifest.json",
+      "sha256": "6a169f382e70c2cdf81194d648485bf25471666192dc4396ec44d4112ca4f21d",
+      "bytes": 28488
+    },
+    "challenges": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/020/evaluation-e20/challenges.json",
+      "sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda",
+      "bytes": 859142
+    },
+    "predictions": [
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/021/qwen-e20-output-v1/submission.json",
+        "sha256": "3367f1cac955520dfb46a45a04296a290e1984999ffce62478df9779022a1e22",
+        "bytes": 33504,
+        "policy": "Qwen32K",
+        "task_ids": [
+          "136b0064",
+          "13e47133",
+          "142ca369",
+          "16de56c4",
+          "28a6681f",
+          "3a25b0d8",
+          "3dc255db",
+          "45a5af55",
+          "4e34c42c",
+          "53fb4810",
+          "6ffbe589",
+          "7491f3cf",
+          "8f215267",
+          "a25697e4",
+          "a395ee82",
+          "c4d067a0",
+          "d8e07eb2",
+          "da515329",
+          "db695cfb",
+          "edb79dae"
+        ]
+      }
+    ],
+    "candidate_pools": []
+  },
+  "official_revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+  "official_split": "evaluation",
+  "note": "All supplied policy predictions were loaded and hashed before any gold access."
+}

@@ -1,0 +1,36 @@
+{
+  "frozen_at_utc": "2026-10-21T14:28:55.156612+00:00",
+  "status": "derived_diagnostic_candidate_frozen_before_derived_gold_scoring",
+  "policy_fixed_at_utc": "2026-10-21T14:28:54.634926+00:00",
+  "policy": "For each of all 20 final strings, scan every opening brace. Accept exactly one complete standard JSON object whose end is followed only by whitespace, whose root keys equal all expected query keys, and whose every grid is valid; reject duplicates/nonstandard constants. No text/cell modification. If no unique valid tail object, retain original submission entry unchanged.",
+  "source_freeze": {
+    "path": "experiments/021/execution/qwen-e20-v1-artifact-freeze.json",
+    "sha256": "dc3cb3be69696bfb7eab685734e949b4822eb46da8fc4734da616f2588ba23c2",
+    "bytes": 7063
+  },
+  "source_submission": {
+    "path": "experiments/021/qwen-e20-output-v1/vprobe/submission-M1.json",
+    "sha256": "3367f1cac955520dfb46a45a04296a290e1984999ffce62478df9779022a1e22",
+    "bytes": 33504
+  },
+  "derived_submission": {
+    "path": "experiments/021/parse-replay/e20-tail-json-v1/submission.json",
+    "sha256": "212225b43ec049351a4998613f9d9629b9f57370a5281e200691c2c8b9af0b61",
+    "bytes": 34224
+  },
+  "script": {
+    "path": "experiments/021/parse-replay/e20-tail-json-v1/replay_rule.py",
+    "sha256": "f5638e19a7e1a61527a4ed58ac9fafddfc98a3286689d8a44098196e276b4122",
+    "bytes": 11710
+  },
+  "challenge": {
+    "path": "experiments/020/evaluation-e20/challenges.json",
+    "sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda",
+    "bytes": 859142
+  },
+  "changed_task_ids": [
+    "7491f3cf"
+  ],
+  "scope": "All20 replies uniformly replayed; no gold, no model calls, original outputs unchanged.",
+  "accuracy_claim": "none; pending separately input-matched scoring by primary agent"
+}

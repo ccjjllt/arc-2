@@ -1,0 +1,940 @@
+{
+  "audited_at_utc": "2026-10-21T14:28:55.157241+00:00",
+  "query_gold_read": false,
+  "new_model_calls": 0,
+  "GPU_used": false,
+  "raw_outputs_modified": false,
+  "source_freeze": {
+    "path": "experiments/021/execution/qwen-e20-v1-artifact-freeze.json",
+    "sha256": "dc3cb3be69696bfb7eab685734e949b4822eb46da8fc4734da616f2588ba23c2",
+    "bytes": 7063
+  },
+  "source_run": {
+    "path": "experiments/021/qwen-e20-output-v1/vprobe/run.json",
+    "sha256": "579701dab332a6bd676efe0a8f559ee9e32f604703cd8482958ac34b38bb0dad",
+    "bytes": 63279
+  },
+  "frozen_artifact_hashes_verified": true,
+  "old_parse_function_sha256": "08b18609b070e084bc9a91b4c4238a80afc6648e541536bd8fbbf44c531f79fe",
+  "tokenizer": {
+    "path": "/private/tmp/arc2-020-tokenizer-v1/tokenizer.json",
+    "sha256": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+    "bytes": 12809320,
+    "library": "tokenizers",
+    "version": "0.22.2",
+    "encoding": "Saved reasoning/content independently, add_special_tokens=False; no raw generated token stream available"
+  },
+  "summary": {
+    "tasks": 20,
+    "queries": 27,
+    "issued_calls": 20,
+    "generation_finished": 20,
+    "old_accepted_tasks": 14,
+    "old_legal_queries": 18,
+    "strict_per_query_legal_queries": 18,
+    "strict_per_query_recovered_queries": 0,
+    "invalid_tasks": 6,
+    "invalid_queries": 9,
+    "length_invalid_tasks": 5,
+    "length_invalid_queries": 8,
+    "length_invalid_tokens": 163840,
+    "length_invalid_share_completion_tokens": 0.2971534283097404,
+    "all_invalid_tokens": 189130,
+    "all_invalid_share_completion_tokens": 0.34302141049939694,
+    "sum_completion_tokens": 551365,
+    "tasks_reaching_reencoded_thinking_boundary": 20,
+    "tail_rule_accepted_tasks": 15,
+    "tail_rule_legal_queries": 19,
+    "tail_rule_changed_task_ids": [
+      "7491f3cf"
+    ],
+    "tail_rule_recovered_legal_queries": 1,
+    "tail_rule_accuracy": "not assessed"
+  },
+  "conclusions": [
+    "Strict per-query parsing cannot rescue any reply because every rejection occurs before a complete root JSON object is admitted.",
+    "Five length failures have final-channel analysis rather than a final JSON object; this is final delivery failure, not global timeout or sibling-query discard.",
+    "7491f3cf stopped normally and has explanatory prose before one complete valid tail JSON object; a uniform tail-object extraction diagnostic is frozen separately.",
+    "Saved-text retokenization supports budget-triggered reasoning-to-final switching; it cannot reconstruct the original raw token stream or prove longer thinking would improve answers."
+  ],
+  "derived_candidate_freeze": {
+    "path": "experiments/021/parse-replay/e20-tail-json-v1/candidate-freeze.json",
+    "sha256": "722676f6300d0de39ae9882a6493bafbace4ad1e32a37c68f2a0676997576939",
+    "bytes": 1816
+  },
+  "rows": [
+    {
+      "task_id": "136b0064",
+      "queries": 1,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-136b0064.reply.json",
+        "sha256": "dcf6f449b94cc0baaacb7f740bed5a760290d1c6ffcb2da755830ea92e12c61b",
+        "bytes": 71496
+      },
+      "finish": "stop",
+      "old_status": "direct_ready",
+      "old_error": null,
+      "old_legal_queries": 1,
+      "strict_per_query_status": "all_queries_valid",
+      "strict_per_query_legal_queries": 1,
+      "strict_per_query_errors": [
+        null
+      ],
+      "content_chars": 450,
+      "reasoning_chars": 68774,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 405,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 24982,
+      "usage_minus_reencoded_text_and_endthink": 1,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 1,
+      "tail_policy_admitted": true,
+      "derived_entry_differs": false,
+      "tail_candidates": [
+        {
+          "start_character": 1,
+          "end_character": 450,
+          "exact_extracted_text_sha256": "d22d6727de181378d50aba5b6e9b4157990e159fc46c0d69340f051e2e2b8d19",
+          "query_shapes": [
+            [
+              19,
+              7
+            ]
+          ],
+          "grid_sha256": [
+            "511a84bd37ca6aa84bfd89fd6b3dd4de3abe23506d95dfe393dba08ed5ae3fd2"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "13e47133",
+      "queries": 2,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-13e47133.reply.json",
+        "sha256": "4820155949826a969d509fa18df36d2fda17cfee6b0ee370bd0811fe3f3271bb",
+        "bytes": 91345
+      },
+      "finish": "length",
+      "old_status": "direct_invalid",
+      "old_error": "Expecting value: line 1 column 1 (char 0)",
+      "old_legal_queries": 0,
+      "strict_per_query_status": "object_rejected",
+      "strict_per_query_legal_queries": 0,
+      "strict_per_query_errors": [
+        "Expecting value: line 1 column 1 (char 0)",
+        "Expecting value: line 1 column 1 (char 0)"
+      ],
+      "content_chars": 21570,
+      "reasoning_chars": 67944,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 8192,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 32768,
+      "usage_minus_reencoded_text_and_endthink": 0,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 0,
+      "tail_policy_admitted": false,
+      "derived_entry_differs": false,
+      "tail_candidates": [],
+      "content_first_240": "\n\nWe need solve. Need final JSON. I have a lot of analysis in previous but incomplete. I need continue carefully from scratch maybe. We need produce query0 and query1 grids. We have partial derived patterns. Need ensure correctness.\n\nLet's ",
+      "content_last_240": "2,3,3,3,3,3,2,1,0]? c3=3, c4=3,c5=3,c6=3,c7=3,c8=2. Yes.\nr4: [0,1,2,3,4,4,4,3,2,1,0]\nr5: [0,1,2,3,4,5,4,3,2,1,0]\nr6: [0,1,2,3,4,5,4,3,2,1,0] (top6, c6 min(6,6,4)=4)\nr7: [0,1,2,3,4,5,5? c6 min(7,6,4)=4, c7=3] Actually right 10-c: c4=6, c5=5,",
+      "reasoning_last_160": "? [bg, marker]. Then layers: d0=bg, d1=marker? That would place marker color at layer1, but marker is at layer2. Hmm.\n\nMaybe palette is determined by the colors"
+    },
+    {
+      "task_id": "142ca369",
+      "queries": 2,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-142ca369.reply.json",
+        "sha256": "80560b1676c57d25d5cb9556248d4d1c9983da9401a8a31284973d718c95065f",
+        "bytes": 69058
+      },
+      "finish": "stop",
+      "old_status": "direct_ready",
+      "old_error": null,
+      "old_legal_queries": 2,
+      "strict_per_query_status": "all_queries_valid",
+      "strict_per_query_legal_queries": 2,
+      "strict_per_query_errors": [
+        null,
+        null
+      ],
+      "content_chars": 2379,
+      "reasoning_chars": 64957,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 2212,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 26789,
+      "usage_minus_reencoded_text_and_endthink": 1,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 1,
+      "tail_policy_admitted": true,
+      "derived_entry_differs": false,
+      "tail_candidates": [
+        {
+          "start_character": 1,
+          "end_character": 2379,
+          "exact_extracted_text_sha256": "65c85e363c57e793c11ab507176e6184339639fcaa174845cba6047e21ca1deb",
+          "query_shapes": [
+            [
+              18,
+              18
+            ],
+            [
+              20,
+              19
+            ]
+          ],
+          "grid_sha256": [
+            "f2c7a0ed0e99592ce88581cc772cbb87c934f23527e87ea5057521fe65d9a380",
+            "9cab79894af6c0e4a11e635605cb8be79d8ec0231913f34e14e82b32ab8af6a3"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "16de56c4",
+      "queries": 2,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-16de56c4.reply.json",
+        "sha256": "137dbf3267c28bc1668c2c42b3a55c957a6538a7e255a494e1e0dc9d9e369fa8",
+        "bytes": 80972
+      },
+      "finish": "stop",
+      "old_status": "direct_ready",
+      "old_error": null,
+      "old_legal_queries": 2,
+      "strict_per_query_status": "all_queries_valid",
+      "strict_per_query_legal_queries": 2,
+      "strict_per_query_errors": [
+        null,
+        null
+      ],
+      "content_chars": 1282,
+      "reasoning_chars": 77945,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 1194,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 25771,
+      "usage_minus_reencoded_text_and_endthink": 1,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 1,
+      "tail_policy_admitted": true,
+      "derived_entry_differs": false,
+      "tail_candidates": [
+        {
+          "start_character": 2,
+          "end_character": 1282,
+          "exact_extracted_text_sha256": "0310229b8b22076667d2342616c2d39b387ad918aa73b85dd80167f85b9fb3ba",
+          "query_shapes": [
+            [
+              9,
+              21
+            ],
+            [
+              9,
+              21
+            ]
+          ],
+          "grid_sha256": [
+            "bb92e28c703036050e50019bc56d07189417a4b6e9bec3c7e93e27397e2bf170",
+            "3daaea616d5633989a75820b15bf8bf9da0bbacf4c05b4727952373387ec4816"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "28a6681f",
+      "queries": 1,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-28a6681f.reply.json",
+        "sha256": "5b64633d5bcdef485253c984dd0aaab6f458cfccf220c56a43a4198217816029",
+        "bytes": 102498
+      },
+      "finish": "length",
+      "old_status": "direct_invalid",
+      "old_error": "Expecting value: line 1 column 1 (char 0)",
+      "old_legal_queries": 0,
+      "strict_per_query_status": "object_rejected",
+      "strict_per_query_legal_queries": 0,
+      "strict_per_query_errors": [
+        "Expecting value: line 1 column 1 (char 0)"
+      ],
+      "content_chars": 25216,
+      "reasoning_chars": 75187,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 8192,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 32768,
+      "usage_minus_reencoded_text_and_endthink": 0,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 0,
+      "tail_policy_admitted": false,
+      "derived_entry_differs": false,
+      "tail_candidates": [],
+      "content_first_240": "\nWe need solve grid transformation. Need infer rule from demos and apply query. Already in analysis. Need finish. Let's analyze more systematically.\n\nWe have 3 demos. Need output query0.\n\nLet's restate query:\ninput:\nrow0: [1,1,0,0,0,0,0,0,0",
+      "content_last_240": "demo2 with component lowest rule. Empty cells avoiding 9,4,2. Initial 1s at top rows1-2 c2-3. Which empty component contains them? Obstacles: 9s top diagonal and right cluster, 4s,2s. Let's map. Initial 1 at (1,2) adjacent to 9 at (1,1),(2,",
+      "reasoning_last_160": "ed component*? For 3 component in demo0, row5 non-1 cells of component at c5,c7; segment between is c6; row2 component at c7 only; if one non-1, segment from c7"
+    },
+    {
+      "task_id": "3a25b0d8",
+      "queries": 2,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-3a25b0d8.reply.json",
+        "sha256": "ea7a7a8ce6d83d95b5cd2af2cc567a97131b0246059c9acc70808842cf0daee9",
+        "bytes": 87547
+      },
+      "finish": "length",
+      "old_status": "direct_invalid",
+      "old_error": "Expecting value: line 1 column 1 (char 0)",
+      "old_legal_queries": 0,
+      "strict_per_query_status": "object_rejected",
+      "strict_per_query_legal_queries": 0,
+      "strict_per_query_errors": [
+        "Expecting value: line 1 column 1 (char 0)",
+        "Expecting value: line 1 column 1 (char 0)"
+      ],
+      "content_chars": 24274,
+      "reasoning_chars": 60967,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 8192,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 32768,
+      "usage_minus_reencoded_text_and_endthink": 0,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 0,
+      "tail_policy_admitted": false,
+      "derived_entry_differs": false,
+      "tail_candidates": [],
+      "content_first_240": "\nWe need solve. We have analysis. Need continue and reach final. We have hypothesized candidate rule and outputs. Need verify strongly and produce final JSON. But need be certain. Let's further analyze demos to confirm rule, especially wall",
+      "content_last_240": "as 4s c6-8, so top-left object includes c6-8. It spans c2-12 width11, rows1-16 height16. Output maybe 11x? similar to demo0? Demo0 object wall 1 with colors 7,4,3,6,9 output 11x11. Query0 top-left may output 11x11? It has 16x11. Could be.\n\n",
+      "reasoning_last_160": "ol3, need input top half contain 1 at cols6-7? Input row2 has 1s at cols4-8; row2 is not in top 2x2 block if blocks rows0-1. If output row0 corresponds to input"
+    },
+    {
+      "task_id": "3dc255db",
+      "queries": 1,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-3dc255db.reply.json",
+        "sha256": "60e0bcdccfea937b0296920d50a67cb6ad8cd15c179717af5a52f0151d315d64",
+        "bytes": 71588
+      },
+      "finish": "stop",
+      "old_status": "direct_ready",
+      "old_error": null,
+      "old_legal_queries": 1,
+      "strict_per_query_status": "all_queries_valid",
+      "strict_per_query_legal_queries": 1,
+      "strict_per_query_errors": [
+        null
+      ],
+      "content_chars": 418,
+      "reasoning_chars": 69236,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 362,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 24939,
+      "usage_minus_reencoded_text_and_endthink": 1,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 1,
+      "tail_policy_admitted": true,
+      "derived_entry_differs": false,
+      "tail_candidates": [
+        {
+          "start_character": 2,
+          "end_character": 418,
+          "exact_extracted_text_sha256": "c91791289a62b3451f59d47c2a495d62364c04a2981ae1589d33e39aa9aa2f53",
+          "query_shapes": [
+            [
+              12,
+              13
+            ]
+          ],
+          "grid_sha256": [
+            "b3ff8f3928cd82362fab19cb92ef54e6d6323f5ebc1b3548b4164127a82fed9d"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "45a5af55",
+      "queries": 1,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-45a5af55.reply.json",
+        "sha256": "29d981f0b42dac03d141ffb7ce907329a98af4347940edbcaacb82c250e557ee",
+        "bytes": 56262
+      },
+      "finish": "stop",
+      "old_status": "direct_ready",
+      "old_error": null,
+      "old_legal_queries": 1,
+      "strict_per_query_status": "all_queries_valid",
+      "strict_per_query_legal_queries": 1,
+      "strict_per_query_errors": [
+        null
+      ],
+      "content_chars": 1418,
+      "reasoning_chars": 52659,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 1359,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 25936,
+      "usage_minus_reencoded_text_and_endthink": 1,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 1,
+      "tail_policy_admitted": true,
+      "derived_entry_differs": false,
+      "tail_candidates": [
+        {
+          "start_character": 2,
+          "end_character": 1418,
+          "exact_extracted_text_sha256": "56e19fd56e087163c98fe83c3957820fca58187e83f67eef2478046e7a5f19fb",
+          "query_shapes": [
+            [
+              26,
+              26
+            ]
+          ],
+          "grid_sha256": [
+            "1d4511dc9bf2d0ce64a1c6532bf062c015e0315ffa834c9bd955b305a16a7ead"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "4e34c42c",
+      "queries": 2,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-4e34c42c.reply.json",
+        "sha256": "188d1cdf8af2bdb374dfa950d66ea09ad20cc19cea653d20b5e90b6a81ec3ac2",
+        "bytes": 56360
+      },
+      "finish": "stop",
+      "old_status": "direct_ready",
+      "old_error": null,
+      "old_legal_queries": 2,
+      "strict_per_query_status": "all_queries_valid",
+      "strict_per_query_legal_queries": 2,
+      "strict_per_query_errors": [
+        null,
+        null
+      ],
+      "content_chars": 556,
+      "reasoning_chars": 53907,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 520,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 25097,
+      "usage_minus_reencoded_text_and_endthink": 1,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 1,
+      "tail_policy_admitted": true,
+      "derived_entry_differs": false,
+      "tail_candidates": [
+        {
+          "start_character": 2,
+          "end_character": 556,
+          "exact_extracted_text_sha256": "6d55aad78592dee3270f374ed6b098ae0c65c28dda9cac130f2a8b8e8766de51",
+          "query_shapes": [
+            [
+              5,
+              12
+            ],
+            [
+              5,
+              22
+            ]
+          ],
+          "grid_sha256": [
+            "63ef7cd5fa2795912b77e358ffa46cedf2c8ed25f896edec205835a97c924eb6",
+            "55d11657494dc18f225b67f76e7f09f96639b79cb80d79bacf30251777c25871"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "53fb4810",
+      "queries": 1,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-53fb4810.reply.json",
+        "sha256": "2770cdb75233c90e875eee4f11970d587393bfe5c5a9980357b07d6e1564eab6",
+        "bytes": 81574
+      },
+      "finish": "stop",
+      "old_status": "direct_ready",
+      "old_error": null,
+      "old_legal_queries": 1,
+      "strict_per_query_status": "all_queries_valid",
+      "strict_per_query_legal_queries": 1,
+      "strict_per_query_errors": [
+        null
+      ],
+      "content_chars": 1461,
+      "reasoning_chars": 78199,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 1358,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 25935,
+      "usage_minus_reencoded_text_and_endthink": 1,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 1,
+      "tail_policy_admitted": true,
+      "derived_entry_differs": false,
+      "tail_candidates": [
+        {
+          "start_character": 1,
+          "end_character": 1461,
+          "exact_extracted_text_sha256": "873fc11c694c8c7f8c8274a006b82376190f5a6f66dd3d692d3e19cf4002de9a",
+          "query_shapes": [
+            [
+              24,
+              18
+            ]
+          ],
+          "grid_sha256": [
+            "64166e22f9cc95904cef32a8358e6b9dbf0d8ec0f6e7314a6a9164308c2179df"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "6ffbe589",
+      "queries": 1,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-6ffbe589.reply.json",
+        "sha256": "bf2997ac85f7ed35dfdf1b32bbe532281d5b54ada8606a1290daa780ac14c25d",
+        "bytes": 77247
+      },
+      "finish": "length",
+      "old_status": "direct_invalid",
+      "old_error": "Expecting value: line 1 column 1 (char 0)",
+      "old_legal_queries": 0,
+      "strict_per_query_status": "object_rejected",
+      "strict_per_query_legal_queries": 0,
+      "strict_per_query_errors": [
+        "Expecting value: line 1 column 1 (char 0)"
+      ],
+      "content_chars": 20618,
+      "reasoning_chars": 54504,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 8192,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 32768,
+      "usage_minus_reencoded_text_and_endthink": 0,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 0,
+      "tail_policy_admitted": false,
+      "derived_entry_differs": false,
+      "tail_candidates": [],
+      "content_first_240": "\nWe need solve. Need final JSON only. But analysis continues? I have some analysis above but incomplete and maybe not fully correct. Need continue in commentary? I called with some analysis, but can call again with full. Need solve puzzle. ",
+      "content_last_240": " c0,c9; 3 c2,c7\nRow5: 5 c0; 3 c2,c7,c8\nRow6: 3 c1,c2,c7; 5 c9\nRow7: 5 c0,c9; 3 c3,c4,c5,c6\nRow8: 3 c3\nRow0,9 5 border.\nOutput non-4:\nRow1: 3 c6\nRow2 same row2\nRow3: 3 c2,c7,c8; 5 c9\nRow4: 5 c0; 3 c1,c2,c7\nRow5: 5 c0,c9; 3 c2,c7\nRow6: 5 c0,c",
+      "reasoning_last_160": "re 3s moving into the spaces where 5s were removed? row3 c8 (next to c9 5?); row4 c1 (next to c0 5?); row5 c8 removed? row6 c1 removed? Let's see: 3s in vf row3"
+    },
+    {
+      "task_id": "7491f3cf",
+      "queries": 1,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-7491f3cf.reply.json",
+        "sha256": "1f1707f436edea6cff075dbeda46d45408aac81c0e3fe7452e1f10388b9fb00c",
+        "bytes": 70770
+      },
+      "finish": "stop",
+      "old_status": "direct_invalid",
+      "old_error": "Expecting value: line 1 column 1 (char 0)",
+      "old_legal_queries": 0,
+      "strict_per_query_status": "object_rejected",
+      "strict_per_query_legal_queries": 0,
+      "strict_per_query_errors": [
+        "Expecting value: line 1 column 1 (char 0)"
+      ],
+      "content_chars": 1598,
+      "reasoning_chars": 67144,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 713,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 25290,
+      "usage_minus_reencoded_text_and_endthink": 1,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 1,
+      "tail_policy_admitted": true,
+      "derived_entry_differs": true,
+      "tail_candidates": [
+        {
+          "start_character": 1179,
+          "end_character": 1598,
+          "exact_extracted_text_sha256": "633daa78b936d794cd4573aedac1ff68373df239a6e97182d08fa8058ab76226",
+          "query_shapes": [
+            [
+              7,
+              25
+            ]
+          ],
+          "grid_sha256": [
+            "dff40b32eecef77e769de13d08fdd4643533b80bfa43800c111549b5a101cb73"
+          ]
+        }
+      ],
+      "content_first_240": "\nThe transformation rule inferred from the demonstrations:\n\n- The 7x25 grid contains four 5x5 panels separated by a border.\n- The first panel is a separator indicator: it shows a straight dividing line and a marker on one side.\n- The second",
+      "content_last_240": "7,5,2],\n    [2,5,5,8,8,8,2,5,5,5,5,5,2,5,5,5,5,5,2,5,5,5,5,5,2],\n    [2,5,5,5,5,5,2,3,3,5,3,3,2,7,5,5,5,7,2,7,3,5,3,5,2],\n    [2,5,5,5,5,5,2,5,3,5,3,5,2,7,7,5,7,7,2,7,5,3,5,5,2],\n    [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]\n  ]\n}",
+      "reasoning_last_160": " bg\n(0,2): A0 B0 C1 -> bg (C omitted)\n(0,3): A0 B0 C0 -> bg\n(0,4): A1 B1 C0 -> B\n(1,0): A0 B0 C0 -> bg\n(1,1): A0 B1 C0 -> B\n(1,2): A0 B0 C1 -> bg\n(1,3): A1 B1 C"
+    },
+    {
+      "task_id": "8f215267",
+      "queries": 1,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-8f215267.reply.json",
+        "sha256": "8933496db7274cbd140640c54672d0042668b33f1a9087511dcb5dc84eec205e",
+        "bytes": 55613
+      },
+      "finish": "stop",
+      "old_status": "direct_ready",
+      "old_error": null,
+      "old_legal_queries": 1,
+      "strict_per_query_status": "all_queries_valid",
+      "strict_per_query_legal_queries": 1,
+      "strict_per_query_errors": [
+        null
+      ],
+      "content_chars": 1453,
+      "reasoning_chars": 52244,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 1337,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 25914,
+      "usage_minus_reencoded_text_and_endthink": 1,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 1,
+      "tail_policy_admitted": true,
+      "derived_entry_differs": false,
+      "tail_candidates": [
+        {
+          "start_character": 2,
+          "end_character": 1453,
+          "exact_extracted_text_sha256": "3956a66a5efd16a8d2e57f7d84b4e305c70e3594c66bc29efa6603b02e0e7c84",
+          "query_shapes": [
+            [
+              27,
+              23
+            ]
+          ],
+          "grid_sha256": [
+            "d9158f7297a146966c4b9f4de9097d36f7865f45189a72cb3cc2011be3c190ec"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "a25697e4",
+      "queries": 2,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-a25697e4.reply.json",
+        "sha256": "3d2a52e37d843150ddad0262decd9ed3788836bdf3f363f01eb31c82cec75480",
+        "bytes": 73332
+      },
+      "finish": "stop",
+      "old_status": "direct_ready",
+      "old_error": null,
+      "old_legal_queries": 2,
+      "strict_per_query_status": "all_queries_valid",
+      "strict_per_query_legal_queries": 2,
+      "strict_per_query_errors": [
+        null,
+        null
+      ],
+      "content_chars": 3759,
+      "reasoning_chars": 67801,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 3504,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 28081,
+      "usage_minus_reencoded_text_and_endthink": 1,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 1,
+      "tail_policy_admitted": true,
+      "derived_entry_differs": false,
+      "tail_candidates": [
+        {
+          "start_character": 1,
+          "end_character": 3759,
+          "exact_extracted_text_sha256": "d07d4b6717780be3a040022f1635bbc0d3321fb8859ab62a73c03ed548addd1d",
+          "query_shapes": [
+            [
+              30,
+              30
+            ],
+            [
+              30,
+              25
+            ]
+          ],
+          "grid_sha256": [
+            "7329cfec5dc169ca5a26db339ebc0577d9c2a970cafcd706711fbcd3c82a8328",
+            "eb1a21e512b6a3717fbfefe899b5d2185ee27336d178ad0fa31168674d508723"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "a395ee82",
+      "queries": 1,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-a395ee82.reply.json",
+        "sha256": "f22cc85dc7090b3a78386d2ba8e044a957b52032c1ff5053584636ff0e8240ca",
+        "bytes": 69829
+      },
+      "finish": "stop",
+      "old_status": "direct_ready",
+      "old_error": null,
+      "old_legal_queries": 1,
+      "strict_per_query_status": "all_queries_valid",
+      "strict_per_query_legal_queries": 1,
+      "strict_per_query_errors": [
+        null
+      ],
+      "content_chars": 1027,
+      "reasoning_chars": 66913,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 975,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 25552,
+      "usage_minus_reencoded_text_and_endthink": 1,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 1,
+      "tail_policy_admitted": true,
+      "derived_entry_differs": false,
+      "tail_candidates": [
+        {
+          "start_character": 2,
+          "end_character": 1027,
+          "exact_extracted_text_sha256": "799b8e4e9fe7d10545011e45e323162f31ee217401872fb4ce5cd958a5b04d4e",
+          "query_shapes": [
+            [
+              22,
+              22
+            ]
+          ],
+          "grid_sha256": [
+            "8f354d4b923b589818bfce86dfa346d69309825b3c72a0e02efbcf896c2769e4"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "c4d067a0",
+      "queries": 1,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-c4d067a0.reply.json",
+        "sha256": "e06d712a11d59b96a1c6cd954b3ed54eb1ebb41b147177932156e035b0658556",
+        "bytes": 80931
+      },
+      "finish": "stop",
+      "old_status": "direct_ready",
+      "old_error": null,
+      "old_legal_queries": 1,
+      "strict_per_query_status": "all_queries_valid",
+      "strict_per_query_legal_queries": 1,
+      "strict_per_query_errors": [
+        null
+      ],
+      "content_chars": 1786,
+      "reasoning_chars": 77341,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 1666,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 26243,
+      "usage_minus_reencoded_text_and_endthink": 1,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 1,
+      "tail_policy_admitted": true,
+      "derived_entry_differs": false,
+      "tail_candidates": [
+        {
+          "start_character": 2,
+          "end_character": 1786,
+          "exact_extracted_text_sha256": "4bff2c50163df91ecd745e280e01b6e6258055e731d2ae54d10d0549a317cb30",
+          "query_shapes": [
+            [
+              28,
+              28
+            ]
+          ],
+          "grid_sha256": [
+            "b2e063b116db2db1a3c8332ae60a0987fedc4d8d93e91e77bb381670e5c713bc"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "d8e07eb2",
+      "queries": 2,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-d8e07eb2.reply.json",
+        "sha256": "d61e31f91140405da572b1c1470c52cca60dcf8bdb9b3411201b23c51212a1c3",
+        "bytes": 78345
+      },
+      "finish": "length",
+      "old_status": "direct_invalid",
+      "old_error": "Expecting value: line 1 column 1 (char 0)",
+      "old_legal_queries": 0,
+      "strict_per_query_status": "object_rejected",
+      "strict_per_query_legal_queries": 0,
+      "strict_per_query_errors": [
+        "Expecting value: line 1 column 1 (char 0)",
+        "Expecting value: line 1 column 1 (char 0)"
+      ],
+      "content_chars": 16749,
+      "reasoning_chars": 59581,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 8192,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 32768,
+      "usage_minus_reencoded_text_and_endthink": 0,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 0,
+      "tail_policy_admitted": false,
+      "derived_entry_differs": false,
+      "tail_candidates": [],
+      "content_first_240": "\nWe need solve. Need infer transformation. Let's continue analysis and finalize. We already have strong rule: slot grid 5 rows x 4 cols of 3x3 patterns. Top row is key. For each top non-empty pattern, find exact matching pattern in lower fo",
+      "content_last_240": "16, cols1-5. Replace 8 with 3.\nFrame B: rows17-21 cols6-15 (for R3C1+R3C2). Replace 8 with 3.\nNeed ensure no other changes. Top rows0-4 unchanged. Row5 6, row6 8, row22? Row22 all8 unchanged? Wait R3 frame rows17-21, so row22 unchanged. Row",
+      "reasoning_last_160": "3 = P2b (2hollow): 111/101/111 color2.\n\nTop patterns can include:\nP0s solid0\nP0a 0shape (100/111/101)\nP1a 1h (111/010/111)\nP1b 1other (101/110/101)\nP7 (100/111/"
+    },
+    {
+      "task_id": "da515329",
+      "queries": 1,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-da515329.reply.json",
+        "sha256": "2ae40b3f7339e04d11d8d93363d2677def2ebebfab79e84b604b3e9fbbdf6571",
+        "bytes": 69728
+      },
+      "finish": "stop",
+      "old_status": "direct_ready",
+      "old_error": null,
+      "old_legal_queries": 1,
+      "strict_per_query_status": "all_queries_valid",
+      "strict_per_query_legal_queries": 1,
+      "strict_per_query_errors": [
+        null
+      ],
+      "content_chars": 1314,
+      "reasoning_chars": 66383,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 1257,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 25834,
+      "usage_minus_reencoded_text_and_endthink": 1,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 1,
+      "tail_policy_admitted": true,
+      "derived_entry_differs": false,
+      "tail_candidates": [
+        {
+          "start_character": 2,
+          "end_character": 1314,
+          "exact_extracted_text_sha256": "8f6de2a66c438ba46db18346448d274688f6233329c0fd7bc6a76ad8981ddd6b",
+          "query_shapes": [
+            [
+              25,
+              25
+            ]
+          ],
+          "grid_sha256": [
+            "cb118d5dde58716c9826a4f647a6bcf90afff1003ef84c6022b8562d8d87c74d"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "db695cfb",
+      "queries": 1,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-db695cfb.reply.json",
+        "sha256": "766ea76478570c81e8108e5ff06fe9b26573c3a8ca2096c459b91308696389ad",
+        "bytes": 48168
+      },
+      "finish": "stop",
+      "old_status": "direct_ready",
+      "old_error": null,
+      "old_legal_queries": 1,
+      "strict_per_query_status": "all_queries_valid",
+      "strict_per_query_legal_queries": 1,
+      "strict_per_query_errors": [
+        null
+      ],
+      "content_chars": 1198,
+      "reasoning_chars": 45020,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 1094,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 25671,
+      "usage_minus_reencoded_text_and_endthink": 1,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 1,
+      "tail_policy_admitted": true,
+      "derived_entry_differs": false,
+      "tail_candidates": [
+        {
+          "start_character": 2,
+          "end_character": 1198,
+          "exact_extracted_text_sha256": "4cd135498d4c7de193535f3c5c785c4daaeccb8aa76b65ec672db6d1cfc78aae",
+          "query_shapes": [
+            [
+              24,
+              21
+            ]
+          ],
+          "grid_sha256": [
+            "eb4e80a78c98336682d2bcca1708f930ab2926a4246cbbc5eab86ca4b7f4399f"
+          ]
+        }
+      ]
+    },
+    {
+      "task_id": "edb79dae",
+      "queries": 1,
+      "reply": {
+        "path": "experiments/021/qwen-e20-output-v1/vprobe/programs/P0-edb79dae.reply.json",
+        "sha256": "ac4801434aa9355907af1c3c5b7bdf2eb955b872db7ee53b2733fc42abec8b9c",
+        "bytes": 54845
+      },
+      "finish": "stop",
+      "old_status": "direct_ready",
+      "old_error": null,
+      "old_legal_queries": 1,
+      "strict_per_query_status": "all_queries_valid",
+      "strict_per_query_legal_queries": 1,
+      "strict_per_query_errors": [
+        null
+      ],
+      "content_chars": 1002,
+      "reasoning_chars": 52000,
+      "reencoded_reasoning_tokens": 24575,
+      "reencoded_content_tokens": 914,
+      "end_think_reencoded_tokens": 1,
+      "completion_tokens": 25491,
+      "usage_minus_reencoded_text_and_endthink": 1,
+      "reasoning_reaches_requested_boundary": true,
+      "unique_valid_tail_object_count": 1,
+      "tail_policy_admitted": true,
+      "derived_entry_differs": false,
+      "tail_candidates": [
+        {
+          "start_character": 2,
+          "end_character": 1002,
+          "exact_extracted_text_sha256": "d226a51682b400bebbc8c3f0920cbc98a65d0e419194d6cb0c65362e7f6ed1ed",
+          "query_shapes": [
+            [
+              20,
+              21
+            ]
+          ],
+          "grid_sha256": [
+            "cf1ae8291544851ec3591bfc04d80ef2833ba4c95c497b8cd608c02384a23309"
+          ]
+        }
+      ]
+    }
+  ],
+  "local_cpu_wall_seconds": 0.526983584,
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]"
+}

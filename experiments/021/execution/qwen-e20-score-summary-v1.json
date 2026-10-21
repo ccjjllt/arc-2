@@ -1,0 +1,52 @@
+{
+  "cohort": "public_evaluation_E20_020",
+  "baseline": "Qwen32K",
+  "planned_tasks": 20,
+  "planned_queries": 27,
+  "input_matched_queries": 25,
+  "unresolved_queries": 2,
+  "fully_input_matched_tasks": 19,
+  "input_match_status_counts": {
+    "matched": 25,
+    "demo_mismatch": 2
+  },
+  "sources": {
+    "score_report": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/021/scoring-qwen-e20-v1/score-report.json",
+      "sha256": "bc9c371fb06aed812c0822ee62104afd3859adc7fd907dbbbe77f224a1b45627"
+    },
+    "query_ledger": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/021/scoring-qwen-e20-v1/query-ledger.jsonl",
+      "sha256": "303b3f987412e66253bc2b75cc6d2ff504df732540c22d79d019b0dae6357661"
+    },
+    "candidate_pools": []
+  },
+  "policies": {
+    "Qwen32K": {
+      "exact_queries": 2,
+      "matched_query_denominator": 25,
+      "query_micro_em2": 0.08,
+      "all_queries_exact_tasks": 2,
+      "fully_matched_task_denominator": 19,
+      "full_task_exact_rate": 0.10526315789473684,
+      "prediction_status_counts": {
+        "valid": 27
+      },
+      "prediction_present_queries": 27,
+      "valid_queries": 27,
+      "distinct_valid_two_slots_queries": 0,
+      "both_slots_equal_zero_1x1_queries": 9,
+      "exact_queries_with_both_slots_zero_1x1": 0,
+      "slot_1_exact_queries": 2,
+      "slot_2_exclusive_exact_queries": 0
+    }
+  },
+  "comparisons": {},
+  "interpretation": "Public input-matched diagnostic results, not a Kaggle leaderboard score.",
+  "limitations": [
+    "Matched queries form the exact-match denominator; unresolved inputs remain separately counted.",
+    "The [[0]] flag is a grid-value heuristic, not proof of placeholder provenance.",
+    "A ranked source candidate pool is needed to distinguish generated slots from filler grids.",
+    "This summary reads scored booleans and hashes; no official query answer grids are read."
+  ]
+}

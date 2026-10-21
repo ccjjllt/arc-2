@@ -1,0 +1,398 @@
+{
+  "checked_at_utc": "2026-10-21T14:30:50.458469+00:00",
+  "scope": "Read-only audit of frozen model outputs and scored boolean ledger; no prediction or existing score modification, no new scoring run.",
+  "artifact_freeze_utc": "2026-10-21T14:25:20.560169+00:00",
+  "frozen_artifact_hashes_match": true,
+  "checked_frozen_files": 33,
+  "primary_score": {
+    "policy": "Qwen32K",
+    "planned_tasks": 20,
+    "planned_queries": 27,
+    "matched_queries": 25,
+    "unresolved_queries": 2,
+    "exact_matched_queries": 2,
+    "query_micro_em2_on_matched": 0.08,
+    "all_queries_exact_tasks": 2,
+    "fully_matched_tasks": 19,
+    "correct_query_keys": [
+      "45a5af55_0",
+      "8f215267_0"
+    ],
+    "unresolved_rows": [
+      {
+        "query_key": "d8e07eb2_0",
+        "reason": "demo_mismatch"
+      },
+      {
+        "query_key": "d8e07eb2_1",
+        "reason": "demo_mismatch"
+      }
+    ],
+    "interpretation": "Report 2/25 input-matched queries plus 2 demo-mismatched planned queries, not 2/27 errors or a 27-query score."
+  },
+  "prediction_delivery": {
+    "format_valid_queries": 27,
+    "real_candidate_queries": 18,
+    "real_candidate_queries_in_matched_denominator": 18,
+    "queries_without_real_candidates": 9,
+    "queries_without_real_candidates_in_matched_denominator": 7,
+    "candidate_policy_keys": [
+      "M0",
+      "M1"
+    ],
+    "pool_queries_outside_E20": {
+      "M0": [],
+      "M1": []
+    },
+    "candidate_grid_to_both_slots_mismatches": [],
+    "all_two_slot_grids_identical": true,
+    "distinct_slot_query_keys": [],
+    "slot_2_exclusive_exact": 0,
+    "M0_M1_submission_equal": true,
+    "default_submission_equals_M1": true,
+    "M0_M1_real_candidate_key_sets_equal": true,
+    "submission_sha256": "3367f1cac955520dfb46a45a04296a290e1984999ffce62478df9779022a1e22",
+    "warning": "27 structurally valid output objects include 9 initialized filler query objects. M0/M1 are duplicate views of one P0, not independent experiments or candidates."
+  },
+  "model_call_audit": {
+    "unique_called_tasks": 20,
+    "calls": 20,
+    "arms": {
+      "P0": 20
+    },
+    "finish_reasons": {
+      "stop": 15,
+      "length": 5
+    },
+    "parse_statuses": {
+      "direct_ready": 14,
+      "direct_invalid": 6
+    },
+    "admitted_task_predictions": 14,
+    "invalid_task_count": 6,
+    "invalid_task_completion_tokens": 189130,
+    "all_completion_tokens": 551365,
+    "invalid_task_token_fraction": 0.34302141049939694,
+    "invalid_tasks": [
+      {
+        "task_id": "7491f3cf",
+        "finish": "stop",
+        "completion_tokens": 25290,
+        "validation_error": "Expecting value: line 1 column 1 (char 0)"
+      },
+      {
+        "task_id": "28a6681f",
+        "finish": "length",
+        "completion_tokens": 32768,
+        "validation_error": "Expecting value: line 1 column 1 (char 0)"
+      },
+      {
+        "task_id": "6ffbe589",
+        "finish": "length",
+        "completion_tokens": 32768,
+        "validation_error": "Expecting value: line 1 column 1 (char 0)"
+      },
+      {
+        "task_id": "3a25b0d8",
+        "finish": "length",
+        "completion_tokens": 32768,
+        "validation_error": "Expecting value: line 1 column 1 (char 0)"
+      },
+      {
+        "task_id": "13e47133",
+        "finish": "length",
+        "completion_tokens": 32768,
+        "validation_error": "Expecting value: line 1 column 1 (char 0)"
+      },
+      {
+        "task_id": "d8e07eb2",
+        "finish": "length",
+        "completion_tokens": 32768,
+        "validation_error": "Expecting value: line 1 column 1 (char 0)"
+      }
+    ],
+    "driver_elapsed_s": 4063.551,
+    "install_load_s_includes_install_s": 711.6,
+    "install_s_already_included": 261.6,
+    "callback_errors": [],
+    "note": "Runtime is one-arm full-E20 candidate diagnosis, not deployment-equivalent routed B2 or evidence of a 240-task 12-hour policy."
+  },
+  "d8e07eb2_provenance": {
+    "E20_source": "experiments/020/evaluation-e20/challenges.json, inherited from frozen Kaggle evaluation source experiments/008/raw-eval/arc-agi_evaluation_challenges.json",
+    "fixed_revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+    "difference": {
+      "task_id": "d8e07eb2",
+      "train_pair_counts": [
+        5,
+        5
+      ],
+      "query_counts": [
+        2,
+        2
+      ],
+      "query_inputs_equal": true,
+      "train_pair_differences": [
+        {
+          "demo_index": 0,
+          "field": "input",
+          "same": true,
+          "Kaggle_shape": [
+            30,
+            22
+          ],
+          "fixed_repo_shape": [
+            30,
+            22
+          ],
+          "differing_cells": [],
+          "Kaggle_sha256": "d21c432473fbd86b7c881915ed7c7d0d4bf8230afbb2caf190cfbe40c3405308",
+          "fixed_sha256": "d21c432473fbd86b7c881915ed7c7d0d4bf8230afbb2caf190cfbe40c3405308"
+        },
+        {
+          "demo_index": 0,
+          "field": "output",
+          "same": false,
+          "Kaggle_shape": [
+            30,
+            22
+          ],
+          "fixed_repo_shape": [
+            30,
+            22
+          ],
+          "differing_cells": [
+            {
+              "row": 1,
+              "column": 7,
+              "Kaggle_value": 2,
+              "fixed_repo_value": 1
+            },
+            {
+              "row": 1,
+              "column": 8,
+              "Kaggle_value": 2,
+              "fixed_repo_value": 1
+            },
+            {
+              "row": 1,
+              "column": 9,
+              "Kaggle_value": 3,
+              "fixed_repo_value": 1
+            },
+            {
+              "row": 2,
+              "column": 7,
+              "Kaggle_value": 2,
+              "fixed_repo_value": 3
+            },
+            {
+              "row": 2,
+              "column": 8,
+              "Kaggle_value": 2,
+              "fixed_repo_value": 1
+            },
+            {
+              "row": 2,
+              "column": 9,
+              "Kaggle_value": 2,
+              "fixed_repo_value": 3
+            },
+            {
+              "row": 3,
+              "column": 7,
+              "Kaggle_value": 3,
+              "fixed_repo_value": 1
+            },
+            {
+              "row": 3,
+              "column": 8,
+              "Kaggle_value": 2,
+              "fixed_repo_value": 1
+            },
+            {
+              "row": 3,
+              "column": 9,
+              "Kaggle_value": 3,
+              "fixed_repo_value": 1
+            }
+          ],
+          "Kaggle_sha256": "643dd1ba90c27ae0c97084b8be71172032e2494675cfbe0d6119d82e7f9af9ff",
+          "fixed_sha256": "fbb553aac547a33b94c47eccd13a890ce9259fdcb45d2bf39e3d1d1be61388c4"
+        },
+        {
+          "demo_index": 1,
+          "field": "input",
+          "same": true,
+          "Kaggle_shape": [
+            30,
+            22
+          ],
+          "fixed_repo_shape": [
+            30,
+            22
+          ],
+          "differing_cells": [],
+          "Kaggle_sha256": "42bcd09bff4909e14f274519a95ef21185df80798f3c502c2bba110c242c8281",
+          "fixed_sha256": "42bcd09bff4909e14f274519a95ef21185df80798f3c502c2bba110c242c8281"
+        },
+        {
+          "demo_index": 1,
+          "field": "output",
+          "same": true,
+          "Kaggle_shape": [
+            30,
+            22
+          ],
+          "fixed_repo_shape": [
+            30,
+            22
+          ],
+          "differing_cells": [],
+          "Kaggle_sha256": "edec95044b9adf1e99c3da880d14f0f392ef619c3b9193a898601bd84bd137ae",
+          "fixed_sha256": "edec95044b9adf1e99c3da880d14f0f392ef619c3b9193a898601bd84bd137ae"
+        },
+        {
+          "demo_index": 2,
+          "field": "input",
+          "same": true,
+          "Kaggle_shape": [
+            30,
+            22
+          ],
+          "fixed_repo_shape": [
+            30,
+            22
+          ],
+          "differing_cells": [],
+          "Kaggle_sha256": "aaecac5b3ec5b59a42a48568514a999cba0a9b56181c6dd0e2f5cc7181da00ed",
+          "fixed_sha256": "aaecac5b3ec5b59a42a48568514a999cba0a9b56181c6dd0e2f5cc7181da00ed"
+        },
+        {
+          "demo_index": 2,
+          "field": "output",
+          "same": true,
+          "Kaggle_shape": [
+            30,
+            22
+          ],
+          "fixed_repo_shape": [
+            30,
+            22
+          ],
+          "differing_cells": [],
+          "Kaggle_sha256": "1467d7bcd34ecaee237bb1253e1bf8794984c0d040b50cc3723f785b83259b7c",
+          "fixed_sha256": "1467d7bcd34ecaee237bb1253e1bf8794984c0d040b50cc3723f785b83259b7c"
+        },
+        {
+          "demo_index": 3,
+          "field": "input",
+          "same": true,
+          "Kaggle_shape": [
+            30,
+            22
+          ],
+          "fixed_repo_shape": [
+            30,
+            22
+          ],
+          "differing_cells": [],
+          "Kaggle_sha256": "33d7b16ce4e273bcab9582bd826794498a65f8f1c5b58a11a2f24981cf5fbcdc",
+          "fixed_sha256": "33d7b16ce4e273bcab9582bd826794498a65f8f1c5b58a11a2f24981cf5fbcdc"
+        },
+        {
+          "demo_index": 3,
+          "field": "output",
+          "same": true,
+          "Kaggle_shape": [
+            30,
+            22
+          ],
+          "fixed_repo_shape": [
+            30,
+            22
+          ],
+          "differing_cells": [],
+          "Kaggle_sha256": "bb77456f7e6da13c212710ba6b024de8347476480284fd2c45f6d68527592ea7",
+          "fixed_sha256": "bb77456f7e6da13c212710ba6b024de8347476480284fd2c45f6d68527592ea7"
+        },
+        {
+          "demo_index": 4,
+          "field": "input",
+          "same": true,
+          "Kaggle_shape": [
+            30,
+            22
+          ],
+          "fixed_repo_shape": [
+            30,
+            22
+          ],
+          "differing_cells": [],
+          "Kaggle_sha256": "ed2a370110e3e982bad778e5734a30893dbdf2444cb2a06c3d37ca0b8e473d65",
+          "fixed_sha256": "ed2a370110e3e982bad778e5734a30893dbdf2444cb2a06c3d37ca0b8e473d65"
+        },
+        {
+          "demo_index": 4,
+          "field": "output",
+          "same": true,
+          "Kaggle_shape": [
+            30,
+            22
+          ],
+          "fixed_repo_shape": [
+            30,
+            22
+          ],
+          "differing_cells": [],
+          "Kaggle_sha256": "a17c7cdaad6c73237b063115c337c272f4768351d4bca6a14e007ebdc978d7a1",
+          "fixed_sha256": "a17c7cdaad6c73237b063115c337c272f4768351d4bca6a14e007ebdc978d7a1"
+        }
+      ]
+    },
+    "file_history_url": "https://api.github.com/repos/arcprize/ARC-AGI-2/commits?path=data%2Fevaluation%2Fd8e07eb2.json&per_page=10",
+    "official_update_commit": "14fba87526c727b80b3a9b85d5933fd7825b991f",
+    "official_update_date_utc": "2025-04-17T17:36:10Z",
+    "matching_prior_official_revision": "bebec789c46f4be8f690a321ad852ecdb1f3f362",
+    "matching_prior_date_utc": "2025-03-25T22:43:42Z",
+    "matching_prior_blob_sha": "9a004868baffd75a5234f1057e99cef7f2d540d3",
+    "matching_prior_full_demo_match": true,
+    "matching_prior_all_query_inputs_match": true,
+    "additional_matching_prior_revision": "c69a4a50d2eb22ce2aeb5e929c040a05dfacaecf",
+    "official_files_fetched_after_prediction_freeze": true,
+    "query_outputs_compared_by_this_audit": false,
+    "recommended_supplement": "Keep existing primary score unchanged. If desired score only the two d8e07eb2 queries against the matching prior official revision as a separate supplement; do not silently mix revisions into the primary denominator.",
+    "model_prediction_status": "P0 length, direct_invalid, no real candidate for either query; initialized [[0]] slots only.",
+    "supplement_completed": true,
+    "query_outputs_compared_by_supplement_after_freeze": true
+  },
+  "files_written_by_audit": [
+    "experiments/021/execution/qwen-e20-scoring-audit-v1.json",
+    "experiments/021/execution/qwen-e20-version-supplement-v1.json"
+  ],
+  "limitations": [
+    "No 4B paired result is incorporated, so no complementarity or ensemble gain is established.",
+    "The 32K one-arm result does not isolate token-budget effects from prior different-cohort 49K runs.",
+    "Source candidate keys identify actual generation; simple legal-grid or [[0]] value checks alone do not establish provenance."
+  ],
+  "version_aligned_full_E20_result": {
+    "primary_fixed_revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+    "primary_fixed_revision_result": {
+      "exact": 2,
+      "matched_queries": 25,
+      "unmatched_queries": 2
+    },
+    "two_query_supplement_revision": "bebec789c46f4be8f690a321ad852ecdb1f3f362",
+    "two_query_supplement_result": {
+      "exact": 0,
+      "matched_queries": 2
+    },
+    "combined_exact": 2,
+    "combined_queries": 27,
+    "combined_micro_em2": 0.07407407407407407,
+    "version_selection_basis": "Selected prior official revision solely because full ordered demonstrations and query inputs exactly match frozen Kaggle E20; no correctness or answer values used to select revision.",
+    "supplement_file": "experiments/021/execution/qwen-e20-version-supplement-v1.json",
+    "supplement_file_sha256": "4712c7541723834c46f1beb142880fc196aadfe2b68b2ff48fe2f51c2e6462ad",
+    "primary_score_report_unchanged": true,
+    "warning": "This 2/27 aggregate explicitly uses two different official revisions aligned by complete demos and query inputs. It must not be described as the single f328 revision score."
+  }
+}

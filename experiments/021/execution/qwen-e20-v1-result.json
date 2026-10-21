@@ -1,0 +1,130 @@
+{
+  "recorded_at_utc": "2026-10-21T14:32:16.021229+00:00",
+  "experiment": "021 Qwen3.8-27B E20 Direct1 32K candidate diagnosis",
+  "git_review_base": "0e1bb26",
+  "identity": {
+    "ref": "zhuating/arc2-021-qwen-e20-direct32k",
+    "version": 1,
+    "kernel_id": 140024619,
+    "output_session_id": "360788173",
+    "platform_status": "COMPLETE",
+    "driver_status": "complete_with_evidence",
+    "exit_code": 0,
+    "notebook_sha256": "c69c98b6caf4960b866464e6a1944f0b0ee88a706185c3e2622194fbd78d6cdb"
+  },
+  "data": {
+    "source": "Kaggle public evaluation inherited from 020 E20",
+    "tasks": 20,
+    "queries": 27,
+    "challenge_sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda",
+    "exposure": "Public inputs previously exposed in 019; not an unseen validation cohort."
+  },
+  "model": {
+    "weights": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1",
+    "hardware": "4 x NVIDIA L4, 23034 MiB each",
+    "inference": "FP8, TP4, C8, MTP2, mamba align, xhigh, thinking24576 / total32768, P0 seed5101, one call per task",
+    "calls": 20
+  },
+  "prediction_freeze": {
+    "utc": "2026-10-21T14:25:20.560169+00:00",
+    "sha256": "3367f1cac955520dfb46a45a04296a290e1984999ffce62478df9779022a1e22",
+    "M0_M1_default_identical": true,
+    "both_slots_identical_queries": 27,
+    "independent_candidates_per_generated_query": 1
+  },
+  "accuracy": {
+    "primary_fixed_revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+    "primary_fixed_revision_result": {
+      "exact": 2,
+      "matched_queries": 25,
+      "unmatched_queries": 2
+    },
+    "two_query_supplement_revision": "bebec789c46f4be8f690a321ad852ecdb1f3f362",
+    "two_query_supplement_result": {
+      "exact": 0,
+      "matched_queries": 2
+    },
+    "combined_exact": 2,
+    "combined_queries": 27,
+    "combined_micro_em2": 0.07407407407407407,
+    "version_selection_basis": "Selected prior official revision solely because full ordered demonstrations and query inputs exactly match frozen Kaggle E20; no correctness or answer values used to select revision.",
+    "supplement_file": "experiments/021/execution/qwen-e20-version-supplement-v1.json",
+    "supplement_file_sha256": "4712c7541723834c46f1beb142880fc196aadfe2b68b2ff48fe2f51c2e6462ad",
+    "primary_score_report_unchanged": true,
+    "warning": "This 2/27 aggregate explicitly uses two different official revisions aligned by complete demos and query inputs. It must not be described as the single f328 revision score."
+  },
+  "delivery_and_correctness": {
+    "real_query_predictions": 18,
+    "real_correct": 2,
+    "real_wrong": 16,
+    "queries_without_model_candidates": 9,
+    "original_full_task_exact": 2,
+    "version_aligned_task_denominator": 20,
+    "fully_matched_primary_tasks": 19,
+    "primary_full_task_exact": 2
+  },
+  "runtime": {
+    "install_seconds_already_included_in_install_load": 261.6,
+    "install_load_seconds": 711.6,
+    "generation_wall_seconds": 3351.32,
+    "total_driver_seconds": 4063.551,
+    "completion_tokens": 551365,
+    "aggregate_completion_tokens_per_second": 164.5217406872516,
+    "global_budget_truncation": false,
+    "per_call_32K_length_truncations": 5,
+    "invalid_task_count": 6,
+    "invalid_task_token_share": 0.34302141049939694
+  },
+  "cpu_tail_json_diagnostic": {
+    "source_prediction_sha256": "3367f1cac955520dfb46a45a04296a290e1984999ffce62478df9779022a1e22",
+    "derived_prediction_sha256": "212225b43ec049351a4998613f9d9629b9f57370a5281e200691c2c8b9af0b61",
+    "no_new_model_calls": true,
+    "original_real_predictions": 18,
+    "derived_real_predictions": 19,
+    "changed_task_id": "7491f3cf",
+    "recovered_query_exact": false,
+    "correct_query_change": 0,
+    "primary_fixed_revision_original": 2,
+    "primary_fixed_revision_derived": 2,
+    "primary_matched_denominator": 25,
+    "unmatched_two_queries_unchanged_from_original_supplement": true,
+    "version_aligned_full_original_and_derived": {
+      "exact": 2,
+      "queries": 27
+    }
+  },
+  "remaining_quota_snapshot": {
+    "checked_at_utc": "2026-10-21T14:24:25.477642+00:00",
+    "account": "zhuating",
+    "quota_refresh_time_utc": "2026-10-24T00:00:00",
+    "gpu": {
+      "total_seconds": 108000.0,
+      "used_seconds": 58987.849197,
+      "reserved_seconds": 0.0,
+      "available_seconds": 49012.150803,
+      "available_hours": 13.614486334166665
+    },
+    "scope": "Read-only identity and quota; no credential values recorded, no job launch."
+  },
+  "decision": {
+    "continue_full_E20_32K_scaling": false,
+    "competition_submission_made": false,
+    "new_GPU_job_started_this_review": false,
+    "next_research_priority": "Obtain a completed full 4B control before measuring routed 27B unique gains and final-two-slot net effect. Do not infer complementarity from this one-arm run.",
+    "model_choice_unchanged": "Qwen/Qwen3.8-27B remains the selected larger-model research candidate; this experiment does not establish its capability ceiling."
+  },
+  "evidence_files": [
+    "execution/qwen-e20-v1-artifact-freeze.json",
+    "execution/qwen-e20-v1-remote-metadata.json",
+    "execution/qwen-e20-v1-source-verification.json",
+    "execution/qwen-e20-runtime-audit-v1.json",
+    "execution/qwen-e20-scoring-audit-v1.json",
+    "execution/qwen-e20-version-supplement-v1.json",
+    "execution/qwen-e20-parse-audit-v1.json",
+    "scoring-qwen-e20-v1/score-report.json",
+    "scoring-qwen-e20-v1/query-ledger.jsonl",
+    "scoring-qwen-e20-tail-json-v1/score-report.json",
+    "parse-replay/e20-tail-json-v1/candidate-freeze.json"
+  ],
+  "interpretation": "Local public evaluation diagnosis using explicitly version-matched official sources, not a Kaggle leaderboard score, a paired 4B+27B result, or a causal 32K-vs-49K comparison."
+}
