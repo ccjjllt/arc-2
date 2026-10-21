@@ -1,0 +1,22 @@
+{
+  "id": "zhuating/arc2-021-qwen-e20-direct32k",
+  "title": "arc2-021-qwen-e20-direct32k",
+  "code_file": "arc2-021-qwen-e20-direct32k.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "machine_shape": "NvidiaL4",
+  "competition_sources": [
+    "arc-prize-2026-arc-agi-2"
+  ],
+  "dataset_sources": [],
+  "model_sources": [
+    "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1"
+  ],
+  "kernel_sources": [
+    "zhuating/arc2-020-runtime-recovery"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "prepared_date_beijing": "2026-10-21",
+  "scope": "Input-only scorer preparation and scored-ledger summarizer implementation; no E20 answer grids read, no network, no GPU.",
+  "official_source": {
+    "repository": "arcprize/ARC-AGI-2",
+    "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+    "split": "evaluation",
+    "evidence": "Existing 020 scoring prediction-freeze files and progress record use this immutable revision. No local official Git checkout is currently selected; existing scorer can fetch only matched task files after prediction freeze."
+  },
+  "input_check": {
+    "status": "manual load_inputs passed",
+    "n_tasks": 20,
+    "n_queries": 27,
+    "manifest": "experiments/020/evaluation-e20/manifest.json",
+    "manifest_sha256": "6a169f382e70c2cdf81194d648485bf25471666192dc4396ec44d4112ca4f21d",
+    "challenges": "experiments/020/evaluation-e20/challenges.json",
+    "challenges_sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda",
+    "gold_read": false
+  },
+  "scorer": {
+    "path": "experiments/020/score_frozen_outputs.py",
+    "sha256": "56f6a54e1544882ac01ccbaeb3527b5a2c03b0ae6ebd7c00e1c24ff0aef92d35",
+    "manifest_changes_required": false,
+    "score_command_argv": [
+      "python3",
+      "experiments/020/score_frozen_outputs.py",
+      "--manifest",
+      "experiments/020/evaluation-e20/manifest.json",
+      "--challenges",
+      "experiments/020/evaluation-e20/challenges.json",
+      "--prediction",
+      "B0=REPLACE_WITH_FROZEN_B0_SUBMISSION_JSON",
+      "--official-split",
+      "evaluation",
+      "--official-revision",
+      "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "--output-dir",
+      "REPLACE_WITH_NEW_SCORING_DIRECTORY",
+      "--allow-gold-read"
+    ],
+    "command_notes": [
+      "Run only after solver output artifacts have been frozen; the scorer also hashes all input predictions before any gold read.",
+      "Add --prediction B1=PATH and --prediction B2=PATH to score three policies once when their frozen files exist.",
+      "The full original E20 manifest remains the denominator, including missing/invalid/placeholder queries.",
+      "Official input/version mismatch is unresolved and separately counted, never silently made incorrect or omitted from the original planned denominator.",
+      "Raw .bz2 candidate files are not directly accepted as --candidate-pool; wrap ranked exports in policy -> query-key -> candidate-row maps if using that scorer option."
+    ]
+  },
+  "summarizer": {
+    "path": "experiments/021/summarize_paired.py",
+    "sha256": "56dfd78f21f815d49d8cc0b19670ad008d8b804ca77f60839ee33b8f4820be85",
+    "syntax_status": "AST parse passed; not yet run against new E20 scoring artifacts",
+    "command_argv": [
+      "python3",
+      "experiments/021/summarize_paired.py",
+      "--report",
+      "REPLACE_WITH_SCORING_DIRECTORY/score-report.json",
+      "--ledger",
+      "REPLACE_WITH_SCORING_DIRECTORY/query-ledger.jsonl",
+      "--baseline",
+      "B0",
+      "--candidate-pool",
+      "B0=REPLACE_WITH_B0_CANDIDATE_POOLS_JSON",
+      "--out",
+      "REPLACE_WITH_NEW_SUMMARY_JSON"
+    ],
+    "outputs": [
+      "Each policy: query micro EM@2, fully matched full-task exact, validity/missing statuses, distinct slots, [[0]] heuristic counts, optional source-candidate coverage.",
+      "All ordered policy pairs: new/lost/net queries, micro EM delta, gained/lost keys and task IDs, baseline second-slot-exclusive losses."
+    ],
+    "required_ledger_metadata": [
+      "task_id",
+      "query_key",
+      "gold_match_status",
+      "policies.{name}.exact / attempt_1_exact / attempt_2_exact on matched rows",
+      "policies.{name}.prediction_status / prediction_present / distinct_valid_attempts"
+    ],
+    "metadata_limitations": [
+      "Ledger both_placeholder is a value heuristic for [[0]] in both slots, not proof of model provenance.",
+      "The new V1 candidate export is a direct query-key -> ranked unique grid rows map; --candidate-pool B0=PATH handles it directly.",
+      "Without source candidate exports, the ledger cannot identify one filled [[0]] slot versus a genuine generated [[0]] answer, or distinguish which source won an ensemble slot.",
+      "Current scoring ledger lacks routing/source-selection timing; routing opportunity-cost and wall-clock analysis need the run/candidate provenance separately."
+    ],
+    "manual_existing_scored_ledger_replay": {
+      "source": "Existing frozen C24 scored ledger; no new gold read",
+      "status": "manual compatibility replay passed",
+      "matched_queries": 26,
+      "policies": {
+        "Direct1PlusLine": {
+          "exact_queries": 17,
+          "query_micro_em2": 0.6538461538461539,
+          "all_queries_exact_tasks": 16
+        }
+      }
+    }
+  },
+  "v1_export_cautions": [
+    "Do not use V1 validate_submission task-weighted count as the Kaggle query metric.",
+    "Keep all raw guesses until score_kgmon aggregation: frequency is part of ranking, so early grid dedup loses votes.",
+    "Final candidate-pools may deduplicate grids only after ranking; top two unique rows correspond to final generated answer slots.",
+    "Original V1 leaves [[0]] in the second slot if only one candidate exists; preserve coverage provenance.",
+    "Decode artifacts are numpy-containing .bz2 pickles and require faithful conversion to rectangular integer grids; raw saved pickles are not score-ready submission JSON.",
+    "Retain all 27 E20 queries in original order; missing queries stay placeholders/failures and do not reduce the planned denominator."
+  ]
+}

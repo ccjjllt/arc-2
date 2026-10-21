@@ -1,0 +1,44 @@
+{
+  "owner": "zhuating",
+  "slug": "arc2-021-qwen-e20-direct32k",
+  "cohort": "experiments/020/evaluation-e20/challenges.json",
+  "p0_only": true,
+  "generation_mode": "direct",
+  "direct_attempts": 1,
+  "line_complement": false,
+  "ordinary_cpu_only": false,
+  "result_label": "DeepDirect",
+  "frozen_initial": null,
+  "gen_max": 32768,
+  "thinking_max": 24576,
+  "mtp_tokens": 2,
+  "speculative_config": {
+    "method": "mtp",
+    "num_speculative_tokens": 2
+  },
+  "mamba_cache_mode": "align",
+  "policy": "M1",
+  "source_sha256": {
+    "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+    "ordinary_cpu.py": "47942bb0957f6ed8d6cfe09a31e4a36666416ef92fbc8a60914d45d1c484d7aa",
+    "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+    "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+    "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+    "vdriver020_submit.py": "2a86d880710a6992d30b96e1423551ed3349a29313a1fdffc28c07045cc29d58",
+    "cohort-challenges.json": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda"
+  },
+  "asset_sources": {
+    "competition_sources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "dataset_sources": [],
+    "model_sources": [
+      "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1"
+    ],
+    "kernel_sources": [
+      "zhuating/arc2-020-runtime-recovery"
+    ]
+  },
+  "notebook_sha256": "c69c98b6caf4960b866464e6a1944f0b0ee88a706185c3e2622194fbd78d6cdb",
+  "session_seconds": 7200
+}

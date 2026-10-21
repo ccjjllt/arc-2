@@ -1,0 +1,72 @@
+我的判断是：剩余时间里，最大的可兑现收益来自“成熟的 NVARC 4B 完整流程＋经过实测的 27B 互补”，后训练只保留一个限时挑战者。现在不适合把主要资源投入到重新训练一个 NVARC 式的 27B 专用模型。
+这轮检索有两个重要的新发现：
+- Qwen3.8‑27B 有 ARC Prize 官方的 ARC2 42.4% 实测成绩，你们的 12.50 分不足以说明模型本身没有能力。
+- 找到一批可以具体接入的 Re‑ARC2 生成器：相对你们 004 计划固定的 ARC‑GEN 版本，它额外覆盖 109 个训练任务。这比笼统地“再加合成数据”更适合作为下一轮研究目标。
+下面把已经公开的事实、后训练空间和我的投入建议分开说。
+我刚查到的 10 月 21 日北京时间 18:02 的公开榜镜像显示：
+这里的即时分数来源是定时读取 Kaggle 的第三方镜像；不能把它当成最终私榜结果。[arc-explainer-production.up.railway.app](https://arc-explainer-production.up.railway.app/arc-leaderboards?utm_source=chatgpt.com)
+因此，目前没有依据说“榜首只是把 NVARC 多微调了一轮”，也没有依据说“他们都在用 27B”。 我核查了作者公开页面和相关 notebook，但没有找到能够把这些高分与具体实现绑定起来的证据。
+尤其容易混淆的是：Tufa 已公开的 Duck Harness 属于 ARC‑AGI‑3。它不能用来解释当前 ARC‑AGI‑2 的 88.06 分。[Tufa Labs](https://tufalabs.ai/research/?utm_source=chatgpt.com)
+我们现在应参考有模型、有代码、有明确评测条件的工作，不能用对领先队伍的猜测决定训练投入。
+本轮能核实“分数与源码版本对应”、最值得先复现的公开参考，仍然是：
+[Failed in AIMO — V1](https://www.kaggle.com/code/koushikrudra/failed-in-aimo?utm_source=chatgpt.com)：公榜 33.89。
+它使用的是 sorokin/qwen3_4b_grids15_sft139 专用 4B 模型，页面明确标记 33.89 / V1 / L4×4。我没有证明它是当前全网最高的公开 notebook，但它是有明确版本证据的较强起点。页面显示的 26 分钟普通运行，也不能当成隐藏评分全程耗时。[kaggle.com](https://www.kaggle.com/code/koushikrudra/failed-in-aimo?utm_source=chatgpt.com)
+我核对过 V1 源码，其主要组合是：
+- 16 token 的专用网格表示；
+- 每道题独立进行 LoRA 测试时训练；
+- 几何和颜色增强；
+- 批量 DFS 生成候选；
+- 将候选逆变换、去重，再结合频次和似然选出两个答案；
+- 四张 GPU 分别处理任务。
+它的价值在于训练、表示、逐题适配、搜索和选择已经配套。只换上这个 4B 权重，不能视为复现了整个方案。原作者也公开了训练与推理代码：[NVARC 仓库](https://github.com/1ytic/NVARC?utm_source=chatgpt.com)。[Kaggle](https://www.kaggle.com/c/arc-prize-2025/writeups/nvarc?utm_source=chatgpt.com)
+新找到的研究是 [CHARM：Structured Sparse Memory for Recurrent Reasoning](https://github.com/water-vapor/charm?utm_source=chatgpt.com)，已经公开代码、权重和数据。论文报告 ARC2 public evaluation 46.7%，采用递归计算和结构化任务记忆。[GitHub](https://github.com/water-vapor/charm?utm_source=chatgpt.com)
+但这个数字有一个关键条件：主实验在训练过程中使用了这些公开评估题的 demonstrations，来学习任务记忆，不使用其 test outputs。 新的隐藏题需要另外建立任务记忆并适配，所以不能把现成 checkpoint 当成一个直接上线就有 46.7 分的 Kaggle 模型。[arxiv.org](https://arxiv.org/html/2609.33270v1?utm_source=chatgpt.com)
+训练成本也不适合临时重建：论文对标准 ARC2 训练的估算是 8×H100 约 127.3 小时；最终 46.7% 使用了更长的训练。[arxiv.org](https://arxiv.org/html/2609.33270v1?utm_source=chatgpt.com)
+对我们最有用的资产，是它配套的 [Re‑ARC2 数据与生成器](https://github.com/water-vapor/synth-rearc?utm_source=chatgpt.com)。
+我实际按任务 ID 做了比较：
+这是我对[你们固定的 ARC‑GEN 版本](https://github.com/google/ARC-GEN/tree/a15cbdb44c776610aeeb9f487a06af875d3d0878/tasks)与 [Re‑ARC2 任务清单](https://github.com/water-vapor/synth-rearc/blob/d9ea8b2fc21ac4189f1a895aaeef84cf74df16b0/data/task_lists/arc2_training_minus_arc1_task_ids.txt)计算出的差集。
+这个新增覆盖很具体，但不能解释成“109 种 NVARC 从未见过的规则”。 NVARC 已训练过 ARC2 training 原题；这里增加的是相对于你们现有方案的生成器和变体覆盖。它还有现成的预生成数据包，可以减少数据工程时间。
+[DiARC](https://github.com/szu-tera/DiARC?utm_source=chatgpt.com) 的思想有价值：构造正确网格与“看起来合理、实际规则错误”的网格对，通过 DPO 学会区分它们。它有公开代码和 adapter。[GitHub](https://github.com/szu-tera/DiARC?utm_source=chatgpt.com)
+但我会收紧上轮对它的推荐强度：
+- 尚未找到它在本届比赛、相同推理预算下可靠增分的复现证据；
+- 公开偏好数据中存在 evaluation 派生版本，需要重新处理训练与验证边界；
+- 目前看到的 Kaggle 移植尝试，也不足以形成干净的效果对照。
+所以它适合作为一个待验证的训练目标，不能视为合并 adapter 就能涨分的现成升级。当前不建议同时开启 Re‑ARC2 续训、DPO 和新架构三条训练线。
+我认为 NVARC 仍有后训练空间，但没有证据支持短程 LoRA 能让现有约 30 分方案直接接近 70—80 分。
+原因在于，公开的 NVARC checkpoint 已经接受过大量专项训练。原作者使用了约 320 万增强样本，4B 全参数微调投入过 32 张 H100、27 小时。这不是一个几乎没接触过 ARC、随便加一点数据就会快速补齐能力的底座。[Kaggle](https://www.kaggle.com/c/arc-prize-2025/writeups/nvarc?utm_source=chatgpt.com)
+后续收益更可能取决于三个问题：
+1. 新增数据是否补到了真实缺陷？
+新的网格尺寸、对象数量、条件组合和干扰关系，可能有用；大量重复简单变体的价值较低。
+2. 训练是否保持完整的少样本任务？
+要学习从多个示例推断规则，就需要完整 demonstrations＋query＋target episode。单个输入输出对拟合得更好，不等于新题推理更好。
+3. 提高的是最终提交分数，还是只提高合成数据分数？
+必须同时统计新增正确答案、原来答对但现在答错的答案，以及完整 TTT 流程下的实际耗时。
+把你们[004 中尚未执行的 NVARC 续训计划](https://github.com/ccjjllt/arc-2/blob/248dabac97b07afe7a4209fc19e1db5b7d4758ee/docs/plan/004-specialist-solver.md)缩成一个明确实验：
+从原 NVARC 4B 出发，优先使用这 109 个额外生成器和基线实际暴露的少量薄弱任务族，混入旧数据回放，只产出一个短程续训 checkpoint。
+保持原来的网格格式、逐题 TTT、增强和候选选择不变，先与冻结的原版比较。这样可以尽快知道新 checkpoint 是否值得提交。
+训练数据按完整任务组织，留出时按原任务或生成器家族分组。Re‑ARC2 仓库也包含 evaluation 材料，接入时明确使用 training 部分；公开评估仍主要承担诊断作用，不能轻易宣称它对上游模型完全未见。
+给这条线一个 48 小时的工作期限。 这个期限是控制投入的建议，不是声称 48 小时足以证明后训练有无潜力。若只有训练 loss 或合成集改善，真实题没有净新增解，就停止本轮扩量，继续推进已经有收益的提交方案。
+可以，而且值得长期研究；但短期最值得迁移的是系统设计，完整权重改造的投资回报仍不清楚。
+ARC Prize 官方报告：
+这些成绩来自 Baseten 的专用推理环境。官方还指出，medium 比 low 消耗更多 completion tokens，却取得更低成绩。因此，把 effort 调低也不是可靠的效率捷径。[ARC-AGI Results](https://arcprize.org/results/alibaba-qwen3-8-27b?utm_source=chatgpt.com)
+这说明 27B 值得保留为能力候选。但我们没有核实这次官方运行的完整 token、次数和耗时配置，42.4% 不能转成你们 FP8、4×L4、12 小时条件下的预期成绩。
+你们当前已经使用 xhigh，也不存在一个“把思考开关打开”就能恢复这些分数的简单修正。
+NVARC 的 16 token 方案和 Qwen3.8‑27B 的原始模型差别很大。27B 保有完整语言词表，架构还混合了 Gated DeltaNet 与 attention；不能直接照搬旧 Qwen3 的 adapter 模块和搜索实现。[Hugging Face](https://huggingface.co/Qwen/Qwen3.8-27B?utm_source=chatgpt.com)
+还有一个重要的成本事实：LoRA 主要改变模型行为，不会自动把 27B 的推理成本降到 4B。 即使合并 adapter，27B 基座的计算仍然存在。要让它在比赛里更划算，需要它更稳定地完成正确解、减少无效推理，或者把学到的能力离线转移给小模型。
+因此，对“提升空间大不大”，我的回答是：
+- 能力潜力值得研究，官方 ARC2 成绩支持这一点。
+- 短期后训练能提升多少，目前无法可靠量化。
+- 模型更大，不构成专训后必然超过 NVARC 的证据。
+- 在当前期限下，27B 的首要价值应由“它能为最终组合补多少题”决定。
+你们已有一个很明确的缺口：C24 诊断中，26 个 query 有 5 个没有有效预测，而且两个答案槽全部相同。这说明完成率和候选多样性有实际改进空间；这些现象在隐藏评分中造成了多少损失，目前仍不知道。[仓库审计](https://github.com/ccjjllt/arc-2/blob/248dabac97b07afe7a4209fc19e1db5b7d4758ee/experiments/020/evidence/c24-vs-evaluation-transfer-gap.json)
+所以下一次最值得回答的问题是：
+同样的总运行时间，NVARC 完整流程，是否比“NVARC＋部分题使用 27B”得分更高？
+仓库已归档的 Kaggle 作者报告中，有 NVARC＋27B 从约 35 提升到约 45 的自报。这足以提高互补实验的优先级，但缺少绑定的代码版本、时间分配和独立分数证据，不能当成我们已经可以获得的 10 分提升。[原始研究记录](https://github.com/ccjjllt/arc-2/blob/248dabac97b07afe7a4209fc19e1db5b7d4758ee/experiments/020/evidence/qwen27b-research-update-20261020.json)
+这个实验要同时算清：
+- 27B 新增了哪些正确答案；
+- 替换 NVARC 第二候选丢掉了哪些正确答案；
+- 两模型加载、切换、生成和选择的时间；
+- 超时和没有最终答案造成的损失。
+两个模型“正确答案的并集”只是上界，实际提交只能保留两个候选。 同样，NVARC 低置信度不自动意味着 27B 能解决；最难的题可能两个模型都失败。
+这里真正需要加速的是从小规模对照走到有效提交反馈。每个候选先用短名单筛选，只有出现实质收益才做更大验证；不为每个想法建立完整工程，也不在结果为零的分支上继续追加预算。
+我的最终投入排序是：成熟 NVARC 提交 → 同预算的 27B 互补 → 109 个额外生成器支持的限时 4B 续训。DiARC 留作备选；27B 全面专训、逐题全量 TTT 和新递归架构暂不承担本届提分主任务。

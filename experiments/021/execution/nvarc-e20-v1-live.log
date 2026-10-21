@@ -1,0 +1,16 @@
+/usr/local/lib/python3.11/dist-packages/pydevd_plugins/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+/usr/local/lib/python3.11/dist-packages/pydevd_plugins/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+{"notebook_started": 1792585929.0128078, "python": "3.11.13 (main, Jun  4 2025, 08:57:29) [GCC 11.4.0]", "utility_root": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch", "source_sha256": {"arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222", "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c", "arc_solver.py": "75c0b9260af9045f85268c1ae2971b3d30f662597087b263b934e76aaf857306", "run_research.py": "6dbd7f848f2f90c07e1610b13df2b3716a9a331c2b41d4b3e6cd4e8443d511f2", "starter.py": "8e1edbf98480c54e06bcb43703f8d7bc75a25e5bac9f4ff064e3c91e4fdf6dbf", "challenges.json": "317fffff6ba643ea09a2b028ed6d7521c65767422f7b30165f29d6637071e1cf"}, "total_seconds": 6000, "task_seconds": 660, "save_seconds": 180, "reference": "Failed in AIMO V1 / 312063593", "execution": "public E20 research; not a competition submission"}
+{"event": "progress", "elapsed_s": 328.9888138771057, "coverage": {"tasks": 20, "queries": 27, "generated_queries": 0, "placeholder_queries": 27, "candidate_files": 0, "raw_candidates": 0, "unique_candidates": 0, "errors": [], "selection": "unmodified V1 score_kgmon; original missing-slot [[0]]", "gold_read": false}}
+{"event": "progress", "elapsed_s": 328.9888138771057, "coverage": {"tasks": 20, "queries": 27, "generated_queries": 0, "placeholder_queries": 27, "candidate_files": 0, "raw_candidates": 0, "unique_candidates": 0, "errors": [], "selection": "unmodified V1 score_kgmon; original missing-slot [[0]]", "gold_read": false}}
+Log stream connection lost, reconnecting...

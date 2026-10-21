@@ -1,0 +1,686 @@
+{
+  "started_at_utc": "2026-10-21T12:25:58.651958+00:00",
+  "finished_at_utc": "2026-10-21T12:25:58.689807+00:00",
+  "local_cpu_wall_seconds": 0.03787320799999999,
+  "hardware": {
+    "machine": "arm64",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.9.6 (default, Aug 25 2026, 21:26:21) \n[Clang 21.0.0 (clang-2100.3.34.2)]",
+    "GPU_used": false
+  },
+  "new_model_calls": 0,
+  "source_files": [
+    {
+      "path": "experiments/020/submit/vdriver020_submit.py",
+      "sha256": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124",
+      "bytes": 47992
+    },
+    {
+      "path": "experiments/020/submit/submit_lib.py",
+      "sha256": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+      "bytes": 17014
+    },
+    {
+      "path": "experiments/021/parse-replay/replay_direct.py",
+      "sha256": "c635132a0e836e21da6814abddfd7671c6add149d211b3368de222a0da67ee7f",
+      "bytes": 13790
+    }
+  ],
+  "old_parse_function_sha256": "08b18609b070e084bc9a91b4c4238a80afc6648e541536bd8fbbf44c531f79fe",
+  "policy": "Complete strict JSON object; duplicate/unknown keys reject whole object; independently retain complete valid expected members; no text/array recovery or inferred cells.",
+  "scoring": "Compare canonical grid SHA256 to previously input-matched official gold SHA256 from frozen 020 ledgers. No gold grids read or downloaded. Old replay verified against archived parse and frozen exact result for every matched query.",
+  "cohorts": [
+    {
+      "cohort": "C24",
+      "tasks": 24,
+      "queries": 26,
+      "matched_queries": 26,
+      "old_legal": 21,
+      "new_legal": 21,
+      "recovered_legal": 0,
+      "lost_legal": 0,
+      "old_exact": 17,
+      "new_exact": 17,
+      "recovered_exact": 0,
+      "lost_exact": 0,
+      "official_revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "official_split": "training",
+      "unmatched_queries": 0,
+      "old_em2": 0.6538461538461539,
+      "new_em2": 0.6538461538461539,
+      "invalid_tasks": [
+        {
+          "task_id": "984d8a3e",
+          "queries": 1,
+          "old_error": "Grid must be rectangular",
+          "new_status": "partial_or_invalid",
+          "new_errors": [
+            "Grid must be rectangular"
+          ],
+          "finish": "stop",
+          "completion_tokens": 41606,
+          "content_chars": 720
+        },
+        {
+          "task_id": "aa62e3f4",
+          "queries": 1,
+          "old_error": "Expecting value: line 1 column 1 (char 0)",
+          "new_status": "object_rejected",
+          "new_errors": [
+            "Expecting value: line 1 column 1 (char 0)"
+          ],
+          "finish": "length",
+          "completion_tokens": 49152,
+          "content_chars": 24176
+        },
+        {
+          "task_id": "b7fb29bc",
+          "queries": 1,
+          "old_error": "Expecting value: line 1 column 1 (char 0)",
+          "new_status": "object_rejected",
+          "new_errors": [
+            "Expecting value: line 1 column 1 (char 0)"
+          ],
+          "finish": "length",
+          "completion_tokens": 49152,
+          "content_chars": 26916
+        },
+        {
+          "task_id": "c3fa4749",
+          "queries": 2,
+          "old_error": "Expecting value: line 1 column 1 (char 0)",
+          "new_status": "object_rejected",
+          "new_errors": [
+            "Expecting value: line 1 column 1 (char 0)",
+            "Expecting value: line 1 column 1 (char 0)"
+          ],
+          "finish": "length",
+          "completion_tokens": 49152,
+          "content_chars": 16649
+        }
+      ],
+      "model": "Qwen/Qwen3.8-27B FP8 repack v1",
+      "archived_model_root": "/kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1",
+      "raw_run_source_identities": {
+        "9c56f360": {
+          "run": "experiments/020/c24-direct-ccjjllt-v3/vprobe",
+          "source_sha256": {
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e"
+          }
+        },
+        "dce56571": {
+          "run": "experiments/020/c24-direct-ccjjllt-v3/vprobe",
+          "source_sha256": {
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e"
+          }
+        },
+        "9841fdad": {
+          "run": "experiments/020/c24-direct-ccjjllt-v3/vprobe",
+          "source_sha256": {
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e"
+          }
+        },
+        "a416fc5b": {
+          "run": "experiments/020/c24-direct-ccjjllt-v3/vprobe",
+          "source_sha256": {
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e"
+          }
+        },
+        "ad173014": {
+          "run": "experiments/020/c24-direct-ccjjllt-v3/vprobe",
+          "source_sha256": {
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e"
+          }
+        },
+        "df9fd884": {
+          "run": "experiments/020/c24-direct-ccjjllt-v3/vprobe",
+          "source_sha256": {
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e"
+          }
+        },
+        "984d8a3e": {
+          "run": "experiments/020/c24-direct-ccjjllt-v3/vprobe",
+          "source_sha256": {
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e"
+          }
+        },
+        "6bcdb01e": {
+          "run": "experiments/020/c24-direct-ccjjllt-v3/vprobe",
+          "source_sha256": {
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e"
+          }
+        },
+        "7e4d4f7c": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        },
+        "9344f635": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        },
+        "e45ef808": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        },
+        "aaef0977": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        },
+        "ff2825db": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        },
+        "66f2d22f": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        },
+        "54dc2872": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        },
+        "cc9053aa": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        },
+        "52fd389e": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        },
+        "878187ab": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        },
+        "8886d717": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        },
+        "aa62e3f4": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        },
+        "a644e277": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        },
+        "68bc2e87": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        },
+        "b7fb29bc": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        },
+        "c3fa4749": {
+          "run": "experiments/020/c24-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88",
+            "aligned_line_solver.py": "04b697e1b7faf6a5c77a337e3b422078f9b4964009bb063f2c2b947ddfa7f6c7",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "19930604bf653e4ae48348db8c0b684e14138bd8c13fedddfcd9adf282a64124"
+          }
+        }
+      }
+    },
+    {
+      "cohort": "Deep6",
+      "tasks": 6,
+      "queries": 9,
+      "matched_queries": 8,
+      "old_legal": 8,
+      "new_legal": 8,
+      "recovered_legal": 0,
+      "lost_legal": 0,
+      "old_exact": 2,
+      "new_exact": 2,
+      "recovered_exact": 0,
+      "lost_exact": 0,
+      "official_revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "official_split": "evaluation",
+      "unmatched_queries": 1,
+      "old_em2": 0.25,
+      "new_em2": 0.25,
+      "invalid_tasks": [
+        {
+          "task_id": "800d221b",
+          "queries": 1,
+          "old_error": "Expecting value: line 1 column 1 (char 0)",
+          "new_status": "object_rejected",
+          "new_errors": [
+            "Expecting value: line 1 column 1 (char 0)"
+          ],
+          "finish": "length",
+          "completion_tokens": 49152,
+          "content_chars": 18490
+        }
+      ],
+      "model": "Qwen/Qwen3.8-27B FP8 repack v1",
+      "archived_model_root": "/kaggle/input/models/foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/pytorch/hf-fp8/1",
+      "raw_run_source_identities": {
+        "e376de54": {
+          "run": "experiments/020/deep-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "55a597ce523d8a234966ede3860723022efb015d678925e70ee8abba757f0280",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88"
+          }
+        },
+        "de809cff": {
+          "run": "experiments/020/deep-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "55a597ce523d8a234966ede3860723022efb015d678925e70ee8abba757f0280",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88"
+          }
+        },
+        "3e6067c3": {
+          "run": "experiments/020/deep-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "55a597ce523d8a234966ede3860723022efb015d678925e70ee8abba757f0280",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88"
+          }
+        },
+        "5961cc34": {
+          "run": "experiments/020/deep-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "55a597ce523d8a234966ede3860723022efb015d678925e70ee8abba757f0280",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88"
+          }
+        },
+        "b6f77b65": {
+          "run": "experiments/020/deep-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "55a597ce523d8a234966ede3860723022efb015d678925e70ee8abba757f0280",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88"
+          }
+        },
+        "800d221b": {
+          "run": "experiments/020/deep-direct-qingyu1232-v1/vprobe",
+          "source_sha256": {
+            "local_repair.py": "0de8ad24ba02de9c1deefcd762a2c763676d5413fb484b10e085411dc7c584c0",
+            "vdriver020_submit.py": "55a597ce523d8a234966ede3860723022efb015d678925e70ee8abba757f0280",
+            "run_reasoning_probe.py": "377a496f473f89894dc79a6fa9ae16b27e9d9e144dc960231a11341c743ce9e9",
+            "submit_lib.py": "53ded4ec6623a68c25cbf9041de42fad8f5b3f8ffcde253dfd1afe147ece1b0e",
+            "solve_program.py": "405e2cda3226ae1aca6a6ff762dbd5a2bdec1cba3510b97d335072cd41c73e88"
+          }
+        }
+      }
+    }
+  ],
+  "input_artifacts": [
+    {
+      "path": "experiments/020/cohorts/confirmation-c24-challenges.json",
+      "sha256": "84496016ad694a8d6d5f336628bd84b378340288820d6b827aac401a451b4ec8",
+      "bytes": 503307
+    },
+    {
+      "path": "experiments/020/cohorts/confirmation-c24-manifest.json",
+      "sha256": "6859e458e83ad49f5c038dbb6b59fded42f567dcc86c0043e809b7528cca3300",
+      "bytes": 21372
+    },
+    {
+      "path": "experiments/020/scoring-c24-v1/prediction-freeze.json",
+      "sha256": "fcfe5fe75dcf67907442eac448514fc165412bb93ff0afb335ce3bd3beb4ec63",
+      "bytes": 2039
+    },
+    {
+      "path": "experiments/020/scoring-c24-v1/score-report.json",
+      "sha256": "4d4e67b28ed8a68555ba71cf35773a01c53496f36f52603350f552052a1423d7",
+      "bytes": 11040
+    },
+    {
+      "path": "experiments/020/scoring-c24-v1/query-ledger.jsonl",
+      "sha256": "3c30a88ef5d47dd451b8f82b6bd35e876d2bed7ea56154f12187e5fe7e51bcf2",
+      "bytes": 20918
+    },
+    {
+      "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/run.json",
+      "sha256": "7a2c3dc3da787becdd702bd88587253f1fea08a3b17131298eb6d1d59c625008",
+      "bytes": 25782
+    },
+    {
+      "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-9c56f360.reply.json",
+      "sha256": "6f0aaffa300e98a332a975b7fca59f291a8f8a0b2a6e549d2128f2c4aa53f8c2",
+      "bytes": 16924
+    },
+    {
+      "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-dce56571.reply.json",
+      "sha256": "56658580ed32a0dd9ffbfda87bd193c5f51686a70c48463663db05b94e4aeed2",
+      "bytes": 17470
+    },
+    {
+      "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-9841fdad.reply.json",
+      "sha256": "dd137df5ab7e25769e4d876dfa06630851b19dbd4210d83da44477945acb557c",
+      "bytes": 95137
+    },
+    {
+      "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-a416fc5b.reply.json",
+      "sha256": "ec3bf6c7043f1a1b574d76f75b0cde5b4e2bf2c9765384566358622c12fdaaf7",
+      "bytes": 101584
+    },
+    {
+      "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-ad173014.reply.json",
+      "sha256": "75e533f18fb60e919d6b19f0a63822438c02c7e9cbb47c3b66a65c4c27b25fba",
+      "bytes": 81541
+    },
+    {
+      "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-df9fd884.reply.json",
+      "sha256": "77094257f6fd3d6e4b9eb354192c3bd24dff90c78a7c8cfd7dbbc4d14a3d8ce7",
+      "bytes": 111743
+    },
+    {
+      "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-984d8a3e.reply.json",
+      "sha256": "628538afbc1ca7bf44e68a17d0c8a9a128e6ee1ee97dd06bceb71f97e8508c09",
+      "bytes": 107173
+    },
+    {
+      "path": "experiments/020/c24-direct-ccjjllt-v3/vprobe/programs/P0-6bcdb01e.reply.json",
+      "sha256": "71b62b70fd34ba85457939cfe23b767315ce30f4ac7c199f47899f92af312843",
+      "bytes": 117985
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/run.json",
+      "sha256": "9d0fed092b2859f232840720a2643b717fab0281e9da24ffbf6765145539f723",
+      "bytes": 45459
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-7e4d4f7c.reply.json",
+      "sha256": "91309b5dd0dd59e3811b4d0b0505433b201c7436c0e9c1edc48c1996ef4c7d53",
+      "bytes": 19794
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-9344f635.reply.json",
+      "sha256": "661638c59f7b0121e4fb3c4ac6249b4a0a1ae3bffec5300fadbf4333467ea462",
+      "bytes": 25353
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-e45ef808.reply.json",
+      "sha256": "bf08977e14430bff22c992d5def72c68cb736e5e65702e87fb923e4feb1dd7ef",
+      "bytes": 30070
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-aaef0977.reply.json",
+      "sha256": "d9a675fe152c51e5962846c4bb72582dfa34d22af04c2e8b9ad2312ec768f2d2",
+      "bytes": 27233
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-ff2825db.reply.json",
+      "sha256": "cdb9aad68e29c347cedf9e13d3926e96b6a8d1d4722491ea5fc06dcab4d44df6",
+      "bytes": 32514
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-66f2d22f.reply.json",
+      "sha256": "92b582c4c9ba3d7bd590949c6a83690eff5869e4c8c2f9137935ca7a4609df94",
+      "bytes": 44442
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-54dc2872.reply.json",
+      "sha256": "01b0ed944193fa8ae97d06f97db4d5fe5731d73ca3c496d02e898e1878d5167e",
+      "bytes": 58696
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-cc9053aa.reply.json",
+      "sha256": "152d29daee0f41418aefc3ce48ef3837621bfcb5a78f5358af92e536fcfb230a",
+      "bytes": 93032
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-52fd389e.reply.json",
+      "sha256": "22ae63b3e524d7e102743afae5a98591c19eea4feb2a02fe9cba82f12f10f305",
+      "bytes": 41990
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-878187ab.reply.json",
+      "sha256": "c37cc1d7f7a185e6d66c76d8ce39d20d14f713631518ab016ad80b2173f95a26",
+      "bytes": 94651
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-8886d717.reply.json",
+      "sha256": "41e0b499c320e1d2a6e3bc9a08ea7b5092233e89a5030e097310ed9117278c9e",
+      "bytes": 114699
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-aa62e3f4.reply.json",
+      "sha256": "eaa9f1f730ad179ad79ae612cb9d05342c8e1ebfd5954fbe2de49fc70a2c2502",
+      "bytes": 142792
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-a644e277.reply.json",
+      "sha256": "b158830a4cd1f4df67c172d3d7b8faf38a2993b05942709883e86c9a04c89255",
+      "bytes": 101916
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-68bc2e87.reply.json",
+      "sha256": "5d39e1685e5c6a23f929a362df19d1ec339ab04ba6f81c3983757f0d05880c46",
+      "bytes": 101814
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-b7fb29bc.reply.json",
+      "sha256": "168887d36fe373e277dca631f860c66b13bd73b1b88dace80ed6edd1b4a3e42d",
+      "bytes": 146285
+    },
+    {
+      "path": "experiments/020/c24-direct-qingyu1232-v1/vprobe/programs/P0-c3fa4749.reply.json",
+      "sha256": "c0f2ca1055b4928de3f066ce51687b8f62e54bc7bc18bfdf7e1c12068f75ca14",
+      "bytes": 120730
+    },
+    {
+      "path": "experiments/020/deep-p0/challenges.json",
+      "sha256": "5e50d56ea56f81e72a50a4b7fb5bff0f4b73548ad0618b0d43f7e0a95d5e0848",
+      "bytes": 283974
+    },
+    {
+      "path": "experiments/020/deep-direct/manifest.json",
+      "sha256": "046287d2c65d42de901c40ae903ededbce54e00e740ffc9be8ad14649d3a5273",
+      "bytes": 6066
+    },
+    {
+      "path": "experiments/020/scoring-deep-direct-v1/prediction-freeze.json",
+      "sha256": "c6a50c604f5e51cd3e5e98bb447babed2566a0830bcc9f363a6319e1e2ad7b55",
+      "bytes": 1715
+    },
+    {
+      "path": "experiments/020/scoring-deep-direct-v1/score-report.json",
+      "sha256": "a7021a9c301f3e042e136aebc2bb7bc52a83ae3b7b7cf2687e87923f6f36d927",
+      "bytes": 4301
+    },
+    {
+      "path": "experiments/020/scoring-deep-direct-v1/query-ledger.jsonl",
+      "sha256": "0868bd584a8d7da97e11b13a0c4f59754cbf117264400436b61a56d6179d58c9",
+      "bytes": 11119
+    },
+    {
+      "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/run.json",
+      "sha256": "0d68976425f9a4b8eb7c0fdd99152e2d48c10865974d928c5fb4147827e0605d",
+      "bytes": 20686
+    },
+    {
+      "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/programs/P0-e376de54.reply.json",
+      "sha256": "542076e1b509b315705677127893b2c63f236be300cc62ccb416c78f460035d3",
+      "bytes": 68281
+    },
+    {
+      "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/programs/P0-de809cff.reply.json",
+      "sha256": "cd9106fc3dd37cc70c39ca9c8da40780c24f6d564e47a4752fa1ec7dd2ebb679",
+      "bytes": 86938
+    },
+    {
+      "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/programs/P0-3e6067c3.reply.json",
+      "sha256": "efec63067928f84a6805e8341d3e352ae9f7edfa8241de5bf6ef58c3143d2c1c",
+      "bytes": 90485
+    },
+    {
+      "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/programs/P0-5961cc34.reply.json",
+      "sha256": "4a2933d8c3ce6502cbb0f09b650fc3082625cc1de77047bd35b16f319f221e2c",
+      "bytes": 104388
+    },
+    {
+      "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/programs/P0-b6f77b65.reply.json",
+      "sha256": "209fe8beb43360cf0b3c2f16fd4c79353ae26b8a0e742c85769a90451c5351cb",
+      "bytes": 119394
+    },
+    {
+      "path": "experiments/020/deep-direct-qingyu1232-v1/vprobe/programs/P0-800d221b.reply.json",
+      "sha256": "96b3b099b3394a633bf864ba0be975bccf085c62df50ad014106f353520ab760",
+      "bytes": 115216
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "requested_at_utc": "2026-10-21T12:30:54.163929+00:00",
+  "account": "zhuating",
+  "intended_ref": "zhuating/arc2-021-nvarc-v1-e20",
+  "notebook_sha256": "d92bbf69aeb815f407a21bc8e12258df1e5b3b36006ecf494875a9dfbdd3b346",
+  "package_manifest_sha256": "81c0814164889fffd84ed61a5f2bce43935e12b1104eb5f73abf10896fe9da9b",
+  "session_seconds": 6000,
+  "platform_timeout_requested": 6600,
+  "tasks": 20,
+  "queries": 27,
+  "available_quota_seconds_before": 66401.861,
+  "scope": "Private public-E20 GPU research. Not a competition submission.",
+  "state": "accepted",
+  "response": {
+    "ref": "/code/zhuating/arc2-021-nvarc-v1-e20",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-021-nvarc-v1-e20",
+    "versionNumber": 1,
+    "kernelId": 140020539
+  },
+  "returned_at_utc": "2026-10-21T12:30:56.745738+00:00"
+}

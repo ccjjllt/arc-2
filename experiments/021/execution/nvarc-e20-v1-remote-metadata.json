@@ -1,0 +1,29 @@
+{
+  "checked_at_utc": "2026-10-21T12:41:47.270280+00:00",
+  "metadata": {
+    "id": 140020539,
+    "ref": "zhuating/arc2-021-nvarc-v1-e20",
+    "title": "ARC2 021 NVARC V1 E20",
+    "author": "zhuating",
+    "slug": "arc2-021-nvarc-v1-e20",
+    "lastRunTime": "2026-10-18T12:41:46.767Z",
+    "language": "python",
+    "kernelType": "notebook",
+    "isPrivate": true,
+    "enableGpu": true,
+    "enableInternet": false,
+    "kernelDataSources": [
+      "sorokin/pip-install-unsloth-flash-patch"
+    ],
+    "competitionDataSources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "modelDataSources": [
+      "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+    ],
+    "enableTpu": false,
+    "currentVersionNumber": 1,
+    "dockerImage": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868",
+    "machineShape": "NvidiaL4"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "checked_at_utc": "2026-10-21T12:25:10.383235+00:00",
+  "account": "qingyu1232",
+  "quota_refresh_time_utc": "2026-10-24T00:00:00",
+  "gpu": {
+    "total_seconds": 108000.0,
+    "used_seconds": 106654.368,
+    "reserved_seconds": 0.0,
+    "available_seconds": 1345.6319999999978,
+    "available_hours": 0.37378666666666605
+  },
+  "scope": "Read-only identity and quota; no credential values recorded, no job launch."
+}

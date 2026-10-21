@@ -1,0 +1,50 @@
+{
+  "checked_date_beijing": "2026-10-21",
+  "scope": "Read-only research and source archival; no model, generator, training or submission executed.",
+  "reference_notebook": {
+    "ref": "koushikrudra/failed-in-aimo",
+    "version_number": 1,
+    "scriptVersionId": 312063593,
+    "url": "https://www.kaggle.com/code/koushikrudra/failed-in-aimo?scriptVersionId=312063593",
+    "observed_public_score": 33.89,
+    "score_evidence": "Live Kaggle page binds Public Score 33.89 to V1; source downloaded from that V1 page. Not reproduced by this project.",
+    "license_observed": "Apache-2.0",
+    "ordinary_runtime_display": "26m11s; source only runs four tasks outside competition rerun",
+    "model_source": "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1",
+    "raw_notebook_sha256": "71416dd4d9885ecf2ae99b8b72ff0ef66d31fac0354b79d2d11071c49f84111d",
+    "code_sha256": "b129bd6c316ee611722a1c75b4e757b277bd4332efb348bf7561de22462505cd",
+    "implementation_status": "archived only; extracted source contains Notebook magics, not a new executable runner"
+  },
+  "files": [
+    {
+      "path": "experiments/021/reference/failed-in-aimo-v1.ipynb",
+      "sha256": "71416dd4d9885ecf2ae99b8b72ff0ef66d31fac0354b79d2d11071c49f84111d",
+      "bytes": 63719
+    },
+    {
+      "path": "experiments/021/reference/failed-in-aimo-v1.source.py",
+      "sha256": "b129bd6c316ee611722a1c75b4e757b277bd4332efb348bf7561de22462505cd",
+      "bytes": 36204
+    },
+    {
+      "path": "experiments/021/evidence/rearc2-generator-delta.json",
+      "sha256": "e97d663817b8dcd6386ee8a519b81980c820c9aed0b3cc2a11b56edbb839c2da",
+      "bytes": 2758
+    },
+    {
+      "path": "experiments/021/evidence/open-research-review.md",
+      "sha256": "9e9a994611d79a5388a0130dc3de988ea873c3c2c6c80223ba5c523200a5b3ee",
+      "bytes": 6609
+    },
+    {
+      "path": "experiments/021/evidence/official-and-notebook-review.md",
+      "sha256": "ac56613daedbee9d6ace4b6bd04576ed2ce5963fe78e87f2a43ab8d77672bfc0",
+      "bytes": 5358
+    },
+    {
+      "path": "experiments/021/evidence/user-proposal.txt",
+      "sha256": "9ea578c70c378e6ba57cd6e4d050d42fc3f7fe01f33a603d91dabee60a069853",
+      "bytes": 11338
+    }
+  ]
+}
