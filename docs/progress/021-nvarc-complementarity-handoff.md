@@ -125,3 +125,46 @@ Deep6原9个query中1个未匹配，仍另列，未强行纳入分母。旧解�
 22:07:34北京时间，27B E20日志记录`EVIDENCE-EXIT complete_with_evidence`且`VDRIVER_RETURN_CODE 0`。日志有若干P0生成事件，但当前仓库没有冻结的完整候选输出或评分报告；因此只确认执行流程正常结束，不报告候选覆盖率、准确率或比赛分数。未启动V3，需在配额释放后重新核对余额再决定。
 
 复核上游[NVARC仓库](https://github.com/1ytic/NVARC)时，仓库根目录及`ARChitects`目录均未见许可证声明。为避免继续分发授权状态不明的上游实现，仓库不再保留NVARC派生的V1/V2/V3源码副本及其打包Notebook；V1实际运行日志、结果元数据、配置与源码哈希仍保留用于研究追溯。未来如需复现，应先确认上游许可或取得授权，再从有权获取的源码重新打包。V3仍是未运行的研究设计，不是已验证修复。
+
+## 8 27B E20 完整产物、评分与决策更新
+
+2026-10-21 **22:24—22:32北京时间**，用户通知跑完后，平台回查为`COMPLETE`、`currentVersionNumber=1`，kernelId `140024619`、输出会话ID `360788173`。下载全部预测、20份原回复、运行/GPU/server日志，先于新gold读取在22:25:20冻结33份产物；后补取实际执行的6份源码和输入，与研究包SHA全部一致，未下载的仅为`__pycache__`。本轮没有追加GPU作业或正式比赛提交。
+
+完整[结果摘要](../../experiments/021/execution/qwen-e20-v1-result.json)、[原始输出冻结清单](../../experiments/021/execution/qwen-e20-v1-artifact-freeze.json)、[远端版本与文件清单](../../experiments/021/execution/qwen-e20-v1-remote-metadata.json)、[源码与输入核验](../../experiments/021/execution/qwen-e20-v1-source-verification.json)均已保存。主`submission.json`及M0/M1的SHA均为`3367f1cac955520dfb46a45a04296a290e1984999ffce62478df9779022a1e22`；M0/M1是同一P0的重复视图，每query两个槽也相同，不能算两个独立候选。
+
+### 8.1 真实覆盖与官方版本对齐评分
+
+输入仍为原E20的20task／27query，challenge SHA `ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda`，未因失败缩小集合。沿用固定FP8权重v1、TP4/C8/MTP2、xhigh、24576思考／32768总token、P0 seed5101；每task一次Direct1，无CPU补槽或repair。E20公开输入早在019暴露过，不能称未见验证集。
+
+| 指标 | 实际结果 |
+| --- | --- |
+| 模型调用／返回 | 20／20，全部HTTP 200 |
+| 真实候选覆盖 | 14／20task、18／27query；其余9query为初始化占位 |
+| 原固定官方版本主评分 | **2／25 query，8.00%**；另2query完整demo不匹配，原报告保留未匹配 |
+| 匹配旧版本的两query补充 | **0／2**，两项均无真实候选 |
+| 显式按输入版本对齐的全E20 | **2／27 query，7.41%**；完整task exact为2／20 |
+| 原候选错误构成 | 18个成形预测中2正确、16错误；另9个占位 |
+| 不同双槽／第二槽独有命中 | 0／0 |
+
+主评分使用既有`score_frozen_outputs.py`，在任何gold访问前再次记录预测SHA，完整匹配官方`f3283f727488ad98fe575ea6a5ac981e4a188e49`的有序demo和query输入，见[原评分报告](../../experiments/021/scoring-qwen-e20-v1/score-report.json)及[逐query账本](../../experiments/021/scoring-qwen-e20-v1/query-ledger.jsonl)。正确query为`45a5af55_0`、`8f215267_0`。
+
+`d8e07eb2`的两个query未匹配原因是Kaggle与该官方revision的第0个demo output有9格差异；两个query输入相同。查官方文件历史后，旧revision `bebec789c46f4be8f690a321ad852ecdb1f3f362`与本轮完整有序demo和两个query输入均一致，故只对这两项追加[独立版本补充评分](../../experiments/021/execution/qwen-e20-version-supplement-v1.json)。版本选择依据是输入完全一致，不依答案优劣选择；原主报告未改。**2／27是明确混用两个匹配官方revision的全E20诊断汇总，不能称单一f328版本成绩，也不是Kaggle公榜或私榜分数。** [评分审计](../../experiments/021/execution/qwen-e20-scoring-audit-v1.json)同时保留两种口径。
+
+### 8.2 耗时、截断与CPU回放
+
+实际硬件4×L4、每卡23034MiB。driver总耗时**4063.55秒（67.73分钟）**；其中安装累计261.6秒、含安装至server-ready累计711.6秒、生成3351.32秒。711.6秒已包含261.6秒，不能相加。生成551365 token，按并发墙钟计算聚合164.52 token/s；最大并发8、时间加权平均6.56，平均请求延迟1099.5秒，不能把167.6秒/task的完成间隔当单请求延迟。详见[运行审计](../../experiments/021/execution/qwen-e20-runtime-audit-v1.json)。
+
+- **未触发全局截止。** 15个调用`stop`、5个`length`；5个length均耗满单调用32768 token，影响8query，final通道仍在继续分析，没有完整JSON。
+- 另一个`stop`的`7491f3cf`有解释前缀及完整末尾JSON，原整task解析拒收。全部6个无效task共消耗189130 token，占34.30%；其中5个length占163840 token、29.72%。
+- 对保存文本重新分词，20个reply的reasoning均24575 token，加结束思考标记恰24576；支持预算触发通道切换，不能还原原始token流，也不能证明再加思考预算就会解对。
+- 在不读gold的独立审计中，对全20回复统一回放“唯一完整合法末尾JSON对象”规则并先冻结派生产物，仅恢复`7491f3cf`的1个query：真实覆盖18→19。[单独评分](../../experiments/021/scoring-qwen-e20-tail-json-v1/score-report.json)原/派生均2／25，新增正确为0；另外两query原占位未改，版本对齐全E20也仍为2／27。严格逐query保留恢复0。详见[解析审计](../../experiments/021/execution/qwen-e20-parse-audit-v1.json)与[派生冻结记录](../../experiments/021/parse-replay/e20-tail-json-v1/candidate-freeze.json)。原输出未覆盖，没有新增模型调用。
+
+若240task具有本轮同样平均token成本和聚合吞吐，一次全覆盖加安装加载及300秒收尾约**11.452小时**，距现有41400秒政策仅余173秒；若全题耗满32K，约13.559小时。这是有条件算术外推，没有实测隐藏覆盖，且没有包含4B、第二次候选或融合成本，不能据此确认全量组合可行。
+
+22:24北京时间[配额快照](../../experiments/021/execution/quota-zhuating-after-qwen-v1.json)为zhuating剩**13.6145配额小时**、reserved=0；刷新10月24日08:00北京时间。前后余额差包含平台计量及可能的共享用量，不等同于本driver的精确GPU成本。
+
+### 8.3 本轮研究结论与下一步
+
+本轮是负结果：当前27B Direct1 32K只答对2／27，16个成形预测仍错误，解析修复未新增正确，不能把主要瓶颈归结为JSON格式。暂停原样扩量、加长token或重投该策略；这也没有给出27B能力上限或其与4B互补收益。
+
+维持021的顺序：先取得实际完成的完整4B对照与成本，再在同预算下衡量让出4B预算的损失、27B独有命中、最终双槽新增与丢失。当前没有可配对4B结果，不能报告oracle互补、B2净增或组合分数。4B加载修复V3仍未运行；源码归档限制沿用§7。27B模型选型不变，若后续继续，优先提出有对照的小规模完成性／任务适配假设，不把本轮2分解读成训练或其他方案已获支持；唯一限时续训挑战者亦未运行。

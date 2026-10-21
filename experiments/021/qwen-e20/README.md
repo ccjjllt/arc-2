@@ -1,6 +1,6 @@
 # 021 Qwen3.8 27B E20 单轮候选包
 
-日期：2026-10-21，北京时间。**已准备，未push，未运行。** 由主执行者在4B对照实际运行后决定启动。
+日期：2026-10-21，北京时间。**V1已完成、产物已冻结并评分。** 20次调用全部返回，总耗时4063.55秒，真实预测18／27；固定f328官方版本主评分2／25加2未匹配，匹配旧版的两query补充0／2，明确按版本对齐的全E20为**2／27（7.41%）**。这不是比赛榜分，也未建立4B互补收益。详见[结果摘要](../execution/qwen-e20-v1-result.json)和[021进展§8](../../../docs/progress/021-nvarc-complementarity-handoff.md#8-27b-e20-完整产物评分与决策更新)。原始准备manifest保持冻结，其`prepared_not_pushed_not_run`是打包时快照。
 
 研究目的为公开E20的候选覆盖诊断。它允许27B观察全部20task／27query，不代表最终隐藏240task中只给部分任务分配27B的B2部署预算；不能把这批全覆盖候选直接当同预算融合成绩。
 
@@ -47,4 +47,4 @@ python3 experiments/021/qwen-e20/prepare_notebook.py \
 
 准备好的[Notebook](notebook/arc2-021-qwen-e20-direct32k.ipynb)约116KB，SHA256 `c69c98b6caf4960b866464e6a1944f0b0ee88a706185c3e2622194fbd78d6cdb`。挂载元数据见[kernel-metadata.json](notebook/kernel-metadata.json)。
 
-已手动解包核对源码SHA、编译Python源码/Notebook cells、校验E20固定SHA及20/27数量、确认query无output、CPU补槽关闭且P0-only开启。没有远端操作或模型调用；这只说明包内容符合配置，不代表GPU可运行或解题有效。
+准备时已手动解包核对源码SHA、编译Python源码/Notebook cells、校验E20固定SHA及20/27数量、确认query无output、CPU补槽关闭且P0-only开启。该准备阶段没有远端操作或模型调用；执行与效果以后续冻结运行记录为准。

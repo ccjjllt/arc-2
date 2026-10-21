@@ -4,7 +4,7 @@
 
 比赛：[Kaggle ARC Prize 2026 — ARC-AGI-2](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview)。
 
-**当前研究入口（2026-10-21）**：[021交接方案](docs/plan/021-nvarc-complementarity-handoff.md)与[021实际进展](docs/progress/021-nvarc-complementarity-handoff.md#7-27b-e20执行结束与源码归档范围)。4B E20首轮V1因模型加载超时结束，未进入TTT/搜索，不评价模型得分；V3本地复制与串行加载方案已准备但未运行。20:59北京时间启动的27B E20单轮32K候选观察已执行结束，候选输出尚未评分，不代表比赛成绩。CPU解析回放新增合法/正确均0。
+**当前研究入口（2026-10-21）**：[021交接方案](docs/plan/021-nvarc-complementarity-handoff.md)与[021实际进展](docs/progress/021-nvarc-complementarity-handoff.md#8-27b-e20-完整产物评分与决策更新)。27B E20 Direct1 32K已完成并冻结：18／27真实预测，按匹配官方版本汇总**2／27（7.41%）**，总67.73分钟；固定f328主报告为2／25加2未匹配，旧版补充0／2，均为公开诊断而非榜分。CPU末尾JSON回放恢复1个合法答案、正确新增0。4B首轮因加载超时未求解，V3仍未运行；下一步先补完整4B对照，暂停原样扩大27B直推。
 
 **最新实际成绩**：[020低分复盘](docs/progress/020-score-validation-and-real-submission.md#27-正式公榜1250与低分复盘)。正式提交 **57443913** 已COMPLETE，公榜 **12.50**，低于历史30.14，未实现提分。C24固定17/26为training来源项目留出，不能外推榜分；隐藏实际覆盖/日志尚未取得。
 
@@ -18,7 +18,7 @@
 
 **正式结果**：`57443913` / [Notebook v1](https://www.kaggle.com/code/ccjjllt/arc2-020-deep-direct-submission?scriptVersionId=360461153)，2026-10-21 17:18北京时间实查COMPLETE、**12.50**。该版本是单次长思考Direct1+窄CPU规则的替换路线，没有与历史30.14方案做过可靠融合。[得分与版本凭据](experiments/020/execution/competition-submission.json)。
 
-**下一步**：按021使用已核实V1恢复完整4B对照，再验证27B的实际双槽净增能否抵消让预算损失。E20用于配对诊断，不能称未见集；不原样重投12.50，不把源码归档或训练loss当作提分证据。
+**下一步**：按021恢复完整4B对照，再验证27B的实际双槽净增能否抵消让预算损失；V3加载修复仍未运行，源码归档范围见021进展§7。E20用于配对诊断，不能称未见集；不原样重投12.50，不把源码归档或训练loss当作提分证据。
 
 ## 研究文档
 
@@ -44,7 +44,7 @@
 | 018 F-291反馈对照与受约束程序生成 | [plan/018-f291-feedback-and-constrained-generation.md](docs/plan/018-f291-feedback-and-constrained-generation.md) | [progress/018-f291-feedback-and-constrained-generation.md](docs/progress/018-f291-feedback-and-constrained-generation.md)；A线v6中F-fix在291拿下exact、R2截断；复核更正哈希死循环与B线四项阻断缺陷，转入019 |
 | 019 全量提交候选打通、首稿形成率与+4流程验证 | [plan/019-submission-and-first-draft-pipeline.md](docs/plan/019-submission-and-first-draft-pipeline.md) | [progress/019-submission-and-first-draft-pipeline.md](docs/progress/019-submission-and-first-draft-pipeline.md)；P1输出120task/172query，附件评分0/158；+4反馈0/4、重启1/4；并发与加载计量已更正 |
 | 020 提分验证与真实提交交接 | [plan/020-score-validation-and-real-submission.md](docs/plan/020-score-validation-and-real-submission.md) | [progress/020-score-validation-and-real-submission.md](docs/progress/020-score-validation-and-real-submission.md)；C24 training留出17/26，正式57443913公榜12.50，未实现提分；低分复盘见§27 |
-| 021 NVARC完整流程与27B互补交接 | [plan/021-nvarc-complementarity-handoff.md](docs/plan/021-nvarc-complementarity-handoff.md) | [progress/021-nvarc-complementarity-handoff.md](docs/progress/021-nvarc-complementarity-handoff.md)；调研完成，V1和109生成器差集已归档；三臂实验与限时续训未运行 |
+| 021 NVARC完整流程与27B互补交接 | [plan/021-nvarc-complementarity-handoff.md](docs/plan/021-nvarc-complementarity-handoff.md) | [progress/021-nvarc-complementarity-handoff.md](docs/progress/021-nvarc-complementarity-handoff.md)；4B加载失败未求解，27B E20版本对齐2／27；三臂配对与限时续训未运行 |
 
 ## Kaggle 操作链（2026-09-29 实测结论）
 
