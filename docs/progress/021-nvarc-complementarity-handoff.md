@@ -74,6 +74,6 @@ Deep6原9个query中1个未匹配，仍另列，未强行纳入分母。旧解�
 ## 3 E20 V1 启动状态（2026-10-21）
 
 - V1 E20 Notebook `zhuating/arc2-021-nvarc-v1-e20` 已被平台接受，申请6000秒研究会话；该任务不是比赛提交。启动和包信息见 `experiments/021/execution/nvarc-e20-launch-v1.json`。
-- 最近归档的日志事件在elapsed 556.68秒时仍为0/27已生成query、27个占位、0个候选文件；日志轮询曾报告连接丢失并重连。输出枚举当时返回空文件列表，见 `nvarc-e20-v1-direct-live.log`、`nvarc-e20-v1-live.log` 与 `nvarc-e20-v1-output-status.json`。
+- 最近归档的日志事件在elapsed 602.15秒时仍为0/27已生成query、27个占位、0个候选文件；日志轮询曾报告连接丢失并重连。输出枚举当时返回空文件列表，见 `nvarc-e20-v1-direct-live.log`、`nvarc-e20-v1-live.log` 与 `nvarc-e20-v1-output-status.json`。
 - 因此截至该次取证，远端最终状态、训练/搜索是否继续、结果文件和评分均未确认；没有声称COMPLETE或模型效果。后续应先恢复只读状态与输出检查，避免重复启动或重跑。
 - V2 Notebook及其时钟/进度改动已打包，但尚无推送或运行证据。V1/提取源码归档附Apache-2.0许可副本。
