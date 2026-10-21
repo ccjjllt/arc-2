@@ -1,0 +1,101 @@
+{
+  "recorded_at_utc": "2026-10-21T13:02:23.681024+00:00",
+  "status": "infrastructure_failure_before_TTT",
+  "kernel": "zhuating/arc2-021-nvarc-v1-e20",
+  "version": 1,
+  "session_id_from_output_urls": 360780134,
+  "elapsed_first_cell_seconds": 1229.1441128253937,
+  "worker_stage_budget_seconds": 900,
+  "stop_reason": "model_load_deadline",
+  "loaded_workers": [],
+  "training_started": false,
+  "search_started": false,
+  "generated_queries": 0,
+  "planned_queries": 27,
+  "model_score": "not_evaluated_no_model_predictions",
+  "gpu": {
+    "0": {
+      "samples": 89,
+      "mean_busy_percent": 0.011235955056179775,
+      "peak_memory_mib": 7166.0
+    },
+    "1": {
+      "samples": 89,
+      "mean_busy_percent": 0.011235955056179775,
+      "peak_memory_mib": 7166.0
+    },
+    "2": {
+      "samples": 89,
+      "mean_busy_percent": 0.011235955056179775,
+      "peak_memory_mib": 7166.0
+    },
+    "3": {
+      "samples": 89,
+      "mean_busy_percent": 0.0,
+      "peak_memory_mib": 3.0
+    }
+  },
+  "observed": "Three workers printed checkpoint loading 0/2, fourth reached import banner; no complete model-loaded event. No root cause proven.",
+  "files": [
+    {
+      "path": "experiments/021/kaggle-e20-output-v1/021-code/boot.json",
+      "bytes": 945,
+      "sha256": "301e8e1f2fff61062c5911278760a3c6c985b2f6d1be1ee02d10c8652ce716e2"
+    },
+    {
+      "path": "experiments/021/kaggle-e20-output-v1/021-run/candidate-pools.json",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "path": "experiments/021/kaggle-e20-output-v1/021-run/coverage.json",
+      "bytes": 274,
+      "sha256": "a58ff20e143186dee22920b6fc0f0c1cfd7a5436c7efedfd2d0664b2105e5e4a"
+    },
+    {
+      "path": "experiments/021/kaggle-e20-output-v1/021-run/gpu.csv",
+      "bytes": 14387,
+      "sha256": "eda360f4679bc5176d683b59f7c896ea8923548a4829316f4f137369a8a2e09b"
+    },
+    {
+      "path": "experiments/021/kaggle-e20-output-v1/021-run/markers/0",
+      "bytes": 9,
+      "sha256": "db4ad2be31430992bcc7d620722087520d152617c22424e66cb46b25b85a5723"
+    },
+    {
+      "path": "experiments/021/kaggle-e20-output-v1/021-run/markers/1",
+      "bytes": 9,
+      "sha256": "db4ad2be31430992bcc7d620722087520d152617c22424e66cb46b25b85a5723"
+    },
+    {
+      "path": "experiments/021/kaggle-e20-output-v1/021-run/markers/2",
+      "bytes": 9,
+      "sha256": "db4ad2be31430992bcc7d620722087520d152617c22424e66cb46b25b85a5723"
+    },
+    {
+      "path": "experiments/021/kaggle-e20-output-v1/021-run/run.json",
+      "bytes": 1933,
+      "sha256": "bbbb17d4e4aab2f8da619188505da235011cb8d2c299c6c14abed5c3b4bd9603"
+    },
+    {
+      "path": "experiments/021/kaggle-e20-output-v1/021-run/setup.log",
+      "bytes": 124,
+      "sha256": "8940d95f9e7a2c9730a6a9cac62f9c255ae635c0464e58aa02442f4a69af26e6"
+    },
+    {
+      "path": "experiments/021/kaggle-e20-output-v1/021-run/worker.log",
+      "bytes": 2357,
+      "sha256": "fb35a9b1bbf818a4799df0c91f2d3a2a3e0bda5613db740164d68bed27327942"
+    },
+    {
+      "path": "experiments/021/kaggle-e20-output-v1/arc2-021-nvarc-v1-e20.log",
+      "bytes": 24154,
+      "sha256": "34159a15a06e77ec10518ca9181ee0057186ce5b9bcbe0399feb1963066131c3"
+    },
+    {
+      "path": "experiments/021/kaggle-e20-output-v1/submission.json",
+      "bytes": 4075,
+      "sha256": "9a2b243be74adf879a3512ad08f5fa2024bd991b430cc398687139a3d4f2e3d0"
+    }
+  ]
+}

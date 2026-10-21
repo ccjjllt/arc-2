@@ -1,0 +1,12 @@
+{
+  "tasks": 20,
+  "queries": 27,
+  "generated_queries": 0,
+  "placeholder_queries": 27,
+  "candidate_files": 0,
+  "raw_candidates": 0,
+  "unique_candidates": 0,
+  "errors": [],
+  "selection": "unmodified V1 score_kgmon; original missing-slot [[0]]",
+  "gold_read": false
+}

@@ -1,0 +1,18 @@
+{
+  "notebook_started": 1792585929.0128078,
+  "python": "3.11.13 (main, Jun  4 2025, 08:57:29) [GCC 11.4.0]",
+  "utility_root": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch",
+  "source_sha256": {
+    "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+    "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+    "arc_solver.py": "75c0b9260af9045f85268c1ae2971b3d30f662597087b263b934e76aaf857306",
+    "run_research.py": "6dbd7f848f2f90c07e1610b13df2b3716a9a331c2b41d4b3e6cd4e8443d511f2",
+    "starter.py": "8e1edbf98480c54e06bcb43703f8d7bc75a25e5bac9f4ff064e3c91e4fdf6dbf",
+    "challenges.json": "317fffff6ba643ea09a2b028ed6d7521c65767422f7b30165f29d6637071e1cf"
+  },
+  "total_seconds": 6000,
+  "task_seconds": 660,
+  "save_seconds": 180,
+  "reference": "Failed in AIMO V1 / 312063593",
+  "execution": "public E20 research; not a competition submission"
+}
