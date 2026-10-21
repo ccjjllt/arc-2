@@ -4,11 +4,13 @@
 
 比赛：[Kaggle ARC Prize 2026 — ARC-AGI-2](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview)。
 
-**当前进展**：[020低分复盘](docs/progress/020-score-validation-and-real-submission.md#27-正式公榜1250与低分复盘)。正式提交 **57443913** 已COMPLETE，公榜 **12.50**，低于历史30.14，本轮未实现提分。C24固定17/26为training来源项目留出，不能外推榜分；隐藏实际覆盖/日志尚未取得。
+**当前研究入口（2026-10-21）**：[021交接方案](docs/plan/021-nvarc-complementarity-handoff.md)与[021调研进展](docs/progress/021-nvarc-complementarity-handoff.md)。已核对官方条件、归档33.89对应的Failed in AIMO V1并保存109个新增生成器清单。NVARC V1 E20已获接受，但最近日志仍为0/27生成且输出状态未确认；三臂对照与续训尚未运行。
+
+**最新实际成绩**：[020低分复盘](docs/progress/020-score-validation-and-real-submission.md#27-正式公榜1250与低分复盘)。正式提交 **57443913** 已COMPLETE，公榜 **12.50**，低于历史30.14，未实现提分。C24固定17/26为training来源项目留出，不能外推榜分；隐藏实际覆盖/日志尚未取得。
 
 历史试提交：[用户指定 Notebook 版本 314617319](https://www.kaggle.com/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319)。用户说明 30.14 分来自未修改的公开方案复制提交，不作为自主研究效果，也不限定后续方向。
 
-**当前入口（2026-10-20）**：[020计划](docs/plan/020-score-validation-and-real-submission.md)与[020进展](docs/progress/020-score-validation-and-real-submission.md)。旧账号优先的GPU研究已完成本轮，生成采样忙碌率99.68%；zhuating仅提供CPU依赖恢复、未启用ARC2 GPU研究。正式Notebook v1普通保存300秒只做CPU产文件，隐藏41400秒运行同一冻结模型策略；C24模型产物已完整评分，普通文件不是模型评测。E20下一轮公开输入已准备、未运行。
+**上一轮执行记录（2026-10-20）**：[020计划](docs/plan/020-score-validation-and-real-submission.md)与[020进展](docs/progress/020-score-validation-and-real-submission.md)。旧账号优先的GPU研究已完成本轮，生成采样忙碌率99.68%；zhuating仅提供CPU依赖恢复、未启用ARC2 GPU研究。正式Notebook v1普通保存300秒只做CPU产文件，隐藏41400秒运行同一冻结模型策略；C24模型产物已完整评分，普通文件不是模型评测。E20下一轮公开输入已准备、未运行。
 
 [012实际进展](docs/progress/012-kernel-program-completion.md)记录上一轮：K短探针不采用快速后端；P-v2四次均3072 token截断，没有完整程序或实际执行，D/L各0/2，已按预定止损结束。历史配额快照不替代013的最新查询。
 
@@ -16,7 +18,7 @@
 
 **正式结果**：`57443913` / [Notebook v1](https://www.kaggle.com/code/ccjjllt/arc2-020-deep-direct-submission?scriptVersionId=360461153)，2026-10-21 17:18北京时间实查COMPLETE、**12.50**。该版本是单次长思考Direct1+窄CPU规则的替换路线，没有与历史30.14方案做过可靠融合。[得分与版本凭据](experiments/020/execution/competition-submission.json)。
 
-**下一步**：停止原样重投12.50策略；研究代表性evaluation正确率、最终JSON交付和全量预算覆盖，再比较实际双槽互补。E20清单已准备、未运行；本轮复盘未新开GPU。
+**下一步**：按021使用已核实V1恢复完整4B对照，再验证27B的实际双槽净增能否抵消让预算损失。E20用于配对诊断，不能称未见集；不原样重投12.50，不把源码归档或训练loss当作提分证据。
 
 ## 研究文档
 
@@ -42,6 +44,7 @@
 | 018 F-291反馈对照与受约束程序生成 | [plan/018-f291-feedback-and-constrained-generation.md](docs/plan/018-f291-feedback-and-constrained-generation.md) | [progress/018-f291-feedback-and-constrained-generation.md](docs/progress/018-f291-feedback-and-constrained-generation.md)；A线v6中F-fix在291拿下exact、R2截断；复核更正哈希死循环与B线四项阻断缺陷，转入019 |
 | 019 全量提交候选打通、首稿形成率与+4流程验证 | [plan/019-submission-and-first-draft-pipeline.md](docs/plan/019-submission-and-first-draft-pipeline.md) | [progress/019-submission-and-first-draft-pipeline.md](docs/progress/019-submission-and-first-draft-pipeline.md)；P1输出120task/172query，附件评分0/158；+4反馈0/4、重启1/4；并发与加载计量已更正 |
 | 020 提分验证与真实提交交接 | [plan/020-score-validation-and-real-submission.md](docs/plan/020-score-validation-and-real-submission.md) | [progress/020-score-validation-and-real-submission.md](docs/progress/020-score-validation-and-real-submission.md)；C24 training留出17/26，正式57443913公榜12.50，未实现提分；低分复盘见§27 |
+| 021 NVARC完整流程与27B互补交接 | [plan/021-nvarc-complementarity-handoff.md](docs/plan/021-nvarc-complementarity-handoff.md) | [progress/021-nvarc-complementarity-handoff.md](docs/progress/021-nvarc-complementarity-handoff.md)；调研完成，V1和109生成器差集已归档；三臂实验与限时续训未运行 |
 
 ## Kaggle 操作链（2026-09-29 实测结论）
 
