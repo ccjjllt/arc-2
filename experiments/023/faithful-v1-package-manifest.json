@@ -1,0 +1,38 @@
+{
+  "ref": "zhuating/arc2-023-failed-in-aimo-v1-faithful",
+  "reference_script_version_id": 312063593,
+  "reference_sha256": "71416dd4d9885ecf2ae99b8b72ff0ef66d31fac0354b79d2d11071c49f84111d",
+  "notebook_sha256": "0bdde6503f6ec616be467321649e9abb997288f07aa54e8b4302f76f32f3d119",
+  "package_directory": "/private/tmp/arc2-023-faithful-v1-frozen",
+  "copy_helper_sha256": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+  "original_cell_differences": [
+    {
+      "original_cell": 4,
+      "change": "model storage path only"
+    },
+    {
+      "original_cell": 6,
+      "change": "same child command/environment with checked return code"
+    }
+  ],
+  "additional_runtime_cell": "Current mounts, original utility path, local checkpoint copy and boot metadata",
+  "preserved": [
+    "42600s global clock starts in first original cell",
+    "original ordinary four tasks",
+    "original worker import/marker order",
+    "no all-model-ready barrier",
+    "1200s soft check",
+    "complete original one-epoch TTT",
+    "original DFS and scoring deadlines",
+    "original augmentation seeds, NLL and kgmon final2",
+    "no explicit PYTHONHASHSEED override"
+  ],
+  "image_note": "Image used by successful 022 execution; original historical image digest was not exposed in downloaded V1.",
+  "status": "prepared_not_launched",
+  "runtime_source_sha256": {
+    "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+    "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+    "arc_solver.py": "bb55ff101a01fc9d1b583dca67a59219c0dfa3eed3b6a387d61a4f62e668161d",
+    "starter.py": "c3f0b49bd7fed7679eb8d128abc07517f4ec423613a8c20f17eb8b8b982ab3d4"
+  }
+}

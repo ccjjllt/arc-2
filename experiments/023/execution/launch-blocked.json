@@ -1,0 +1,15 @@
+{
+  "recorded_at_utc": "2026-10-22T04:40:54.224143+00:00",
+  "state": "waiting_for_user_notification",
+  "reason": "Shared GPU quota reserved by another project before SaveKernel was called",
+  "remote_notebook_created": false,
+  "new_gpu_started": false,
+  "competition_submission_created": false,
+  "target_ref": "zhuating/arc2-023-failed-in-aimo-v1-faithful",
+  "package_directory": "/private/tmp/arc2-023-faithful-v1-frozen",
+  "notebook_sha256": "0bdde6503f6ec616be467321649e9abb997288f07aa54e8b4302f76f32f3d119",
+  "blocking_session": "zhuating/p015-fsdp-capacity",
+  "user_instruction": "我等结束了告诉你",
+  "active_polling": false,
+  "automation_created": false
+}

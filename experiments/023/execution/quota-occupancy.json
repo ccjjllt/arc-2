@@ -1,0 +1,86 @@
+{
+  "checked_at_utc": "2026-10-22T04:38:41.853329+00:00",
+  "scope": "Read-only latest own sessions; no cancellation or launch",
+  "sessions": [
+    {
+      "ref": "zhuating/p015-fsdp-capacity",
+      "title": "P015 FSDP Capacity",
+      "last_run_time": "2026-10-22 04:36:02.117000",
+      "status": {
+        "status": "RUNNING"
+      }
+    },
+    {
+      "ref": "zhuating/p015-attention-capacity",
+      "title": "P015 Attention Capacity",
+      "last_run_time": "2026-10-22 04:24:14.813000",
+      "status": {
+        "status": "COMPLETE"
+      }
+    },
+    {
+      "ref": "zhuating/p015-31b-tokenizer-cpu",
+      "title": "P015 31B Tokenizer CPU",
+      "last_run_time": "2026-10-22 04:19:21.203000",
+      "status": {
+        "status": "COMPLETE"
+      }
+    },
+    {
+      "ref": "zhuating/arc3-034-plan-diagnostic",
+      "title": "ARC3 034 Plan Diagnostic",
+      "last_run_time": "2026-10-22 04:14:57.467000",
+      "status": {
+        "status": "RUNNING"
+      }
+    },
+    {
+      "ref": "zhuating/arc2-022-nvarc-full-submission",
+      "title": "ARC2 022 NVARC full submission",
+      "last_run_time": "2026-10-22 00:39:41.537000",
+      "status": {
+        "status": "COMPLETE"
+      }
+    },
+    {
+      "ref": "zhuating/arc2-022-nvarc-e20",
+      "title": "ARC2 022 NVARC E20",
+      "last_run_time": "2026-10-21 16:14:49.147000",
+      "status": {
+        "status": "COMPLETE"
+      }
+    },
+    {
+      "ref": "zhuating/arc2-021-qwen-e20-direct32k",
+      "title": "arc2-021-qwen-e20-direct32k",
+      "last_run_time": "2026-10-21 12:59:14.287000",
+      "status": {
+        "status": "COMPLETE"
+      }
+    },
+    {
+      "ref": "zhuating/arc3-032-memory-recovery",
+      "title": "ARC3 032 Memory Recovery",
+      "last_run_time": "2026-10-21 12:34:35.310000",
+      "status": {
+        "status": "COMPLETE"
+      }
+    },
+    {
+      "ref": "zhuating/arc2-021-nvarc-v1-e20",
+      "title": "ARC2 021 NVARC V1 E20",
+      "last_run_time": "2026-10-21 12:30:56.940000",
+      "status": {
+        "status": "ERROR"
+      }
+    },
+    {
+      "ref": "zhuating/arc3-032-memory-submission",
+      "title": "ARC3 032 Memory Submission",
+      "last_run_time": "2026-10-21 08:37:55.010000",
+      "status": {
+        "status": "COMPLETE"
+      }
+    }
+  ]
+}

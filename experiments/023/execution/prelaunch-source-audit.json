@@ -1,0 +1,30 @@
+{
+  "status": "static_audit_passed",
+  "reference_version": 312063593,
+  "notebook_sha256": "0bdde6503f6ec616be467321649e9abb997288f07aa54e8b4302f76f32f3d119",
+  "original_cells_unchanged_except": [
+    {
+      "cell": 4,
+      "change": "identical weight checkpoint storage path"
+    },
+    {
+      "cell": 6,
+      "change": "same child command and environment with return-code propagation"
+    }
+  ],
+  "extra_cell": "mount checks, original utility path, identical checkpoint staging and boot metadata",
+  "preserved": [
+    "original 42600s inclusive global clock",
+    "original 1200s soft check",
+    "original four tasks",
+    "complete one-epoch TTT",
+    "worker import marker order",
+    "DFS and augmented scoring",
+    "kgmon final2"
+  ],
+  "limitations": [
+    "utility mounted by unversioned ref; actual dependency versions must be checked",
+    "image is successful 022 image, historical V1 digest unconfirmed"
+  ],
+  "new_subagent": "faithful_v1_audit_023"
+}
