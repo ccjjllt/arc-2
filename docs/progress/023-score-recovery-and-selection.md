@@ -53,3 +53,22 @@
 只读对比原V1源码和022配置确认：原全局求解42600秒，022正式求解截止41100秒；原1200秒是解码外层软检查，022fair首轮约660秒且训练可中止；022另加逐题60秒评分预留及评分截止。这些会改变实际训练和搜索机会，不能统称加载修复，也不能把022的0.00说成原V1能力结果。尚无证据认定这些差异中哪一项导致零分。
 
 首份复现改从冻结原Notebook派生，保留原方法与时间规则，只在挂载、依赖、加载发生直接阻塞时做最小补丁，记录差异和实际成本。此前计划中的统一完整入口重构与完整普通全量演练不再是默认前置；原普通四题成功仍不等于隐藏成功，最终以精确版本实际提交结果报告。未修改求解代码，未启动GPU、提交或监控。
+
+## 5 用户授权推进后：独立复现包已准备，等待共享GPU释放
+
+2026-10-22用户要求开始推进研究，并澄清后续可以使用新子代理，但不要调用此前三个旧子代理。旧代理均已完成，当前接口没有删除历史记录能力；本轮另建`faithful_v1_audit_023`完成只读独立审计，没有再让旧代理承担工作。
+
+已新增[手动打包入口](../../experiments/023/prepare_faithful_v1.py)，从冻结原V1直接生成独立包`/private/tmp/arc2-023-faithful-v1-frozen/`，目标私有Notebook为`zhuating/arc2-023-failed-in-aimo-v1-faithful`。Notebook SHA256为`0bdde6503f6ec616be467321649e9abb997288f07aa54e8b4302f76f32f3d119`；[版本清单](../../experiments/023/faithful-v1-package-manifest.json)和[审计记录](../../experiments/023/execution/prelaunch-source-audit.json)已保存。
+
+相对原V1的运行适配只有：显式GPU／L4配置；当前固定模型挂载路径；将同一权重复制至本地盘；原Unsloth utility进入子进程PYTHONPATH；同等求解命令增加非零退出传播。复制与加载时间计入原42600秒。`starter.py`保持原字节，`arc_solver.py`只改变权重存储路径；原四题、worker导入／marker顺序、完整单epoch、1200秒软限制、DFS、增强评分和kgmon最终两槽均保留。没有移植022的fair调度、TTT截止回调、评分预留或四模型ready屏障。
+
+独立静态审计通过。依赖utility仍由无版本ref挂载，历史V1镜像digest也未暴露；当前包使用022已成功运行的镜像，实际依赖版本需运行时记录，不能称依赖字节级复现。这里只是运行包和静态核对完成，不是GPU复现成功。
+
+资源的实际变化：
+
+- **12:31北京时间**只读核对zhuating：可用32300.548秒（8.9724配额小时）、reserved0，见[初始快照](../../experiments/023/execution/account-start.json)。
+- 同队当天`numToday=1`、累计10次；最新提交仍57504054／0.00，没有pending。按每日最多1次规则，正式提交需等额度恢复并在提交前重查，见[只读就绪记录](../../experiments/023/execution/readiness.json)。
+- 启动前再次核对发现新GPU预留；**12:37北京时间**可用0、reserved86207.944秒。实际占用来自**12:36启动的另一项目`zhuating/p015-fsdp-capacity`**，状态RUNNING；同账号另有ARC3运行，未修改任何其他项目。见[再次核对](../../experiments/023/execution/account-before-launch-recheck.json)与[占用记录](../../experiments/023/execution/quota-occupancy.json)。
+- 本地启动前检查在调用SaveKernel前停止，**本轮没有创建远端Notebook、启动GPU或创建比赛submission**；不是平台已经接受后失败。
+
+用户选择等待现有作业结束，随后明确“我等结束了告诉你”。据此停止主动轮询、保持无定时任务；等待用户通知后再查当前配额、同名作业和正式额度，然后启动上述冻结包。不得根据旧快照自动认为资源已释放，也不得取消其他项目作业。
