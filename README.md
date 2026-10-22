@@ -4,7 +4,9 @@
 
 比赛：[Kaggle ARC Prize 2026 — ARC-AGI-2](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview)。
 
-**当前研究入口（2026-10-22）**：[022执行计划](docs/plan/022-full-nvarc-submission.md)与[022实际进展](docs/progress/022-full-nvarc-submission.md)。完整4B E20 V2已COMPLETE并冻结：final **3／27**、raw／scored oracle均**5／27**；已有27B为2／27，固定ReplaceSecond净增1、FillMissing净增0，见[配对表](experiments/022/paired-e20-v2/paired-table.md)。这些是公开E20结果，未证明比赛提分。同核心正式GPU普通V1已完成，正式提交 **57504054**／[精确版本360953982](https://www.kaggle.com/code/zhuating/arc2-022-nvarc-full-submission?scriptVersionId=360953982)已COMPLETE，公榜 **0.00**，未提分。隐藏实际执行／覆盖日志尚未取得，先查清正式全量交付失败，再推进候选选择；不新增27B全量推理或续训，不恢复监控。
+**当前研究入口（2026-10-22）**：[023交接计划](docs/plan/023-score-recovery-and-selection.md)与[023进展](docs/progress/023-score-recovery-and-selection.md)。按用户最新决定，**先忠实复现高分Failed in AIMO V1／312063593，取得可用正式成绩，再优化**。该版33.89为10月21日核验的外部历史公榜，不保证金牌。022改过预算、训练截止和调度，不能视为原样复现；新起点从冻结原V1派生，保留原求解策略，只修实际运行阻塞。R2、40题确认、TRM与新训练后置。已有R2事后CPU回放**3／27→4／27、净增1**保留为后续线索，未证明比赛提分。
+
+**最近GPU执行**：[022计划](docs/plan/022-full-nvarc-submission.md)与[022进展](docs/progress/022-full-nvarc-submission.md)。完整4B E20 V2为final **3／27**、raw／scored oracle均**5／27**；已有27B为2／27，固定ReplaceSecond净增1、FillMissing净增0，见[配对表](experiments/022/paired-e20-v2/paired-table.md)。正式提交 **57504054**／[精确版本360953982](https://www.kaggle.com/code/zhuating/arc2-022-nvarc-full-submission?scriptVersionId=360953982)已COMPLETE，公榜 **0.00**。隐藏实际执行／覆盖日志尚未取得，根因未确认；不新增27B全量推理或恢复监控。
 
 **最新实际成绩**：[022零分回查](docs/progress/022-full-nvarc-submission.md#12-用户通知后回查正式complete公榜000交付失败)。正式提交 **57504054** 已COMPLETE，公榜 **0.00**；上一份57443913为12.50，历史最好30.14不变。当前只确认普通GPU运行与公开E20，正式隐藏覆盖／日志未取得，不能把零分直接归因于模型能力。
 
@@ -18,7 +20,7 @@
 
 **正式结果**：`57443913` / [Notebook v1](https://www.kaggle.com/code/ccjjllt/arc2-020-deep-direct-submission?scriptVersionId=360461153)，2026-10-21 17:18北京时间实查COMPLETE、**12.50**。该版本是单次长思考Direct1+窄CPU规则的替换路线，没有与历史30.14方案做过可靠融合。[得分与版本凭据](experiments/020/execution/competition-submission.json)。
 
-**下一步**：先查清57504054的正式全量执行／实际输出，候选选择小实验暂缓。E20不能称未见集；不原样重投12.50，不把源码归档或训练loss当作提分证据。
+**下一步**：按023从原V1建立独立复现包，保留原42600秒求解时钟、逐题软限制及kgmon选槽，尽快取得实际正式成绩。57504054只做限时回查，不无限等待旧日志；R2和统一入口重构不占首份复现预算。取得可用起点后再做一次增量对照。E20不能称未见集，不把源码归档、训练loss或事后回放当作比赛提分。
 
 ## 研究文档
 
@@ -46,6 +48,7 @@
 | 020 提分验证与真实提交交接 | [plan/020-score-validation-and-real-submission.md](docs/plan/020-score-validation-and-real-submission.md) | [progress/020-score-validation-and-real-submission.md](docs/progress/020-score-validation-and-real-submission.md)；C24 training留出17/26，正式57443913公榜12.50，未实现提分；低分复盘见§27 |
 | 021 NVARC完整流程与27B互补交接 | [plan/021-nvarc-complementarity-handoff.md](docs/plan/021-nvarc-complementarity-handoff.md) | [progress/021-nvarc-complementarity-handoff.md](docs/progress/021-nvarc-complementarity-handoff.md)；4B加载失败未求解，27B E20版本对齐2／27；三臂配对与限时续训未运行 |
 | 022 完整4B计分提交与已有27B配对 | [plan/022-full-nvarc-submission.md](docs/plan/022-full-nvarc-submission.md) | [progress/022-full-nvarc-submission.md](docs/progress/022-full-nvarc-submission.md)；按用户新优先级执行中，E20 V2实际3／27、raw／scored oracle5／27，27B固定替换第二槽净增1；正式57504054已COMPLETE／0.00，隐藏执行根因未确认；先处理正式交付，停止监控 |
+| 023 恢复有效提交与候选选择交接 | [plan/023-score-recovery-and-selection.md](docs/plan/023-score-recovery-and-selection.md) | [progress/023-score-recovery-and-selection.md](docs/progress/023-score-recovery-and-selection.md)；原始来源调研完成，事后CPU回放R2为4／27、净增1；扩展确认、TRM及新正式提交未运行 |
 
 ## Kaggle 操作链（2026-09-29 实测结论）
 
