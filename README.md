@@ -22,7 +22,7 @@
 
 **下一步**：按023从原V1建立独立复现包，保留原42600秒求解时钟、逐题软限制及kgmon选槽，尽快取得实际正式成绩。57504054只做限时回查，不无限等待旧日志；R2和统一入口重构不占首份复现预算。取得可用起点后再做一次增量对照。E20不能称未见集，不把源码归档、训练loss或事后回放当作比赛提分。
 
-**023当前执行状态（2026-10-22）**：原V1独立包已生成并通过新子代理静态审计，[清单](experiments/023/faithful-v1-package-manifest.json)已冻结。启动前共享账号GPU配额被`P015 FSDP Capacity`预留，可用降至0，因此尚未上传／启动本轮Notebook。用户明确等其他作业结束后通知，再查资源并继续；当前停止主动轮询，不恢复定时任务。详见[023进展§5](docs/progress/023-score-recovery-and-selection.md#5-用户授权推进后独立复现包已准备等待共享gpu释放)。
+**023当前执行状态（2026-10-22）**：[忠实V1复现Notebook](https://www.kaggle.com/code/zhuating/arc2-023-failed-in-aimo-v1-faithful?scriptVersionId=361045383) **V1／361045383已COMPLETE**。原4task／5query均实际训练128步、完整epoch并完成DFS与重评分；独立输入匹配评分为**3/5 query、2/4完整task**，这是公开演示集合结果，不是比赛成绩。15:34同队正式额度**0**，因此尚未创建新正式submission；[就绪参数](experiments/023/formal-v1-ready.json)已冻结，额度恢复后直接提交该精确V1。详见[023进展§7](docs/progress/023-score-recovery-and-selection.md#7-忠实v1普通运行complete原四题实际35等待正式提交额度)。
 
 ## 研究文档
 

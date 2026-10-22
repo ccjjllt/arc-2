@@ -72,3 +72,64 @@
 - 本地启动前检查在调用SaveKernel前停止，**本轮没有创建远端Notebook、启动GPU或创建比赛submission**；不是平台已经接受后失败。
 
 用户选择等待现有作业结束，随后明确“我等结束了告诉你”。据此停止主动轮询、保持无定时任务；等待用户通知后再查当前配额、同名作业和正式额度，然后启动上述冻结包。不得根据旧快照自动认为资源已释放，也不得取消其他项目作业。
+
+## 6 用户通知配额释放后：忠实V1普通GPU运行已启动
+
+2026-10-22用户通知“你开始吧现在有配额了”。**14:55北京时间**复查zhuating：GPU可用18293.165秒（5.0814配额小时）、reserved0，见[恢复快照](../../experiments/023/execution/account-resume.json)。冻结包仍逐SHA匹配，不复用其他项目作业。
+
+首次SaveKernel请求在TLS代理握手时超时；已先只读确认远端未创建同名Notebook、同队无pending后才重试，没有重复启动。原请求与错误保留在[第一次尝试](../../experiments/023/execution/faithful-v1-launch-attempt1.json)，重新查询单独保存在`readiness-after-timeout.json`，未覆盖历史就绪快照。
+
+**14:59:19北京时间**平台接受`zhuating/arc2-023-failed-in-aimo-v1-faithful` **V1**，kernelId **140168317**，Notebook SHA仍`0bdde6503f6ec616be467321649e9abb997288f07aa54e8b4302f76f32f3d119`。请求显式NvidiaL4、断网、平台43200秒；原42600秒全局时钟、原四题及原求解语义保持。见[真实启动记录](../../experiments/023/execution/faithful-v1-launch.json)。这是普通GPU运行，**不是正式比赛提交**。
+
+15:01只读回查状态RUNNING，远端metadata确认GPU开启、NvidiaL4、断网、权重BF16 V1与原Unsloth utility挂载、currentVersionNumber1。源下载至`/private/tmp/arc2-023-remote-v1/`供新子代理`runtime_verification_023`独立核对。metadata的lastRunTime出现不一致日期，实际启动时刻使用本次请求／响应时间及运行日志，不据该字段倒推。
+
+实时日志已确认同一checkpoint **7,267,271,302 bytes**在**71.180秒**完成本地复制，随后写出原四份源码。复制仍计入原全局预算；此成本不当作后续加载／求解时间。当前尚未报告训练完成或正确数。SSE重连会重放部分日志，禁止按重复块累计多次阶段耗时。
+
+原四题共**4task／5query**，普通最终文件仍保留整个公开evaluation结构，不能将未选中占位当模型全量成绩。原候选目录`/kaggle/inference_outputs`没有新增归档改动，若平台取不到候选则本轮oracle记未确认。最后ordinary benchmark不是query微平均，结果需冻结后独立按输入版本匹配评分。
+
+当前同队仍已用当天1次正式额度，最新正式成绩仍57504054／0.00。普通运行完成后冻结输出与版本、记录实际结果，再在正式额度恢复后按同一精确版本提交；不提前宣称已复现33.89。没有创建定时任务。
+
+## 7 忠实V1普通运行COMPLETE：原四题实际3/5，等待正式提交额度
+
+**2026-10-22 15:31北京时间**下载冻结时，官方状态为COMPLETE。完整一页47项输出清单绑定精确 **scriptVersionId361045383**、V1／kernelId140168317；未将kernelId代替版本ID。见[输出冻结记录](../../experiments/023/execution/faithful-v1-outcome.json)。新的普通运行已完成，不是仍在排队或只完成源码准备。
+
+远端10/10 cell与冻结包一致，四份实际写出的源码均只是`%%writefile`正文末尾额外一个LF，代码无漂移；复制helper SHA一致。boot确认普通分支、固定sft139 BF16 V1、原42600秒时钟；四worker日志均为NVIDIA L4，Unsloth2025.9.7／Transformers4.55.4／Torch2.8.0+cu128／Triton3.4.0与原版吻合。新子代理`runtime_verification_023`只读独立验收通过，见[运行验收](../../experiments/023/execution/ordinary-v1-runtime-verification.json)。
+
+| task | 实际TTT步数／epoch | TTT秒 | 整题秒 | 去重后的DFS批次日志 |
+| --- | --- | --- | --- | --- |
+| 0934a4d8 | 128／1.0 | 399.542 | 563.7 | 4 |
+| 36a08778 | 128／1.0 | 192.063 | 1103.3 | 8 |
+| 981571dc | 128／1.0 | 810.543 | 1211.2 | 4 |
+| aa4ec2a5 | 128／1.0 | 301.356 | 647.5 | 4 |
+
+四题均有实际DFS、候选重评分、finished和worker done记录，无Traceback。981的整题超过1200秒，符合保留的原版外层软检查语义，没有引入022式TTT硬截断。日志最后一个持久事件的会话相对时钟为**1637.606秒，约27.3分钟**；它不是平台单独暴露的精确总耗时。四题并行耗时不能求和当墙钟。
+
+权重复制71.180秒／7,267,271,302字节；此成本已在原全局时钟内。账户前后used差为3278.802配额秒，按2倍折算约1639.401秒，与日志量级相符，但共享账户快照不是独立计费证明。
+
+### 7.1 输出冻结和独立实际评分
+
+原完整文件保留120task／172query结构；实际求解只有原四题的**5query**，其余167query两槽均为占位。所选5query共9个非占位网格槽，981的第二槽仍为`[[0]]`。不把完整JSON结构当公开120题模型全覆盖。
+
+最终预测在读取新评分gold前冻结：[冻结凭据](../../experiments/023/execution/ordinary-v1-prediction-freeze.json)。当前官方公开evaluation输入SHA与008快照一致（`e7c62a4b…e4e8`），保留原4题5query输入清单，未根据结果选题。实际挂载输入没有单独导出哈希，这一限制保留在清单中。
+
+随后人工调用既有`experiments/020/score_frozen_outputs.py`，以官方固定commit `f3283f727488ad98fe575ea6a5ac981e4a188e49`的evaluation数据匹配全部ordered demos及query输入：**5/5匹配，0未确认／版本不匹配**。结果见[评分报告](../../experiments/023/scoring-ordinary-v1-f328/score-report.json)和[逐query账本](../../experiments/023/scoring-ordinary-v1-f328/query-ledger.jsonl)：
+
+| query | 原最终两槽exact |
+| --- | --- |
+| 0934a4d8_0 | 否 |
+| 36a08778_0 | 是，首槽 |
+| 36a08778_1 | 否 |
+| 981571dc_0 | 是，首槽 |
+| aa4ec2a5_0 | 是，首槽 |
+
+**实际为3/5 query（60%），2/4完整task。**日志`Reload score: 2.5`是原task加权累计值，不是query正确数、公开120题准确率或比赛分数。旧013的2/4只覆盖3题4query，不能直接与本次5query分母比较。本轮仍为已经开发／可能被上游训练接触的公开原演示集合，不是未见验证，也未证明复现33.89或实现比赛提分。
+
+原候选位于`/kaggle/inference_outputs`，未在这次忠实普通包中新增归档；平台输出不能取得完整池，**raw/scored oracle未确认**。不为补oracle修改已完成V1或额外重跑GPU。
+
+### 7.2 正式版本已就绪，当前额度为0
+
+**15:34北京时间**再次实查zhuating：reserved0、可用15014.363配额秒（约4.1707小时）；同队`num_today=1`、`num_total=10`、**num_allowed_now=0**，最新正式提交仍57504054／COMPLETE／0.00。见[运行后实查](../../experiments/023/execution/postrun-account-and-submission-state.json)。因此本轮没有创建新正式submission，不能声称可靠全量正式基线已经建立。
+
+[正式就绪参数](../../experiments/023/formal-v1-ready.json)已冻结：Notebook `zhuating/arc2-023-failed-in-aimo-v1-faithful`，**kernel_version=1**，精确scriptVersionId361045383，文件`submission.json`。额度恢复后先重查同队额度、pending和是否已提交该精确版本，再创建一次code submission；无需为了提交重跑普通保存或重发新版本。
+
+本轮完成了忠实原四题GPU流程、实际评分、版本与产物冻结。当前只剩正式额度恢复后的全量计分步骤；R2、TRM和新训练仍后置，未创建定时监控或操作其他项目。
