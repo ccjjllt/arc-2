@@ -1,0 +1,70 @@
+{
+  "planned_queries": 5,
+  "input_matched_queries": 5,
+  "unresolved_or_mismatched_queries": 0,
+  "policies": {
+    "V1": {
+      "exact_queries": 3,
+      "matched_denominator": 5,
+      "em2": 0.6,
+      "prediction_present_queries": 5,
+      "valid_queries": 5,
+      "different_valid_attempts_queries": 5,
+      "fully_matched_tasks": 4,
+      "all_queries_exact_tasks": 2
+    }
+  },
+  "cohort": "023_original_V1_ordinary_four",
+  "planned_tasks": 4,
+  "official_sources": [
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/0934a4d8.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/0934a4d8.json",
+      "sha256": "52fa66b17794d0ce83ae39889695a0d943f298a9148283a665cf921dafb70f16",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/36a08778.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/36a08778.json",
+      "sha256": "7da7b2d0539bc9c30ffe89067ff7d161356d5917f247d46fbd8f8b1b8e3256d2",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/981571dc.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/981571dc.json",
+      "sha256": "b68e8bacdcbc78b1193985727eb991c82d62228a08a4c2130d367c93a63a6959",
+      "status": "loaded"
+    },
+    {
+      "revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+      "relative_path": "data/evaluation/aa4ec2a5.json",
+      "source": "https://raw.githubusercontent.com/arcprize/ARC-AGI-2/f3283f727488ad98fe575ea6a5ac981e4a188e49/data/evaluation/aa4ec2a5.json",
+      "sha256": "ffb6747c97db241d5cb8057b2a6474553992ee2b00e045cf5c159f1d24944d4f",
+      "status": "loaded"
+    }
+  ],
+  "by_source_group": {
+    "public_evaluation_original_V1_ordinary": {
+      "planned_queries": 5,
+      "input_matched_queries": 5,
+      "unresolved_or_mismatched_queries": 0,
+      "policies": {
+        "V1": {
+          "exact_queries": 3,
+          "matched_denominator": 5,
+          "em2": 0.6,
+          "prediction_present_queries": 5,
+          "valid_queries": 5,
+          "different_valid_attempts_queries": 5,
+          "fully_matched_tasks": 4,
+          "all_queries_exact_tasks": 2
+        }
+      }
+    }
+  },
+  "interpretation": "Local fixed-two-slot exact-match only; not a Kaggle score or evidence of exceeding 30.14.",
+  "denominator_note": "Every original manifest query is in the ledger. Missing/invalid predictions count as failures when inputs match. Official input/version mismatches and unavailable gold are separate unresolved rows, never silently counted wrong or removed from the planned cohort."
+}

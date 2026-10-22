@@ -1,0 +1,10 @@
+{
+  "checked_at_utc": "2026-10-22T07:38:02.310910+00:00",
+  "ref": "zhuating/arc2-023-failed-in-aimo-v1-faithful",
+  "status": {
+    "status": "COMPLETE"
+  },
+  "version": 1,
+  "script_version_id": 361045383,
+  "evidence": "faithful-v1-outcome.json"
+}

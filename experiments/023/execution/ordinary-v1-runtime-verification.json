@@ -1,0 +1,79 @@
+{
+  "checked_at_utc": "2026-10-22T07:38:02.310910+00:00",
+  "status": "complete_ordinary_v1_verified",
+  "ref": "zhuating/arc2-023-failed-in-aimo-v1-faithful",
+  "version": 1,
+  "script_version_id": 361045383,
+  "kernel_id": 140168317,
+  "materialized_sources": {
+    "arc_loader.py": {
+      "sha256": "2c62526daba3fdd9da317e3dcb689acca8e24018e56e4c7f2c33ed15381ed8c6",
+      "matches_cell_plus_one_lf": true
+    },
+    "arc_decoder.py": {
+      "sha256": "b38b6b1bdd5f47dbd587a9809ad2ec20cdf9ce5723736a7fb7470e9b1ce61f1d",
+      "matches_cell_plus_one_lf": true
+    },
+    "arc_solver.py": {
+      "sha256": "b064c7ad2e228aaf1f02edf52f0eb4c7f99227a2f505b41d7454ca4154bd209c",
+      "matches_cell_plus_one_lf": true
+    },
+    "starter.py": {
+      "sha256": "f56a1de0d4c17c2e5ec4ecf6874240fff2a8489dc075b5fbcf7d62bb00e4fd9e",
+      "matches_cell_plus_one_lf": true
+    }
+  },
+  "tasks": {
+    "0934a4d8": {
+      "steps": 128,
+      "train_seconds": 399.5418,
+      "epoch": 1.0,
+      "task_seconds": 563.7,
+      "unique_decode_messages": 4,
+      "unique_scoring_messages": 14
+    },
+    "36a08778": {
+      "steps": 128,
+      "train_seconds": 192.0633,
+      "epoch": 1.0,
+      "task_seconds": 1103.3,
+      "unique_decode_messages": 8,
+      "unique_scoring_messages": 18
+    },
+    "981571dc": {
+      "steps": 128,
+      "train_seconds": 810.5432,
+      "epoch": 1.0,
+      "task_seconds": 1211.2,
+      "unique_decode_messages": 4,
+      "unique_scoring_messages": 1
+    },
+    "aa4ec2a5": {
+      "steps": 128,
+      "train_seconds": 301.3563,
+      "epoch": 1.0,
+      "task_seconds": 647.5,
+      "unique_decode_messages": 4,
+      "unique_scoring_messages": 3
+    }
+  },
+  "copy_seconds": 71.17995858192444,
+  "copied_bytes": 7267271302,
+  "last_persisted_log_relative_seconds": 1637.605828497,
+  "wall_time_note": "Last persisted event is a session-relative log timestamp, not a separately exposed platform duration. Task times are parallel and must not be summed as wall time.",
+  "actual_prediction_queries": 5,
+  "actual_nonplaceholder_slots": 9,
+  "all_output_tasks": 120,
+  "all_output_queries": 172,
+  "other_queries_are_placeholders": true,
+  "dependencies_match_reference": [
+    "Unsloth2025.9.7",
+    "Transformers4.55.4",
+    "Torch2.8.0+cu128",
+    "Triton3.4.0",
+    "NVIDIA L4 on four worker ranks"
+  ],
+  "raw_or_scored_oracle": "unconfirmed; candidate directory not archived",
+  "independent_reviewer": "runtime_verification_023",
+  "message_count_note": "Repeated exact log lines are deduplicated; counts are distinct reported messages, not measured forward-pass counts."
+}

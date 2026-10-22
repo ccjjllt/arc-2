@@ -1,0 +1,29 @@
+{
+  "prepared_at_utc": "2026-10-22T07:40:20.568093+00:00",
+  "status": "ordinary_verified_waiting_daily_submission_allowance",
+  "account": "zhuating",
+  "competition": "arc-prize-2026-arc-agi-2",
+  "kernel": "zhuating/arc2-023-failed-in-aimo-v1-faithful",
+  "kernel_version": 1,
+  "verified_script_version_id": 361045383,
+  "notebook_sha256": "0bdde6503f6ec616be467321649e9abb997288f07aa54e8b4302f76f32f3d119",
+  "file_name": "submission.json",
+  "message": "023 Failed in AIMO V1 faithful reproduction; original TTT, DFS, kgmon and timing; runtime compatibility repairs only.",
+  "ordinary_result": {
+    "tasks": 4,
+    "queries": 5,
+    "exact_queries": 3,
+    "complete_tasks": 2,
+    "input_matched_queries": 5,
+    "oracle": "unconfirmed"
+  },
+  "last_checked_submission_limits": {
+    "num_today": 1,
+    "num_total": 10,
+    "num_allowed_now": 0,
+    "limited_by_total": false
+  },
+  "next_action": "Recheck own-team allowance, pending submissions and exact V1 identity; create one code submission only when allowance is positive. No new ordinary run or version update is required.",
+  "competition_submission_created": false,
+  "user_requested_no_scheduled_monitoring": true
+}

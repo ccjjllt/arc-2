@@ -1,0 +1,81 @@
+{
+  "created_at_utc": "2026-10-22T07:07:38.304640+00:00",
+  "cohort": "023_original_V1_ordinary_four",
+  "n_tasks": 4,
+  "n_queries": 5,
+  "input_artifact": {
+    "path": "experiments/023/ordinary-v1-input/challenges.json",
+    "sha256": "faa4419f9ac74edeb2cb747aa14ad4b1abbac78035a4bcc8ea4efc2f67663bd8"
+  },
+  "source": {
+    "service": "Kaggle official competition file download",
+    "file": "arc-agi_evaluation_challenges.json",
+    "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+    "bytes": 984679,
+    "matches_existing_008_snapshot": true
+  },
+  "entries": [
+    {
+      "task_id": "0934a4d8",
+      "source_group": "public_evaluation_original_V1_ordinary",
+      "demo_pairs_sha256": "88fe9dfeeb794e01934896cb198da2daa9ba1d670f986ac95ff1a2311291a630",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "0934a4d8_0",
+          "input_sha256": "3a2d6d8042a4437f5eb7c981a945f3a0f634dbe36fb199506f00f59848779e35"
+        }
+      ]
+    },
+    {
+      "task_id": "36a08778",
+      "source_group": "public_evaluation_original_V1_ordinary",
+      "demo_pairs_sha256": "f06bc97730c13ff31f2bebdf400059948d1bac8efe5af973cfb1de664c43d513",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "36a08778_0",
+          "input_sha256": "15a36f35c65d448217925dbd4519d0b549985d9887871590a5d13444649c4bac"
+        },
+        {
+          "query_index": 1,
+          "query_key": "36a08778_1",
+          "input_sha256": "a6537791717aa68c60b18d419d16e071f183c26ad3d92c28439d616dd3cd518a"
+        }
+      ]
+    },
+    {
+      "task_id": "981571dc",
+      "source_group": "public_evaluation_original_V1_ordinary",
+      "demo_pairs_sha256": "0018a13ca4d0c9a95d08411e907eacbf09a024fa08b11d5b79ea80c6e0149ee0",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "981571dc_0",
+          "input_sha256": "3f46bbf2e6146d01edd55c1b2b3be049d2ea3751f3c8c17bd14d0fa6b5faa3cb"
+        }
+      ]
+    },
+    {
+      "task_id": "aa4ec2a5",
+      "source_group": "public_evaluation_original_V1_ordinary",
+      "demo_pairs_sha256": "60d40141891da098459a863c4b527be20b6c18a391459645e4954a066a360eaf",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "aa4ec2a5_0",
+          "input_sha256": "449b18b9b562382b8cb3a582550e66c21b592a6da2b66a80f1cb446b2e2b8db5"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Public original demonstration cohort, not unseen validation or competition score",
+    "Actual runtime input bytes were not separately exported; this is the contemporaneous official public file with unchanged snapshot hash"
+  ],
+  "query_solutions_read": false
+}

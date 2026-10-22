@@ -1,0 +1,24 @@
+{
+  "frozen_at_utc": "2026-10-22T07:33:16.599954+00:00",
+  "status": "complete_ordinary_V1",
+  "script_version_id": 361045383,
+  "full_submission": {
+    "path": "experiments/023/ordinary-v1-output/submission.json",
+    "sha256": "74e20a3cc5706671442fedd112137c2234ad5342d2ffbfacade61e1e8b32cf66",
+    "tasks": 120,
+    "queries": 172
+  },
+  "selected_submission": {
+    "path": "experiments/023/ordinary-v1-output/submission-selected-four.json",
+    "sha256": "95e1afe3c7bce28868cb84b59ac73956461727200dbdb398f1f755082343015f",
+    "task_ids": [
+      "0934a4d8",
+      "36a08778",
+      "981571dc",
+      "aa4ec2a5"
+    ],
+    "queries": 5
+  },
+  "gold_read_for_new_scoring": false,
+  "note": "Subset copies existing final slots without changes, using the original ordinary task list."
+}

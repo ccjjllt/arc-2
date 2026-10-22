@@ -1,0 +1,254 @@
+{
+  "frozen_at_utc": "2026-10-22T07:31:49.308753+00:00",
+  "ref": "zhuating/arc2-023-failed-in-aimo-v1-faithful",
+  "version": 1,
+  "kernel_id": 140168317,
+  "status": {
+    "status": "COMPLETE"
+  },
+  "script_version_ids": [
+    361045383
+  ],
+  "temporary_source_directory": "/private/tmp/arc2-023-ordinary-v1-output",
+  "pages": 1,
+  "remote_files": [
+    {
+      "file_name": "023-boot.json",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "023-model-copy.json",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "__pycache__/arc_decoder.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "__pycache__/arc_loader.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "__pycache__/arc_solver.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "arc_decoder.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "arc_loader.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "arc_solver.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "copy_model.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "starter.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "submission.json",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothAlignPropTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothBCOTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothCPOTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothDDPOTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothDPOTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothGKDTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothGRPOTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothIterativeSFTTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothKTOTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothNashMDTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothORPOTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothOnlineDPOTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothPPOTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothPRMTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothRLOOTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothRewardTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothSFTTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/UnslothXPOTrainer.py",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothAlignPropTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothBCOTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothCPOTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothDDPOTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothDPOTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothGKDTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothGRPOTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothIterativeSFTTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothKTOTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothNashMDTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothORPOTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothOnlineDPOTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothPPOTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothPRMTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothRLOOTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothRewardTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothSFTTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    },
+    {
+      "file_name": "unsloth_compiled_cache/__pycache__/UnslothXPOTrainer.cpython-311.pyc",
+      "script_version_id": 361045383
+    }
+  ],
+  "downloaded": [
+    {
+      "file_name": "023-boot.json",
+      "bytes": 808,
+      "sha256": "dcd47eca6466a48e2bf36aadd187f9fad8db7d48cb4c87e4a6b0dd0905df4bc7"
+    },
+    {
+      "file_name": "023-model-copy.json",
+      "bytes": 2291,
+      "sha256": "6d4843c8f083d5d08dd70a171031767a4615eb8fc25129f4ab8a76d2d9c00696"
+    },
+    {
+      "file_name": "arc_decoder.py",
+      "bytes": 4157,
+      "sha256": "b38b6b1bdd5f47dbd587a9809ad2ec20cdf9ce5723736a7fb7470e9b1ce61f1d"
+    },
+    {
+      "file_name": "arc_loader.py",
+      "bytes": 12641,
+      "sha256": "2c62526daba3fdd9da317e3dcb689acca8e24018e56e4c7f2c33ed15381ed8c6"
+    },
+    {
+      "file_name": "arc_solver.py",
+      "bytes": 16567,
+      "sha256": "b064c7ad2e228aaf1f02edf52f0eb4c7f99227a2f505b41d7454ca4154bd209c"
+    },
+    {
+      "file_name": "copy_model.py",
+      "bytes": 3253,
+      "sha256": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010"
+    },
+    {
+      "file_name": "starter.py",
+      "bytes": 1471,
+      "sha256": "f56a1de0d4c17c2e5ec4ecf6874240fff2a8489dc075b5fbcf7d62bb00e4fd9e"
+    },
+    {
+      "file_name": "submission.json",
+      "bytes": 23253,
+      "sha256": "74e20a3cc5706671442fedd112137c2234ad5342d2ffbfacade61e1e8b32cf66"
+    },
+    {
+      "file_name": "full.log",
+      "bytes": 41969,
+      "sha256": "b6401f251dc0c15a316039d23268fc0a0982482a56a689b88cf579d838ab6a08"
+    }
+  ],
+  "prediction_file_present": true,
+  "query_gold_read_by_this_download": false,
+  "candidate_oracle": "unconfirmed; original /kaggle/inference_outputs not added to working archive"
+}

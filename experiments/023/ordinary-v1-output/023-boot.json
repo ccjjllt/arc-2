@@ -1,0 +1,19 @@
+{
+  "reference_version": 312063593,
+  "notebook_started": 1792652383.1213515,
+  "global_end_time": 1792694983.1213515,
+  "raw_rerun_flag": null,
+  "model_source": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1",
+  "model_target": "/kaggle/temp/arc023-model",
+  "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0",
+  "utility_root": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch",
+  "python": "3.11.13 (main, Jun  4 2025, 08:57:29) [GCC 11.4.0]",
+  "original_task_soft_limit": 1200,
+  "original_global_seconds": 42600,
+  "runtime_changes": [
+    "explicit GPU and current fixed model mount",
+    "stage identical checkpoint on local disk",
+    "original utility in child PYTHONPATH",
+    "propagate child failure"
+  ]
+}

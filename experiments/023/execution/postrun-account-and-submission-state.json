@@ -1,0 +1,41 @@
+{
+  "checked_at_utc": "2026-10-22T07:34:18.707718+00:00",
+  "account": "zhuating",
+  "quota_refresh_time_utc": "2026-10-24 00:00:00",
+  "gpu": {
+    "total_time_allowed": 108000.0,
+    "time_used": 92985.637,
+    "time_reserved": 0.0,
+    "available_seconds": 15014.362999999998
+  },
+  "submission_limits": {
+    "num_today": 1,
+    "num_total": 10,
+    "num_allowed_now": 0,
+    "limited_by_total": false
+  },
+  "latest_own_team_submissions": [
+    {
+      "ref": 57504054,
+      "status": "COMPLETE",
+      "publicScore": "0.00",
+      "teamName": "ccjjllt",
+      "url": "/code/zhuating/arc2-022-nvarc-full-submission?scriptVersionId=360953982"
+    },
+    {
+      "ref": 57443913,
+      "status": "COMPLETE",
+      "publicScore": "12.50",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/arc2-020-deep-direct-submission?scriptVersionId=360461153"
+    },
+    {
+      "ref": 57103498,
+      "status": "COMPLETE",
+      "publicScore": "25.69",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/arc2-013-bounded-baseline?scriptVersionId=357613526"
+    }
+  ],
+  "scope": "Read-only after ordinary run; no code submission or final-selection change"
+}

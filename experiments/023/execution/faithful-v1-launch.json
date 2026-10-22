@@ -1,0 +1,27 @@
+{
+  "requested_at_utc": "2026-10-22T06:59:16.083611+00:00",
+  "ref": "zhuating/arc2-023-failed-in-aimo-v1-faithful",
+  "account": "zhuating",
+  "package_directory": "/private/tmp/arc2-023-faithful-v1-frozen",
+  "notebook_sha256": "0bdde6503f6ec616be467321649e9abb997288f07aa54e8b4302f76f32f3d119",
+  "available_quota_seconds_before": 18293.164999999994,
+  "reserved_quota_seconds_before": 0.0,
+  "platform_timeout_seconds": 43200,
+  "original_global_solve_seconds": 42600,
+  "requested_accelerator": "NvidiaL4",
+  "ordinary_tasks": [
+    "0934a4d8",
+    "36a08778",
+    "981571dc",
+    "aa4ec2a5"
+  ],
+  "purpose": "Faithful V1 ordinary GPU run; not a competition submission",
+  "state": "accepted",
+  "response": {
+    "ref": "/code/zhuating/arc2-023-failed-in-aimo-v1-faithful",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-023-failed-in-aimo-v1-faithful",
+    "versionNumber": 1,
+    "kernelId": 140168317
+  },
+  "returned_at_utc": "2026-10-22T06:59:19.349440+00:00"
+}
