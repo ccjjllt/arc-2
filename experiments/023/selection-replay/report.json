@@ -1,0 +1,83 @@
+{
+  "date_beijing": "2026-10-22T11:26:50.900436+08:00",
+  "status": "completed_retrospective_cpu_replay",
+  "interpretation": "Already developed public E20; not preregistered, unseen validation, fresh model inference, or Kaggle score. No threshold search; only R1 and R2.",
+  "source_git_commit": "f2cefe876ac339ccf327171fd3cd7c81b8cf3f1b",
+  "source_model": "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1",
+  "source_inference": "E20 V2 scriptVersionId360845520, 4xL4, 3749.774527 seconds; no new GPU cost",
+  "inputs": {
+    "pool": {
+      "path": "experiments/022/e20-output-v2/022-run/candidate-pools.json",
+      "sha256": "be012b080cc532c4afe4521842593cc79911a649b64c3a4390185ce2148b4472"
+    },
+    "baseline": {
+      "path": "experiments/022/paired-e20-v2/submission-B4.json",
+      "sha256": "29533ccc03db475a05a6ec2490e8cc0c3e2e66fd964d184c0568d95d5cb6fdff"
+    },
+    "ledger": {
+      "path": "experiments/022/paired-e20-v2/query-ledger.jsonl",
+      "sha256": "3100729cc081251e015d27b607f5f13b0a1dd0c29930fa08ac9e36a96e8cf359"
+    }
+  },
+  "policies": {
+    "B4": "Original kgmon top2",
+    "R1": "Two lowest mean_aug_nll grids; stable ties retain original kgmon pool order; if fewer than two grids, retain original unfilled slots",
+    "R2": "Original kgmon first grid plus lowest mean_aug_nll different grid; stable ties retain original pool order; if fewer than two grids, retain original unfilled slots"
+  },
+  "metrics": {
+    "B4": {
+      "correct_queries": 3,
+      "query_denominator": 27,
+      "complete_tasks": 2,
+      "task_denominator": 20,
+      "new_queries": [],
+      "lost_queries": [],
+      "net_queries": 0
+    },
+    "R1": {
+      "correct_queries": 4,
+      "query_denominator": 27,
+      "complete_tasks": 3,
+      "task_denominator": 20,
+      "new_queries": [
+        "3a25b0d8_0"
+      ],
+      "lost_queries": [],
+      "net_queries": 1
+    },
+    "R2": {
+      "correct_queries": 4,
+      "query_denominator": 27,
+      "complete_tasks": 3,
+      "task_denominator": 20,
+      "new_queries": [
+        "3a25b0d8_0"
+      ],
+      "lost_queries": [],
+      "net_queries": 1
+    }
+  },
+  "coverage": {
+    "generated_queries": 21,
+    "placeholder_queries": 6,
+    "oracle_correct_queries": 5
+  },
+  "r1_r2_unordered_predictions_identical": true,
+  "hardware": "macOS-26.6.2-arm64-arm-64bit",
+  "machine": "arm64",
+  "python": "3.9.6",
+  "new_model_calls": 0,
+  "wall_seconds": 0.026426542000000004,
+  "outputs": {
+    "submission-R1.json": "5e5b35d176b375652a1483ac05b61ab9ab1407ea66e7c006435aa7dea7a610ea",
+    "submission-R2.json": "92393268d8e8fdc1508713e8fb96d125ca4d5da575acffb1a5224387d5a665d7"
+  },
+  "post_replay_correction": {
+    "reason": "Preserve original second-slot placeholder for single-candidate queries; no ranking or accuracy change",
+    "queries_updated": [
+      "R1:4e34c42c_1",
+      "R2:4e34c42c_1"
+    ],
+    "wall_seconds": 0.014422292
+  }
+}
