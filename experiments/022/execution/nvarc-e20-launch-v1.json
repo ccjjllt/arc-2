@@ -1,0 +1,20 @@
+{
+  "requested_at_utc": "2026-10-21T15:47:36.927785+00:00",
+  "account": "zhuating",
+  "ref": "zhuating/arc2-022-nvarc-e20",
+  "state": "accepted",
+  "notebook_sha256": "2952883da2e3464dfc22a17b6cb25b1ed958cf8142f463a27ace14f5b1f0f202",
+  "available_quota_seconds_before": 47132.767,
+  "reserved_quota_seconds_before": 0.0,
+  "internal_seconds": 6000,
+  "explicit_platform_timeout_seconds": 6600,
+  "requested_accelerator": "NvidiaL4",
+  "purpose": "Full 4B E20 end-to-end scoring and existing-27B pairing before formal submission; no competition create call.",
+  "response": {
+    "ref": "/code/zhuating/arc2-022-nvarc-e20",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-022-nvarc-e20",
+    "versionNumber": 1,
+    "kernelId": 140048696
+  },
+  "returned_at_utc": "2026-10-21T15:47:40.069837+00:00"
+}

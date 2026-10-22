@@ -1,0 +1,1 @@
+{"4e34c42c_1": [{"grid": [[1, 1, 6, 4, 4, 4, 1, 6, 1, 6, 1, 8, 8, 8], [6, 6, 6, 4, 7, 4, 8, 8, 8, 8, 8, 8, 7, 8], [1, 1, 6, 4, 4, 4, 8, 1, 1, 1, 8, 8, 8, 8]], "source": "dfs_raw_unscored", "subkey": "4e34c42c_1.transpose.rot90.rot90.permute7562830149.ex10", "batch_index": 6, "beam_score": 1.5729330778121948, "token_count": 56, "terminated": true}]}

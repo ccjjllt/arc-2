@@ -1,0 +1,46 @@
+{
+  "checked_at_utc": "2026-10-22T02:38:26.011961+00:00",
+  "account": "zhuating",
+  "submission_ref": 57504054,
+  "get_submission": {
+    "ref": 57504054,
+    "totalBytes": 51179,
+    "date": "2026-10-22T01:10:47.217Z",
+    "description": "022 full NVARC4B V1; frozen E20V2 core; GPU ordinary4-task verified; full hidden fair budget41400s",
+    "fileName": "submission.json",
+    "publicScore": "0.00",
+    "status": "COMPLETE",
+    "submittedBy": "zhuating",
+    "submittedByRef": "zhuating",
+    "teamName": "ccjjllt",
+    "url": "/submissions/57504054/57504054.raw"
+  },
+  "get_submission_keys": [
+    "ref",
+    "totalBytes",
+    "date",
+    "description",
+    "fileName",
+    "publicScore",
+    "status",
+    "submittedBy",
+    "submittedByRef",
+    "teamName",
+    "url"
+  ],
+  "own_team_submission": [
+    {
+      "ref": 57504054,
+      "totalBytes": 51179,
+      "date": "2026-10-22T01:10:47.217Z",
+      "description": "022 full NVARC4B V1; frozen E20V2 core; GPU ordinary4-task verified; full hidden fair budget41400s",
+      "fileName": "submission.json",
+      "publicScore": "0.00",
+      "status": "COMPLETE",
+      "submittedBy": "zhuating",
+      "submittedByRef": "zhuating",
+      "teamName": "ccjjllt",
+      "url": "/code/zhuating/arc2-022-nvarc-full-submission?scriptVersionId=360953982"
+    }
+  ]
+}

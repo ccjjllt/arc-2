@@ -1,0 +1,44 @@
+{
+  "Q27_unique_correct_vs_B4_final2": [
+    "8f215267_0"
+  ],
+  "Q27_unique_correct_vs_B4_scored_candidate_oracle": [
+    "8f215267_0"
+  ],
+  "B4_scored_candidate_oracle_exact": 5,
+  "scored_candidate_union_oracle_exact": 6,
+  "selected_union_oracle_exact": 4,
+  "scored_correct_not_selected_query_keys": [
+    "142ca369_0",
+    "3a25b0d8_0"
+  ],
+  "raw_pool_status": "provided",
+  "B4_raw_candidate_oracle_exact": 5,
+  "raw_candidate_union_oracle_exact": 6,
+  "raw_correct_absent_from_scored_export_query_keys": [],
+  "raw_correct_not_selected_query_keys": [
+    "142ca369_0",
+    "3a25b0d8_0"
+  ],
+  "Q27_unique_correct_vs_B4_raw_candidate_oracle": [
+    "8f215267_0"
+  ],
+  "scored_candidates_absent_from_raw_export_counts": {},
+  "reference_sources": {
+    "primary_ledger": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/021/scoring-qwen-e20-v1/query-ledger.jsonl",
+      "sha256": "303b3f987412e66253bc2b75cc6d2ff504df732540c22d79d019b0dae6357661"
+    },
+    "primary_prediction_freeze": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/021/scoring-qwen-e20-v1/prediction-freeze.json",
+      "sha256": "c49eaa497f6b9a9f8705881ef0d023b3874066dcdd7250c39c7c8e2a15e1cebc",
+      "bytes": 1603
+    },
+    "supplement": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/021/execution/qwen-e20-version-supplement-v1.json",
+      "sha256": "4712c7541723834c46f1beb142880fc196aadfe2b68b2ff48fe2f51c2e6462ad",
+      "bytes": 4538
+    }
+  },
+  "warning": "ScoredCandidateOracle covers only the supplied rescored/ranked export, never all raw DFS generations. Optional RawCandidateOracle covers the supplied legal inverse-transformed raw export; its completeness must be established separately. Raw-correct absent from scored export does not by itself prove no scoring computation occurred. Oracle labels never choose either policy slots; unavailable raw evidence cannot justify a training conclusion."
+}

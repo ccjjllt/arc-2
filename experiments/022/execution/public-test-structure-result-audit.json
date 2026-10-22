@@ -1,0 +1,11 @@
+{
+  "source": "Official current downloadable public test challenges, not hidden rerun input",
+  "tasks": 240,
+  "queries": 259,
+  "sha256": "232264c58f825ee77327dcfc9f4e5cb2f83b8d997eb69032be1bf2205bbe1a83",
+  "all_placeholder_submission_bytes": 40027,
+  "all_placeholder_sha256": "0c150342264fb515718705a01d9ad9aa2de04f7396cb96f847f217f328a741ee",
+  "official_scored_file_bytes": 51179,
+  "byte_match": false,
+  "warning": "Size equality alone is not proof of hidden inputs, content or execution branch."
+}

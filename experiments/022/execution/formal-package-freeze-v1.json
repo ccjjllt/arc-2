@@ -1,0 +1,33 @@
+{
+  "frozen_at_utc": "2026-10-21T16:37:35.827970+00:00",
+  "package_directory": "/private/tmp/arc2-022-formal-launch-frozen-v1",
+  "notebook_sha256": "0ec71872ba7bf3206c9640a5448f4129e3276fd36e5e3d04e51b03620ee804eb",
+  "ref": "zhuating/arc2-022-nvarc-full-submission",
+  "same_core_as_actual_e20_v2": true,
+  "embedded_source_sha256": {
+    "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+    "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+    "arc_solver.py": "10d17dfbc9c3530022f9fe4a439bb07a10efc474181ebf6ea8eef1ed6e9a05e2",
+    "copy_model.py": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+    "run_research.py": "90a35e364f2e50d43da8b6d902951ce33ecac5e04cca005372431c51dd2efbfc",
+    "starter.py": "8e31903cfbf6fc5a12eca5e172bcb51be319d634eb7a2fdce11e79c6267bea31"
+  },
+  "config": {
+    "mode": "final",
+    "research_seconds": 6000,
+    "research_task_seconds": 660,
+    "research_save_seconds": 180,
+    "ordinary_seconds": 2700,
+    "ordinary_task_seconds": 1200,
+    "ordinary_ids": [
+      "136b0064",
+      "16de56c4",
+      "4e34c42c",
+      "d8e07eb2"
+    ],
+    "rerun_seconds": 41400,
+    "rerun_task_cap": 1200
+  },
+  "status": "frozen_not_launched",
+  "note": "Parent-owned independent copy before SDK reopening; no GPU or formal submission in this step."
+}

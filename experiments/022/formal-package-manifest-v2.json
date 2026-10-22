@@ -1,0 +1,47 @@
+{
+  "mode": "final",
+  "notebook_ref": "zhuating/arc2-022-nvarc-full-submission",
+  "source_dir": "/private/tmp/arc2-022-import-trace-work/src",
+  "notebook_path": "/private/tmp/arc2-022-import-trace-work/formal-v2-notebook/arc2-022-nvarc-full-submission.ipynb",
+  "reference_scriptVersionId": 312063593,
+  "recovered_from_git_ref": "6a119e9",
+  "data": null,
+  "config": {
+    "mode": "final",
+    "research_seconds": 6000,
+    "research_task_seconds": 660,
+    "research_save_seconds": 180,
+    "ordinary_seconds": 2700,
+    "ordinary_task_seconds": 1200,
+    "ordinary_ids": [
+      "136b0064",
+      "16de56c4",
+      "4e34c42c",
+      "d8e07eb2"
+    ],
+    "rerun_seconds": 41400,
+    "rerun_task_cap": 1200
+  },
+  "source_sha256": {
+    "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+    "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+    "arc_solver.py": "10d17dfbc9c3530022f9fe4a439bb07a10efc474181ebf6ea8eef1ed6e9a05e2",
+    "copy_model.py": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+    "run_research.py": "90a35e364f2e50d43da8b6d902951ce33ecac5e04cca005372431c51dd2efbfc",
+    "starter.py": "8e31903cfbf6fc5a12eca5e172bcb51be319d634eb7a2fdce11e79c6267bea31"
+  },
+  "status": "packaged_not_launched",
+  "query_gold_read": false,
+  "operational_changes": [
+    "Fixed input/model identity and explicit rerun flag parsing.",
+    "Stage model once onto temporary local SSD with I/O hashes and timing.",
+    "Serialize complete model+PEFT loading, then release all four workers together.",
+    "Task/global deadlines and 60s scoring reserve; export actual TTT steps and raw/scored candidates.",
+    "Final rerun recomputes a capped fair task budget from remaining wall time and shared remaining-task count.",
+    "Original score_kgmon and distinct-grid final2; raw placeholder provenance is explicit."
+  ],
+  "notebook_sha256": "0ec71872ba7bf3206c9640a5448f4129e3276fd36e5e3d04e51b03620ee804eb",
+  "current_artifact_directory": "/private/tmp/arc2-022-import-trace-work/candidate-v2b/formal-notebook",
+  "current_source_directory": "/private/tmp/arc2-022-import-trace-work/candidate-v2b/src",
+  "matches_actual_running_e20_core": true
+}

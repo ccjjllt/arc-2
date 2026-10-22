@@ -1,0 +1,184 @@
+{
+  "checked_at_utc": "2026-10-22T02:40:46.504427+00:00",
+  "submission_ref": 57504054,
+  "scope": "One-time read-only official SDK calls; no GPU launch, submission mutation or scheduler. URLs and credentials omitted.",
+  "authenticated_username": "zhuating",
+  "get_submission": {
+    "ref": 57504054,
+    "totalBytes": 51179,
+    "date": "2026-10-22T01:10:47.217Z",
+    "description": "022 full NVARC4B V1; frozen E20V2 core; GPU ordinary4-task verified; full hidden fair budget41400s",
+    "fileName": "submission.json",
+    "publicScore": "0.00",
+    "status": "COMPLETE",
+    "submittedBy": "zhuating",
+    "submittedByRef": "zhuating",
+    "teamName": "ccjjllt",
+    "url": "/submissions/57504054/57504054.raw"
+  },
+  "download_submission": {
+    "exception_type": "HTTPError",
+    "http_status": 403
+  },
+  "list_submission_episodes": {},
+  "ordinary_v1_output": {
+    "exception_type": "HTTPError",
+    "http_status": 404
+  },
+  "finished_at_utc": "2026-10-22T02:40:50.934322+00:00",
+  "sdk_version": "2.2.4",
+  "schema_evidence": {
+    "ApiSubmission": {
+      "source": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/competitions/types/competition_api_service.py",
+      "line": 4636,
+      "source_sha256": "f7a8a6bc15f2c44e55c672df8a3ad603cd5e1a18cb3c3e2fb6f7637dbe5aec0b",
+      "properties": [
+        "ref",
+        "total_bytes",
+        "date",
+        "description",
+        "error_description",
+        "file_name",
+        "public_score",
+        "private_score",
+        "status",
+        "submitted_by",
+        "submitted_by_ref",
+        "team_name",
+        "url"
+      ]
+    },
+    "ApiGetSubmissionRequest": {
+      "source": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/competitions/types/competition_api_service.py",
+      "line": 3066,
+      "source_sha256": "f7a8a6bc15f2c44e55c672df8a3ad603cd5e1a18cb3c3e2fb6f7637dbe5aec0b",
+      "properties": [
+        "ref"
+      ]
+    },
+    "ApiDownloadSubmissionRequest": {
+      "source": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/competitions/types/competition_api_service.py",
+      "line": 2463,
+      "source_sha256": "f7a8a6bc15f2c44e55c672df8a3ad603cd5e1a18cb3c3e2fb6f7637dbe5aec0b",
+      "properties": [
+        "submission_id"
+      ]
+    },
+    "ApiListSubmissionEpisodesRequest": {
+      "source": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/competitions/types/competition_api_service.py",
+      "line": 3936,
+      "source_sha256": "f7a8a6bc15f2c44e55c672df8a3ad603cd5e1a18cb3c3e2fb6f7637dbe5aec0b",
+      "properties": [
+        "submission_id"
+      ]
+    },
+    "ApiListSubmissionEpisodesResponse": {
+      "source": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/competitions/types/competition_api_service.py",
+      "line": 3968,
+      "source_sha256": "f7a8a6bc15f2c44e55c672df8a3ad603cd5e1a18cb3c3e2fb6f7637dbe5aec0b",
+      "properties": [
+        "episodes"
+      ]
+    },
+    "ApiGetKernelSessionLogsStreamRequest": {
+      "source": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/kernels/types/kernels_api_service.py",
+      "line": 686,
+      "source_sha256": "a7dd65206e7fc27950385e7b163cda48a40766eb8ff7f89d7a334b9bfb151b5c",
+      "properties": [
+        "kernel_session_id",
+        "user_name",
+        "kernel_slug",
+        "version_label",
+        "wait_for_logs_url_seconds"
+      ]
+    },
+    "ApiGetKernelSessionStatusRequest": {
+      "source": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/kernels/types/kernels_api_service.py",
+      "line": 790,
+      "source_sha256": "a7dd65206e7fc27950385e7b163cda48a40766eb8ff7f89d7a334b9bfb151b5c",
+      "properties": [
+        "user_name",
+        "kernel_slug",
+        "version_label"
+      ]
+    },
+    "ApiGetKernelSessionStatusResponse": {
+      "source": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/kernels/types/kernels_api_service.py",
+      "line": 848,
+      "source_sha256": "a7dd65206e7fc27950385e7b163cda48a40766eb8ff7f89d7a334b9bfb151b5c",
+      "properties": [
+        "status",
+        "failure_message",
+        "failureMessage"
+      ]
+    },
+    "ApiListKernelSessionOutputRequest": {
+      "source": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/kernels/types/kernels_api_service.py",
+      "line": 1528,
+      "source_sha256": "a7dd65206e7fc27950385e7b163cda48a40766eb8ff7f89d7a334b9bfb151b5c",
+      "properties": [
+        "user_name",
+        "kernel_slug",
+        "page_size",
+        "page_token",
+        "version_label"
+      ]
+    },
+    "ApiListKernelSessionOutputResponse": {
+      "source": "/Users/zhaohuaxiang/.local/share/uv/tools/kaggle/lib/python3.13/site-packages/kagglesdk/kernels/types/kernels_api_service.py",
+      "line": 1616,
+      "source_sha256": "a7dd65206e7fc27950385e7b163cda48a40766eb8ff7f89d7a334b9bfb151b5c",
+      "properties": [
+        "files",
+        "log",
+        "next_page_token",
+        "nextPageToken"
+      ]
+    }
+  },
+  "shortest_official_read_paths": [
+    {
+      "purpose": "Own submission status, score and exposed error",
+      "sdk": "authenticated_api.build_kaggle_client().competitions.competition_api_client.get_submission(ApiGetSubmissionRequest(ref=57504054))",
+      "note": "SDK request objects take no kwargs: instantiate request, then assign .ref. Returned ApiSubmission.date is submission timestamp; no completed-at/runtime/hidden session field is exposed."
+    },
+    {
+      "purpose": "Actual submitted prediction file",
+      "sdk": "competitions.competition_api_client.download_submission(request with submission_id=57504054)",
+      "observed_result": "HTTP 403 for authenticated owning account zhuating; no file bytes obtained. Existing official submissions UI may expose a browser-authorized download; not tested here."
+    },
+    {
+      "purpose": "Known hidden session logs, only if official UI gives an actual kernel_session_id",
+      "sdk": "kernels.kernels_api_client.get_kernel_session_logs_stream(request with that kernel_session_id)",
+      "observed_result": "No hidden kernel_session_id mapping was returned by the reviewed submission APIs. No guessed session IDs or unrelated session were queried."
+    },
+    {
+      "purpose": "Saved Notebook output/log",
+      "sdk": "kernels.kernels_api_client.list_kernel_session_output(request user_name=zhuating,kernel_slug=arc2-022-nvarc-full-submission)",
+      "note": "Saved Notebook ordinary output does not identify hidden submission rerun. CLI wrappers kernels_output/kernels_logs parse version but do not set request.version_label in this installed version. Explicit underlying version_label=\"1\" returned HTTP404 this audit."
+    }
+  ],
+  "conclusions": {
+    "actual_hidden_prediction_json_obtained": false,
+    "actual_hidden_session_id_obtained": false,
+    "actual_hidden_logs_obtained": false,
+    "actual_hidden_elapsed_seconds_obtained": false,
+    "actual_hidden_task_query_coverage_obtained": false,
+    "can_distinguish_all_placeholders_vs_model_predictions": false,
+    "can_establish_hidden_gpu_or_load_failure": false,
+    "current_status_and_score": "Official GetSubmission independently returned COMPLETE, publicScore 0.00, totalBytes 51179.",
+    "error_field_interpretation": "errorDescription was absent from serialized response; ApiSubmission defaults it to empty. COMPLETE and empty exposed error do not establish successful GPU loading, model coverage, expected branch, or inference wall time.",
+    "bytes_interpretation": "Official submission totalBytes 51179 differs from frozen ordinary submission.json 58657 bytes/SHA7d040cdd2a32bbf788fd628d5ad7592839ce27da5107c60e8256aa23471bd232. A size difference alone does not identify actual hidden grids, tasks or branch.",
+    "mapping_scope": "Reviewed installed official competition submission schemas expose no hidden session ID or completion timestamp; kernel log APIs require ordinary ref/version or a known session ID. This is a limitation of these inspected official SDK paths, not a claim that official browser UI has no runtime details.",
+    "submission_episodes_scope": "Simulation-competition endpoint returned empty serialized response for this ARC2 submission."
+  },
+  "read_only_actions_not_performed": [
+    "No GPU launch or Notebook push",
+    "No new competition submission or final-selection/team mutation",
+    "No periodic timer or polling restoration",
+    "No raw URL fetch attempted after SDK403",
+    "No UI navigation, download click or submission-page action; root took over the sole UI path",
+    "No hidden predictions inferred from ordinary V1 output; no score or gold-based editing"
+  ],
+  "closed_at_utc": "2026-10-22T02:42:40.125863+00:00"
+}

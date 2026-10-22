@@ -1,0 +1,46 @@
+{
+  "verified_at_utc": "2026-10-21T16:18:58.157609+00:00",
+  "ref": "zhuating/arc2-022-nvarc-e20",
+  "remote_version": 2,
+  "remote_metadata": {
+    "id": 140048696,
+    "ref": "zhuating/arc2-022-nvarc-e20",
+    "title": "ARC2 022 NVARC E20",
+    "author": "zhuating",
+    "slug": "arc2-022-nvarc-e20",
+    "lastRunTime": "2026-10-18T16:18:57.907Z",
+    "language": "python",
+    "kernelType": "notebook",
+    "isPrivate": true,
+    "enableGpu": true,
+    "enableInternet": false,
+    "kernelDataSources": [
+      "sorokin/pip-install-unsloth-flash-patch"
+    ],
+    "competitionDataSources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "modelDataSources": [
+      "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+    ],
+    "enableTpu": false,
+    "currentVersionNumber": 2,
+    "dockerImage": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868",
+    "machineShape": "NvidiaL4"
+  },
+  "local_package_path": "/private/tmp/arc2-022-import-trace-work/candidate-v2b/e20-notebook/arc2-022-nvarc-e20.ipynb",
+  "local_package_semantically_matches_remote_cells": true,
+  "actual_local_notebook_sha256": "9ab9e0f478283815a60fbc93aa4d0f5484ffab726a46b1f2516debfc06c27b59",
+  "remote_serialized_notebook_sha256": "3acf237b5de36a6edb721b5d2e55c87adba743daa19033e59b229c5f3d124263",
+  "embedded_source_sha256": {
+    "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+    "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+    "arc_solver.py": "10d17dfbc9c3530022f9fe4a439bb07a10efc474181ebf6ea8eef1ed6e9a05e2",
+    "copy_model.py": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+    "run_research.py": "90a35e364f2e50d43da8b6d902951ce33ecac5e04cca005372431c51dd2efbfc",
+    "starter.py": "8e31903cfbf6fc5a12eca5e172bcb51be319d634eb7a2fdce11e79c6267bea31",
+    "challenges.json": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda"
+  },
+  "prelaunch_checked_notebook_sha256": "ffa8ae0df80c260a2a05c19447c06009da50b0aa57bb8181bcb0a7e00061307d",
+  "correction_reason": "Preparer changed packaging directory between file precheck and SDK reopening. Actual remote cells and runtime boot agree with9ab9. Only diagnostic worker-log excerpt differs; algorithms unchanged."
+}

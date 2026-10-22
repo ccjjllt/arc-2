@@ -1,0 +1,96 @@
+{
+  "checked_at_utc": "2026-10-22T00:41:57.458033+00:00",
+  "ref": "zhuating/arc2-022-nvarc-e20",
+  "version": 2,
+  "status": {
+    "status": "COMPLETE"
+  },
+  "phase": "completed_frozen_scored_paired",
+  "latest_progress": {
+    "event": "progress",
+    "elapsed_s": 3739.2730565071106,
+    "coverage": {
+      "tasks": 20,
+      "queries": 27,
+      "generated_queries": 21,
+      "placeholder_queries": 6,
+      "candidate_files": 189,
+      "raw_candidates": 234,
+      "unique_candidates": 122,
+      "errors": [],
+      "selection": "unmodified V1 score_kgmon; original missing-slot [[0]]",
+      "gold_read": false,
+      "raw_legal_query_count": 21,
+      "raw_legal_grid_count": 234
+    },
+    "worker_stages": {
+      "0": {
+        "rank": 0,
+        "event": "task_done",
+        "time": 1792603028.7611272,
+        "task_id": "edb79dae",
+        "train_steps": 128,
+        "train_epoch": 1.0,
+        "train_epoch_complete": true,
+        "task_s": 452.00158500671387
+      },
+      "2": {
+        "rank": 2,
+        "event": "task_done",
+        "time": 1792603070.737883,
+        "task_id": "da515329",
+        "train_steps": 128,
+        "train_epoch": 1.0,
+        "train_epoch_complete": true,
+        "task_s": 600.0879786014557
+      },
+      "1": {
+        "rank": 1,
+        "event": "task_done",
+        "time": 1792603089.4372103,
+        "task_id": "d8e07eb2",
+        "train_steps": 113,
+        "train_epoch": 0.8828125,
+        "train_epoch_complete": false,
+        "task_s": 661.8795659542084
+      },
+      "3": {
+        "rank": 3,
+        "event": "task_done",
+        "time": 1792603079.3910434,
+        "task_id": "db695cfb",
+        "train_steps": 128,
+        "train_epoch": 1.0,
+        "train_epoch_complete": true,
+        "task_s": 533.1107976436615
+      }
+    },
+    "load_window": {
+      "event": "load_window_changed",
+      "time": 1792600755.7799299,
+      "reason": "all_four_models_ready_load_timeout_disabled",
+      "ready_workers": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "ready_event_times": {
+        "0": 1792600427.605624,
+        "1": 1792600538.187488,
+        "2": 1792600648.4636767,
+        "3": 1792600755.648244
+      },
+      "load_deadline": null,
+      "global_solve_deadline": 1792605180.781838
+    },
+    "worker_log_latest_tail": "e_checked\": 3, \"raw_beams_parse_valid\": 3, \"rescored_unique_candidates\": 3, \"rescore_views\": 24, \"saved_beams\": 3}\n{\"event\": \"candidate_scored\", \"rank\": 3, \"time\": 1792603074.8800077, \"task_id\": \"db695cfb\", \"query_key\": \"db695cfb_0\", \"score_s\": 4.503201484680176, \"n_score_views\": 8}\n{\"event\": \"candidate_file_saved\", \"rank\": 3, \"time\": 1792603074.8810105, \"task_id\": \"db695cfb\", \"subkey\": \"db695cfb_0.transpose.rot90.permute4907281356.ex13420\", \"n_candidates\": 1}\n{\"event\": \"candidate_file_saved\", \"rank\": 3, \"time\": 1792603074.8824728, \"task_id\": \"db695cfb\", \"subkey\": \"db695cfb_0.transpose.rot90.permute5980213764.ex21043\", \"n_candidates\": 1}\n[Rank 3] scoring db695cfb_0.transpose.rot90.rot90.rot90.permute7690351428.ex02143 #0\n{\"event\": \"candidate_scored\", \"rank\": 3, \"time\": 1792603079.389608, \"task_id\": \"db695cfb\", \"query_key\": \"db695cfb_0\", \"score_s\": 4.469878196716309, \"n_score_views\": 8}\n{\"event\": \"candidate_file_saved\", \"rank\": 3, \"time\": 1792603079.3906114, \"task_id\": \"db695cfb\", \"subkey\": \"db695cfb_0.transpose.rot90.rot90.rot90.permute7690351428.ex02143\", \"n_candidates\": 1}\n{\"event\": \"dfs_batch_summary\", \"rank\": 3, \"time\": 1792603079.3907127, \"task_id\": \"db695cfb\", \"batch_index\": 3, \"raw_beams\": 3, \"parse_checked\": 3, \"parse_valid\": 3, \"unique_rescored\": 2, \"score_cache_reused\": 1, \"rescore_views\": 16, \"saved_beams\": 3, \"dfs_cutoff_reached\": false}\n[Rank 3] allocated 11991MB for inference\n[Rank 3] finished db695cfb in 533.1s\n{\"event\": \"task_done\", \"rank\": 3, \"time\": 1792603079.3910434, \"task_id\": \"db695cfb\", \"task_s\": 533.1107976436615, \"peak_inference_mib\": 11991, \"unique_scored_candidates\": 9, \"budget_exhausted\": false, \"train_steps\": 128, \"train_planned_steps\": 128, \"train_epoch\": 1.0, \"train_epoch_complete\": true, \"planned_eval_batches\": 4, \"attempted_eval_batches\": 4, \"all_planned_eval_batches_attempted\": true, \"raw_beams\": 13, \"raw_beams_parse_checked\": 13, \"raw_beams_parse_valid\": 13, \"rescored_unique_candidates\": 9, \"rescore_views\": 72, \"saved_beams\": 13}\n{\"event\": \"train_done\", \"rank\": 1, \"time\": 1792603088.1582506, \"task_id\": \"d8e07eb2\", \"train_s\": 658.999856710434, \"train_steps\": 113, \"train_sequences\": 128, \"train_metrics\": {\"train_runtime\": 652.8462, \"train_samples_per_second\": 0.196, \"train_steps_per_second\": 0.196, \"total_flos\": 1.94418069170688e+16, \"train_loss\": 0.00550393667896237, \"epoch\": 0.8828125}, \"train_planned_steps\": 128, \"train_epoch\": 0.8828125, \"train_epoch_complete\": false, \"task_deadline_reached\": true}\n[Rank 1] allocated 13012MB for training\n[Rank 1] training stats for puzzle d8e07eb2: TrainOutput(global_step=113, training_loss=0.00550393667896237, metrics={'train_runtime': 652.8462, 'train_samples_per_second': 0.196, 'train_steps_per_second': 0.196, 'total_flos': 1.94418069170688e+16, 'train_loss': 0.00550393667896237, 'epoch': 0.8828125})\n[Rank 1] timeout after 661.9s for puzzle d8e07eb2\n[Rank 1] allocated 8979MB for inference\n[Rank 1] finished d8e07eb2 in 661.9s\n{\"event\": \"task_done\", \"rank\": 1, \"time\": 1792603089.4372103, \"task_id\": \"d8e07eb2\", \"task_s\": 661.8795659542084, \"peak_inference_mib\": 8979, \"unique_scored_candidates\": 0, \"budget_exhausted\": true, \"train_steps\": 113, \"train_planned_steps\": 128, \"train_epoch\": 0.8828125, \"train_epoch_complete\": false, \"planned_eval_batches\": 8, \"attempted_eval_batches\": 0, \"all_planned_eval_batches_attempted\": false, \"raw_beams\": 0, \"raw_beams_parse_checked\": 0, \"raw_beams_parse_valid\": 0, \"rescored_unique_candidates\": 0, \"rescore_views\": 0, \"saved_beams\": 0}"
+  },
+  "next_interval_minutes": 5,
+  "reason": "E20 completed and scored. Formal same-core GPU ordinary V1 accepted; next check targets formal startup.",
+  "actual_wall_seconds": 3749.7745270729065,
+  "outcome": "nvarc-e20-v2-outcome.json",
+  "paired_results": "../paired-e20-v2/paired-table.md",
+  "next_ref": "zhuating/arc2-022-nvarc-full-submission",
+  "next_version": 1
+}

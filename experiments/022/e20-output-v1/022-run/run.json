@@ -1,0 +1,94 @@
+{
+  "status": "failed",
+  "started": 1792597739.8113263,
+  "seconds": 6000.0,
+  "save_seconds": 180.0,
+  "solve_deadline": 1792603559.8113263,
+  "task_seconds": 660.0,
+  "selected_task_ids": [
+    "136b0064",
+    "13e47133",
+    "142ca369",
+    "16de56c4",
+    "28a6681f",
+    "3a25b0d8",
+    "3dc255db",
+    "45a5af55",
+    "4e34c42c",
+    "53fb4810",
+    "6ffbe589",
+    "7491f3cf",
+    "8f215267",
+    "a25697e4",
+    "a395ee82",
+    "c4d067a0",
+    "d8e07eb2",
+    "da515329",
+    "db695cfb",
+    "edb79dae"
+  ],
+  "challenge_sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda",
+  "selected_input_sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda",
+  "selected_queries": 27,
+  "submission_tasks": 20,
+  "submission_queries": 27,
+  "mode": "research",
+  "task_policy": "fixed",
+  "source_sha256": {
+    "arc_solver.py": "10d17dfbc9c3530022f9fe4a439bb07a10efc474181ebf6ea8eef1ed6e9a05e2",
+    "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+    "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+    "copy_model.py": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+    "starter.py": "3f04258ca8b9869b6c86008419fb7f432946d8d4d470713f2706afdf61076a72",
+    "run_research.py": "bd3c2714e8470f46c7b92e8f328c4295897a61c4b6a5fcda505dd7a2ece683fc"
+  },
+  "policy": "NVARC V1 solver with local SSD weights, serial complete loading and explicit task/global budgets",
+  "dfs_score_reserve_seconds": 60,
+  "gold_read": false,
+  "coverage": {
+    "tasks": 20,
+    "queries": 27,
+    "generated_queries": 0,
+    "placeholder_queries": 27,
+    "candidate_files": 0,
+    "raw_candidates": 0,
+    "unique_candidates": 0,
+    "errors": [],
+    "selection": "unmodified V1 score_kgmon; original missing-slot [[0]]",
+    "gold_read": false,
+    "raw_legal_query_count": 0,
+    "raw_legal_grid_count": 0
+  },
+  "gpu_names": [
+    "NVIDIA L4",
+    "NVIDIA L4",
+    "NVIDIA L4",
+    "NVIDIA L4"
+  ],
+  "source_model_path": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1",
+  "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0",
+  "model_copy_started": 1792597741.4935443,
+  "model_copy_seconds": 374.43519377708435,
+  "model_copy_bytes": 7267271302,
+  "model_path": "/kaggle/temp/arc022-model",
+  "worker_started": 1792598158.1235144,
+  "worker_pgid": 179,
+  "elapsed_s": 1318.466953754425,
+  "worker_stages": {
+    "0": {
+      "rank": 0,
+      "event": "model_wait_for_peers",
+      "time": 1792598966.143366
+    },
+    "1": {
+      "rank": 1,
+      "event": "worker_import_start",
+      "time": 1792598966.1954618
+    }
+  },
+  "loaded_workers": [
+    0
+  ],
+  "worker_returncode": -15,
+  "stop_reason": "model_load_deadline"
+}

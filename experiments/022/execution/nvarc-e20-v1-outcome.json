@@ -1,0 +1,94 @@
+{
+  "recorded_at_utc": "2026-10-21T16:13:21.768888+00:00",
+  "ref": "zhuating/arc2-022-nvarc-e20",
+  "version": 1,
+  "driver_status": "failed",
+  "stop_reason": "model_load_deadline",
+  "total_seconds": 1318.466953754425,
+  "model_copy_seconds": 374.43519377708435,
+  "model_copy_bytes": 7267271302,
+  "worker0_import_seconds": 792.7242414951324,
+  "worker0_model_peft_ready_seconds": 15.024348974227905,
+  "loaded_workers": [
+    0
+  ],
+  "TTT_started": false,
+  "search_started": false,
+  "real_predictions": 0,
+  "placeholder_queries": 27,
+  "model_score": "Not evaluated: execution ended before TTT/search.",
+  "confirmed_direct_failure": "Single900s complete-pool startup deadline expired after worker0 became ready, leaving worker1 about92s and preventing rank2/3 from loading.",
+  "unconfirmed": "Specific reason for slow first import; no finer import timing or stack trace was enabled.",
+  "files": [
+    {
+      "path": "experiments/022/e20-output-v1/022-run/candidate-pools.json",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "path": "experiments/022/e20-output-v1/022-run/coverage.json",
+      "bytes": 333,
+      "sha256": "242e74d0cc53526edfb56389659c78b7c6ffa6f4b03bc77d03eb68705c74a76d"
+    },
+    {
+      "path": "experiments/022/e20-output-v1/022-run/events/worker-0.jsonl",
+      "bytes": 1481,
+      "sha256": "83f41d71fba680b0fb790eed078cc605ab1866f0051fe63970e954f97b3c5c53"
+    },
+    {
+      "path": "experiments/022/e20-output-v1/022-run/events/worker-1.jsonl",
+      "bytes": 84,
+      "sha256": "eb75d0e90e121b4c1ff01b922ef1c1f4bb4b3da9af94fb02184bd674f79b93fd"
+    },
+    {
+      "path": "experiments/022/e20-output-v1/022-run/gpu.csv",
+      "bytes": 14280,
+      "sha256": "d21448912e1c6a5b280d6ab0756c24c7955415de54a0163e65aceebd3d03c775"
+    },
+    {
+      "path": "experiments/022/e20-output-v1/022-run/markers/imported-0",
+      "bytes": 9,
+      "sha256": "db4ad2be31430992bcc7d620722087520d152617c22424e66cb46b25b85a5723"
+    },
+    {
+      "path": "experiments/022/e20-output-v1/022-run/markers/loaded-0",
+      "bytes": 21,
+      "sha256": "7def1f903a3662c7d0dcb99f8ab15662fb05f181cf222be168328c1111fab683"
+    },
+    {
+      "path": "experiments/022/e20-output-v1/022-run/model-copy.json",
+      "bytes": 2284,
+      "sha256": "1255edd989f82f8eb810cf71c2387e5e0785e0837d114305cc5d70010914eb3b"
+    },
+    {
+      "path": "experiments/022/e20-output-v1/022-run/raw-candidate-pools.json",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "path": "experiments/022/e20-output-v1/022-run/run.json",
+      "bytes": 2819,
+      "sha256": "30542f7e91b87b85ccbabc9be669864e3b7bd93278bdffab0d16b73d3697f624"
+    },
+    {
+      "path": "experiments/022/e20-output-v1/022-run/selected-challenges.json",
+      "bytes": 859142,
+      "sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda"
+    },
+    {
+      "path": "experiments/022/e20-output-v1/022-run/setup.log",
+      "bytes": 124,
+      "sha256": "8940d95f9e7a2c9730a6a9cac62f9c255ae635c0464e58aa02442f4a69af26e6"
+    },
+    {
+      "path": "experiments/022/e20-output-v1/022-run/worker.log",
+      "bytes": 2696,
+      "sha256": "f190cef3a22147689f02b9bec7abbe4147bd758d9d3def3bdd84bc78be1109a0"
+    },
+    {
+      "path": "experiments/022/e20-output-v1/submission.json",
+      "bytes": 4075,
+      "sha256": "9a2b243be74adf879a3512ad08f5fa2024bd991b430cc398687139a3d4f2e3d0"
+    }
+  ]
+}

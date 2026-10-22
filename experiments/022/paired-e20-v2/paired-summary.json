@@ -1,0 +1,310 @@
+{
+  "cohort": "public_evaluation_E20_020",
+  "baseline": "B4",
+  "planned_tasks": 20,
+  "planned_queries": 27,
+  "input_matched_queries": 27,
+  "unresolved_queries": 0,
+  "fully_input_matched_tasks": 20,
+  "input_match_status_counts": {
+    "matched": 27
+  },
+  "sources": {
+    "score_report": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/022/paired-e20-v2/score-report.json",
+      "sha256": "b169b4fcf17a2bbfdec2a2adeada654861555b05070312d9d7503f6ee43e1c5c"
+    },
+    "query_ledger": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/022/paired-e20-v2/query-ledger.jsonl",
+      "sha256": "3100729cc081251e015d27b607f5f13b0a1dd0c29930fa08ac9e36a96e8cf359"
+    },
+    "candidate_pools": []
+  },
+  "policies": {
+    "B4": {
+      "exact_queries": 3,
+      "matched_query_denominator": 27,
+      "query_micro_em2": 0.1111111111111111,
+      "all_queries_exact_tasks": 2,
+      "fully_matched_task_denominator": 20,
+      "full_task_exact_rate": 0.1,
+      "prediction_status_counts": {
+        "valid": 27
+      },
+      "prediction_present_queries": 27,
+      "valid_queries": 27,
+      "distinct_valid_two_slots_queries": 21,
+      "both_slots_equal_zero_1x1_queries": 6,
+      "exact_queries_with_both_slots_zero_1x1": 0,
+      "slot_1_exact_queries": 3,
+      "slot_2_exclusive_exact_queries": 0
+    },
+    "Q27": {
+      "exact_queries": 2,
+      "matched_query_denominator": 27,
+      "query_micro_em2": 0.07407407407407407,
+      "all_queries_exact_tasks": 2,
+      "fully_matched_task_denominator": 20,
+      "full_task_exact_rate": 0.1,
+      "prediction_status_counts": {
+        "valid": 27
+      },
+      "prediction_present_queries": 27,
+      "valid_queries": 27,
+      "distinct_valid_two_slots_queries": 0,
+      "both_slots_equal_zero_1x1_queries": 9,
+      "exact_queries_with_both_slots_zero_1x1": 0,
+      "slot_1_exact_queries": 2,
+      "slot_2_exclusive_exact_queries": 0
+    },
+    "FillMissing": {
+      "exact_queries": 3,
+      "matched_query_denominator": 27,
+      "query_micro_em2": 0.1111111111111111,
+      "all_queries_exact_tasks": 2,
+      "fully_matched_task_denominator": 20,
+      "full_task_exact_rate": 0.1,
+      "prediction_status_counts": {
+        "valid": 27
+      },
+      "prediction_present_queries": 27,
+      "valid_queries": 27,
+      "distinct_valid_two_slots_queries": 21,
+      "both_slots_equal_zero_1x1_queries": 4,
+      "exact_queries_with_both_slots_zero_1x1": 0,
+      "slot_1_exact_queries": 3,
+      "slot_2_exclusive_exact_queries": 0
+    },
+    "ReplaceSecond": {
+      "exact_queries": 4,
+      "matched_query_denominator": 27,
+      "query_micro_em2": 0.14814814814814814,
+      "all_queries_exact_tasks": 3,
+      "fully_matched_task_denominator": 20,
+      "full_task_exact_rate": 0.15,
+      "prediction_status_counts": {
+        "valid": 27
+      },
+      "prediction_present_queries": 27,
+      "valid_queries": 27,
+      "distinct_valid_two_slots_queries": 23,
+      "both_slots_equal_zero_1x1_queries": 4,
+      "exact_queries_with_both_slots_zero_1x1": 0,
+      "slot_1_exact_queries": 3,
+      "slot_2_exclusive_exact_queries": 1
+    }
+  },
+  "comparisons": {
+    "Q27_vs_B4": {
+      "new_queries": 1,
+      "lost_queries": 2,
+      "net_queries": -1,
+      "micro_em2_delta": -0.037037037037037035,
+      "new_query_keys": [
+        "8f215267_0"
+      ],
+      "lost_query_keys": [
+        "3a25b0d8_1",
+        "53fb4810_0"
+      ],
+      "new_task_ids": [
+        "8f215267"
+      ],
+      "lost_task_ids": [
+        "3a25b0d8",
+        "53fb4810"
+      ],
+      "baseline_slot_2_exclusive_lost_query_keys": []
+    },
+    "FillMissing_vs_B4": {
+      "new_queries": 0,
+      "lost_queries": 0,
+      "net_queries": 0,
+      "micro_em2_delta": 0.0,
+      "new_query_keys": [],
+      "lost_query_keys": [],
+      "new_task_ids": [],
+      "lost_task_ids": [],
+      "baseline_slot_2_exclusive_lost_query_keys": []
+    },
+    "ReplaceSecond_vs_B4": {
+      "new_queries": 1,
+      "lost_queries": 0,
+      "net_queries": 1,
+      "micro_em2_delta": 0.037037037037037035,
+      "new_query_keys": [
+        "8f215267_0"
+      ],
+      "lost_query_keys": [],
+      "new_task_ids": [
+        "8f215267"
+      ],
+      "lost_task_ids": [],
+      "baseline_slot_2_exclusive_lost_query_keys": []
+    },
+    "B4_vs_Q27": {
+      "new_queries": 2,
+      "lost_queries": 1,
+      "net_queries": 1,
+      "micro_em2_delta": 0.037037037037037035,
+      "new_query_keys": [
+        "3a25b0d8_1",
+        "53fb4810_0"
+      ],
+      "lost_query_keys": [
+        "8f215267_0"
+      ],
+      "new_task_ids": [
+        "3a25b0d8",
+        "53fb4810"
+      ],
+      "lost_task_ids": [
+        "8f215267"
+      ],
+      "baseline_slot_2_exclusive_lost_query_keys": []
+    },
+    "FillMissing_vs_Q27": {
+      "new_queries": 2,
+      "lost_queries": 1,
+      "net_queries": 1,
+      "micro_em2_delta": 0.037037037037037035,
+      "new_query_keys": [
+        "3a25b0d8_1",
+        "53fb4810_0"
+      ],
+      "lost_query_keys": [
+        "8f215267_0"
+      ],
+      "new_task_ids": [
+        "3a25b0d8",
+        "53fb4810"
+      ],
+      "lost_task_ids": [
+        "8f215267"
+      ],
+      "baseline_slot_2_exclusive_lost_query_keys": []
+    },
+    "ReplaceSecond_vs_Q27": {
+      "new_queries": 2,
+      "lost_queries": 0,
+      "net_queries": 2,
+      "micro_em2_delta": 0.07407407407407407,
+      "new_query_keys": [
+        "3a25b0d8_1",
+        "53fb4810_0"
+      ],
+      "lost_query_keys": [],
+      "new_task_ids": [
+        "3a25b0d8",
+        "53fb4810"
+      ],
+      "lost_task_ids": [],
+      "baseline_slot_2_exclusive_lost_query_keys": []
+    },
+    "B4_vs_FillMissing": {
+      "new_queries": 0,
+      "lost_queries": 0,
+      "net_queries": 0,
+      "micro_em2_delta": 0.0,
+      "new_query_keys": [],
+      "lost_query_keys": [],
+      "new_task_ids": [],
+      "lost_task_ids": [],
+      "baseline_slot_2_exclusive_lost_query_keys": []
+    },
+    "Q27_vs_FillMissing": {
+      "new_queries": 1,
+      "lost_queries": 2,
+      "net_queries": -1,
+      "micro_em2_delta": -0.037037037037037035,
+      "new_query_keys": [
+        "8f215267_0"
+      ],
+      "lost_query_keys": [
+        "3a25b0d8_1",
+        "53fb4810_0"
+      ],
+      "new_task_ids": [
+        "8f215267"
+      ],
+      "lost_task_ids": [
+        "3a25b0d8",
+        "53fb4810"
+      ],
+      "baseline_slot_2_exclusive_lost_query_keys": []
+    },
+    "ReplaceSecond_vs_FillMissing": {
+      "new_queries": 1,
+      "lost_queries": 0,
+      "net_queries": 1,
+      "micro_em2_delta": 0.037037037037037035,
+      "new_query_keys": [
+        "8f215267_0"
+      ],
+      "lost_query_keys": [],
+      "new_task_ids": [
+        "8f215267"
+      ],
+      "lost_task_ids": [],
+      "baseline_slot_2_exclusive_lost_query_keys": []
+    },
+    "B4_vs_ReplaceSecond": {
+      "new_queries": 0,
+      "lost_queries": 1,
+      "net_queries": -1,
+      "micro_em2_delta": -0.037037037037037035,
+      "new_query_keys": [],
+      "lost_query_keys": [
+        "8f215267_0"
+      ],
+      "new_task_ids": [],
+      "lost_task_ids": [
+        "8f215267"
+      ],
+      "baseline_slot_2_exclusive_lost_query_keys": [
+        "8f215267_0"
+      ]
+    },
+    "Q27_vs_ReplaceSecond": {
+      "new_queries": 0,
+      "lost_queries": 2,
+      "net_queries": -2,
+      "micro_em2_delta": -0.07407407407407407,
+      "new_query_keys": [],
+      "lost_query_keys": [
+        "3a25b0d8_1",
+        "53fb4810_0"
+      ],
+      "new_task_ids": [],
+      "lost_task_ids": [
+        "3a25b0d8",
+        "53fb4810"
+      ],
+      "baseline_slot_2_exclusive_lost_query_keys": []
+    },
+    "FillMissing_vs_ReplaceSecond": {
+      "new_queries": 0,
+      "lost_queries": 1,
+      "net_queries": -1,
+      "micro_em2_delta": -0.037037037037037035,
+      "new_query_keys": [],
+      "lost_query_keys": [
+        "8f215267_0"
+      ],
+      "new_task_ids": [],
+      "lost_task_ids": [
+        "8f215267"
+      ],
+      "baseline_slot_2_exclusive_lost_query_keys": [
+        "8f215267_0"
+      ]
+    }
+  },
+  "interpretation": "Public input-matched diagnostic results, not a Kaggle leaderboard score.",
+  "limitations": [
+    "Matched queries form the exact-match denominator; unresolved inputs remain separately counted.",
+    "The [[0]] flag is a grid-value heuristic, not proof of placeholder provenance.",
+    "A ranked source candidate pool is needed to distinguish generated slots from filler grids.",
+    "This summary reads scored booleans and hashes; no official query answer grids are read."
+  ]
+}

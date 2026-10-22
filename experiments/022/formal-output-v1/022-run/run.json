@@ -1,0 +1,126 @@
+{
+  "status": "complete",
+  "started": 1792629598.923974,
+  "seconds": 2700.0,
+  "save_seconds": 180.0,
+  "solve_deadline": 1792632118.923974,
+  "task_seconds": 1200.0,
+  "selected_task_ids": [
+    "136b0064",
+    "16de56c4",
+    "4e34c42c",
+    "d8e07eb2"
+  ],
+  "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+  "selected_input_sha256": "c32a67cc1b5e3a5a1be4ffba357ece297eefacd0d035a25176032364e49806ec",
+  "selected_queries": 7,
+  "submission_tasks": 120,
+  "submission_queries": 172,
+  "mode": "ordinary",
+  "task_policy": "fixed",
+  "source_sha256": {
+    "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+    "starter.py": "8e31903cfbf6fc5a12eca5e172bcb51be319d634eb7a2fdce11e79c6267bea31",
+    "run_research.py": "90a35e364f2e50d43da8b6d902951ce33ecac5e04cca005372431c51dd2efbfc",
+    "copy_model.py": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+    "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+    "arc_solver.py": "10d17dfbc9c3530022f9fe4a439bb07a10efc474181ebf6ea8eef1ed6e9a05e2"
+  },
+  "policy": "NVARC V1 solver with local SSD weights, serial complete loading and explicit task/global budgets",
+  "dfs_score_reserve_seconds": 60,
+  "gold_read": false,
+  "coverage": {
+    "tasks": 120,
+    "queries": 172,
+    "generated_queries": 4,
+    "placeholder_queries": 168,
+    "candidate_files": 19,
+    "raw_candidates": 25,
+    "unique_candidates": 15,
+    "errors": [],
+    "selection": "unmodified V1 score_kgmon; original missing-slot [[0]]",
+    "gold_read": false,
+    "raw_legal_query_count": 4,
+    "raw_legal_grid_count": 25
+  },
+  "gpu_names": [
+    "NVIDIA L4",
+    "NVIDIA L4",
+    "NVIDIA L4",
+    "NVIDIA L4"
+  ],
+  "source_model_path": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1",
+  "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0",
+  "model_copy_started": 1792629599.5768743,
+  "model_copy_seconds": 57.67631721496582,
+  "model_copy_bytes": 7267271302,
+  "model_path": "/kaggle/temp/arc022-model",
+  "worker_started": 1792629689.4232118,
+  "worker_pgid": 179,
+  "load_window": {
+    "event": "load_window_changed",
+    "time": 1792630007.74055,
+    "reason": "all_four_models_ready_load_timeout_disabled",
+    "ready_workers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "ready_event_times": {
+      "0": 1792629819.4741466,
+      "1": 1792629882.4774969,
+      "2": 1792629945.1263309,
+      "3": 1792630007.198326
+    },
+    "load_deadline": null,
+    "global_solve_deadline": 1792632118.923974
+  },
+  "loaded_workers": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "elapsed_s": 1552.236801147461,
+  "worker_stages": {
+    "1": {
+      "rank": 1,
+      "event": "task_done",
+      "time": 1792630351.837655,
+      "task_id": "16de56c4",
+      "train_steps": 128,
+      "train_epoch": 1.0,
+      "train_epoch_complete": true,
+      "task_s": 344.3101415634155
+    },
+    "2": {
+      "rank": 2,
+      "event": "dfs_batch_summary",
+      "time": 1792631044.780323,
+      "task_id": "d8e07eb2"
+    },
+    "3": {
+      "rank": 3,
+      "event": "task_done",
+      "time": 1792630239.72481,
+      "task_id": "136b0064",
+      "train_steps": 128,
+      "train_epoch": 1.0,
+      "train_epoch_complete": true,
+      "task_s": 232.52574682235718
+    },
+    "0": {
+      "rank": 0,
+      "event": "task_done",
+      "time": 1792630213.6746826,
+      "task_id": "4e34c42c",
+      "train_steps": 128,
+      "train_epoch": 1.0,
+      "train_epoch_complete": true,
+      "task_s": 206.1374101638794
+    }
+  },
+  "worker_returncode": 0,
+  "stop_reason": "workers_finished"
+}

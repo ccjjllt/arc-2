@@ -1,0 +1,54 @@
+{
+  "planned_queries": 27,
+  "input_matched_queries": 27,
+  "unresolved_or_mismatched_queries": 0,
+  "policies": {
+    "B4": {
+      "exact_queries": 3,
+      "matched_denominator": 27,
+      "em2": 0.1111111111111111,
+      "prediction_present_queries": 27,
+      "valid_queries": 27,
+      "different_valid_attempts_queries": 21,
+      "fully_matched_tasks": 20,
+      "all_queries_exact_tasks": 2
+    },
+    "Q27": {
+      "exact_queries": 2,
+      "matched_denominator": 27,
+      "em2": 0.07407407407407407,
+      "prediction_present_queries": 27,
+      "valid_queries": 27,
+      "different_valid_attempts_queries": 0,
+      "fully_matched_tasks": 20,
+      "all_queries_exact_tasks": 2
+    },
+    "FillMissing": {
+      "exact_queries": 3,
+      "matched_denominator": 27,
+      "em2": 0.1111111111111111,
+      "prediction_present_queries": 27,
+      "valid_queries": 27,
+      "different_valid_attempts_queries": 21,
+      "fully_matched_tasks": 20,
+      "all_queries_exact_tasks": 2
+    },
+    "ReplaceSecond": {
+      "exact_queries": 4,
+      "matched_denominator": 27,
+      "em2": 0.14814814814814814,
+      "prediction_present_queries": 27,
+      "valid_queries": 27,
+      "different_valid_attempts_queries": 23,
+      "fully_matched_tasks": 20,
+      "all_queries_exact_tasks": 3
+    }
+  },
+  "cohort": "public_evaluation_E20_020",
+  "planned_tasks": 20,
+  "official_version_counts": {
+    "f3283f727488ad98fe575ea6a5ac981e4a188e49": 25,
+    "bebec789c46f4be8f690a321ad852ecdb1f3f362": 2
+  },
+  "interpretation": "Input-version-aligned public E20 pairing; mixed official revisions explicitly recorded; no new inference or 12-hour ensemble run."
+}

@@ -1,0 +1,332 @@
+{
+  "audited_at_utc": "2026-10-22T00:52:42.571449+00:00",
+  "scope": "Independent CPU verification of frozen E20 outputs and predeclared pairing; no new inference, no input/source output edits, no new official answer download.",
+  "actual_command_argv": [
+    "python3",
+    "experiments/022/pair_existing_outputs.py",
+    "--b4-submission",
+    "experiments/022/e20-output-v2/submission.json",
+    "--b4-candidate-pool",
+    "experiments/022/e20-output-v2/022-run/candidate-pools.json",
+    "--b4-pool-policy",
+    "B0",
+    "--b4-raw-candidate-pool",
+    "experiments/022/e20-output-v2/022-run/raw-candidate-pools.json",
+    "--b4-raw-pool-policy",
+    "B0",
+    "--b4-wall-seconds",
+    "3749.7745270729065",
+    "--b4-cost-note",
+    "4xL4 E20 V2 driver elapsed_s; includes model copy/load, 20 tasks and final output; fixed660s/task, no new inference during pairing.",
+    "--output-dir",
+    "experiments/022/paired-e20-v2"
+  ],
+  "script_sha256": "d3336139a97c479f6637231c7b87ccd64edb48fc5b69ff2588ce150fa643e485",
+  "download_freeze": {
+    "path": "experiments/022/execution/nvarc-e20-v2-outcome.json",
+    "sha256": "80b9e948c24a8e917647737fc5430cc29ef2033ca2bbdad2743ba9915a3736bd",
+    "frozen_at_utc": "2026-10-21T23:51:33.443872+00:00",
+    "remote_selected_files": 398,
+    "downloaded_selected_files": 398,
+    "all_pages_complete": true,
+    "checked_local_files": 399,
+    "all_frozen_hashes_match": true,
+    "mismatches": []
+  },
+  "denominator": {
+    "planned_tasks": 20,
+    "planned_queries": 27,
+    "ledger_queries": 27,
+    "unique_ledger_queries": 27,
+    "official_revision_counts": {
+      "f3283f727488ad98fe575ea6a5ac981e4a188e49": 25,
+      "bebec789c46f4be8f690a321ad852ecdb1f3f362": 2
+    },
+    "all_original_query_keys_present": true,
+    "note": "25 primary-revision rows plus2 independently input-matched prior-official-revision rows; full version-aligned diagnostic, not one-revision score."
+  },
+  "independent_result": {
+    "exact_query_keys": {
+      "B4": [
+        "3a25b0d8_1",
+        "45a5af55_0",
+        "53fb4810_0"
+      ],
+      "Q27": [
+        "45a5af55_0",
+        "8f215267_0"
+      ],
+      "FillMissing": [
+        "3a25b0d8_1",
+        "45a5af55_0",
+        "53fb4810_0"
+      ],
+      "ReplaceSecond": [
+        "3a25b0d8_1",
+        "45a5af55_0",
+        "53fb4810_0",
+        "8f215267_0"
+      ]
+    },
+    "counts": {
+      "B4": 3,
+      "Q27": 2,
+      "FillMissing": 3,
+      "ReplaceSecond": 4
+    },
+    "vs_B4": {
+      "Q27": {
+        "new": [
+          "8f215267_0"
+        ],
+        "lost": [
+          "3a25b0d8_1",
+          "53fb4810_0"
+        ],
+        "net": -1
+      },
+      "FillMissing": {
+        "new": [],
+        "lost": [],
+        "net": 0
+      },
+      "ReplaceSecond": {
+        "new": [
+          "8f215267_0"
+        ],
+        "lost": [],
+        "net": 1
+      }
+    },
+    "B4_scored_candidate_oracle": {
+      "correct": 5,
+      "keys": [
+        "142ca369_0",
+        "3a25b0d8_0",
+        "3a25b0d8_1",
+        "45a5af55_0",
+        "53fb4810_0"
+      ]
+    },
+    "B4_raw_candidate_oracle": {
+      "correct": 5,
+      "keys": [
+        "142ca369_0",
+        "3a25b0d8_0",
+        "3a25b0d8_1",
+        "45a5af55_0",
+        "53fb4810_0"
+      ]
+    },
+    "raw_correct_absent_from_scored": [],
+    "scored_correct_not_in_final2": [
+      "142ca369_0",
+      "3a25b0d8_0"
+    ],
+    "Q27_unique_vs_B4_final2": [
+      "8f215267_0"
+    ],
+    "Q27_unique_vs_B4_scored": [
+      "8f215267_0"
+    ],
+    "Q27_unique_vs_B4_raw": [
+      "8f215267_0"
+    ],
+    "scored_plus_Q27_oracle": 6,
+    "raw_plus_Q27_oracle": 6,
+    "correct_scored_but_unselected_ranks": [
+      {
+        "query_key": "142ca369_0",
+        "correct_grid_rank_1_based": 5,
+        "pool_size": 9,
+        "support": 2,
+        "mean_aug_nll": 18.026941768825054,
+        "kgmon": -16.026941768825054,
+        "top2_kgmon": [
+          -6.715796461328864,
+          -7.885573519393802
+        ]
+      },
+      {
+        "query_key": "3a25b0d8_0",
+        "correct_grid_rank_1_based": 3,
+        "pool_size": 8,
+        "support": 2,
+        "mean_aug_nll": 5.8673446252942085,
+        "kgmon": -3.8673446252942085,
+        "top2_kgmon": [
+          -0.08327245619148016,
+          -3.6050558872520924
+        ]
+      }
+    ]
+  },
+  "candidate_export_audit": {
+    "scored_source_rows": 122,
+    "raw_source_rows_including_duplicates": 234,
+    "scored_unique_grids": 122,
+    "raw_unique_grids": 122,
+    "raw_grid_batch_files": 83,
+    "raw_grid_batch_export_matches_aggregate_pool": true,
+    "raw_batch_aggregate_mismatch_query_keys": [],
+    "all_scored_and_raw_unique_grid_sets_equal": true,
+    "missing_scored_query_keys": [
+      "13e47133_1",
+      "4e34c42c_0",
+      "6ffbe589_0",
+      "a25697e4_1",
+      "d8e07eb2_0",
+      "d8e07eb2_1"
+    ],
+    "raw_terminated_counts": {
+      "True": 234
+    }
+  },
+  "scheduler_audit": {
+    "status": "complete",
+    "stop_reason": "workers_finished",
+    "worker_returncode": 0,
+    "loaded_workers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "task_start_count": 20,
+    "unique_started_tasks": 20,
+    "task_done_count": 20,
+    "unique_done_tasks": 20,
+    "all_selected_tasks_started": true,
+    "all_selected_tasks_done": true,
+    "train_epoch_complete_tasks": 19,
+    "partial_train_tasks": [
+      {
+        "task_id": "d8e07eb2",
+        "steps": 113,
+        "planned_steps": 128,
+        "epoch": 0.8828125
+      }
+    ],
+    "all_planned_eval_batches_attempted_tasks": 14,
+    "partial_eval_tasks": [
+      {
+        "task_id": "13e47133",
+        "attempted_batches": 4,
+        "planned_batches": 8,
+        "raw_parse_valid": 2,
+        "task_s": 600.1360502243042
+      },
+      {
+        "task_id": "c4d067a0",
+        "attempted_batches": 2,
+        "planned_batches": 4,
+        "raw_parse_valid": 8,
+        "task_s": 617.0057995319366
+      },
+      {
+        "task_id": "a25697e4",
+        "attempted_batches": 2,
+        "planned_batches": 8,
+        "raw_parse_valid": 6,
+        "task_s": 600.0897390842438
+      },
+      {
+        "task_id": "142ca369",
+        "attempted_batches": 5,
+        "planned_batches": 8,
+        "raw_parse_valid": 23,
+        "task_s": 620.7687859535217
+      },
+      {
+        "task_id": "8f215267",
+        "attempted_batches": 2,
+        "planned_batches": 4,
+        "raw_parse_valid": 13,
+        "task_s": 615.2287399768829
+      },
+      {
+        "task_id": "d8e07eb2",
+        "attempted_batches": 0,
+        "planned_batches": 8,
+        "raw_parse_valid": 0,
+        "task_s": 661.8795659542084
+      }
+    ],
+    "missing_candidate_tasks": [
+      {
+        "task_id": "13e47133",
+        "train_steps": 128,
+        "epoch_complete": true,
+        "attempted_batches": 4,
+        "planned_batches": 8,
+        "raw_parse_valid": 2,
+        "unique_scored": 2
+      },
+      {
+        "task_id": "a25697e4",
+        "train_steps": 128,
+        "epoch_complete": true,
+        "attempted_batches": 2,
+        "planned_batches": 8,
+        "raw_parse_valid": 6,
+        "unique_scored": 3
+      },
+      {
+        "task_id": "4e34c42c",
+        "train_steps": 128,
+        "epoch_complete": true,
+        "attempted_batches": 8,
+        "planned_batches": 8,
+        "raw_parse_valid": 1,
+        "unique_scored": 1
+      },
+      {
+        "task_id": "6ffbe589",
+        "train_steps": 128,
+        "epoch_complete": true,
+        "attempted_batches": 4,
+        "planned_batches": 4,
+        "raw_parse_valid": 0,
+        "unique_scored": 0
+      },
+      {
+        "task_id": "d8e07eb2",
+        "train_steps": 113,
+        "epoch_complete": false,
+        "attempted_batches": 0,
+        "planned_batches": 8,
+        "raw_parse_valid": 0,
+        "unique_scored": 0
+      }
+    ],
+    "interpretation": "All20 tasks were scheduled and reached task_done;6 absent query predictions are not unstarted tasks from a global deadline. Some per-task660s budgets shortened training/evaluation. Missing raw/scored answers cannot be attributed purely to model training."
+  },
+  "costs": {
+    "B4_driver_wall_s": 3749.7745270729065,
+    "Q27_existing_full_E20_wall_s": 4063.551,
+    "separate_runs_sum_wall_s_not_single_deployment": 7813.325527072906,
+    "pairing_new_GPU_calls": 0,
+    "deployment_12h_verified": false,
+    "warning": "Existing independently run full-E20 artifacts measure complementarity only. The formal pure4B package and routed joint runtime need their own observed outcomes."
+  },
+  "output_hashes": {
+    "submission-FillMissing.json": "2d6b3e2bee62a84de6c1bb6ada721013b1569954a1398998104810d0714434ef",
+    "oracle-and-unique.json": "6aa83b6cf390d5128216f892b2d6026350c5db01c03fd622437780ef7c33475f",
+    "submission-B4.json": "29533ccc03db475a05a6ec2490e8cc0c3e2e66fd964d184c0568d95d5cb6fdff",
+    "prediction-freeze.json": "08541b18c9ff8b97996ebbac21ea98a934b6dfbb6ea1017cc18d78b82ac6bec8",
+    "paired-table.md": "bca0aba49ccf70ca819fb73fed00ccd848bfd943c5a09b679b1d726885859dce",
+    "paired-summary.json": "01988bc29f5733b837a19e7bff512e7d5a37ea858c322324396d3d2eee47e7e5",
+    "cost-diagnosis.json": "ed3557459147ab13f8408717deafb341db8e64238ac4b0f03ab15c61581dc4a8",
+    "query-ledger.jsonl": "3100729cc081251e015d27b607f5f13b0a1dd0c29930fa08ac9e36a96e8cf359",
+    "submission-Q27.json": "666f47c629ad230e134b9e0b7cdc5af6e796e47e69cef08e333dccfbe94b71c2",
+    "score-report.json": "b169b4fcf17a2bbfdec2a2adeada654861555b05070312d9d7503f6ee43e1c5c",
+    "submission-ReplaceSecond.json": "468feeb25611101bcaa264957469a7f8346689f7463c159f787a65c002c70b74"
+  },
+  "limitations": [
+    "RawCandidateOracle covers valid inverse-transformed raw-grid exports; this audit cross-checks all saved raw-grid batch JSONs, but does not independently decode every original token beam.",
+    "The scored pool contains the same unique grid sets as the provided raw export here, so no correct raw grid is lost between these two exports; two correct scored candidates are lost at top2 selection.",
+    "All policies use fixed source-only rules. A1 gain in the20-task diagnostic does not establish significance or fit a12h hidden fusion budget.",
+    "No B1 reduced4B arm or new27B inference was run; no final private/public leaderboard result is inferred.",
+    "Budgeted4B completed all20 tasks, but only19/20 tasks finished the planned training epoch and14/20 attempted all planned evaluation batches. The5/27 raw oracle is for this measured budgeted search, not exhaustive model capability."
+  ]
+}

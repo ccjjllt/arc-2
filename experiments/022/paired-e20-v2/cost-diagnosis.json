@@ -1,0 +1,72 @@
+{
+  "B4_measured_wall_seconds": 3749.7745270729065,
+  "B4_cost_note": "4xL4 E20 V2 driver elapsed_s; includes model copy/load, 20 tasks and final output; fixed660s/task, no new inference during pairing.",
+  "Q27_existing_full_E20_wall_seconds": 4063.551,
+  "Q27_existing_setup_seconds_included": 711.6,
+  "Q27_existing_completion_tokens": 551365,
+  "logical_calls": {
+    "FillMissing": {
+      "tasks": 5,
+      "task_ids": [
+        "13e47133",
+        "4e34c42c",
+        "6ffbe589",
+        "a25697e4",
+        "d8e07eb2"
+      ],
+      "observed_tokens_for_required_calls": 151482,
+      "sum_observed_request_seconds_not_stage_wall": 6016.6,
+      "inserted_query_keys": [
+        "4e34c42c_0",
+        "4e34c42c_1",
+        "a25697e4_1"
+      ]
+    },
+    "ReplaceSecond": {
+      "tasks": 20,
+      "task_ids": [
+        "136b0064",
+        "13e47133",
+        "142ca369",
+        "16de56c4",
+        "28a6681f",
+        "3a25b0d8",
+        "3dc255db",
+        "45a5af55",
+        "4e34c42c",
+        "53fb4810",
+        "6ffbe589",
+        "7491f3cf",
+        "8f215267",
+        "a25697e4",
+        "a395ee82",
+        "c4d067a0",
+        "d8e07eb2",
+        "da515329",
+        "db695cfb",
+        "edb79dae"
+      ],
+      "observed_tokens_for_required_calls": 551365,
+      "sum_observed_request_seconds_not_stage_wall": 21989.700000000004,
+      "inserted_query_keys": [
+        "136b0064_0",
+        "142ca369_1",
+        "16de56c4_0",
+        "16de56c4_1",
+        "3dc255db_0",
+        "4e34c42c_0",
+        "4e34c42c_1",
+        "53fb4810_0",
+        "8f215267_0",
+        "a25697e4_0",
+        "a25697e4_1",
+        "a395ee82_0",
+        "c4d067a0_0",
+        "da515329_0",
+        "db695cfb_0",
+        "edb79dae_0"
+      ]
+    }
+  },
+  "warning": "Subset call costs use existing full-E20 observations. They are not a measured routed-stage wall time; batching and setup change costs. End-to-end 12h deployment is unverified."
+}

@@ -1,0 +1,30 @@
+{
+  "requested_at_utc": "2026-10-22T00:39:38.098004+00:00",
+  "account": "zhuating",
+  "ref": "zhuating/arc2-022-nvarc-full-submission",
+  "state": "accepted",
+  "package_directory": "/private/tmp/arc2-022-formal-launch-frozen-v1",
+  "notebook_sha256": "0ec71872ba7bf3206c9640a5448f4129e3276fd36e5e3d04e51b03620ee804eb",
+  "available_quota_seconds_before": 36614.121,
+  "reserved_quota_seconds_before": 0.0,
+  "explicit_platform_timeout_seconds": 43200,
+  "ordinary_internal_seconds": 2700,
+  "hidden_internal_seconds": 41400,
+  "requested_accelerator": "NvidiaL4",
+  "submission_limits": {
+    "numTotal": 9,
+    "numAllowedNow": 1
+  },
+  "existing_refs_before": [
+    "zhuating/arc2-022-nvarc-e20"
+  ],
+  "pending_submissions_before": [],
+  "purpose": "Ordinary GPU SaveAndRun4real public tasks with same frozen E20V2 core; formal competition create occurs only after verified COMPLETE.",
+  "response": {
+    "ref": "/code/zhuating/arc2-022-nvarc-full-submission",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-022-nvarc-full-submission",
+    "versionNumber": 1,
+    "kernelId": 140114268
+  },
+  "returned_at_utc": "2026-10-22T00:39:40.732844+00:00"
+}

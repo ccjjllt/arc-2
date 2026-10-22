@@ -1,0 +1,29 @@
+{
+  "requested_at_utc": "2026-10-21T16:14:45.734631+00:00",
+  "account": "zhuating",
+  "ref": "zhuating/arc2-022-nvarc-e20",
+  "state": "accepted",
+  "previous_version_status": {
+    "status": "ERROR"
+  },
+  "notebook_sha256": "9ab9e0f478283815a60fbc93aa4d0f5484ffab726a46b1f2516debfc06c27b59",
+  "available_quota_seconds_before": 44289.647,
+  "reserved_quota_seconds_before": 0,
+  "internal_seconds": 6000,
+  "explicit_platform_timeout_seconds": 6600,
+  "requested_accelerator": "NvidiaL4",
+  "purpose": "Continue full4B E20 with corrected progress-based serial startup deadline; identical solving algorithm and model.",
+  "response": {
+    "ref": "/code/zhuating/arc2-022-nvarc-e20",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-022-nvarc-e20",
+    "versionNumber": 2,
+    "kernelId": 140048696
+  },
+  "returned_at_utc": "2026-10-21T16:14:48.286348+00:00",
+  "preflight_notebook_sha256": "ffa8ae0df80c260a2a05c19447c06009da50b0aa57bb8181bcb0a7e00061307d",
+  "version_identity_correction": {
+    "verified_at_utc": "2026-10-21T16:18:58.157609+00:00",
+    "evidence": "nvarc-e20-v2-remote-source-verification.json",
+    "note": "Preparer changed packaging directory between file precheck and SDK reopening. Actual remote cells and runtime boot agree with9ab9. Only diagnostic worker-log excerpt differs; algorithms unchanged."
+  }
+}

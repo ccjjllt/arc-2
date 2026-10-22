@@ -1,0 +1,37 @@
+{
+  "recorded_at_utc": "2026-10-21T15:57:49.275921+00:00",
+  "automation_id": "arc2-4b",
+  "kind": "heartbeat",
+  "interval_minutes": 5,
+  "status": "STOPPED_BY_USER_NO_RESTORE",
+  "target_thread_id": "01a15df9-571f-7223-ad68-18ebb19ab7d4",
+  "user_unavailable_before_beijing": "2026-10-22T09:00:00+08:00",
+  "autonomy": "Continue bug fixes, completed-run scoring/pairing and same-team formal submission without waiting for routine clarification.",
+  "local_awake_command": "/usr/bin/caffeinate -i -t 32600",
+  "local_awake_scope": "Temporary idle-system-sleep prevention; does not keep app open or override lid/power-off.",
+  "cadence_mode": "adaptive",
+  "interval_policy": {
+    "startup_loading_or_error_minutes": [
+      2,
+      5
+    ],
+    "stable_15_to_60_minute_wait_minutes": [
+      10,
+      15
+    ],
+    "evidence_based_long_wait_minutes": [
+      30,
+      60
+    ],
+    "no_reliable_eta_minutes": 10,
+    "temporary_network_error_minutes": 5
+  },
+  "updated_at_utc": "2026-10-22T01:09:47.219596+00:00",
+  "update_behavior": "Update this existing heartbeat at each wake; complete actionable work within current turn, no duplicate schedules.",
+  "last_decision_reason": "User explicitly declined restoring the deleted automation and will report completion; finish current formal submit then no scheduled or active polling.",
+  "current_kernel_version": 1,
+  "current_notebook_sha256": "0ec71872ba7bf3206c9640a5448f4129e3276fd36e5e3d04e51b03620ee804eb",
+  "current_ref": "zhuating/arc2-022-nvarc-full-submission",
+  "last_automation_update_error": "App reports automation does not exist and may have been deleted manually; do not create replacement without user direction.",
+  "active_turn_continues": false
+}

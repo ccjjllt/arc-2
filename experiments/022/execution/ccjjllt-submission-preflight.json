@@ -1,0 +1,128 @@
+{
+  "checked_at_utc": "2026-10-21T15:41:15.312273+00:00",
+  "account": "ccjjllt",
+  "gpu": {
+    "total_time_allowed": 108000.0,
+    "time_used": 108343.492,
+    "time_reserved": 0.0
+  },
+  "submissions": [
+    {
+      "ref": 57443913,
+      "totalBytes": 253680,
+      "date": "2026-10-20T15:28:59.223Z",
+      "description": "020 Qwen3.8-27B direct1 + CPU line, MTP2; frozen v1",
+      "fileName": "submission.json",
+      "publicScore": "12.50",
+      "status": "COMPLETE",
+      "submittedBy": "ccjjllt",
+      "submittedByRef": "ccjjllt",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/arc2-020-deep-direct-submission?scriptVersionId=360461153"
+    },
+    {
+      "ref": 57103498,
+      "totalBytes": 425016,
+      "date": "2026-10-12T09:56:36.720Z",
+      "description": "013 bounded base-only TTT; fixed kgmon selection; four-task runtime pilot verified. New candidate, not the historical 30.14 version.",
+      "fileName": "submission.json",
+      "publicScore": "25.69",
+      "status": "COMPLETE",
+      "submittedBy": "ccjjllt",
+      "submittedByRef": "ccjjllt",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/arc2-013-bounded-baseline?scriptVersionId=357613526"
+    },
+    {
+      "ref": 52379974,
+      "totalBytes": 755669,
+      "date": "2026-05-06T07:44:23.877Z",
+      "description": "",
+      "fileName": "submission.json",
+      "publicScore": "27.92",
+      "status": "COMPLETE",
+      "submittedBy": "ccjjllt",
+      "submittedByRef": "ccjjllt",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316972179"
+    },
+    {
+      "ref": 52267289,
+      "totalBytes": 777429,
+      "date": "2026-05-02T16:27:45.827Z",
+      "description": "",
+      "fileName": "submission.json",
+      "publicScore": "29.72",
+      "status": "COMPLETE",
+      "submittedBy": "ccjjllt",
+      "submittedByRef": "ccjjllt",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316064507"
+    },
+    {
+      "ref": 52166443,
+      "totalBytes": 676401,
+      "date": "2026-04-29T11:41:33.787Z",
+      "description": "",
+      "fileName": "submission.json",
+      "publicScore": "28.19",
+      "status": "COMPLETE",
+      "submittedBy": "ccjjllt",
+      "submittedByRef": "ccjjllt",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=315301517"
+    },
+    {
+      "ref": 52116910,
+      "totalBytes": 693783,
+      "date": "2026-04-28T01:56:33.943Z",
+      "description": "",
+      "fileName": "submission.json",
+      "publicScore": "27.36",
+      "status": "COMPLETE",
+      "submittedBy": "ccjjllt",
+      "submittedByRef": "ccjjllt",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314755063"
+    },
+    {
+      "ref": 52089422,
+      "totalBytes": 19606,
+      "date": "2026-04-27T06:48:57.117Z",
+      "description": "",
+      "fileName": "submission.json",
+      "publicScore": "0.83",
+      "status": "COMPLETE",
+      "submittedBy": "ccjjllt",
+      "submittedByRef": "ccjjllt",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314731536"
+    },
+    {
+      "ref": 52072735,
+      "totalBytes": 760143,
+      "date": "2026-04-26T17:02:33.323Z",
+      "description": "",
+      "fileName": "submission.json",
+      "publicScore": "30.14",
+      "status": "COMPLETE",
+      "submittedBy": "ccjjllt",
+      "submittedByRef": "ccjjllt",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319"
+    },
+    {
+      "ref": 51954464,
+      "totalBytes": 589184,
+      "date": "2026-04-23T02:35:59.440Z",
+      "description": "",
+      "fileName": "submission.json",
+      "publicScore": "25.69",
+      "status": "COMPLETE",
+      "submittedBy": "ccjjllt",
+      "submittedByRef": "ccjjllt",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=313752727"
+    }
+  ]
+}

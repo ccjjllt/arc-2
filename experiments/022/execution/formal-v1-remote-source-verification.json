@@ -1,0 +1,165 @@
+{
+  "verified_at_utc": "2026-10-22T00:41:21.747132+00:00",
+  "authenticated_username": "zhuating",
+  "scope": "Read-only GetKernel after accepted ordinary SaveAndRun. No push, code submission, sharing or team change.",
+  "ref": "zhuating/arc2-022-nvarc-full-submission",
+  "remote_version": 1,
+  "kernel_id": 140114268,
+  "script_version_id": "Not exposed by GetKernel; must bind from completed output URL/listing before competition create.",
+  "remote_metadata": {
+    "id": 140114268,
+    "ref": "zhuating/arc2-022-nvarc-full-submission",
+    "title": "ARC2 022 NVARC full submission",
+    "author": "zhuating",
+    "slug": "arc2-022-nvarc-full-submission",
+    "lastRunTime": "2026-10-19T00:41:21.295Z",
+    "language": "python",
+    "kernelType": "notebook",
+    "isPrivate": true,
+    "enableGpu": true,
+    "enableInternet": false,
+    "kernelDataSources": [
+      "sorokin/pip-install-unsloth-flash-patch"
+    ],
+    "competitionDataSources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "modelDataSources": [
+      "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+    ],
+    "enableTpu": false,
+    "currentVersionNumber": 1,
+    "dockerImage": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868",
+    "machineShape": "NvidiaL4"
+  },
+  "local_frozen_directory": "/private/tmp/arc2-022-formal-launch-frozen-v1",
+  "remote_download_directory": "/var/folders/9s/sdk1x32s58g8dycwh6c74bqc0000gp/T/arc022-formal-v1-remote-read-n4xihkth",
+  "local_notebook_sha256": "0ec71872ba7bf3206c9640a5448f4129e3276fd36e5e3d04e51b03620ee804eb",
+  "launch_expected_notebook_sha256": "0ec71872ba7bf3206c9640a5448f4129e3276fd36e5e3d04e51b03620ee804eb",
+  "manifest_expected_notebook_sha256": "0ec71872ba7bf3206c9640a5448f4129e3276fd36e5e3d04e51b03620ee804eb",
+  "local_matches_launch_and_manifest": true,
+  "remote_serialized_notebook_sha256": "31a43637bf6ff95a211b754e6b7eb0e44a2d84a43deb3c030f9729eea701570f",
+  "raw_serialization_identical": false,
+  "cell_count": 2,
+  "cells": [
+    {
+      "index": 0,
+      "cell_type_local": "markdown",
+      "cell_type_remote": "markdown",
+      "source_identical": true,
+      "local_source_sha256": "919a4859aab12c73abff78b4ceb5feebb1536ec928e78665ba6f1b9535baa604",
+      "remote_source_sha256": "919a4859aab12c73abff78b4ceb5feebb1536ec928e78665ba6f1b9535baa604"
+    },
+    {
+      "index": 1,
+      "cell_type_local": "code",
+      "cell_type_remote": "code",
+      "source_identical": true,
+      "local_source_sha256": "ed5e43b62a6862ea5316c4d0d15a330b9a4ca213f75e08e49707bbc496fa1a50",
+      "remote_source_sha256": "ed5e43b62a6862ea5316c4d0d15a330b9a4ca213f75e08e49707bbc496fa1a50"
+    }
+  ],
+  "all_cell_types_and_sources_identical": true,
+  "config_local": {
+    "mode": "final",
+    "research_seconds": 6000,
+    "research_task_seconds": 660,
+    "research_save_seconds": 180,
+    "ordinary_seconds": 2700,
+    "ordinary_task_seconds": 1200,
+    "ordinary_ids": [
+      "136b0064",
+      "16de56c4",
+      "4e34c42c",
+      "d8e07eb2"
+    ],
+    "rerun_seconds": 41400,
+    "rerun_task_cap": 1200
+  },
+  "config_remote": {
+    "mode": "final",
+    "research_seconds": 6000,
+    "research_task_seconds": 660,
+    "research_save_seconds": 180,
+    "ordinary_seconds": 2700,
+    "ordinary_task_seconds": 1200,
+    "ordinary_ids": [
+      "136b0064",
+      "16de56c4",
+      "4e34c42c",
+      "d8e07eb2"
+    ],
+    "rerun_seconds": 41400,
+    "rerun_task_cap": 1200
+  },
+  "config_identical": true,
+  "payload_files": [
+    {
+      "name": "arc_decoder.py",
+      "identical_bytes": true,
+      "local_sha256": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+      "remote_sha256": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+      "remote_declared_sha256": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+      "manifest_sha256": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+      "matches_frozen_manifest": true,
+      "matches_remote_declaration": true
+    },
+    {
+      "name": "arc_loader.py",
+      "identical_bytes": true,
+      "local_sha256": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+      "remote_sha256": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+      "remote_declared_sha256": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+      "manifest_sha256": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+      "matches_frozen_manifest": true,
+      "matches_remote_declaration": true
+    },
+    {
+      "name": "arc_solver.py",
+      "identical_bytes": true,
+      "local_sha256": "10d17dfbc9c3530022f9fe4a439bb07a10efc474181ebf6ea8eef1ed6e9a05e2",
+      "remote_sha256": "10d17dfbc9c3530022f9fe4a439bb07a10efc474181ebf6ea8eef1ed6e9a05e2",
+      "remote_declared_sha256": "10d17dfbc9c3530022f9fe4a439bb07a10efc474181ebf6ea8eef1ed6e9a05e2",
+      "manifest_sha256": "10d17dfbc9c3530022f9fe4a439bb07a10efc474181ebf6ea8eef1ed6e9a05e2",
+      "matches_frozen_manifest": true,
+      "matches_remote_declaration": true
+    },
+    {
+      "name": "copy_model.py",
+      "identical_bytes": true,
+      "local_sha256": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+      "remote_sha256": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+      "remote_declared_sha256": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+      "manifest_sha256": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+      "matches_frozen_manifest": true,
+      "matches_remote_declaration": true
+    },
+    {
+      "name": "run_research.py",
+      "identical_bytes": true,
+      "local_sha256": "90a35e364f2e50d43da8b6d902951ce33ecac5e04cca005372431c51dd2efbfc",
+      "remote_sha256": "90a35e364f2e50d43da8b6d902951ce33ecac5e04cca005372431c51dd2efbfc",
+      "remote_declared_sha256": "90a35e364f2e50d43da8b6d902951ce33ecac5e04cca005372431c51dd2efbfc",
+      "manifest_sha256": "90a35e364f2e50d43da8b6d902951ce33ecac5e04cca005372431c51dd2efbfc",
+      "matches_frozen_manifest": true,
+      "matches_remote_declaration": true
+    },
+    {
+      "name": "starter.py",
+      "identical_bytes": true,
+      "local_sha256": "8e31903cfbf6fc5a12eca5e172bcb51be319d634eb7a2fdce11e79c6267bea31",
+      "remote_sha256": "8e31903cfbf6fc5a12eca5e172bcb51be319d634eb7a2fdce11e79c6267bea31",
+      "remote_declared_sha256": "8e31903cfbf6fc5a12eca5e172bcb51be319d634eb7a2fdce11e79c6267bea31",
+      "manifest_sha256": "8e31903cfbf6fc5a12eca5e172bcb51be319d634eb7a2fdce11e79c6267bea31",
+      "matches_frozen_manifest": true,
+      "matches_remote_declaration": true
+    }
+  ],
+  "all_payload_source_bytes_identical": true,
+  "all_payload_shas_match_frozen_manifest_and_remote_declaration": true,
+  "differences": [
+    "Outer Notebook JSON serialization differs; cell source/payload comparisons determine semantic equivalence."
+  ],
+  "signed_urls_or_credentials_in_report": false,
+  "query_gold_read": false
+}

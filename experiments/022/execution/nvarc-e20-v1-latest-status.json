@@ -1,0 +1,34 @@
+{
+  "checked_at_utc": "2026-10-21T16:06:36.620252+00:00",
+  "ref": "zhuating/arc2-022-nvarc-e20",
+  "status": {
+    "status": "RUNNING"
+  },
+  "latest_progress": {
+    "event": "progress",
+    "elapsed_s": 1055.4214642047882,
+    "coverage": {
+      "tasks": 20,
+      "queries": 27,
+      "generated_queries": 0,
+      "placeholder_queries": 27,
+      "candidate_files": 0,
+      "raw_candidates": 0,
+      "unique_candidates": 0,
+      "errors": [],
+      "selection": "unmodified V1 score_kgmon; original missing-slot [[0]]",
+      "gold_read": false,
+      "raw_legal_query_count": 0,
+      "raw_legal_grid_count": 0
+    },
+    "worker_stages": {
+      "0": {
+        "rank": 0,
+        "event": "worker_import_start",
+        "time": 1792598158.394177
+      }
+    }
+  },
+  "next_interval_minutes": 2,
+  "reason": "Startup incomplete; model0 import has not completed and 900s startup deadline is approaching. No model predictions yet."
+}

@@ -1,0 +1,50 @@
+{
+  "mode": "research",
+  "notebook_ref": "zhuating/arc2-022-nvarc-e20",
+  "source_dir": "/private/tmp/arc2-022-nvarc-work/src",
+  "notebook_path": "/private/tmp/arc2-022-nvarc-work/e20-notebook-frozen/arc2-022-nvarc-e20.ipynb",
+  "reference_scriptVersionId": 312063593,
+  "recovered_from_git_ref": "6a119e9",
+  "data": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/020/evaluation-e20/challenges.json",
+    "sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda",
+    "tasks": 20,
+    "queries": 27
+  },
+  "config": {
+    "mode": "research",
+    "research_seconds": 6000,
+    "research_task_seconds": 660,
+    "research_save_seconds": 180,
+    "ordinary_seconds": 2700,
+    "ordinary_task_seconds": 1200,
+    "ordinary_ids": [
+      "136b0064",
+      "16de56c4",
+      "4e34c42c",
+      "d8e07eb2"
+    ],
+    "rerun_seconds": 41400,
+    "rerun_task_cap": 1200
+  },
+  "source_sha256": {
+    "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+    "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+    "arc_solver.py": "10d17dfbc9c3530022f9fe4a439bb07a10efc474181ebf6ea8eef1ed6e9a05e2",
+    "copy_model.py": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+    "run_research.py": "bd3c2714e8470f46c7b92e8f328c4295897a61c4b6a5fcda505dd7a2ece683fc",
+    "starter.py": "3f04258ca8b9869b6c86008419fb7f432946d8d4d470713f2706afdf61076a72",
+    "challenges.json": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda"
+  },
+  "status": "packaged_not_launched",
+  "query_gold_read": false,
+  "operational_changes": [
+    "Fixed input/model identity and explicit rerun flag parsing.",
+    "Stage model once onto temporary local SSD with I/O hashes and timing.",
+    "Serialize complete model+PEFT loading, then release all four workers together.",
+    "Task/global deadlines and 60s scoring reserve; export actual TTT steps and raw/scored candidates.",
+    "Final rerun recomputes a capped fair task budget from remaining wall time and shared remaining-task count.",
+    "Original score_kgmon and distinct-grid final2; raw placeholder provenance is explicit."
+  ],
+  "notebook_sha256": "2952883da2e3464dfc22a17b6cb25b1ed958cf8142f463a27ace14f5b1f0f202"
+}

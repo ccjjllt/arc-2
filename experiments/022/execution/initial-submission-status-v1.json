@@ -1,0 +1,27 @@
+{
+  "checked_at_utc": "2026-10-22T01:11:56.348252+00:00",
+  "ref": 57504054,
+  "method": "one-time GetSubmission initial verification; no recurring polling",
+  "response": {
+    "ref": 57504054,
+    "date": "2026-10-22T01:10:47.217Z",
+    "description": "022 full NVARC4B V1; frozen E20V2 core; GPU ordinary4-task verified; full hidden fair budget41400s",
+    "fileName": "submission.json",
+    "submittedBy": "zhuating",
+    "submittedByRef": "zhuating",
+    "teamName": "ccjjllt",
+    "url": "/submissions/57504054/57504054.raw"
+  },
+  "response_top_level_keys": [
+    "ref",
+    "totalBytes",
+    "date",
+    "description",
+    "fileName",
+    "submittedBy",
+    "submittedByRef",
+    "teamName",
+    "url"
+  ],
+  "public_score_returned": false
+}

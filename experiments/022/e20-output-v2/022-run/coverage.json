@@ -1,0 +1,14 @@
+{
+  "tasks": 20,
+  "queries": 27,
+  "generated_queries": 21,
+  "placeholder_queries": 6,
+  "candidate_files": 189,
+  "raw_candidates": 234,
+  "unique_candidates": 122,
+  "errors": [],
+  "selection": "unmodified V1 score_kgmon; original missing-slot [[0]]",
+  "gold_read": false,
+  "raw_legal_query_count": 21,
+  "raw_legal_grid_count": 234
+}

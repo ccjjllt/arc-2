@@ -1,0 +1,293 @@
+{
+  "verified_at_utc": "2026-10-22T01:11:39.074715+00:00",
+  "scope": "Read-only verification of frozen ordinary GPU outputs. No scoring, no gold reading, no input/output mutation, no launch or competition submission.",
+  "ref": "zhuating/arc2-022-nvarc-full-submission",
+  "kernel_version": 1,
+  "kernel_id": 140114268,
+  "script_version_id": 360953982,
+  "outcome_frozen_at_utc": "2026-10-22T01:07:37.915795+00:00",
+  "evidence_files": [
+    {
+      "path": "experiments/022/execution/formal-v1-outcome.json",
+      "sha256": "9f494f3b4898c941c3f25d7ab23fb21bcf4625c2f280638cdd0ccaf911b7108d"
+    },
+    {
+      "path": "experiments/022/execution/formal-v1-remote-source-verification.json",
+      "sha256": "544c560bc8025d8d92fe0a9d93199049b0d1dc72619289229e154fa4e16684e3"
+    },
+    {
+      "path": "experiments/022/execution/formal-save-launch-v1.json",
+      "sha256": "ee5ef69eb757d305ff35bf3644a959f09bcdd5997c5a727ba3fed1db045aef73"
+    },
+    {
+      "path": "experiments/022/formal-output-v1/022-run/run.json",
+      "sha256": "cdeff5477be92ba2de2b9d8e4fb5b47d6e692c53434ce7c589a02993cfd45de5"
+    },
+    {
+      "path": "experiments/022/formal-output-v1/submission.json",
+      "sha256": "7d040cdd2a32bbf788fd628d5ad7592839ce27da5107c60e8256aa23471bd232"
+    },
+    {
+      "path": "experiments/008/raw-eval/arc-agi_evaluation_challenges.json",
+      "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8"
+    }
+  ],
+  "checks": [
+    {
+      "check": "all_91_frozen_local_files_match_sha_and_size",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "local_file_inventory_matches_frozen_inventory",
+      "passed": true,
+      "detail": {
+        "extra": [],
+        "missing": []
+      }
+    },
+    {
+      "check": "all_remote_listed_outputs_same_script_version",
+      "passed": true,
+      "detail": {
+        "remote_inventory_count": 137,
+        "downloaded_research_output_count": 90,
+        "downloaded_additional_kernel_log": 1,
+        "all_pages_complete": true
+      }
+    },
+    {
+      "check": "exact_formal_identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "notebook_identity_matches_remote_audit",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "run_source_shas_match_all_six_remotely_audited_sources",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "ordinary_mode_and_selected_4_tasks_7_queries",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "selected_input_is_exact_full_input_projection",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "actual_four_L4_and_successful_exit",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no_gold_read_reported",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all_four_distinct_model_loaded_events",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all_four_selected_tasks_completed_full_TTT_and_task_done",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "full_ordinary_submission_structure_120_tasks_172_queries",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "generated_vs_placeholder_count_matches_run",
+      "passed": true,
+      "detail": {
+        "generated_query_keys": [
+          "136b0064_0",
+          "16de56c4_0",
+          "16de56c4_1",
+          "d8e07eb2_0"
+        ],
+        "placeholder_queries": 168
+      }
+    }
+  ],
+  "all_checks_pass": true,
+  "blocking_findings": [],
+  "source_sha256": {
+    "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+    "starter.py": "8e31903cfbf6fc5a12eca5e172bcb51be319d634eb7a2fdce11e79c6267bea31",
+    "run_research.py": "90a35e364f2e50d43da8b6d902951ce33ecac5e04cca005372431c51dd2efbfc",
+    "copy_model.py": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+    "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+    "arc_solver.py": "10d17dfbc9c3530022f9fe4a439bb07a10efc474181ebf6ea8eef1ed6e9a05e2"
+  },
+  "task_event_summary": [
+    {
+      "event_file": "022-run/events/worker-0.jsonl",
+      "rank": 0,
+      "task_id": "4e34c42c",
+      "train_steps": 128,
+      "planned_train_steps": 128,
+      "train_epoch": 1.0,
+      "train_epoch_complete": true,
+      "train_s": 152.46987462043762,
+      "task_done_count": 1,
+      "task_done": {
+        "event": "task_done",
+        "rank": 0,
+        "time": 1792630213.6746826,
+        "task_id": "4e34c42c",
+        "task_s": 206.1374101638794,
+        "peak_inference_mib": 11526,
+        "unique_scored_candidates": 0,
+        "budget_exhausted": false,
+        "train_steps": 128,
+        "train_planned_steps": 128,
+        "train_epoch": 1.0,
+        "train_epoch_complete": true,
+        "planned_eval_batches": 8,
+        "attempted_eval_batches": 8,
+        "all_planned_eval_batches_attempted": true,
+        "raw_beams": 0,
+        "raw_beams_parse_checked": 0,
+        "raw_beams_parse_valid": 0,
+        "rescored_unique_candidates": 0,
+        "rescore_views": 0,
+        "saved_beams": 0
+      }
+    },
+    {
+      "event_file": "022-run/events/worker-1.jsonl",
+      "rank": 1,
+      "task_id": "16de56c4",
+      "train_steps": 128,
+      "planned_train_steps": 128,
+      "train_epoch": 1.0,
+      "train_epoch_complete": true,
+      "train_s": 99.71218585968018,
+      "task_done_count": 1,
+      "task_done": {
+        "event": "task_done",
+        "rank": 1,
+        "time": 1792630351.837655,
+        "task_id": "16de56c4",
+        "task_s": 344.3101415634155,
+        "peak_inference_mib": 10535,
+        "unique_scored_candidates": 7,
+        "budget_exhausted": false,
+        "train_steps": 128,
+        "train_planned_steps": 128,
+        "train_epoch": 1.0,
+        "train_epoch_complete": true,
+        "planned_eval_batches": 8,
+        "attempted_eval_batches": 8,
+        "all_planned_eval_batches_attempted": true,
+        "raw_beams": 7,
+        "raw_beams_parse_checked": 7,
+        "raw_beams_parse_valid": 7,
+        "rescored_unique_candidates": 7,
+        "rescore_views": 56,
+        "saved_beams": 7
+      }
+    },
+    {
+      "event_file": "022-run/events/worker-2.jsonl",
+      "rank": 2,
+      "task_id": "d8e07eb2",
+      "train_steps": 128,
+      "planned_train_steps": 128,
+      "train_epoch": 1.0,
+      "train_epoch_complete": true,
+      "train_s": 797.5222084522247,
+      "task_done_count": 1,
+      "task_done": {
+        "event": "task_done",
+        "rank": 2,
+        "time": 1792631147.8059177,
+        "task_id": "d8e07eb2",
+        "task_s": 1140.155128955841,
+        "peak_inference_mib": 16768,
+        "unique_scored_candidates": 3,
+        "budget_exhausted": false,
+        "train_steps": 128,
+        "train_planned_steps": 128,
+        "train_epoch": 1.0,
+        "train_epoch_complete": true,
+        "planned_eval_batches": 8,
+        "attempted_eval_batches": 2,
+        "all_planned_eval_batches_attempted": false,
+        "raw_beams": 13,
+        "raw_beams_parse_checked": 13,
+        "raw_beams_parse_valid": 13,
+        "rescored_unique_candidates": 3,
+        "rescore_views": 24,
+        "saved_beams": 13
+      }
+    },
+    {
+      "event_file": "022-run/events/worker-3.jsonl",
+      "rank": 3,
+      "task_id": "136b0064",
+      "train_steps": 128,
+      "planned_train_steps": 128,
+      "train_epoch": 1.0,
+      "train_epoch_complete": true,
+      "train_s": 103.22934007644653,
+      "task_done_count": 1,
+      "task_done": {
+        "event": "task_done",
+        "rank": 3,
+        "time": 1792630239.72481,
+        "task_id": "136b0064",
+        "task_s": 232.52574682235718,
+        "peak_inference_mib": 10549,
+        "unique_scored_candidates": 5,
+        "budget_exhausted": false,
+        "train_steps": 128,
+        "train_planned_steps": 128,
+        "train_epoch": 1.0,
+        "train_epoch_complete": true,
+        "planned_eval_batches": 4,
+        "attempted_eval_batches": 4,
+        "all_planned_eval_batches_attempted": true,
+        "raw_beams": 5,
+        "raw_beams_parse_checked": 5,
+        "raw_beams_parse_valid": 5,
+        "rescored_unique_candidates": 5,
+        "rescore_views": 40,
+        "saved_beams": 5
+      }
+    }
+  ],
+  "ordinary_elapsed_seconds": 1552.236801147461,
+  "coverage": {
+    "tasks": 120,
+    "queries": 172,
+    "generated_queries": 4,
+    "placeholder_queries": 168,
+    "candidate_files": 19,
+    "raw_candidates": 25,
+    "unique_candidates": 15,
+    "errors": [],
+    "selection": "unmodified V1 score_kgmon; original missing-slot [[0]]",
+    "gold_read": false,
+    "raw_legal_query_count": 4,
+    "raw_legal_grid_count": 25
+  },
+  "interpretation": [
+    "This ordinary run solved only the configured 4-task, 7-query subset. Its 120-task/172-query submission shape includes 168 placeholder queries and must not be scored or claimed as full-set solving.",
+    "All four tasks completed the planned 128 TTT steps (epoch 1.0). d8e07eb2 used 797.522 seconds for TTT and attempted only 2/8 eval batches before the existing DFS score reserve. This is an observed budget/scheduling limitation, not a source or submission-structure blocker.",
+    "The current formal V1 source identity and ordinary GPU execution are verified. Hidden full-run outcomes and competition score remain unmeasured here."
+  ],
+  "signed_urls_or_credentials_in_report": false,
+  "query_gold_read": false
+}

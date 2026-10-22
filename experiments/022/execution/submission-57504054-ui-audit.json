@@ -1,0 +1,35 @@
+{
+  "checked_at_utc": "2026-10-22T02:52:19.586581+00:00",
+  "submission_ref": 57504054,
+  "competition_submissions_page": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/submissions",
+  "visible_submission_result": {
+    "account": "ccjjllt",
+    "version": 1,
+    "submitted_by": "zhuating",
+    "status_text": "Succeeded",
+    "score": "0.00",
+    "final_selection_unchanged": true
+  },
+  "submission_details_exposed_fields": [
+    "score",
+    "description",
+    "select_for_final_score"
+  ],
+  "observed_raw_page": {
+    "supplied_by": "Official GetSubmission.url",
+    "browser_result": "404 off the map",
+    "download_obtained": false
+  },
+  "observed_notebook_logs": {
+    "account": "zhuating",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-022-nvarc-full-submission/log",
+    "runtime_seconds_visible": 1579.7,
+    "boot_mode": "ordinary",
+    "tasks": 120,
+    "queries": 172,
+    "generated_queries": 4,
+    "placeholder_queries": 168,
+    "is_hidden_log": false
+  },
+  "scope": "Read-only official UI; no selection, description, account or submission mutation; stopped actions when user changed browser."
+}

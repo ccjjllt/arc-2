@@ -1,0 +1,11 @@
+{
+  "declaration_date_beijing": "2026-10-21",
+  "status": "policies_declared_before_completed_4B_E20_result_is_available",
+  "cohort": "Original frozen E20: 20 tasks, 27 queries",
+  "reference_accuracy_sources": "Existing 021 primary scored ledger (25 queries) plus independently input-matched old official revision supplement (2 queries). No new gold download.",
+  "FillMissing": "Route any task with at least one query having fewer than two real unique 4B candidates. If a different real 27B prediction is available, add it beside an existing first real 4B candidate; if 4B has none, use 27B in both slots. Otherwise retain the original 4B slots.",
+  "ReplaceSecond": "Use the same rule for every query: preserve 4B attempt_1; insert a different real 27B grid in attempt_2. If no real 27B grid or it equals 4B attempt_1, retain both original 4B slots. Logical 27B call requirement is all20 tasks.",
+  "thresholds": "None. No gold-driven task ID filter, confidence threshold, or answer selection.",
+  "oracle_metrics": "ScoredCandidateOracle covers only the supplied rescored/ranked pool. Optional RawCandidateOracle separately covers supplied original legal inverse-transformed DFS grids, with raw-correct absent from scored export/not-selected diagnostics. Neither oracle nor its union with27B chooses policy slots. Missing raw evidence remains unconfirmed and cannot justify training conclusions.",
+  "cost_scope": "Reuse existing full E20 artifacts; no new inference or B1 arm. Record actual completed 4B cost when supplied, existing 27B full E20 driver cost, and prior observed token/request costs for logical routed tasks. Deployment within12h remains unverified."
+}

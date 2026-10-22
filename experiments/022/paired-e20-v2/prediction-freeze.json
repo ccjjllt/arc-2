@@ -1,0 +1,126 @@
+{
+  "frozen_at_utc": "2026-10-21T23:51:56.081217+00:00",
+  "policies": {
+    "B4": "Unchanged frozen 4B final two slots.",
+    "Q27": "Unchanged frozen 27B Direct1 output; M0/M1 are duplicates.",
+    "FillMissing": "If 4B has fewer than two real unique candidates, preserve its existing first real candidate and append a different real 27B grid. With no 4B candidate, use the real 27B grid in both slots. Otherwise retain B4.",
+    "ReplaceSecond": "For every query, preserve B4 attempt_1 and put a real 27B grid in attempt_2 only if it differs from B4 attempt_1; otherwise retain B4."
+  },
+  "inputs": {
+    "manifest": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/020/evaluation-e20/manifest.json",
+      "sha256": "6a169f382e70c2cdf81194d648485bf25471666192dc4396ec44d4112ca4f21d",
+      "bytes": 28488
+    },
+    "challenges": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/020/evaluation-e20/challenges.json",
+      "sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda",
+      "bytes": 859142
+    },
+    "predictions": [
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/022/e20-output-v2/submission.json",
+        "sha256": "29533ccc03db475a05a6ec2490e8cc0c3e2e66fd964d184c0568d95d5cb6fdff",
+        "bytes": 235888,
+        "policy": "B4",
+        "task_ids": [
+          "136b0064",
+          "13e47133",
+          "142ca369",
+          "16de56c4",
+          "28a6681f",
+          "3a25b0d8",
+          "3dc255db",
+          "45a5af55",
+          "4e34c42c",
+          "53fb4810",
+          "6ffbe589",
+          "7491f3cf",
+          "8f215267",
+          "a25697e4",
+          "a395ee82",
+          "c4d067a0",
+          "d8e07eb2",
+          "da515329",
+          "db695cfb",
+          "edb79dae"
+        ]
+      },
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/021/qwen-e20-output-v1/submission.json",
+        "sha256": "3367f1cac955520dfb46a45a04296a290e1984999ffce62478df9779022a1e22",
+        "bytes": 33504,
+        "policy": "Q27",
+        "task_ids": [
+          "136b0064",
+          "13e47133",
+          "142ca369",
+          "16de56c4",
+          "28a6681f",
+          "3a25b0d8",
+          "3dc255db",
+          "45a5af55",
+          "4e34c42c",
+          "53fb4810",
+          "6ffbe589",
+          "7491f3cf",
+          "8f215267",
+          "a25697e4",
+          "a395ee82",
+          "c4d067a0",
+          "d8e07eb2",
+          "da515329",
+          "db695cfb",
+          "edb79dae"
+        ]
+      }
+    ],
+    "candidate_pools": []
+  },
+  "candidate_pools": {
+    "B4_scored": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/022/e20-output-v2/022-run/candidate-pools.json",
+      "sha256": "be012b080cc532c4afe4521842593cc79911a649b64c3a4390185ce2148b4472",
+      "bytes": 626790
+    },
+    "B4_raw_optional": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/022/e20-output-v2/022-run/raw-candidate-pools.json",
+      "sha256": "2324fb52bcd0fde14aea0b35b9573e6ccce5c001e41a06457b4fcb7a0fbda1a1",
+      "bytes": 1239716
+    },
+    "Q27": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/021/qwen-e20-output-v1/vprobe/candidate-pools.json",
+      "sha256": "79cd7ac7a5fd582d12ede3f999806ca12d1a2af885c983e2e62970c82a59632a",
+      "bytes": 44426
+    }
+  },
+  "q27_run": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/021/qwen-e20-output-v1/vprobe/run.json",
+    "sha256": "579701dab332a6bd676efe0a8f559ee9e32f604703cd8482958ac34b38bb0dad",
+    "bytes": 63279
+  },
+  "script_sha256": "d3336139a97c479f6637231c7b87ccd64edb48fc5b69ff2588ce150fa643e485",
+  "derived_submission_hashes": {
+    "B4": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/022/paired-e20-v2/submission-B4.json",
+      "sha256": "29533ccc03db475a05a6ec2490e8cc0c3e2e66fd964d184c0568d95d5cb6fdff",
+      "bytes": 235888
+    },
+    "Q27": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/022/paired-e20-v2/submission-Q27.json",
+      "sha256": "666f47c629ad230e134b9e0b7cdc5af6e796e47e69cef08e333dccfbe94b71c2",
+      "bytes": 218169
+    },
+    "FillMissing": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/022/paired-e20-v2/submission-FillMissing.json",
+      "sha256": "2d6b3e2bee62a84de6c1bb6ada721013b1569954a1398998104810d0714434ef",
+      "bytes": 259713
+    },
+    "ReplaceSecond": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/022/paired-e20-v2/submission-ReplaceSecond.json",
+      "sha256": "468feeb25611101bcaa264957469a7f8346689f7463c159f787a65c002c70b74",
+      "bytes": 247761
+    }
+  },
+  "note": "All predictions and label-free policy outputs frozen before reading scored reference hashes."
+}

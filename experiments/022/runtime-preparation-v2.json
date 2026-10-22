@@ -1,0 +1,167 @@
+{
+  "prepared_at_utc": "2026-10-21T16:17:15.680993+00:00",
+  "source_directory": "/private/tmp/arc2-022-import-trace-work/candidate-v2b/src",
+  "source_sha256": {
+    "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+    "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+    "arc_solver.py": "10d17dfbc9c3530022f9fe4a439bb07a10efc474181ebf6ea8eef1ed6e9a05e2",
+    "copy_model.py": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+    "run_research.py": "90a35e364f2e50d43da8b6d902951ce33ecac5e04cca005372431c51dd2efbfc",
+    "starter.py": "8e31903cfbf6fc5a12eca5e172bcb51be319d634eb7a2fdce11e79c6267bea31"
+  },
+  "status": "research_v2_launched_by_parent_remote_cells_verified_formal_prepared_not_launched",
+  "packages": {
+    "research": {
+      "path": "/private/tmp/arc2-022-import-trace-work/candidate-v2b/e20-notebook/arc2-022-nvarc-e20.ipynb",
+      "sha256": "9ab9e0f478283815a60fbc93aa4d0f5484ffab726a46b1f2516debfc06c27b59",
+      "manifest": {
+        "mode": "research",
+        "notebook_ref": "zhuating/arc2-022-nvarc-e20",
+        "source_dir": "/private/tmp/arc2-022-import-trace-work/candidate-v2b/src",
+        "notebook_path": "/private/tmp/arc2-022-import-trace-work/candidate-v2b/e20-notebook/arc2-022-nvarc-e20.ipynb",
+        "reference_scriptVersionId": 312063593,
+        "recovered_from_git_ref": "6a119e9",
+        "data": {
+          "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/020/evaluation-e20/challenges.json",
+          "sha256": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda",
+          "tasks": 20,
+          "queries": 27
+        },
+        "config": {
+          "mode": "research",
+          "research_seconds": 6000,
+          "research_task_seconds": 660,
+          "research_save_seconds": 180,
+          "ordinary_seconds": 2700,
+          "ordinary_task_seconds": 1200,
+          "ordinary_ids": [
+            "136b0064",
+            "16de56c4",
+            "4e34c42c",
+            "d8e07eb2"
+          ],
+          "rerun_seconds": 41400,
+          "rerun_task_cap": 1200
+        },
+        "source_sha256": {
+          "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+          "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+          "arc_solver.py": "10d17dfbc9c3530022f9fe4a439bb07a10efc474181ebf6ea8eef1ed6e9a05e2",
+          "copy_model.py": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+          "run_research.py": "90a35e364f2e50d43da8b6d902951ce33ecac5e04cca005372431c51dd2efbfc",
+          "starter.py": "8e31903cfbf6fc5a12eca5e172bcb51be319d634eb7a2fdce11e79c6267bea31",
+          "challenges.json": "ad12e367296c958b1f84a1c2bf7c2a8858cfb09db4dbc8e152d5735890b67dda"
+        },
+        "status": "packaged_not_launched",
+        "query_gold_read": false,
+        "operational_changes": [
+          "Fixed input/model identity and explicit rerun flag parsing.",
+          "Stage model once onto temporary local SSD with I/O hashes and timing.",
+          "Serialize complete model+PEFT loading, then release all four workers together.",
+          "Task/global deadlines and 60s scoring reserve; export actual TTT steps and raw/scored candidates.",
+          "Final rerun recomputes a capped fair task budget from remaining wall time and shared remaining-task count.",
+          "Original score_kgmon and distinct-grid final2; raw placeholder provenance is explicit."
+        ],
+        "notebook_sha256": "9ab9e0f478283815a60fbc93aa4d0f5484ffab726a46b1f2516debfc06c27b59"
+      },
+      "status": "launched_by_parent_version_2_remote_cells_verified"
+    },
+    "same_team_formal": {
+      "path": "/private/tmp/arc2-022-import-trace-work/candidate-v2b/formal-notebook/arc2-022-nvarc-full-submission.ipynb",
+      "sha256": "0ec71872ba7bf3206c9640a5448f4129e3276fd36e5e3d04e51b03620ee804eb",
+      "manifest": {
+        "mode": "final",
+        "notebook_ref": "zhuating/arc2-022-nvarc-full-submission",
+        "source_dir": "/private/tmp/arc2-022-import-trace-work/candidate-v2b/src",
+        "notebook_path": "/private/tmp/arc2-022-import-trace-work/candidate-v2b/formal-notebook/arc2-022-nvarc-full-submission.ipynb",
+        "reference_scriptVersionId": 312063593,
+        "recovered_from_git_ref": "6a119e9",
+        "data": null,
+        "config": {
+          "mode": "final",
+          "research_seconds": 6000,
+          "research_task_seconds": 660,
+          "research_save_seconds": 180,
+          "ordinary_seconds": 2700,
+          "ordinary_task_seconds": 1200,
+          "ordinary_ids": [
+            "136b0064",
+            "16de56c4",
+            "4e34c42c",
+            "d8e07eb2"
+          ],
+          "rerun_seconds": 41400,
+          "rerun_task_cap": 1200
+        },
+        "source_sha256": {
+          "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+          "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+          "arc_solver.py": "10d17dfbc9c3530022f9fe4a439bb07a10efc474181ebf6ea8eef1ed6e9a05e2",
+          "copy_model.py": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+          "run_research.py": "90a35e364f2e50d43da8b6d902951ce33ecac5e04cca005372431c51dd2efbfc",
+          "starter.py": "8e31903cfbf6fc5a12eca5e172bcb51be319d634eb7a2fdce11e79c6267bea31"
+        },
+        "status": "packaged_not_launched",
+        "query_gold_read": false,
+        "operational_changes": [
+          "Fixed input/model identity and explicit rerun flag parsing.",
+          "Stage model once onto temporary local SSD with I/O hashes and timing.",
+          "Serialize complete model+PEFT loading, then release all four workers together.",
+          "Task/global deadlines and 60s scoring reserve; export actual TTT steps and raw/scored candidates.",
+          "Final rerun recomputes a capped fair task budget from remaining wall time and shared remaining-task count.",
+          "Original score_kgmon and distinct-grid final2; raw placeholder provenance is explicit."
+        ],
+        "notebook_sha256": "0ec71872ba7bf3206c9640a5448f4129e3276fd36e5e3d04e51b03620ee804eb"
+      },
+      "status": "frozen_not_launched"
+    }
+  },
+  "v1_unchanged_notebook_sha256": "2952883da2e3464dfc22a17b6cb25b1ed958cf8142f463a27ace14f5b1f0f202",
+  "changes_from_v1": [
+    "First cold worker startup window remains 900 seconds from worker pool launch.",
+    "Each newly observed model_loaded grants the next serialized worker 300 seconds from its actual event timestamp; global solve deadline still bounds this window.",
+    "After all four model_loaded events, startup timeout is disabled; global and task deadlines remain.",
+    "Every startup window change records ready rank set, ready timestamps, reason, startup deadline and global solve deadline.",
+    "Import stages distinguish torch completion, default device completion and arc_solver completion; repeat faulthandler stack every 60 seconds until import completes.",
+    "Parent progress forwards compact changed worker log and newest timeout stack head."
+  ],
+  "unchanged": [
+    "arc_solver.py",
+    "arc_loader.py",
+    "arc_decoder.py",
+    "copy_model.py",
+    "dependencies",
+    "TTT hyperparameters",
+    "660-second E20 task clock",
+    "60-second score reserve",
+    "original score_kgmon and final2"
+  ],
+  "v1_runtime_evidence": {
+    "artifact_directory": "experiments/022/e20-output-v1/022-run",
+    "checkpoint_bytes": 7267271302,
+    "model_copy_seconds": 374.2707,
+    "worker0_import_seconds": 792.72424,
+    "worker0_model_plus_peft_ready_seconds": 15.02435,
+    "worker0_weights_seconds": 6.6596,
+    "worker1_outcome": "Begun after rank0 ready; killed about 92 seconds later by shared 900-second startup window; first Unsloth banner present.",
+    "conclusion": "Shared startup deadline incorrectly leaves only the remainder of rank0 cold import for later serialized workers. Evidence does not show rank1 hung for 900 seconds or checkpoint loading remained blocked.",
+    "remaining_uncertainty": "First cold import bottleneck is not localized in V1; new trace only observes it and does not alter dependency versions."
+  },
+  "manual_verification": {
+    "all_source_and_notebook_code_AST_valid": true,
+    "four_algorithm_and_copy_files_identical_to_v1": true,
+    "no_gold_read": true,
+    "no_GPU_or_launch_by_preparer": true
+  },
+  "runtime_verification": {
+    "evidence": "experiments/022/execution/nvarc-e20-v2-remote-source-verification.json",
+    "launch_evidence": "experiments/022/execution/nvarc-e20-launch-v2.json",
+    "remote_version": 2,
+    "remote_cells_match_actual_package": true,
+    "actual_notebook_sha256": "9ab9e0f478283815a60fbc93aa4d0f5484ffab726a46b1f2516debfc06c27b59",
+    "preflight_notebook_sha256": "ffa8ae0df80c260a2a05c19447c06009da50b0aa57bb8181bcb0a7e00061307d",
+    "actual_runner_sha256": "90a35e364f2e50d43da8b6d902951ce33ecac5e04cca005372431c51dd2efbfc",
+    "correction_reason": "Packaging directory changed between preflight hash and SDK reopening; actual remote cells, payload and boot agree with candidate-v2b. Only diagnostic stack excerpt differs from preflight; algorithms unchanged.",
+    "source_and_packages_frozen": true
+  }
+}

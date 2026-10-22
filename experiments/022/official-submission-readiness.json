@@ -1,0 +1,542 @@
+{
+  "checked_at_utc": "2026-10-21T15:50:51.400492+00:00",
+  "status": "read_only_submission_readiness_review",
+  "scope": "Official live read APIs, official staff/product documentation and local source/receipt review. No new notebook, GPU run, join, invitation, sharing, competition submission or final-selection mutation performed by this audit.",
+  "official_live_read": {
+    "captured_at_utc": "2026-10-21T15:41:07.360619+00:00",
+    "method": "Kaggle SDK CompetitionApiService.GetCompetition and ListCompetitionPages",
+    "competition_id": 133469,
+    "metadata_fields": {
+      "ref": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2",
+      "deadline": "2026-11-02T23:59:00.000Z",
+      "teamCount": 3123,
+      "newEntrantDeadline": "2026-10-26T23:59:00.000Z",
+      "maxDailySubmissions": 1,
+      "maxTeamSize": 5,
+      "isKernelsSubmissionsOnly": true
+    },
+    "page_content_fingerprints": [
+      {
+        "page": "rules",
+        "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/rules",
+        "content_sha256": "5aa0d8d5bbd4fc65042bfcb6b579d5c414b26749c41d4ea9852bc8345ca502a9"
+      },
+      {
+        "page": "data-description",
+        "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/data",
+        "content_sha256": "234f613f75f8c52902dbde84788f1e0cd2ac1b33b42bca110fa00f653ad8782f"
+      },
+      {
+        "page": "Evaluation",
+        "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview/evaluation",
+        "content_sha256": "f7199728c2cd07bc4bc1671b3070e292e640b1293d1bda28e7aa2ebe96d57d4e"
+      },
+      {
+        "page": "Timeline",
+        "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview/timeline",
+        "content_sha256": "26b0861735a5f789a660f1b3b4c3b6d1fc22b7f941a386d28985ac2deeb93632"
+      },
+      {
+        "page": "Code Requirements",
+        "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview/code-requirements",
+        "content_sha256": "e6979bad1cdb9ce47f2f66df38cddefd4307603dd54a626c009c940513fbb624"
+      },
+      {
+        "page": "Upgraded Accelerators",
+        "url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview/upgraded-accelerators",
+        "content_sha256": "d99f237d20208c93baf27e0aaac526fe3fd4492fade53d48fbb7e7465cef74df"
+      }
+    ]
+  },
+  "hard_constraints": {
+    "total_notebook_runtime_seconds_max": 43200,
+    "hardware": "L4x4, total96GB; not one96GB GPU",
+    "internet": "Disabled for every L4 session and scoring",
+    "normal_L4_quota_multiplier": 2,
+    "quota_multiplier_can_change": true,
+    "hidden_task_count": 240,
+    "hidden_query_count": "Not published; parse actual file dynamically",
+    "score": "Exact-match per query; best of exactly2 attempts, micro-average across all task test outputs",
+    "output": "submission.json, every input task ID, original query order, attempt_1 and attempt_2 both present",
+    "grid": "Rectangular1..30 by1..30, integer colors0..9",
+    "final_deadline_utc": "2026-11-02T23:59:00Z",
+    "final_deadline_beijing": "2026-11-03 07:59",
+    "entry_and_merger_deadline_beijing": "2026-10-27 07:59",
+    "submissions_per_team_per_day": 1,
+    "maximum_final_selected_submissions": 2,
+    "queue_limit": "Official staff update747515: previous team submission must finish scoring before another submission; separate from1/day."
+  },
+  "account_and_team_verification": {
+    "ccjjllt": {
+      "checked_at_utc": "2026-10-21T15:47:57.689831+00:00",
+      "authenticated_username": "ccjjllt",
+      "scope": "Read-only competition entry and own-team submissions; no join, invite, share, create, or submit.",
+      "get_competition": {
+        "id": 133469,
+        "teamCount": 3123,
+        "userHasEntered": true,
+        "userRank": 1064
+      },
+      "get_submission_limits": {
+        "numTotal": 9,
+        "numAllowedNow": 1
+      },
+      "list_submissions": {
+        "submissions": [
+          {
+            "ref": 57443913,
+            "date": "2026-10-20T15:28:59.223Z",
+            "publicScore": "12.50",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/arc2-020-deep-direct-submission?scriptVersionId=360461153"
+          },
+          {
+            "ref": 57103498,
+            "date": "2026-10-12T09:56:36.720Z",
+            "publicScore": "25.69",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/arc2-013-bounded-baseline?scriptVersionId=357613526"
+          },
+          {
+            "ref": 52379974,
+            "date": "2026-05-06T07:44:23.877Z",
+            "publicScore": "27.92",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316972179"
+          },
+          {
+            "ref": 52267289,
+            "date": "2026-05-02T16:27:45.827Z",
+            "publicScore": "29.72",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316064507"
+          },
+          {
+            "ref": 52166443,
+            "date": "2026-04-29T11:41:33.787Z",
+            "publicScore": "28.19",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=315301517"
+          },
+          {
+            "ref": 52116910,
+            "date": "2026-04-28T01:56:33.943Z",
+            "publicScore": "27.36",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314755063"
+          },
+          {
+            "ref": 52089422,
+            "date": "2026-04-27T06:48:57.117Z",
+            "publicScore": "0.83",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314731536"
+          },
+          {
+            "ref": 52072735,
+            "date": "2026-04-26T17:02:33.323Z",
+            "publicScore": "30.14",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319"
+          },
+          {
+            "ref": 51954464,
+            "date": "2026-04-23T02:35:59.440Z",
+            "publicScore": "25.69",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=313752727"
+          }
+        ]
+      }
+    },
+    "zhuating": {
+      "checked_at_utc": "2026-10-21T15:47:57.027447+00:00",
+      "authenticated_username": "zhuating",
+      "scope": "Read-only competition entry and own-team submissions; no join, invite, share, create, or submit.",
+      "get_competition": {
+        "id": 133469,
+        "teamCount": 3123,
+        "userHasEntered": true,
+        "userRank": 1064
+      },
+      "get_submission_limits": {
+        "numTotal": 9,
+        "numAllowedNow": 1
+      },
+      "list_submissions": {
+        "submissions": [
+          {
+            "ref": 57443913,
+            "date": "2026-10-20T15:28:59.223Z",
+            "publicScore": "12.50",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/arc2-020-deep-direct-submission?scriptVersionId=360461153"
+          },
+          {
+            "ref": 57103498,
+            "date": "2026-10-12T09:56:36.720Z",
+            "publicScore": "25.69",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/arc2-013-bounded-baseline?scriptVersionId=357613526"
+          },
+          {
+            "ref": 52379974,
+            "date": "2026-05-06T07:44:23.877Z",
+            "publicScore": "27.92",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316972179"
+          },
+          {
+            "ref": 52267289,
+            "date": "2026-05-02T16:27:45.827Z",
+            "publicScore": "29.72",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316064507"
+          },
+          {
+            "ref": 52166443,
+            "date": "2026-04-29T11:41:33.787Z",
+            "publicScore": "28.19",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=315301517"
+          },
+          {
+            "ref": 52116910,
+            "date": "2026-04-28T01:56:33.943Z",
+            "publicScore": "27.36",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314755063"
+          },
+          {
+            "ref": 52089422,
+            "date": "2026-04-27T06:48:57.117Z",
+            "publicScore": "0.83",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314731536"
+          },
+          {
+            "ref": 52072735,
+            "date": "2026-04-26T17:02:33.323Z",
+            "publicScore": "30.14",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319"
+          },
+          {
+            "ref": 51954464,
+            "date": "2026-04-23T02:35:59.440Z",
+            "publicScore": "25.69",
+            "status": "COMPLETE",
+            "submittedBy": "ccjjllt",
+            "submittedByRef": "ccjjllt",
+            "teamName": "ccjjllt",
+            "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=313752727"
+          }
+        ]
+      }
+    },
+    "same_team_evidence": {
+      "independent_authentication_confirmed": true,
+      "both_entered": true,
+      "identical_own_team_submission_lists": true,
+      "visible_team_names": [
+        "ccjjllt"
+      ],
+      "evidence_interpretation": "Two explicitly authenticated distinct users receive the identical own-team submission history and shared submission allowance for teamccjjllt. This is strong server-side evidence of current same-team membership; no independent roster/teamId response was obtained.",
+      "no_membership_changes": true
+    }
+  },
+  "quota_and_hardware_findings": {
+    "cc_gpu_quota_observation": {
+      "source": "Primary-agent live read supplied2026-10-21T15:41Z; not independently re-queried by this audit",
+      "total_seconds": 108000,
+      "used_seconds": 108343.492,
+      "reserved_seconds": 0,
+      "remaining_seconds_clamped": 0
+    },
+    "zhuating_gpu_quota_observation": {
+      "source": "Primary-agent live read supplied2026-10-21T15:41Z",
+      "remaining_quota_hours": 13.092
+    },
+    "current_ARC2_hidden_scoring_quota_policy": "Not independently established by the current competition pages. They explicitly state the normal L4 quota multiplier but do not state whether this competition hidden scoring consumes the normal weekly pool. Do not budget hidden as free or paid without platform evidence.",
+    "official_staff_general_evidence": {
+      "url": "https://www.kaggle.com/competitions/ai-mathematical-olympiad-progress-prize-3/discussion/635859",
+      "author": "Ryan Holbrook, Kaggle Staff",
+      "claim_scope": "In AIMO3, scoring time does not count against weekly GPU quota; normal GPU notebooks do. This supports separate pools as a platform mechanism, but is not a current ARC2 guarantee.",
+      "retrieval": "Official Kaggle search-rendered staff response, checked2026-10-21"
+    },
+    "cpu_or_quicksave_warning": {
+      "url": "https://www.kaggle.com/discussions/product-feedback/440750#2462002",
+      "author": "Jim Plotts, Kaggle Staff",
+      "claim_scope": "Staff states notebooks are rerun from scratch, but Quick Saves have noGPU and the resulting submission similarly has noGPU. A CPU-only/QuickSave cannot be assumed to become an L4 hidden rerun.",
+      "retrieval": "Official Kaggle search-rendered staff reply, checked2026-10-21"
+    },
+    "ordinary_CPU_code_on_GPU_machine": "020 proved enableGpu=true/NvidiaL4 with an ordinary CPU-only code branch can save successfully. It did not prove GPU provisioning succeeds when normal remaining quota is zero; GPU metadata may still require quota. Preserve hardware truthfulness and do not relabel a CPU version as GPU."
+  },
+  "private_notebook_and_dependency_scope": {
+    "official_rules_url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/rules",
+    "rules_summary": "External data/models must be public and reasonably accessible; third-party code must have an appropriate open-source license. Private competition-code sharing outside a team is prohibited. Winners have publication/reproducibility obligations. Current rules do not require every experimental notebook to be public during the contest.",
+    "NVARC_sources": "V1 andsft139 are already publicly released; preserve their license and provenance. A same-team private packaging notebook using identical public assets is not automatically private external data.",
+    "platform_evidence": "020 final privateNotebook and same-owner private wheel carrier were accepted and later scored; this demonstrates the attachment mechanism, not a blanket permission for inaccessible private dependencies.",
+    "recommended_path": "Use zhuating as owner and authenticated submitter for its private finalNotebook. Own-team history currently binds both users to teamccjjllt. This avoids requiringcc to access a foreign privateNotebook or changing the team.",
+    "no_new_permission_gate": "User explicitly authorized reuse of NVARC. Record real source/license facts; no extra invented user confirmation condition."
+  },
+  "native_V1_rerun_entry": {
+    "reference": {
+      "path": "experiments/021/reference/failed-in-aimo-v1.source.py",
+      "bytes": 36204,
+      "sha256": "b129bd6c316ee611722a1c75b4e757b277bd4332efb348bf7561de22462505cd"
+    },
+    "reference_manifest": {
+      "path": "experiments/021/reference/manifest.json",
+      "bytes": 2201,
+      "sha256": "671cd632f6e360a7f793070f69510a6ed899485f0fc29f182871e9250182a3a7"
+    },
+    "reference_scriptVersionId": 312063593,
+    "reference_external_public_score": 33.89,
+    "model": "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1",
+    "dependency_kernel": "sorokin/pip-install-unsloth-flash-patch",
+    "original_global_clock": "first cell wall-clock start plus43200 minus600seconds; includes setup",
+    "original_per_task_cap_seconds": 1200,
+    "ordinary_branch": "Absent KAGGLE_IS_COMPETITION_RERUN: reads public evaluation and queues only0934a4d8/36a08778/981571dc/aa4ec2a5. Ordinary26m11s therefore covers4tasks, not240.",
+    "hidden_branch": "Truthy official rerun env: reads exact competition arc-agi_test_challenges.json, iterates everytask key without4task whitelist, uses4workers, reloads testdataset for selection with n_guesses=2, writes submission.json. The all-task native entry can be reused.",
+    "official_env_announcement": {
+      "url": "https://www.kaggle.com/discussions/product-feedback/315792",
+      "author": "Jon Lipovetz",
+      "published_at_utc": "2022-03-29T18:37:28.255Z",
+      "live_api_read_at_utc": "2026-10-21T15:48:53.736542+00:00",
+      "content_sha256": "5b9c8be95f0d185a011a9ca7caf0bf2ae659dae7c06835de56bb92a130f73f1f",
+      "summary": "Kaggle sets KAGGLE_IS_COMPETITION_RERUN=true in competition scoring and omits it in standard sessions; differing ordinary/scoring code branches are a first-class platform feature."
+    },
+    "minimum_submission_checks": [
+      "No explicit research-cohort/challengefile or research assertnotrerun remains in final entry.",
+      "Ordinary fourtask whitelist must not apply to the formal rerun branch.",
+      "Formal testfile resolved uniquely from actual competition mount; fail if absent.",
+      "All original task/query output slots initialized and both attemptkeys written, missing candidates recorded.",
+      "Freeze originalformatter, TTT, augmentation, DFS and selection; do not substitute013 shortened policy.",
+      "Source-level syntax, sourceSHA, realGPU inference evidence and actual hidden score are distinct evidence levels."
+    ]
+  },
+  "historical_submission_bindings": {
+    "live_score_read_at_utc": "2026-10-21T15:44:25.541203+00:00",
+    "records": [
+      {
+        "ref": 52072735,
+        "totalBytes": 760143,
+        "date": "2026-04-26T17:02:33.323Z",
+        "description": "",
+        "fileName": "submission.json",
+        "publicScore": "30.14",
+        "status": "COMPLETE",
+        "submittedBy": "ccjjllt",
+        "submittedByRef": "ccjjllt",
+        "teamName": "ccjjllt",
+        "url": "/submissions/52072735/52072735.raw"
+      },
+      {
+        "ref": 57103498,
+        "totalBytes": 425016,
+        "date": "2026-10-12T09:56:36.720Z",
+        "description": "013 bounded base-only TTT; fixed kgmon selection; four-task runtime pilot verified. New candidate, not the historical 30.14 version.",
+        "fileName": "submission.json",
+        "publicScore": "25.69",
+        "status": "COMPLETE",
+        "submittedBy": "ccjjllt",
+        "submittedByRef": "ccjjllt",
+        "teamName": "ccjjllt",
+        "url": "/submissions/57103498/57103498.raw"
+      },
+      {
+        "ref": 57443913,
+        "totalBytes": 253680,
+        "date": "2026-10-20T15:28:59.223Z",
+        "description": "020 Qwen3.8-27B direct1 + CPU line, MTP2; frozen v1",
+        "fileName": "submission.json",
+        "publicScore": "12.50",
+        "status": "COMPLETE",
+        "submittedBy": "ccjjllt",
+        "submittedByRef": "ccjjllt",
+        "teamName": "ccjjllt",
+        "url": "/submissions/57443913/57443913.raw"
+      }
+    ],
+    "bound_code_urls_from_current_own_team_list": [
+      {
+        "ref": 57443913,
+        "date": "2026-10-20T15:28:59.223Z",
+        "publicScore": "12.50",
+        "status": "COMPLETE",
+        "submittedBy": "ccjjllt",
+        "submittedByRef": "ccjjllt",
+        "teamName": "ccjjllt",
+        "url": "/code/ccjjllt/arc2-020-deep-direct-submission?scriptVersionId=360461153"
+      },
+      {
+        "ref": 57103498,
+        "date": "2026-10-12T09:56:36.720Z",
+        "publicScore": "25.69",
+        "status": "COMPLETE",
+        "submittedBy": "ccjjllt",
+        "submittedByRef": "ccjjllt",
+        "teamName": "ccjjllt",
+        "url": "/code/ccjjllt/arc2-013-bounded-baseline?scriptVersionId=357613526"
+      },
+      {
+        "ref": 52072735,
+        "date": "2026-04-26T17:02:33.323Z",
+        "publicScore": "30.14",
+        "status": "COMPLETE",
+        "submittedBy": "ccjjllt",
+        "submittedByRef": "ccjjllt",
+        "teamName": "ccjjllt",
+        "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=314617319"
+      }
+    ],
+    "history_30_14": {
+      "exact_scriptVersionId": 314617319,
+      "source_recovery_this_audit": "GetKernel default returnedcurrentv21; GetKernel.version_label314617319 returned404. Exact historical source not recovered by this API path.",
+      "default_latest_blob_identity": {
+        "metadata": {
+          "id": 115817199,
+          "ref": "ccjjllt/reproduce-nvarc-2025-results",
+          "title": "Reproduce NVARC 2025 Results",
+          "author": "ccjjllt",
+          "slug": "reproduce-nvarc-2025-results",
+          "lastRunTime": "2026-10-18T15:44:30.292Z",
+          "language": "python",
+          "kernelType": "notebook",
+          "isPrivate": true,
+          "enableGpu": true,
+          "enableInternet": false,
+          "categoryIds": [
+            "gpu"
+          ],
+          "kernelDataSources": [
+            "sorokin/pip-install-unsloth-flash-patch"
+          ],
+          "competitionDataSources": [
+            "arc-prize-2026-arc-agi-2"
+          ],
+          "modelDataSources": [
+            "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+          ],
+          "enableTpu": false,
+          "currentVersionNumber": 21,
+          "dockerImage": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868",
+          "machineShape": "NvidiaL4"
+        },
+        "blob_sha256": "fe7c12f175ba0f68c295ceaa7c52d6839080570ef1bb003d4afcba23b3101eef",
+        "blob_bytes": 88031,
+        "requested_version_label": "",
+        "source_saved": false
+      },
+      "consequence": "Do not attribute latestv21 or013 code to30.14. Existing score remains valid history; it need not delay a new precisely pinned fullV1 reproduction."
+    },
+    "013_reusable_part": "Successful commit→create_code_submission→ref→scoring chain, source manifests and atomic output handling. Its shortenedTTT/DFS/rescue/selection policy is not the fullV1baseline and should not be resubmitted unchanged."
+  },
+  "current_sdk": {
+    "version": "2.2.4",
+    "method": "KaggleApi.competition_submit_code",
+    "signature": "(self, file_name:str, message:str, competition:Optional[str]=None, kernel:Optional[str]=None, kernel_version:Optional[int]=None, quiet:bool=False) -> ApiCreateCodeSubmissionResponse",
+    "request_type_fields": [
+      "competition_name",
+      "kernel_owner",
+      "kernel_slug",
+      "kernel_version",
+      "file_name",
+      "submission_description"
+    ],
+    "kernel_version_semantics": "Notebook version number returned bypush, e.g.N=1. It is not the database scriptVersionId. The wrapper has no script_version_id argument.",
+    "exact_version_binding": "Beforecreate, verify owner/slug/vN remote metadata, every sourcecell and output /kf/ scriptVersionId against frozen package; aftercreate verify returned submissionURL carries that exact scriptVersionId.",
+    "platform_timeout": "Use actualkernels_push(timeout=43200)/CLI--timeout43200. Metadata session_timeout_seconds is ignored by currentpackaging and is not a verified platform setting; ordinary shortbudget must not lower platformtimeout."
+  },
+  "shortest_reliable_path": [
+    "Finish the already-authorized full4B E20GPU observation underzhuating; preserve outputs/source/hardware/timing, and record representative accuracy separately fromcompetition score.",
+    "Prepare one finalzhuating-ownedGPU/NvidiaL4Notebook using frozen completeV1core, public4Bmodel and originaldependencies. OrdinarySave may run a short GPU-visible pilot and produce valid output; hiddenbranch uses allactualtesttasks. It is not necessary to rerun27B.",
+    "Save&Run the final version with internetdisabled andexplicitplatformtimeout43200; waitCOMPLETE, retrieve outputs, bindvN andscriptVersionId, compare sourcecell hashes. Normal remainingquota must allow this save; do not substitute a CPUversion.",
+    "Immediatelybeforecreate, authenticatezhuating, re-read sharedteamccjjllt submission allowance and pending/scoring state. If dailyquota/pending blocks, wait for thatstatechange rather than resubmitting repeatedly.",
+    "Callcompetition_submit_code(file_name=\"submission.json\",message=\"022 full NVARC4B reproduction\",competition=\"arc-prize-2026-arc-agi-2\",kernel=\"zhuating/<frozen-final-slug>\",kernel_version=N). This uses verified same-team identity, not a newteam.",
+    "Persist returnedsubmissionref; re-read list_submissions andget_submission. ConfirmteamNameccjjllt, intendedowner/slug/exactscriptVersionId, and eventualCOMPLETE/publicScore. Unknown timeout: querylist before repeatingcreate.",
+    "Leave final-selection flags unchanged unless the human has explicitly chosen them. No claimed improvement until the actualscore returns."
+  ],
+  "not_performed": [
+    "NoGPU orNotebook launch",
+    "No competition create/submit call",
+    "Nojoin/teammerge/invite/share/permissionchange",
+    "No modification to021runpackages",
+    "No finalsubmission selection mutation"
+  ],
+  "local_evidence": [
+    {
+      "path": "experiments/013/execution/competition-submission-v1.json",
+      "bytes": 1232,
+      "sha256": "e0a8f45611f8f96a799903c05b7ee0582c6b91962d502814d622bd1d789ca843"
+    },
+    {
+      "path": "experiments/020/execution/competition-submission.json",
+      "bytes": 3378,
+      "sha256": "9a3624344e92b34f1eb1874743d556fb6902bb59973df45b0b254dc2d4db6b0c"
+    },
+    {
+      "path": "experiments/020/execution/final-save-verified.json",
+      "bytes": 6115,
+      "sha256": "80d78a10ee6502e67453d71a527b11a624e23d89e36d653acb459aaad161f955"
+    }
+  ],
+  "limitations": [
+    "Same-team verification uses independently authenticated own-team histories andsharedlimits, not an explicit roster/teamId API.",
+    "CurrentARC2 hiddenquota charging is not directly stated in latestofficialpages; admission andusage observations must settle it.",
+    "OriginalV1code does not itself prove currentoffline dependencycompatibility or240task completion; use actualGPU evidence.",
+    "CurrentAPIGetKernel failed for historicalscriptVersionIdasversion_label; no claim that allpossible retrieval methods fail."
+  ]
+}

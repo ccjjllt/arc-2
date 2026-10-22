@@ -1,0 +1,86 @@
+{
+  "checked_at_utc": "2026-10-22T02:52:19.586112+00:00",
+  "ref": "zhuating/arc2-022-nvarc-full-submission",
+  "version": 1,
+  "kernel_id": 140114268,
+  "notebook_sha256": "0ec71872ba7bf3206c9640a5448f4129e3276fd36e5e3d04e51b03620ee804eb",
+  "status": "COMPLETE",
+  "phase": "formal_score_failure_hidden_execution_unconfirmed",
+  "live_log": "formal-v1-live.log",
+  "live_log_session_id": 93755,
+  "launch_receipt": "formal-save-launch-v1.json",
+  "next_interval_minutes": 5,
+  "reason": "New GPU ordinary save booted and model copy progressing; loading and first-task verification require short cadence.",
+  "competition_submission_state": "COMPLETE",
+  "latest_progress": {
+    "event": "progress",
+    "elapsed_s": 408.81602692604065,
+    "coverage": {
+      "tasks": 120,
+      "queries": 172,
+      "generated_queries": 0,
+      "placeholder_queries": 172,
+      "candidate_files": 0,
+      "raw_candidates": 0,
+      "unique_candidates": 0,
+      "errors": [],
+      "selection": "unmodified V1 score_kgmon; original missing-slot [[0]]",
+      "gold_read": false,
+      "raw_legal_query_count": 0,
+      "raw_legal_grid_count": 0
+    },
+    "worker_stages": {
+      "1": {
+        "rank": 1,
+        "event": "task_start",
+        "time": 1792630007.5275118,
+        "task_id": "16de56c4"
+      },
+      "2": {
+        "rank": 2,
+        "event": "task_start",
+        "time": 1792630007.6507921,
+        "task_id": "d8e07eb2"
+      },
+      "3": {
+        "rank": 3,
+        "event": "train_start",
+        "time": 1792630007.4737139,
+        "task_id": "136b0064",
+        "train_sequences": 128
+      },
+      "0": {
+        "rank": 0,
+        "event": "task_start",
+        "time": 1792630007.5372732,
+        "task_id": "4e34c42c"
+      }
+    },
+    "load_window": {
+      "event": "load_window_changed",
+      "time": 1792630007.74055,
+      "reason": "all_four_models_ready_load_timeout_disabled",
+      "ready_workers": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "ready_event_times": {
+        "0": 1792629819.4741466,
+        "1": 1792629882.4774969,
+        "2": 1792629945.1263309,
+        "3": 1792630007.198326
+      },
+      "load_deadline": null,
+      "global_solve_deadline": 1792632118.923974
+    }
+  },
+  "script_version_id": 360953982,
+  "ordinary_output_freeze": "formal-v1-outcome.json",
+  "submission_id": 57504054,
+  "competition_submission_receipt": "competition-submission-v1.json",
+  "monitoring": "stopped_by_user_no_restore",
+  "competition_public_score": "0.00",
+  "result_receipt": "submission-57504054-result.json"
+}

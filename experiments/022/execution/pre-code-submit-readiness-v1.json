@@ -1,0 +1,90 @@
+{
+  "checked_at_utc": "2026-10-22T01:08:56.211012+00:00",
+  "account": "zhuating",
+  "limits": {
+    "numTotal": 9,
+    "numAllowedNow": 1
+  },
+  "pending": [],
+  "latest_submissions": [
+    {
+      "ref": 57443913,
+      "totalBytes": 253680,
+      "date": "2026-10-20T15:28:59.223Z",
+      "description": "020 Qwen3.8-27B direct1 + CPU line, MTP2; frozen v1",
+      "fileName": "submission.json",
+      "publicScore": "12.50",
+      "status": "COMPLETE",
+      "submittedBy": "ccjjllt",
+      "submittedByRef": "ccjjllt",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/arc2-020-deep-direct-submission?scriptVersionId=360461153"
+    },
+    {
+      "ref": 57103498,
+      "totalBytes": 425016,
+      "date": "2026-10-12T09:56:36.720Z",
+      "description": "013 bounded base-only TTT; fixed kgmon selection; four-task runtime pilot verified. New candidate, not the historical 30.14 version.",
+      "fileName": "submission.json",
+      "publicScore": "25.69",
+      "status": "COMPLETE",
+      "submittedBy": "ccjjllt",
+      "submittedByRef": "ccjjllt",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/arc2-013-bounded-baseline?scriptVersionId=357613526"
+    },
+    {
+      "ref": 52379974,
+      "totalBytes": 755669,
+      "date": "2026-05-06T07:44:23.877Z",
+      "description": "",
+      "fileName": "submission.json",
+      "publicScore": "27.92",
+      "status": "COMPLETE",
+      "submittedBy": "ccjjllt",
+      "submittedByRef": "ccjjllt",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/reproduce-nvarc-2025-results?scriptVersionId=316972179"
+    }
+  ],
+  "gpu_quota": {
+    "total_seconds": 108000.0,
+    "used_seconds": 74545.327,
+    "reserved_seconds": 0.0,
+    "available_seconds": 33454.672999999995
+  },
+  "kernel_metadata": {
+    "id": 140114268,
+    "ref": "zhuating/arc2-022-nvarc-full-submission",
+    "title": "ARC2 022 NVARC full submission",
+    "author": "zhuating",
+    "slug": "arc2-022-nvarc-full-submission",
+    "lastRunTime": "2026-10-19T01:08:52.671Z",
+    "language": "python",
+    "kernelType": "notebook",
+    "isPrivate": true,
+    "enableGpu": true,
+    "enableInternet": false,
+    "categoryIds": [
+      "gpu"
+    ],
+    "kernelDataSources": [
+      "sorokin/pip-install-unsloth-flash-patch"
+    ],
+    "competitionDataSources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "modelDataSources": [
+      "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+    ],
+    "enableTpu": false,
+    "currentVersionNumber": 1,
+    "dockerImage": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868",
+    "machineShape": "NvidiaL4"
+  },
+  "script_version_id": 360953982,
+  "kernel_version": 1,
+  "hidden_quota_charging": "unconfirmed; not assumed free",
+  "source_verification": "formal-v1-remote-source-verification.json",
+  "output_freeze": "formal-v1-outcome.json"
+}
