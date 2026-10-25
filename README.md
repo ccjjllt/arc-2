@@ -1,17 +1,19 @@
 # ARC Prize 2026 — ARC-AGI-2 研究
 
-目标：在比赛资源限制内研究ARC专用求解方案，争取金牌。比赛入口：[Kaggle ARC Prize 2026](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview)。
+目标：在比赛资源限制内，基于NVARC方案尽可能提高实际分数。比赛入口：[Kaggle ARC Prize 2026](https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/overview)。
 
 ## 当前进度
 
 **当前阶段：023已建立可追溯的正式30.14起点，下一步只验证候选选择增量。**参照版33.89来自2026-10-21核验的外部历史公榜；本次仍低3.75分，未复现该分数或刷新历史最好。
+
+2026-10-25用户确认以NVARC为唯一主线。后续在候选选择、搜索覆盖、TTT／增强和针对性续训中每轮只改一个因素；当前交接见[025计划](docs/plan/025-research-gap-and-next-step.md)。
 
 截至**2026-10-25 10:05北京时间的实查记录**：
 
 - [忠实V1 Notebook](https://www.kaggle.com/code/zhuating/arc2-023-failed-in-aimo-v1-faithful?scriptVersionId=361045383)普通GPU运行已COMPLETE，精确版本 **V1／361045383**。
 - 原4task／5query均完成TTT、DFS与重评分；输入匹配评分为 **3/5 query、2/4完整task**。这是公开演示集合结果，不是全量评估或比赛分数，候选oracle未确认。
 - **023正式提交57582282已COMPLETE，公榜30.14**，GetSubmission与同队列表一致，绑定V1／361045383。与历史复制30.14持平，未实现提分；私榜未返回。[实际结果](experiments/023/execution/submission-57582282-result-20261025.json)已保存。
-- 下一轮只考虑一次原V1同候选池的B4／R2扩展配对，尚未运行；既有022候选上的净增1不能直接外推。TRM、新训练和更多27B推理后置。详细顺序见[023计划](docs/plan/023-score-recovery-and-selection.md)，本次结论见[023进展§9](docs/progress/023-score-recovery-and-selection.md#9-2026-10-25结果回查complete公榜3014正式起点建立)。
+- 下一轮只考虑一次原V1同候选池的B4／R2扩展配对，尚未运行；既有022候选上的净增1不能直接外推。后续根据失败归因优化NVARC的搜索、TTT／增强或针对性续训。实验细节见[023计划](docs/plan/023-score-recovery-and-selection.md)，最新范围见[025计划](docs/plan/025-research-gap-and-next-step.md)，正式结果见[023进展§9](docs/progress/023-score-recovery-and-selection.md#9-2026-10-25结果回查complete公榜3014正式起点建立)。
 
 ## 成绩与证据
 
