@@ -1,0 +1,52 @@
+{
+  "requested_at_utc": "2026-10-24T04:28:36.713096+00:00",
+  "account": "zhuating",
+  "team_name": "ccjjllt",
+  "competition": "arc-prize-2026-arc-agi-2",
+  "kernel": "zhuating/arc2-023-failed-in-aimo-v1-faithful",
+  "kernel_version": 1,
+  "script_version_id": 361045383,
+  "notebook_sha256": "0bdde6503f6ec616be467321649e9abb997288f07aa54e8b4302f76f32f3d119",
+  "file_name": "submission.json",
+  "message": "023 Failed in AIMO V1 faithful reproduction; original TTT, DFS, kgmon and timing; runtime compatibility repairs only.",
+  "limits_before": {
+    "num_today": 0,
+    "num_total": 10,
+    "num_allowed_now": 1
+  },
+  "pending_before": 0,
+  "ordinary_output_freeze": "faithful-v1-outcome.json",
+  "ordinary_result": "3/5 matched public queries; not leaderboard score",
+  "hidden_quota_charging": "unconfirmed; not assumed free",
+  "monitoring": "Initial receipt/binding check only; no automatic or recurring polling",
+  "state": "accepted",
+  "response": {
+    "ref": 57582282
+  },
+  "returned_at_utc": "2026-10-24T04:28:39.286000+00:00",
+  "initial_verification_at_utc": "2026-10-24T04:29:04.823302+00:00",
+  "exact_submission_binding_verified": true,
+  "initial_status": null,
+  "initial_public_score": null,
+  "initial_matching_rows": [
+    {
+      "ref": 57582282,
+      "totalBytes": 0,
+      "date": "2026-10-24T04:28:38.180Z",
+      "description": "023 Failed in AIMO V1 faithful reproduction; original TTT, DFS, kgmon and timing; runtime compatibility repairs only.",
+      "fileName": "submission.json",
+      "submittedBy": "zhuating",
+      "submittedByRef": "zhuating",
+      "teamName": "ccjjllt",
+      "url": "/code/zhuating/arc2-023-failed-in-aimo-v1-faithful?scriptVersionId=361045383"
+    }
+  ],
+  "latest_result": {
+    "checked_at_utc": "2026-10-25T02:05:23.189929+00:00",
+    "status": "COMPLETE",
+    "public_score": "30.14",
+    "private_score": null,
+    "exact_binding_verified": true,
+    "evidence": "experiments/023/execution/submission-57582282-result-20261025.json"
+  }
+}

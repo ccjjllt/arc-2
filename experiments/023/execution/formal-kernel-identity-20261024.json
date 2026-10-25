@@ -1,0 +1,37 @@
+{
+  "checked_at_utc": "2026-10-24T04:27:53.171249+00:00",
+  "fallback_reason": "Explicit slug /1 GetKernel returned403; latest query is accepted only if server currentVersionNumber remains1 and every cell matches frozen source",
+  "metadata": {
+    "id": 140168317,
+    "ref": "zhuating/arc2-023-failed-in-aimo-v1-faithful",
+    "title": "ARC2 023 Failed in AIMO V1 faithful",
+    "author": "zhuating",
+    "slug": "arc2-023-failed-in-aimo-v1-faithful",
+    "lastRunTime": "2026-10-21T04:27:52.738Z",
+    "language": "python",
+    "kernelType": "notebook",
+    "isPrivate": true,
+    "enableGpu": true,
+    "enableInternet": false,
+    "categoryIds": [
+      "gpu"
+    ],
+    "kernelDataSources": [
+      "sorokin/pip-install-unsloth-flash-patch"
+    ],
+    "competitionDataSources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "modelDataSources": [
+      "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+    ],
+    "enableTpu": false,
+    "currentVersionNumber": 1,
+    "dockerImage": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868",
+    "machineShape": "NvidiaL4"
+  },
+  "all_cell_sources_match_frozen": true,
+  "remote_source_sha256": "58e6523cb6e50921d68089a50e28a65f6dc0e996b2d841b62d16b17ea45bce84",
+  "expected_version": 1,
+  "expected_kernel_id": 140168317
+}

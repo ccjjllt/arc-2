@@ -1,10 +1,11 @@
 # 023 当前交付入口
 
-截至 **2026-10-22 15:40北京时间**的本地记录：忠实V1普通GPU运行已COMPLETE，原4task／5query评分为 **3/5 query、2/4完整task**。这是公开演示集合结果，不是比赛成绩。15:34正式额度为0，尚未创建本轮比赛submission；本次目录整理未重新查询远端。
+截至 **2026-10-25 10:05北京时间**实查：正式submission **57582282已COMPLETE／公榜30.14**，绑定精确V1／361045383，与历史最好持平，未实现提分，私榜未返回。见[实际结果](execution/submission-57582282-result-20261025.json)。普通原4task／5query的3/5仍仅为公开演示集合结果。
 
 | 要找什么 | 文件 |
 | --- | --- |
-| 下一次正式提交使用的冻结参数 | [formal-v1-ready.json](formal-v1-ready.json) |
+| 已完成正式提交的冻结参数与状态 | [formal-v1-ready.json](formal-v1-ready.json) |
+| 本次正式30.14结果 | [submission-57582282-result-20261025.json](execution/submission-57582282-result-20261025.json) |
 | COMPLETE状态、版本与输出SHA | [execution/faithful-v1-outcome.json](execution/faithful-v1-outcome.json) |
 | 独立运行核验 | [execution/ordinary-v1-runtime-verification.json](execution/ordinary-v1-runtime-verification.json) |
 | 评分前预测冻结 | [execution/ordinary-v1-prediction-freeze.json](execution/ordinary-v1-prediction-freeze.json) |
@@ -14,7 +15,7 @@
 | 打包入口与当时的准备清单 | [prepare_faithful_v1.py](prepare_faithful_v1.py)、[faithful-v1-package-manifest.json](faithful-v1-package-manifest.json) |
 | 后置的R2事后回放 | [selection-replay/README.md](selection-replay/README.md) |
 
-正式目标为`zhuating/arc2-023-failed-in-aimo-v1-faithful`，**kernel_version=1，scriptVersionId=361045383**。额度恢复后先重查同队额度、pending与该版本是否已经提交，再按就绪参数提交一次；无需重跑普通保存或更新版本。本页不构成定时监控。
+正式版本为`zhuating/arc2-023-failed-in-aimo-v1-faithful`，**kernel_version=1，scriptVersionId=361045383**；57582282结果已确认30.14。保留为下一轮对照，不原样重复提交或重跑普通保存。下一步一次B4／R2扩展配对尚未运行，不创建定时监控。
 
 `ordinary-v1-output/submission.json`保留120task的完整公开结构，只有原四题实际求解，不能将整个文件称为全量模型评测。完整候选池未取得，oracle仍未确认。
 

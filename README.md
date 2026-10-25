@@ -4,20 +4,21 @@
 
 ## 当前进度
 
-**当前唯一主线：023忠实复现Failed in AIMO V1／312063593，先取得可用正式成绩，再优化。**参照版33.89来自2026-10-21核验的外部历史公榜，不是本项目成绩，也不保证金牌。
+**当前阶段：023已建立可追溯的正式30.14起点，下一步只验证候选选择增量。**参照版33.89来自2026-10-21核验的外部历史公榜；本次仍低3.75分，未复现该分数或刷新历史最好。
 
-截至**2026-10-22 15:40北京时间的已归档记录**：
+截至**2026-10-25 10:05北京时间的实查记录**：
 
 - [忠实V1 Notebook](https://www.kaggle.com/code/zhuating/arc2-023-failed-in-aimo-v1-faithful?scriptVersionId=361045383)普通GPU运行已COMPLETE，精确版本 **V1／361045383**。
 - 原4task／5query均完成TTT、DFS与重评分；输入匹配评分为 **3/5 query、2/4完整task**。这是公开演示集合结果，不是全量评估或比赛分数，候选oracle未确认。
-- 15:34同队正式额度为0，**023尚未创建正式比赛提交**。[正式就绪参数](experiments/023/formal-v1-ready.json)已冻结；额度恢复后先查重和核实额度，再直接提交该精确V1，无需重跑普通保存。
-- R2、TRM、新训练和更多27B推理后置。详细顺序见[023计划](docs/plan/023-score-recovery-and-selection.md)，实际证据见[023进展](docs/progress/023-score-recovery-and-selection.md)。本地目录整理未重新查询远端。
+- **023正式提交57582282已COMPLETE，公榜30.14**，GetSubmission与同队列表一致，绑定V1／361045383。与历史复制30.14持平，未实现提分；私榜未返回。[实际结果](experiments/023/execution/submission-57582282-result-20261025.json)已保存。
+- 下一轮只考虑一次原V1同候选池的B4／R2扩展配对，尚未运行；既有022候选上的净增1不能直接外推。TRM、新训练和更多27B推理后置。详细顺序见[023计划](docs/plan/023-score-recovery-and-selection.md)，本次结论见[023进展§9](docs/progress/023-score-recovery-and-selection.md#9-2026-10-25结果回查complete公榜3014正式起点建立)。
 
 ## 成绩与证据
 
 | 记录 | 结果 | 限制与入口 |
 | --- | --- | --- |
-| 最新正式提交022／57504054 | **0.00**，COMPLETE | 隐藏执行根因未确认；[结果凭据](experiments/022/execution/submission-57504054-result.json) |
+| 最新正式提交023／57582282 | **30.14**，COMPLETE | 精确V1／361045383；[实际结果](experiments/023/execution/submission-57582282-result-20261025.json)，与历史最好持平 |
+| 上一份022／57504054 | **0.00**，COMPLETE | 隐藏执行根因未确认；[结果凭据](experiments/022/execution/submission-57504054-result.json) |
 | 020／57443913 | **12.50**，COMPLETE | 27B替换路线；[结果凭据](experiments/020/execution/competition-submission.json) |
 | 历史复制提交／314617319 | 用户报告 **30.14** | 未修改公开方案的试提交，不作为自主研究效果；[历史记录](docs/progress/001-baseline.md) |
 | 022公开E20 | 4B最终3/27，oracle5/27 | 已开发集合；[4B与既有27B配对](experiments/022/paired-e20-v2/paired-table.md) |

@@ -2,7 +2,7 @@
 
 当前研究入口：[023计划](plan/023-score-recovery-and-selection.md)与[023进展](progress/023-score-recovery-and-selection.md)。当前产物见[023目录导航](../experiments/023/README.md)。
 
-`plan/`记录背景、假设和执行交接，`progress/`记录实际改动与实验。旧条目是历史快照；同轮后续追加及新轮次会更新或纠正早期结论。以2026-10-22已冻结记录为准，本次整理未查询实时榜单或额度。
+`plan/`记录背景、假设和执行交接，`progress/`记录实际改动与实验。旧条目是历史快照；同轮后续追加及新轮次会更新或纠正早期结论。023的57582282于2026-10-25实查COMPLETE／公榜30.14，与历史最高持平，最新证据见023进展§9。
 
 ## 轮次索引
 
@@ -30,7 +30,7 @@
 | 020 提分验证与真实提交交接 | [plan/020-score-validation-and-real-submission.md](plan/020-score-validation-and-real-submission.md) | [progress/020-score-validation-and-real-submission.md](progress/020-score-validation-and-real-submission.md)；C24 training留出17/26，正式57443913公榜12.50，未实现提分；低分复盘见§27 |
 | 021 NVARC完整流程与27B互补交接 | [plan/021-nvarc-complementarity-handoff.md](plan/021-nvarc-complementarity-handoff.md) | [progress/021-nvarc-complementarity-handoff.md](progress/021-nvarc-complementarity-handoff.md)；4B加载失败未求解，27B E20版本对齐2／27；三臂配对与限时续训未运行 |
 | 022 完整4B计分提交与已有27B配对 | [plan/022-full-nvarc-submission.md](plan/022-full-nvarc-submission.md) | [progress/022-full-nvarc-submission.md](progress/022-full-nvarc-submission.md)；E20 V2实际3／27、oracle5／27；正式57504054已COMPLETE／0.00，隐藏根因未确认；忠实原V1复现转023 |
-| 023 恢复有效提交与候选选择交接 | [plan/023-score-recovery-and-selection.md](plan/023-score-recovery-and-selection.md) | [progress/023-score-recovery-and-selection.md](progress/023-score-recovery-and-selection.md)；忠实V1普通GPU已COMPLETE，原4task／5query为3／5、2／4完整task；精确361045383待正式额度；R2、TRM后置 |
+| 023 恢复有效提交与候选选择交接 | [plan/023-score-recovery-and-selection.md](plan/023-score-recovery-and-selection.md) | [progress/023-score-recovery-and-selection.md](progress/023-score-recovery-and-selection.md)；正式57582282已COMPLETE／30.14并绑定361045383，与历史最高持平；原四题3／5仅公开诊断；下一步B4／R2确认未运行 |
 | 024 本地清理与目录整理 | [plan/024-project-organization.md](plan/024-project-organization.md) | [progress/024-project-organization.md](progress/024-project-organization.md)；仅目录维护，研究主线仍为023 |
 
 ## 操作与维护

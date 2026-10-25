@@ -133,3 +133,46 @@
 [正式就绪参数](../../experiments/023/formal-v1-ready.json)已冻结：Notebook `zhuating/arc2-023-failed-in-aimo-v1-faithful`，**kernel_version=1**，精确scriptVersionId361045383，文件`submission.json`。额度恢复后先重查同队额度、pending和是否已提交该精确版本，再创建一次code submission；无需为了提交重跑普通保存或重发新版本。
 
 本轮完成了忠实原四题GPU流程、实际评分、版本与产物冻结。当前只剩正式额度恢复后的全量计分步骤；R2、TRM和新训练仍后置，未创建定时监控或操作其他项目。
+
+## 8 2026-10-24正式提交已受理57582282，实际榜分待确认
+
+用户于2026-10-24要求“请你继续现在有额度了”，本轮直接推进已经完成普通运行的精确V1，不重发Notebook、不重复普通GPU实验。
+
+**12:27北京时间**只读实查zhuating：GPU周配额已刷新，可用108000秒、used0、reserved0；同队当日提交0次、累计10次、允许1次，无pending，历史中没有scriptVersionId361045383的提交。普通运行仍COMPLETE，输出继续绑定361045383。见[正式前核对](../../experiments/023/execution/formal-preflight-20261024.json)；这只是当时资源快照，不代表隐藏运行免费或已经启动GPU。
+
+显式`slug/1`读取源码的API请求返回403；随后通过普通slug读取，严格核对服务端仍为currentVersionNumber1、kernelId140168317、全部10个cell源码与冻结包逐字一致，且47项输出文件绑定361045383。因此没有用latest新版本替代V1。GPU／NvidiaL4／断网／模型与utility挂载保持。见[版本身份回查](../../experiments/023/execution/formal-kernel-identity-20261024.json)。SDK提示2.2.5可用，当前2.2.4操作链可用，本轮未更换依赖或环境。
+
+**2026-10-24 12:28:39北京时间**，`competition_submit_code`实际返回正式submission ref **57582282**：
+
+| 记录项 | 本次实际值 |
+| --- | --- |
+| 比赛 | `arc-prize-2026-arc-agi-2` |
+| 提交账号／队伍 | zhuating／ccjjllt |
+| Notebook | `zhuating/arc2-023-failed-in-aimo-v1-faithful` |
+| 提交API参数kernel_version | **1** |
+| 精确scriptVersionId | **361045383** |
+| 输出文件 | `submission.json` |
+| 方法 | sft139 BF16 V1、原TTT／DFS／增强评分／kgmon两槽，原42600秒全局求解时钟；保留已记录的最小运行适配 |
+| 实际隐藏硬件／耗时／覆盖 | **未确认**；Notebook请求L4×4不等于已观测到隐藏运行 |
+| 新公榜／私榜 | **未确认／未确认** |
+
+提交前在同一次执行内再次检查额度和pending，只创建1次，未操作团队或最终选择。[正式提交凭据](../../experiments/023/execution/competition-submission-v1-20261024.json)保存请求时间、原版SHA、精确版本、参数、额度及真实API响应。
+
+**12:29北京时间**一次初始回查：GetSubmission与同队列表均确认ref57582282、submittedBy=zhuating、teamName=ccjjllt，列表URL明确绑定361045383；当日额度变为0、累计11次。API尚未返回status或publicScore字段，故只报告**正式已受理、状态与分数未确认**，不能写SCORING、COMPLETE或已有提分。见[初始绑定核验](../../experiments/023/execution/initial-submission-57582282.json)。
+
+本轮完成的是正式代码提交和版本绑定，不是隐藏流程成功或高分复现结论。公开四题3/5仍仅作原演示集合结果；历史最高30.14不变，最新已确认榜分仍是022的0.00。后续收到用户完成通知后只查此ref真实结果；按此前约定不创建定时任务、不持续主动轮询。R2、TRM、新训练与更多27B推理仍后置。
+
+## 9 2026-10-25结果回查：COMPLETE／公榜30.14，正式起点建立
+
+用户通知“分数出来了你看看”后，**2026-10-25 10:05北京时间**通过拥有者zhuating认证，只读查询GetSubmission及同队正式提交列表；两处均确认 **57582282 COMPLETE／publicScore30.14**，teamName=ccjjllt，列表URL仍绑定 **V1／scriptVersionId361045383**。返回正式文件771745 bytes，没有返回privateScore或errorDescription；私榜未返回不能记为0。[实际结果凭据](../../experiments/023/execution/submission-57582282-result-20261025.json)已保存，未覆盖初始受理记录。
+
+| 比较对象 | 已确认公榜 | 与本次的关系 |
+| --- | --- | --- |
+| 本次023／57582282 | **30.14** | 已完成正式计分，源码／版本／普通运行与实际榜分均可追溯 |
+| 历史复制提交／52072735 | 30.14 | 持平，未刷新历史最好；两次分数相同不等于预测或解题集合相同 |
+| 上一份022／57504054 | 0.00 | 恢复30.14分，但未定位旧零分根因，不能将差异归因于某一个改动 |
+| 外部Failed in AIMO V1参照 | 33.89 | 本次低3.75分，未复现该外部分数；差距原因未确认 |
+
+本轮建立了可追溯的正式30.14起点，完成了“先取得可用正式成绩”的阶段目标；**没有实现超过历史最高分的算法提分**，不称金牌结果。普通四题3/5和正式公榜30.14分别保留，不相互换算。官方返回的文件大小也不证明隐藏全覆盖、硬件或耗时；本轮未取得隐藏逐题输出／覆盖日志，实际私榜表现仍未知。
+
+下一步沿用既有023计划的单一能力挑战者R2：先在原V1生成预算下做一次扩展公开集合的同候选池B4／R2配对，再决定是否采用。既有R2从3到4/27的信号来自022改造版候选，不能直接外推到本次V1；不因恢复30.14就启动续训、TRM或27B全量推理。本次仅完成结果查询、比较和文档更新，未启动新GPU、重复提交、修改最终选择或创建监控。
