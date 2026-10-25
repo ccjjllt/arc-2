@@ -1,0 +1,57 @@
+{
+  "reference_version": 312063593,
+  "notebook_started": 1792913310.8308678,
+  "global_end_time": 1792916910.8308678,
+  "raw_rerun_flag": "",
+  "model_source": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1",
+  "model_target": "/kaggle/temp/arc026-base",
+  "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0",
+  "utility_root": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch",
+  "python": "3.11.13 (main, Jun  4 2025, 08:57:29) [GCC 11.4.0]",
+  "original_task_soft_limit": 1200,
+  "original_global_seconds": 42600,
+  "runtime_changes": [
+    "explicit GPU and current fixed model mount",
+    "stage identical checkpoint on local disk",
+    "original utility in child PYTHONPATH",
+    "propagate child failure"
+  ],
+  "session_seconds": 10800,
+  "training_stage_deadline": 1792916910.8308678,
+  "evaluation_max_seconds": 7200,
+  "session_deadline": 1792924110.8308678,
+  "input_identity": {
+    "challenges_sha256": "bd3b26cf78c4986d2cce6d72b457ce763f845e0e2f66d91233fc00a2a9f059f0",
+    "manifest_sha256": "02143e35eeb28f0634fa54334e1f217af1965bbf6212bd216970c16d6805e605",
+    "n_tasks": 16,
+    "n_queries": 23,
+    "task_ids": [
+      "20a9e565",
+      "269e22fb",
+      "4c7dc4dd",
+      "58490d8a",
+      "64efde09",
+      "65b59efc",
+      "67e490f4",
+      "7b0280bc",
+      "7b5033c1",
+      "7ed72f31",
+      "898e7135",
+      "9385bd28",
+      "a47bf94d",
+      "e12f9a14",
+      "e8686506",
+      "eee78d87"
+    ]
+  },
+  "training_identity": {
+    "train_sha256": "33f3b4e6133be5b890b8f2efb76421390a463b04291f5669f6b5e44bcbd5f901",
+    "manifest_sha256": "555d4662693f2185dda20bee49672fa872f05f0b6954c530cd58479ecb5fb294",
+    "pool_episodes": 1024,
+    "source_path": "experiments/026/data-embedded-v1/train.jsonl"
+  },
+  "gpu_inventory": "0, NVIDIA L4, 23034 MiB\n1, NVIDIA L4, 23034 MiB\n2, NVIDIA L4, 23034 MiB\n3, NVIDIA L4, 23034 MiB\n",
+  "gpu_inventory_return_code": 0,
+  "research_only": true,
+  "gold_read": false
+}

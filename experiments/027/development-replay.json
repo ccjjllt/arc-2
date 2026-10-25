@@ -1,0 +1,243 @@
+{
+  "created_at_utc": "2026-10-25T10:37:59.101369+00:00",
+  "purpose": "Manual bounded mechanism replay before defining027 new-generation experiment; not a fresh confirmation.",
+  "methods_fixed_before_this_replay": {
+    "author_probmul3": {
+      "preserve_first": false,
+      "formula": "3*support - sum(beam_score) - 8*mean_aug_nll"
+    },
+    "keepfirst_probmul3": {
+      "preserve_first": true,
+      "formula": "3*support - sum(beam_score) - 8*mean_aug_nll"
+    },
+    "keepfirst_logsupport_nll": {
+      "preserve_first": true,
+      "formula": "log(support) - mean_aug_nll"
+    }
+  },
+  "sets": {
+    "022_E20": {
+      "n_tasks": 20,
+      "n_queries": 27,
+      "task_ids": [
+        "136b0064",
+        "13e47133",
+        "142ca369",
+        "16de56c4",
+        "28a6681f",
+        "3a25b0d8",
+        "3dc255db",
+        "45a5af55",
+        "4e34c42c",
+        "53fb4810",
+        "6ffbe589",
+        "7491f3cf",
+        "8f215267",
+        "a25697e4",
+        "a395ee82",
+        "c4d067a0",
+        "d8e07eb2",
+        "da515329",
+        "db695cfb",
+        "edb79dae"
+      ],
+      "baseline_correct": 3,
+      "candidate_oracle": 5,
+      "policies": {
+        "author_probmul3": {
+          "correct": 4,
+          "gained": [
+            "3a25b0d8_0"
+          ],
+          "lost": [],
+          "net": 1,
+          "changed_queries": [
+            "142ca369_0",
+            "3a25b0d8_0",
+            "8f215267_0",
+            "a395ee82_0"
+          ]
+        },
+        "keepfirst_probmul3": {
+          "correct": 4,
+          "gained": [
+            "3a25b0d8_0"
+          ],
+          "lost": [],
+          "net": 1,
+          "changed_queries": [
+            "142ca369_0",
+            "3a25b0d8_0",
+            "8f215267_0"
+          ]
+        },
+        "keepfirst_logsupport_nll": {
+          "correct": 4,
+          "gained": [
+            "3a25b0d8_0"
+          ],
+          "lost": [],
+          "net": 1,
+          "changed_queries": [
+            "142ca369_0",
+            "3a25b0d8_0"
+          ]
+        }
+      }
+    },
+    "025_development24_excluding026": {
+      "n_tasks": 24,
+      "n_queries": 35,
+      "task_ids": [
+        "221dfab4",
+        "271d71e2",
+        "2ba387bc",
+        "2d0172a1",
+        "332f06d7",
+        "35ab12c3",
+        "446ef5d2",
+        "5545f144",
+        "62593bfd",
+        "71e489b6",
+        "78332cb0",
+        "7b3084d4",
+        "7b80bb43",
+        "88e364bc",
+        "8f3a5a89",
+        "97d7923e",
+        "a251c730",
+        "b0039139",
+        "b10624e5",
+        "b99e7126",
+        "c7f57c3e",
+        "cb2d8a2c",
+        "d35bdbdc",
+        "dbff022c"
+      ],
+      "baseline_correct": 9,
+      "candidate_oracle": 10,
+      "policies": {
+        "author_probmul3": {
+          "correct": 9,
+          "gained": [],
+          "lost": [],
+          "net": 0,
+          "changed_queries": [
+            "62593bfd_0",
+            "78332cb0_1",
+            "88e364bc_0",
+            "a251c730_0",
+            "c7f57c3e_0",
+            "cb2d8a2c_0"
+          ]
+        },
+        "keepfirst_probmul3": {
+          "correct": 9,
+          "gained": [],
+          "lost": [],
+          "net": 0,
+          "changed_queries": [
+            "62593bfd_0",
+            "a251c730_0",
+            "cb2d8a2c_0"
+          ]
+        },
+        "keepfirst_logsupport_nll": {
+          "correct": 9,
+          "gained": [],
+          "lost": [],
+          "net": 0,
+          "changed_queries": [
+            "a251c730_0"
+          ]
+        }
+      }
+    }
+  },
+  "sources": [
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/022/e20-output-v2/022-run/candidate-pools.json",
+      "sha256": "be012b080cc532c4afe4521842593cc79911a649b64c3a4390185ce2148b4472",
+      "bytes": 626790
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/022/paired-e20-v2/query-ledger.jsonl",
+      "sha256": "3100729cc081251e015d27b607f5f13b0a1dd0c29930fa08ac9e36a96e8cf359",
+      "bytes": 69088
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/replay-v1/candidate-pools-scored.json",
+      "sha256": "04a5470d15267c0456252f1163b2bace85be2fbd837a95d182f78841322176b2",
+      "bytes": 5564415
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/scoring-v1-f328/query-ledger.jsonl",
+      "sha256": "186fde3dd09cc669f3b85ebf8d49e707cc475f86b80ed7845b5316cfd15dfd33",
+      "bytes": 81218
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/panel-v1/manifest.json",
+      "sha256": "02143e35eeb28f0634fa54334e1f217af1965bbf6212bd216970c16d6805e605",
+      "bytes": 19669
+    }
+  ],
+  "boundaries": {
+    "read026_manifest_for_exclusion_ids_only": true,
+    "excluded026_task_ids": [
+      "20a9e565",
+      "269e22fb",
+      "4c7dc4dd",
+      "58490d8a",
+      "64efde09",
+      "65b59efc",
+      "67e490f4",
+      "7b0280bc",
+      "7b5033c1",
+      "7ed72f31",
+      "898e7135",
+      "9385bd28",
+      "a47bf94d",
+      "e12f9a14",
+      "e8686506",
+      "eee78d87"
+    ],
+    "new_policies_evaluated_on026_panel": false,
+    "reserved23_challenges_or_gold_read": false,
+    "query_gold_source": "Archived fixed official-reference gold_sha256 only; no new query answer grids downloaded.",
+    "026_old_metrics_seen_in_prior_mechanism_diagnosis": true
+  },
+  "score_aug_views": {
+    "022_observed_candidate_scored_events": {
+      "8": 122
+    },
+    "025_all_scored_record_lengths": [
+      8
+    ],
+    "author_formula_note": "Original full_probmul_3 has a common+24 constant for eight scoring views; removed without changing ranking."
+  },
+  "conclusion": "All three old-candidate alternatives gain only the same oldE20 query, remain flat on025development24; no reliable new selection improvement. Do not sweep vote/NLL coefficients or use026 to rescue its failed weight.027 instead freezes a new same-weight TTT-seed1/seed2 generation and conservative top1extra rule.",
+  "runtime": {
+    "python": "3.9.6",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "gpu_used": false,
+    "elapsed_seconds": 0.077516834
+  },
+  "selector_manual_review": {
+    "source": "experiments/027/freeze_ensemble.py",
+    "sha256": "ccd9d3b4e4b349e25e1f889b66e30b5f0413e60ba1df605644f6c56b1914db31",
+    "stdlib_import_and_AST_parse": true,
+    "manually_exercised_cases": [
+      "agree_firsts_keep_base_second_without_scanning_extra_second",
+      "different_extra_first_replaces_only_second",
+      "no_extra_real_candidates_keeps_base",
+      "base_empty_uses_extra_two",
+      "both_empty_uses_placeholders",
+      "real_base_grid_zero_not_treated_as_placeholder",
+      "real_extra_grid_zero_not_treated_as_placeholder"
+    ],
+    "input_mutation_observed": false,
+    "gpu_used": false,
+    "real027_freeze_cli_executed": false
+  }
+}

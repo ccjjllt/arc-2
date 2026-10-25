@@ -2,7 +2,17 @@
 
 [研究计划](../../docs/plan/026-nvarc-extra-rule-training.md) · [实际进展](../../docs/progress/026-nvarc-extra-rule-training.md)
 
-研究V1已于2026-10-25 15:28北京时间接受启动，15:34确认前2步训练正常后停止查询，精确凭据见`execution/paired-v1-launch.json`。本轮只检验一个小规模续训权重。固定公开33.89精确V1，保留原TTT／DFS／B4；16题／23query上新base与challenger同次运行配对。尚无新评分，不宣称提分。
+研究V1／362051855已COMPLETE。训练256步、1024例完整消费，合并成功；两臂各16题／23query全部完成原TTT与4批DFS。总墙钟7211.426秒，约120.19分，无报错／OOM。
+
+| 指标 | 原sft139＋B4 | 续训＋B4 |
+| --- | --- | --- |
+| 最终两槽正确query | 4/23 | 4/23 |
+| 完整task | 2/16 | 2/16 |
+| raw／scored oracle | 6/23 | 9/23 |
+
+新增2、丢失2、净增0。**结束此续训配方，保留原权重，不进入预留23题、不提交此challenger。** 这是公开开发面板，不是Kaggle成绩；正式最好仍30.14。
+
+[完整汇总](paired-v1-summary.json) · [评分](scoring-v1-f328/score-report.json) · [逐query账本](scoring-v1-f328/query-ledger.jsonl) · [下载身份](execution/paired-v1-outcome.json) · [归档SHA核查](execution/artifact-verification-v1.json) · [冻结预测](frozen-v1/prediction-freeze.json)
 
 ## 冻结产物
 
@@ -18,7 +28,7 @@
 
 总会话上限10800秒，训练阶段含加载／保存／合并最多3600秒、评价至多7200秒（收尾计入总预算）。实际步骤与耗时以运行日志为准；训练loss不当作ARC分数。正常启动后停止查询，等待用户通知完成。
 
-用户通知完成后，可人工执行`/private/tmp/arc2-026-download-completed-v1.py`，仅下载元数据／日志／候选，跳过所有权重，保留远端checkpoint。然后先核查日志、预测和候选元数据；大权重留在Kaggle输出，第三方`.py`落私有tmp。核对来源和归档身份，再冻结：
+本轮已完成以下人工下载／冻结／评分步骤；复核入口为`/private/tmp/arc2-026-download-completed-v1.py`，仅下载元数据／日志／候选，跳过所有权重，保留远端checkpoint。然后先核查日志、预测和候选元数据；大权重留在Kaggle输出，第三方`.py`落私有tmp。核对来源和归档身份，再冻结：
 
 ```bash
 python3 experiments/026/freeze_paired.py --run-root DOWNLOADED/026 \
@@ -34,4 +44,4 @@ python3 experiments/020/score_frozen_outputs.py \
   --allow-gold-read
 ```
 
-之后逐query核对两槽新增／丢失、oracle与阶段覆盖。只有两槽净增严格为正才进入预留23题的一次确认；零或负结束此配方，不在16题上救分。此处不创建正式比赛submission。
+逐query核对已完成：新增7ed72f31_1、eee78d87_0，丢失7b0280bc_0、e8686506_0；最终净0。按预定条件停止，无后续GPU运行或正式比赛submission。

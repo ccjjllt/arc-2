@@ -1,0 +1,78 @@
+{
+  "frozen_at_utc": "2026-10-25T10:21:10.721563+00:00",
+  "cohort": "026_NVARC4B_extra_training_paired16",
+  "planned_tasks": 16,
+  "planned_queries": 23,
+  "artifacts": {
+    "manifest": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/panel-v1/manifest.json",
+      "sha256": "02143e35eeb28f0634fa54334e1f217af1965bbf6212bd216970c16d6805e605",
+      "bytes": 19669
+    },
+    "challenges": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/panel-v1/challenges.json",
+      "sha256": "bd3b26cf78c4986d2cce6d72b457ce763f845e0e2f66d91233fc00a2a9f059f0",
+      "bytes": 666436
+    },
+    "predictions": [
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/frozen-v1/submission-base_B4.json",
+        "sha256": "9b6ec787bf0754e81319f66556b673cbd8d6b8481131e330220a23235047676b",
+        "bytes": 49070,
+        "policy": "base_B4",
+        "task_ids": [
+          "20a9e565",
+          "269e22fb",
+          "4c7dc4dd",
+          "58490d8a",
+          "64efde09",
+          "65b59efc",
+          "67e490f4",
+          "7b0280bc",
+          "7b5033c1",
+          "7ed72f31",
+          "898e7135",
+          "9385bd28",
+          "a47bf94d",
+          "e12f9a14",
+          "e8686506",
+          "eee78d87"
+        ]
+      },
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/frozen-v1/submission-challenger_B4.json",
+        "sha256": "07fa0f0420a83960b17cb63630d5d8a01429b6e749b19b682b64a462a4641485",
+        "bytes": 54572,
+        "policy": "challenger_B4",
+        "task_ids": [
+          "20a9e565",
+          "269e22fb",
+          "4c7dc4dd",
+          "58490d8a",
+          "64efde09",
+          "65b59efc",
+          "67e490f4",
+          "7b0280bc",
+          "7b5033c1",
+          "7ed72f31",
+          "898e7135",
+          "9385bd28",
+          "a47bf94d",
+          "e12f9a14",
+          "e8686506",
+          "eee78d87"
+        ]
+      }
+    ],
+    "candidate_pools": [
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/frozen-v1/candidate-pools.json",
+        "sha256": "d05d7c544ebb9d54256c2437a63e1eda74ec6f37baac3dc23fcbdcffab1256e3",
+        "bytes": 2345561
+      }
+    ]
+  },
+  "official_revision": "f3283f727488ad98fe575ea6a5ac981e4a188e49",
+  "official_split": "evaluation",
+  "note": "All supplied policy predictions were loaded and hashed before any gold access."
+}

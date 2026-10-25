@@ -1,0 +1,17 @@
+{
+  "status": "ordinary_v1_running_no_competition_submission_yet",
+  "account": "zhuating",
+  "competition": "arc-prize-2026-arc-agi-2",
+  "kernel": "zhuating/arc2-027-ttt-view-ensemble-formal",
+  "kernel_version": 1,
+  "verified_script_version_id": null,
+  "notebook_sha256": "3c8551fbf483bd1a4755722a0b7585408c2ed789f5d8ae5b3ed618f8a4200919",
+  "file_name": "submission.json",
+  "message": "027 original NVARC4B sequential TTT view ensemble; frozen base-first rule; C23 input-matched confirmation net1, lost0.",
+  "promotion_decision": "promotion-v1.json",
+  "ordinary_output": null,
+  "competition_submission_created": false,
+  "user_authorized_direct_submission": true,
+  "user_requested_startup_only_then_completion_notification": true,
+  "next_action": "On user completion notice: download formalV1, verify complete ordinary base/extra output and exact source; read actual scriptVersion from output URLs; refresh allowance/pending/team; submit exact kernel_version1 with submission.json under existing authorization. No extra permission question."
+}

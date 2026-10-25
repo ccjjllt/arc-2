@@ -1,0 +1,12 @@
+{
+  "verified_files": 554,
+  "verified_candidate_pickles": 506,
+  "skipped_remote_weights": [
+    "training/adapter/adapter_model.safetensors",
+    "training/merged_model/model-00001-of-00002.safetensors",
+    "training/merged_model/model-00002-of-00002.safetensors",
+    "training/pilot_adapter/adapter_model.safetensors"
+  ],
+  "errors": [],
+  "note": "Merged checkpoint retained in immutable Kaggle V1 output; local small-file verification only. No query gold read."
+}

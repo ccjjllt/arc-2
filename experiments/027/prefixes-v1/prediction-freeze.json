@@ -1,0 +1,140 @@
+{
+  "frozen_at_utc": "2026-10-25T13:12:53.805254+00:00",
+  "gold_read": false,
+  "cohort": "027_original4B_TTT_view_ensemble_C23",
+  "n_tasks": 23,
+  "n_queries": 34,
+  "rule": "Use already frozen final ensemble only for first ceil(N*25/50/75%) completed extra tasks, sorted by task_end time then task_id; otherwise retain full base slots. No new selection or gold read.",
+  "completed_extra_task_order": [
+    "31f7f899",
+    "409aa875",
+    "1ae2feb7",
+    "5dbc8537",
+    "16b78196",
+    "7666fa5d",
+    "6e4f6532",
+    "80a900e0",
+    "4a21e3da",
+    "89565ca0",
+    "7c66cb00",
+    "88bcf3b4",
+    "9bbf930d",
+    "8b9c3697",
+    "8b7bacbf",
+    "a6f40cea",
+    "b9e38dc0",
+    "d59b0160",
+    "b5ca7ac4",
+    "a32d8b75",
+    "dd6b8c4b",
+    "f560132c",
+    "faa9f03d"
+  ],
+  "outputs": {
+    "submission-prefix25.json": {
+      "sha256": "d90a1fe514c92a69e03c573ecee140ccf0506d49bda6e61572d196665d375112",
+      "bytes": 65472,
+      "target_complete_tasks": 6,
+      "actual_complete_tasks": 6,
+      "target_reached": true,
+      "task_ids": [
+        "16b78196",
+        "1ae2feb7",
+        "31f7f899",
+        "409aa875",
+        "5dbc8537",
+        "7666fa5d"
+      ]
+    },
+    "submission-prefix50.json": {
+      "sha256": "da765753d5f7dde147456143204270b4bef9c86ac3862c18504157604c296f50",
+      "bytes": 65472,
+      "target_complete_tasks": 12,
+      "actual_complete_tasks": 12,
+      "target_reached": true,
+      "task_ids": [
+        "16b78196",
+        "1ae2feb7",
+        "31f7f899",
+        "409aa875",
+        "4a21e3da",
+        "5dbc8537",
+        "6e4f6532",
+        "7666fa5d",
+        "7c66cb00",
+        "80a900e0",
+        "88bcf3b4",
+        "89565ca0"
+      ]
+    },
+    "submission-prefix75.json": {
+      "sha256": "ea4d5e035c53e8e139c69b2fbf0521e277d1db76a4c5e45612a0407fbf10638c",
+      "bytes": 65472,
+      "target_complete_tasks": 18,
+      "actual_complete_tasks": 18,
+      "target_reached": true,
+      "task_ids": [
+        "16b78196",
+        "1ae2feb7",
+        "31f7f899",
+        "409aa875",
+        "4a21e3da",
+        "5dbc8537",
+        "6e4f6532",
+        "7666fa5d",
+        "7c66cb00",
+        "80a900e0",
+        "88bcf3b4",
+        "89565ca0",
+        "8b7bacbf",
+        "8b9c3697",
+        "9bbf930d",
+        "a6f40cea",
+        "b9e38dc0",
+        "d59b0160"
+      ]
+    }
+  },
+  "inputs": [
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1/manifest.json",
+      "bytes": 24293,
+      "sha256": "c56c16780af77a60715dcb595f2993f3ed26ed410f23c9f26f5e824a9359fd97"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/frozen-v1/prediction-freeze.json",
+      "bytes": 5617,
+      "sha256": "5544a47fd93d9f0d644641c749812988ea91c798d3692ccc20e211ab7c11bce5"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/frozen-v1/submission-base_B4.json",
+      "bytes": 65472,
+      "sha256": "fd91b53f7d273fd7b80885148a57bca3cb25ffa491552ea8540e9b9d151fd410"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/frozen-v1/submission-ensemble.json",
+      "bytes": 72296,
+      "sha256": "cd107b617e9017cf28b5ec5ecb597550676c4a6470bd81202918d4a4b7c0ae17"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/extra/events-rank0.jsonl",
+      "bytes": 87795,
+      "sha256": "f4579ced3d7838111975ea6c8d3876db1ce3291ecc07a4badef4899f10250ada"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/extra/events-rank1.jsonl",
+      "bytes": 93537,
+      "sha256": "73bf444cbe293acca34d70738233b9d3a8ac46c48372c03a92b36330c1d5e0d3"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/extra/events-rank2.jsonl",
+      "bytes": 102805,
+      "sha256": "6761bd04ce0058644380f0a9147e4c9c2c2bcdfc2a63d356e8cd0854dc900a9c"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/extra/events-rank3.jsonl",
+      "bytes": 124615,
+      "sha256": "9a3b8f5356a6259f29aff4699dd3c87d5e37f4922dda5bc496bdc19670d72f26"
+    }
+  ]
+}

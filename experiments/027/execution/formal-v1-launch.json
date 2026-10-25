@@ -1,0 +1,26 @@
+{
+  "requested_at_utc": "2026-10-25T13:44:27.717474+00:00",
+  "account": "zhuating",
+  "ref": "zhuating/arc2-027-ttt-view-ensemble-formal",
+  "package_directory": "/private/tmp/arc2-027-formal-v1",
+  "notebook_sha256": "3c8551fbf483bd1a4755722a0b7585408c2ed789f5d8ae5b3ed618f8a4200919",
+  "platform_ordinary_session_timeout_seconds": 7200,
+  "notebook_hidden_budget_seconds": 43200,
+  "notebook_hidden_solver_global_seconds": 42600,
+  "quota_before": {
+    "total_time_allowed": 108000.0,
+    "time_used": 74694.454,
+    "time_reserved": 0.0,
+    "available_seconds": 33305.546
+  },
+  "state": "accepted",
+  "purpose": "Ordinary original four-task runtime/output validation of promoted027 formal source; competition submission will follow only after exact version/output verification.",
+  "runtime_note": "API session_timeout_seconds bounds this ordinary commit execution. Notebook retains12h source budget and dynamic competition rerun input; ordinary metadata/source binding is verified separately.",
+  "response": {
+    "ref": "/code/zhuating/arc2-027-ttt-view-ensemble-formal",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-027-ttt-view-ensemble-formal",
+    "versionNumber": 1,
+    "kernelId": 140787141
+  },
+  "returned_at_utc": "2026-10-25T13:44:30.795995+00:00"
+}

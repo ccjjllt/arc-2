@@ -1,0 +1,181 @@
+{
+  "notebook_started": 1792913310.8308678,
+  "session_deadline": 1792924110.8308678,
+  "training_stage_deadline": 1792916910.8308678,
+  "input_identity": {
+    "challenges_sha256": "bd3b26cf78c4986d2cce6d72b457ce763f845e0e2f66d91233fc00a2a9f059f0",
+    "manifest_sha256": "02143e35eeb28f0634fa54334e1f217af1965bbf6212bd216970c16d6805e605",
+    "n_tasks": 16,
+    "n_queries": 23,
+    "task_ids": [
+      "20a9e565",
+      "269e22fb",
+      "4c7dc4dd",
+      "58490d8a",
+      "64efde09",
+      "65b59efc",
+      "67e490f4",
+      "7b0280bc",
+      "7b5033c1",
+      "7ed72f31",
+      "898e7135",
+      "9385bd28",
+      "a47bf94d",
+      "e12f9a14",
+      "e8686506",
+      "eee78d87"
+    ]
+  },
+  "training_identity": {
+    "train_sha256": "33f3b4e6133be5b890b8f2efb76421390a463b04291f5669f6b5e44bcbd5f901",
+    "manifest_sha256": "555d4662693f2185dda20bee49672fa872f05f0b6954c530cd58479ecb5fb294",
+    "pool_episodes": 1024,
+    "source_path": "experiments/026/data-embedded-v1/train.jsonl"
+  },
+  "source": "Frozen V1 312063593 / successful 025 wrapper",
+  "python_hash_seed": 26026,
+  "research_only": true,
+  "gold_read": false,
+  "training": {
+    "started_at": 1792913435.1418393,
+    "hard_deadline": 1792916910.8308678,
+    "timed_out": false,
+    "command": [
+      "/usr/bin/python3",
+      "-u",
+      "train_specialist.py",
+      "--model-path",
+      "/kaggle/temp/arc026-base",
+      "--train-jsonl",
+      "/kaggle/working/026/input/train.jsonl",
+      "--data-manifest",
+      "/kaggle/working/026/input/data-manifest.json",
+      "--expected-data-sha256",
+      "33f3b4e6133be5b890b8f2efb76421390a463b04291f5669f6b5e44bcbd5f901",
+      "--source-dir",
+      "/kaggle/working",
+      "--output-dir",
+      "/kaggle/working/026/training",
+      "--max-steps",
+      "256",
+      "--pilot-steps",
+      "32",
+      "--train-seconds",
+      "2700",
+      "--max-seconds",
+      "3600",
+      "--stage-deadline-unix",
+      "1792916910.8308678"
+    ],
+    "process_group_id": 140,
+    "return_code": 0,
+    "status": "completed",
+    "finished_at": 1792914984.5217843,
+    "elapsed_s": 1549.3799455165863
+  },
+  "merge_ready": {
+    "status": "merged_checkpoint_ready_for_paired_evaluation",
+    "merged_model_dir": "/kaggle/working/026/training/merged_model",
+    "manifest_sha256": "29b97043d9caebb153d780492ee3e2665398e97f23ff3d4dffffcee4315651e9",
+    "training_process_must_exit_before_ttt": true,
+    "actual_optimizer_steps": 256,
+    "elapsed_seconds": 1537.2755184139999,
+    "merged_model": {
+      "path": "/kaggle/working/026/training/merged_model",
+      "config_sha256": "63573aa9bd7ea58f45a4d96b6cd36fce0b079932205e42f36a5f2bc6981dd20b",
+      "weight_files": {
+        "model-00001-of-00002.safetensors": 3987521952,
+        "model-00002-of-00002.safetensors": 3279711544
+      },
+      "weight_bytes": 7267233496,
+      "plain_model_without_lora": true,
+      "tokenizer_bytes_match_base": true,
+      "vocab_size": 16,
+      "all_floating_parameters_bfloat16": true,
+      "offline_update_nonzero_after_bf16_merge": true,
+      "files": {
+        "added_tokens.json": {
+          "bytes": 68,
+          "sha256": "cf1224e6a594b51a34b8b9ca6c6dce3026683777521f361e37526b8a33258bce"
+        },
+        "config.json": {
+          "bytes": 1587,
+          "sha256": "63573aa9bd7ea58f45a4d96b6cd36fce0b079932205e42f36a5f2bc6981dd20b"
+        },
+        "generation_config.json": {
+          "bytes": 159,
+          "sha256": "8b954e2e8be6f34be01cece2d30f7727a86ac50bd6a5d172263bac243570a7a2"
+        },
+        "model-00001-of-00002.safetensors": {
+          "bytes": 3987521952
+        },
+        "model-00002-of-00002.safetensors": {
+          "bytes": 3279711544
+        },
+        "model.safetensors.index.json": {
+          "bytes": 32913,
+          "sha256": "8d28e18b4e624395ca74b61294a802de7db16678de20e1cff4491cfbc3c73d4d"
+        },
+        "special_tokens_map.json": {
+          "bytes": 367,
+          "sha256": "f4f79e08d97f4d1c87f8d89264f525c8789da3b73b3bb55d1e12f692f41a7b1b"
+        },
+        "tokenizer.json": {
+          "bytes": 1731,
+          "sha256": "af6b9e855f9db3192bd9152607708ebd7700b40f9fc5f792a26af70150a96cd5"
+        },
+        "tokenizer_config.json": {
+          "bytes": 988,
+          "sha256": "e1912aeba4050616cbfe01b34df3f3df2818207eda0056f6eb87c2336936ea90"
+        },
+        "vocab.json": {
+          "bytes": 94,
+          "sha256": "8141a61e47eceec466524bc178bc9c6d5076b7d1b18b456fbd3fdf66cae57f82"
+        }
+      }
+    }
+  },
+  "evaluation_started_at": 1792914984.5229564,
+  "global_end_time": 1792922184.5229564,
+  "solver_hard_deadline": 1792922244.5229564,
+  "evaluation": {
+    "started_at": 1792914984.523052,
+    "hard_deadline": 1792922244.5229564,
+    "timed_out": false,
+    "command": [
+      "/usr/bin/python3",
+      "-u",
+      "starter_paired.py",
+      "--end-time",
+      "1792922184.5229564",
+      "--base-model",
+      "/kaggle/temp/arc026-base",
+      "--challenger-model",
+      "/kaggle/working/026/training/merged_model"
+    ],
+    "process_group_id": 601,
+    "return_code": 0,
+    "status": "completed",
+    "finished_at": 1792920486.3172414,
+    "elapsed_s": 5501.794189929962
+  },
+  "status": "completed",
+  "return_code": 0,
+  "arms": {
+    "base": {
+      "scored_records": 315,
+      "candidate_file_count": 253,
+      "prediction_sha256": "9b6ec787bf0754e81319f66556b673cbd8d6b8481131e330220a23235047676b"
+    },
+    "challenger": {
+      "scored_records": 325,
+      "candidate_file_count": 253,
+      "prediction_sha256": "07fa0f0420a83960b17cb63630d5d8a01429b6e749b19b682b64a462a4641485"
+    }
+  },
+  "finished_at": 1792920522.2573378,
+  "elapsed_s": 7211.426470279694,
+  "planned_tasks": 16,
+  "planned_queries": 23,
+  "python": "3.11.13"
+}

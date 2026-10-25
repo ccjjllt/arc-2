@@ -1,0 +1,78 @@
+{
+  "frozen_at_utc": "2026-10-25T10:21:00.484474+00:00",
+  "cohort": "026_NVARC4B_extra_training_paired16",
+  "n_tasks": 16,
+  "n_queries": 23,
+  "gold_read": false,
+  "outputs": {
+    "submission-base_B4.json": {
+      "sha256": "9b6ec787bf0754e81319f66556b673cbd8d6b8481131e330220a23235047676b",
+      "bytes": 49070
+    },
+    "submission-challenger_B4.json": {
+      "sha256": "07fa0f0420a83960b17cb63630d5d8a01429b6e749b19b682b64a462a4641485",
+      "bytes": 54572
+    },
+    "candidate-pools.json": {
+      "sha256": "d05d7c544ebb9d54256c2437a63e1eda74ec6f37baac3dc23fcbdcffab1256e3",
+      "bytes": 2345561
+    },
+    "candidate-ledger.jsonl": {
+      "sha256": "d98d7cc3d1fe520882dcfd51020f38f8821f2de2e921eea4c642509f84151a7e",
+      "bytes": 62618
+    }
+  },
+  "inputs": [
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/panel-v1/manifest.json",
+      "bytes": 19669,
+      "sha256": "02143e35eeb28f0634fa54334e1f217af1965bbf6212bd216970c16d6805e605"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/paired-v1-output/026/run-state.json",
+      "bytes": 5748,
+      "sha256": "d6ee6d9697e20c7c7c9bc9e9f64ee7af3472ace358196b39053c49ad3c39cd6c"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/paired-v1-output/026/base/submission-B4.json",
+      "bytes": 49070,
+      "sha256": "9b6ec787bf0754e81319f66556b673cbd8d6b8481131e330220a23235047676b"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/paired-v1-output/026/base/scored-candidates.jsonl",
+      "bytes": 436061,
+      "sha256": "bbf7b2b03123347db47d0f3f159b222b27d953ee567298334295893ec669ee67"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/paired-v1-output/026/base/raw-candidates-rank0.jsonl",
+      "bytes": 164188,
+      "sha256": "08887142a3aaf11f85b32c8fb18e310bd827a7174bdff0be0eca24afe2e86d1f"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/paired-v1-output/026/base/raw-candidates-rank1.jsonl",
+      "bytes": 200949,
+      "sha256": "bb29327f143ccf881705f55295eea562fb10ad0cc33efa63f8df825b049f57da"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/paired-v1-output/026/challenger/submission-B4.json",
+      "bytes": 54572,
+      "sha256": "07fa0f0420a83960b17cb63630d5d8a01429b6e749b19b682b64a462a4641485"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/paired-v1-output/026/challenger/scored-candidates.jsonl",
+      "bytes": 455947,
+      "sha256": "6033548529163c5cc2cad673665917c81e2bfeac4c7f372fbf0b48be3be4d4b2"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/paired-v1-output/026/challenger/raw-candidates-rank0.jsonl",
+      "bytes": 200993,
+      "sha256": "9ac2cad4c679277fbda7959b5d88db852f25113a49a1a310621546387614b818"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/paired-v1-output/026/challenger/raw-candidates-rank1.jsonl",
+      "bytes": 181712,
+      "sha256": "c98c486f04a9c511b7d1044362153701aaa0108e088df21ece73e041c99542f3"
+    }
+  ],
+  "note": "Both runtime B4 outputs copied byte-for-byte before gold. Candidate pools are diagnostics only."
+}

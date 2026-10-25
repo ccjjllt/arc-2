@@ -1,0 +1,19 @@
+{
+  "checked_at_utc": "2026-10-25T10:36:50.602931+00:00",
+  "account": "zhuating",
+  "gpu": {
+    "total_time_allowed": 108000.0,
+    "time_used": 58216.882,
+    "time_reserved": 0.0,
+    "available_seconds": 49783.118,
+    "available_hours": 13.82864388888889
+  },
+  "submission_limits": {
+    "num_today": 0,
+    "num_total": 11,
+    "num_allowed_now": 1,
+    "limited_by_total": false
+  },
+  "pending_submissions": [],
+  "provenance": "Summary transcribed from original tool response and confirmation launch receipt; full preflight-v1.json was refreshed during formal preparation. This is not an original raw API response."
+}

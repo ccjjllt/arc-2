@@ -1,0 +1,94 @@
+{
+  "all_source_AST_parses": true,
+  "loader_decoder_exact_to_successful025": {
+    "3": true,
+    "4": true
+  },
+  "embedded_input_identities": [
+    {
+      "bytes": 24293,
+      "sha256": "c56c16780af77a60715dcb595f2993f3ed26ed410f23c9f26f5e824a9359fd97"
+    },
+    {
+      "bytes": 964049,
+      "sha256": "f65c90df99dfc3f5bdf2c234342463e73082695140487d82774a21e99cce73ae"
+    },
+    {
+      "bytes": 12772,
+      "sha256": "ccd9d3b4e4b349e25e1f889b66e30b5f0413e60ba1df605644f6c56b1914db31"
+    }
+  ],
+  "unchanged_seeds_and_TTT": {
+    "random_state=42": true,
+    "seed=42": true,
+    "r=256": true,
+    "eval_ds = puzzle_ds_multi.augment(n=2, seed=2)": true,
+    "train_ds = puzzle_ds.augment(n=16, shfl_keys=True, seed=_ttt_aug_seed)": true
+  },
+  "notebook_bytes": 108007,
+  "notebook_sha256": "bb1e8320a087a0abb57948077ff15f794c1206f53abdb2b235c2969b7cca87b0",
+  "selection_helper_sha256": "ccd9d3b4e4b349e25e1f889b66e30b5f0413e60ba1df605644f6c56b1914db31",
+  "status": "manual_static_review_passed_not_launched",
+  "manual_control_flow_branches": {
+    "both_ok": {
+      "status": "completed",
+      "return_code": 0,
+      "launched_branch_order": [
+        [
+          "base",
+          "1"
+        ],
+        [
+          "extra",
+          "2"
+        ]
+      ],
+      "marker_unlinks": 8,
+      "cpu_stand_in_only": true
+    },
+    "base_error": {
+      "status": "base_error_partial_outputs",
+      "return_code": 1,
+      "launched_branch_order": [
+        [
+          "base",
+          "1"
+        ]
+      ],
+      "marker_unlinks": 4,
+      "cpu_stand_in_only": true
+    },
+    "extra_error": {
+      "status": "extra_error_partial_outputs",
+      "return_code": 1,
+      "launched_branch_order": [
+        [
+          "base",
+          "1"
+        ],
+        [
+          "extra",
+          "2"
+        ]
+      ],
+      "marker_unlinks": 8,
+      "cpu_stand_in_only": true
+    },
+    "extra_deadline": {
+      "status": "completed_extra_deadline_partial",
+      "return_code": 0,
+      "launched_branch_order": [
+        [
+          "base",
+          "1"
+        ],
+        [
+          "extra",
+          "2"
+        ]
+      ],
+      "marker_unlinks": 8,
+      "cpu_stand_in_only": true
+    }
+  }
+}

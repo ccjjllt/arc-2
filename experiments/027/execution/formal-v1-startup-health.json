@@ -1,0 +1,41 @@
+{
+  "checked_at_utc": "2026-10-25T13:55:31.924756+00:00",
+  "ref": "zhuating/arc2-027-ttt-view-ensemble-formal",
+  "kernel_version": 1,
+  "status": "ordinary_four_worker_models_loaded_full_run_unverified",
+  "base_worker_ranks": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "model_loading_complete": true,
+  "first_TTT_completion_observed": false,
+  "extra_stage_observed": false,
+  "traceback_in_observed_startup": false,
+  "oom_in_observed_startup": false,
+  "input_identity": {
+    "mode": "original_ordinary_four",
+    "source_path": "/kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_evaluation_challenges.json",
+    "source_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+    "challenges_sha256": "f609f61bdc823802318d005eef7fd6400a2a1c6a4b9f9c93305e1de116979bc1",
+    "n_tasks": 4,
+    "n_queries": 5,
+    "task_ids": [
+      "0934a4d8",
+      "36a08778",
+      "981571dc",
+      "aa4ec2a5"
+    ],
+    "ordinary_reference_sha256": "63296c02509c34796ee7ebfac43fa73f96e5165e939de7c478924794cffd3381"
+  },
+  "gpu_inventory": "0, NVIDIA L4, 23034 MiB\n1, NVIDIA L4, 23034 MiB\n2, NVIDIA L4, 23034 MiB\n3, NVIDIA L4, 23034 MiB\n",
+  "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0",
+  "source_cells_match_frozen_package": true,
+  "ordinary_platform_timeout_seconds": 7200,
+  "source_competition_budget_seconds": 43200,
+  "actual_formal_script_version_id": null,
+  "competition_submission_ref": null,
+  "remote_queries": "Stopped after startup confirmation; wait for user completion notification.",
+  "stream_log_sha256": "d0b3f99af242eacbf667a29942a075da5f8f5b1b9245a52021f76715e30002ff"
+}

@@ -1,0 +1,17 @@
+{
+  "status": "formal_source_generated_ordinary_v1_running",
+  "source_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/prepare_formal.py",
+  "source_sha256": "f4ad6d81409e0ee1573d06b713967ea311501727eb547066fce2ddf57a752904",
+  "research_notebook_sha256": "bb1e8320a087a0abb57948077ff15f794c1206f53abdb2b235c2969b7cca87b0",
+  "selection_helper_sha256": "ccd9d3b4e4b349e25e1f889b66e30b5f0413e60ba1df605644f6c56b1914db31",
+  "ordinary_reference": "experiments/023/ordinary-v1-input/manifest.json",
+  "requires_confirmation": "final exact net>0, available prefix nets>=0, complete base coverage and matched inputs",
+  "submission_authorized_by_user": true,
+  "kernel_version": 1,
+  "script_version_id": null,
+  "submission_ref": null,
+  "runtime_validation": "ordinary original four-task run started; completion not yet verified",
+  "formal_source_notebook_generated": true,
+  "ref": "zhuating/arc2-027-ttt-view-ensemble-formal",
+  "notebook_sha256": "3c8551fbf483bd1a4755722a0b7585408c2ed789f5d8ae5b3ed618f8a4200919"
+}

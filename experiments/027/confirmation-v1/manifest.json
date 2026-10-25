@@ -1,0 +1,643 @@
+{
+  "created_at_utc": "2026-10-25T10:36:13.827800+00:00",
+  "cohort": "027_original4B_TTT_view_ensemble_C23",
+  "status": "input_and_policy_frozen_before_generation",
+  "n_tasks": 23,
+  "n_queries": 34,
+  "entries": [
+    {
+      "task_id": "16b78196",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 2700,
+      "demo_pairs_sha256": "3a69614c4d40d2274e8d12ecbb88efab15f9fa8213c4fb17e36777f8781298a9",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "16b78196_0",
+          "input_sha256": "14433ddac7fd241da8debb43dfa89ab758317b055bfdb26122d021d7247258af"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "1ae2feb7",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "S",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 987,
+      "demo_pairs_sha256": "7fde8fadb9ef1cc7049da3e816f3addc6d99f40d596893d8cadde382dd3f2ec7",
+      "n_test_queries": 3,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "1ae2feb7_0",
+          "input_sha256": "bb013fa7da423a7116c022648087afb481895b9fcdd7bd85d6f825eab00da196"
+        },
+        {
+          "query_index": 1,
+          "query_key": "1ae2feb7_1",
+          "input_sha256": "9e076e857bbe3415af4aee927f5db04113a1ba70126be377e4c395f65cbbeeac"
+        },
+        {
+          "query_index": 2,
+          "query_key": "1ae2feb7_2",
+          "input_sha256": "be245f87f760a98fade4501679ba374fbdc76871f243eeeec7371f1176f57e88"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "31f7f899",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 732,
+      "demo_pairs_sha256": "791757faaa836391e606e767b91535b9bf01ff7a5913dc5de4daf06a83e46928",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "31f7f899_0",
+          "input_sha256": "65b48936cd354bd536f1be966f1a4a7db19b581de62ed764fe4e8cfeb039aa1c"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "409aa875",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 1024,
+      "demo_pairs_sha256": "f84d22d3b032935c4793a185a4c74b375176afad3939e1eacedb79dcec6ab325",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "409aa875_0",
+          "input_sha256": "c42d9456cf5b92dd9e868919ae78385b80883c601eca35dbc91aa2cd174702de"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "4a21e3da",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "M",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 1813,
+      "demo_pairs_sha256": "c4428f9a039ae0bf9d2346db07041d57e341a661c906ddd02a97f414da22ca22",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "4a21e3da_0",
+          "input_sha256": "ddc5c3c1d34961daa00b7fec3df4c11b3a4ff1ddd9617ebbf134f9d0628aa141"
+        },
+        {
+          "query_index": 1,
+          "query_key": "4a21e3da_1",
+          "input_sha256": "80ae09b4a94d987d5f1d079654c3605cd08e059602a40a98d2b89bde47110f0a"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "5dbc8537",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "M",
+      "query_group": "multi",
+      "n_demo": 2,
+      "total_input_cells": 1650,
+      "demo_pairs_sha256": "df0a338d8c69bd21d5d9896c37a029907cbab44caae81a7199533b9c748497db",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "5dbc8537_0",
+          "input_sha256": "3db1f93ec0284adbc8b5f9e2b74cc25f4e2ba044392ef3e2e7e6f68664941462"
+        },
+        {
+          "query_index": 1,
+          "query_key": "5dbc8537_1",
+          "input_sha256": "d3db8649cbbf8bd10d62bf8c5288a719939de6c9d29475bf85999407e84ab6c2"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "6e4f6532",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "L",
+      "query_group": "multi",
+      "n_demo": 2,
+      "total_input_cells": 2334,
+      "demo_pairs_sha256": "b26bd79fb9e3911b39c67dd7bb84c40e5f4a0462b664a996e9862d4c95862a1e",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "6e4f6532_0",
+          "input_sha256": "99c2461fc3fbe0983456bf69016e6e3f1b0ff151ee81c2d74e1f4a8aaf9f764f"
+        },
+        {
+          "query_index": 1,
+          "query_key": "6e4f6532_1",
+          "input_sha256": "b7d87e2f6a9729c01f7278960ab378c9c3ee6501ed6508546bf0f7bfe186287a"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "7666fa5d",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 768,
+      "demo_pairs_sha256": "d0b6c5fd4b4112b08395a3c0db4626cd18b51a4d42d1d8e8b96d419a81421e86",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "7666fa5d_0",
+          "input_sha256": "59f8fdcf17d586d0e23ea6f5950f24bc6b209967e86b22cad4884f4f9cf023f5"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "7c66cb00",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 2880,
+      "demo_pairs_sha256": "25894afd5022285c56d60014903bca59c03b620db605bd3923557d02007d1b17",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "7c66cb00_0",
+          "input_sha256": "404205baf23624e7f98e9474d5a154f07a9c11c52148d92aa83b887a43b3483b"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "80a900e0",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 1462,
+      "demo_pairs_sha256": "75cd6ce42dcb4da701a999d82f929a788591fde36a76d07b4d2fe221295c2098",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "80a900e0_0",
+          "input_sha256": "a90a30707968dd8c445089e0af6471b2c4d18cbfd9ec63f7ac1eac9184b90d9f"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "88bcf3b4",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "M",
+      "query_group": "multi",
+      "n_demo": 5,
+      "total_input_cells": 1876,
+      "demo_pairs_sha256": "11c20e260d7386cc382358347dca047ca121e833b4f0e567828b5798e83f5ff3",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "88bcf3b4_0",
+          "input_sha256": "3b37cb43bc0a42c7c8fc2cce8628cc8ffca82e550f2afab81b9ad39d3cb36029"
+        },
+        {
+          "query_index": 1,
+          "query_key": "88bcf3b4_1",
+          "input_sha256": "d797a0899c707345f335fb379a7199f70e7ffc839042569281cdebf3688a063a"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "89565ca0",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 2542,
+      "demo_pairs_sha256": "9707a521f5d716e635c8cc080a5657a75790a40dbb03235a4c7f0a5902aafab5",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "89565ca0_0",
+          "input_sha256": "cb70fd20288ac7eb8b4a3583641b246f49b783f98611093a999ab8295b8ee4ee"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "8b7bacbf",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "L",
+      "query_group": "multi",
+      "n_demo": 4,
+      "total_input_cells": 2528,
+      "demo_pairs_sha256": "462d63ac269114c805c163f914fa375a83110ecc4a1988d50ce2c09ac9a00fe4",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "8b7bacbf_0",
+          "input_sha256": "bcece94743da96aa91c3776c476434280e5d76580f786d13118b4fada8d62842"
+        },
+        {
+          "query_index": 1,
+          "query_key": "8b7bacbf_1",
+          "input_sha256": "94b41b810d00c9aa40cd7a7974441eeb1d2d53f3f1340acdd5e71f4fe8d46826"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "8b9c3697",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 1875,
+      "demo_pairs_sha256": "410753beca5d926f53e3d2239711673efc3b9df833354810dd86136a8aecd50a",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "8b9c3697_0",
+          "input_sha256": "0731df3cd3b77f289c01b8756db90e078af32c48578e29b06dff8f4b92ad414b"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "9bbf930d",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 1293,
+      "demo_pairs_sha256": "d8ea705998bfe078e73b95fbfb173088d0dc6a489b15bff58853888eb7548834",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "9bbf930d_0",
+          "input_sha256": "e4709fc499a530b77dad693ec9d2a8cbe521330b0206eee0a70cb5359ea7f32d"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "a32d8b75",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "L",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 3600,
+      "demo_pairs_sha256": "1077132ea588cf176c9a3c5e80dc72613186646f62b507b8b5a74f71c6e98cdd",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "a32d8b75_0",
+          "input_sha256": "8284e4854d232ce434c805a6d78fe511e2571eb7f0ce296223c73760011f4385"
+        },
+        {
+          "query_index": 1,
+          "query_key": "a32d8b75_1",
+          "input_sha256": "22c0dabf6f25c35004581f1c64387415d59416888ca38d3f8bc5d645d789baf2"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "a6f40cea",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 2360,
+      "demo_pairs_sha256": "5aecae514cebb85d8f5d04bdd554d1c51ab75023157d1f7e61f36b8cb4460548",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "a6f40cea_0",
+          "input_sha256": "11786960fa2e6b7e688cc4f72d43bcb17f44dee388f5289ce0244484f27e118b"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "b5ca7ac4",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 1936,
+      "demo_pairs_sha256": "af7178e748393017ea4ec9a1ae4cd5e9db12310374ee3ca217b6a2a44b91ee39",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "b5ca7ac4_0",
+          "input_sha256": "001422f5e96075d0e442f8bef0a477b99a27244faaea31b51fcddde5255fb4f2"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "b9e38dc0",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 918,
+      "demo_pairs_sha256": "4094f07689298a4df7f69c2f4fd0f0e4c42885c4adc7a419344609e360f65e61",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "b9e38dc0_0",
+          "input_sha256": "a188e16031257e0734cf39c0a2f64c36bb08250242876a12d012a7d7318c3831"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "d59b0160",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 1024,
+      "demo_pairs_sha256": "cbbf0d154a4226a5afbee26b8e96259c9683a82129bade6c2e5ef56d24c86e4d",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "d59b0160_0",
+          "input_sha256": "ec02f7907a1a1ca5d6b072a73b8ab61f8468df6831515bfe0b5d8d25154616e1"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "dd6b8c4b",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "S",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 605,
+      "demo_pairs_sha256": "ff3cf922ef7629379337689f107ef222063b56cc1e9efc4b637dda96fc1ed549",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "dd6b8c4b_0",
+          "input_sha256": "e6f9f6639b30190258fa5ac529477909f0ec6047f2ebe6f5537c7571e7fcc48a"
+        },
+        {
+          "query_index": 1,
+          "query_key": "dd6b8c4b_1",
+          "input_sha256": "e15a6962c94d61e38e211a3d685aec0286f81329dc72c80df745a7579e5a697a"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "f560132c",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "L",
+      "query_group": "multi",
+      "n_demo": 2,
+      "total_input_cells": 2376,
+      "demo_pairs_sha256": "eccef37df55cf36afae96b02d356931de14589812a62f49b1e9af507211b286e",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "f560132c_0",
+          "input_sha256": "8403737d96f034a09e3d73614a3cd9b43d5be2267bd4153756ded04b2809b07f"
+        },
+        {
+          "query_index": 1,
+          "query_key": "f560132c_1",
+          "input_sha256": "3f58a96eac7b67f172df9d33f14f5fe14330ec9b03ac76ab96ffdcc9e758c12e"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    },
+    {
+      "task_id": "faa9f03d",
+      "source_group": "public_evaluation_NVARC027_fixed_confirmation",
+      "tier": "S",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 976,
+      "demo_pairs_sha256": "6be3672680be657872e8ccc236f9cf3571cf8f8a8bd84687207fbc16852f1556",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "faa9f03d_0",
+          "input_sha256": "f2ae0d35fa9f2d65b09c6a40e5ae75365419aa323e3c667eac488794be1aff6c"
+        },
+        {
+          "query_index": 1,
+          "query_key": "faa9f03d_1",
+          "input_sha256": "cb400967ff018009551495fcc4963a96bf290e0465ea33fcf5310d92e39b00b8"
+        }
+      ],
+      "exposure": {
+        "prior_019_public_inference": true,
+        "used_in_025_or_026_strategy_development": false,
+        "query_gold_read_in_027": false,
+        "upstream_unseen_status": "Not established; upstream public validation and rule-derived exposure exists"
+      }
+    }
+  ],
+  "input_artifact": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1/challenges.json",
+    "sha256": "f65c90df99dfc3f5bdf2c234342463e73082695140487d82774a21e99cce73ae",
+    "bytes": 964049
+  },
+  "sources": [
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/panel-v1/confirmation-reservation.json",
+      "sha256": "26ad3d9ede5fd25c97efb59e26cbc47c98f02939dd560a678935010aba00f2ac",
+      "bytes": 813
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/008/raw-eval/arc-agi_evaluation_challenges.json",
+      "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "bytes": 984679
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/cohort-v1/manifest.json",
+      "sha256": "9e8c6617193bd48efc905b0766d218c37218853f51f5f145ee27bd15ee79fa45",
+      "bytes": 66098
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/panel-v1/manifest.json",
+      "sha256": "02143e35eeb28f0634fa54334e1f217af1965bbf6212bd216970c16d6805e605",
+      "bytes": 19669
+    }
+  ],
+  "selection_rule": "All 23 task IDs reserved before026 training; no reselection or query-gold read. Excludes all025 forty,026 sixteen,and inherited development IDs. Original sorted task order.",
+  "reference_script_version_id": 312063593,
+  "model": "sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1",
+  "base_ttt_augmentation_seed": 1,
+  "extra_ttt_augmentation_seed": 2,
+  "inference_augmentation_seed": 2,
+  "trainer_seed": 42,
+  "python_hash_seed": 27027,
+  "session_seconds": 10800,
+  "prediction_policies": [
+    "base_B4",
+    "extra_B4",
+    "ensemble"
+  ],
+  "frozen_ensemble_rule": "Keep base top1. If extra has a real scored candidate and its top1 differs, replace slot2 with extra top1; otherwise preserve base slot2. If base has no real scored candidate, use extra top2 as natural fallback. Never infer candidate availability from [[0]] placeholders. Never search extra top2 when base has any candidate.",
+  "budget_policy": "4GPU full original base first without half-budget cutoff. Only after clean base completion run4GPU extra with remaining common solver budget. Common deadline session-120, hard process-group cutoff session-60. Export partial extra atomically if deadline; do not mislabel errors as completion.",
+  "promotion_rule": "One fixed scheme: require final query exact net>0 versus new same-run base, all planned inputs matched, full base coverage, no implementation fault. Also report fallback ensembles after first25/50/75 percent completed extra tasks; require these prefixes net>=0 to limit partial-extra risk. Do not tune seed,ranking,orensemble on this confirmation. Otherwise retain023 and stop this scheme.",
+  "limitations": [
+    "Public strategy-unused confirmation, not blind or model-unseen.",
+    "Partial production extra coverage cannot be extrapolated directly from full23 coverage.",
+    "026 failed continuation checkpoint is not loaded or rescued;026 sixteen is not used for selection."
+  ],
+  "query_solutions_read": false
+}

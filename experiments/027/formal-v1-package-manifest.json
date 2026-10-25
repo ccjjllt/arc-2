@@ -1,0 +1,29 @@
+{
+  "status": "prepared_not_launched_conditional_on_confirmation",
+  "ref": "zhuating/arc2-027-ttt-view-ensemble-formal",
+  "notebook_sha256": "3c8551fbf483bd1a4755722a0b7585408c2ed789f5d8ae5b3ed618f8a4200919",
+  "notebook_bytes": 84734,
+  "research_notebook_sha256": "bb1e8320a087a0abb57948077ff15f794c1206f53abdb2b235c2969b7cca87b0",
+  "reference_script_version_id": 312063593,
+  "reference_sha256": "71416dd4d9885ecf2ae99b8b72ff0ef66d31fac0354b79d2d11071c49f84111d",
+  "selection_helper_sha256": "ccd9d3b4e4b349e25e1f889b66e30b5f0413e60ba1df605644f6c56b1914db31",
+  "runtime_source_sha256": {
+    "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+    "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+    "arc_solver.py": "6b9ffc044d1f81e97c989d3b50597bc681f9b1f75928c0cf1315c8edec3be4db",
+    "starter.py": "ea604d1503b8966a1ccb8ddf977074062b932568e3ea5a60727bfbfc80b9408c"
+  },
+  "session_seconds": 43200,
+  "solver_global_seconds": 42600,
+  "solver_hard_seconds": 43140,
+  "python_hash_seed": 27027,
+  "ordinary_tasks": 4,
+  "ordinary_queries": 5,
+  "input_policy": "Dynamic competition test input on rerun; exact original four tasks otherwise. No C23 data embedded.",
+  "scheduling": "Base four-worker original sorted queue first; extra same queue only after base process group exits, using remaining shared session budget; no half-budget base cutoff.",
+  "base_backup_before_extra": true,
+  "extra_error_policy": "Explicit base_fallback_after_extra_error; preserve only base two slots.",
+  "extra_deadline_policy": "Only complete atomic pickle records may contribute through frozen helper; all queries remain in denominator.",
+  "gates": "Do not invoke/upload until C23 final net gain and predeclared partial-prefix criteria pass; this tool does not infer success or submit.",
+  "execution": "Not run; no runtime, Kaggle version or submission ref exists for this generated artifact."
+}

@@ -1,0 +1,36 @@
+{
+  "checked_at_utc": "2026-10-25T13:48:01.389201+00:00",
+  "ref": "zhuating/arc2-027-ttt-view-ensemble-formal",
+  "status": {
+    "status": "RUNNING"
+  },
+  "metadata": {
+    "id": 140787141,
+    "ref": "zhuating/arc2-027-ttt-view-ensemble-formal",
+    "title": "arc2 027 ttt view ensemble formal",
+    "author": "zhuating",
+    "slug": "arc2-027-ttt-view-ensemble-formal",
+    "lastRunTime": "2026-10-22T13:48:00.892Z",
+    "language": "python",
+    "kernelType": "notebook",
+    "isPrivate": true,
+    "enableGpu": true,
+    "enableInternet": false,
+    "kernelDataSources": [
+      "sorokin/pip-install-unsloth-flash-patch"
+    ],
+    "competitionDataSources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "modelDataSources": [
+      "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+    ],
+    "enableTpu": false,
+    "currentVersionNumber": 1,
+    "dockerImage": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868",
+    "machineShape": "NvidiaL4"
+  },
+  "all_cell_sources_match": true,
+  "remote_source_sha256": "ce40995093706361c5e762969e7fe2af6cd798bab65f8bd7d72135c6b3d0424f",
+  "scope": "Read-only source and startup verification; no submission"
+}

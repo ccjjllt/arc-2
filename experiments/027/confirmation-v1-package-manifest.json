@@ -1,0 +1,84 @@
+{
+  "status": "prepared_not_launched",
+  "ref": "zhuating/arc2-027-ttt-view-ensemble-c23",
+  "notebook_sha256": "bb1e8320a087a0abb57948077ff15f794c1206f53abdb2b235c2969b7cca87b0",
+  "notebook_bytes": 108007,
+  "reference_script_version_id": 312063593,
+  "reference_sha256": "71416dd4d9885ecf2ae99b8b72ff0ef66d31fac0354b79d2d11071c49f84111d",
+  "base_package_notebook_sha256": "ca8c03dde65b9eca40ed5ea8e48938ef58737994b2a2e122b76edc5c671cf4ef",
+  "input_identity": {
+    "challenges_sha256": "f65c90df99dfc3f5bdf2c234342463e73082695140487d82774a21e99cce73ae",
+    "manifest_sha256": "c56c16780af77a60715dcb595f2993f3ed26ed410f23c9f26f5e824a9359fd97",
+    "n_tasks": 23,
+    "n_queries": 34,
+    "task_ids": [
+      "16b78196",
+      "1ae2feb7",
+      "31f7f899",
+      "409aa875",
+      "4a21e3da",
+      "5dbc8537",
+      "6e4f6532",
+      "7666fa5d",
+      "7c66cb00",
+      "80a900e0",
+      "88bcf3b4",
+      "89565ca0",
+      "8b7bacbf",
+      "8b9c3697",
+      "9bbf930d",
+      "a32d8b75",
+      "a6f40cea",
+      "b5ca7ac4",
+      "b9e38dc0",
+      "d59b0160",
+      "dd6b8c4b",
+      "f560132c",
+      "faa9f03d"
+    ]
+  },
+  "selection_helper_sha256": "ccd9d3b4e4b349e25e1f889b66e30b5f0413e60ba1df605644f6c56b1914db31",
+  "runtime_source_sha256": {
+    "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+    "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+    "arc_solver.py": "6b9ffc044d1f81e97c989d3b50597bc681f9b1f75928c0cf1315c8edec3be4db",
+    "starter.py": "ea604d1503b8966a1ccb8ddf977074062b932568e3ea5a60727bfbfc80b9408c"
+  },
+  "session_seconds": 10800,
+  "solver_global_seconds": 10680,
+  "solver_hard_seconds": 10740,
+  "python_hash_seed": 27027,
+  "branches": {
+    "base": {
+      "gpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "ttt_augmentation_seed": 1
+    },
+    "extra": {
+      "gpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "ttt_augmentation_seed": 2
+    }
+  },
+  "scheduling": "Base four-worker original sorted queue first; extra same queue only after base process group exits, using remaining shared session budget; no half-budget base cutoff.",
+  "preserved": [
+    "Original sft139 BF16 V1 only; no offline-trained weight",
+    "Original rank256 128-step TTT, random_state42 and Trainer seed42",
+    "Original DFS n2 seed2, rescoring, 1200-second task soft check",
+    "Original loader/decoder B4 for each branch, original four-worker starter"
+  ],
+  "changes": [
+    "TTT data augmentation seed1 versus seed2 across sequential passes",
+    "Fixed common Python hash seed; per-branch atomic candidates and event logs",
+    "Frozen no-parameter base-first/extra-first-slot ensemble helper"
+  ],
+  "warning": "One-shot public strategy confirmation; all planned queries retain denominator even if extra deadline truncates. Not a blind or formal competition score."
+}

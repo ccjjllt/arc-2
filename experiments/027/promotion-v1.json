@@ -1,0 +1,148 @@
+{
+  "decided_at_utc": "2026-10-25T13:41:12.428006+00:00",
+  "research_ref": "zhuating/arc2-027-ttt-view-ensemble-c23",
+  "research_script_version_id": 362101452,
+  "n_tasks": 23,
+  "n_queries": 34,
+  "scoring_source": "Official Kaggle competition paired challenge/solution snapshot; exact challenges SHA e7c62a4b...",
+  "criteria": {
+    "all34_inputs_matched": true,
+    "ensemble_final_query_net_positive": true,
+    "predeclared_prefix_all_available": true,
+    "predeclared_prefix_nets_nonnegative": true,
+    "base_all23_TTT128_and34queries_searched": true,
+    "both_return0_no_hard_timeout": true,
+    "all_archive_hashes_match": true
+  },
+  "decision": "promote_fixed_ensemble_to_formal_ordinary_validation_then_submit",
+  "selected_policy": "ensemble",
+  "selected_policy_rule": "Frozen base-first/extra-first rule, unchanged. Extra-alone8/34 is diagnostic, not a posthoc selection.",
+  "scores": {
+    "base_B4": {
+      "exact_queries": 5,
+      "matched_denominator": 34,
+      "em2": 0.14705882352941177,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 28,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 3
+    },
+    "extra_B4": {
+      "exact_queries": 8,
+      "matched_denominator": 34,
+      "em2": 0.23529411764705882,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 29,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 6
+    },
+    "ensemble": {
+      "exact_queries": 6,
+      "matched_denominator": 34,
+      "em2": 0.17647058823529413,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 30,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 4
+    },
+    "prefix25": {
+      "exact_queries": 5,
+      "matched_denominator": 34,
+      "em2": 0.14705882352941177,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 28,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 3
+    },
+    "prefix50": {
+      "exact_queries": 5,
+      "matched_denominator": 34,
+      "em2": 0.14705882352941177,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 28,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 3
+    },
+    "prefix75": {
+      "exact_queries": 6,
+      "matched_denominator": 34,
+      "em2": 0.17647058823529413,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 28,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 4
+    }
+  },
+  "paired": {
+    "extra_B4": {
+      "gained": [
+        "a6f40cea_0",
+        "b5ca7ac4_0",
+        "b9e38dc0_0"
+      ],
+      "lost": [],
+      "net_queries": 3
+    },
+    "ensemble": {
+      "gained": [
+        "a6f40cea_0"
+      ],
+      "lost": [],
+      "net_queries": 1
+    },
+    "prefix25": {
+      "gained": [],
+      "lost": [],
+      "net_queries": 0
+    },
+    "prefix50": {
+      "gained": [],
+      "lost": [],
+      "net_queries": 0
+    },
+    "prefix75": {
+      "gained": [
+        "a6f40cea_0"
+      ],
+      "lost": [],
+      "net_queries": 1
+    }
+  },
+  "coverage": {
+    "base": {
+      "ttt_tasks": 23,
+      "ttt_steps": [
+        128
+      ],
+      "searched_queries": 34,
+      "search_batches": 133,
+      "tasks_completed": 23
+    },
+    "extra": {
+      "ttt_tasks": 23,
+      "ttt_steps": [
+        128
+      ],
+      "searched_queries": 34,
+      "search_batches": 132,
+      "tasks_completed": 23
+    }
+  },
+  "research_wall_seconds": 8208.98108458519,
+  "formal_ref_intended": "zhuating/arc2-027-ttt-view-ensemble-formal",
+  "formal_version": null,
+  "formal_script_version_id": null,
+  "submission_ref": null,
+  "user_authorization": "Continue deep research and make an improved submission as soon as possible; confirmation plan already authorized direct submission after validation.",
+  "limitations": [
+    "Small public confirmation does not guarantee leaderboard gain.",
+    "Version-mismatched GitHub first score30/34 retained separately, never treated as full denominator.",
+    "Formal extra may cover only a prefix under12h; fixed prefix checks passed."
+  ]
+}

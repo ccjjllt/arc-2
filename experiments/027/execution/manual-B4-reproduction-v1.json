@@ -1,0 +1,29 @@
+{
+  "base": {
+    "all_B4_queries_reproduced": true,
+    "n_queries": 34
+  },
+  "extra": {
+    "all_B4_queries_reproduced": true,
+    "n_queries": 34
+  },
+  "executed_source_checks": {
+    "arc_loader.py": {
+      "exact": false,
+      "IPython_appended_final_newline_only": true
+    },
+    "arc_decoder.py": {
+      "exact": false,
+      "IPython_appended_final_newline_only": true
+    },
+    "arc_solver.py": {
+      "exact": false,
+      "IPython_appended_final_newline_only": true
+    },
+    "starter.py": {
+      "exact": false,
+      "IPython_appended_final_newline_only": true
+    }
+  },
+  "selector_matches_frozen_sha": true
+}

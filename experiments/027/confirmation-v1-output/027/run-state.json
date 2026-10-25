@@ -1,0 +1,106 @@
+{
+  "notebook_started": 1792925028.5301259,
+  "session_deadline": 1792935828.5301259,
+  "global_end_time": 1792935708.5301259,
+  "solver_hard_deadline": 1792935768.5301259,
+  "input_identity": {
+    "challenges_sha256": "f65c90df99dfc3f5bdf2c234342463e73082695140487d82774a21e99cce73ae",
+    "manifest_sha256": "c56c16780af77a60715dcb595f2993f3ed26ed410f23c9f26f5e824a9359fd97",
+    "n_tasks": 23,
+    "n_queries": 34,
+    "task_ids": [
+      "16b78196",
+      "1ae2feb7",
+      "31f7f899",
+      "409aa875",
+      "4a21e3da",
+      "5dbc8537",
+      "6e4f6532",
+      "7666fa5d",
+      "7c66cb00",
+      "80a900e0",
+      "88bcf3b4",
+      "89565ca0",
+      "8b7bacbf",
+      "8b9c3697",
+      "9bbf930d",
+      "a32d8b75",
+      "a6f40cea",
+      "b5ca7ac4",
+      "b9e38dc0",
+      "d59b0160",
+      "dd6b8c4b",
+      "f560132c",
+      "faa9f03d"
+    ]
+  },
+  "python_hash_seed": 27027,
+  "source": "Original V1 312063593 / successful 025 wrapper",
+  "policy": "Sequential original-weight TTT-view ensemble; base seed1 then extra seed2",
+  "research_only": true,
+  "evaluation_gold_read": false,
+  "base": {
+    "branch": "base",
+    "ttt_augmentation_seed": 1,
+    "started_at": 1792925163.8775125,
+    "global_end_time": 1792935708.5301259,
+    "hard_deadline": 1792935768.5301259,
+    "timed_out": false,
+    "command": [
+      "/usr/bin/python3",
+      "-u",
+      "starter.py",
+      "--end-time",
+      "1792935708.5301259"
+    ],
+    "process_group_id": 134,
+    "return_code": 0,
+    "status": "completed",
+    "finished_at": 1792929104.1896741,
+    "elapsed_s": 3940.312161922455
+  },
+  "extra": {
+    "branch": "extra",
+    "ttt_augmentation_seed": 2,
+    "started_at": 1792929104.1902528,
+    "global_end_time": 1792935708.5301259,
+    "hard_deadline": 1792935768.5301259,
+    "timed_out": false,
+    "command": [
+      "/usr/bin/python3",
+      "-u",
+      "starter.py",
+      "--end-time",
+      "1792935708.5301259"
+    ],
+    "process_group_id": 6294,
+    "return_code": 0,
+    "status": "completed",
+    "finished_at": 1792933214.7511368,
+    "elapsed_s": 4110.560884475708
+  },
+  "status": "completed",
+  "return_code": 0,
+  "solver_finished_at": 1792933214.75155,
+  "arms": {
+    "base": {
+      "scored_records": 416,
+      "candidate_file_count": 325,
+      "prediction_sha256": "fd91b53f7d273fd7b80885148a57bca3cb25ffa491552ea8540e9b9d151fd410",
+      "queries_with_real_candidates": 28
+    },
+    "extra": {
+      "scored_records": 440,
+      "candidate_file_count": 341,
+      "prediction_sha256": "4c95bf2f4fb2a5ce755071a2eb71b090308f203e1d27fc1399711abac5615df6",
+      "queries_with_real_candidates": 29
+    }
+  },
+  "finished_at": 1792933237.5112102,
+  "elapsed_s": 8208.98108458519,
+  "planned_tasks": 23,
+  "planned_queries": 34,
+  "ensemble_prediction_sha256": "cd107b617e9017cf28b5ec5ecb597550676c4a6470bd81202918d4a4b7c0ae17",
+  "ensemble_decisions": 34,
+  "python": "3.11.13"
+}

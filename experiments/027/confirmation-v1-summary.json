@@ -1,0 +1,312 @@
+{
+  "created_at_utc": "2026-10-25T13:49:08.708165+00:00",
+  "ref": "zhuating/arc2-027-ttt-view-ensemble-c23",
+  "version": 1,
+  "script_version_id": 362101452,
+  "status": "COMPLETE",
+  "planned_tasks": 23,
+  "planned_queries": 34,
+  "matched_queries": 34,
+  "score_source": "Official Kaggle competition snapshot matching exact inference challenge bytes",
+  "score_source_manifest": "execution/official-kaggle-scoring-snapshot.json",
+  "fixed_GitHub_reference_initial_mismatches": [
+    {
+      "query_key": "4a21e3da_0",
+      "reason": "query_input_unmatched"
+    },
+    {
+      "query_key": "f560132c_0",
+      "reason": "query_input_unmatched"
+    },
+    {
+      "query_key": "faa9f03d_0",
+      "reason": "demo_mismatch"
+    },
+    {
+      "query_key": "faa9f03d_1",
+      "reason": "demo_mismatch"
+    }
+  ],
+  "original_30_matched_gold_hashes_agree": true,
+  "policies": {
+    "base_B4": {
+      "exact_queries": 5,
+      "matched_denominator": 34,
+      "em2": 0.14705882352941177,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 28,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 3,
+      "task_mean_exact_fraction": 0.16666666666666666,
+      "scored_oracle_queries": 6
+    },
+    "extra_B4": {
+      "exact_queries": 8,
+      "matched_denominator": 34,
+      "em2": 0.23529411764705882,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 29,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 6,
+      "task_mean_exact_fraction": 0.2971014492753623,
+      "scored_oracle_queries": 10
+    },
+    "ensemble": {
+      "exact_queries": 6,
+      "matched_denominator": 34,
+      "em2": 0.17647058823529413,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 30,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 4,
+      "task_mean_exact_fraction": 0.21014492753623187,
+      "scored_oracle_queries": 10
+    },
+    "prefix25": {
+      "exact_queries": 5,
+      "matched_denominator": 34,
+      "em2": 0.14705882352941177,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 28,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 3,
+      "task_mean_exact_fraction": 0.16666666666666666
+    },
+    "prefix50": {
+      "exact_queries": 5,
+      "matched_denominator": 34,
+      "em2": 0.14705882352941177,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 28,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 3,
+      "task_mean_exact_fraction": 0.16666666666666666
+    },
+    "prefix75": {
+      "exact_queries": 6,
+      "matched_denominator": 34,
+      "em2": 0.17647058823529413,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 28,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 4,
+      "task_mean_exact_fraction": 0.21014492753623187
+    }
+  },
+  "paired": {
+    "extra_B4": {
+      "gained": [
+        "a6f40cea_0",
+        "b5ca7ac4_0",
+        "b9e38dc0_0"
+      ],
+      "lost": [],
+      "net_queries": 3
+    },
+    "ensemble": {
+      "gained": [
+        "a6f40cea_0"
+      ],
+      "lost": [],
+      "net_queries": 1
+    },
+    "prefix25": {
+      "gained": [],
+      "lost": [],
+      "net_queries": 0
+    },
+    "prefix50": {
+      "gained": [],
+      "lost": [],
+      "net_queries": 0
+    },
+    "prefix75": {
+      "gained": [
+        "a6f40cea_0"
+      ],
+      "lost": [],
+      "net_queries": 1
+    }
+  },
+  "promotion_criteria": {
+    "all34_inputs_matched": true,
+    "ensemble_final_query_net_positive": true,
+    "predeclared_prefix_all_available": true,
+    "predeclared_prefix_nets_nonnegative": true,
+    "base_all23_TTT128_and34queries_searched": true,
+    "both_return0_no_hard_timeout": true,
+    "all_archive_hashes_match": true
+  },
+  "selected_policy": "ensemble",
+  "not_posthoc_selected_policy": "extra_B4 eight of34 diagnostic only",
+  "arms": {
+    "base": {
+      "scored_records": 416,
+      "candidate_file_count": 325,
+      "prediction_sha256": "fd91b53f7d273fd7b80885148a57bca3cb25ffa491552ea8540e9b9d151fd410",
+      "queries_with_real_candidates": 28,
+      "events": {
+        "task_start": 23,
+        "ttt_start": 23,
+        "ttt_end": 23,
+        "search_start": 133,
+        "search_end": 133,
+        "raw_batch_saved": 133,
+        "score_start": 235,
+        "score_end": 235,
+        "scored_file_saved": 325,
+        "task_end": 23
+      },
+      "raw_unique_candidates": 235,
+      "raw_scored_grids_identical": true,
+      "TTT_global_steps": [
+        128
+      ],
+      "last_task_end": 1792929100.883943
+    },
+    "extra": {
+      "scored_records": 440,
+      "candidate_file_count": 341,
+      "prediction_sha256": "4c95bf2f4fb2a5ce755071a2eb71b090308f203e1d27fc1399711abac5615df6",
+      "queries_with_real_candidates": 29,
+      "events": {
+        "task_start": 23,
+        "ttt_start": 23,
+        "ttt_end": 23,
+        "search_start": 132,
+        "search_end": 132,
+        "raw_batch_saved": 132,
+        "score_start": 236,
+        "score_end": 236,
+        "scored_file_saved": 341,
+        "task_end": 23
+      },
+      "raw_unique_candidates": 236,
+      "raw_scored_grids_identical": true,
+      "TTT_global_steps": [
+        128
+      ],
+      "last_task_end": 1792933211.3900273
+    }
+  },
+  "run_state": {
+    "notebook_started": 1792925028.5301259,
+    "session_deadline": 1792935828.5301259,
+    "global_end_time": 1792935708.5301259,
+    "solver_hard_deadline": 1792935768.5301259,
+    "input_identity": {
+      "challenges_sha256": "f65c90df99dfc3f5bdf2c234342463e73082695140487d82774a21e99cce73ae",
+      "manifest_sha256": "c56c16780af77a60715dcb595f2993f3ed26ed410f23c9f26f5e824a9359fd97",
+      "n_tasks": 23,
+      "n_queries": 34,
+      "task_ids": [
+        "16b78196",
+        "1ae2feb7",
+        "31f7f899",
+        "409aa875",
+        "4a21e3da",
+        "5dbc8537",
+        "6e4f6532",
+        "7666fa5d",
+        "7c66cb00",
+        "80a900e0",
+        "88bcf3b4",
+        "89565ca0",
+        "8b7bacbf",
+        "8b9c3697",
+        "9bbf930d",
+        "a32d8b75",
+        "a6f40cea",
+        "b5ca7ac4",
+        "b9e38dc0",
+        "d59b0160",
+        "dd6b8c4b",
+        "f560132c",
+        "faa9f03d"
+      ]
+    },
+    "python_hash_seed": 27027,
+    "source": "Original V1 312063593 / successful 025 wrapper",
+    "policy": "Sequential original-weight TTT-view ensemble; base seed1 then extra seed2",
+    "research_only": true,
+    "evaluation_gold_read": false,
+    "base": {
+      "branch": "base",
+      "ttt_augmentation_seed": 1,
+      "started_at": 1792925163.8775125,
+      "global_end_time": 1792935708.5301259,
+      "hard_deadline": 1792935768.5301259,
+      "timed_out": false,
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "starter.py",
+        "--end-time",
+        "1792935708.5301259"
+      ],
+      "process_group_id": 134,
+      "return_code": 0,
+      "status": "completed",
+      "finished_at": 1792929104.1896741,
+      "elapsed_s": 3940.312161922455
+    },
+    "extra": {
+      "branch": "extra",
+      "ttt_augmentation_seed": 2,
+      "started_at": 1792929104.1902528,
+      "global_end_time": 1792935708.5301259,
+      "hard_deadline": 1792935768.5301259,
+      "timed_out": false,
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "starter.py",
+        "--end-time",
+        "1792935708.5301259"
+      ],
+      "process_group_id": 6294,
+      "return_code": 0,
+      "status": "completed",
+      "finished_at": 1792933214.7511368,
+      "elapsed_s": 4110.560884475708
+    },
+    "status": "completed",
+    "return_code": 0,
+    "solver_finished_at": 1792933214.75155,
+    "arms": {
+      "base": {
+        "scored_records": 416,
+        "candidate_file_count": 325,
+        "prediction_sha256": "fd91b53f7d273fd7b80885148a57bca3cb25ffa491552ea8540e9b9d151fd410",
+        "queries_with_real_candidates": 28
+      },
+      "extra": {
+        "scored_records": 440,
+        "candidate_file_count": 341,
+        "prediction_sha256": "4c95bf2f4fb2a5ce755071a2eb71b090308f203e1d27fc1399711abac5615df6",
+        "queries_with_real_candidates": 29
+      }
+    },
+    "finished_at": 1792933237.5112102,
+    "elapsed_s": 8208.98108458519,
+    "planned_tasks": 23,
+    "planned_queries": 34,
+    "ensemble_prediction_sha256": "cd107b617e9017cf28b5ec5ecb597550676c4a6470bd81202918d4a4b7c0ae17",
+    "ensemble_decisions": 34,
+    "python": "3.11.13"
+  },
+  "wall_seconds": 8208.98108458519,
+  "Beijing_start": "2026-10-25T18:43:48.530126+08:00",
+  "Beijing_finished": "2026-10-25T21:00:37.511210+08:00",
+  "freeze_complete": "frozen-v1/prediction-freeze.json",
+  "freeze_prefixes": "prefixes-v1/prediction-freeze.json",
+  "artifact_verification": "execution/artifact-verification-v1.json",
+  "decision": "Promote fixed ensemble to ordinary four-task validation and exact-version competition submission under existing authorization.",
+  "leaderboard_score_effect": "Unmeasured; public diagnostic gain is not a leaderboard result."
+}

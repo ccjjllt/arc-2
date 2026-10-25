@@ -1,8 +1,8 @@
 # 文档索引
 
-当前研究入口：[023计划](plan/023-score-recovery-and-selection.md)与[023进展](progress/023-score-recovery-and-selection.md)。当前产物见[023目录导航](../experiments/023/README.md)。
+当前研究入口：[027计划](plan/027-nvarc-ttt-view-ensemble.md)与[027进展](progress/027-nvarc-ttt-view-ensemble.md)，[产物导航](../experiments/027/README.md)。原权重独立TTT视图确认完成：base5/34→融合6/34，净增1、无丢失、前缀无回归；正式V1已启动原四题普通验证，完成绑定后直接提交。026失败续训配方保持结束，不复活其权重。
 
-最新研究与执行见[025研究缺陷与赛前提分决策](plan/025-research-gap-and-next-step.md)和[025进展§12](progress/025-research-gap-and-next-step.md#12-完整运行及同候选池评分完成)：GPU V2 COMPLETE，B4=R2=15/58，新增0／丢失0，oracle17/58；保留B4并结束R2，下一轮聚焦候选生成能力。
+025此前B4=R2=15/58、oracle17/58，已结束R2扩展。正式交付仍为023的30.14，参见[023进展](progress/023-score-recovery-and-selection.md)。
 
 `plan/`记录背景、假设和执行交接，`progress/`记录实际改动与实验。旧条目是历史快照；同轮后续追加及新轮次会更新或纠正早期结论。023的57582282于2026-10-25实查COMPLETE／公榜30.14，与历史最高持平，最新证据见023进展§9。
 
@@ -35,7 +35,8 @@
 | 023 恢复有效提交与候选选择交接 | [plan/023-score-recovery-and-selection.md](plan/023-score-recovery-and-selection.md) | [progress/023-score-recovery-and-selection.md](progress/023-score-recovery-and-selection.md)；正式57582282已COMPLETE／30.14并绑定361045383，与历史最高持平；原四题3／5仅公开诊断；下一步B4／R2确认未运行 |
 | 024 本地清理与目录整理 | [plan/024-project-organization.md](plan/024-project-organization.md) | [progress/024-project-organization.md](progress/024-project-organization.md)；仅目录维护，研究主线仍为023 |
 | 025 研究缺陷与赛前提分决策 | [plan/025-research-gap-and-next-step.md](plan/025-research-gap-and-next-step.md) | [progress/025-research-gap-and-next-step.md](progress/025-research-gap-and-next-step.md)；40task／58query确认完成，B4=R2=15/58，oracle17/58，无净增，保留B4 |
-| 026 NVARC额外训练规则覆盖挑战者 | [plan/026-nvarc-extra-rule-training.md](plan/026-nvarc-extra-rule-training.md) | [progress/026-nvarc-extra-rule-training.md](progress/026-nvarc-extra-rule-training.md)；V1已接受启动，固定16题配对、单个有界续训，结果待完成 |
+| 026 NVARC额外训练规则覆盖挑战者 | [plan/026-nvarc-extra-rule-training.md](plan/026-nvarc-extra-rule-training.md) | [progress/026-nvarc-extra-rule-training.md](progress/026-nvarc-extra-rule-training.md)；V1 COMPLETE，base=challenger=4/23，新增2／丢失2，oracle6→9；结束该配方 |
+| 027 原权重TTT视图集成与提交 | [plan/027-nvarc-ttt-view-ensemble.md](plan/027-nvarc-ttt-view-ensemble.md) | [progress/027-nvarc-ttt-view-ensemble.md](progress/027-nvarc-ttt-view-ensemble.md)；确认5→6/34、净1无回归；正式V1原四题普通验证运行中 |
 
 ## 操作与维护
 

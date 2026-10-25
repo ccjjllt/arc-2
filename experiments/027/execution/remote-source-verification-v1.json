@@ -1,0 +1,34 @@
+{
+  "checked_at_utc": "2026-10-25T10:43:11.307533+00:00",
+  "ref": "zhuating/arc2-027-ttt-view-ensemble-c23",
+  "status": {},
+  "metadata": {
+    "id": 140762645,
+    "ref": "zhuating/arc2-027-ttt-view-ensemble-c23",
+    "title": "arc2 027 ttt view ensemble c23",
+    "author": "zhuating",
+    "slug": "arc2-027-ttt-view-ensemble-c23",
+    "lastRunTime": "2026-10-22T10:43:10.858Z",
+    "language": "python",
+    "kernelType": "notebook",
+    "isPrivate": true,
+    "enableGpu": true,
+    "enableInternet": false,
+    "kernelDataSources": [
+      "sorokin/pip-install-unsloth-flash-patch"
+    ],
+    "competitionDataSources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "modelDataSources": [
+      "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+    ],
+    "enableTpu": false,
+    "currentVersionNumber": 1,
+    "dockerImage": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868",
+    "machineShape": "NvidiaL4"
+  },
+  "all_cell_sources_match": true,
+  "remote_source_sha256": "4ea883a532e4f99ac41cde51a3780efe46decf5c054407f1cdceecaca8287446",
+  "scope": "Read-only source and startup verification; no submission"
+}

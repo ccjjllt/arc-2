@@ -1,0 +1,125 @@
+{
+  "cohort": "027_original4B_TTT_view_ensemble_C23",
+  "decision_counts": {
+    "base_empty_use_extra_two": 2,
+    "different_extra_first_replace_second": 16,
+    "extra_empty_keep_base": 1,
+    "first_slots_agree_keep_base_second": 11,
+    "no_real_candidates": 4
+  },
+  "fixed_rule": "Keep base first. If extra has real candidates and its first grid is different, replace only base second with extra first; otherwise retain base second. Never scan extra second. If base has no real candidates, use extra two slots; if neither arm has candidates, use placeholders.",
+  "frozen_at_utc": "2026-10-25T13:12:48.326532+00:00",
+  "gold_read": false,
+  "inputs": [
+    {
+      "bytes": 24293,
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1/manifest.json",
+      "sha256": "c56c16780af77a60715dcb595f2993f3ed26ed410f23c9f26f5e824a9359fd97"
+    },
+    {
+      "bytes": 2913,
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/run-state.json",
+      "sha256": "da1ea57fbc1cdc7857314cf87fefe533c68fb868e01751062ec4cbb2abc2aa0c"
+    },
+    {
+      "bytes": 65472,
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/base/submission-B4.json",
+      "sha256": "fd91b53f7d273fd7b80885148a57bca3cb25ffa491552ea8540e9b9d151fd410"
+    },
+    {
+      "bytes": 585538,
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/base/scored-candidates.jsonl",
+      "sha256": "fbd8148792ce6cc77183886377c0971e430134335b5fe26ea1f924100bb53f6d"
+    },
+    {
+      "bytes": 115011,
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/base/raw-candidates-rank0.jsonl",
+      "sha256": "56640c549337ab216708e19f76e2d73e512dccc84a2083f5c4ecb62eb7c319bd"
+    },
+    {
+      "bytes": 107336,
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/base/raw-candidates-rank1.jsonl",
+      "sha256": "9e7731153ffb77c4b200b783f393e21200e21c49e738bdcfb5e1934916f2bd63"
+    },
+    {
+      "bytes": 120866,
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/base/raw-candidates-rank2.jsonl",
+      "sha256": "23bf7b2ee03c65e2b61cdd13b7ca06b23d34ab4208d0fa4d749c773eac9a49e4"
+    },
+    {
+      "bytes": 148145,
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/base/raw-candidates-rank3.jsonl",
+      "sha256": "4506ba0405f3fe49b5ba52ea803ca59ef3935a66e0a47cfdd14e21184f7937b4"
+    },
+    {
+      "bytes": 66555,
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/extra/submission-B4.json",
+      "sha256": "4c95bf2f4fb2a5ce755071a2eb71b090308f203e1d27fc1399711abac5615df6"
+    },
+    {
+      "bytes": 637319,
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/extra/scored-candidates.jsonl",
+      "sha256": "af961987f654b1cf2fd5e39e922f34353e07b1f09f7432309f9f395e2bd95521"
+    },
+    {
+      "bytes": 124080,
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/extra/raw-candidates-rank0.jsonl",
+      "sha256": "789394a49112cc947f5f8d391c7020eb22d29835756849d51530ef9ca7277bdb"
+    },
+    {
+      "bytes": 95260,
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/extra/raw-candidates-rank1.jsonl",
+      "sha256": "835fb04cdc95f92cf8b9f7fd243fcdf29fa31d0247d9db0f99b950bdb570f719"
+    },
+    {
+      "bytes": 161160,
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/extra/raw-candidates-rank2.jsonl",
+      "sha256": "faa87618ba52c445a297ba649e2c650a84eb5fe2fa6b3ecf62a620734b4c4dd9"
+    },
+    {
+      "bytes": 157121,
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/extra/raw-candidates-rank3.jsonl",
+      "sha256": "d487c8c75b42958687dc9b3da311153152fc993027a181b14795843f1336d742"
+    },
+    {
+      "bytes": 72296,
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1-output/027/submission-ensemble.json",
+      "sha256": "cd107b617e9017cf28b5ec5ecb597550676c4a6470bd81202918d4a4b7c0ae17"
+    }
+  ],
+  "n_queries": 34,
+  "n_tasks": 23,
+  "note": "All three predictions frozen before scoring. Ensemble oracle pools are the union of both arms, not selected answers.",
+  "outputs": {
+    "candidate-ledger.jsonl": {
+      "bytes": 72271,
+      "sha256": "8e520da2680d17c94709ea1a7e1e1d547259f71a88450d948920e9e48e2e248b"
+    },
+    "candidate-pools-raw.json": {
+      "bytes": 4918865,
+      "sha256": "f7fa26abcf6fc2475b38baeb12f9d5705266e70424d135bef8a95d56fb4542db"
+    },
+    "candidate-pools-scored.json": {
+      "bytes": 4918865,
+      "sha256": "f7fa26abcf6fc2475b38baeb12f9d5705266e70424d135bef8a95d56fb4542db"
+    },
+    "ensemble-decisions.jsonl": {
+      "bytes": 19098,
+      "sha256": "2a617133e0e1030a3ce28c126e09b66b5e07367bd0d73a0a53552fe0357fba20"
+    },
+    "submission-base_B4.json": {
+      "bytes": 65472,
+      "sha256": "fd91b53f7d273fd7b80885148a57bca3cb25ffa491552ea8540e9b9d151fd410"
+    },
+    "submission-ensemble.json": {
+      "bytes": 72296,
+      "sha256": "cd107b617e9017cf28b5ec5ecb597550676c4a6470bd81202918d4a4b7c0ae17"
+    },
+    "submission-extra_B4.json": {
+      "bytes": 66555,
+      "sha256": "4c95bf2f4fb2a5ce755071a2eb71b090308f203e1d27fc1399711abac5615df6"
+    }
+  },
+  "remote_ensemble_exactly_reproduced": true,
+  "selector_source_sha256": "ccd9d3b4e4b349e25e1f889b66e30b5f0413e60ba1df605644f6c56b1914db31"
+}

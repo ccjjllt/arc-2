@@ -1,0 +1,515 @@
+{"event": "optimizer_step", "time_unix": 1792913625.4127862, "step": 1, "elapsed_seconds": 190.15847422599995, "input_tokens": 8495, "supervised_tokens": 777, "peak_cuda_allocated_bytes": 8118147584}
+{"event": "trainer_log", "time_unix": 1792913625.4607325, "step": 1, "metrics": {"loss": 0.0065, "grad_norm": 1.8125, "learning_rate": 0.0, "epoch": 0.00390625}}
+{"event": "optimizer_step", "time_unix": 1792913632.0942624, "step": 2, "elapsed_seconds": 196.8399920490001, "input_tokens": 18543, "supervised_tokens": 2138, "peak_cuda_allocated_bytes": 8576153600}
+{"event": "trainer_log", "time_unix": 1792913632.0973625, "step": 2, "metrics": {"loss": 0.0249, "grad_norm": 1.4375, "learning_rate": 3.846153846153847e-07, "epoch": 0.0078125}}
+{"event": "optimizer_step", "time_unix": 1792913636.5147696, "step": 3, "elapsed_seconds": 201.260497086, "input_tokens": 25105, "supervised_tokens": 3120, "peak_cuda_allocated_bytes": 8576153600}
+{"event": "trainer_log", "time_unix": 1792913636.517874, "step": 3, "metrics": {"loss": 0.0067, "grad_norm": 1.484375, "learning_rate": 7.692307692307694e-07, "epoch": 0.01171875}}
+{"event": "optimizer_step", "time_unix": 1792913640.3000703, "step": 4, "elapsed_seconds": 205.04578671100012, "input_tokens": 31353, "supervised_tokens": 4088, "peak_cuda_allocated_bytes": 8576153600}
+{"event": "trainer_log", "time_unix": 1792913640.3032033, "step": 4, "metrics": {"loss": 0.0052, "grad_norm": 1.0546875, "learning_rate": 1.153846153846154e-06, "epoch": 0.015625}}
+{"event": "optimizer_step", "time_unix": 1792913646.7696676, "step": 5, "elapsed_seconds": 211.51539883200007, "input_tokens": 41797, "supervised_tokens": 5060, "peak_cuda_allocated_bytes": 8576153600}
+{"event": "trainer_log", "time_unix": 1792913646.7728035, "step": 5, "metrics": {"loss": 0.003, "grad_norm": 0.69921875, "learning_rate": 1.5384615384615387e-06, "epoch": 0.01953125}}
+{"event": "optimizer_step", "time_unix": 1792913651.797855, "step": 6, "elapsed_seconds": 216.54358614600005, "input_tokens": 50037, "supervised_tokens": 6038, "peak_cuda_allocated_bytes": 8576153600}
+{"event": "trainer_log", "time_unix": 1792913651.8010106, "step": 6, "metrics": {"loss": 0.0106, "grad_norm": 1.125, "learning_rate": 1.9230769230769234e-06, "epoch": 0.0234375}}
+{"event": "optimizer_step", "time_unix": 1792913655.6091042, "step": 7, "elapsed_seconds": 220.35480749299995, "input_tokens": 55706, "supervised_tokens": 6410, "peak_cuda_allocated_bytes": 8576153600}
+{"event": "trainer_log", "time_unix": 1792913655.612211, "step": 7, "metrics": {"loss": 0.0046, "grad_norm": 0.33984375, "learning_rate": 2.307692307692308e-06, "epoch": 0.02734375}}
+{"event": "optimizer_step", "time_unix": 1792913659.8221872, "step": 8, "elapsed_seconds": 224.5679058170001, "input_tokens": 62480, "supervised_tokens": 7598, "peak_cuda_allocated_bytes": 8576153600}
+{"event": "trainer_log", "time_unix": 1792913659.8252888, "step": 8, "metrics": {"loss": 0.0234, "grad_norm": 5.125, "learning_rate": 2.6923076923076923e-06, "epoch": 0.03125}}
+{"event": "optimizer_step", "time_unix": 1792913664.466759, "step": 9, "elapsed_seconds": 229.21248520400013, "input_tokens": 70019, "supervised_tokens": 8605, "peak_cuda_allocated_bytes": 8576153600}
+{"event": "trainer_log", "time_unix": 1792913664.469845, "step": 9, "metrics": {"loss": 0.0131, "grad_norm": 0.84765625, "learning_rate": 3.0769230769230774e-06, "epoch": 0.03515625}}
+{"event": "optimizer_step", "time_unix": 1792913668.6708903, "step": 10, "elapsed_seconds": 233.41660663900007, "input_tokens": 76405, "supervised_tokens": 9113, "peak_cuda_allocated_bytes": 8576153600}
+{"event": "trainer_log", "time_unix": 1792913668.6740184, "step": 10, "metrics": {"loss": 0.0107, "grad_norm": 1.0859375, "learning_rate": 3.4615384615384617e-06, "epoch": 0.0390625}}
+{"event": "optimizer_step", "time_unix": 1792913671.57964, "step": 11, "elapsed_seconds": 236.32537307400003, "input_tokens": 80676, "supervised_tokens": 9521, "peak_cuda_allocated_bytes": 8576153600}
+{"event": "trainer_log", "time_unix": 1792913671.5826871, "step": 11, "metrics": {"loss": 0.165, "grad_norm": 3.515625, "learning_rate": 3.846153846153847e-06, "epoch": 0.04296875}}
+{"event": "optimizer_step", "time_unix": 1792913674.926384, "step": 12, "elapsed_seconds": 239.67211703800012, "input_tokens": 86166, "supervised_tokens": 10093, "peak_cuda_allocated_bytes": 8576153600}
+{"event": "trainer_log", "time_unix": 1792913674.9294426, "step": 12, "metrics": {"loss": 0.0112, "grad_norm": 1.1796875, "learning_rate": 4.230769230769231e-06, "epoch": 0.046875}}
+{"event": "optimizer_step", "time_unix": 1792913678.319541, "step": 13, "elapsed_seconds": 243.06525846299996, "input_tokens": 91688, "supervised_tokens": 10739, "peak_cuda_allocated_bytes": 8576153600}
+{"event": "trainer_log", "time_unix": 1792913678.3226097, "step": 13, "metrics": {"loss": 0.051, "grad_norm": 2.265625, "learning_rate": 4.615384615384616e-06, "epoch": 0.05078125}}
+{"event": "optimizer_step", "time_unix": 1792913682.6266544, "step": 14, "elapsed_seconds": 247.37237945100014, "input_tokens": 98816, "supervised_tokens": 11051, "peak_cuda_allocated_bytes": 8576153600}
+{"event": "trainer_log", "time_unix": 1792913682.629785, "step": 14, "metrics": {"loss": 0.033, "grad_norm": 7.5, "learning_rate": 5e-06, "epoch": 0.0546875}}
+{"event": "optimizer_step", "time_unix": 1792913686.985972, "step": 15, "elapsed_seconds": 251.73168063399999, "input_tokens": 105552, "supervised_tokens": 11863, "peak_cuda_allocated_bytes": 8576153600}
+{"event": "trainer_log", "time_unix": 1792913686.9987679, "step": 15, "metrics": {"loss": 0.0035, "grad_norm": 0.90234375, "learning_rate": 5.384615384615385e-06, "epoch": 0.05859375}}
+{"event": "optimizer_step", "time_unix": 1792913695.329602, "step": 16, "elapsed_seconds": 260.0753117910001, "input_tokens": 117468, "supervised_tokens": 13055, "peak_cuda_allocated_bytes": 8723204096}
+{"event": "trainer_log", "time_unix": 1792913695.4022958, "step": 16, "metrics": {"loss": 0.0294, "grad_norm": 21.25, "learning_rate": 5.769230769230769e-06, "epoch": 0.0625}}
+{"event": "optimizer_step", "time_unix": 1792913697.9715436, "step": 17, "elapsed_seconds": 262.7172629480001, "input_tokens": 121427, "supervised_tokens": 13544, "peak_cuda_allocated_bytes": 8723204096}
+{"event": "trainer_log", "time_unix": 1792913697.9746995, "step": 17, "metrics": {"loss": 0.0015, "grad_norm": 0.98046875, "learning_rate": 6.153846153846155e-06, "epoch": 0.06640625}}
+{"event": "optimizer_step", "time_unix": 1792913702.7749043, "step": 18, "elapsed_seconds": 267.5206302460001, "input_tokens": 128959, "supervised_tokens": 14792, "peak_cuda_allocated_bytes": 8723204096}
+{"event": "trainer_log", "time_unix": 1792913702.778005, "step": 18, "metrics": {"loss": 0.0105, "grad_norm": 0.96484375, "learning_rate": 6.538461538461539e-06, "epoch": 0.0703125}}
+{"event": "optimizer_step", "time_unix": 1792913709.4196613, "step": 19, "elapsed_seconds": 274.16538246899995, "input_tokens": 139161, "supervised_tokens": 16158, "peak_cuda_allocated_bytes": 8723204096}
+{"event": "trainer_log", "time_unix": 1792913709.4227254, "step": 19, "metrics": {"loss": 0.0009, "grad_norm": 0.302734375, "learning_rate": 6.923076923076923e-06, "epoch": 0.07421875}}
+{"event": "optimizer_step", "time_unix": 1792913720.8958318, "step": 20, "elapsed_seconds": 285.641564388, "input_tokens": 155025, "supervised_tokens": 18290, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913720.898878, "step": 20, "metrics": {"loss": 0.0029, "grad_norm": 0.296875, "learning_rate": 7.307692307692308e-06, "epoch": 0.078125}}
+{"event": "optimizer_step", "time_unix": 1792913724.689825, "step": 21, "elapsed_seconds": 289.43555424400006, "input_tokens": 160819, "supervised_tokens": 18883, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913724.6929646, "step": 21, "metrics": {"loss": 0.0178, "grad_norm": 3.625, "learning_rate": 7.692307692307694e-06, "epoch": 0.08203125}}
+{"event": "optimizer_step", "time_unix": 1792913727.4304886, "step": 22, "elapsed_seconds": 292.17622371100015, "input_tokens": 165079, "supervised_tokens": 19463, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913727.4335444, "step": 22, "metrics": {"loss": 0.0299, "grad_norm": 7.78125, "learning_rate": 8.076923076923077e-06, "epoch": 0.0859375}}
+{"event": "optimizer_step", "time_unix": 1792913734.7393432, "step": 23, "elapsed_seconds": 299.485073799, "input_tokens": 176061, "supervised_tokens": 21059, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913734.742398, "step": 23, "metrics": {"loss": 0.005, "grad_norm": 1.25, "learning_rate": 8.461538461538462e-06, "epoch": 0.08984375}}
+{"event": "optimizer_step", "time_unix": 1792913740.012237, "step": 24, "elapsed_seconds": 304.757959498, "input_tokens": 183325, "supervised_tokens": 22239, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913740.0152955, "step": 24, "metrics": {"loss": 0.0221, "grad_norm": 0.8515625, "learning_rate": 8.846153846153847e-06, "epoch": 0.09375}}
+{"event": "optimizer_step", "time_unix": 1792913748.8086839, "step": 25, "elapsed_seconds": 313.554398796, "input_tokens": 195995, "supervised_tokens": 23942, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913748.8118155, "step": 25, "metrics": {"loss": 0.0046, "grad_norm": 0.796875, "learning_rate": 9.230769230769232e-06, "epoch": 0.09765625}}
+{"event": "optimizer_step", "time_unix": 1792913755.8828135, "step": 26, "elapsed_seconds": 320.628538145, "input_tokens": 206668, "supervised_tokens": 25152, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913755.900883, "step": 26, "metrics": {"loss": 0.0217, "grad_norm": 1.59375, "learning_rate": 9.615384615384616e-06, "epoch": 0.1015625}}
+{"event": "optimizer_step", "time_unix": 1792913762.5283422, "step": 27, "elapsed_seconds": 327.2740646300001, "input_tokens": 216454, "supervised_tokens": 26121, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913762.5713432, "step": 27, "metrics": {"loss": 0.0189, "grad_norm": 7.4375, "learning_rate": 1e-05, "epoch": 0.10546875}}
+{"event": "optimizer_step", "time_unix": 1792913765.6836848, "step": 28, "elapsed_seconds": 330.42941900100004, "input_tokens": 221327, "supervised_tokens": 26668, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913765.6867535, "step": 28, "metrics": {"loss": 0.0474, "grad_norm": 3.078125, "learning_rate": 9.999533579822611e-06, "epoch": 0.109375}}
+{"event": "optimizer_step", "time_unix": 1792913767.947784, "step": 29, "elapsed_seconds": 332.693521058, "input_tokens": 224765, "supervised_tokens": 27126, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913767.9507961, "step": 29, "metrics": {"loss": 0.0016, "grad_norm": 0.2421875, "learning_rate": 9.998134406309555e-06, "epoch": 0.11328125}}
+{"event": "optimizer_step", "time_unix": 1792913772.2850077, "step": 30, "elapsed_seconds": 337.03072516400016, "input_tokens": 231623, "supervised_tokens": 28018, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913772.2880487, "step": 30, "metrics": {"loss": 0.0118, "grad_norm": 1.25, "learning_rate": 9.995802740501933e-06, "epoch": 0.1171875}}
+{"event": "optimizer_step", "time_unix": 1792913775.747351, "step": 31, "elapsed_seconds": 340.4930858130001, "input_tokens": 237003, "supervised_tokens": 28368, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913775.7503788, "step": 31, "metrics": {"loss": 0.0212, "grad_norm": 6.0625, "learning_rate": 9.99253901741414e-06, "epoch": 0.12109375}}
+{"event": "optimizer_step", "time_unix": 1792913782.2972198, "step": 32, "elapsed_seconds": 347.0429489170001, "input_tokens": 247001, "supervised_tokens": 29608, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "pilot_saved", "time_unix": 1792913782.5484726, "optimizer_step": 32, "elapsed_seconds": 347.0429489170001, "finite_loss": true, "adapter_path": "/kaggle/working/026/training/pilot_adapter"}
+{"event": "trainer_log", "time_unix": 1792913782.5517309, "step": 32, "metrics": {"loss": 0.0058, "grad_norm": 0.62890625, "learning_rate": 9.988343845952697e-06, "epoch": 0.125}}
+{"event": "optimizer_step", "time_unix": 1792913789.713305, "step": 33, "elapsed_seconds": 354.45904018600004, "input_tokens": 256898, "supervised_tokens": 30850, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913789.716365, "step": 33, "metrics": {"loss": 0.005, "grad_norm": 0.5625, "learning_rate": 9.983218008802648e-06, "epoch": 0.12890625}}
+{"event": "optimizer_step", "time_unix": 1792913795.8729773, "step": 34, "elapsed_seconds": 360.618695333, "input_tokens": 266172, "supervised_tokens": 31558, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913795.8760304, "step": 34, "metrics": {"loss": 0.014, "grad_norm": 3.234375, "learning_rate": 9.977162462281544e-06, "epoch": 0.1328125}}
+{"event": "optimizer_step", "time_unix": 1792913800.512566, "step": 35, "elapsed_seconds": 365.2583043720001, "input_tokens": 273285, "supervised_tokens": 32569, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913800.5155914, "step": 35, "metrics": {"loss": 0.0013, "grad_norm": 0.51171875, "learning_rate": 9.970178336161018e-06, "epoch": 0.13671875}}
+{"event": "optimizer_step", "time_unix": 1792913805.0764756, "step": 36, "elapsed_seconds": 369.82220687100016, "input_tokens": 280711, "supervised_tokens": 33716, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913805.0795188, "step": 36, "metrics": {"loss": 0.004, "grad_norm": 1.59375, "learning_rate": 9.962266933456008e-06, "epoch": 0.140625}}
+{"event": "optimizer_step", "time_unix": 1792913811.6002033, "step": 37, "elapsed_seconds": 376.34592963900013, "input_tokens": 290380, "supervised_tokens": 34637, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913811.6033022, "step": 37, "metrics": {"loss": 0.0208, "grad_norm": 6.03125, "learning_rate": 9.953429730181653e-06, "epoch": 0.14453125}}
+{"event": "optimizer_step", "time_unix": 1792913818.3243258, "step": 38, "elapsed_seconds": 383.070054025, "input_tokens": 300307, "supervised_tokens": 35460, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913818.3274415, "step": 38, "metrics": {"loss": 0.005, "grad_norm": 1.265625, "learning_rate": 9.943668375077926e-06, "epoch": 0.1484375}}
+{"event": "optimizer_step", "time_unix": 1792913821.3039901, "step": 39, "elapsed_seconds": 386.049711999, "input_tokens": 304876, "supervised_tokens": 36172, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913821.3070714, "step": 39, "metrics": {"loss": 0.1019, "grad_norm": 15.0, "learning_rate": 9.932984689302012e-06, "epoch": 0.15234375}}
+{"event": "optimizer_step", "time_unix": 1792913824.906605, "step": 40, "elapsed_seconds": 389.652343297, "input_tokens": 310541, "supervised_tokens": 36692, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913824.9096866, "step": 40, "metrics": {"loss": 0.0781, "grad_norm": 13.1875, "learning_rate": 9.921380666088558e-06, "epoch": 0.15625}}
+{"event": "optimizer_step", "time_unix": 1792913829.0928736, "step": 41, "elapsed_seconds": 393.83860726800003, "input_tokens": 317011, "supervised_tokens": 37049, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913829.0959616, "step": 41, "metrics": {"loss": 0.007, "grad_norm": 2.28125, "learning_rate": 9.908858470377793e-06, "epoch": 0.16015625}}
+{"event": "optimizer_step", "time_unix": 1792913833.771467, "step": 42, "elapsed_seconds": 398.5172061590001, "input_tokens": 323953, "supervised_tokens": 38005, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913833.7745223, "step": 42, "metrics": {"loss": 0.0001, "grad_norm": 0.0035858154296875, "learning_rate": 9.895420438411616e-06, "epoch": 0.1640625}}
+{"event": "optimizer_step", "time_unix": 1792913841.9030206, "step": 43, "elapsed_seconds": 406.648738805, "input_tokens": 334923, "supervised_tokens": 39253, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913841.9061613, "step": 43, "metrics": {"loss": 0.016, "grad_norm": 1.5078125, "learning_rate": 9.881069077297724e-06, "epoch": 0.16796875}}
+{"event": "optimizer_step", "time_unix": 1792913846.3635063, "step": 44, "elapsed_seconds": 411.1092354110001, "input_tokens": 342045, "supervised_tokens": 40179, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913846.366616, "step": 44, "metrics": {"loss": 0.0045, "grad_norm": 0.91796875, "learning_rate": 9.865807064541878e-06, "epoch": 0.171875}}
+{"event": "optimizer_step", "time_unix": 1792913848.7631505, "step": 45, "elapsed_seconds": 413.5088698490001, "input_tokens": 345209, "supervised_tokens": 40325, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913848.766279, "step": 45, "metrics": {"loss": 0.0679, "grad_norm": 8.5625, "learning_rate": 9.849637247548356e-06, "epoch": 0.17578125}}
+{"event": "optimizer_step", "time_unix": 1792913852.6385152, "step": 46, "elapsed_seconds": 417.3842572640001, "input_tokens": 350989, "supervised_tokens": 40959, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913852.6415997, "step": 46, "metrics": {"loss": 0.0059, "grad_norm": 1.703125, "learning_rate": 9.832562643088724e-06, "epoch": 0.1796875}}
+{"event": "optimizer_step", "time_unix": 1792913857.9176028, "step": 47, "elapsed_seconds": 422.663342821, "input_tokens": 358134, "supervised_tokens": 41532, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913857.920818, "step": 47, "metrics": {"loss": 0.0083, "grad_norm": 1.328125, "learning_rate": 9.814586436738998e-06, "epoch": 0.18359375}}
+{"event": "optimizer_step", "time_unix": 1792913861.8400776, "step": 48, "elapsed_seconds": 426.58579843300004, "input_tokens": 364270, "supervised_tokens": 42286, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913861.8480976, "step": 48, "metrics": {"loss": 0.0059, "grad_norm": 1.953125, "learning_rate": 9.795711982285317e-06, "epoch": 0.1875}}
+{"event": "optimizer_step", "time_unix": 1792913869.3272455, "step": 49, "elapsed_seconds": 434.072973069, "input_tokens": 375382, "supervised_tokens": 43502, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913869.3303435, "step": 49, "metrics": {"loss": 0.0098, "grad_norm": 2.171875, "learning_rate": 9.775942801098241e-06, "epoch": 0.19140625}}
+{"event": "optimizer_step", "time_unix": 1792913873.9465954, "step": 50, "elapsed_seconds": 438.6923287740001, "input_tokens": 382436, "supervised_tokens": 44063, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913873.9523344, "step": 50, "metrics": {"loss": 0.0072, "grad_norm": 0.9921875, "learning_rate": 9.755282581475769e-06, "epoch": 0.1953125}}
+{"event": "optimizer_step", "time_unix": 1792913878.511109, "step": 51, "elapsed_seconds": 443.2568370680001, "input_tokens": 389497, "supervised_tokens": 44415, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913878.5141726, "step": 51, "metrics": {"loss": 0.0433, "grad_norm": 13.9375, "learning_rate": 9.733735177955219e-06, "epoch": 0.19921875}}
+{"event": "optimizer_step", "time_unix": 1792913881.6118374, "step": 52, "elapsed_seconds": 446.35755935199995, "input_tokens": 394370, "supervised_tokens": 44818, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913881.615211, "step": 52, "metrics": {"loss": 0.0169, "grad_norm": 1.859375, "learning_rate": 9.711304610594104e-06, "epoch": 0.203125}}
+{"event": "optimizer_step", "time_unix": 1792913884.35751, "step": 53, "elapsed_seconds": 449.10324144800006, "input_tokens": 398784, "supervised_tokens": 45210, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913884.3605857, "step": 53, "metrics": {"loss": 0.0014, "grad_norm": 0.09912109375, "learning_rate": 9.687995064220102e-06, "epoch": 0.20703125}}
+{"event": "optimizer_step", "time_unix": 1792913888.524308, "step": 54, "elapsed_seconds": 453.27003834800007, "input_tokens": 405236, "supervised_tokens": 46116, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913888.5274215, "step": 54, "metrics": {"loss": 0.0052, "grad_norm": 0.79296875, "learning_rate": 9.66381088765032e-06, "epoch": 0.2109375}}
+{"event": "optimizer_step", "time_unix": 1792913892.667765, "step": 55, "elapsed_seconds": 457.4135038510001, "input_tokens": 411587, "supervised_tokens": 46569, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913892.670833, "step": 55, "metrics": {"loss": 0.0447, "grad_norm": 7.6875, "learning_rate": 9.638756592879923e-06, "epoch": 0.21484375}}
+{"event": "optimizer_step", "time_unix": 1792913895.238674, "step": 56, "elapsed_seconds": 459.98440706400015, "input_tokens": 415587, "supervised_tokens": 47188, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913895.241722, "step": 56, "metrics": {"loss": 0.0182, "grad_norm": 3.828125, "learning_rate": 9.61283685424036e-06, "epoch": 0.21875}}
+{"event": "optimizer_step", "time_unix": 1792913902.370841, "step": 57, "elapsed_seconds": 467.11657513499995, "input_tokens": 426319, "supervised_tokens": 48113, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913902.3739243, "step": 57, "metrics": {"loss": 0.0078, "grad_norm": 1.171875, "learning_rate": 9.586056507527266e-06, "epoch": 0.22265625}}
+{"event": "optimizer_step", "time_unix": 1792913906.688038, "step": 58, "elapsed_seconds": 471.433755387, "input_tokens": 432261, "supervised_tokens": 48809, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913906.6911385, "step": 58, "metrics": {"loss": 0.0514, "grad_norm": 4.78125, "learning_rate": 9.558420549098269e-06, "epoch": 0.2265625}}
+{"event": "optimizer_step", "time_unix": 1792913912.4837472, "step": 59, "elapsed_seconds": 477.2294804200001, "input_tokens": 440899, "supervised_tokens": 49651, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913912.486867, "step": 59, "metrics": {"loss": 0.0348, "grad_norm": 1.0546875, "learning_rate": 9.529934134940819e-06, "epoch": 0.23046875}}
+{"event": "optimizer_step", "time_unix": 1792913920.5129886, "step": 60, "elapsed_seconds": 485.25870194699996, "input_tokens": 451643, "supervised_tokens": 50957, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913920.516156, "step": 60, "metrics": {"loss": 0.0022, "grad_norm": 0.06884765625, "learning_rate": 9.500602579710256e-06, "epoch": 0.234375}}
+{"event": "optimizer_step", "time_unix": 1792913926.0595756, "step": 61, "elapsed_seconds": 490.80530998100016, "input_tokens": 460007, "supervised_tokens": 51476, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913926.0626733, "step": 61, "metrics": {"loss": 0.0105, "grad_norm": 1.0703125, "learning_rate": 9.470431355738257e-06, "epoch": 0.23828125}}
+{"event": "optimizer_step", "time_unix": 1792913932.2416139, "step": 62, "elapsed_seconds": 496.9873497840001, "input_tokens": 468832, "supervised_tokens": 52257, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913932.2447555, "step": 62, "metrics": {"loss": 0.0106, "grad_norm": 2.140625, "learning_rate": 9.439426092011877e-06, "epoch": 0.2421875}}
+{"event": "optimizer_step", "time_unix": 1792913939.1461976, "step": 63, "elapsed_seconds": 503.89192288699996, "input_tokens": 479198, "supervised_tokens": 53734, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913939.149316, "step": 63, "metrics": {"loss": 0.0087, "grad_norm": 3.453125, "learning_rate": 9.407592573123359e-06, "epoch": 0.24609375}}
+{"event": "optimizer_step", "time_unix": 1792913942.4994266, "step": 64, "elapsed_seconds": 507.2450345, "input_tokens": 484112, "supervised_tokens": 54380, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913942.5025635, "step": 64, "metrics": {"loss": 0.0053, "grad_norm": 1.53125, "learning_rate": 9.374936738190913e-06, "epoch": 0.25}}
+{"event": "optimizer_step", "time_unix": 1792913946.2379947, "step": 65, "elapsed_seconds": 510.9837138390001, "input_tokens": 490131, "supervised_tokens": 55072, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913946.2411113, "step": 65, "metrics": {"loss": 0.0084, "grad_norm": 0.69921875, "learning_rate": 9.341464679750669e-06, "epoch": 0.25390625}}
+{"event": "optimizer_step", "time_unix": 1792913951.3258924, "step": 66, "elapsed_seconds": 516.0716266510001, "input_tokens": 497836, "supervised_tokens": 55629, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913951.3291001, "step": 66, "metrics": {"loss": 0.0124, "grad_norm": 3.28125, "learning_rate": 9.307182642620001e-06, "epoch": 0.2578125}}
+{"event": "optimizer_step", "time_unix": 1792913956.4148712, "step": 67, "elapsed_seconds": 521.16060629, "input_tokens": 505976, "supervised_tokens": 56522, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913956.417969, "step": 67, "metrics": {"loss": 0.0029, "grad_norm": 2.4375, "learning_rate": 9.272097022732444e-06, "epoch": 0.26171875}}
+{"event": "optimizer_step", "time_unix": 1792913962.1725569, "step": 68, "elapsed_seconds": 526.9182863000001, "input_tokens": 514711, "supervised_tokens": 57383, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913962.1799343, "step": 68, "metrics": {"loss": 0.0132, "grad_norm": 0.8515625, "learning_rate": 9.236214365944418e-06, "epoch": 0.265625}}
+{"event": "optimizer_step", "time_unix": 1792913965.3235457, "step": 69, "elapsed_seconds": 530.0692792520001, "input_tokens": 519496, "supervised_tokens": 58033, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913965.3266587, "step": 69, "metrics": {"loss": 0.0614, "grad_norm": 4.90625, "learning_rate": 9.199541366813984e-06, "epoch": 0.26953125}}
+{"event": "optimizer_step", "time_unix": 1792913970.694511, "step": 70, "elapsed_seconds": 535.4402514390001, "input_tokens": 527671, "supervised_tokens": 59187, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913970.6976216, "step": 70, "metrics": {"loss": 0.0128, "grad_norm": 1.4296875, "learning_rate": 9.16208486735184e-06, "epoch": 0.2734375}}
+{"event": "optimizer_step", "time_unix": 1792913973.4369774, "step": 71, "elapsed_seconds": 538.1826899740001, "input_tokens": 532017, "supervised_tokens": 59711, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913973.4400806, "step": 71, "metrics": {"loss": 0.0423, "grad_norm": 3.296875, "learning_rate": 9.123851855744842e-06, "epoch": 0.27734375}}
+{"event": "optimizer_step", "time_unix": 1792913976.6493802, "step": 72, "elapsed_seconds": 541.395116876, "input_tokens": 537155, "supervised_tokens": 59922, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913976.6524918, "step": 72, "metrics": {"loss": 0.0026, "grad_norm": 1.625, "learning_rate": 9.08484946505221e-06, "epoch": 0.28125}}
+{"event": "optimizer_step", "time_unix": 1792913979.7130997, "step": 73, "elapsed_seconds": 544.4588223640001, "input_tokens": 541825, "supervised_tokens": 60577, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913979.7162018, "step": 73, "metrics": {"loss": 0.0172, "grad_norm": 1.3984375, "learning_rate": 9.045084971874738e-06, "epoch": 0.28515625}}
+{"event": "optimizer_step", "time_unix": 1792913984.3351207, "step": 74, "elapsed_seconds": 549.080853234, "input_tokens": 549205, "supervised_tokens": 61343, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913984.3382552, "step": 74, "metrics": {"loss": 0.0141, "grad_norm": 4.46875, "learning_rate": 9.004565794997209e-06, "epoch": 0.2890625}}
+{"event": "optimizer_step", "time_unix": 1792913990.4248705, "step": 75, "elapsed_seconds": 555.1706036, "input_tokens": 558101, "supervised_tokens": 62675, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913990.4280016, "step": 75, "metrics": {"loss": 0.0033, "grad_norm": 0.984375, "learning_rate": 8.963299494004292e-06, "epoch": 0.29296875}}
+{"event": "optimizer_step", "time_unix": 1792913995.1801822, "step": 76, "elapsed_seconds": 559.925909907, "input_tokens": 565457, "supervised_tokens": 63521, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792913995.1832755, "step": 76, "metrics": {"loss": 0.0587, "grad_norm": 6.65625, "learning_rate": 8.921293767870157e-06, "epoch": 0.296875}}
+{"event": "optimizer_step", "time_unix": 1792914003.2905626, "step": 77, "elapsed_seconds": 568.0362965940001, "input_tokens": 577791, "supervised_tokens": 64928, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914003.2936902, "step": 77, "metrics": {"loss": 0.0003, "grad_norm": 0.1513671875, "learning_rate": 8.8785564535221e-06, "epoch": 0.30078125}}
+{"event": "optimizer_step", "time_unix": 1792914007.592302, "step": 78, "elapsed_seconds": 572.338035212, "input_tokens": 584619, "supervised_tokens": 65716, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914007.5954192, "step": 78, "metrics": {"loss": 0.0208, "grad_norm": 4.40625, "learning_rate": 8.835095524378413e-06, "epoch": 0.3046875}}
+{"event": "optimizer_step", "time_unix": 1792914010.5066278, "step": 79, "elapsed_seconds": 575.252362513, "input_tokens": 589110, "supervised_tokens": 66098, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914010.5097342, "step": 79, "metrics": {"loss": 0.0322, "grad_norm": 6.125, "learning_rate": 8.790919088860815e-06, "epoch": 0.30859375}}
+{"event": "optimizer_step", "time_unix": 1792914015.932245, "step": 80, "elapsed_seconds": 580.677970166, "input_tokens": 596872, "supervised_tokens": 66922, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914015.935339, "step": 80, "metrics": {"loss": 0.0341, "grad_norm": 0.9765625, "learning_rate": 8.746035388881655e-06, "epoch": 0.3125}}
+{"event": "optimizer_step", "time_unix": 1792914021.8415864, "step": 81, "elapsed_seconds": 586.587317024, "input_tokens": 604976, "supervised_tokens": 67924, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914021.8446898, "step": 81, "metrics": {"loss": 0.0003, "grad_norm": 0.0213623046875, "learning_rate": 8.70045279830626e-06, "epoch": 0.31640625}}
+{"event": "optimizer_step", "time_unix": 1792914028.413498, "step": 82, "elapsed_seconds": 593.159231808, "input_tokens": 614947, "supervised_tokens": 68896, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914028.4165847, "step": 82, "metrics": {"loss": 0.0292, "grad_norm": 4.71875, "learning_rate": 8.65417982139062e-06, "epoch": 0.3203125}}
+{"event": "optimizer_step", "time_unix": 1792914030.4355965, "step": 83, "elapsed_seconds": 595.181331022, "input_tokens": 617677, "supervised_tokens": 69097, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914030.4387023, "step": 83, "metrics": {"loss": 0.0153, "grad_norm": 1.5703125, "learning_rate": 8.60722509119478e-06, "epoch": 0.32421875}}
+{"event": "optimizer_step", "time_unix": 1792914036.5081303, "step": 84, "elapsed_seconds": 601.2538609560002, "input_tokens": 626809, "supervised_tokens": 70491, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914036.511277, "step": 84, "metrics": {"loss": 0.0154, "grad_norm": 1.2265625, "learning_rate": 8.559597367972168e-06, "epoch": 0.328125}}
+{"event": "optimizer_step", "time_unix": 1792914040.6728134, "step": 85, "elapsed_seconds": 605.4185469070001, "input_tokens": 633550, "supervised_tokens": 71384, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914040.6759222, "step": 85, "metrics": {"loss": 0.0069, "grad_norm": 1.265625, "learning_rate": 8.511305537535238e-06, "epoch": 0.33203125}}
+{"event": "optimizer_step", "time_unix": 1792914044.0301647, "step": 86, "elapsed_seconds": 608.7758931660001, "input_tokens": 638804, "supervised_tokens": 71782, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914044.033277, "step": 86, "metrics": {"loss": 0.0161, "grad_norm": 7.9375, "learning_rate": 8.462358609597629e-06, "epoch": 0.3359375}}
+{"event": "optimizer_step", "time_unix": 1792914047.5401423, "step": 87, "elapsed_seconds": 612.2858713210001, "input_tokens": 644248, "supervised_tokens": 72557, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914047.5433252, "step": 87, "metrics": {"loss": 0.0078, "grad_norm": 0.8828125, "learning_rate": 8.412765716093273e-06, "epoch": 0.33984375}}
+{"event": "optimizer_step", "time_unix": 1792914054.90459, "step": 88, "elapsed_seconds": 619.6503226740001, "input_tokens": 654676, "supervised_tokens": 73556, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914054.9077425, "step": 88, "metrics": {"loss": 0.0034, "grad_norm": 0.734375, "learning_rate": 8.362536109472637e-06, "epoch": 0.34375}}
+{"event": "optimizer_step", "time_unix": 1792914062.4738758, "step": 89, "elapsed_seconds": 627.219610929, "input_tokens": 664944, "supervised_tokens": 74968, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914062.4771593, "step": 89, "metrics": {"loss": 0.0232, "grad_norm": 1.328125, "learning_rate": 8.31167916097654e-06, "epoch": 0.34765625}}
+{"event": "optimizer_step", "time_unix": 1792914067.278303, "step": 90, "elapsed_seconds": 632.0240415790001, "input_tokens": 672144, "supervised_tokens": 75552, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914067.281541, "step": 90, "metrics": {"loss": 0.0001, "grad_norm": 0.040283203125, "learning_rate": 8.260204358887753e-06, "epoch": 0.3515625}}
+{"event": "optimizer_step", "time_unix": 1792914070.847266, "step": 91, "elapsed_seconds": 635.5930021010001, "input_tokens": 677866, "supervised_tokens": 76396, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914070.8504288, "step": 91, "metrics": {"loss": 0.0067, "grad_norm": 2.296875, "learning_rate": 8.208121306760806e-06, "epoch": 0.35546875}}
+{"event": "optimizer_step", "time_unix": 1792914081.604258, "step": 92, "elapsed_seconds": 646.3499784800001, "input_tokens": 693448, "supervised_tokens": 78388, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914081.6256218, "step": 92, "metrics": {"loss": 0.0019, "grad_norm": 0.7578125, "learning_rate": 8.155439721630265e-06, "epoch": 0.359375}}
+{"event": "optimizer_step", "time_unix": 1792914087.8461118, "step": 93, "elapsed_seconds": 652.5918334150001, "input_tokens": 702606, "supervised_tokens": 79563, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914087.84924, "step": 93, "metrics": {"loss": 0.0016, "grad_norm": 0.7265625, "learning_rate": 8.102169432197842e-06, "epoch": 0.36328125}}
+{"event": "optimizer_step", "time_unix": 1792914095.7004986, "step": 94, "elapsed_seconds": 660.4462306, "input_tokens": 714187, "supervised_tokens": 80759, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914095.7101028, "step": 94, "metrics": {"loss": 0.0098, "grad_norm": 1.1328125, "learning_rate": 8.048320376998675e-06, "epoch": 0.3671875}}
+{"event": "optimizer_step", "time_unix": 1792914100.8989532, "step": 95, "elapsed_seconds": 665.64467595, "input_tokens": 722419, "supervised_tokens": 81513, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914100.9021494, "step": 95, "metrics": {"loss": 0.0081, "grad_norm": 2.53125, "learning_rate": 7.993902602547113e-06, "epoch": 0.37109375}}
+{"event": "optimizer_step", "time_unix": 1792914105.7980487, "step": 96, "elapsed_seconds": 670.5437732330001, "input_tokens": 729947, "supervised_tokens": 82495, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914105.80119, "step": 96, "metrics": {"loss": 0.0002, "grad_norm": 0.162109375, "learning_rate": 7.938926261462366e-06, "epoch": 0.375}}
+{"event": "optimizer_step", "time_unix": 1792914114.564143, "step": 97, "elapsed_seconds": 679.3098704720001, "input_tokens": 742025, "supervised_tokens": 83979, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914114.5685954, "step": 97, "metrics": {"loss": 0.0007, "grad_norm": 0.2353515625, "learning_rate": 7.883401610574338e-06, "epoch": 0.37890625}}
+{"event": "optimizer_step", "time_unix": 1792914119.325337, "step": 98, "elapsed_seconds": 684.07106821, "input_tokens": 749531, "supervised_tokens": 84800, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914119.3285024, "step": 98, "metrics": {"loss": 0.0085, "grad_norm": 2.796875, "learning_rate": 7.82733900901003e-06, "epoch": 0.3828125}}
+{"event": "optimizer_step", "time_unix": 1792914122.4844728, "step": 99, "elapsed_seconds": 687.230204916, "input_tokens": 754076, "supervised_tokens": 85179, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914122.4876308, "step": 99, "metrics": {"loss": 0.0589, "grad_norm": 6.40625, "learning_rate": 7.770748916260875e-06, "epoch": 0.38671875}}
+{"event": "optimizer_step", "time_unix": 1792914125.2789056, "step": 100, "elapsed_seconds": 690.0246401320001, "input_tokens": 758213, "supervised_tokens": 85577, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914125.2821267, "step": 100, "metrics": {"loss": 0.0258, "grad_norm": 2.484375, "learning_rate": 7.71364189023131e-06, "epoch": 0.390625}}
+{"event": "optimizer_step", "time_unix": 1792914130.1605883, "step": 101, "elapsed_seconds": 694.906326223, "input_tokens": 765234, "supervised_tokens": 86358, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914130.1637259, "step": 101, "metrics": {"loss": 0.0112, "grad_norm": 1.625, "learning_rate": 7.656028585269017e-06, "epoch": 0.39453125}}
+{"event": "optimizer_step", "time_unix": 1792914135.589813, "step": 102, "elapsed_seconds": 700.3355461460001, "input_tokens": 773517, "supervised_tokens": 87670, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914135.5943086, "step": 102, "metrics": {"loss": 0.0568, "grad_norm": 7.75, "learning_rate": 7.597919750177168e-06, "epoch": 0.3984375}}
+{"event": "optimizer_step", "time_unix": 1792914139.1731892, "step": 103, "elapsed_seconds": 703.918914056, "input_tokens": 778857, "supervised_tokens": 87987, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914139.176326, "step": 103, "metrics": {"loss": 0.0404, "grad_norm": 2.96875, "learning_rate": 7.539326226209032e-06, "epoch": 0.40234375}}
+{"event": "optimizer_step", "time_unix": 1792914142.3259714, "step": 104, "elapsed_seconds": 707.0716948280001, "input_tokens": 783795, "supervised_tokens": 88088, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914142.329119, "step": 104, "metrics": {"loss": 0.044, "grad_norm": 16.375, "learning_rate": 7.4802589450453415e-06, "epoch": 0.40625}}
+{"event": "optimizer_step", "time_unix": 1792914147.7615063, "step": 105, "elapsed_seconds": 712.50724008, "input_tokens": 792083, "supervised_tokens": 89278, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914147.764668, "step": 105, "metrics": {"loss": 0.0053, "grad_norm": 0.6640625, "learning_rate": 7.420728926754803e-06, "epoch": 0.41015625}}
+{"event": "optimizer_step", "time_unix": 1792914152.6399949, "step": 106, "elapsed_seconds": 717.385720233, "input_tokens": 799259, "supervised_tokens": 90183, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914152.6432676, "step": 106, "metrics": {"loss": 0.0114, "grad_norm": 2.34375, "learning_rate": 7.360747277738094e-06, "epoch": 0.4140625}}
+{"event": "optimizer_step", "time_unix": 1792914157.115879, "step": 107, "elapsed_seconds": 721.861614035, "input_tokens": 806379, "supervised_tokens": 90816, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914157.1190596, "step": 107, "metrics": {"loss": 0.0589, "grad_norm": 11.625, "learning_rate": 7.300325188655762e-06, "epoch": 0.41796875}}
+{"event": "optimizer_step", "time_unix": 1792914161.2399879, "step": 108, "elapsed_seconds": 725.9857106910001, "input_tokens": 812171, "supervised_tokens": 91446, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914161.2431746, "step": 108, "metrics": {"loss": 0.0363, "grad_norm": 3.046875, "learning_rate": 7.2394739323404105e-06, "epoch": 0.421875}}
+{"event": "optimizer_step", "time_unix": 1792914166.955022, "step": 109, "elapsed_seconds": 731.7007448070001, "input_tokens": 820801, "supervised_tokens": 92314, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914166.9582083, "step": 109, "metrics": {"loss": 0.0046, "grad_norm": 0.91796875, "learning_rate": 7.178204861693546e-06, "epoch": 0.42578125}}
+{"event": "optimizer_step", "time_unix": 1792914172.3835654, "step": 110, "elapsed_seconds": 737.1292980170001, "input_tokens": 828189, "supervised_tokens": 93171, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914172.38675, "step": 110, "metrics": {"loss": 0.0105, "grad_norm": 0.494140625, "learning_rate": 7.116529407567489e-06, "epoch": 0.4296875}}
+{"event": "optimizer_step", "time_unix": 1792914174.7232885, "step": 111, "elapsed_seconds": 739.469016278, "input_tokens": 831792, "supervised_tokens": 93555, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914174.726415, "step": 111, "metrics": {"loss": 0.0393, "grad_norm": 1.3203125, "learning_rate": 7.054459076632742e-06, "epoch": 0.43359375}}
+{"event": "optimizer_step", "time_unix": 1792914184.6658692, "step": 112, "elapsed_seconds": 749.4115848250001, "input_tokens": 845459, "supervised_tokens": 95242, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914184.689163, "step": 112, "metrics": {"loss": 0.0354, "grad_norm": 11.125, "learning_rate": 6.9920054492312086e-06, "epoch": 0.4375}}
+{"event": "optimizer_step", "time_unix": 1792914189.7060595, "step": 113, "elapsed_seconds": 754.4517720460001, "input_tokens": 852854, "supervised_tokens": 95806, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914189.709231, "step": 113, "metrics": {"loss": 0.0047, "grad_norm": 1.6875, "learning_rate": 6.9291801772156775e-06, "epoch": 0.44140625}}
+{"event": "optimizer_step", "time_unix": 1792914195.372344, "step": 114, "elapsed_seconds": 760.118078302, "input_tokens": 861355, "supervised_tokens": 96917, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914195.375508, "step": 114, "metrics": {"loss": 0.0025, "grad_norm": 0.875, "learning_rate": 6.865994981775958e-06, "epoch": 0.4453125}}
+{"event": "optimizer_step", "time_unix": 1792914198.8323398, "step": 115, "elapsed_seconds": 763.578055659, "input_tokens": 866305, "supervised_tokens": 97500, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914198.8357053, "step": 115, "metrics": {"loss": 0.0655, "grad_norm": 3.859375, "learning_rate": 6.802461651252073e-06, "epoch": 0.44921875}}
+{"event": "optimizer_step", "time_unix": 1792914203.309328, "step": 116, "elapsed_seconds": 768.055040818, "input_tokens": 873323, "supervised_tokens": 98335, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914203.312508, "step": 116, "metrics": {"loss": 0.0045, "grad_norm": 0.828125, "learning_rate": 6.738592038934946e-06, "epoch": 0.453125}}
+{"event": "optimizer_step", "time_unix": 1792914207.588616, "step": 117, "elapsed_seconds": 772.334350786, "input_tokens": 879437, "supervised_tokens": 98555, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914207.5918193, "step": 117, "metrics": {"loss": 0.0328, "grad_norm": 5.53125, "learning_rate": 6.674398060854931e-06, "epoch": 0.45703125}}
+{"event": "optimizer_step", "time_unix": 1792914211.8397045, "step": 118, "elapsed_seconds": 776.585435056, "input_tokens": 886277, "supervised_tokens": 99649, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914211.8429015, "step": 118, "metrics": {"loss": 0.0057, "grad_norm": 1.15625, "learning_rate": 6.609891693558692e-06, "epoch": 0.4609375}}
+{"event": "optimizer_step", "time_unix": 1792914217.4629996, "step": 119, "elapsed_seconds": 782.2087229440001, "input_tokens": 894807, "supervised_tokens": 100859, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914217.466162, "step": 119, "metrics": {"loss": 0.0135, "grad_norm": 1.734375, "learning_rate": 6.545084971874738e-06, "epoch": 0.46484375}}
+{"event": "optimizer_step", "time_unix": 1792914222.223382, "step": 120, "elapsed_seconds": 786.9691136420001, "input_tokens": 902002, "supervised_tokens": 101693, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914222.2268171, "step": 120, "metrics": {"loss": 0.0058, "grad_norm": 0.3046875, "learning_rate": 6.479989986668118e-06, "epoch": 0.46875}}
+{"event": "optimizer_step", "time_unix": 1792914226.2898812, "step": 121, "elapsed_seconds": 791.0356143930001, "input_tokens": 908454, "supervised_tokens": 102245, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914226.2931101, "step": 121, "metrics": {"loss": 0.0163, "grad_norm": 2.078125, "learning_rate": 6.41461888258465e-06, "epoch": 0.47265625}}
+{"event": "optimizer_step", "time_unix": 1792914232.6481988, "step": 122, "elapsed_seconds": 797.393921177, "input_tokens": 918380, "supervised_tokens": 103352, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914232.6653557, "step": 122, "metrics": {"loss": 0.009, "grad_norm": 1.3671875, "learning_rate": 6.348983855785122e-06, "epoch": 0.4765625}}
+{"event": "optimizer_step", "time_unix": 1792914236.0420673, "step": 123, "elapsed_seconds": 800.787785969, "input_tokens": 923768, "supervised_tokens": 103651, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914236.0452967, "step": 123, "metrics": {"loss": 0.0316, "grad_norm": 11.75, "learning_rate": 6.283097151669869e-06, "epoch": 0.48046875}}
+{"event": "optimizer_step", "time_unix": 1792914239.8397849, "step": 124, "elapsed_seconds": 804.5855240160001, "input_tokens": 929837, "supervised_tokens": 103962, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914239.8430178, "step": 124, "metrics": {"loss": 0.0172, "grad_norm": 3.375, "learning_rate": 6.216971062594179e-06, "epoch": 0.484375}}
+{"event": "optimizer_step", "time_unix": 1792914244.575302, "step": 125, "elapsed_seconds": 809.3210324250001, "input_tokens": 936436, "supervised_tokens": 104811, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914244.595802, "step": 125, "metrics": {"loss": 0.0204, "grad_norm": 7.0, "learning_rate": 6.1506179255749335e-06, "epoch": 0.48828125}}
+{"event": "optimizer_step", "time_unix": 1792914248.2498004, "step": 126, "elapsed_seconds": 812.995528921, "input_tokens": 942394, "supervised_tokens": 105643, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914248.2530534, "step": 126, "metrics": {"loss": 0.0058, "grad_norm": 1.6015625, "learning_rate": 6.084050119988905e-06, "epoch": 0.4921875}}
+{"event": "optimizer_step", "time_unix": 1792914250.827577, "step": 127, "elapsed_seconds": 815.573310317, "input_tokens": 946488, "supervised_tokens": 106240, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914250.8308136, "step": 127, "metrics": {"loss": 0.0016, "grad_norm": 0.48828125, "learning_rate": 6.0172800652631706e-06, "epoch": 0.49609375}}
+{"event": "optimizer_step", "time_unix": 1792914255.7945478, "step": 128, "elapsed_seconds": 820.540281539, "input_tokens": 954041, "supervised_tokens": 107370, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914255.7977555, "step": 128, "metrics": {"loss": 0.003, "grad_norm": 1.046875, "learning_rate": 5.950320218558037e-06, "epoch": 0.5}}
+{"event": "optimizer_step", "time_unix": 1792914262.5234196, "step": 129, "elapsed_seconds": 827.269151148, "input_tokens": 964125, "supervised_tokens": 108634, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914262.5266328, "step": 129, "metrics": {"loss": 0.0036, "grad_norm": 1.140625, "learning_rate": 5.883183072442938e-06, "epoch": 0.50390625}}
+{"event": "optimizer_step", "time_unix": 1792914264.8460193, "step": 130, "elapsed_seconds": 829.59174257, "input_tokens": 967703, "supervised_tokens": 108999, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914264.8492446, "step": 130, "metrics": {"loss": 0.0162, "grad_norm": 1.5703125, "learning_rate": 5.815881152565712e-06, "epoch": 0.5078125}}
+{"event": "optimizer_step", "time_unix": 1792914270.9307666, "step": 131, "elapsed_seconds": 835.6765015640001, "input_tokens": 976691, "supervised_tokens": 110055, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914270.9340327, "step": 131, "metrics": {"loss": 0.0144, "grad_norm": 0.91796875, "learning_rate": 5.7484270153157215e-06, "epoch": 0.51171875}}
+{"event": "optimizer_step", "time_unix": 1792914277.1511753, "step": 132, "elapsed_seconds": 841.8969048690001, "input_tokens": 985491, "supervised_tokens": 110737, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914277.1543622, "step": 132, "metrics": {"loss": 0.0321, "grad_norm": 0.98828125, "learning_rate": 5.680833245481234e-06, "epoch": 0.515625}}
+{"event": "optimizer_step", "time_unix": 1792914281.8800366, "step": 133, "elapsed_seconds": 846.6257597480001, "input_tokens": 992167, "supervised_tokens": 111349, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914281.8832502, "step": 133, "metrics": {"loss": 0.0176, "grad_norm": 0.92578125, "learning_rate": 5.613112453901493e-06, "epoch": 0.51953125}}
+{"event": "optimizer_step", "time_unix": 1792914286.3069053, "step": 134, "elapsed_seconds": 851.0526427570001, "input_tokens": 998697, "supervised_tokens": 112086, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914286.3101432, "step": 134, "metrics": {"loss": 0.127, "grad_norm": 7.25, "learning_rate": 5.5452772751139496e-06, "epoch": 0.5234375}}
+{"event": "optimizer_step", "time_unix": 1792914293.6857035, "step": 135, "elapsed_seconds": 858.4314289460001, "input_tokens": 1009627, "supervised_tokens": 113063, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914293.7349675, "step": 135, "metrics": {"loss": 0.0202, "grad_norm": 2.625, "learning_rate": 5.477340364997051e-06, "epoch": 0.52734375}}
+{"event": "optimizer_step", "time_unix": 1792914296.1197762, "step": 136, "elapsed_seconds": 860.865515466, "input_tokens": 1013113, "supervised_tokens": 113581, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914296.1230114, "step": 136, "metrics": {"loss": 0.0229, "grad_norm": 1.359375, "learning_rate": 5.409314398409067e-06, "epoch": 0.53125}}
+{"event": "optimizer_step", "time_unix": 1792914304.2952707, "step": 137, "elapsed_seconds": 869.040989134, "input_tokens": 1025481, "supervised_tokens": 115298, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914304.3301048, "step": 137, "metrics": {"loss": 0.0176, "grad_norm": 1.4921875, "learning_rate": 5.341212066823356e-06, "epoch": 0.53515625}}
+{"event": "optimizer_step", "time_unix": 1792914307.4014235, "step": 138, "elapsed_seconds": 872.147159675, "input_tokens": 1030129, "supervised_tokens": 115913, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914307.4046552, "step": 138, "metrics": {"loss": 0.0091, "grad_norm": 0.6640625, "learning_rate": 5.27304607596055e-06, "epoch": 0.5390625}}
+{"event": "optimizer_step", "time_unix": 1792914315.0789552, "step": 139, "elapsed_seconds": 879.82466596, "input_tokens": 1041358, "supervised_tokens": 117215, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914315.0822358, "step": 139, "metrics": {"loss": 0.0155, "grad_norm": 3.09375, "learning_rate": 5.204829143418072e-06, "epoch": 0.54296875}}
+{"event": "optimizer_step", "time_unix": 1792914322.4346926, "step": 140, "elapsed_seconds": 887.1804248570002, "input_tokens": 1051940, "supervised_tokens": 117937, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914322.4379277, "step": 140, "metrics": {"loss": 0.001, "grad_norm": 0.8671875, "learning_rate": 5.136573996297431e-06, "epoch": 0.546875}}
+{"event": "optimizer_step", "time_unix": 1792914325.7872033, "step": 141, "elapsed_seconds": 890.532936501, "input_tokens": 1057246, "supervised_tokens": 118615, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914325.7904327, "step": 141, "metrics": {"loss": 0.0077, "grad_norm": 2.109375, "learning_rate": 5.068293368829755e-06, "epoch": 0.55078125}}
+{"event": "optimizer_step", "time_unix": 1792914334.9441397, "step": 142, "elapsed_seconds": 899.6898746050001, "input_tokens": 1070714, "supervised_tokens": 120229, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914334.9473813, "step": 142, "metrics": {"loss": 0.0043, "grad_norm": 1.15625, "learning_rate": 5e-06, "epoch": 0.5546875}}
+{"event": "optimizer_step", "time_unix": 1792914340.880212, "step": 143, "elapsed_seconds": 905.625933041, "input_tokens": 1079511, "supervised_tokens": 121487, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914340.919567, "step": 143, "metrics": {"loss": 0.011, "grad_norm": 0.9921875, "learning_rate": 4.931706631170246e-06, "epoch": 0.55859375}}
+{"event": "optimizer_step", "time_unix": 1792914344.614053, "step": 144, "elapsed_seconds": 909.3597764660001, "input_tokens": 1085297, "supervised_tokens": 121873, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914344.617296, "step": 144, "metrics": {"loss": 0.0026, "grad_norm": 0.9296875, "learning_rate": 4.863426003702572e-06, "epoch": 0.5625}}
+{"event": "optimizer_step", "time_unix": 1792914349.6060262, "step": 145, "elapsed_seconds": 914.351744645, "input_tokens": 1093005, "supervised_tokens": 122735, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914349.6092794, "step": 145, "metrics": {"loss": 0.0, "grad_norm": 0.0162353515625, "learning_rate": 4.795170856581929e-06, "epoch": 0.56640625}}
+{"event": "optimizer_step", "time_unix": 1792914359.5830088, "step": 146, "elapsed_seconds": 924.328726078, "input_tokens": 1106981, "supervised_tokens": 124713, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914359.597747, "step": 146, "metrics": {"loss": 0.0041, "grad_norm": 2.75, "learning_rate": 4.7269539240394505e-06, "epoch": 0.5703125}}
+{"event": "optimizer_step", "time_unix": 1792914362.8932126, "step": 147, "elapsed_seconds": 927.638943661, "input_tokens": 1111829, "supervised_tokens": 125211, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914362.8964171, "step": 147, "metrics": {"loss": 0.0504, "grad_norm": 5.09375, "learning_rate": 4.6587879331766465e-06, "epoch": 0.57421875}}
+{"event": "optimizer_step", "time_unix": 1792914368.296532, "step": 148, "elapsed_seconds": 933.042266534, "input_tokens": 1120043, "supervised_tokens": 126065, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914368.2997506, "step": 148, "metrics": {"loss": 0.004, "grad_norm": 0.2470703125, "learning_rate": 4.5906856015909365e-06, "epoch": 0.578125}}
+{"event": "optimizer_step", "time_unix": 1792914375.5554366, "step": 149, "elapsed_seconds": 940.3011694090001, "input_tokens": 1130387, "supervised_tokens": 127649, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914375.558908, "step": 149, "metrics": {"loss": 0.0114, "grad_norm": 4.21875, "learning_rate": 4.52265963500295e-06, "epoch": 0.58203125}}
+{"event": "optimizer_step", "time_unix": 1792914379.7237973, "step": 150, "elapsed_seconds": 944.4695202760001, "input_tokens": 1136585, "supervised_tokens": 128389, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914379.7270503, "step": 150, "metrics": {"loss": 0.0246, "grad_norm": 2.671875, "learning_rate": 4.454722724886051e-06, "epoch": 0.5859375}}
+{"event": "optimizer_step", "time_unix": 1792914384.3289776, "step": 151, "elapsed_seconds": 949.0746999309999, "input_tokens": 1143533, "supervised_tokens": 128527, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914384.3322406, "step": 151, "metrics": {"loss": 0.0423, "grad_norm": 9.5625, "learning_rate": 4.386887546098509e-06, "epoch": 0.58984375}}
+{"event": "optimizer_step", "time_unix": 1792914389.6863909, "step": 152, "elapsed_seconds": 954.432123458, "input_tokens": 1151640, "supervised_tokens": 129358, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914389.6896477, "step": 152, "metrics": {"loss": 0.0156, "grad_norm": 7.71875, "learning_rate": 4.319166754518768e-06, "epoch": 0.59375}}
+{"event": "optimizer_step", "time_unix": 1792914398.4771621, "step": 153, "elapsed_seconds": 963.222890749, "input_tokens": 1163850, "supervised_tokens": 130559, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914398.5622318, "step": 153, "metrics": {"loss": 0.0286, "grad_norm": 12.0625, "learning_rate": 4.251572984684281e-06, "epoch": 0.59765625}}
+{"event": "optimizer_step", "time_unix": 1792914403.8174336, "step": 154, "elapsed_seconds": 968.563167277, "input_tokens": 1171937, "supervised_tokens": 131321, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914403.820673, "step": 154, "metrics": {"loss": 0.0365, "grad_norm": 12.875, "learning_rate": 4.18411884743429e-06, "epoch": 0.6015625}}
+{"event": "optimizer_step", "time_unix": 1792914407.151024, "step": 155, "elapsed_seconds": 971.896744959, "input_tokens": 1177243, "supervised_tokens": 131923, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914407.154316, "step": 155, "metrics": {"loss": 0.017, "grad_norm": 3.125, "learning_rate": 4.116816927557063e-06, "epoch": 0.60546875}}
+{"event": "optimizer_step", "time_unix": 1792914412.7819195, "step": 156, "elapsed_seconds": 977.527654039, "input_tokens": 1185991, "supervised_tokens": 133401, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914412.7851992, "step": 156, "metrics": {"loss": 0.0081, "grad_norm": 1.046875, "learning_rate": 4.0496797814419655e-06, "epoch": 0.609375}}
+{"event": "optimizer_step", "time_unix": 1792914418.3692377, "step": 157, "elapsed_seconds": 983.1149640800002, "input_tokens": 1194325, "supervised_tokens": 134670, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914418.378848, "step": 157, "metrics": {"loss": 0.001, "grad_norm": 0.36328125, "learning_rate": 3.982719934736832e-06, "epoch": 0.61328125}}
+{"event": "optimizer_step", "time_unix": 1792914424.0919027, "step": 158, "elapsed_seconds": 988.837639047, "input_tokens": 1202302, "supervised_tokens": 135763, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914424.0951552, "step": 158, "metrics": {"loss": 0.2198, "grad_norm": 8.25, "learning_rate": 3.915949880011096e-06, "epoch": 0.6171875}}
+{"event": "optimizer_step", "time_unix": 1792914431.9083104, "step": 159, "elapsed_seconds": 996.654046267, "input_tokens": 1212790, "supervised_tokens": 137209, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914431.9115932, "step": 159, "metrics": {"loss": 0.0137, "grad_norm": 0.38671875, "learning_rate": 3.849382074425069e-06, "epoch": 0.62109375}}
+{"event": "optimizer_step", "time_unix": 1792914436.727799, "step": 160, "elapsed_seconds": 1001.473513913, "input_tokens": 1219756, "supervised_tokens": 137725, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914436.7312846, "step": 160, "metrics": {"loss": 0.0165, "grad_norm": 2.828125, "learning_rate": 3.7830289374058214e-06, "epoch": 0.625}}
+{"event": "optimizer_step", "time_unix": 1792914440.7176428, "step": 161, "elapsed_seconds": 1005.4633726730001, "input_tokens": 1226086, "supervised_tokens": 138467, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914440.720899, "step": 161, "metrics": {"loss": 0.0099, "grad_norm": 1.8828125, "learning_rate": 3.7169028483301333e-06, "epoch": 0.62890625}}
+{"event": "optimizer_step", "time_unix": 1792914445.4694638, "step": 162, "elapsed_seconds": 1010.215195452, "input_tokens": 1233490, "supervised_tokens": 139435, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914445.4735508, "step": 162, "metrics": {"loss": 0.0356, "grad_norm": 6.71875, "learning_rate": 3.6510161442148783e-06, "epoch": 0.6328125}}
+{"event": "optimizer_step", "time_unix": 1792914451.467314, "step": 163, "elapsed_seconds": 1016.213036676, "input_tokens": 1242886, "supervised_tokens": 140550, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914451.4847763, "step": 163, "metrics": {"loss": 0.0048, "grad_norm": 0.71875, "learning_rate": 3.58538111741535e-06, "epoch": 0.63671875}}
+{"event": "optimizer_step", "time_unix": 1792914458.561601, "step": 164, "elapsed_seconds": 1023.3073316080001, "input_tokens": 1253642, "supervised_tokens": 141526, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914458.565297, "step": 164, "metrics": {"loss": 0.0088, "grad_norm": 0.65625, "learning_rate": 3.5200100133318836e-06, "epoch": 0.640625}}
+{"event": "optimizer_step", "time_unix": 1792914462.9601333, "step": 165, "elapsed_seconds": 1027.705860297, "input_tokens": 1260552, "supervised_tokens": 142288, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914462.9634025, "step": 165, "metrics": {"loss": 0.0077, "grad_norm": 2.171875, "learning_rate": 3.4549150281252635e-06, "epoch": 0.64453125}}
+{"event": "optimizer_step", "time_unix": 1792914468.4900823, "step": 166, "elapsed_seconds": 1033.235797382, "input_tokens": 1268590, "supervised_tokens": 143498, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914468.4933393, "step": 166, "metrics": {"loss": 0.0256, "grad_norm": 0.5703125, "learning_rate": 3.39010830644131e-06, "epoch": 0.6484375}}
+{"event": "optimizer_step", "time_unix": 1792914470.4226937, "step": 167, "elapsed_seconds": 1035.1684202840001, "input_tokens": 1271554, "supervised_tokens": 143873, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914470.425986, "step": 167, "metrics": {"loss": 0.0133, "grad_norm": 2.03125, "learning_rate": 3.3256019391450696e-06, "epoch": 0.65234375}}
+{"event": "optimizer_step", "time_unix": 1792914476.1077116, "step": 168, "elapsed_seconds": 1040.8534514350001, "input_tokens": 1280072, "supervised_tokens": 144965, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914476.1110077, "step": 168, "metrics": {"loss": 0.0154, "grad_norm": 1.359375, "learning_rate": 3.261407961065056e-06, "epoch": 0.65625}}
+{"event": "optimizer_step", "time_unix": 1792914479.1810312, "step": 169, "elapsed_seconds": 1043.9267488960002, "input_tokens": 1285093, "supervised_tokens": 145416, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914479.1843135, "step": 169, "metrics": {"loss": 0.1059, "grad_norm": 5.3125, "learning_rate": 3.197538348747927e-06, "epoch": 0.66015625}}
+{"event": "optimizer_step", "time_unix": 1792914486.1485739, "step": 170, "elapsed_seconds": 1050.89430279, "input_tokens": 1295499, "supervised_tokens": 146362, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914486.1973593, "step": 170, "metrics": {"loss": 0.0023, "grad_norm": 0.515625, "learning_rate": 3.1340050182240438e-06, "epoch": 0.6640625}}
+{"event": "optimizer_step", "time_unix": 1792914489.05459, "step": 171, "elapsed_seconds": 1053.800319524, "input_tokens": 1299780, "supervised_tokens": 146574, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914489.057873, "step": 171, "metrics": {"loss": 0.0004, "grad_norm": 0.2265625, "learning_rate": 3.070819822784323e-06, "epoch": 0.66796875}}
+{"event": "optimizer_step", "time_unix": 1792914495.8578937, "step": 172, "elapsed_seconds": 1060.603623485, "input_tokens": 1309826, "supervised_tokens": 147961, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914495.917787, "step": 172, "metrics": {"loss": 0.0055, "grad_norm": 1.4375, "learning_rate": 3.007994550768793e-06, "epoch": 0.671875}}
+{"event": "optimizer_step", "time_unix": 1792914498.718568, "step": 173, "elapsed_seconds": 1063.46430822, "input_tokens": 1313887, "supervised_tokens": 148263, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914498.7218175, "step": 173, "metrics": {"loss": 0.0208, "grad_norm": 3.828125, "learning_rate": 2.9455409233672594e-06, "epoch": 0.67578125}}
+{"event": "optimizer_step", "time_unix": 1792914504.8555682, "step": 174, "elapsed_seconds": 1069.601307865, "input_tokens": 1322634, "supervised_tokens": 149362, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914504.8588305, "step": 174, "metrics": {"loss": 0.002, "grad_norm": 0.5859375, "learning_rate": 2.883470592432512e-06, "epoch": 0.6796875}}
+{"event": "optimizer_step", "time_unix": 1792914508.5079033, "step": 175, "elapsed_seconds": 1073.2536411380001, "input_tokens": 1328134, "supervised_tokens": 150166, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914508.5111642, "step": 175, "metrics": {"loss": 0.0054, "grad_norm": 1.7578125, "learning_rate": 2.8217951383064546e-06, "epoch": 0.68359375}}
+{"event": "optimizer_step", "time_unix": 1792914514.7255201, "step": 176, "elapsed_seconds": 1079.471252985, "input_tokens": 1337544, "supervised_tokens": 151191, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914514.7288125, "step": 176, "metrics": {"loss": 0.0183, "grad_norm": 3.578125, "learning_rate": 2.760526067659591e-06, "epoch": 0.6875}}
+{"event": "optimizer_step", "time_unix": 1792914522.2194216, "step": 177, "elapsed_seconds": 1086.965153024, "input_tokens": 1348498, "supervised_tokens": 152360, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914522.2228048, "step": 177, "metrics": {"loss": 0.0149, "grad_norm": 0.71875, "learning_rate": 2.6996748113442397e-06, "epoch": 0.69140625}}
+{"event": "optimizer_step", "time_unix": 1792914525.8944337, "step": 178, "elapsed_seconds": 1090.640165346, "input_tokens": 1354315, "supervised_tokens": 152936, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914525.898371, "step": 178, "metrics": {"loss": 0.0602, "grad_norm": 7.0625, "learning_rate": 2.6392527222619078e-06, "epoch": 0.6953125}}
+{"event": "optimizer_step", "time_unix": 1792914529.2124665, "step": 179, "elapsed_seconds": 1093.958194089, "input_tokens": 1359513, "supervised_tokens": 153538, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914529.2157953, "step": 179, "metrics": {"loss": 0.0008, "grad_norm": 0.34375, "learning_rate": 2.5792710732452e-06, "epoch": 0.69921875}}
+{"event": "optimizer_step", "time_unix": 1792914533.585394, "step": 180, "elapsed_seconds": 1098.3311280320002, "input_tokens": 1366623, "supervised_tokens": 154496, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914533.5887015, "step": 180, "metrics": {"loss": 0.0079, "grad_norm": 1.7890625, "learning_rate": 2.5197410549546598e-06, "epoch": 0.703125}}
+{"event": "optimizer_step", "time_unix": 1792914537.561318, "step": 181, "elapsed_seconds": 1102.307049244, "input_tokens": 1372945, "supervised_tokens": 155273, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914537.5646088, "step": 181, "metrics": {"loss": 0.0078, "grad_norm": 0.984375, "learning_rate": 2.4606737737909696e-06, "epoch": 0.70703125}}
+{"event": "optimizer_step", "time_unix": 1792914544.7647479, "step": 182, "elapsed_seconds": 1109.5104763010002, "input_tokens": 1383393, "supervised_tokens": 156248, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914544.7680635, "step": 182, "metrics": {"loss": 0.0141, "grad_norm": 2.453125, "learning_rate": 2.4020802498228333e-06, "epoch": 0.7109375}}
+{"event": "optimizer_step", "time_unix": 1792914550.9591203, "step": 183, "elapsed_seconds": 1115.7048536300001, "input_tokens": 1392367, "supervised_tokens": 157318, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914550.9623969, "step": 183, "metrics": {"loss": 0.0004, "grad_norm": 0.0595703125, "learning_rate": 2.3439714147309845e-06, "epoch": 0.71484375}}
+{"event": "optimizer_step", "time_unix": 1792914555.3517606, "step": 184, "elapsed_seconds": 1120.097485598, "input_tokens": 1398885, "supervised_tokens": 158090, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914555.3551135, "step": 184, "metrics": {"loss": 0.0003, "grad_norm": 0.16015625, "learning_rate": 2.286358109768693e-06, "epoch": 0.71875}}
+{"event": "optimizer_step", "time_unix": 1792914563.389613, "step": 185, "elapsed_seconds": 1128.134893703, "input_tokens": 1410347, "supervised_tokens": 159680, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914563.3930192, "step": 185, "metrics": {"loss": 0.0008, "grad_norm": 0.158203125, "learning_rate": 2.229251083739127e-06, "epoch": 0.72265625}}
+{"event": "optimizer_step", "time_unix": 1792914567.254234, "step": 186, "elapsed_seconds": 1131.9999653820003, "input_tokens": 1416223, "supervised_tokens": 160323, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914567.2575464, "step": 186, "metrics": {"loss": 0.0015, "grad_norm": 0.2099609375, "learning_rate": 2.172660990989971e-06, "epoch": 0.7265625}}
+{"event": "optimizer_step", "time_unix": 1792914573.8715076, "step": 187, "elapsed_seconds": 1138.617235428, "input_tokens": 1426579, "supervised_tokens": 161349, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914573.8748403, "step": 187, "metrics": {"loss": 0.008, "grad_norm": 3.0625, "learning_rate": 2.1165983894256647e-06, "epoch": 0.73046875}}
+{"event": "optimizer_step", "time_unix": 1792914582.9714508, "step": 188, "elapsed_seconds": 1147.717183556, "input_tokens": 1438867, "supervised_tokens": 162773, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914582.9760563, "step": 188, "metrics": {"loss": 0.0018, "grad_norm": 0.2431640625, "learning_rate": 2.061073738537635e-06, "epoch": 0.734375}}
+{"event": "optimizer_step", "time_unix": 1792914586.765357, "step": 189, "elapsed_seconds": 1151.5110915480002, "input_tokens": 1444911, "supervised_tokens": 163561, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914586.7686481, "step": 189, "metrics": {"loss": 0.0172, "grad_norm": 1.71875, "learning_rate": 2.0060973974528873e-06, "epoch": 0.73828125}}
+{"event": "optimizer_step", "time_unix": 1792914592.740608, "step": 190, "elapsed_seconds": 1157.4863393870003, "input_tokens": 1453793, "supervised_tokens": 164961, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914592.7441385, "step": 190, "metrics": {"loss": 0.0467, "grad_norm": 3.9375, "learning_rate": 1.9516796230013275e-06, "epoch": 0.7421875}}
+{"event": "optimizer_step", "time_unix": 1792914598.1759226, "step": 191, "elapsed_seconds": 1162.921656268, "input_tokens": 1462155, "supervised_tokens": 166044, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914598.1793947, "step": 191, "metrics": {"loss": 0.004, "grad_norm": 1.7734375, "learning_rate": 1.8978305678021598e-06, "epoch": 0.74609375}}
+{"event": "optimizer_step", "time_unix": 1792914601.7127383, "step": 192, "elapsed_seconds": 1166.4584752590001, "input_tokens": 1467366, "supervised_tokens": 166536, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914601.71607, "step": 192, "metrics": {"loss": 0.004, "grad_norm": 0.984375, "learning_rate": 1.8445602783697375e-06, "epoch": 0.75}}
+{"event": "optimizer_step", "time_unix": 1792914604.7237659, "step": 193, "elapsed_seconds": 1169.469501708, "input_tokens": 1472215, "supervised_tokens": 166776, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914604.72707, "step": 193, "metrics": {"loss": 0.0086, "grad_norm": 4.75, "learning_rate": 1.7918786932391945e-06, "epoch": 0.75390625}}
+{"event": "optimizer_step", "time_unix": 1792914607.5867934, "step": 194, "elapsed_seconds": 1172.332528915, "input_tokens": 1476647, "supervised_tokens": 167227, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914607.590126, "step": 194, "metrics": {"loss": 0.0079, "grad_norm": 2.625, "learning_rate": 1.739795641112248e-06, "epoch": 0.7578125}}
+{"event": "optimizer_step", "time_unix": 1792914612.7337792, "step": 195, "elapsed_seconds": 1177.4795077810002, "input_tokens": 1484470, "supervised_tokens": 168036, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914612.7372665, "step": 195, "metrics": {"loss": 0.0575, "grad_norm": 13.75, "learning_rate": 1.688320839023463e-06, "epoch": 0.76171875}}
+{"event": "optimizer_step", "time_unix": 1792914617.7338839, "step": 196, "elapsed_seconds": 1182.4796189320002, "input_tokens": 1492408, "supervised_tokens": 168998, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914617.7502887, "step": 196, "metrics": {"loss": 0.0258, "grad_norm": 4.40625, "learning_rate": 1.6374638905273643e-06, "epoch": 0.765625}}
+{"event": "optimizer_step", "time_unix": 1792914622.363654, "step": 197, "elapsed_seconds": 1187.1093907340003, "input_tokens": 1499564, "supervised_tokens": 169865, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914622.3671758, "step": 197, "metrics": {"loss": 0.1471, "grad_norm": 5.1875, "learning_rate": 1.5872342839067305e-06, "epoch": 0.76953125}}
+{"event": "optimizer_step", "time_unix": 1792914628.4936597, "step": 198, "elapsed_seconds": 1193.2393977939998, "input_tokens": 1508482, "supervised_tokens": 170877, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914628.4971445, "step": 198, "metrics": {"loss": 0.0439, "grad_norm": 2.078125, "learning_rate": 1.5376413904023723e-06, "epoch": 0.7734375}}
+{"event": "optimizer_step", "time_unix": 1792914634.8943508, "step": 199, "elapsed_seconds": 1199.640084814, "input_tokens": 1517825, "supervised_tokens": 172026, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914634.8976996, "step": 199, "metrics": {"loss": 0.103, "grad_norm": 6.78125, "learning_rate": 1.4886944624647647e-06, "epoch": 0.77734375}}
+{"event": "optimizer_step", "time_unix": 1792914644.2338045, "step": 200, "elapsed_seconds": 1208.9795282080001, "input_tokens": 1530283, "supervised_tokens": 173586, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914644.2534246, "step": 200, "metrics": {"loss": 0.0007, "grad_norm": 0.302734375, "learning_rate": 1.4404026320278318e-06, "epoch": 0.78125}}
+{"event": "optimizer_step", "time_unix": 1792914649.2161844, "step": 201, "elapsed_seconds": 1213.961914011, "input_tokens": 1537482, "supervised_tokens": 174045, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914649.219511, "step": 201, "metrics": {"loss": 0.0141, "grad_norm": 7.3125, "learning_rate": 1.3927749088052218e-06, "epoch": 0.78515625}}
+{"event": "optimizer_step", "time_unix": 1792914653.4971728, "step": 202, "elapsed_seconds": 1218.2429145580002, "input_tokens": 1544144, "supervised_tokens": 174902, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914653.5004666, "step": 202, "metrics": {"loss": 0.0027, "grad_norm": 0.59375, "learning_rate": 1.3458201786093795e-06, "epoch": 0.7890625}}
+{"event": "optimizer_step", "time_unix": 1792914657.7463992, "step": 203, "elapsed_seconds": 1222.492136213, "input_tokens": 1550726, "supervised_tokens": 175720, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914657.749732, "step": 203, "metrics": {"loss": 0.0168, "grad_norm": 2.484375, "learning_rate": 1.2995472016937405e-06, "epoch": 0.79296875}}
+{"event": "optimizer_step", "time_unix": 1792914663.970739, "step": 204, "elapsed_seconds": 1228.7164780730002, "input_tokens": 1559904, "supervised_tokens": 176426, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914663.9740736, "step": 204, "metrics": {"loss": 0.0016, "grad_norm": 0.5, "learning_rate": 1.2539646111183452e-06, "epoch": 0.796875}}
+{"event": "optimizer_step", "time_unix": 1792914667.3760376, "step": 205, "elapsed_seconds": 1232.1217613360002, "input_tokens": 1565114, "supervised_tokens": 177202, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914667.3793607, "step": 205, "metrics": {"loss": 0.0162, "grad_norm": 0.65234375, "learning_rate": 1.209080911139187e-06, "epoch": 0.80078125}}
+{"event": "optimizer_step", "time_unix": 1792914669.1831944, "step": 206, "elapsed_seconds": 1233.9289190749998, "input_tokens": 1567874, "supervised_tokens": 177420, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914669.18652, "step": 206, "metrics": {"loss": 0.0543, "grad_norm": 5.09375, "learning_rate": 1.1649044756215872e-06, "epoch": 0.8046875}}
+{"event": "optimizer_step", "time_unix": 1792914672.9469717, "step": 207, "elapsed_seconds": 1237.6926940730002, "input_tokens": 1573508, "supervised_tokens": 177952, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914672.9503112, "step": 207, "metrics": {"loss": 0.0167, "grad_norm": 1.453125, "learning_rate": 1.1214435464779006e-06, "epoch": 0.80859375}}
+{"event": "optimizer_step", "time_unix": 1792914676.1918666, "step": 208, "elapsed_seconds": 1240.937605553, "input_tokens": 1578704, "supervised_tokens": 178118, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914676.1952074, "step": 208, "metrics": {"loss": 0.0286, "grad_norm": 23.625, "learning_rate": 1.0787062321298441e-06, "epoch": 0.8125}}
+{"event": "optimizer_step", "time_unix": 1792914679.0352144, "step": 209, "elapsed_seconds": 1243.7809412670001, "input_tokens": 1583034, "supervised_tokens": 178555, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914679.0386353, "step": 209, "metrics": {"loss": 0.0434, "grad_norm": 2.53125, "learning_rate": 1.0367005059957097e-06, "epoch": 0.81640625}}
+{"event": "optimizer_step", "time_unix": 1792914685.5788946, "step": 210, "elapsed_seconds": 1250.324627442, "input_tokens": 1593020, "supervised_tokens": 180062, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914685.6003375, "step": 210, "metrics": {"loss": 0.0088, "grad_norm": 2.21875, "learning_rate": 9.954342050027922e-07, "epoch": 0.8203125}}
+{"event": "optimizer_step", "time_unix": 1792914689.2088614, "step": 211, "elapsed_seconds": 1253.954588201, "input_tokens": 1598812, "supervised_tokens": 181308, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914689.212294, "step": 211, "metrics": {"loss": 0.009, "grad_norm": 4.53125, "learning_rate": 9.549150281252633e-07, "epoch": 0.82421875}}
+{"event": "optimizer_step", "time_unix": 1792914696.7232194, "step": 212, "elapsed_seconds": 1261.468950449, "input_tokens": 1610144, "supervised_tokens": 182414, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914696.7265732, "step": 212, "metrics": {"loss": 0.0087, "grad_norm": 1.015625, "learning_rate": 9.151505349477901e-07, "epoch": 0.828125}}
+{"event": "optimizer_step", "time_unix": 1792914700.396218, "step": 213, "elapsed_seconds": 1265.1419439200001, "input_tokens": 1615940, "supervised_tokens": 183176, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914700.399603, "step": 213, "metrics": {"loss": 0.0044, "grad_norm": 0.765625, "learning_rate": 8.761481442551573e-07, "epoch": 0.83203125}}
+{"event": "optimizer_step", "time_unix": 1792914707.9915144, "step": 214, "elapsed_seconds": 1272.737247968, "input_tokens": 1627254, "supervised_tokens": 184898, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914708.0047977, "step": 214, "metrics": {"loss": 0.0466, "grad_norm": 5.59375, "learning_rate": 8.379151326481588e-07, "epoch": 0.8359375}}
+{"event": "optimizer_step", "time_unix": 1792914713.7539759, "step": 215, "elapsed_seconds": 1278.4996935890001, "input_tokens": 1635397, "supervised_tokens": 185910, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914713.7573245, "step": 215, "metrics": {"loss": 0.0095, "grad_norm": 0.71875, "learning_rate": 8.004586331860176e-07, "epoch": 0.83984375}}
+{"event": "optimizer_step", "time_unix": 1792914718.1446292, "step": 216, "elapsed_seconds": 1282.890362599, "input_tokens": 1642415, "supervised_tokens": 186833, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914718.1479962, "step": 216, "metrics": {"loss": 0.1035, "grad_norm": 8.0625, "learning_rate": 7.637856340555822e-07, "epoch": 0.84375}}
+{"event": "optimizer_step", "time_unix": 1792914720.6875472, "step": 217, "elapsed_seconds": 1285.4332832040002, "input_tokens": 1646381, "supervised_tokens": 187407, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914720.6910539, "step": 217, "metrics": {"loss": 0.0007, "grad_norm": 0.11376953125, "learning_rate": 7.279029772675572e-07, "epoch": 0.84765625}}
+{"event": "optimizer_step", "time_unix": 1792914726.4028516, "step": 218, "elapsed_seconds": 1291.1485805999998, "input_tokens": 1655153, "supervised_tokens": 188150, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914726.4314454, "step": 218, "metrics": {"loss": 0.0148, "grad_norm": 4.90625, "learning_rate": 6.928173573800007e-07, "epoch": 0.8515625}}
+{"event": "optimizer_step", "time_unix": 1792914733.636069, "step": 219, "elapsed_seconds": 1298.38178735, "input_tokens": 1665957, "supervised_tokens": 189430, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914733.6394355, "step": 219, "metrics": {"loss": 0.0031, "grad_norm": 0.83203125, "learning_rate": 6.585353202493322e-07, "epoch": 0.85546875}}
+{"event": "optimizer_step", "time_unix": 1792914741.2309892, "step": 220, "elapsed_seconds": 1305.976699097, "input_tokens": 1676843, "supervised_tokens": 190608, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914741.2343876, "step": 220, "metrics": {"loss": 0.0002, "grad_norm": 0.0849609375, "learning_rate": 6.250632618090868e-07, "epoch": 0.859375}}
+{"event": "optimizer_step", "time_unix": 1792914746.048983, "step": 221, "elapsed_seconds": 1310.7947039150001, "input_tokens": 1684621, "supervised_tokens": 191660, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914746.0523381, "step": 221, "metrics": {"loss": 0.0014, "grad_norm": 0.83203125, "learning_rate": 5.924074268766422e-07, "epoch": 0.86328125}}
+{"event": "optimizer_step", "time_unix": 1792914754.9408522, "step": 222, "elapsed_seconds": 1319.686579204, "input_tokens": 1697183, "supervised_tokens": 193460, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914754.9458325, "step": 222, "metrics": {"loss": 0.0011, "grad_norm": 0.4375, "learning_rate": 5.60573907988124e-07, "epoch": 0.8671875}}
+{"event": "optimizer_step", "time_unix": 1792914760.716918, "step": 223, "elapsed_seconds": 1325.462649249, "input_tokens": 1706311, "supervised_tokens": 194045, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914760.7346911, "step": 223, "metrics": {"loss": 0.002, "grad_norm": 0.88671875, "learning_rate": 5.295686442617442e-07, "epoch": 0.87109375}}
+{"event": "optimizer_step", "time_unix": 1792914766.3975263, "step": 224, "elapsed_seconds": 1331.1432635560002, "input_tokens": 1715124, "supervised_tokens": 195398, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914766.4009218, "step": 224, "metrics": {"loss": 0.0034, "grad_norm": 0.87109375, "learning_rate": 4.993974202897456e-07, "epoch": 0.875}}
+{"event": "optimizer_step", "time_unix": 1792914774.9613705, "step": 225, "elapsed_seconds": 1339.707101317, "input_tokens": 1726900, "supervised_tokens": 197052, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914774.964757, "step": 225, "metrics": {"loss": 0.0023, "grad_norm": 0.41015625, "learning_rate": 4.7006586505918273e-07, "epoch": 0.87890625}}
+{"event": "optimizer_step", "time_unix": 1792914779.228401, "step": 226, "elapsed_seconds": 1343.9741371090001, "input_tokens": 1733366, "supervised_tokens": 197766, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914779.2318168, "step": 226, "metrics": {"loss": 0.0027, "grad_norm": 1.671875, "learning_rate": 4.4157945090173294e-07, "epoch": 0.8828125}}
+{"event": "optimizer_step", "time_unix": 1792914784.9452507, "step": 227, "elapsed_seconds": 1349.6909795960003, "input_tokens": 1741319, "supervised_tokens": 198942, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914784.9488785, "step": 227, "metrics": {"loss": 0.0654, "grad_norm": 7.4375, "learning_rate": 4.139434924727359e-07, "epoch": 0.88671875}}
+{"event": "optimizer_step", "time_unix": 1792914789.473917, "step": 228, "elapsed_seconds": 1354.219655615, "input_tokens": 1748069, "supervised_tokens": 199696, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914789.4773118, "step": 228, "metrics": {"loss": 0.0031, "grad_norm": 0.7890625, "learning_rate": 3.8716314575964197e-07, "epoch": 0.890625}}
+{"event": "optimizer_step", "time_unix": 1792914793.6376047, "step": 229, "elapsed_seconds": 1358.383340314, "input_tokens": 1754384, "supervised_tokens": 199998, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914793.6409938, "step": 229, "metrics": {"loss": 0.0079, "grad_norm": 2.578125, "learning_rate": 3.612434071200771e-07, "epoch": 0.89453125}}
+{"event": "optimizer_step", "time_unix": 1792914796.680573, "step": 230, "elapsed_seconds": 1361.4263099739999, "input_tokens": 1759076, "supervised_tokens": 200187, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914796.6841435, "step": 230, "metrics": {"loss": 0.0347, "grad_norm": 5.90625, "learning_rate": 3.361891123496824e-07, "epoch": 0.8984375}}
+{"event": "optimizer_step", "time_unix": 1792914800.4676995, "step": 231, "elapsed_seconds": 1365.2134342269999, "input_tokens": 1765106, "supervised_tokens": 200826, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914800.4711125, "step": 231, "metrics": {"loss": 0.0037, "grad_norm": 0.5234375, "learning_rate": 3.1200493577989875e-07, "epoch": 0.90234375}}
+{"event": "optimizer_step", "time_unix": 1792914805.2002115, "step": 232, "elapsed_seconds": 1369.945869765, "input_tokens": 1772186, "supervised_tokens": 201727, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914805.2036324, "step": 232, "metrics": {"loss": 0.0036, "grad_norm": 1.21875, "learning_rate": 2.88695389405898e-07, "epoch": 0.90625}}
+{"event": "optimizer_step", "time_unix": 1792914810.0446372, "step": 233, "elapsed_seconds": 1374.7903707990001, "input_tokens": 1779828, "supervised_tokens": 202739, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914810.048078, "step": 233, "metrics": {"loss": 0.0082, "grad_norm": 1.1640625, "learning_rate": 2.662648220447811e-07, "epoch": 0.91015625}}
+{"event": "optimizer_step", "time_unix": 1792914815.700334, "step": 234, "elapsed_seconds": 1380.4460616520003, "input_tokens": 1788110, "supervised_tokens": 203918, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914815.7037666, "step": 234, "metrics": {"loss": 0.0004, "grad_norm": 0.08447265625, "learning_rate": 2.447174185242324e-07, "epoch": 0.9140625}}
+{"event": "optimizer_step", "time_unix": 1792914821.7869954, "step": 235, "elapsed_seconds": 1386.532714919, "input_tokens": 1797028, "supervised_tokens": 205362, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914821.7904007, "step": 235, "metrics": {"loss": 0.0032, "grad_norm": 0.5859375, "learning_rate": 2.240571989017598e-07, "epoch": 0.91796875}}
+{"event": "optimizer_step", "time_unix": 1792914823.8914244, "step": 236, "elapsed_seconds": 1388.6371585560003, "input_tokens": 1800162, "supervised_tokens": 205729, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914823.8948317, "step": 236, "metrics": {"loss": 0.0156, "grad_norm": 1.78125, "learning_rate": 2.0428801771468388e-07, "epoch": 0.921875}}
+{"event": "optimizer_step", "time_unix": 1792914833.3646674, "step": 237, "elapsed_seconds": 1398.1104038770002, "input_tokens": 1813049, "supervised_tokens": 207219, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914833.3681207, "step": 237, "metrics": {"loss": 0.0227, "grad_norm": 7.65625, "learning_rate": 1.8541356326100436e-07, "epoch": 0.92578125}}
+{"event": "optimizer_step", "time_unix": 1792914842.5218463, "step": 238, "elapsed_seconds": 1407.2675809999998, "input_tokens": 1825661, "supervised_tokens": 208705, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914842.5252693, "step": 238, "metrics": {"loss": 0.0021, "grad_norm": 0.92578125, "learning_rate": 1.6743735691127639e-07, "epoch": 0.9296875}}
+{"event": "optimizer_step", "time_unix": 1792914849.2402537, "step": 239, "elapsed_seconds": 1413.9859751370002, "input_tokens": 1835923, "supervised_tokens": 209523, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914849.243691, "step": 239, "metrics": {"loss": 0.0022, "grad_norm": 1.2109375, "learning_rate": 1.5036275245164377e-07, "epoch": 0.93359375}}
+{"event": "optimizer_step", "time_unix": 1792914854.2488375, "step": 240, "elapsed_seconds": 1418.9945657730002, "input_tokens": 1843587, "supervised_tokens": 210491, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914854.262226, "step": 240, "metrics": {"loss": 0.0121, "grad_norm": 1.40625, "learning_rate": 1.341929354581234e-07, "epoch": 0.9375}}
+{"event": "optimizer_step", "time_unix": 1792914857.3781648, "step": 241, "elapsed_seconds": 1422.1238950570003, "input_tokens": 1848255, "supervised_tokens": 211105, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914857.3815742, "step": 241, "metrics": {"loss": 0.0148, "grad_norm": 1.5625, "learning_rate": 1.1893092270227724e-07, "epoch": 0.94140625}}
+{"event": "optimizer_step", "time_unix": 1792914861.598403, "step": 242, "elapsed_seconds": 1426.344142657, "input_tokens": 1854827, "supervised_tokens": 212128, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914861.6018093, "step": 242, "metrics": {"loss": 0.0015, "grad_norm": 0.66796875, "learning_rate": 1.0457956158838545e-07, "epoch": 0.9453125}}
+{"event": "optimizer_step", "time_unix": 1792914865.7214127, "step": 243, "elapsed_seconds": 1430.4671484890002, "input_tokens": 1861009, "supervised_tokens": 212902, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914865.7248118, "step": 243, "metrics": {"loss": 0.0203, "grad_norm": 2.15625, "learning_rate": 9.114152962220734e-08, "epoch": 0.94921875}}
+{"event": "optimizer_step", "time_unix": 1792914869.150378, "step": 244, "elapsed_seconds": 1433.896107668, "input_tokens": 1866443, "supervised_tokens": 213700, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914869.153776, "step": 244, "metrics": {"loss": 0.0398, "grad_norm": 2.375, "learning_rate": 7.861933391144272e-08, "epoch": 0.953125}}
+{"event": "optimizer_step", "time_unix": 1792914875.99698, "step": 245, "elapsed_seconds": 1440.7426976929999, "input_tokens": 1875776, "supervised_tokens": 214750, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914876.0007858, "step": 245, "metrics": {"loss": 0.1384, "grad_norm": 4.96875, "learning_rate": 6.701531069799039e-08, "epoch": 0.95703125}}
+{"event": "optimizer_step", "time_unix": 1792914881.1980035, "step": 246, "elapsed_seconds": 1445.94371806, "input_tokens": 1884013, "supervised_tokens": 215550, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914881.2169015, "step": 246, "metrics": {"loss": 0.0168, "grad_norm": 2.84375, "learning_rate": 5.633162492207633e-08, "epoch": 0.9609375}}
+{"event": "optimizer_step", "time_unix": 1792914891.9928596, "step": 247, "elapsed_seconds": 1456.7385865640001, "input_tokens": 1899223, "supervised_tokens": 217129, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914891.9963489, "step": 247, "metrics": {"loss": 0.013, "grad_norm": 2.1875, "learning_rate": 4.657026981834623e-08, "epoch": 0.96484375}}
+{"event": "optimizer_step", "time_unix": 1792914901.4242706, "step": 248, "elapsed_seconds": 1466.170004941, "input_tokens": 1912923, "supervised_tokens": 218922, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914901.4278507, "step": 248, "metrics": {"loss": 0.0003, "grad_norm": 0.2734375, "learning_rate": 3.773306654399234e-08, "epoch": 0.96875}}
+{"event": "optimizer_step", "time_unix": 1792914907.9450696, "step": 249, "elapsed_seconds": 1472.6907846370002, "input_tokens": 1923219, "supervised_tokens": 219867, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914907.948491, "step": 249, "metrics": {"loss": 0.0061, "grad_norm": 3.46875, "learning_rate": 2.9821663838981994e-08, "epoch": 0.97265625}}
+{"event": "optimizer_step", "time_unix": 1792914918.3715425, "step": 250, "elapsed_seconds": 1483.1172761169998, "input_tokens": 1937957, "supervised_tokens": 221492, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914918.3753417, "step": 250, "metrics": {"loss": 0.0009, "grad_norm": 0.2373046875, "learning_rate": 2.283753771845587e-08, "epoch": 0.9765625}}
+{"event": "optimizer_step", "time_unix": 1792914925.0082865, "step": 251, "elapsed_seconds": 1489.754016432, "input_tokens": 1947377, "supervised_tokens": 222646, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914925.01212, "step": 251, "metrics": {"loss": 0.0289, "grad_norm": 4.15625, "learning_rate": 1.6781991197352133e-08, "epoch": 0.98046875}}
+{"event": "optimizer_step", "time_unix": 1792914932.854327, "step": 252, "elapsed_seconds": 1497.6000603999998, "input_tokens": 1958396, "supervised_tokens": 223646, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914932.8580887, "step": 252, "metrics": {"loss": 0.0173, "grad_norm": 6.25, "learning_rate": 1.1656154047303691e-08, "epoch": 0.984375}}
+{"event": "optimizer_step", "time_unix": 1792914939.8130913, "step": 253, "elapsed_seconds": 1504.558809497, "input_tokens": 1968744, "supervised_tokens": 224898, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914939.81678, "step": 253, "metrics": {"loss": 0.0007, "grad_norm": 0.322265625, "learning_rate": 7.460982585860144e-09, "epoch": 0.98828125}}
+{"event": "optimizer_step", "time_unix": 1792914945.1561131, "step": 254, "elapsed_seconds": 1509.9018270120002, "input_tokens": 1977183, "supervised_tokens": 225860, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914945.160025, "step": 254, "metrics": {"loss": 0.0152, "grad_norm": 1.0859375, "learning_rate": 4.197259498067707e-09, "epoch": 0.9921875}}
+{"event": "optimizer_step", "time_unix": 1792914952.174982, "step": 255, "elapsed_seconds": 1516.920697204, "input_tokens": 1987154, "supervised_tokens": 226625, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914952.1991613, "step": 255, "metrics": {"loss": 0.0552, "grad_norm": 3.53125, "learning_rate": 1.865593690446588e-09, "epoch": 0.99609375}}
+{"event": "optimizer_step", "time_unix": 1792914960.3965342, "step": 256, "elapsed_seconds": 1525.142269145, "input_tokens": 1998306, "supervised_tokens": 228017, "peak_cuda_allocated_bytes": 8768711168}
+{"event": "trainer_log", "time_unix": 1792914960.400309, "step": 256, "metrics": {"loss": 0.0098, "grad_norm": 0.63671875, "learning_rate": 4.664201773896259e-10, "epoch": 1.0}}
+{"event": "trainer_log", "time_unix": 1792914960.4008489, "step": 256, "metrics": {"train_runtime": 1352.526, "train_samples_per_second": 0.757, "train_steps_per_second": 0.189, "total_flos": 4.435824644328038e+16, "train_loss": 0.019857226519746973, "epoch": 1.0}}
+{"event": "completed", "time_unix": 1792914972.5342562, "status": "merged_checkpoint_ready_for_paired_evaluation", "optimizer_steps": 256, "elapsed_seconds": 1537.2755184139999}

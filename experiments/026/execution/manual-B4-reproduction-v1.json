@@ -1,0 +1,40 @@
+{
+  "base": {
+    "all_B4_queries_reproduced": true,
+    "scored_records": 315,
+    "queries": 23,
+    "no_new_selection_policy": true
+  },
+  "challenger": {
+    "all_B4_queries_reproduced": true,
+    "scored_records": 325,
+    "queries": 23,
+    "no_new_selection_policy": true
+  },
+  "executed_source_checks": {
+    "arc_loader.py": {
+      "exact": false,
+      "ipython_appended_final_newline_only": true,
+      "sha256": "2c62526daba3fdd9da317e3dcb689acca8e24018e56e4c7f2c33ed15381ed8c6"
+    },
+    "arc_decoder.py": {
+      "exact": false,
+      "ipython_appended_final_newline_only": true,
+      "sha256": "b38b6b1bdd5f47dbd587a9809ad2ec20cdf9ce5723736a7fb7470e9b1ce61f1d"
+    },
+    "arc_solver.py": {
+      "exact": false,
+      "ipython_appended_final_newline_only": true,
+      "sha256": "0a99261b7e4a7d07a970c56d57a5cef7ce5f29f43bf263cee8c4db14ab62036f"
+    },
+    "starter_paired.py": {
+      "exact": true,
+      "ipython_appended_final_newline_only": false,
+      "sha256": "c484292e47e933d987b4a090b0e3953c9687fff74d70c9775f41069e3b5b19b6"
+    },
+    "train_specialist.py": {
+      "exact": true,
+      "sha256": "03cde88fd31b45b191313bd72f08002f1e130e87abbe367f09805b83f10a92bf"
+    }
+  }
+}

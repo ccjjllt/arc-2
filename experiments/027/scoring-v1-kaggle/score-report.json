@@ -1,0 +1,277 @@
+{
+  "planned_queries": 34,
+  "input_matched_queries": 34,
+  "unresolved_or_mismatched_queries": 0,
+  "policies": {
+    "base_B4": {
+      "exact_queries": 5,
+      "matched_denominator": 34,
+      "em2": 0.14705882352941177,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 28,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 3
+    },
+    "extra_B4": {
+      "exact_queries": 8,
+      "matched_denominator": 34,
+      "em2": 0.23529411764705882,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 29,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 6
+    },
+    "ensemble": {
+      "exact_queries": 6,
+      "matched_denominator": 34,
+      "em2": 0.17647058823529413,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 30,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 4
+    },
+    "prefix25": {
+      "exact_queries": 5,
+      "matched_denominator": 34,
+      "em2": 0.14705882352941177,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 28,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 3
+    },
+    "prefix50": {
+      "exact_queries": 5,
+      "matched_denominator": 34,
+      "em2": 0.14705882352941177,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 28,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 3
+    },
+    "prefix75": {
+      "exact_queries": 6,
+      "matched_denominator": 34,
+      "em2": 0.17647058823529413,
+      "prediction_present_queries": 34,
+      "valid_queries": 34,
+      "different_valid_attempts_queries": 28,
+      "fully_matched_tasks": 23,
+      "all_queries_exact_tasks": 4
+    }
+  },
+  "cohort": "027_original4B_TTT_view_ensemble_C23",
+  "planned_tasks": 23,
+  "official_sources": [
+    {
+      "task_id": "16b78196",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "1ae2feb7",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "31f7f899",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "409aa875",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "4a21e3da",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "5dbc8537",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "6e4f6532",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "7666fa5d",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "7c66cb00",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "80a900e0",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "88bcf3b4",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "89565ca0",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "8b7bacbf",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "8b9c3697",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "9bbf930d",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "a32d8b75",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "a6f40cea",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "b5ca7ac4",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "b9e38dc0",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "d59b0160",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "dd6b8c4b",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "f560132c",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "faa9f03d",
+      "status": "loaded",
+      "source_kind": "Kaggle competition evaluation JSON pair",
+      "challenge_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "solutions_sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+      "full_task_content_matches": true
+    }
+  ],
+  "snapshot_manifest": {
+    "downloaded_at_utc": "2026-10-25T13:16:51.868680+00:00",
+    "competition": "arc-prize-2026-arc-agi-2",
+    "source": "Official Kaggle competition file download through authenticated API",
+    "files": {
+      "arc-agi_evaluation_challenges.json": {
+        "path": "/private/tmp/arc2-027-kaggle-scoring-snapshot/arc-agi_evaluation_challenges.json",
+        "bytes": 984679,
+        "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8"
+      },
+      "arc-agi_evaluation_solutions.json": {
+        "path": "/private/tmp/arc2-027-kaggle-scoring-snapshot/arc-agi_evaluation_solutions.json",
+        "bytes": 223838,
+        "sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1"
+      }
+    },
+    "cohort_full_task_content_matches": true,
+    "source_challenges_match_original008_sha": true,
+    "predictions_already_frozen": true,
+    "reason": "Resolve four genuine input-version mismatches in fixed GitHub reference without dropping queries or changing predictions."
+  },
+  "interpretation": "Input-matched public Kaggle evaluation diagnostic only; not leaderboard score."
+}

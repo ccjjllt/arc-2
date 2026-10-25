@@ -1,0 +1,14 @@
+{
+  "checked_at_utc": "2026-10-25T10:23:08.047070+00:00",
+  "account": "zhuating",
+  "quota_refresh_time_utc": "2026-10-31 00:00:00",
+  "gpu": {
+    "total_seconds": 108000.0,
+    "used_seconds": 58216.882,
+    "reserved_seconds": 0.0,
+    "available_seconds": 49783.118,
+    "available_hours": 13.82864388888889
+  },
+  "used_delta_since_prelaunch": 14502.968,
+  "note": "Read-only whole-account quota snapshot; usage delta is not a separate job billing record."
+}

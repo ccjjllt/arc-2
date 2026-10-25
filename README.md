@@ -4,9 +4,9 @@
 
 ## 当前进度
 
-**当前阶段：026 NVARC 4B续训已正常启动，等待完成。** 025已完成：B4与R2均15/58，oracle17/58，结束R2扩展并保留B4。026从原33.89精确V1派生，只改变初始化权重；额外training规则合成与官方training replay小规模续训，与新基线在固定16题／23query上同轮评分。未取得026结果，不宣称提分。正式最好仍为023的30.14。
+**当前阶段：027确认净增1，已启动正式源码的原四题普通验证。** 精确Kaggle快照34/34输入匹配，原B4为5/34、固定融合为6/34，新增1／丢失0；部分补题前缀净增0／0／1，预定晋级条件通过。[确认结果](experiments/027/confirmation-v1-summary.json)。正式V1已接受普通运行，需实际输出与版本绑定后直接提交；当前尚未创建新competition submission，公榜最好仍30.14。
 
-2026-10-25用户确认以NVARC为唯一主线，每轮只优化一个因素。当前交接见[026计划](docs/plan/026-nvarc-extra-rule-training.md)、[实际进展](docs/progress/026-nvarc-extra-rule-training.md)；上一轮[025结果与产物](experiments/025/README.md)。
+2026-10-25用户确认以NVARC为唯一主线，每轮只优化一个因素。当前交接见[027计划](docs/plan/027-nvarc-ttt-view-ensemble.md)、[实际进展](docs/progress/027-nvarc-ttt-view-ensemble.md)；上一轮[025结果与产物](experiments/025/README.md)。
 
 截至**2026-10-25 10:05北京时间的实查记录**：
 
@@ -24,6 +24,7 @@
 | 020／57443913 | **12.50**，COMPLETE | 27B替换路线；[结果凭据](experiments/020/execution/competition-submission.json) |
 | 历史复制提交／314617319 | 用户报告 **30.14** | 未修改公开方案的试提交，不作为自主研究效果；[历史记录](docs/progress/001-baseline.md) |
 | 022公开E20 | 4B最终3/27，oracle5/27 | 已开发集合；[4B与既有27B配对](experiments/022/paired-e20-v2/paired-table.md) |
+| 026公开开发面板16task／23query | base=challenger=4/23，新增2／丢失2，oracle6→9 | 本地配对，结束本续训配方；[完整结果](experiments/026/paired-v1-summary.json) |
 | 025公开确认40task／58query | B4=R2=15/58，oracle17/58 | 本地公开诊断，非公榜；[完整结果](experiments/025/confirmation-v2-summary.json) |
 
 022修改过预算和调度，不视为原样复现。023从冻结原V1派生，保留原求解与预算策略，只修实际运行阻塞；公开样本、代码完成或训练loss都不能代替正式成绩。

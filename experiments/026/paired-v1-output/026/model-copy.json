@@ -1,0 +1,72 @@
+{
+  "status": "complete",
+  "started": 1792913356.4397998,
+  "source": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1",
+  "target": "/kaggle/temp/arc026-base",
+  "expected_bytes": 7267271302,
+  "disk_free_bytes_before": 1126142894080,
+  "files": [
+    {
+      "path": "added_tokens.json",
+      "bytes": 68,
+      "sha256": "cf1224e6a594b51a34b8b9ca6c6dce3026683777521f361e37526b8a33258bce",
+      "copy_s": 0.004300355911254883
+    },
+    {
+      "path": "config.json",
+      "bytes": 1532,
+      "sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0",
+      "copy_s": 0.001233816146850586
+    },
+    {
+      "path": "generation_config.json",
+      "bytes": 113,
+      "sha256": "fd0abf1e2baa1f9407803a83486767a6e7841164481d750fcaa9b71d31a0ab02",
+      "copy_s": 0.0056285858154296875
+    },
+    {
+      "path": "model-00001-of-00002.safetensors",
+      "bytes": 4996836472,
+      "sha256": "379de219f74a1402a67d26fe7dcacdacadbf686947e08e41117dd9c884ee4529",
+      "copy_s": 59.670419216156006
+    },
+    {
+      "path": "model-00002-of-00002.safetensors",
+      "bytes": 2270397024,
+      "sha256": "3b8470b83355ccbc527afcb7a77664bd679e63899a80e79169c016658e6b92e0",
+      "copy_s": 18.74191451072693
+    },
+    {
+      "path": "model.safetensors.index.json",
+      "bytes": 32913,
+      "sha256": "d2d5b2bffaf2fd27bad4452dfb4d4df80c56a4a77f1ac9c40fdd634845680cd4",
+      "copy_s": 0.00760650634765625
+    },
+    {
+      "path": "special_tokens_map.json",
+      "bytes": 367,
+      "sha256": "f4f79e08d97f4d1c87f8d89264f525c8789da3b73b3bb55d1e12f692f41a7b1b",
+      "copy_s": 0.006417036056518555
+    },
+    {
+      "path": "tokenizer.json",
+      "bytes": 1731,
+      "sha256": "af6b9e855f9db3192bd9152607708ebd7700b40f9fc5f792a26af70150a96cd5",
+      "copy_s": 0.006289482116699219
+    },
+    {
+      "path": "tokenizer_config.json",
+      "bytes": 988,
+      "sha256": "e1912aeba4050616cbfe01b34df3f3df2818207eda0056f6eb87c2336936ea90",
+      "copy_s": 0.0055081844329833984
+    },
+    {
+      "path": "vocab.json",
+      "bytes": 94,
+      "sha256": "8141a61e47eceec466524bc178bc9c6d5076b7d1b18b456fbd3fdf66cae57f82",
+      "copy_s": 0.006233930587768555
+    }
+  ],
+  "elapsed_s": 78.4792149066925,
+  "copied_bytes": 7267271302
+}

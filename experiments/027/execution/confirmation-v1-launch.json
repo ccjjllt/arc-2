@@ -1,0 +1,23 @@
+{
+  "requested_at_utc": "2026-10-25T10:41:36.676684+00:00",
+  "account": "zhuating",
+  "ref": "zhuating/arc2-027-ttt-view-ensemble-c23",
+  "package_directory": "/private/tmp/arc2-027-v1-confirmation",
+  "notebook_sha256": "bb1e8320a087a0abb57948077ff15f794c1206f53abdb2b235c2969b7cca87b0",
+  "platform_timeout_seconds": 10800,
+  "quota_before": {
+    "total_time_allowed": 108000.0,
+    "time_used": 58216.882,
+    "time_reserved": 0.0,
+    "available_seconds": 49783.118
+  },
+  "state": "accepted",
+  "purpose": "One original-weight sequential TTT augmentation-seed1/2 C23 confirmation; no offline training or competition submission",
+  "response": {
+    "ref": "/code/zhuating/arc2-027-ttt-view-ensemble-c23",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-027-ttt-view-ensemble-c23",
+    "versionNumber": 1,
+    "kernelId": 140762645
+  },
+  "returned_at_utc": "2026-10-25T10:41:40.623833+00:00"
+}

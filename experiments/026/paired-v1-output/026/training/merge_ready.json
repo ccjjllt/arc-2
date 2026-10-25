@@ -1,0 +1,62 @@
+{
+  "status": "merged_checkpoint_ready_for_paired_evaluation",
+  "merged_model_dir": "/kaggle/working/026/training/merged_model",
+  "manifest_sha256": "29b97043d9caebb153d780492ee3e2665398e97f23ff3d4dffffcee4315651e9",
+  "training_process_must_exit_before_ttt": true,
+  "actual_optimizer_steps": 256,
+  "elapsed_seconds": 1537.2755184139999,
+  "merged_model": {
+    "path": "/kaggle/working/026/training/merged_model",
+    "config_sha256": "63573aa9bd7ea58f45a4d96b6cd36fce0b079932205e42f36a5f2bc6981dd20b",
+    "weight_files": {
+      "model-00001-of-00002.safetensors": 3987521952,
+      "model-00002-of-00002.safetensors": 3279711544
+    },
+    "weight_bytes": 7267233496,
+    "plain_model_without_lora": true,
+    "tokenizer_bytes_match_base": true,
+    "vocab_size": 16,
+    "all_floating_parameters_bfloat16": true,
+    "offline_update_nonzero_after_bf16_merge": true,
+    "files": {
+      "added_tokens.json": {
+        "bytes": 68,
+        "sha256": "cf1224e6a594b51a34b8b9ca6c6dce3026683777521f361e37526b8a33258bce"
+      },
+      "config.json": {
+        "bytes": 1587,
+        "sha256": "63573aa9bd7ea58f45a4d96b6cd36fce0b079932205e42f36a5f2bc6981dd20b"
+      },
+      "generation_config.json": {
+        "bytes": 159,
+        "sha256": "8b954e2e8be6f34be01cece2d30f7727a86ac50bd6a5d172263bac243570a7a2"
+      },
+      "model-00001-of-00002.safetensors": {
+        "bytes": 3987521952
+      },
+      "model-00002-of-00002.safetensors": {
+        "bytes": 3279711544
+      },
+      "model.safetensors.index.json": {
+        "bytes": 32913,
+        "sha256": "8d28e18b4e624395ca74b61294a802de7db16678de20e1cff4491cfbc3c73d4d"
+      },
+      "special_tokens_map.json": {
+        "bytes": 367,
+        "sha256": "f4f79e08d97f4d1c87f8d89264f525c8789da3b73b3bb55d1e12f692f41a7b1b"
+      },
+      "tokenizer.json": {
+        "bytes": 1731,
+        "sha256": "af6b9e855f9db3192bd9152607708ebd7700b40f9fc5f792a26af70150a96cd5"
+      },
+      "tokenizer_config.json": {
+        "bytes": 988,
+        "sha256": "e1912aeba4050616cbfe01b34df3f3df2818207eda0056f6eb87c2336936ea90"
+      },
+      "vocab.json": {
+        "bytes": 94,
+        "sha256": "8141a61e47eceec466524bc178bc9c6d5076b7d1b18b456fbd3fdf66cae57f82"
+      }
+    }
+  }
+}

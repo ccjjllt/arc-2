@@ -1,0 +1,9 @@
+{
+  "checked_at_utc": "2026-10-25T13:55:31.924756+00:00",
+  "ref": "zhuating/arc2-027-ttt-view-ensemble-formal",
+  "version": 1,
+  "events_read": 129,
+  "stop": "all_four_base_worker_models_loaded",
+  "max_optimizer_step_seen": 0,
+  "scope": "One manual bounded SSE startup read; no recurring monitoring"
+}

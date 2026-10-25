@@ -1,0 +1,308 @@
+/usr/local/lib/python3.11/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  validate(nb)
+/usr/local/lib/python3.11/dist-packages/pydevd_plugins/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+/usr/local/lib/python3.11/dist-packages/pydevd_plugins/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+Found existing installation: tensorflow 2.18.0
+Uninstalling tensorflow-2.18.0:
+  Successfully uninstalled tensorflow-2.18.0
+{"event": "original_utility_mount_lookup", "roots": ["/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch"], "elapsed_s": 0.004930340000043998, "sys_path": ["/kaggle/working", "/kaggle/lib/kagglegym", "/kaggle/lib", "/kaggle/usr/lib", "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch", "/kaggle/input/competitions/arc-prize-2026-arc-agi-2", "/usr/lib/python311.zip", "/usr/lib/python3.11", "/usr/lib/python3.11/lib-dynload", "", "/usr/local/lib/python3.11/dist-packages", "/usr/lib/python3/dist-packages", "/usr/local/lib/python3.11/dist-packages/IPython/extensions", "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch/setuptools/_vendor", "/root/.ipython"]}
+{"event": "formal_sequential_view_boot", "reference_version": 312063593, "notebook_started": 1792935954.1751032, "global_end_time": 1792978554.1751032, "raw_rerun_flag": "", "model_source": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1", "model_target": "/kaggle/temp/arc027-model", "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0", "utility_root": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch", "python": "3.11.13 (main, Jun  4 2025, 08:57:29) [GCC 11.4.0]", "original_task_soft_limit": 1200, "original_global_seconds": 42600, "runtime_changes": ["explicit GPU and current fixed model mount", "stage identical checkpoint on local disk", "original utility in child PYTHONPATH", "propagate child failure"], "session_seconds": 43200, "solver_global_seconds": 42600, "solver_hard_seconds": 43140, "session_deadline": 1792979154.1751032, "input_identity": {"mode": "original_ordinary_four", "source_path": "/kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_evaluation_challenges.json", "source_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8", "challenges_sha256": "f609f61bdc823802318d005eef7fd6400a2a1c6a4b9f9c93305e1de116979bc1", "n_tasks": 4, "n_queries": 5, "task_ids": ["0934a4d8", "36a08778", "981571dc", "aa4ec2a5"], "ordinary_reference_sha256": "63296c02509c34796ee7ebfac43fa73f96e5165e939de7c478924794cffd3381"}, "gpu_inventory": "0, NVIDIA L4, 23034 MiB\n1, NVIDIA L4, 23034 MiB\n2, NVIDIA L4, 23034 MiB\n3, NVIDIA L4, 23034 MiB\n", "gpu_inventory_return_code": 0, "research_only": false, "evaluation_gold_read": false, "python_hash_seed": 27027, "ttt_augmentation_seeds": {"base": 1, "extra": 2}, "sequential_four_gpu_passes": true, "offline_continuation_training": false}
+{"event": "model_copy_file_start", "time": 1792936000.5821915, "file": "added_tokens.json", "bytes": 68}
+{"event": "model_copy_file_done", "time": 1792936000.588175, "path": "added_tokens.json", "bytes": 68, "sha256": "cf1224e6a594b51a34b8b9ca6c6dce3026683777521f361e37526b8a33258bce", "copy_s": 0.005791187286376953}
+{"event": "model_copy_file_start", "time": 1792936000.5882447, "file": "config.json", "bytes": 1532}
+{"event": "model_copy_file_done", "time": 1792936000.5897648, "path": "config.json", "bytes": 1532, "sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0", "copy_s": 0.0013489723205566406}
+{"event": "model_copy_file_start", "time": 1792936000.5898325, "file": "generation_config.json", "bytes": 113}
+{"event": "model_copy_file_done", "time": 1792936000.594939, "path": "generation_config.json", "bytes": 113, "sha256": "fd0abf1e2baa1f9407803a83486767a6e7841164481d750fcaa9b71d31a0ab02", "copy_s": 0.004899024963378906}
+{"event": "model_copy_file_start", "time": 1792936000.5950067, "file": "model-00001-of-00002.safetensors", "bytes": 4996836472}
+{"event": "model_copy_file_start", "time": 1792936000.5821915, "file": "added_tokens.json", "bytes": 68}
+{"event": "model_copy_file_done", "time": 1792936000.588175, "path": "added_tokens.json", "bytes": 68, "sha256": "cf1224e6a594b51a34b8b9ca6c6dce3026683777521f361e37526b8a33258bce", "copy_s": 0.005791187286376953}
+{"event": "model_copy_file_start", "time": 1792936000.5882447, "file": "config.json", "bytes": 1532}
+{"event": "model_copy_file_done", "time": 1792936000.5897648, "path": "config.json", "bytes": 1532, "sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0", "copy_s": 0.0013489723205566406}
+{"event": "model_copy_file_start", "time": 1792936000.5898325, "file": "generation_config.json", "bytes": 113}
+{"event": "model_copy_file_done", "time": 1792936000.594939, "path": "generation_config.json", "bytes": 113, "sha256": "fd0abf1e2baa1f9407803a83486767a6e7841164481d750fcaa9b71d31a0ab02", "copy_s": 0.004899024963378906}
+{"event": "model_copy_file_start", "time": 1792936000.5950067, "file": "model-00001-of-00002.safetensors", "bytes": 4996836472}
+{"event": "model_copy_file_done", "time": 1792936060.15743, "path": "model-00001-of-00002.safetensors", "bytes": 4996836472, "sha256": "379de219f74a1402a67d26fe7dcacdacadbf686947e08e41117dd9c884ee4529", "copy_s": 59.562087297439575}
+{"event": "model_copy_file_start", "time": 1792936060.157558, "file": "model-00002-of-00002.safetensors", "bytes": 2270397024}
+{"event": "model_copy_file_done", "time": 1792936060.15743, "path": "model-00001-of-00002.safetensors", "bytes": 4996836472, "sha256": "379de219f74a1402a67d26fe7dcacdacadbf686947e08e41117dd9c884ee4529", "copy_s": 59.562087297439575}
+{"event": "model_copy_file_start", "time": 1792936060.157558, "file": "model-00002-of-00002.safetensors", "bytes": 2270397024}
+{"event": "model_copy_file_done", "time": 1792936086.7742078, "path": "model-00002-of-00002.safetensors", "bytes": 2270397024, "sha256": "3b8470b83355ccbc527afcb7a77664bd679e63899a80e79169c016658e6b92e0", "copy_s": 26.616317749023438}
+{"event": "model_copy_file_start", "time": 1792936086.7743309, "file": "model.safetensors.index.json", "bytes": 32913}
+{"event": "model_copy_file_done", "time": 1792936086.781754, "path": "model.safetensors.index.json", "bytes": 32913, "sha256": "d2d5b2bffaf2fd27bad4452dfb4d4df80c56a4a77f1ac9c40fdd634845680cd4", "copy_s": 0.007059335708618164}
+{"event": "model_copy_file_start", "time": 1792936086.7818327, "file": "special_tokens_map.json", "bytes": 367}
+{"event": "model_copy_file_done", "time": 1792936086.7891889, "path": "special_tokens_map.json", "bytes": 367, "sha256": "f4f79e08d97f4d1c87f8d89264f525c8789da3b73b3bb55d1e12f692f41a7b1b", "copy_s": 0.007146596908569336}
+{"event": "model_copy_file_start", "time": 1792936086.7892616, "file": "tokenizer.json", "bytes": 1731}
+{"event": "model_copy_file_done", "time": 1792936086.7960165, "path": "tokenizer.json", "bytes": 1731, "sha256": "af6b9e855f9db3192bd9152607708ebd7700b40f9fc5f792a26af70150a96cd5", "copy_s": 0.00653839111328125}
+{"event": "model_copy_file_start", "time": 1792936086.7960835, "file": "tokenizer_config.json", "bytes": 988}
+{"event": "model_copy_file_done", "time": 1792936086.8026323, "path": "tokenizer_config.json", "bytes": 988, "sha256": "e1912aeba4050616cbfe01b34df3f3df2818207eda0056f6eb87c2336936ea90", "copy_s": 0.0063326358795166016}
+{"event": "model_copy_file_start", "time": 1792936086.802696, "file": "vocab.json", "bytes": 94}
+{"event": "model_copy_file_done", "time": 1792936086.8082857, "path": "vocab.json", "bytes": 94, "sha256": "8141a61e47eceec466524bc178bc9c6d5076b7d1b18b456fbd3fdf66cae57f82", "copy_s": 0.0053822994232177734}
+{"event": "model_copy_complete", "time": 1792936086.8085349, "elapsed_s": 86.23931169509888, "copied_bytes": 7267271302}
+{"event": "model_copy_file_done", "time": 1792936086.7742078, "path": "model-00002-of-00002.safetensors", "bytes": 2270397024, "sha256": "3b8470b83355ccbc527afcb7a77664bd679e63899a80e79169c016658e6b92e0", "copy_s": 26.616317749023438}
+{"event": "model_copy_file_start", "time": 1792936086.7743309, "file": "model.safetensors.index.json", "bytes": 32913}
+{"event": "model_copy_file_done", "time": 1792936086.781754, "path": "model.safetensors.index.json", "bytes": 32913, "sha256": "d2d5b2bffaf2fd27bad4452dfb4d4df80c56a4a77f1ac9c40fdd634845680cd4", "copy_s": 0.007059335708618164}
+{"event": "model_copy_file_start", "time": 1792936086.7818327, "file": "special_tokens_map.json", "bytes": 367}
+{"event": "model_copy_file_done", "time": 1792936086.7891889, "path": "special_tokens_map.json", "bytes": 367, "sha256": "f4f79e08d97f4d1c87f8d89264f525c8789da3b73b3bb55d1e12f692f41a7b1b", "copy_s": 0.007146596908569336}
+{"event": "model_copy_file_start", "time": 1792936086.7892616, "file": "tokenizer.json", "bytes": 1731}
+{"event": "model_copy_file_done", "time": 1792936086.7960165, "path": "tokenizer.json", "bytes": 1731, "sha256": "af6b9e855f9db3192bd9152607708ebd7700b40f9fc5f792a26af70150a96cd5", "copy_s": 0.00653839111328125}
+{"event": "model_copy_file_start", "time": 1792936086.7960835, "file": "tokenizer_config.json", "bytes": 988}
+{"event": "model_copy_file_done", "time": 1792936086.8026323, "path": "tokenizer_config.json", "bytes": 988, "sha256": "e1912aeba4050616cbfe01b34df3f3df2818207eda0056f6eb87c2336936ea90", "copy_s": 0.0063326358795166016}
+{"event": "model_copy_file_start", "time": 1792936086.802696, "file": "vocab.json", "bytes": 94}
+{"event": "model_copy_file_done", "time": 1792936086.8082857, "path": "vocab.json", "bytes": 94, "sha256": "8141a61e47eceec466524bc178bc9c6d5076b7d1b18b456fbd3fdf66cae57f82", "copy_s": 0.0053822994232177734}
+{"event": "model_copy_complete", "time": 1792936086.8085349, "elapsed_s": 86.23931169509888, "copied_bytes": 7267271302}
+Writing arc_loader.py
+Writing arc_decoder.py
+Writing arc_solver.py
+Writing starter.py
+/usr/local/lib/python3.11/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  validate(nb)
+/usr/local/lib/python3.11/dist-packages/pydevd_plugins/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+/usr/local/lib/python3.11/dist-packages/pydevd_plugins/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+Found existing installation: tensorflow 2.18.0
+Uninstalling tensorflow-2.18.0:
+  Successfully uninstalled tensorflow-2.18.0
+{"event": "original_utility_mount_lookup", "roots": ["/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch"], "elapsed_s": 0.004930340000043998, "sys_path": ["/kaggle/working", "/kaggle/lib/kagglegym", "/kaggle/lib", "/kaggle/usr/lib", "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch", "/kaggle/input/competitions/arc-prize-2026-arc-agi-2", "/usr/lib/python311.zip", "/usr/lib/python3.11", "/usr/lib/python3.11/lib-dynload", "", "/usr/local/lib/python3.11/dist-packages", "/usr/lib/python3/dist-packages", "/usr/local/lib/python3.11/dist-packages/IPython/extensions", "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch/setuptools/_vendor", "/root/.ipython"]}
+{"event": "formal_sequential_view_boot", "reference_version": 312063593, "notebook_started": 1792935954.1751032, "global_end_time": 1792978554.1751032, "raw_rerun_flag": "", "model_source": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1", "model_target": "/kaggle/temp/arc027-model", "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0", "utility_root": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch", "python": "3.11.13 (main, Jun  4 2025, 08:57:29) [GCC 11.4.0]", "original_task_soft_limit": 1200, "original_global_seconds": 42600, "runtime_changes": ["explicit GPU and current fixed model mount", "stage identical checkpoint on local disk", "original utility in child PYTHONPATH", "propagate child failure"], "session_seconds": 43200, "solver_global_seconds": 42600, "solver_hard_seconds": 43140, "session_deadline": 1792979154.1751032, "input_identity": {"mode": "original_ordinary_four", "source_path": "/kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_evaluation_challenges.json", "source_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8", "challenges_sha256": "f609f61bdc823802318d005eef7fd6400a2a1c6a4b9f9c93305e1de116979bc1", "n_tasks": 4, "n_queries": 5, "task_ids": ["0934a4d8", "36a08778", "981571dc", "aa4ec2a5"], "ordinary_reference_sha256": "63296c02509c34796ee7ebfac43fa73f96e5165e939de7c478924794cffd3381"}, "gpu_inventory": "0, NVIDIA L4, 23034 MiB\n1, NVIDIA L4, 23034 MiB\n2, NVIDIA L4, 23034 MiB\n3, NVIDIA L4, 23034 MiB\n", "gpu_inventory_return_code": 0, "research_only": false, "evaluation_gold_read": false, "python_hash_seed": 27027, "ttt_augmentation_seeds": {"base": 1, "extra": 2}, "sequential_four_gpu_passes": true, "offline_continuation_training": false}
+{"event": "model_copy_file_start", "time": 1792936000.5821915, "file": "added_tokens.json", "bytes": 68}
+{"event": "model_copy_file_done", "time": 1792936000.588175, "path": "added_tokens.json", "bytes": 68, "sha256": "cf1224e6a594b51a34b8b9ca6c6dce3026683777521f361e37526b8a33258bce", "copy_s": 0.005791187286376953}
+{"event": "model_copy_file_start", "time": 1792936000.5882447, "file": "config.json", "bytes": 1532}
+{"event": "model_copy_file_done", "time": 1792936000.5897648, "path": "config.json", "bytes": 1532, "sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0", "copy_s": 0.0013489723205566406}
+{"event": "model_copy_file_start", "time": 1792936000.5898325, "file": "generation_config.json", "bytes": 113}
+{"event": "model_copy_file_done", "time": 1792936000.594939, "path": "generation_config.json", "bytes": 113, "sha256": "fd0abf1e2baa1f9407803a83486767a6e7841164481d750fcaa9b71d31a0ab02", "copy_s": 0.004899024963378906}
+{"event": "model_copy_file_start", "time": 1792936000.5950067, "file": "model-00001-of-00002.safetensors", "bytes": 4996836472}
+{"event": "model_copy_file_start", "time": 1792936000.5821915, "file": "added_tokens.json", "bytes": 68}
+{"event": "model_copy_file_done", "time": 1792936000.588175, "path": "added_tokens.json", "bytes": 68, "sha256": "cf1224e6a594b51a34b8b9ca6c6dce3026683777521f361e37526b8a33258bce", "copy_s": 0.005791187286376953}
+{"event": "model_copy_file_start", "time": 1792936000.5882447, "file": "config.json", "bytes": 1532}
+{"event": "model_copy_file_done", "time": 1792936000.5897648, "path": "config.json", "bytes": 1532, "sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0", "copy_s": 0.0013489723205566406}
+{"event": "model_copy_file_start", "time": 1792936000.5898325, "file": "generation_config.json", "bytes": 113}
+{"event": "model_copy_file_done", "time": 1792936000.594939, "path": "generation_config.json", "bytes": 113, "sha256": "fd0abf1e2baa1f9407803a83486767a6e7841164481d750fcaa9b71d31a0ab02", "copy_s": 0.004899024963378906}
+{"event": "model_copy_file_start", "time": 1792936000.5950067, "file": "model-00001-of-00002.safetensors", "bytes": 4996836472}
+{"event": "model_copy_file_done", "time": 1792936060.15743, "path": "model-00001-of-00002.safetensors", "bytes": 4996836472, "sha256": "379de219f74a1402a67d26fe7dcacdacadbf686947e08e41117dd9c884ee4529", "copy_s": 59.562087297439575}
+{"event": "model_copy_file_start", "time": 1792936060.157558, "file": "model-00002-of-00002.safetensors", "bytes": 2270397024}
+{"event": "model_copy_file_done", "time": 1792936060.15743, "path": "model-00001-of-00002.safetensors", "bytes": 4996836472, "sha256": "379de219f74a1402a67d26fe7dcacdacadbf686947e08e41117dd9c884ee4529", "copy_s": 59.562087297439575}
+{"event": "model_copy_file_start", "time": 1792936060.157558, "file": "model-00002-of-00002.safetensors", "bytes": 2270397024}
+{"event": "model_copy_file_done", "time": 1792936086.7742078, "path": "model-00002-of-00002.safetensors", "bytes": 2270397024, "sha256": "3b8470b83355ccbc527afcb7a77664bd679e63899a80e79169c016658e6b92e0", "copy_s": 26.616317749023438}
+{"event": "model_copy_file_start", "time": 1792936086.7743309, "file": "model.safetensors.index.json", "bytes": 32913}
+{"event": "model_copy_file_done", "time": 1792936086.781754, "path": "model.safetensors.index.json", "bytes": 32913, "sha256": "d2d5b2bffaf2fd27bad4452dfb4d4df80c56a4a77f1ac9c40fdd634845680cd4", "copy_s": 0.007059335708618164}
+{"event": "model_copy_file_start", "time": 1792936086.7818327, "file": "special_tokens_map.json", "bytes": 367}
+{"event": "model_copy_file_done", "time": 1792936086.7891889, "path": "special_tokens_map.json", "bytes": 367, "sha256": "f4f79e08d97f4d1c87f8d89264f525c8789da3b73b3bb55d1e12f692f41a7b1b", "copy_s": 0.007146596908569336}
+{"event": "model_copy_file_start", "time": 1792936086.7892616, "file": "tokenizer.json", "bytes": 1731}
+{"event": "model_copy_file_done", "time": 1792936086.7960165, "path": "tokenizer.json", "bytes": 1731, "sha256": "af6b9e855f9db3192bd9152607708ebd7700b40f9fc5f792a26af70150a96cd5", "copy_s": 0.00653839111328125}
+{"event": "model_copy_file_start", "time": 1792936086.7960835, "file": "tokenizer_config.json", "bytes": 988}
+{"event": "model_copy_file_done", "time": 1792936086.8026323, "path": "tokenizer_config.json", "bytes": 988, "sha256": "e1912aeba4050616cbfe01b34df3f3df2818207eda0056f6eb87c2336936ea90", "copy_s": 0.0063326358795166016}
+{"event": "model_copy_file_start", "time": 1792936086.802696, "file": "vocab.json", "bytes": 94}
+{"event": "model_copy_file_done", "time": 1792936086.8082857, "path": "vocab.json", "bytes": 94, "sha256": "8141a61e47eceec466524bc178bc9c6d5076b7d1b18b456fbd3fdf66cae57f82", "copy_s": 0.0053822994232177734}
+{"event": "model_copy_complete", "time": 1792936086.8085349, "elapsed_s": 86.23931169509888, "copied_bytes": 7267271302}
+{"event": "model_copy_file_done", "time": 1792936086.7742078, "path": "model-00002-of-00002.safetensors", "bytes": 2270397024, "sha256": "3b8470b83355ccbc527afcb7a77664bd679e63899a80e79169c016658e6b92e0", "copy_s": 26.616317749023438}
+{"event": "model_copy_file_start", "time": 1792936086.7743309, "file": "model.safetensors.index.json", "bytes": 32913}
+{"event": "model_copy_file_done", "time": 1792936086.781754, "path": "model.safetensors.index.json", "bytes": 32913, "sha256": "d2d5b2bffaf2fd27bad4452dfb4d4df80c56a4a77f1ac9c40fdd634845680cd4", "copy_s": 0.007059335708618164}
+{"event": "model_copy_file_start", "time": 1792936086.7818327, "file": "special_tokens_map.json", "bytes": 367}
+{"event": "model_copy_file_done", "time": 1792936086.7891889, "path": "special_tokens_map.json", "bytes": 367, "sha256": "f4f79e08d97f4d1c87f8d89264f525c8789da3b73b3bb55d1e12f692f41a7b1b", "copy_s": 0.007146596908569336}
+{"event": "model_copy_file_start", "time": 1792936086.7892616, "file": "tokenizer.json", "bytes": 1731}
+{"event": "model_copy_file_done", "time": 1792936086.7960165, "path": "tokenizer.json", "bytes": 1731, "sha256": "af6b9e855f9db3192bd9152607708ebd7700b40f9fc5f792a26af70150a96cd5", "copy_s": 0.00653839111328125}
+{"event": "model_copy_file_start", "time": 1792936086.7960835, "file": "tokenizer_config.json", "bytes": 988}
+{"event": "model_copy_file_done", "time": 1792936086.8026323, "path": "tokenizer_config.json", "bytes": 988, "sha256": "e1912aeba4050616cbfe01b34df3f3df2818207eda0056f6eb87c2336936ea90", "copy_s": 0.0063326358795166016}
+{"event": "model_copy_file_start", "time": 1792936086.802696, "file": "vocab.json", "bytes": 94}
+{"event": "model_copy_file_done", "time": 1792936086.8082857, "path": "vocab.json", "bytes": 94, "sha256": "8141a61e47eceec466524bc178bc9c6d5076b7d1b18b456fbd3fdf66cae57f82", "copy_s": 0.0053822994232177734}
+{"event": "model_copy_complete", "time": 1792936086.8085349, "elapsed_s": 86.23931169509888, "copied_bytes": 7267271302}
+Writing arc_loader.py
+Writing arc_decoder.py
+Writing arc_solver.py
+Writing starter.py
+[base] ð¦¥ Unsloth: Will patch your computer to enable 2x faster free finetuning.
+[base] ð¦¥ Unsloth Zoo will now patch everything to make training faster!
+[base] [Rank 0] start!
+[base] ==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+[base]    \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+[base] O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+[base] \        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+[base]  "-____-"     Free license: http://github.com/unslothai/unsloth
+[base] Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+[base] 
+[base] Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+[base] Loading checkpoint shards:  50%|âââââ     | 1/2 [00:01<00:01,  1.35s/it]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.09it/s]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.02it/s]
+[base] Unsloth: Training embed_tokens in mixed precision to save VRAM
+[base] Unsloth: Training lm_head in mixed precision to save VRAM
+[base] ð¦¥ Unsloth: Will patch your computer to enable 2x faster free finetuning.
+[base] ð¦¥ Unsloth Zoo will now patch everything to make training faster!
+[base] [Rank 1] start!
+[base] ==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+[base]    \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+[base] O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+[base] \        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+[base]  "-____-"     Free license: http://github.com/unslothai/unsloth
+[base] Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+[base] 
+[base] Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+[base] Loading checkpoint shards:  50%|âââââ     | 1/2 [00:01<00:01,  1.34s/it]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.10it/s]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.03it/s]
+[base] Unsloth: Training embed_tokens in mixed precision to save VRAM
+[base] Unsloth: Training lm_head in mixed precision to save VRAM
+[base] ð¦¥ Unsloth: Will patch your computer to enable 2x faster free finetuning.
+[base] ð¦¥ Unsloth Zoo will now patch everything to make training faster!
+[base] [Rank 2] start!
+[base] ==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+[base]    \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+[base] O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+[base] \        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+[base]  "-____-"     Free license: http://github.com/unslothai/unsloth
+[base] Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+[base] 
+[base] Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+[base] Loading checkpoint shards:  50%|âââââ     | 1/2 [00:01<00:01,  1.34s/it]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.11it/s]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.03it/s]
+[base] Unsloth: Training embed_tokens in mixed precision to save VRAM
+[base] Unsloth: Training lm_head in mixed precision to save VRAM
+[base] ð¦¥ Unsloth: Will patch your computer to enable 2x faster free finetuning.
+/usr/local/lib/python3.11/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  validate(nb)
+/usr/local/lib/python3.11/dist-packages/pydevd_plugins/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+/usr/local/lib/python3.11/dist-packages/pydevd_plugins/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+Found existing installation: tensorflow 2.18.0
+Uninstalling tensorflow-2.18.0:
+  Successfully uninstalled tensorflow-2.18.0
+{"event": "original_utility_mount_lookup", "roots": ["/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch"], "elapsed_s": 0.004930340000043998, "sys_path": ["/kaggle/working", "/kaggle/lib/kagglegym", "/kaggle/lib", "/kaggle/usr/lib", "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch", "/kaggle/input/competitions/arc-prize-2026-arc-agi-2", "/usr/lib/python311.zip", "/usr/lib/python3.11", "/usr/lib/python3.11/lib-dynload", "", "/usr/local/lib/python3.11/dist-packages", "/usr/lib/python3/dist-packages", "/usr/local/lib/python3.11/dist-packages/IPython/extensions", "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch/setuptools/_vendor", "/root/.ipython"]}
+{"event": "formal_sequential_view_boot", "reference_version": 312063593, "notebook_started": 1792935954.1751032, "global_end_time": 1792978554.1751032, "raw_rerun_flag": "", "model_source": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1", "model_target": "/kaggle/temp/arc027-model", "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0", "utility_root": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch", "python": "3.11.13 (main, Jun  4 2025, 08:57:29) [GCC 11.4.0]", "original_task_soft_limit": 1200, "original_global_seconds": 42600, "runtime_changes": ["explicit GPU and current fixed model mount", "stage identical checkpoint on local disk", "original utility in child PYTHONPATH", "propagate child failure"], "session_seconds": 43200, "solver_global_seconds": 42600, "solver_hard_seconds": 43140, "session_deadline": 1792979154.1751032, "input_identity": {"mode": "original_ordinary_four", "source_path": "/kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_evaluation_challenges.json", "source_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8", "challenges_sha256": "f609f61bdc823802318d005eef7fd6400a2a1c6a4b9f9c93305e1de116979bc1", "n_tasks": 4, "n_queries": 5, "task_ids": ["0934a4d8", "36a08778", "981571dc", "aa4ec2a5"], "ordinary_reference_sha256": "63296c02509c34796ee7ebfac43fa73f96e5165e939de7c478924794cffd3381"}, "gpu_inventory": "0, NVIDIA L4, 23034 MiB\n1, NVIDIA L4, 23034 MiB\n2, NVIDIA L4, 23034 MiB\n3, NVIDIA L4, 23034 MiB\n", "gpu_inventory_return_code": 0, "research_only": false, "evaluation_gold_read": false, "python_hash_seed": 27027, "ttt_augmentation_seeds": {"base": 1, "extra": 2}, "sequential_four_gpu_passes": true, "offline_continuation_training": false}
+{"event": "model_copy_file_start", "time": 1792936000.5821915, "file": "added_tokens.json", "bytes": 68}
+{"event": "model_copy_file_done", "time": 1792936000.588175, "path": "added_tokens.json", "bytes": 68, "sha256": "cf1224e6a594b51a34b8b9ca6c6dce3026683777521f361e37526b8a33258bce", "copy_s": 0.005791187286376953}
+{"event": "model_copy_file_start", "time": 1792936000.5882447, "file": "config.json", "bytes": 1532}
+{"event": "model_copy_file_done", "time": 1792936000.5897648, "path": "config.json", "bytes": 1532, "sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0", "copy_s": 0.0013489723205566406}
+{"event": "model_copy_file_start", "time": 1792936000.5898325, "file": "generation_config.json", "bytes": 113}
+{"event": "model_copy_file_done", "time": 1792936000.594939, "path": "generation_config.json", "bytes": 113, "sha256": "fd0abf1e2baa1f9407803a83486767a6e7841164481d750fcaa9b71d31a0ab02", "copy_s": 0.004899024963378906}
+{"event": "model_copy_file_start", "time": 1792936000.5950067, "file": "model-00001-of-00002.safetensors", "bytes": 4996836472}
+{"event": "model_copy_file_start", "time": 1792936000.5821915, "file": "added_tokens.json", "bytes": 68}
+{"event": "model_copy_file_done", "time": 1792936000.588175, "path": "added_tokens.json", "bytes": 68, "sha256": "cf1224e6a594b51a34b8b9ca6c6dce3026683777521f361e37526b8a33258bce", "copy_s": 0.005791187286376953}
+{"event": "model_copy_file_start", "time": 1792936000.5882447, "file": "config.json", "bytes": 1532}
+{"event": "model_copy_file_done", "time": 1792936000.5897648, "path": "config.json", "bytes": 1532, "sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0", "copy_s": 0.0013489723205566406}
+{"event": "model_copy_file_start", "time": 1792936000.5898325, "file": "generation_config.json", "bytes": 113}
+{"event": "model_copy_file_done", "time": 1792936000.594939, "path": "generation_config.json", "bytes": 113, "sha256": "fd0abf1e2baa1f9407803a83486767a6e7841164481d750fcaa9b71d31a0ab02", "copy_s": 0.004899024963378906}
+{"event": "model_copy_file_start", "time": 1792936000.5950067, "file": "model-00001-of-00002.safetensors", "bytes": 4996836472}
+{"event": "model_copy_file_done", "time": 1792936060.15743, "path": "model-00001-of-00002.safetensors", "bytes": 4996836472, "sha256": "379de219f74a1402a67d26fe7dcacdacadbf686947e08e41117dd9c884ee4529", "copy_s": 59.562087297439575}
+{"event": "model_copy_file_start", "time": 1792936060.157558, "file": "model-00002-of-00002.safetensors", "bytes": 2270397024}
+{"event": "model_copy_file_done", "time": 1792936060.15743, "path": "model-00001-of-00002.safetensors", "bytes": 4996836472, "sha256": "379de219f74a1402a67d26fe7dcacdacadbf686947e08e41117dd9c884ee4529", "copy_s": 59.562087297439575}
+{"event": "model_copy_file_start", "time": 1792936060.157558, "file": "model-00002-of-00002.safetensors", "bytes": 2270397024}
+{"event": "model_copy_file_done", "time": 1792936086.7742078, "path": "model-00002-of-00002.safetensors", "bytes": 2270397024, "sha256": "3b8470b83355ccbc527afcb7a77664bd679e63899a80e79169c016658e6b92e0", "copy_s": 26.616317749023438}
+{"event": "model_copy_file_start", "time": 1792936086.7743309, "file": "model.safetensors.index.json", "bytes": 32913}
+{"event": "model_copy_file_done", "time": 1792936086.781754, "path": "model.safetensors.index.json", "bytes": 32913, "sha256": "d2d5b2bffaf2fd27bad4452dfb4d4df80c56a4a77f1ac9c40fdd634845680cd4", "copy_s": 0.007059335708618164}
+{"event": "model_copy_file_start", "time": 1792936086.7818327, "file": "special_tokens_map.json", "bytes": 367}
+{"event": "model_copy_file_done", "time": 1792936086.7891889, "path": "special_tokens_map.json", "bytes": 367, "sha256": "f4f79e08d97f4d1c87f8d89264f525c8789da3b73b3bb55d1e12f692f41a7b1b", "copy_s": 0.007146596908569336}
+{"event": "model_copy_file_start", "time": 1792936086.7892616, "file": "tokenizer.json", "bytes": 1731}
+{"event": "model_copy_file_done", "time": 1792936086.7960165, "path": "tokenizer.json", "bytes": 1731, "sha256": "af6b9e855f9db3192bd9152607708ebd7700b40f9fc5f792a26af70150a96cd5", "copy_s": 0.00653839111328125}
+{"event": "model_copy_file_start", "time": 1792936086.7960835, "file": "tokenizer_config.json", "bytes": 988}
+{"event": "model_copy_file_done", "time": 1792936086.8026323, "path": "tokenizer_config.json", "bytes": 988, "sha256": "e1912aeba4050616cbfe01b34df3f3df2818207eda0056f6eb87c2336936ea90", "copy_s": 0.0063326358795166016}
+{"event": "model_copy_file_start", "time": 1792936086.802696, "file": "vocab.json", "bytes": 94}
+{"event": "model_copy_file_done", "time": 1792936086.8082857, "path": "vocab.json", "bytes": 94, "sha256": "8141a61e47eceec466524bc178bc9c6d5076b7d1b18b456fbd3fdf66cae57f82", "copy_s": 0.0053822994232177734}
+{"event": "model_copy_complete", "time": 1792936086.8085349, "elapsed_s": 86.23931169509888, "copied_bytes": 7267271302}
+{"event": "model_copy_file_done", "time": 1792936086.7742078, "path": "model-00002-of-00002.safetensors", "bytes": 2270397024, "sha256": "3b8470b83355ccbc527afcb7a77664bd679e63899a80e79169c016658e6b92e0", "copy_s": 26.616317749023438}
+{"event": "model_copy_file_start", "time": 1792936086.7743309, "file": "model.safetensors.index.json", "bytes": 32913}
+{"event": "model_copy_file_done", "time": 1792936086.781754, "path": "model.safetensors.index.json", "bytes": 32913, "sha256": "d2d5b2bffaf2fd27bad4452dfb4d4df80c56a4a77f1ac9c40fdd634845680cd4", "copy_s": 0.007059335708618164}
+{"event": "model_copy_file_start", "time": 1792936086.7818327, "file": "special_tokens_map.json", "bytes": 367}
+{"event": "model_copy_file_done", "time": 1792936086.7891889, "path": "special_tokens_map.json", "bytes": 367, "sha256": "f4f79e08d97f4d1c87f8d89264f525c8789da3b73b3bb55d1e12f692f41a7b1b", "copy_s": 0.007146596908569336}
+{"event": "model_copy_file_start", "time": 1792936086.7892616, "file": "tokenizer.json", "bytes": 1731}
+{"event": "model_copy_file_done", "time": 1792936086.7960165, "path": "tokenizer.json", "bytes": 1731, "sha256": "af6b9e855f9db3192bd9152607708ebd7700b40f9fc5f792a26af70150a96cd5", "copy_s": 0.00653839111328125}
+{"event": "model_copy_file_start", "time": 1792936086.7960835, "file": "tokenizer_config.json", "bytes": 988}
+{"event": "model_copy_file_done", "time": 1792936086.8026323, "path": "tokenizer_config.json", "bytes": 988, "sha256": "e1912aeba4050616cbfe01b34df3f3df2818207eda0056f6eb87c2336936ea90", "copy_s": 0.0063326358795166016}
+{"event": "model_copy_file_start", "time": 1792936086.802696, "file": "vocab.json", "bytes": 94}
+{"event": "model_copy_file_done", "time": 1792936086.8082857, "path": "vocab.json", "bytes": 94, "sha256": "8141a61e47eceec466524bc178bc9c6d5076b7d1b18b456fbd3fdf66cae57f82", "copy_s": 0.0053822994232177734}
+{"event": "model_copy_complete", "time": 1792936086.8085349, "elapsed_s": 86.23931169509888, "copied_bytes": 7267271302}
+Writing arc_loader.py
+Writing arc_decoder.py
+Writing arc_solver.py
+Writing starter.py
+[base] ð¦¥ Unsloth: Will patch your computer to enable 2x faster free finetuning.
+[base] ð¦¥ Unsloth Zoo will now patch everything to make training faster!
+[base] [Rank 0] start!
+[base] ==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+[base]    \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+[base] O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+[base] \        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+[base]  "-____-"     Free license: http://github.com/unslothai/unsloth
+[base] Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+[base] 
+[base] Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+[base] Loading checkpoint shards:  50%|âââââ     | 1/2 [00:01<00:01,  1.35s/it]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.09it/s]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.02it/s]
+[base] Unsloth: Training embed_tokens in mixed precision to save VRAM
+[base] Unsloth: Training lm_head in mixed precision to save VRAM
+[base] ð¦¥ Unsloth: Will patch your computer to enable 2x faster free finetuning.
+[base] ð¦¥ Unsloth Zoo will now patch everything to make training faster!
+[base] [Rank 1] start!
+[base] ==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+[base]    \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+[base] O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+[base] \        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+[base]  "-____-"     Free license: http://github.com/unslothai/unsloth
+[base] Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+[base] 
+[base] Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+[base] Loading checkpoint shards:  50%|âââââ     | 1/2 [00:01<00:01,  1.34s/it]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.10it/s]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.03it/s]
+[base] Unsloth: Training embed_tokens in mixed precision to save VRAM
+[base] Unsloth: Training lm_head in mixed precision to save VRAM
+[base] ð¦¥ Unsloth: Will patch your computer to enable 2x faster free finetuning.
+[base] ð¦¥ Unsloth Zoo will now patch everything to make training faster!
+[base] [Rank 2] start!
+[base] ==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+[base]    \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+[base] O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+[base] \        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+[base]  "-____-"     Free license: http://github.com/unslothai/unsloth
+[base] Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+[base] 
+[base] Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+[base] Loading checkpoint shards:  50%|âââââ     | 1/2 [00:01<00:01,  1.34s/it]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.11it/s]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.03it/s]
+[base] Unsloth: Training embed_tokens in mixed precision to save VRAM
+[base] Unsloth: Training lm_head in mixed precision to save VRAM
+[base] ð¦¥ Unsloth: Will patch your computer to enable 2x faster free finetuning.
+[base] ð¦¥ Unsloth Zoo will now patch everything to make training faster!
+[base] [Rank 3] start!
+[base] ==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+[base]    \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+[base] O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+[base] \        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+[base]  "-____-"     Free license: http://github.com/unslothai/unsloth
+[base] Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+[base] 
+[base] Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+[base] Loading checkpoint shards:  50%|âââââ     | 1/2 [00:01<00:01,  1.34s/it]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.10it/s]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.03it/s]
+[base] Unsloth: Training embed_tokens in mixed precision to save VRAM
+[base] Unsloth: Training lm_head in mixed precision to save VRAM
