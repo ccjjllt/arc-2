@@ -1,0 +1,88 @@
+{
+  "downloaded_at_utc": "2026-10-25T02:52:36.252357+00:00",
+  "ref": "zhuating/arc2-025-v1-selection-confirmation",
+  "status": {
+    "status": "ERROR"
+  },
+  "script_version_ids": [
+    361989657
+  ],
+  "remote_files": [
+    "025/events-rank0.jsonl",
+    "025/events-rank1.jsonl",
+    "025/events-rank2.jsonl",
+    "025/events-rank3.jsonl",
+    "025/input/challenges.json",
+    "025/input/manifest.json",
+    "025/raw-candidates-rank0.jsonl",
+    "025/raw-candidates-rank1.jsonl",
+    "025/raw-candidates-rank2.jsonl",
+    "025/raw-candidates-rank3.jsonl"
+  ],
+  "downloaded": [
+    {
+      "file_name": "025/events-rank0.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v1-output/025/events-rank0.jsonl"
+    },
+    {
+      "file_name": "025/events-rank1.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v1-output/025/events-rank1.jsonl"
+    },
+    {
+      "file_name": "025/events-rank2.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v1-output/025/events-rank2.jsonl"
+    },
+    {
+      "file_name": "025/events-rank3.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v1-output/025/events-rank3.jsonl"
+    },
+    {
+      "file_name": "025/input/challenges.json",
+      "bytes": 1596517,
+      "sha256": "38df4c7126f160f9dd045b4b0c9fb37ccb4f24dfbb51c8d32aa7b50f132ebeb9",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v1-output/025/input/challenges.json"
+    },
+    {
+      "file_name": "025/input/manifest.json",
+      "bytes": 66098,
+      "sha256": "9e8c6617193bd48efc905b0766d218c37218853f51f5f145ee27bd15ee79fa45",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v1-output/025/input/manifest.json"
+    },
+    {
+      "file_name": "025/raw-candidates-rank0.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v1-output/025/raw-candidates-rank0.jsonl"
+    },
+    {
+      "file_name": "025/raw-candidates-rank1.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v1-output/025/raw-candidates-rank1.jsonl"
+    },
+    {
+      "file_name": "025/raw-candidates-rank2.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v1-output/025/raw-candidates-rank2.jsonl"
+    },
+    {
+      "file_name": "025/raw-candidates-rank3.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v1-output/025/raw-candidates-rank3.jsonl"
+    }
+  ],
+  "local_output_directory": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v1-output",
+  "source_directory": "/private/tmp/arc2-025-output-v1",
+  "log_sha256": "b8022afec750c7666eb2e321edd8de0123b1eb33559bf96a611457c3357ab8fa",
+  "gold_read_by_download": false
+}

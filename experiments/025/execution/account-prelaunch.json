@@ -1,0 +1,93 @@
+{
+  "checked_at_utc": "2026-10-25T02:48:28.467718+00:00",
+  "account": "zhuating",
+  "quota_refresh_time_utc": "2026-10-31 00:00:00",
+  "gpu": {
+    "total_time_allowed": 108000.0,
+    "time_used": 28980.164,
+    "time_reserved": 0.0,
+    "available_seconds": 79019.836
+  },
+  "recent_refs": [
+    {
+      "ref": "",
+      "last_run_time": "2010-04-01 00:00:00"
+    },
+    {
+      "ref": "zhuating/arc3-auxiliary-reasoning-diagnostic",
+      "last_run_time": "2026-10-24 12:20:09.137000"
+    },
+    {
+      "ref": "zhuating/arc2-023-failed-in-aimo-v1-faithful",
+      "last_run_time": "2026-10-22 06:59:19.633000"
+    },
+    {
+      "ref": "zhuating/p015-31b-task-rft",
+      "last_run_time": "2026-10-22 06:13:36.820000"
+    },
+    {
+      "ref": "zhuating/p015-train-next-sampling",
+      "last_run_time": "2026-10-22 05:38:21.957000"
+    },
+    {
+      "ref": "zhuating/p015-train-next-cpu",
+      "last_run_time": "2026-10-22 05:29:19.907000"
+    },
+    {
+      "ref": "zhuating/p015-base-and-train-sampling",
+      "last_run_time": "2026-10-22 05:03:30.103000"
+    },
+    {
+      "ref": "zhuating/p015-natural-pr-panel-cpu",
+      "last_run_time": "2026-10-22 04:54:42.220000"
+    },
+    {
+      "ref": "zhuating/p015-fsdp-capacity",
+      "last_run_time": "2026-10-22 04:36:02.117000"
+    },
+    {
+      "ref": "zhuating/p015-attention-capacity",
+      "last_run_time": "2026-10-22 04:24:14.813000"
+    },
+    {
+      "ref": "zhuating/p015-31b-tokenizer-cpu",
+      "last_run_time": "2026-10-22 04:19:21.203000"
+    },
+    {
+      "ref": "zhuating/arc2-022-nvarc-full-submission",
+      "last_run_time": "2026-10-22 00:39:41.537000"
+    },
+    {
+      "ref": "zhuating/arc2-022-nvarc-e20",
+      "last_run_time": "2026-10-21 16:14:49.147000"
+    },
+    {
+      "ref": "zhuating/arc2-021-qwen-e20-direct32k",
+      "last_run_time": "2026-10-21 12:59:14.287000"
+    },
+    {
+      "ref": "zhuating/arc3-032-memory-recovery",
+      "last_run_time": "2026-10-21 12:34:35.310000"
+    },
+    {
+      "ref": "zhuating/arc2-021-nvarc-v1-e20",
+      "last_run_time": "2026-10-21 12:30:56.940000"
+    },
+    {
+      "ref": "zhuating/arc3-032-memory-submission",
+      "last_run_time": "2026-10-21 08:37:55.010000"
+    },
+    {
+      "ref": "zhuating/arc3-032-memory-full",
+      "last_run_time": "2026-10-21 08:20:02.647000"
+    },
+    {
+      "ref": "zhuating/p014-31b-runtime-v2",
+      "last_run_time": "2026-10-21 07:04:39.710000"
+    },
+    {
+      "ref": "zhuating/arc3-033-controller-retry",
+      "last_run_time": "2026-10-21 07:03:35.880000"
+    }
+  ]
+}

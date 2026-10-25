@@ -1,0 +1,46 @@
+{
+  "checked_at_utc": "2026-10-25T03:02:40.939547+00:00",
+  "ref": "zhuating/arc2-025-utility-mount-cpu",
+  "status": {
+    "status": "COMPLETE"
+  },
+  "utility_roots": [
+    {
+      "path": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch",
+      "unsloth_init_bytes": 11452
+    },
+    {
+      "path": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch",
+      "unsloth_init_bytes": 11452
+    }
+  ],
+  "model_config_paths": [
+    {
+      "path": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1/config.json",
+      "exists": true
+    },
+    {
+      "path": "/kaggle/input/models/ivan/qwen3_4b_grids15_sft139/transformers/bfloat16/1/config.json",
+      "exists": false
+    }
+  ],
+  "mounts": {
+    "/kaggle/usr/lib/notebooks": {
+      "exists": true,
+      "candidate_paths": [
+        "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch"
+      ]
+    },
+    "/kaggle/input/notebooks": {
+      "exists": false
+    },
+    "/kaggle/input": {
+      "exists": true,
+      "candidate_paths": [
+        "/kaggle/input/competitions",
+        "/kaggle/input/models"
+      ]
+    }
+  },
+  "log": "date_paths\\\": [\\\"/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch\\\"]}, \\\"/kaggle/input/notebooks\\\": {\\\"exists\\\": false}, \\\"/kaggle/input\\\": {\\\"exists\\\": true, \\\"candidate_paths\\\": [\\\"/kaggle/input/competitions\\\", \\\"/kaggle/input/models\\\"]}}, \\\"utility_roots\\\": [{\\\"path\\\": \\\"/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch\\\", \\\"unsloth_init_bytes\\\": 11452}, {\\\"path\\\": \\\"/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch\\\", \\\"unsloth_init_bytes\\\": 11452}], \\\"model_config_paths\\\": [{\\\"path\\\": \\\"/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1/config.json\\\", \\\"exists\\\": true}], \\\"elapsed_seconds\\\": 0.036479949951171875}\\n\"}\n,{\"stream_name\":\"stdout\",\"time\":20.440711464,\"data\":\"{\\\"sys_path\\\": [\\\"/kaggle/working\\\", \\\"/kaggle/lib/kagglegym\\\", \\\"/kaggle/lib\\\", \\\"/kaggle/usr/lib\\\", \\\"/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch\\\", \\\"/kaggle/input/competitions/arc-prize-2026-arc-agi-2\\\", \\\"/usr/lib/python311.zip\\\", \\\"/usr/lib/python3.11\\\", \\\"/usr/lib/python3.11/lib-dynload\\\", \\\"\\\", \\\"/usr/local/lib/python3.11/dist-packages\\\", \\\"/usr/lib/python3/dist-packages\\\", \\\"/usr/local/lib/python3.11/dist-packages/IPython/extensions\\\", \\\"/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch/setuptools/_vendor\\\", \\\"/root/.ipython\\\"], \\\"mounts\\\": {\\\"/kaggle/usr/lib/notebooks\\\": {\\\"exists\\\": true, \\\"candidate_paths\\\": [\\\"/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch\\\"]}, \\\"/kaggle/input/notebooks\\\": {\\\"exists\\\": false}, \\\"/kaggle/input\\\": {\\\"exists\\\": true, \\\"candidate_paths\\\": [\\\"/kaggle/input/competitions\\\", \\\"/kaggle/input/models\\\"]}}, \\\"utility_roots\\\": [{\\\"path\\\": \\\"/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch\\\", \\\"unsloth_init_bytes\\\": 11452}, {\\\"path\\\": \\\"/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch\\\", \\\"unsloth_init_bytes\\\": 11452}], \\\"model_config_paths\\\": [{\\\"path\\\": \\\"/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1/config.json\\\", \\\"exists\\\": true}, {\\\"path\\\": \\\"/kaggle/input/models/ivan/qwen3_4b_grids15_sft139/transformers/bfloat16/1/config.json\\\", \\\"exists\\\": false}], \\\"elapsed_seconds\\\": 0.03758835792541504}\\n\"}\n,{\"stream_name\":\"stderr\",\"time\":24.775795541,\"data\":\"/usr/local/lib/python3.11/dist-packages/traitlets/traitlets.py:2915: FutureWarning: --Exporter.preprocessors=[\\\"remove_papermill_header.RemovePapermillHeader\\\"] for containers is deprecated in traitlets 5.0. You can pass `--Exporter.preprocessors item` ... multiple times to add items to a list.\\n\"}\n,{\"stream_name\":\"stderr\",\"time\":24.77583536,\"data\":\"  warn(\\n\"}\n,{\"stream_name\":\"stderr\",\"time\":24.868561642,\"data\":\"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\\n\"}\n,{\"stream_name\":\"stderr\",\"time\":25.221022155,\"data\":\"[NbConvertApp] Writing 29592 bytes to __notebook__.ipynb\\n\"}\n,{\"stream_name\":\"stderr\",\"time\":27.995068887,\"data\":\"/usr/local/lib/python3.11/dist-packages/traitlets/traitlets.py:2915: FutureWarning: --Exporter.preprocessors=[\\\"nbconvert.preprocessors.ExtractOutputPreprocessor\\\"] for containers is deprecated in traitlets 5.0. You can pass `--Exporter.preprocessors item` ... multiple times to add items to a list.\\n\"}\n,{\"stream_name\":\"stderr\",\"time\":27.995114517,\"data\":\"  warn(\\n\"}\n,{\"stream_name\":\"stderr\",\"time\":28.054755779,\"data\":\"[NbConvertApp] Converting notebook __notebook__.ipynb to html\\n\"}\n,{\"stream_name\":\"stderr\",\"time\":29.192197468,\"data\":\"[NbConvertApp] Writing 311572 bytes to __results__.html\\n\"}\n,{\"stream_name\":\"stderr\",\"time\":33.00700803,\"data\":\"/usr/local/lib/python3.11/dist-packages/nbdev/doclinks.py:20: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools\\u003c81.\\n\"}\n,{\"stream_name\":\"stderr\",\"time\":33.007058613,\"data\":\"  import pkg_resources,importlib\\n\"}\n]"
+}

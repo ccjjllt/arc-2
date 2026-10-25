@@ -1,0 +1,35 @@
+{
+  "task_ids": [
+    "16b78196",
+    "1ae2feb7",
+    "31f7f899",
+    "409aa875",
+    "4a21e3da",
+    "5dbc8537",
+    "6e4f6532",
+    "7666fa5d",
+    "7c66cb00",
+    "80a900e0",
+    "88bcf3b4",
+    "89565ca0",
+    "8b7bacbf",
+    "8b9c3697",
+    "9bbf930d",
+    "a32d8b75",
+    "a6f40cea",
+    "b5ca7ac4",
+    "b9e38dc0",
+    "d59b0160",
+    "dd6b8c4b",
+    "f560132c",
+    "faa9f03d"
+  ],
+  "n_tasks": 23,
+  "source": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/008/raw-eval/arc-agi_evaluation_challenges.json",
+    "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+    "bytes": 984679
+  },
+  "status": "reserved_not_run_or_scored_in_026",
+  "exposure": "Unused by 025 B4/R2 strategy selection, but public historical inference/upstream exposure exists; not blind."
+}

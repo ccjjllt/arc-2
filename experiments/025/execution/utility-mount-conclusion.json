@@ -1,0 +1,18 @@
+{
+  "utility_unique_roots": [
+    "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch"
+  ],
+  "model_config_paths": [
+    {
+      "path": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1/config.json",
+      "exists": true
+    },
+    {
+      "path": "/kaggle/input/models/ivan/qwen3_4b_grids15_sft139/transformers/bfloat16/1/config.json",
+      "exists": false
+    }
+  ],
+  "cpu_elapsed_seconds": 0.03758835792541504,
+  "conclusion": "Original fixed utility and model paths exist in CPU V2; no renaming established; GPU V1 absence cause unconfirmed.",
+  "recovery": "Bounded 60-second total wait/lookup for original markers; same model config fingerprint and same frozen cohort/solver."
+}

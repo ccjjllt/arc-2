@@ -1,0 +1,8 @@
+{
+  "checked_at_utc": "2026-10-25T05:27:48.621302+00:00",
+  "identified_artifacts": 709,
+  "sha_matched_artifacts": 709,
+  "failures": [],
+  "frozen_input_bytes_identical": true,
+  "source_files_stored_outside_repo": true
+}

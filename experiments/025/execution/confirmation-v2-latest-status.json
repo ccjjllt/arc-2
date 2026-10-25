@@ -1,0 +1,35 @@
+{
+  "checked_at_utc": "2026-10-25T03:05:24.755982+00:00",
+  "ref": "zhuating/arc2-025-v1-selection-confirmation",
+  "status": {
+    "status": "RUNNING"
+  },
+  "remote_source_sha256": "f2b9fa2fc4822fdfefb2718c7e40b6c784eb707767243ab74f8cca52655d8f38",
+  "remote_directory": "/private/tmp/arc2-025-remote-v2",
+  "metadata": {
+    "id": 140698356,
+    "ref": "zhuating/arc2-025-v1-selection-confirmation",
+    "title": "arc2 025 v1 selection confirmation",
+    "author": "zhuating",
+    "slug": "arc2-025-v1-selection-confirmation",
+    "lastRunTime": "2026-10-22T03:05:24.136Z",
+    "language": "python",
+    "kernelType": "notebook",
+    "isPrivate": true,
+    "enableGpu": true,
+    "enableInternet": false,
+    "kernelDataSources": [
+      "sorokin/pip-install-unsloth-flash-patch"
+    ],
+    "competitionDataSources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "modelDataSources": [
+      "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+    ],
+    "enableTpu": false,
+    "currentVersionNumber": 2,
+    "dockerImage": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868",
+    "machineShape": "NvidiaL4"
+  }
+}

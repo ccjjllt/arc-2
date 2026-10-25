@@ -1,0 +1,12 @@
+{
+  "artifact": "data-embedded-v1/train.jsonl",
+  "train_sha256": "33f3b4e6133be5b890b8f2efb76421390a463b04291f5669f6b5e44bcbd5f901",
+  "unique_episode_ids": 1024,
+  "unique_query_inputs": 1024,
+  "synthetic_pair_inputs": 2048,
+  "unique_synthetic_pair_inputs": 2048,
+  "synthetic_canonical_query_duplicates_within_family": 4,
+  "heldout_or_quarantine_ancestor_intersection": [],
+  "gzip_sha_and_round_trip": "passed",
+  "actual_tokenizer_check": "delegated to train_specialist.py --inspect-only; not asserted here"
+}

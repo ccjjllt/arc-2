@@ -1,0 +1,20 @@
+{
+  "checked_at_utc": "2026-10-25T03:11:33.844736+00:00",
+  "ref": "zhuating/arc2-025-v1-selection-confirmation",
+  "version": 2,
+  "startup": "all_four_workers_checkpoint_loaded",
+  "worker_ranks": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "nvidia_smi_gpu_count": 4,
+  "gpu_type": "NVIDIA L4",
+  "actual_utility_root": "/kaggle/usr/lib/pip-install-unsloth-flash-patch",
+  "model_copy_bytes": 7267271302,
+  "model_copy_seconds": 66.65275859832764,
+  "traceback_observed_in_startup_stream": false,
+  "full_solve_or_score_complete": false,
+  "follow_up": "User asked to stop checks once startup is normal and will notify on completion. No polling, scheduled job, new run or submission until notification."
+}

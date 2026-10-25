@@ -1,0 +1,19 @@
+{
+  "requested_at_utc": "2026-10-25T02:46:49.889009+00:00",
+  "account": "zhuating",
+  "ref": "zhuating/arc2-025-v1-selection-confirmation",
+  "package_directory": "/private/tmp/arc2-025-v1-selection-confirmation-final",
+  "notebook_sha256": "d4367adbc5d44f4ce95e26c29b68b0549c335951877cb35d26e2e6f3a1401973",
+  "platform_timeout_seconds": 7200,
+  "state": "rejected",
+  "quota_before": {
+    "total_time_allowed": 108000.0,
+    "time_used": 28980.164,
+    "time_reserved": 0.0,
+    "available_seconds": 79019.836
+  },
+  "purpose": "NVARC original-V1 candidate generation for paired B4/R2 selection research; no competition submission",
+  "http_status": 400,
+  "error": "Kernel source must be less than 1 megabyte",
+  "created_run": false
+}

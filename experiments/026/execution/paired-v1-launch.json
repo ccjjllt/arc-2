@@ -1,0 +1,23 @@
+{
+  "requested_at_utc": "2026-10-25T07:28:00.072042+00:00",
+  "account": "zhuating",
+  "ref": "zhuating/arc2-026-v1-paired-training",
+  "package_directory": "/private/tmp/arc2-026-v1-paired-training",
+  "notebook_sha256": "73d31197073408e6507ddfb3ec8adcfdc11b2bf3f9e5b0188b1e0154c934c914",
+  "platform_timeout_seconds": 10800,
+  "quota_before": {
+    "total_time_allowed": 108000.0,
+    "time_used": 43713.914,
+    "time_reserved": 0.0,
+    "available_seconds": 64286.086
+  },
+  "state": "accepted",
+  "purpose": "One bounded NVARC 4B extra-training challenger and same-run paired base evaluation; no competition submission",
+  "response": {
+    "ref": "/code/zhuating/arc2-026-v1-paired-training",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-026-v1-paired-training",
+    "versionNumber": 1,
+    "kernelId": 140735362
+  },
+  "returned_at_utc": "2026-10-25T07:28:04.066165+00:00"
+}

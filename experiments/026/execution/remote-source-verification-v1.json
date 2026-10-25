@@ -1,0 +1,36 @@
+{
+  "checked_at_utc": "2026-10-25T07:28:47.518523+00:00",
+  "ref": "zhuating/arc2-026-v1-paired-training",
+  "status": {
+    "status": "RUNNING"
+  },
+  "metadata": {
+    "id": 140735362,
+    "ref": "zhuating/arc2-026-v1-paired-training",
+    "title": "arc2 026 v1 paired training",
+    "author": "zhuating",
+    "slug": "arc2-026-v1-paired-training",
+    "lastRunTime": "2026-10-22T07:28:46.333Z",
+    "language": "python",
+    "kernelType": "notebook",
+    "isPrivate": true,
+    "enableGpu": true,
+    "enableInternet": false,
+    "kernelDataSources": [
+      "sorokin/pip-install-unsloth-flash-patch"
+    ],
+    "competitionDataSources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "modelDataSources": [
+      "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+    ],
+    "enableTpu": false,
+    "currentVersionNumber": 1,
+    "dockerImage": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868",
+    "machineShape": "NvidiaL4"
+  },
+  "all_cell_sources_match": true,
+  "remote_source_sha256": "9837f5084ab56ae8cb5bec922da99df2868611101fbfc5dc8b4d0e5f28e0ec74",
+  "scope": "Read-only source and startup verification; no submission"
+}

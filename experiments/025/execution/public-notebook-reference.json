@@ -1,0 +1,23 @@
+{
+  "checked_at_utc": "2026-10-25T02:48:59.129955+00:00",
+  "method": "Direct official Kaggle browser page, sorted Public Score",
+  "list_url": "https://www.kaggle.com/competitions/arc-prize-2026-arc-agi-2/code?competitionId=133469&sortBy=scoreDescending&excludeNonAccessedDatasources=false",
+  "list_first": {
+    "ref": "koushikrudra/failed-in-aimo",
+    "score": "33.89"
+  },
+  "list_following": [
+    {
+      "ref": "chiakazirim/learned-from-aimo",
+      "score": "32.22"
+    },
+    {
+      "ref": "mikelou1/arc-agi2-lb33-89-minimal-perfpatch",
+      "score": "32.22"
+    }
+  ],
+  "reference_version": 312063593,
+  "reference_version_url": "https://www.kaggle.com/code/koushikrudra/failed-in-aimo?scriptVersionId=312063593",
+  "reference_notebook_sha256": "71416dd4d9885ecf2ae99b8b72ff0ef66d31fac0354b79d2d11071c49f84111d",
+  "interpretation": "Current public code-list first item; score/version binding verified earlier the same morning. Not a claim about private competitor code or final leaderboard."
+}

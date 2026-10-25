@@ -1,0 +1,11 @@
+{
+  "checked_at_utc": "2026-10-25T02:47:39.904387+00:00",
+  "ref": "zhuating/arc2-025-v1-selection-confirmation",
+  "existing_ref_found": false,
+  "reserved_seconds": 0,
+  "first_request_http_status": 400,
+  "diagnostic_retry_same_request": true,
+  "state": "rejected",
+  "http_status": 400,
+  "response_body": "{\"error\":{\"code\":400,\"message\":\"The kernel source must be less than 1 megabytes in size.\",\"status\":\"INVALID_ARGUMENT\"}}"
+}

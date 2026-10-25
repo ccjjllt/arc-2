@@ -1,0 +1,492 @@
+{
+  "created_at_utc": "2026-10-25T07:19:21.719326+00:00",
+  "cohort": "026_NVARC4B_extra_training_paired16",
+  "status": "frozen_before_training_not_run",
+  "selection_seed": "026:paired-training:20261025",
+  "n_tasks": 16,
+  "n_queries": 23,
+  "selection_rule": "Select 16 from 025 forty: enforce 4 all-correct / 1 partial / 11 all-wrong tasks and L_multi3/L_single3/M_multi2/M_single3/S_multi2/S_single3; minimize sum of seeded task SHA256 integers across feasible subsets. Uses archived 025 B4 correctness flags only, no query grids, no generator mapping, no new predictions.",
+  "strata": {
+    "L_multi": 3,
+    "L_single": 3,
+    "M_multi": 2,
+    "M_single": 3,
+    "S_multi": 2,
+    "S_single": 3
+  },
+  "historical_outcome_counts": {
+    "all_wrong": 11,
+    "partial": 1,
+    "all_correct": 4
+  },
+  "entries": [
+    {
+      "task_id": "20a9e565",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "L",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 4382,
+      "demo_pairs_sha256": "f41d40d647bf0ef36eafbe6685f8ccb151e9886b647fba2c37306b3ae4dd4e5d",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "20a9e565_0",
+          "input_sha256": "7f5776fabd1cdf8f1b3e32b32841328983dee656507ca5f11808781defbe40cb"
+        },
+        {
+          "query_index": 1,
+          "query_key": "20a9e565_1",
+          "input_sha256": "00291c6f44b6f3748d9b403c254fe1d37e23f80715af8fb783bbebc53b76bd46"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": false,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "all_wrong"
+    },
+    {
+      "task_id": "269e22fb",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "S",
+      "query_group": "multi",
+      "n_demo": 5,
+      "total_input_cells": 754,
+      "demo_pairs_sha256": "cf56c99748077794d8d8250bb835568f1a5dc2f23063ea709b66d4abff9ad709",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "269e22fb_0",
+          "input_sha256": "2f657d17c9974e931c50a8f081ce13010612f01a562d693f2b35ff4a4c22026e"
+        },
+        {
+          "query_index": 1,
+          "query_key": "269e22fb_1",
+          "input_sha256": "b11ef6abcb0a3807be54f6d17591323bfb25d6a33e2fc035b164e0006ca24bc1"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": false,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "all_wrong"
+    },
+    {
+      "task_id": "4c7dc4dd",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "L",
+      "query_group": "multi",
+      "n_demo": 2,
+      "total_input_cells": 3600,
+      "demo_pairs_sha256": "a355e8a099a8d0a891a1d51ceb7d8f478ed2e6966b0a60314606246f7ef616e6",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "4c7dc4dd_0",
+          "input_sha256": "1ae6833ecad572a57c690f6baad886c8ae7657f85b4d16e5c378010a637f0919"
+        },
+        {
+          "query_index": 1,
+          "query_key": "4c7dc4dd_1",
+          "input_sha256": "5b80c57da7c736c1ce3cc9f38f30a4969b489bd1409b2df9e034b22820dcaaf0"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": false,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "all_wrong"
+    },
+    {
+      "task_id": "58490d8a",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 1939,
+      "demo_pairs_sha256": "f5091745eaa2b70deb85121ed2db03c51f613f0e8ca4b66ab612541bb1cd7faa",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "58490d8a_0",
+          "input_sha256": "1de2ab73a75c0f50aadb9ac6df3dc295b8e2e9163ce6ac9ec01f23929ce1edbc"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": false,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "all_wrong"
+    },
+    {
+      "task_id": "64efde09",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 2162,
+      "demo_pairs_sha256": "dfd02217395500bb8ec3ae531aee06bb2accb379359f1bb912e6ea5a664347fe",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "64efde09_0",
+          "input_sha256": "72627cfe8f69d26fb1668bace6cf702aa5cfd0bdd4a284efcc37c765d25425ac"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": false,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "all_wrong"
+    },
+    {
+      "task_id": "65b59efc",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "M",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 1178,
+      "demo_pairs_sha256": "9d1fd3f53ef53b448dc5b7726bf7d07fd418607b7915d03ef467a0ff847b5b8c",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "65b59efc_0",
+          "input_sha256": "56abdc97fe19aaf7b142f2bfc0dd8d5ffffe1956622bd45ee9149356386f5092"
+        },
+        {
+          "query_index": 1,
+          "query_key": "65b59efc_1",
+          "input_sha256": "8ef23048bcca1e74f8c1ba556e18831f1ab480c90156f418dd4158d1a1b90d65"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": false,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "partial"
+    },
+    {
+      "task_id": "67e490f4",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 2700,
+      "demo_pairs_sha256": "a891a4ccd98ed46d02e17982d5edf5d612d67ce879d9cdd6b91e7e4380972ac0",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "67e490f4_0",
+          "input_sha256": "20073a2017acda52bf0a16184c698ac162a3e84f619c1da3392404b8576870f1"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": false,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "all_wrong"
+    },
+    {
+      "task_id": "7b0280bc",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 1849,
+      "demo_pairs_sha256": "c9c33d181ce419814d98053ae002b8774aa272359d2e9e415aa6f9022e02b1e6",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "7b0280bc_0",
+          "input_sha256": "7b366e8df0bc4355b50d72d9e9a44b48c939ba5e4b2385af1e02e4ab9055f36f"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": false,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "all_correct"
+    },
+    {
+      "task_id": "7b5033c1",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 768,
+      "demo_pairs_sha256": "bcf53fdecdbf3f1a1b86777b25f28863ffe00bb30229a175cdae9e6472a4990d",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "7b5033c1_0",
+          "input_sha256": "5d867d549900226d6c0390e56f14124b18f1ab3412398c65ecc87c4a20d74257"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": false,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "all_wrong"
+    },
+    {
+      "task_id": "7ed72f31",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "M",
+      "query_group": "multi",
+      "n_demo": 2,
+      "total_input_cells": 1756,
+      "demo_pairs_sha256": "559e22951e2035a76f1277e90e04de4cd52d4cfc45af27d8596c4168bd7f7f06",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "7ed72f31_0",
+          "input_sha256": "b565d473d3b3c59270de5f536d1dba700b3b7896776562542406beb7aa3ea434"
+        },
+        {
+          "query_index": 1,
+          "query_key": "7ed72f31_1",
+          "input_sha256": "cdc813c14a4c3b09e64890b34ecd95041c986b3910b8830d89d5094628fb04e3"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": false,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "all_correct"
+    },
+    {
+      "task_id": "898e7135",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 1770,
+      "demo_pairs_sha256": "84ed4ced005c4d2b555bd012c44ee6642d69c4e7bb8037cfe257e0a81788fc5d",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "898e7135_0",
+          "input_sha256": "6ce239ca827a12f45737ba3fea00d6a112174eb5d16fb7fa6073d77fe412e341"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": false,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "all_wrong"
+    },
+    {
+      "task_id": "9385bd28",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "S",
+      "query_group": "multi",
+      "n_demo": 4,
+      "total_input_cells": 1168,
+      "demo_pairs_sha256": "67cabdb8c0d8d88c951b0754a1d9c2ff41a959e08cc730dea74af5648b4832aa",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "9385bd28_0",
+          "input_sha256": "91850403132f027fe1bcdee10a8ac131b3282961f8eadf0283b3e4ca62303472"
+        },
+        {
+          "query_index": 1,
+          "query_key": "9385bd28_1",
+          "input_sha256": "837ecee27b31c94defacbb45df586ad1d0524b7ab39870d7806fe0302076f8ab"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": false,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "all_wrong"
+    },
+    {
+      "task_id": "a47bf94d",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 2062,
+      "demo_pairs_sha256": "abcdda01b7058660983c7c0a584680808e16c51141049643584b137994334eae",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "a47bf94d_0",
+          "input_sha256": "e36f204036279b481a3e938b0654ebc1ae2cb89765ab8adebbacbcb5c132e081"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": true,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "all_wrong"
+    },
+    {
+      "task_id": "e12f9a14",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "L",
+      "query_group": "multi",
+      "n_demo": 4,
+      "total_input_cells": 2984,
+      "demo_pairs_sha256": "fa89cf89a5e4856b49d5b11d378b55a60f28c511503a5fa80864700dd4001d98",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "e12f9a14_0",
+          "input_sha256": "cf38714929571a00da4150156b16e8e384887f2a3ccf23e49271f1ee00fee785"
+        },
+        {
+          "query_index": 1,
+          "query_key": "e12f9a14_1",
+          "input_sha256": "42a0f7d52a2f273cd1a35465ddab74e1577043fac4d065a8e98bb6184539f17f"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": false,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "all_wrong"
+    },
+    {
+      "task_id": "e8686506",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 563,
+      "demo_pairs_sha256": "965b5469237c27413b23aaffaf9c7bf285ed2b8f23210f6432199e5803383450",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "e8686506_0",
+          "input_sha256": "c291067d2d367866e4bf5cc363ffad9c2d8d6d08147eb07b14e17fc4d48e56ef"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": false,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "all_correct"
+    },
+    {
+      "task_id": "eee78d87",
+      "source_group": "public_evaluation_NVARC026_development_panel",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 144,
+      "demo_pairs_sha256": "11fb8020ed856d033bcd612f536a8ba888b471be3ae294df510ce7ff32d5fb16",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "eee78d87_0",
+          "input_sha256": "83f59a0cc3fd5688128869df8cfde03e6137fe471e855e6d0398e9a6b424990b"
+        }
+      ],
+      "exposure": {
+        "explicit_recorded_tuning_or_probe_exclusion_match": false,
+        "prior_008_metadata_selection": false,
+        "prior_019_full_public_inference": true,
+        "prior_local_query_scoring": "Not audited per query; source has historical aggregate scoring exposure",
+        "upstream_unseen_status": "Not established; NVARC used public-eval validation and derived rule data"
+      },
+      "historical_025_B4_task_outcome": "all_correct"
+    }
+  ],
+  "sources": [
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/cohort-v1/manifest.json",
+      "sha256": "9e8c6617193bd48efc905b0766d218c37218853f51f5f145ee27bd15ee79fa45",
+      "bytes": 66098
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/cohort-v1/challenges.json",
+      "sha256": "38df4c7126f160f9dd045b4b0c9fb37ccb4f24dfbb51c8d32aa7b50f132ebeb9",
+      "bytes": 1596517
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/scoring-v1-f328/query-ledger.jsonl",
+      "sha256": "186fde3dd09cc669f3b85ebf8d49e707cc475f86b80ed7845b5316cfd15dfd33",
+      "bytes": 81218
+    }
+  ],
+  "input_artifact": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/panel-v1/challenges.json",
+    "sha256": "bd3b26cf78c4986d2cce6d72b457ce763f845e0e2f66d91233fc00a2a9f059f0",
+    "bytes": 666436
+  },
+  "pythonhashseed": 26026,
+  "policies": [
+    "base_B4",
+    "challenger_B4"
+  ],
+  "limitations": [
+    "Outcome-stratified development panel; not a representative public-score estimate.",
+    "Historical public inference/scoring and upstream exposure; not model-unseen or blind.",
+    "New base and challenger are paired in the same run; old 025 score is diagnostic only."
+  ],
+  "promotion_rule": "Only strictly positive final two-slot query net gain advances this one fixed checkpoint to a single 23-task confirmation; zero/negative ends the recipe without panel-based retuning."
+}

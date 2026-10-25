@@ -1,0 +1,9 @@
+{
+  "checked_at_utc": "2026-10-25T07:30:12.532527+00:00",
+  "ref": "zhuating/arc2-026-v1-paired-training",
+  "version": 1,
+  "events_read": 33,
+  "stop": "bounded_85s_read",
+  "max_optimizer_step_seen": 0,
+  "scope": "One manual bounded SSE startup read; no recurring monitoring"
+}

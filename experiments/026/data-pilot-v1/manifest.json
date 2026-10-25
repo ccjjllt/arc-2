@@ -1,0 +1,1407 @@
+{
+  "created_at_utc": "2026-10-25T07:17:15Z",
+  "name": "026 ARC2 extra training rule coverage challenger",
+  "profile": "pilot",
+  "code_sha256": "4916c03f32c0bce7f3a73ce3c7a2e1abb48727437a6b98fef99075d874d9b09d",
+  "seed": 20261025,
+  "source_repository": "water-vapor/synth-rearc",
+  "source_revision": "d9ea8b2fc21ac4189f1a895aaeef84cf74df16b0",
+  "source_root": "/private/tmp/arc026-synth-rearc-src",
+  "source_file_sha256": {
+    "dsl.py": "c60faf5730a966fc1689c08bc96794cd97fd0311b8036e0f9b0c80e2d12f0f11",
+    "utils.py": "48e11e45f804a37fcb0e62005c879ece7d5f0e1593d3fd53f5f978d31666540a",
+    "synth_rearc/core.py": "c6972cbeab3bd8d09da1698e5c7bed446601e357bffc7a4b6b2b31220cf28435",
+    "synth_rearc/dsl_ext.py": "b4e66332ca6e5bbdb1c213da6bf7891c6056c6ecd27071d8867ae7a7f367e10e",
+    "synth_rearc/tasks/task_009d5c81/__init__.py": "82b2205f33fef2d947c08a0c143465c9e371b71bc76c41c9f670d76ddf18d755",
+    "synth_rearc/tasks/task_009d5c81/generator.py": "03f4b0450e74b9463c0e56d6b5cdf6b5cb89a0e81d8bdeed29e1122fa818cd76",
+    "synth_rearc/tasks/task_009d5c81/helpers.py": "abbdb107695b91ca6347ba15ded6fdd4d89875f4b894cf247f06129407c1d705",
+    "synth_rearc/tasks/task_009d5c81/verifier.py": "ceb5a74c0544599979f7858b0cc186729a61811279f51e1ba20f1351f6c766e4",
+    "synth_rearc/tasks/task_09c534e7/__init__.py": "684c60e4d2664a9802518cf6592052ace8433880a8af6ed40a400edb41a472c1",
+    "synth_rearc/tasks/task_09c534e7/generator.py": "ed700b5094fbe1299f22982d2bb49f8effdbbb7b95a4c19aff7cb3a8f9c29c28",
+    "synth_rearc/tasks/task_09c534e7/verifier.py": "7b2e5de677fa7c6aae649d80be9cd173dae7244a24f9b40cfe409d0b552a2661",
+    "synth_rearc/tasks/task_0a2355a6/__init__.py": "91107dfe9a10b67fdcacdd669b44991b3d4dae93a109921ac90344c61353a8de",
+    "synth_rearc/tasks/task_0a2355a6/generator.py": "069e841d088a2886881ad540b17be3bad04f12adec29a35f308fd58f7a9aac43",
+    "synth_rearc/tasks/task_0a2355a6/helpers.py": "1a51fc27ec733016c86b1577b71350f043f82b3abe6625145fd3c5a20c2803d9",
+    "synth_rearc/tasks/task_0a2355a6/verifier.py": "6b018a90cb5b2c5a338084f99edc81525f29b25f23839501b5dda0a8b27c2f18",
+    "synth_rearc/tasks/task_14754a24/__init__.py": "2cd0f9a273a6043dede7c74b6de7dc27696fb71e7611a74b991c4fc3750d07fc",
+    "synth_rearc/tasks/task_14754a24/generator.py": "b2e45864c53735ac6c82f7a3dc3e033cc4591014d612901ced09c1474aca4f03",
+    "synth_rearc/tasks/task_14754a24/helpers.py": "67aa0d98c7022d37d077cb30853b674b88908aad2c33cfa7ade3880f112f2fd1",
+    "synth_rearc/tasks/task_14754a24/verifier.py": "e510c8fffd7da939d35109a6823b382d9f93eb169a7648b281ecad84b4f96b50",
+    "synth_rearc/tasks/task_17829a00/__init__.py": "3e0c0fe02629e08e04f00467c4d35f678465e36286ca80abefb9802d24746c7d",
+    "synth_rearc/tasks/task_17829a00/generator.py": "b3b732488a9b8dbd8794debda56a003ff2ce7252cb210cc485faf482e6d9ac93",
+    "synth_rearc/tasks/task_17829a00/verifier.py": "95b05e9f897a8ce925a7c7e394fc86910162f204738996693d7dd506e0006d78",
+    "synth_rearc/tasks/task_18419cfa/__init__.py": "60d35ff62cd195783f38c6e3b9bf96c750ce87477cd4ce20fd9df8f1d25ab76c",
+    "synth_rearc/tasks/task_18419cfa/generator.py": "67ee5d053d65d5a74704b9b375cfda1c6ca6a4be1072da24f016969d8e609e35",
+    "synth_rearc/tasks/task_18419cfa/verifier.py": "4f7b04867601ac0d4023449e3ef04c71c020f56e1ca432785959cf3b3a212861",
+    "synth_rearc/tasks/task_184a9768/__init__.py": "9d3ed1724bcaffc03939f53ab3878d15f1e6eb918c37581a432bc632b8c06f06",
+    "synth_rearc/tasks/task_184a9768/generator.py": "39e77cbebf1cb7573c982a7e5499dfe9d4b2077a6d5f07e807030ae7da89a8bf",
+    "synth_rearc/tasks/task_184a9768/verifier.py": "f33d107a0a54f1a62ce65bdf1391a1d5321e1e15844df5b7b85f66494efe75ca",
+    "synth_rearc/tasks/task_1acc24af/__init__.py": "a041802bc4d2c3979bfb622df21ce3fb56a4cfe907363baebbb46614b5f11fdf",
+    "synth_rearc/tasks/task_1acc24af/generator.py": "c2324e3a2d90c3a81fe6981dc0131aef43fc467cbbf6ff063b5ca6ee397382e9",
+    "synth_rearc/tasks/task_1acc24af/helpers.py": "d98aa587f3ac3cbf4205deb7b2d4a4d3f7a92417aad804bbc1612329b72e9296",
+    "synth_rearc/tasks/task_1acc24af/verifier.py": "b12a159eaa487f6f8e5122ae07962c9790a5f69306f0752f87ce5bf72b4152f2",
+    "synth_rearc/tasks/task_1b59e163/__init__.py": "f126edc0ec1344de06d75acd21e3235f4132f203ec51399f488023146fb0b914",
+    "synth_rearc/tasks/task_1b59e163/generator.py": "92a78884f44cbee1227bf8517ab4dad1070eb48b19607d71b57e1bb29b04820d",
+    "synth_rearc/tasks/task_1b59e163/verifier.py": "453fd56f61391c56ffc51612d5e9a4fe9d7f4bc06d1f986e7fde85dd46512411",
+    "synth_rearc/tasks/task_1da012fc/__init__.py": "1ccb60cf3ef6dab2eed6f272838b1b8d59014f589a7b3a0c024e16f86a9f89b3",
+    "synth_rearc/tasks/task_1da012fc/generator.py": "15b0f2f57daeabeab42d52ca493b89e1d40427c67e3bb200ce4ecbe0dda667b1",
+    "synth_rearc/tasks/task_1da012fc/verifier.py": "22a0385568e3be3df5a0e3ca675d287818b2856c7b0450f0ed3ad96db11510aa",
+    "synth_rearc/tasks/task_2037f2c7/__init__.py": "ca7e21d72b01b8fe9bcf6a957543e9084b05aca411c2b22f34fe3b7ed72148c8",
+    "synth_rearc/tasks/task_2037f2c7/generator.py": "814d0d800c2085dc549feef08918da865118c4f5cc0553efe0c2651767c833bd",
+    "synth_rearc/tasks/task_2037f2c7/verifier.py": "8efaaa24db0cd4d804e3cf57da78dbc64b5eb80f575e2e0fd90c42ee20708f3d",
+    "synth_rearc/tasks/task_25c199f5/__init__.py": "4a3601acd9501a807e799c1879e0c71f3a2dbd874772d0b5376db990916c8f09",
+    "synth_rearc/tasks/task_25c199f5/generator.py": "a6a00e49611cb97a7821854ec3cf8392444947316a11a428a16ac10976302790",
+    "synth_rearc/tasks/task_25c199f5/verifier.py": "7ec18d16a6b1a32903e283b1c0472007c65179fef0ab513df73e80cd7da22eba",
+    "synth_rearc/tasks/task_2ccd9fef/__init__.py": "fe49b3eaf9a2a2c99cecabb8ccfcd024517afec7265396418c4e4a9a35c9ef4e",
+    "synth_rearc/tasks/task_2ccd9fef/generator.py": "20611cf31582f580c631c1eb93f7fc6820e15636e4a73ff878f7b08f040c85a2",
+    "synth_rearc/tasks/task_2ccd9fef/helpers.py": "375adad5e55f53a72e0c105e8149e5a90354a6bf644586640608d65ab11cace4",
+    "synth_rearc/tasks/task_2ccd9fef/verifier.py": "8171bd8c17c9a505625f07ed3bd4621d71134d72d30fc7f4b0ef79a8060ed6c7",
+    "synth_rearc/tasks/task_2de01db2/__init__.py": "c552fe116ef670d96bcd25d04eb6c9b5916aa18a0a51e6bf955ee8ee420cc80e",
+    "synth_rearc/tasks/task_2de01db2/generator.py": "358b9bdcae16ceff4c4fd01a99ab88e7f9817647cdf84a0fe7e2937ad83c2e69",
+    "synth_rearc/tasks/task_2de01db2/verifier.py": "0c806dab1ed030e15cae835176d56e27cf806d0fc68cc3be8ecca72238a26ae2",
+    "synth_rearc/tasks/task_2f767503/__init__.py": "1be6745d126bc19cb867571599eba2f5affadac203590e5dd6d306b11983ecd9",
+    "synth_rearc/tasks/task_2f767503/generator.py": "f5909db08df8af0e12e789d9a3fe292a1a7bb114c91416892779793a0d170ebe",
+    "synth_rearc/tasks/task_2f767503/verifier.py": "4157b3083032ad6e36e2cd7c931836d45259a376051df0cfe6976d3e0a49f8fa",
+    "synth_rearc/tasks/task_3194b014/__init__.py": "b50437e855000505a9c621529d702ef59b0f58a9680345f49b462e9d4d9dbc80",
+    "synth_rearc/tasks/task_3194b014/generator.py": "b33792e5607761aca1cf7a9bcba260fcecfdafa723d34472fd745310879b4d7d",
+    "synth_rearc/tasks/task_3194b014/verifier.py": "e2a774d52d44a18b632946d994d089c6591d3c10eca7f265ae578f8b043b58ea",
+    "synth_rearc/tasks/task_320afe60/__init__.py": "a12509bcfba79bfe1b8fa08466a1ef431b5da0501a882f3ed9bbb2fc9e574d5b",
+    "synth_rearc/tasks/task_320afe60/generator.py": "16461c288eb7792a879ebfda2cafbedadd8242fe97c19b40b99ce873bb2a7c3a",
+    "synth_rearc/tasks/task_320afe60/verifier.py": "ee2d448e49685aa2f7a1c1d08b0897a7ac4ccef11e183ed060f7c140ecf22648",
+    "synth_rearc/tasks/task_3391f8c0/__init__.py": "bf012e1535586877318a6756fa3b8067405c0794cbe39fc5b44942a4d9330cd7",
+    "synth_rearc/tasks/task_3391f8c0/generator.py": "883f739e6ab10812eeec6d099cf1515857072042e4bbf18bbbe0de252d971763",
+    "synth_rearc/tasks/task_3391f8c0/helpers.py": "e298b8144c1193423dca38db63b90dcb21bd87953508526fba6e2d88d0703279",
+    "synth_rearc/tasks/task_3391f8c0/verifier.py": "476f72889ea1754f21cb654c016074992032d1a76fefe671c503bc5f6fda5a57",
+    "synth_rearc/tasks/task_351d6448/__init__.py": "e384ebbead62aefa9fa289aea3b9a071d3faa11a1a87574362d3d2dbb0f60837",
+    "synth_rearc/tasks/task_351d6448/generator.py": "8bd984f651da85d1cc23f4246b4a8626c31965fdd9a60d0dae4ade65fe205316",
+    "synth_rearc/tasks/task_351d6448/verifier.py": "6da25aa39dae5ed1977927f855ab77516840f4efa1d40647e5df838b09908627",
+    "synth_rearc/tasks/task_396d80d7/__init__.py": "dcea6c61941c1c31a60a36fd842ea58c771b8390aa35a1f8acb719cb9fbc5bdf",
+    "synth_rearc/tasks/task_396d80d7/generator.py": "51c8f936d7e72baf68d5c206697417f2f4460067c88b6a55de658c120f7787d4",
+    "synth_rearc/tasks/task_396d80d7/verifier.py": "bd5165be6b20077c18b532d0828006ed881c31712ae83cd10722d1b79af53efa",
+    "synth_rearc/tasks/task_3ad05f52/__init__.py": "ebbb11ff095faae4735287a9e8ff8fa2ec647afb088c601aec18bec9dc1a6f5f",
+    "synth_rearc/tasks/task_3ad05f52/generator.py": "3e49dc7cf4426ad1622db41ef9615e2b657e8560e862d62f849e6629a8686d9b",
+    "synth_rearc/tasks/task_3ad05f52/verifier.py": "99752aeb90db240a31562597f0681b89fff37aac901182abcebb8ecea70a975b",
+    "synth_rearc/tasks/task_3d588dc9/__init__.py": "c78b16dee959caf44e17dafe2ff081127330bf17bc525886cbc06f5ddd71d355",
+    "synth_rearc/tasks/task_3d588dc9/generator.py": "901dee4211f16484b0078f684a7bf0e4b0af6718ab9080892a2735e5bb52cc4a",
+    "synth_rearc/tasks/task_3d588dc9/verifier.py": "1dabc015038e2aea714874f2076e98b1bc8a745f0429f041ef8f8e6bb5418d3c",
+    "synth_rearc/tasks/task_423a55dc/__init__.py": "ee1a88e935557876495a2b1b0fac8698ab2a21197b860b30398e54ba0bed9317",
+    "synth_rearc/tasks/task_423a55dc/generator.py": "470a5353bd7e0c6a79c21b53e2f9675fd1f77ee2d1991afc44a4b223dabb445f",
+    "synth_rearc/tasks/task_423a55dc/verifier.py": "434e1a279f30266ff05223937b5a37f381dbd491f5935c919112cb95b7ac312f",
+    "synth_rearc/tasks/task_4acc7107/__init__.py": "95bec38a8492b3ade605b406eea14b28596914e2de880cf2c280c67d9992e233",
+    "synth_rearc/tasks/task_4acc7107/generator.py": "4fe879ab1b3863457dc6c003da749c86f0e0740adc8b1baa5aaada932e18a4bd",
+    "synth_rearc/tasks/task_4acc7107/verifier.py": "e8b6a32719359c59d60b46dd53f4d8b08dbc7f7c1b9c2b27490bb52c2d069180",
+    "synth_rearc/tasks/task_4b6b68e5/__init__.py": "556cc75e3870f29c3ce53a39fefa172510a2937ee25edc2a6409eaaa67d80a94",
+    "synth_rearc/tasks/task_4b6b68e5/generator.py": "27488469c66097b863b7a2264e72640a6034dc62da1f099a1414a2ffc822d4e1",
+    "synth_rearc/tasks/task_4b6b68e5/helpers.py": "e29a235e7421828846959f998c609587746e670d1ebb985044d4f681942c5184",
+    "synth_rearc/tasks/task_4b6b68e5/verifier.py": "4221d22592051d0494af10fe7bcfb7779c0abad2080c4ca3f5eaf638c59145c7",
+    "synth_rearc/tasks/task_4df5b0ae/__init__.py": "81663a91f9c77df007301440580039f55899e5669944b03eb85deda6e9df755f",
+    "synth_rearc/tasks/task_4df5b0ae/generator.py": "d891e41f47b80b3c259e0c3a4dd80f4d2f1cbaa6dd477871d915415b0ae3df67",
+    "synth_rearc/tasks/task_4df5b0ae/helpers.py": "42133b73b70cbfed7c012b9e2355871ff411a2516228a849c7765941323d7c85",
+    "synth_rearc/tasks/task_4df5b0ae/verifier.py": "486cd29ab3a12e8d8723fb3b7b62526fb0ad8e815818b33c0399b471c4d975eb",
+    "synth_rearc/tasks/task_4e45f183/__init__.py": "3a4a539423aabe80c3f6da3dd1d9c4838432270bc7da927587867b8cf9e2d837",
+    "synth_rearc/tasks/task_4e45f183/generator.py": "4bac58a0db6ee33f600ec723035373ce935d35bb231edbbbf7198160d6651527",
+    "synth_rearc/tasks/task_4e45f183/verifier.py": "ec260d9c2747996877b4ba0bb291ff26bd76aaf0c502106295ecfdd2e88b993a",
+    "synth_rearc/tasks/task_4ff4c9da/__init__.py": "f47d8d65707237b95c28cde580626729d01dd36206d572d55c7dc0374a7fa30b",
+    "synth_rearc/tasks/task_4ff4c9da/generator.py": "bde55f1ec2ef828061d0cbb939a8e075485365d0067fbd2e937e604ae5721760",
+    "synth_rearc/tasks/task_4ff4c9da/helpers.py": "e10badeb2baeda5c9d230a53e2533907d579084299520c31fcdf3826bf410162",
+    "synth_rearc/tasks/task_4ff4c9da/verifier.py": "20a31fffeb735e82686b69344873964761d02c1cce30681b116a695621e4778f",
+    "synth_rearc/tasks/task_505fff84/__init__.py": "60c00aa94d49f09333ccaa30b9485d3b0163254a99c29aefd0ebf3e22a580569",
+    "synth_rearc/tasks/task_505fff84/generator.py": "b906f4990fda2a410f49dddd5bde792400c4bfdd993b4f0e52d848ffb740f424",
+    "synth_rearc/tasks/task_505fff84/verifier.py": "9685355c37748a8de588147fae33acdd7f85a5c606e29034f5c180781293222a",
+    "synth_rearc/tasks/task_50f325b5/__init__.py": "01a61480517c92f0a71728cf06f8d9bedd6b29c79345823f16e42877b00c5d73",
+    "synth_rearc/tasks/task_50f325b5/generator.py": "c05267f688f6a86856d2025c8c98f0b38234633e26d819fc8227ff2a33f71fbc",
+    "synth_rearc/tasks/task_50f325b5/verifier.py": "25a61dd8e2c4a67873869f372827a5ad3f30100b1676624d642059d928e51fb4",
+    "synth_rearc/tasks/task_52364a65/__init__.py": "2cd0bc8e9d3d8ed2f057ab8774b0b820017c2a1c0c2778915e0a90cd1a150541",
+    "synth_rearc/tasks/task_52364a65/generator.py": "7e4c21b2db82af02649ac16724ae7d335a2dc7de3f00d35699b5dccdf9f93046",
+    "synth_rearc/tasks/task_52364a65/verifier.py": "82a674fb7dece1f3c1f700e7334f0d85793d285ad1f1a22f5c971569c7cbbd76",
+    "synth_rearc/tasks/task_54dc2872/__init__.py": "50d2e4bd1f6443c62eca5492def6560da5692b1105a2b6543b9b8dac1d761c58",
+    "synth_rearc/tasks/task_54dc2872/generator.py": "7a01a2b2a25c1be76fecba3310fbaae3279a104c96bb0ec574be6ed3cd4acba5",
+    "synth_rearc/tasks/task_54dc2872/verifier.py": "207223750f9b1a006931f724b855f10abbc9ca910c2986748f9c6a86043b44d8",
+    "synth_rearc/tasks/task_5587a8d0/__init__.py": "5c94819670559f50097f84385a778a78d03e19fc35c084c92e064704be71512b",
+    "synth_rearc/tasks/task_5587a8d0/generator.py": "9e599e0e6d3b0800eec40deec34a34dc877243c33b90eee9dd912e696c4ebf4a",
+    "synth_rearc/tasks/task_5587a8d0/verifier.py": "7bf43d72fd6832979ddcba5737a8362d75e15d540c302caa51c22c988906d5c4",
+    "synth_rearc/tasks/task_5623160b/__init__.py": "eafab8298522d6097e48045ac9f2f32980947251dff93242bd2bc45025c399fd",
+    "synth_rearc/tasks/task_5623160b/generator.py": "4c1913816c69886c4bd7d8f585edcbfb5569bf693789816f82405bf301804ce3",
+    "synth_rearc/tasks/task_5623160b/verifier.py": "7234807d6d9717b4c60a36b7ba3497f6889f8df29df13bb420b7b26e89ac55cc",
+    "synth_rearc/tasks/task_5833af48/__init__.py": "dcd9e8e5fb855022f3e1219de9e7b403084c882a0d47005b7e52926b3517487b",
+    "synth_rearc/tasks/task_5833af48/generator.py": "79b19a9398145fbc7638f7c58c3fffc23e58e928fb4ad07a893e2a9ae0fbb944",
+    "synth_rearc/tasks/task_5833af48/verifier.py": "daf70a75f375ab09c9a4ea7f8c92d4b2be703fa7c6857a773fe579f6f3c5a627",
+    "synth_rearc/tasks/task_5a719d11/__init__.py": "faa552752bc80b024ff5ccdacb59e5d24fc084c8b43d24405cb14bb39c86ad7e",
+    "synth_rearc/tasks/task_5a719d11/generator.py": "65c15888b82a8a6e0488425b929c31af89237a5e5eb7d2d849e16ec37c8b7342",
+    "synth_rearc/tasks/task_5a719d11/verifier.py": "a53c0a36d1cc250b214a86460d212d20b088c60c32b21740b1d7e51db5eee59b",
+    "synth_rearc/tasks/task_5adee1b2/__init__.py": "b9cd12807771f3be5cee79970b98e2847761d3dac6d953201c5b8112c63e2a0a",
+    "synth_rearc/tasks/task_5adee1b2/generator.py": "87ea130d67790d3ad75b64dc54ddc1f376948ad0c7bd1d22c6a43e4d3c6c7ede",
+    "synth_rearc/tasks/task_5adee1b2/verifier.py": "8c095b7783699ba379044d1e207bd3730a396088bbb7deb55c88a9cc58ad5166",
+    "synth_rearc/tasks/task_5b692c0f/__init__.py": "ef5e1937cbac81ecc543d8032471152928c995427e4d63d012abbaf91b86fd1a",
+    "synth_rearc/tasks/task_5b692c0f/generator.py": "527cd7a37c82a966349686b2db71ca877ae772d92ec785107230d522244f0ca9",
+    "synth_rearc/tasks/task_5b692c0f/verifier.py": "da92100ceac308e095efef6eeb18905fab702187575c34c6472865c3d39a0b5b",
+    "synth_rearc/tasks/task_6165ea8f/__init__.py": "77098ab8dd6474eda43af87dd85f49357b4dada3435dd9b5caf83429b260c79c",
+    "synth_rearc/tasks/task_6165ea8f/generator.py": "2ecdbde2dd254c7a5cea461af59b6badc4d4f78e4b1ca73c5d1e5652b8d62fa4",
+    "synth_rearc/tasks/task_6165ea8f/helpers.py": "c40dc3b284e28d1db16ac2026263ee022cb515069cc53ee32c5feb498fadd804",
+    "synth_rearc/tasks/task_6165ea8f/verifier.py": "ce8e3cc2ab7c38815a8e6c87d8a6367b2e01d3bb06a620939acef0e409b92e03",
+    "synth_rearc/tasks/task_6350f1f4/__init__.py": "d60b43f15192c200d284f5b6e01eda42aaa9b6017a1e90e747ed9bb308b962f6",
+    "synth_rearc/tasks/task_6350f1f4/generator.py": "36db296b95774b5beb5919fa2e51466b6c652359986d8ffff1559fe8ce56d29b",
+    "synth_rearc/tasks/task_6350f1f4/helpers.py": "d1dadc8613eb6f0dbf386f189b1f85836eb8b7ba97200f629cf0bf44825fd779",
+    "synth_rearc/tasks/task_6350f1f4/verifier.py": "08960f43ec49f7f79bb7c3c29df952171fe576848074a81c984c12001e1aeeed",
+    "synth_rearc/tasks/task_66ac4c3b/__init__.py": "d88e0999bf64c4d1606e50d89c87522cb1c0d8fd68f26a8fcedae7fac8441d36",
+    "synth_rearc/tasks/task_66ac4c3b/generator.py": "3c2b6746d1437c8985b167d7053975a46fd7d44eddb2438f72fdd3f0a547fb34",
+    "synth_rearc/tasks/task_66ac4c3b/verifier.py": "8d443f41a1470afb53ea1f032d2b23223630a0c9114cb1960af5fb2e55770046",
+    "synth_rearc/tasks/task_696d4842/__init__.py": "e1fe6af356f00e9c7792b66515d575953cb196ef9216cefa6e4cd75ff455d953",
+    "synth_rearc/tasks/task_696d4842/generator.py": "c9b56603297c1aa834a43dc9fe0c19a8766e7f2f85f42dac9a7619e1297bfbb7",
+    "synth_rearc/tasks/task_696d4842/verifier.py": "13df5b1027d1f116481409a5183b6ff89eb60af1f701aa452202de6cee03f194",
+    "synth_rearc/tasks/task_6df30ad6/__init__.py": "e9833140032b66fd4866ea03ee1bd15524080c1dd93cd4848ad144f7a4b174c5",
+    "synth_rearc/tasks/task_6df30ad6/generator.py": "a67ea905ed1b821fcd6976719985d88c084ef6e08e24c1db3055a1ac8047f3bc",
+    "synth_rearc/tasks/task_6df30ad6/verifier.py": "f6124a0e7c0b25489928f0f818f6d5896a9ec0f79db7a9f508c07d4fe273ea65",
+    "synth_rearc/tasks/task_73ccf9c2/__init__.py": "d3ec02e345126b43e9f1e7a59798bbbdc145c50ae22a8f432d655b3eec75cad6",
+    "synth_rearc/tasks/task_73ccf9c2/generator.py": "4c0d8b479526bf832c0be9a5a4674e10df757daa95b6d70dcc3cefb4a5360b33",
+    "synth_rearc/tasks/task_73ccf9c2/verifier.py": "1e751723eb543640ecd61caaf3812a92374c872c2f31ace0768c3f5becbdb341",
+    "synth_rearc/tasks/task_753ea09b/__init__.py": "17c37c2c578a18e9ba3f434c0e52da6d75355ae299fd3e6435caa34f62e04a95",
+    "synth_rearc/tasks/task_753ea09b/generator.py": "0868e0d14e166ee519bac001128b1926eb6fc2ef9912954dbe53634200295dba",
+    "synth_rearc/tasks/task_753ea09b/helpers.py": "4e012da8b6cd9ebe4811303aec33520382473d1c216b4d31e7421871360bca95",
+    "synth_rearc/tasks/task_753ea09b/verifier.py": "f8a0152c7dddd4f33f1c101f8af8cd5b33b48401a3739524749038879f32e426",
+    "synth_rearc/tasks/task_79369cc6/__init__.py": "9ad7d84a046b127ead6b0074bfa9946e2106087bec48cc1c69e65ad26f11b5d8",
+    "synth_rearc/tasks/task_79369cc6/generator.py": "4e0d5ed96e067f7ba5b6ccf698d3add3028cfb2e1ef9b1896eb6dea603f5eb04",
+    "synth_rearc/tasks/task_79369cc6/verifier.py": "0770e1438b453b770342566d9b4b9d6f9a10b13ca82b88dde4742f2c48d215c3",
+    "synth_rearc/tasks/task_7acdf6d3/__init__.py": "00b88ad0ff789460340e77cc77cfaa0ccc66b331e9f5d70d82ca0d619bc56d71",
+    "synth_rearc/tasks/task_7acdf6d3/generator.py": "a1d6b0753d9461533f9371cf8d5819ab26f87bc373efb2ba328ced492f10862b",
+    "synth_rearc/tasks/task_7acdf6d3/helpers.py": "f4b85464bda728729415b9ec9cdea746e9ada7c94e69cb43271fb7c544ca3296",
+    "synth_rearc/tasks/task_7acdf6d3/verifier.py": "a344ea4f3667d3c419b092df750ea0908764a5c07d97769984dfeb6e2ff9bf85",
+    "synth_rearc/tasks/task_7bb29440/__init__.py": "d482e4d4d0b2ab47eb727ec4ee25cd4d3ae5d6de80ceee0bc6b5bd2bf7717096",
+    "synth_rearc/tasks/task_7bb29440/generator.py": "d567e6ba7be633781233f0d30a343410ca96b63d1d0a248815f57c3ad497b7f9",
+    "synth_rearc/tasks/task_7bb29440/verifier.py": "d60d68b665ef35d7e83572c5898090f9cd545d96c19bb493e5d4b35eac2c7b14",
+    "synth_rearc/tasks/task_825aa9e9/__init__.py": "d0e10ee5e433852c2cc6d7c56ac77c85710618396703a7fde230b49e1027cc91",
+    "synth_rearc/tasks/task_825aa9e9/generator.py": "ab537c8a3e329743e46b780d08534db9b62a251f41e3e7929c325b4e3286a468",
+    "synth_rearc/tasks/task_825aa9e9/verifier.py": "523212536b4c8a1176f7bd0a723a5f5b202c7d762628ee6788e3e60410bb0257",
+    "synth_rearc/tasks/task_83eb0a57/__init__.py": "0938944501f865875579eac80b68cf2df2393898f58639ca781f2df4ecd75aff",
+    "synth_rearc/tasks/task_83eb0a57/generator.py": "f25953d1b2bc1981979c266d1adc48fd55e8e01be45ac216b56061a7631c5f35",
+    "synth_rearc/tasks/task_83eb0a57/helpers.py": "63e92a11065a4fd2258ebaef2377673d7d61385fdbf28078267c67c6c36eb69d",
+    "synth_rearc/tasks/task_83eb0a57/verifier.py": "bf2a62949794b29a8dd49e0aa8fe8d43349f9ceed7c66caae04e64b86db0b817",
+    "synth_rearc/tasks/task_845d6e51/__init__.py": "c6f10edc26fc68887f76ff6299e571f13117331a71c984cd6f4e522432cbeb77",
+    "synth_rearc/tasks/task_845d6e51/generator.py": "6633bcaf97499748d5af7422cc91ab9d5ff914fe42050fadf8c53d98eee5dd44",
+    "synth_rearc/tasks/task_845d6e51/verifier.py": "73dc32d13f6fe69d17584e66b0623244df21c2a11f98cdc5d5ef92de90c81908",
+    "synth_rearc/tasks/task_878187ab/__init__.py": "7b70cfdea4171b39606781f7c6bec442b803267a82a6906464bf291d900a932f",
+    "synth_rearc/tasks/task_878187ab/generator.py": "56914f9e992ed47681b9d56ef26aeb1b2a4b624eaa56d915ae5a12f5ad7c7543",
+    "synth_rearc/tasks/task_878187ab/verifier.py": "23988516d945c535dd693990a6b3e9c292491eca30ff7ebca2b3ceace7f2367a",
+    "synth_rearc/tasks/task_880c1354/__init__.py": "361d95fdd0c7fe8c2e8aa0260f02776629f2a5c5f19394a521e33657abf14b96",
+    "synth_rearc/tasks/task_880c1354/generator.py": "772bc5596ffa4029ee0242465daa3982e44398a5991f0808d03bdeba13a61d68",
+    "synth_rearc/tasks/task_880c1354/helpers.py": "511bd7819906ec3e64cde28722daa01d1fd830ea98ca2d7acc2a47acc68b8831",
+    "synth_rearc/tasks/task_880c1354/verifier.py": "6a0510c0982faf505843ecd04a17b565126734689d6ac71215eccb9f6437b968",
+    "synth_rearc/tasks/task_8a6d367c/__init__.py": "2568272706cfd896a2a6e7b2b171fcc38e22bdba784a50c87433ab5a90cb6658",
+    "synth_rearc/tasks/task_8a6d367c/generator.py": "2a5cf0108b8e7de41b312750989a61e35283d89166669124415921f598e66851",
+    "synth_rearc/tasks/task_8a6d367c/verifier.py": "1863ad5303a2e2ee5150df1e2b5fa1f765b6e0df649c6c9aded16eb966581ea1",
+    "synth_rearc/tasks/task_902510d5/__init__.py": "54f8f5ef628b1e86dc8117d2bb800a9eb2fd3d2fe05ef526e6da4b5d8ac10aad",
+    "synth_rearc/tasks/task_902510d5/generator.py": "68991f801033ed1c487c8c60081d32b45115e9366e326000865a8e2e7f7704d2",
+    "synth_rearc/tasks/task_902510d5/helpers.py": "ee8a4bb6cedd8fb5698603fa72f7347baa02478b19c1803b1083d21710182746",
+    "synth_rearc/tasks/task_902510d5/verifier.py": "3ffb03060d98267d9eae1b0d1ebd0dc1747584fb22e6eac591a58dd2888087f7",
+    "synth_rearc/tasks/task_93c31fbe/__init__.py": "31df7b297baf5a0c9832a35a112201b080b4fd09f9faac2d0dbd00e0bba5a0da",
+    "synth_rearc/tasks/task_93c31fbe/generator.py": "c19539cb87767f305e1918b5499c64615dab5384550bd0fa34f722df237fff21",
+    "synth_rearc/tasks/task_93c31fbe/helpers.py": "f32e9680699c5a09099f41ed36248cfa6a0fa1efbc8d974c41360bbee00d0e9b",
+    "synth_rearc/tasks/task_93c31fbe/verifier.py": "394c1e75e0b4ee98f309394bef503b69fd4a01e2d6721955e9334cb3c9293872",
+    "synth_rearc/tasks/task_94133066/__init__.py": "86feb476d04246fbbf02ea48ef39347aa8fb12e5b89d30c34d7123de852c8078",
+    "synth_rearc/tasks/task_94133066/generator.py": "5605b1f22a0dc0a3101b8085232f998e93c209ea3c4d140c3443d2913d69d135",
+    "synth_rearc/tasks/task_94133066/verifier.py": "c88cb609e1d9f10e6c904d804f8344208724cea7c0c5e7d20a9b4989255c43b6",
+    "synth_rearc/tasks/task_963f59bc/__init__.py": "7212dc8985764dd4c071efa9ce0142105f6e1dc9dd4739b02d7c22de3588ca89",
+    "synth_rearc/tasks/task_963f59bc/generator.py": "857f11ae8d37f553aa1e993b11602ef218497f89fe944aa1d285d393a3d60877",
+    "synth_rearc/tasks/task_963f59bc/verifier.py": "aa27c730f1571eb1499de09b91cc1bd24ebe6739d531583e88af84b489a4a770",
+    "synth_rearc/tasks/task_9720b24f/__init__.py": "1cafff3294a0f68a4cbe3e08b96b991ea7cb88a6e3609ff1f368412d92b0fb91",
+    "synth_rearc/tasks/task_9720b24f/generator.py": "f25a2acda5fd850c30161f57ed415e8d525a4cafba0f93678797f4caaf19aa2e",
+    "synth_rearc/tasks/task_9720b24f/helpers.py": "0bd49b763ad7cb1e39c2b33fbd2ba33342c94e13ec7087baa93b7e40fcdf29c0",
+    "synth_rearc/tasks/task_9720b24f/verifier.py": "b190048dfb50ebc8461d9c4b8b568ae599610f332246fa3740aecf6981f656ce",
+    "synth_rearc/tasks/task_97c75046/__init__.py": "86fba983dce1ceb5ea10a6c8152bad53ee454043a480e70a549c7130be263006",
+    "synth_rearc/tasks/task_97c75046/generator.py": "d753589067c56126743493a5f3154bcf4423083d04bcec450afcf7ea219418d5",
+    "synth_rearc/tasks/task_97c75046/verifier.py": "e71b2d4002f02d016ba1f4a0b29d912615aecefc102ffc8ae08e42b7b174127e",
+    "synth_rearc/tasks/task_984d8a3e/__init__.py": "7118bf2a829fbcbb343928a6c2e3e5d32d0c59440796731ae0e95d3e6a5b0926",
+    "synth_rearc/tasks/task_984d8a3e/generator.py": "675ba08f9777230129dc6e7b557d1a2f2a4328e7861d649f8d275a26f451ef40",
+    "synth_rearc/tasks/task_984d8a3e/verifier.py": "6c4a848bcfebed95f6941337236c8729eb082b4f446b0fd584448bb0a83a6159",
+    "synth_rearc/tasks/task_98c475bf/__init__.py": "221dbd60a9e0ab11d7cac216d3e241dd6d64842c9854777d48b8df06465a561d",
+    "synth_rearc/tasks/task_98c475bf/generator.py": "bdd10665f57dd5170834e6717bd308318675b88e3e3ed6da5eb861676af54a6b",
+    "synth_rearc/tasks/task_98c475bf/helpers.py": "37b89981a76e5e73e59ac768fe37d976c532173f1c9349206b764c5b2e4522c5",
+    "synth_rearc/tasks/task_98c475bf/verifier.py": "046c266dbd20d5fe6c26806bf8a4e098483be949684585f93ff16e95fc5a578a",
+    "synth_rearc/tasks/task_9b5080bb/__init__.py": "5fb7bf1f137d0a51cd2b6aefe7edf24b32f431162e9a4854832f37b85a24190f",
+    "synth_rearc/tasks/task_9b5080bb/generator.py": "570aec7793649ce097d231c97bc9845b62941955318dd5a82d3cfd6e73fbb724",
+    "synth_rearc/tasks/task_9b5080bb/verifier.py": "e85137ffb84b9c4465d5b006504c131f3c85659899808ff7461eb365d5141d36",
+    "synth_rearc/tasks/task_9ba4a9aa/__init__.py": "b735c4edc020ce1a7ff2ef69c7235c644a10fe7e4ad2ee9b4a605f8edfe62b98",
+    "synth_rearc/tasks/task_9ba4a9aa/generator.py": "c1fb927df137a46b3a40a020d4254536aed2c1919d5afb2da162791851b84d02",
+    "synth_rearc/tasks/task_9ba4a9aa/helpers.py": "d60941c43ddd1b081aa15840a2883cb2be726b192f7d428b87acd24d6f85411c",
+    "synth_rearc/tasks/task_9ba4a9aa/verifier.py": "91369a637fe18818dd64931d40ae1745e6a3e99aab00c19709c40a6a47264d1a",
+    "synth_rearc/tasks/task_9bebae7a/__init__.py": "e79c5c90ff0ae45b25dffeac2a9e0086e1a61a40eda5c56ea6e4965c4dc0b158",
+    "synth_rearc/tasks/task_9bebae7a/generator.py": "75065b9050734eda7339d9065ba9dd7cf937b9e46473930c0cd3acf87b7544c1",
+    "synth_rearc/tasks/task_9bebae7a/verifier.py": "9bbb09024ebd523d1c3244019395fb7820a3ff09da167b0a194662d002abc911",
+    "synth_rearc/tasks/task_9f669b64/__init__.py": "ad23eb3c2178cf33e640ea18ed7c0ea2661fafef0d8a054ee9dd1eedf18d54fe",
+    "synth_rearc/tasks/task_9f669b64/generator.py": "55b9d923c2432279e25f2b227146bccd85e507735fad2c0ec832657d3062e59b",
+    "synth_rearc/tasks/task_9f669b64/helpers.py": "631b53fb31bea757a2beb9353d4b307827065ed9fba439eb4aac0684e5c896c1",
+    "synth_rearc/tasks/task_9f669b64/verifier.py": "ce7c24042073d2622e9c6de86db2aac989ee5a52a29a8fc43594f8bf7230adda",
+    "synth_rearc/tasks/task_a09f6c25/__init__.py": "983b6b5f6707c1dda29d62dce84cbdc00b6ccb344c75124b10f46756d19a8b09",
+    "synth_rearc/tasks/task_a09f6c25/generator.py": "7ca66314705801a54be42a6823b3f8295ade620366aca1d64c0ec9073c96182c",
+    "synth_rearc/tasks/task_a09f6c25/verifier.py": "8890f8959fbc4b174469bb964ea4f09055751cd22df2eaddcf8eff424949a624",
+    "synth_rearc/tasks/task_a6953f00/__init__.py": "77fb8b476b7cdcfcf48c1a7f43a42668ba9b57fc496985eff7035a518f2a7b0c",
+    "synth_rearc/tasks/task_a6953f00/generator.py": "55a39023c9150ca676378b33abed0862c6690dd023c24c644540f5b51224327d",
+    "synth_rearc/tasks/task_a6953f00/verifier.py": "fd0b84ed81e7233d4776efc8fce538f146c17dd9e8fbdeca622d0801c1af2b1c",
+    "synth_rearc/tasks/task_aa62e3f4/__init__.py": "f41597bfd1f73afa341a0d8998b22e1ab840a418955d3975300a547a1976c58a",
+    "synth_rearc/tasks/task_aa62e3f4/generator.py": "107b65b18edc59e32c24a0e02fcf3989e07b0105789f5c39f7cc698b34ea298b",
+    "synth_rearc/tasks/task_aa62e3f4/verifier.py": "2b6f8da80e6b609c54f48bde620bb1b213cac39ae1a021b8cb7b66e41b9114c0",
+    "synth_rearc/tasks/task_aaecdb9a/__init__.py": "0b12837e6afcbd1ead7a3f64151d7099c9c09031fae3c2dfa82bcf4fe2937f33",
+    "synth_rearc/tasks/task_aaecdb9a/generator.py": "6d600d3c5849db1f2421ebac7a37f78606b396a893218413b2a8b103afa595ce",
+    "synth_rearc/tasks/task_aaecdb9a/helpers.py": "ae66ae865ce750e4550037b0c772bf4046f3c7f0c9e645269db09e4d895cea79",
+    "synth_rearc/tasks/task_aaecdb9a/verifier.py": "9f83679b84e183efe57ba9a5c0d2b4dac5624548e5291ddc8b7b2753992d44f2",
+    "synth_rearc/tasks/task_ac2e8ecf/__init__.py": "d0b4fc0357181bbc0000474a3eed8ba9e3e80ff9b730f9c0b303b504620de873",
+    "synth_rearc/tasks/task_ac2e8ecf/generator.py": "669cb053c033b3e48955159d0cf6b50b92c2a58e93aaa93ccb9a2ff1bd3385f7",
+    "synth_rearc/tasks/task_ac2e8ecf/helpers.py": "1367570ad6ee6f95a332a3ed0923537ad887a7346a12b54fd656e8150da152cb",
+    "synth_rearc/tasks/task_ac2e8ecf/verifier.py": "7791a4a80e166a178d48ca112125c9f7022cb34616c938576ace33f17def9626",
+    "synth_rearc/tasks/task_ad3b40cf/__init__.py": "d035b9f42196f2f26b712c803e33edacf3fc9610200615c6f53a7231de210c25",
+    "synth_rearc/tasks/task_ad3b40cf/generator.py": "12c3b5013b3cf59ed1346f71a0bc583386be47948ab22755c3b329ecfccddb7f",
+    "synth_rearc/tasks/task_ad3b40cf/helpers.py": "586d7b2b7b0ed75248634329f3af61e9e54b75bbdd55494c803c1cee176da62b",
+    "synth_rearc/tasks/task_ad3b40cf/verifier.py": "6fb14d29d3916ec3401900fc97378ffde1653a43e139136545efe0c2040f2e3e",
+    "synth_rearc/tasks/task_aee291af/__init__.py": "17bc6b9de9497b5815ac2821cd24488952d20b8775a44c531e99f711c5082cee",
+    "synth_rearc/tasks/task_aee291af/generator.py": "e6070e18ae0a4cc6e75a120351df410e444398f7a4ebc32261bc5dcbed648f41",
+    "synth_rearc/tasks/task_aee291af/verifier.py": "5287438827405657263ce3be539f1238e24b1483b611b318581d58aa91407498",
+    "synth_rearc/tasks/task_b15fca0b/__init__.py": "55eef4ea423b6ee45625b67b5acac2817382b083dc1f47562cb0f695e2a4f40e",
+    "synth_rearc/tasks/task_b15fca0b/generator.py": "1890146da4290cbe16f278d1a8d71693965ad1cba61104a8f5b6dc8962041aa8",
+    "synth_rearc/tasks/task_b15fca0b/helpers.py": "9d49ee0a005c005938701038dad6672a749dd1f963faab017af3bc713b3fcafb",
+    "synth_rearc/tasks/task_b15fca0b/verifier.py": "efc047fee1e8998be40b52913b5cb11c50bb04b938952b83b3cf0ee80432c6bb",
+    "synth_rearc/tasks/task_b20f7c8b/__init__.py": "82aed608a36897fa9aa568bac251ff62ced60981554ca280350740143600d8e1",
+    "synth_rearc/tasks/task_b20f7c8b/generator.py": "aca42102b20bbca1e9234d486c312a74318e7fa758546ddca09133a2219cc8db",
+    "synth_rearc/tasks/task_b20f7c8b/helpers.py": "35327452c67384c2ef4dc75306cb5d8702382c15719333d30cdf34689ad3dbee",
+    "synth_rearc/tasks/task_b20f7c8b/verifier.py": "a1b715e0e064b43f3d34e8c97f80d874a8cfdf156de4a9d530e645bbbf61871a",
+    "synth_rearc/tasks/task_b71a7747/__init__.py": "53b4118beb5516e97123ce510a30f028add1d49711c39201eb98ea4eba43476b",
+    "synth_rearc/tasks/task_b71a7747/generator.py": "a298ee96aa19309087bbb31ec1a0fe96c7051ce5c9069fece93e2b35d6075bb2",
+    "synth_rearc/tasks/task_b71a7747/verifier.py": "20416a54e78cd2b780b9307f49c23168be59d3a10cf83136efa21b1ffd3b097a",
+    "synth_rearc/tasks/task_b74ca5d1/__init__.py": "9bf782fd5f8702fd6161a2f99d094324922802ddf113c638bd4f2001437f6120",
+    "synth_rearc/tasks/task_b74ca5d1/generator.py": "55a0f13a11de344295ad02595f07e88a40b934e70d75fc8f6e3eb3e6f6b4980d",
+    "synth_rearc/tasks/task_b74ca5d1/helpers.py": "c03b112f4b085e1579f2b0629662ed3ab862a95ac5d49cd58744df90609169db",
+    "synth_rearc/tasks/task_b74ca5d1/verifier.py": "42c16a662da8f8ac10f5fba6f16f9fa2a234204bfcbacf5c9dcfb0af61fb8d2e",
+    "synth_rearc/tasks/task_b7cb93ac/__init__.py": "8c8c3700520be1671b088980443203d9a54c14f6674c22d91b8f3ffe7d2b6dc0",
+    "synth_rearc/tasks/task_b7cb93ac/generator.py": "08721610e2e951b3cf2ad89bbcf9dc9329d6e821d2648cd6389dfe91ccaf6318",
+    "synth_rearc/tasks/task_b7cb93ac/helpers.py": "f6a9f5712eafab7f6f6a97497a797cdd8145dc6a2afdeae1be11a4f189f76a6c",
+    "synth_rearc/tasks/task_b7cb93ac/verifier.py": "8153377751689458c51f7da45c04d8a67d9c010d0231c3abd7baece4e41bf690",
+    "synth_rearc/tasks/task_bc93ec48/__init__.py": "a019ce8c318e3fb57627eccc0523f82c2f1bb46b7f768837921b9f9018b14e19",
+    "synth_rearc/tasks/task_bc93ec48/generator.py": "9711b5ae12d8345dc853eb548f267855149c07db94b50445b7b05b9d12b0e79f",
+    "synth_rearc/tasks/task_bc93ec48/verifier.py": "771ab5f5e3bde0965c645eaf2facb8489a2cc2b5242de9a01ba1c815fe552650",
+    "synth_rearc/tasks/task_bf32578f/__init__.py": "10425aa96f4b940b8d77fc7282103ddb83912543a7444c653a952cc65d36d976",
+    "synth_rearc/tasks/task_bf32578f/generator.py": "d07febec247da419c19c85e0c3d38f5c591939ef342e2cb0e897fad1f233c987",
+    "synth_rearc/tasks/task_bf32578f/verifier.py": "c877d018bc3fa7ad7329f13e064d80e574300aee6dd57f5f568c6f1c4e97f380",
+    "synth_rearc/tasks/task_c3fa4749/__init__.py": "832335cca2365ab051192d4ab9b3effcce2036dff3b949ba80b5d646dfff63be",
+    "synth_rearc/tasks/task_c3fa4749/generator.py": "a81c9db6a97c33d410abdb821c21f54f5f5269f422ed68bc995cc69931c9c684",
+    "synth_rearc/tasks/task_c3fa4749/verifier.py": "a730a020ee7b7d5d7da95808f185d66567af6edd24363bc165612e2d5dd650df",
+    "synth_rearc/tasks/task_c4d1a9ae/__init__.py": "ef3755bbd4baff236f638e8833f2852527e4243a63995e2fc61379a87510f194",
+    "synth_rearc/tasks/task_c4d1a9ae/generator.py": "766253b68f704c1a326bb2a73b008230517bc065345625246d4c6ea4cdaaa0dc",
+    "synth_rearc/tasks/task_c4d1a9ae/verifier.py": "da7058284728236a9ee4b2580d94118304ab99992df880663da81e7ea141572f",
+    "synth_rearc/tasks/task_c6141b15/__init__.py": "a965675290b1863fc98b63c30e413ecabde0b2edafa9cefd7689614c10c86e34",
+    "synth_rearc/tasks/task_c6141b15/generator.py": "be02d1cb3434fd223575ce681c6224dda868d750f6d730ae72b3624d8db0456a",
+    "synth_rearc/tasks/task_c6141b15/verifier.py": "bacd7057470974844673abf374f40bf0eb76de4ad444563308249f85431d3b19",
+    "synth_rearc/tasks/task_c9680e90/__init__.py": "fbec491e971e1d9b60e2ad65e8a4535ae648f8add613d45ec68ffcacfef3a23c",
+    "synth_rearc/tasks/task_c9680e90/generator.py": "5580b7273969be5356aa5bde3b0238b9bd35705ae29b6896020cbd323521080a",
+    "synth_rearc/tasks/task_c9680e90/verifier.py": "d08f1975ac50966c702d3f2100306adfaf35d9a150164e7b7a65625deaf76005",
+    "synth_rearc/tasks/task_cc9053aa/__init__.py": "64b016313e8d389b07816fa2e390bb890e16c31aa223bc550af90cf0d6d327ec",
+    "synth_rearc/tasks/task_cc9053aa/generator.py": "9c2e8457caa08c7bba0997b52128dc279886277283ea60f6324396adf98dfd40",
+    "synth_rearc/tasks/task_cc9053aa/verifier.py": "05f59193e62527a5dfe07b08758ff4a3f00f808f0c0589db078431d642eabc56",
+    "synth_rearc/tasks/task_cd3c21df/__init__.py": "19d33c4f7e4b3796379c39d6662990704d7e2b0f1509a2cdf9da06103dc52295",
+    "synth_rearc/tasks/task_cd3c21df/generator.py": "9f65583407f3d6a4abaf1e4a9cc73247000c61df73a9d8b09dff81a2cf884108",
+    "synth_rearc/tasks/task_cd3c21df/helpers.py": "74b8c1566ce28e5efad08a67f3f5da0a5bcaf6d8be33c24146527a32ff0c3184",
+    "synth_rearc/tasks/task_cd3c21df/verifier.py": "f85e19490bc91d09dfc1553330062a5bb9732a82b3c7917f66a3c3ceed3d8c90",
+    "synth_rearc/tasks/task_d4c90558/__init__.py": "281b935c21ba6ff7a82dbe5b646b47ab428bfbab988be805168e3a7dfbde2b5b",
+    "synth_rearc/tasks/task_d4c90558/generator.py": "32baec8ab9a699b7a908fba6ca897f8525d5052822e8faa0a2a44bd4898da96f",
+    "synth_rearc/tasks/task_d4c90558/verifier.py": "bda54ba8b7589a2f268bd6660c82cfbb564bd5c0273163b7184e6c920b522fdd",
+    "synth_rearc/tasks/task_d56f2372/__init__.py": "768519db091a23eee48b2edf281830e010708e890061fa324ea062595b60687f",
+    "synth_rearc/tasks/task_d56f2372/generator.py": "9a25ec2e0a4b810452c00304bc6819e318bc3cd8d437e95b6699331659f5394e",
+    "synth_rearc/tasks/task_d56f2372/verifier.py": "3dc02424e12d35aa8da5a03ee309f8f70fdc22f9f074f5c8d862b979053462a1",
+    "synth_rearc/tasks/task_d6542281/__init__.py": "e6f5cfeed2be12076c8580071d65cc40a51c1ce084e70c71b05fe9543a77f03c",
+    "synth_rearc/tasks/task_d6542281/generator.py": "4a5e8453d186844e691874506914f4be16c58b35434df98aafcd82aa7f201d7d",
+    "synth_rearc/tasks/task_d6542281/helpers.py": "3f84a75526ee09d960fc7d5250c4e0dda3b7e8a67e2ad0dfb6f70ffa14efc84f",
+    "synth_rearc/tasks/task_d6542281/verifier.py": "679e025fa4e2730f7cca71f16481e6f978fa138d432f9fad7e41b4394bbfe01f",
+    "synth_rearc/tasks/task_da6e95e5/__init__.py": "d765033b893671417e06fd4f612b39b0cd70f8e2b537ad5dd5d0515385615148",
+    "synth_rearc/tasks/task_da6e95e5/generator.py": "8e80cfa88030ecda1e6d697e8faeb76e5166353d359a8a21b86f96b8e8d48ca3",
+    "synth_rearc/tasks/task_da6e95e5/verifier.py": "1e77f4b5719e8b80c3892435be816ea8a23aa52b6093233a08e551485003716d",
+    "synth_rearc/tasks/task_db615bd4/__init__.py": "b5d4f52cbc72e8214b7b829f1ae29aa16a72487dfca0d0452ad54817511414ab",
+    "synth_rearc/tasks/task_db615bd4/generator.py": "496522c7528ae4aec0cbb3d0e3fe4c2da5e63f41f6c97307f69aa2544c913585",
+    "synth_rearc/tasks/task_db615bd4/helpers.py": "d85bed8fa427a28c7f07cd389c40426db6939d0e853ca3504650daa15b691127",
+    "synth_rearc/tasks/task_db615bd4/verifier.py": "c82fc62fb7d81a69c15b819c0e5f6d33816987cab7f180855e20f91095bb198f",
+    "synth_rearc/tasks/task_de493100/__init__.py": "f7b8b8137f6fcb48ca4fc6094a4e480b929d6820a6108735298d15c0c8998dff",
+    "synth_rearc/tasks/task_de493100/generator.py": "6dde50716722b4122388c0f4ce2b528dc773fea754939cb4688c8882bfac1cce",
+    "synth_rearc/tasks/task_de493100/helpers.py": "2ad19cf6885e89b3fee8bf2d8f7c8ce000bc03ef1e07e382f04fdb0592ee82ba",
+    "synth_rearc/tasks/task_de493100/verifier.py": "a5a7f5559bbd07e48a36d9a38f568b7f1b778b6ca33f0763935eea965735dac3",
+    "synth_rearc/tasks/task_df978a02/__init__.py": "86232ac6525dce2ae5b6b5f584fae95eb2987e16d72fbb14b0fc00143027387b",
+    "synth_rearc/tasks/task_df978a02/generator.py": "60f49edd95d9c672d0e538c2f9d842d3d6e9a2e6f88c5588ab5298ad18a6b9a9",
+    "synth_rearc/tasks/task_df978a02/helpers.py": "4945856d58a711f2dca168c74b67469ebef5819ac09de0a74a9a3c0899302ebc",
+    "synth_rearc/tasks/task_df978a02/verifier.py": "ac340fe40db9cb6e8a02d2eb6d43f540d0e06a4149abf739c87af817c1773d24",
+    "synth_rearc/tasks/task_e4888269/__init__.py": "fb82df11dbc6e7418b5bdd443b57fea1cc919cf5dc6ca0c4fda5457edc6dbbcf",
+    "synth_rearc/tasks/task_e4888269/generator.py": "7202d9d0628bde3852f895124ad7da31704530de7c5b15d1df42cecb1a6b86c1",
+    "synth_rearc/tasks/task_e4888269/verifier.py": "63749728c1d2b7b6b223a2542ae5f2da7b76f2c714c759e1e8c79cc977216061",
+    "synth_rearc/tasks/task_e729b7be/__init__.py": "5f28e30dab5b5f64325369b2448f77c1b98622ecd0d2c77bfe1165bb373cbeb2",
+    "synth_rearc/tasks/task_e729b7be/generator.py": "754d67329bd12fb19769ebc9063a86e5ab5efbc6890d40acdd2cdc543e7ad941",
+    "synth_rearc/tasks/task_e729b7be/verifier.py": "29f49928f76b2fe27db23a9d171945ba23dde4687cde494a7aa64afb93ceb527",
+    "synth_rearc/tasks/task_e872b94a/__init__.py": "211457f96e49b7fdeada686d607c81595a5c5ffa4c2dc546ecd01e0e67a284a8",
+    "synth_rearc/tasks/task_e872b94a/generator.py": "18be8068391f89f2653eba743aca52098c8bdaf1bd8ea52008fce913a5a70259",
+    "synth_rearc/tasks/task_e872b94a/verifier.py": "1331461398ab3c52a0b6961b675070357070e82d9a9acd9e8a211cad929cb56d",
+    "synth_rearc/tasks/task_e9fc42f2/__init__.py": "e29e51bfc4868626f25f189739ccf1f72c6d2d3fd649bec1145c6c877dc93631",
+    "synth_rearc/tasks/task_e9fc42f2/generator.py": "98f54b143328621608cc2f5c87ddbedc1e5dfc2b8a212ff4d647911f2abeb71e",
+    "synth_rearc/tasks/task_e9fc42f2/helpers.py": "816b17f8c4dee7254ae4e55ad8ff834a0829d2741311473c7395d3bcbd58ac7f",
+    "synth_rearc/tasks/task_e9fc42f2/verifier.py": "034f0bee311807cf935b193f29458361eaa6800ea1f5811cc815e46fc1048b88",
+    "synth_rearc/tasks/task_ea959feb/__init__.py": "fbe560247539a62736ed741060a03c530d5968dbc9706e9fbc100beca88bc802",
+    "synth_rearc/tasks/task_ea959feb/generator.py": "f7d3028f537bc4e6a3b00ae6b800afae8050cb53a6d881816dad6f1f70b5d38a",
+    "synth_rearc/tasks/task_ea959feb/verifier.py": "5154f180a0f26c2c92091a37a2af512994743336f82763f661509564d023746a",
+    "synth_rearc/tasks/task_ecb67b6d/__init__.py": "921652d3666a0e05d152f9cc9150d106ddae25772796d5c1d4ec3a088a8bc7b6",
+    "synth_rearc/tasks/task_ecb67b6d/generator.py": "535cf818356736314d70e0de82fd53a8ef6dc7d4cf157ebbd3ce22adaa3f0300",
+    "synth_rearc/tasks/task_ecb67b6d/helpers.py": "41c30bde87da98784c4fab2b43ba1e98a8f4ceb8082c1d278a6f8c74a311dfb5",
+    "synth_rearc/tasks/task_ecb67b6d/verifier.py": "6dce29570c5204e3acc1ddac6a9e9ff1b893c5e696b9480b506f3a27db32f822",
+    "synth_rearc/tasks/task_f0100645/__init__.py": "64d8fd214a4793a6f3e6e3fad2ad088dff37dcc7feaec17e4bf566b7f964daf4",
+    "synth_rearc/tasks/task_f0100645/generator.py": "794d13c59a25b3be62d7d437a41e16226d91fc4b28c4c6fb6c154f93f0873a61",
+    "synth_rearc/tasks/task_f0100645/helpers.py": "feb16a19819471a9ae0b07c668f835fe7bb13fbaa4fce6ef324a585007815a02",
+    "synth_rearc/tasks/task_f0100645/verifier.py": "131279b431e651621d783bf6c257981f245614369f33680101c3b4e662b20e8e",
+    "synth_rearc/tasks/task_f18ec8cc/__init__.py": "2faeb10be2a64a6806b4802867d6c7cd7ff855f24b717be4ce00413bdfc3be3a",
+    "synth_rearc/tasks/task_f18ec8cc/generator.py": "fc797918875c5397862b857767ad7e2d167bf3fa2132f365b0bb3a2ac2a1ab93",
+    "synth_rearc/tasks/task_f18ec8cc/helpers.py": "45b41e8165d7b2a3f89e64efc00553c8f448d6a00bd8044361711754e06ec163",
+    "synth_rearc/tasks/task_f18ec8cc/verifier.py": "68da79e177223dcd99652f2d469852d0847f06048f4422262c86450fa63b6733",
+    "synth_rearc/tasks/task_f341894c/__init__.py": "54b6064377f51a84c92210b9a7625921dd7e08d6c522ccf5345e2022a8c2573c",
+    "synth_rearc/tasks/task_f341894c/generator.py": "b555a0852848f5629542e910306b40900beff8c5a56f03a0302b6fb639b61152",
+    "synth_rearc/tasks/task_f341894c/verifier.py": "512d9b52e228d21ce9bb3987462387d4b058d6556b21aeae05c53b8d2cf7e91b",
+    "synth_rearc/tasks/task_f5aa3634/__init__.py": "a9fe781b3973326fb075a2880b54de119729097c54696ed2195306bd00d9ccd8",
+    "synth_rearc/tasks/task_f5aa3634/generator.py": "13a83caa7ea01433f607e96d2571d4499178da2dd3d7370222513187bb298013",
+    "synth_rearc/tasks/task_f5aa3634/verifier.py": "6d358abec579b47a7f1215817cd2c856a484a8f7ec824b6d31936c0da74f2686",
+    "synth_rearc/tasks/task_f5c89df1/__init__.py": "3a72cd48998f1c371da84d9311a7b5da613ce8b9e66b2277667741ceeda1138d",
+    "synth_rearc/tasks/task_f5c89df1/generator.py": "c567b0bdf7e1aa0e15367404f653d982897339a4fb224f34946f8c3861ca2925",
+    "synth_rearc/tasks/task_f5c89df1/verifier.py": "015243e6d086add9bb19bdb0d71af590f85574a1b0d5dfc30602e4cd5d0048cb",
+    "synth_rearc/tasks/task_f8f52ecc/__init__.py": "e3227871e50b25bf4f843c977ac0dd949e468614f344974b79f75ba290357aea",
+    "synth_rearc/tasks/task_f8f52ecc/generator.py": "bad43312f196afb985689d6faca7c493d918850774bb7451367d8cb98611003f",
+    "synth_rearc/tasks/task_f8f52ecc/helpers.py": "0e671fe70343ebb8fb1b963f726143b703e85758a06c29f77c82924a46878f44",
+    "synth_rearc/tasks/task_f8f52ecc/verifier.py": "831298be18c5d6c2816d22ca9590bd6a539473e88cfa221b94f5668bc2ca0997",
+    "synth_rearc/tasks/task_f9d67f8b/__init__.py": "35c87f6277f6470f59c32410a24725151bc092cf38b495fa7410e829ab886795",
+    "synth_rearc/tasks/task_f9d67f8b/generator.py": "1aabcfa4db7e382173eadc71647179d7a0c727cee9711a8075b7343f972977e9",
+    "synth_rearc/tasks/task_f9d67f8b/verifier.py": "663f58941382b55328b118d81c4e2159b1b9b4bc9ad4bf99d2781cce2dd2cea9",
+    "synth_rearc/tasks/task_fd096ab6/__init__.py": "49233a195e176032ba00441fcaabb10564be894733e10ebbfd56b116dffcc72f",
+    "synth_rearc/tasks/task_fd096ab6/generator.py": "06546d6b15d111d157aa48d2495775ea1b9a7ed7caf3f74bb6d22dda97dda403",
+    "synth_rearc/tasks/task_fd096ab6/helpers.py": "713d77f032467d6893f8166a2a18007deb7e02b9d41107a84143f514bb1fc8a4",
+    "synth_rearc/tasks/task_fd096ab6/verifier.py": "b556e74d98d974e1f77da3a97f76076de9a8abf4b8477deed8dd5ea8da7fa91e",
+    "synth_rearc/tasks/task_fe45cba4/__init__.py": "36f6e28b0ee6a083cffbc3bc1b27958022a8c71410071b82efba16177c1b316d",
+    "synth_rearc/tasks/task_fe45cba4/generator.py": "5807cd353f25d30e379e5fec57ccfc149ab585ca855f3beb88ae06447e3d61fc",
+    "synth_rearc/tasks/task_fe45cba4/verifier.py": "6163d204091d2353a126c361fd8a69aba65cfca3cdfd349a5864cd6babe121d5",
+    "synth_rearc/tasks/task_fea12743/__init__.py": "583e7062bffc8e073013efc8d64ab0c55c3bd79d2f6f0f5b4192635b005f4422",
+    "synth_rearc/tasks/task_fea12743/generator.py": "0b3b71e6535a188b9d6300939b6a22305412b21c47e6a793b71f0e5764e22701",
+    "synth_rearc/tasks/task_fea12743/verifier.py": "c8ec3cd00667088c73cff9d5c44fd9f997dd2c6dbc3067ec287704a922a38b83"
+  },
+  "input_file_sha256": {
+    "experiments/021/evidence/rearc2-generator-delta.json": "e97d663817b8dcd6386ee8a519b81980c820c9aed0b3cc2a11b56edbb839c2da",
+    "experiments/007/raw/arc-prize-2026/arc-agi_training_challenges.json": "779eaba89790ebad9af02514a7efc0aefaf2cf8236f046a31bbf8b9ec48f20f5",
+    "experiments/007/raw/arc-prize-2026/arc-agi_training_solutions.json": "9f07a38bd25af5e83aa5bf85c5cb1a1fefdb30f6a755256fa65429e697ca97f9",
+    "experiments/025/cohort-v1/challenges.json": "38df4c7126f160f9dd045b4b0c9fb37ccb4f24dfbb51c8d32aa7b50f132ebeb9"
+  },
+  "qualified_generator_families": [
+    "009d5c81",
+    "09c534e7",
+    "0a2355a6",
+    "14754a24",
+    "18419cfa",
+    "184a9768",
+    "1acc24af",
+    "1b59e163",
+    "1da012fc",
+    "2037f2c7",
+    "25c199f5",
+    "2ccd9fef",
+    "2de01db2",
+    "2f767503",
+    "3194b014",
+    "320afe60",
+    "3391f8c0",
+    "351d6448",
+    "396d80d7",
+    "3ad05f52",
+    "3d588dc9",
+    "423a55dc",
+    "4acc7107",
+    "4b6b68e5",
+    "4df5b0ae",
+    "4e45f183",
+    "4ff4c9da",
+    "505fff84",
+    "50f325b5",
+    "52364a65",
+    "54dc2872",
+    "5587a8d0",
+    "5623160b",
+    "5833af48",
+    "5a719d11",
+    "5adee1b2",
+    "5b692c0f",
+    "6165ea8f",
+    "6350f1f4",
+    "66ac4c3b",
+    "696d4842",
+    "6df30ad6",
+    "73ccf9c2",
+    "753ea09b",
+    "79369cc6",
+    "7acdf6d3",
+    "7bb29440",
+    "825aa9e9",
+    "83eb0a57",
+    "845d6e51",
+    "878187ab",
+    "880c1354",
+    "8a6d367c",
+    "902510d5",
+    "93c31fbe",
+    "94133066",
+    "963f59bc",
+    "9720b24f",
+    "97c75046",
+    "984d8a3e",
+    "98c475bf",
+    "9b5080bb",
+    "9ba4a9aa",
+    "9bebae7a",
+    "9f669b64",
+    "a09f6c25",
+    "a6953f00",
+    "aa62e3f4",
+    "aaecdb9a",
+    "ac2e8ecf",
+    "ad3b40cf",
+    "aee291af",
+    "b15fca0b",
+    "b20f7c8b",
+    "b71a7747",
+    "b7cb93ac",
+    "bc93ec48",
+    "bf32578f",
+    "c3fa4749",
+    "c4d1a9ae",
+    "c6141b15",
+    "c9680e90",
+    "cc9053aa",
+    "cd3c21df",
+    "d4c90558",
+    "d56f2372",
+    "d6542281",
+    "da6e95e5",
+    "db615bd4",
+    "de493100",
+    "df978a02",
+    "e4888269",
+    "e729b7be",
+    "e872b94a",
+    "e9fc42f2",
+    "ea959feb",
+    "ecb67b6d",
+    "f0100645",
+    "f341894c",
+    "f5aa3634",
+    "f5c89df1",
+    "f8f52ecc",
+    "f9d67f8b",
+    "fd096ab6",
+    "fe45cba4",
+    "fea12743"
+  ],
+  "quarantined_families": [
+    "17829a00",
+    "b74ca5d1",
+    "f18ec8cc"
+  ],
+  "quarantine_reason": "fixed verifier disagrees with one local official training demonstration in each family; no assertion that official data is wrong",
+  "official_demo_checks": [
+    {
+      "task_id": "009d5c81",
+      "matched": 5,
+      "total": 5,
+      "all_match": true
+    },
+    {
+      "task_id": "09c534e7",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "0a2355a6",
+      "matched": 4,
+      "total": 4,
+      "all_match": true
+    },
+    {
+      "task_id": "14754a24",
+      "matched": 4,
+      "total": 4,
+      "all_match": true
+    },
+    {
+      "task_id": "18419cfa",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "184a9768",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "1acc24af",
+      "matched": 4,
+      "total": 4,
+      "all_match": true
+    },
+    {
+      "task_id": "1b59e163",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "1da012fc",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "2037f2c7",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "25c199f5",
+      "matched": 5,
+      "total": 5,
+      "all_match": true
+    },
+    {
+      "task_id": "2ccd9fef",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "2de01db2",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "2f767503",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "3194b014",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "320afe60",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "3391f8c0",
+      "matched": 4,
+      "total": 4,
+      "all_match": true
+    },
+    {
+      "task_id": "351d6448",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "396d80d7",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "3ad05f52",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "3d588dc9",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "423a55dc",
+      "matched": 5,
+      "total": 5,
+      "all_match": true
+    },
+    {
+      "task_id": "4acc7107",
+      "matched": 4,
+      "total": 4,
+      "all_match": true
+    },
+    {
+      "task_id": "4b6b68e5",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "4df5b0ae",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "4e45f183",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "4ff4c9da",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "505fff84",
+      "matched": 5,
+      "total": 5,
+      "all_match": true
+    },
+    {
+      "task_id": "50f325b5",
+      "matched": 4,
+      "total": 4,
+      "all_match": true
+    },
+    {
+      "task_id": "52364a65",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "54dc2872",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "5587a8d0",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "5623160b",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "5833af48",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "5a719d11",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "5adee1b2",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "5b692c0f",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "6165ea8f",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "6350f1f4",
+      "matched": 4,
+      "total": 4,
+      "all_match": true
+    },
+    {
+      "task_id": "66ac4c3b",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "696d4842",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "6df30ad6",
+      "matched": 5,
+      "total": 5,
+      "all_match": true
+    },
+    {
+      "task_id": "73ccf9c2",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "753ea09b",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "79369cc6",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "7acdf6d3",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "7bb29440",
+      "matched": 5,
+      "total": 5,
+      "all_match": true
+    },
+    {
+      "task_id": "825aa9e9",
+      "matched": 4,
+      "total": 4,
+      "all_match": true
+    },
+    {
+      "task_id": "83eb0a57",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "845d6e51",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "878187ab",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "880c1354",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "8a6d367c",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "902510d5",
+      "matched": 4,
+      "total": 4,
+      "all_match": true
+    },
+    {
+      "task_id": "93c31fbe",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "94133066",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "963f59bc",
+      "matched": 4,
+      "total": 4,
+      "all_match": true
+    },
+    {
+      "task_id": "9720b24f",
+      "matched": 4,
+      "total": 4,
+      "all_match": true
+    },
+    {
+      "task_id": "97c75046",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "984d8a3e",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "98c475bf",
+      "matched": 4,
+      "total": 4,
+      "all_match": true
+    },
+    {
+      "task_id": "9b5080bb",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "9ba4a9aa",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "9bebae7a",
+      "matched": 5,
+      "total": 5,
+      "all_match": true
+    },
+    {
+      "task_id": "9f669b64",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "a09f6c25",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "a6953f00",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "aa62e3f4",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "aaecdb9a",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "ac2e8ecf",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "ad3b40cf",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "aee291af",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "b15fca0b",
+      "matched": 5,
+      "total": 5,
+      "all_match": true
+    },
+    {
+      "task_id": "b20f7c8b",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "b71a7747",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "b7cb93ac",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "bc93ec48",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "bf32578f",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "c3fa4749",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "c4d1a9ae",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "c6141b15",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "c9680e90",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "cc9053aa",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "cd3c21df",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "d4c90558",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "d56f2372",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "d6542281",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "da6e95e5",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "db615bd4",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "de493100",
+      "matched": 4,
+      "total": 4,
+      "all_match": true
+    },
+    {
+      "task_id": "df978a02",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "e4888269",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "e729b7be",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "e872b94a",
+      "matched": 4,
+      "total": 4,
+      "all_match": true
+    },
+    {
+      "task_id": "e9fc42f2",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "ea959feb",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "ecb67b6d",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "f0100645",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "f341894c",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "f5aa3634",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "f5c89df1",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "f8f52ecc",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "f9d67f8b",
+      "matched": 4,
+      "total": 4,
+      "all_match": true
+    },
+    {
+      "task_id": "fd096ab6",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "fe45cba4",
+      "matched": 2,
+      "total": 2,
+      "all_match": true
+    },
+    {
+      "task_id": "fea12743",
+      "matched": 3,
+      "total": 3,
+      "all_match": true
+    },
+    {
+      "task_id": "17829a00",
+      "matched": 1,
+      "total": 2,
+      "all_match": false
+    },
+    {
+      "task_id": "b74ca5d1",
+      "matched": 2,
+      "total": 3,
+      "all_match": false
+    },
+    {
+      "task_id": "f18ec8cc",
+      "matched": 3,
+      "total": 4,
+      "all_match": false
+    }
+  ],
+  "selected_generator_families": [
+    "14754a24",
+    "18419cfa",
+    "2037f2c7",
+    "2de01db2",
+    "3194b014",
+    "396d80d7",
+    "5587a8d0",
+    "6df30ad6",
+    "7bb29440",
+    "aa62e3f4",
+    "aaecdb9a",
+    "b15fca0b",
+    "cd3c21df",
+    "d56f2372",
+    "e729b7be",
+    "f5c89df1"
+  ],
+  "family_holdout_ids": [
+    "184a9768",
+    "5adee1b2",
+    "6df30ad6",
+    "902510d5",
+    "9f669b64",
+    "aa62e3f4",
+    "aaecdb9a",
+    "bc93ec48",
+    "bf32578f",
+    "c3fa4749",
+    "cc9053aa",
+    "d6542281",
+    "da6e95e5",
+    "db615bd4",
+    "e4888269",
+    "f5aa3634"
+  ],
+  "family_split_method": "lowest 16 sha256(JSON(['026-family-v1',seed,task_id])) among 106 non-quarantine training ancestors",
+  "family_runs": [
+    {
+      "task_id": "14754a24",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 16,
+      "rejected": {},
+      "error": null,
+      "seconds": 0.03
+    },
+    {
+      "task_id": "18419cfa",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 16,
+      "rejected": {},
+      "error": null,
+      "seconds": 0.008
+    },
+    {
+      "task_id": "2037f2c7",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 20,
+      "rejected": {
+        "constant_demo_output": 1
+      },
+      "error": null,
+      "seconds": 0.021
+    },
+    {
+      "task_id": "2de01db2",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 16,
+      "rejected": {},
+      "error": null,
+      "seconds": 0.001
+    },
+    {
+      "task_id": "3194b014",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 16,
+      "rejected": {},
+      "error": null,
+      "seconds": 0.03
+    },
+    {
+      "task_id": "396d80d7",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 16,
+      "rejected": {},
+      "error": null,
+      "seconds": 0.003
+    },
+    {
+      "task_id": "5587a8d0",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 16,
+      "rejected": {},
+      "error": null,
+      "seconds": 0.006
+    },
+    {
+      "task_id": "6df30ad6",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 16,
+      "rejected": {},
+      "error": null,
+      "seconds": 0.021
+    },
+    {
+      "task_id": "7bb29440",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 16,
+      "rejected": {},
+      "error": null,
+      "seconds": 0.009
+    },
+    {
+      "task_id": "aa62e3f4",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 16,
+      "rejected": {},
+      "error": null,
+      "seconds": 0.004
+    },
+    {
+      "task_id": "aaecdb9a",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 16,
+      "rejected": {},
+      "error": null,
+      "seconds": 0.022
+    },
+    {
+      "task_id": "b15fca0b",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 17,
+      "rejected": {
+        "duplicate_input": 1
+      },
+      "error": null,
+      "seconds": 0.003
+    },
+    {
+      "task_id": "cd3c21df",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 16,
+      "rejected": {},
+      "error": null,
+      "seconds": 0.005
+    },
+    {
+      "task_id": "d56f2372",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 16,
+      "rejected": {},
+      "error": null,
+      "seconds": 0.028
+    },
+    {
+      "task_id": "e729b7be",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 16,
+      "rejected": {},
+      "error": null,
+      "seconds": 0.005
+    },
+    {
+      "task_id": "f5c89df1",
+      "requested": 4,
+      "episodes": 4,
+      "draws": 16,
+      "rejected": {},
+      "error": null,
+      "seconds": 0.003
+    }
+  ],
+  "files": {
+    "train.jsonl": {
+      "sha256": "47c1192eb344d78e1ee22f09e5662385658e6a524e6972edd543a91a8f3d2d1d",
+      "episodes": 104,
+      "bytes": 455626
+    },
+    "family-holdout.jsonl": {
+      "sha256": "93ebf1e2bbecc79ebfc2fa018ed1e2b2fd5ed6531c36f748fa6c2bfa232d73a9",
+      "episodes": 12,
+      "bytes": 32575
+    }
+  },
+  "counts": {
+    "synthetic_train_episodes": 52,
+    "synthetic_train_families": 13,
+    "synthetic_holdout_episodes": 12,
+    "synthetic_holdout_families": 3,
+    "official_replay_episodes": 52,
+    "official_replay_families": 50,
+    "total_train_episodes": 104,
+    "unique_train_base_ids": 104,
+    "unique_train_query_inputs": 104
+  },
+  "replay_rejections": {},
+  "training_grid_token_proxy": {
+    "min": 160,
+    "median": 1597.0,
+    "p90": 3108,
+    "max": 7440
+  },
+  "grid_proxy_above_8192": 0,
+  "quality_flag_counts": {
+    "query_output_equals_demo_output": 4
+  },
+  "preview_prefix_1024": {
+    "episodes": 104,
+    "source_counts": {
+      "water-vapor/synth-rearc": 52,
+      "Kaggle ARC Prize 2026 official training": 52
+    },
+    "families": 62
+  },
+  "runtime": {
+    "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "arm",
+    "pythonhashseed": "0",
+    "elapsed_seconds": 8.686,
+    "gpu": "none"
+  },
+  "limitations": [
+    "No evaluation query target grids were read. The frozen 025 challenges file is used for ancestor-ID exclusion only.",
+    "Held-out ancestors are excluded from every newly prepared training source, including official replay. This is new-continuation family holdout; NVARC upstream exposure is not absent or known completely.",
+    "Different task IDs can share semantics; cross-ID semantic family equivalence is not established.",
+    "109 extra is relative to fixed ARC-GEN coverage, not 109 previously unseen rules.",
+    "Verifier agreement and original-demo matches do not prove human rule correctness or that three demonstrations uniquely identify every query rule.",
+    "Only the 16 pilot families receive this round's source-level semantic review. Expanded families retain explicit weaker review labels.",
+    "The token proxy counts grid digits and row separators only. Training must use the original NVARC formatter and check actual full-sequence length without truncation.",
+    "No stored rotation/color augmentation inflates independent episode counts. Official replay repeats demonstrations across queries of the same task and retains task lineage.",
+    "Synthetic categorical cue coverage is explicitly implemented only for 009d5c81,9bebae7a,a6953f00; other ambiguous branches have not been exhaustively certified.",
+    "No model training, held-out evaluation or score gain is established by data preparation."
+  ]
+}

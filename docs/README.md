@@ -2,7 +2,7 @@
 
 当前研究入口：[023计划](plan/023-score-recovery-and-selection.md)与[023进展](progress/023-score-recovery-and-selection.md)。当前产物见[023目录导航](../experiments/023/README.md)。
 
-最新综合评审见[025研究缺陷与赛前提分决策](plan/025-research-gap-and-next-step.md)：10月25日核对官方公榜竞争差距，下一次实验仍为原V1上的B4／R2确认，尚未运行。
+最新研究与执行见[025研究缺陷与赛前提分决策](plan/025-research-gap-and-next-step.md)和[025进展§12](progress/025-research-gap-and-next-step.md#12-完整运行及同候选池评分完成)：GPU V2 COMPLETE，B4=R2=15/58，新增0／丢失0，oracle17/58；保留B4并结束R2，下一轮聚焦候选生成能力。
 
 `plan/`记录背景、假设和执行交接，`progress/`记录实际改动与实验。旧条目是历史快照；同轮后续追加及新轮次会更新或纠正早期结论。023的57582282于2026-10-25实查COMPLETE／公榜30.14，与历史最高持平，最新证据见023进展§9。
 
@@ -34,7 +34,8 @@
 | 022 完整4B计分提交与已有27B配对 | [plan/022-full-nvarc-submission.md](plan/022-full-nvarc-submission.md) | [progress/022-full-nvarc-submission.md](progress/022-full-nvarc-submission.md)；E20 V2实际3／27、oracle5／27；正式57504054已COMPLETE／0.00，隐藏根因未确认；忠实原V1复现转023 |
 | 023 恢复有效提交与候选选择交接 | [plan/023-score-recovery-and-selection.md](plan/023-score-recovery-and-selection.md) | [progress/023-score-recovery-and-selection.md](progress/023-score-recovery-and-selection.md)；正式57582282已COMPLETE／30.14并绑定361045383，与历史最高持平；原四题3／5仅公开诊断；下一步B4／R2确认未运行 |
 | 024 本地清理与目录整理 | [plan/024-project-organization.md](plan/024-project-organization.md) | [progress/024-project-organization.md](progress/024-project-organization.md)；仅目录维护，研究主线仍为023 |
-| 025 研究缺陷与赛前提分决策 | [plan/025-research-gap-and-next-step.md](plan/025-research-gap-and-next-step.md) | [progress/025-research-gap-and-next-step.md](progress/025-research-gap-and-next-step.md)；综合评审与官方榜单核验完成，原V1选择确认未运行 |
+| 025 研究缺陷与赛前提分决策 | [plan/025-research-gap-and-next-step.md](plan/025-research-gap-and-next-step.md) | [progress/025-research-gap-and-next-step.md](progress/025-research-gap-and-next-step.md)；40task／58query确认完成，B4=R2=15/58，oracle17/58，无净增，保留B4 |
+| 026 NVARC额外训练规则覆盖挑战者 | [plan/026-nvarc-extra-rule-training.md](plan/026-nvarc-extra-rule-training.md) | [progress/026-nvarc-extra-rule-training.md](progress/026-nvarc-extra-rule-training.md)；V1已接受启动，固定16题配对、单个有界续训，结果待完成 |
 
 ## 操作与维护
 

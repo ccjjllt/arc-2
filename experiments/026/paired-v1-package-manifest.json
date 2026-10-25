@@ -1,0 +1,76 @@
+{
+  "status": "prepared_not_launched",
+  "ref": "zhuating/arc2-026-v1-paired-training",
+  "notebook_sha256": "73d31197073408e6507ddfb3ec8adcfdc11b2bf3f9e5b0188b1e0154c934c914",
+  "notebook_bytes": 697150,
+  "reference_script_version_id": 312063593,
+  "reference_sha256": "71416dd4d9885ecf2ae99b8b72ff0ef66d31fac0354b79d2d11071c49f84111d",
+  "base_package_notebook_sha256": "ca8c03dde65b9eca40ed5ea8e48938ef58737994b2a2e122b76edc5c671cf4ef",
+  "trainer_sha256": "03cde88fd31b45b191313bd72f08002f1e130e87abbe367f09805b83f10a92bf",
+  "runtime_source_sha256": {
+    "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+    "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+    "arc_solver.py": "0aa0220c62096ea48da92845dfbc06fb9679fe507d950d18deed973b9170e56c",
+    "starter_paired.py": "c484292e47e933d987b4a090b0e3953c9687fff74d70c9775f41069e3b5b19b6"
+  },
+  "input_identity": {
+    "challenges_sha256": "bd3b26cf78c4986d2cce6d72b457ce763f845e0e2f66d91233fc00a2a9f059f0",
+    "manifest_sha256": "02143e35eeb28f0634fa54334e1f217af1965bbf6212bd216970c16d6805e605",
+    "n_tasks": 16,
+    "n_queries": 23,
+    "task_ids": [
+      "20a9e565",
+      "269e22fb",
+      "4c7dc4dd",
+      "58490d8a",
+      "64efde09",
+      "65b59efc",
+      "67e490f4",
+      "7b0280bc",
+      "7b5033c1",
+      "7ed72f31",
+      "898e7135",
+      "9385bd28",
+      "a47bf94d",
+      "e12f9a14",
+      "e8686506",
+      "eee78d87"
+    ]
+  },
+  "training_identity": {
+    "train_sha256": "33f3b4e6133be5b890b8f2efb76421390a463b04291f5669f6b5e44bcbd5f901",
+    "manifest_sha256": "555d4662693f2185dda20bee49672fa872f05f0b6954c530cd58479ecb5fb294",
+    "pool_episodes": 1024,
+    "source_path": "experiments/026/data-embedded-v1/train.jsonl"
+  },
+  "session_seconds": 10800,
+  "training_stage_seconds": 3600,
+  "evaluation_max_seconds": 7200,
+  "training_optimizer_step_cap": 256,
+  "training_seconds": 2700,
+  "python_hash_seed": 26026,
+  "arms": {
+    "base_physical_gpus": [
+      0,
+      1
+    ],
+    "challenger_physical_gpus": [
+      2,
+      3
+    ]
+  },
+  "preserved": [
+    "Original V1 loader and decoder B4",
+    "Original rank256 one-epoch per-task TTT",
+    "Original DFS, augmentation seeds1/2, rescoring, 1200s task soft check",
+    "Separate identical sorted queues; all query denominators retained"
+  ],
+  "research_changes": [
+    "Bounded one-GPU offline continuation merged into ordinary BF16 checkpoint",
+    "Fully exit training before fresh per-task TTT workers",
+    "Paired two-worker arms with common global deadline and Python hash seed",
+    "Original import serialization uses physical rank; worker rank local to each arm",
+    "Deterministic compressed training/input embedding with SHA checks"
+  ],
+  "warning": "Development paired public panel; upstream model exposure exists; this is not a blind or formal competition score."
+}

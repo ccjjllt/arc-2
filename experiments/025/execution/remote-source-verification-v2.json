@@ -1,0 +1,12 @@
+{
+  "checked_at_utc": "2026-10-25T03:05:28.057568+00:00",
+  "ref": "zhuating/arc2-025-v1-selection-confirmation",
+  "remote_version": 2,
+  "kernel_id": 140698356,
+  "all_cell_sources_match": true,
+  "local_notebook_sha256": "ca8c03dde65b9eca40ed5ea8e48938ef58737994b2a2e122b76edc5c671cf4ef",
+  "reference_version": 312063593,
+  "query_gold_embedded": false,
+  "runtime_mount_wait_limit_seconds": 60,
+  "session_seconds": 6900
+}

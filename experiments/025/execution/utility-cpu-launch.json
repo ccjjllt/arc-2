@@ -1,0 +1,12 @@
+{
+  "requested_at_utc": "2026-10-25T02:53:29.491999+00:00",
+  "gpu": false,
+  "timeout": 300,
+  "purpose": "Inspect actual mounted original utility and fixed model paths only; no model import",
+  "response": {
+    "ref": "/code/zhuating/arc2-025-utility-mount-cpu",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-025-utility-mount-cpu",
+    "versionNumber": 1,
+    "kernelId": 140699090
+  }
+}

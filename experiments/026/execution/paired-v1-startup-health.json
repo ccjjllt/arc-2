@@ -1,0 +1,41 @@
+{
+  "checked_at_utc": "2026-10-25T07:34:22.700595+00:00",
+  "ref": "zhuating/arc2-026-v1-paired-training",
+  "version": 1,
+  "status": "startup_training_healthy_no_completion_claim",
+  "gpu_allocation": "4x NVIDIA L4, 23034 MiB each; offline SFT uses GPU0 only",
+  "verified_optimizer_steps": [
+    {
+      "event": "optimizer_step",
+      "time_unix": 1792913625.4127862,
+      "step": 1,
+      "elapsed_seconds": 190.15847422599995,
+      "input_tokens": 8495,
+      "supervised_tokens": 777,
+      "peak_cuda_allocated_bytes": 8118147584
+    },
+    {
+      "event": "optimizer_step",
+      "time_unix": 1792913632.0942624,
+      "step": 2,
+      "elapsed_seconds": 196.8399920490001,
+      "input_tokens": 18543,
+      "supervised_tokens": 2138,
+      "peak_cuda_allocated_bytes": 8576153600
+    }
+  ],
+  "finite_loss_guard_passed": true,
+  "first_logged_loss": 0.0065,
+  "max_observed_cuda_allocated_bytes": 8576153600,
+  "traceback_in_observed_log": false,
+  "oom_in_observed_log": false,
+  "source_matches": true,
+  "training_data_episodes": 1024,
+  "evaluation_panel_tasks": 16,
+  "evaluation_panel_queries": 23,
+  "evaluation_completed": false,
+  "score_effect": "not measured",
+  "next_action": "Stop status/log reads. Wait for user notification of completion before downloading and scoring.",
+  "log_sha256": "4d36d8388762751f2d0e3e18eb11fe74cb809d33eba8fee5ef898ba39f984f5d",
+  "note": "SSE may replay duplicate events; deduplicated by optimizer step. This is startup health only, not complete-run success."
+}

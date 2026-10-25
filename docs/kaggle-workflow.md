@@ -8,6 +8,8 @@ Notebook 发布与数据源挂载三条路只通两条，按稳定性排序：
 
 10月11日补记：运行中实时日志使用 `kaggle kernels logs <owner/slug> --follow`；输出列表在作业未完成时可能为空。以CLI push返回的真实slug为准，标题不匹配会生成不同slug。取消需要精确session ID（可由该版本输出下载地址的`/kf/<id>/`核对），取消后确认状态和GPU reserved释放；不要把Notebook元数据id当session ID。
 
+10月25日补记：025的SaveKernel明确返回400，要求kernel source小于1MB。较大challenge输入可采用确定性gzip＋base64嵌入，运行时解压并核对原始SHA；不能把拒绝请求记成已启动GPU。未压缩约2.28MB的025包改为113,733字节后已被接受。原Unsloth工具存在历史不同挂载位置，固定路径缺失时先做CPU挂载核对，按同名工具和`unsloth/__init__.py`识别原目录，不重新安装另一套依赖。
+
 
 ## 当前使用边界
 

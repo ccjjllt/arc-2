@@ -1,0 +1,41 @@
+{
+  "status": "manual_cpu_review_passed_not_launched",
+  "notebook_sha256": "73d31197073408e6507ddfb3ec8adcfdc11b2bf3f9e5b0188b1e0154c934c914",
+  "notebook_bytes": 697150,
+  "loader_decoder_byte_identical_to_025": {
+    "arc_loader.py": true,
+    "arc_decoder.py": true
+  },
+  "embedded_artifacts": [
+    {
+      "bytes": 19669,
+      "sha256": "02143e35eeb28f0634fa54334e1f217af1965bbf6212bd216970c16d6805e605"
+    },
+    {
+      "bytes": 666436,
+      "sha256": "bd3b26cf78c4986d2cce6d72b457ce763f845e0e2f66d91233fc00a2a9f059f0"
+    },
+    {
+      "bytes": 4870801,
+      "sha256": "33f3b4e6133be5b890b8f2efb76421390a463b04291f5669f6b5e44bcbd5f901"
+    },
+    {
+      "bytes": 50397,
+      "sha256": "555d4662693f2185dda20bee49672fa872f05f0b6954c530cd58479ecb5fb294"
+    },
+    {
+      "bytes": 37963,
+      "sha256": "03cde88fd31b45b191313bd72f08002f1e130e87abbe367f09805b83f10a92bf"
+    }
+  ],
+  "source_ast_all_passed": true,
+  "starter_queue_review": {
+    "identical_queues": true,
+    "tasks_per_arm": 16,
+    "sentinels_per_arm": 2,
+    "workers": 4,
+    "cpu_only_stand_in_used": true
+  },
+  "sft_mask_audit": "/private/tmp/arc026-mask-embedded-v2/manual-audit.json",
+  "gpu_launched": false
+}

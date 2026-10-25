@@ -1,0 +1,104 @@
+{
+  "method": "manual source interpretation followed by a separate stdlib reconstruction; no upstream DSL/generator/verifier imports in audit",
+  "script_sha256": "34eaffc8859d69ef405c99dc21e0a0ceb4e79c031784fbbb90246deed6ddacdd",
+  "counts": [
+    {
+      "family_id": "14754a24",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    },
+    {
+      "family_id": "18419cfa",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    },
+    {
+      "family_id": "2037f2c7",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    },
+    {
+      "family_id": "2de01db2",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    },
+    {
+      "family_id": "3194b014",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    },
+    {
+      "family_id": "396d80d7",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    },
+    {
+      "family_id": "5587a8d0",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    },
+    {
+      "family_id": "6df30ad6",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    },
+    {
+      "family_id": "7bb29440",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    },
+    {
+      "family_id": "aa62e3f4",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    },
+    {
+      "family_id": "aaecdb9a",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    },
+    {
+      "family_id": "b15fca0b",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    },
+    {
+      "family_id": "cd3c21df",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    },
+    {
+      "family_id": "d56f2372",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    },
+    {
+      "family_id": "e729b7be",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    },
+    {
+      "family_id": "f5c89df1",
+      "independent_reconstruction_matches": 16,
+      "pairs": 16,
+      "failures": []
+    }
+  ],
+  "status": "passed",
+  "scope": "16 purpose-selected pilot families; source interpretations and generated labels only, not a proof of episode uniqueness or ARC2 score improvement"
+}

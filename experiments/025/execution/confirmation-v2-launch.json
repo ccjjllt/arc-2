@@ -1,0 +1,28 @@
+{
+  "requested_at_utc": "2026-10-25T03:04:53.590635+00:00",
+  "account": "zhuating",
+  "ref": "zhuating/arc2-025-v1-selection-confirmation",
+  "previous_version": 1,
+  "previous_status": {
+    "status": "ERROR"
+  },
+  "package_directory": "/private/tmp/arc2-025-v2-mount-ready",
+  "notebook_sha256": "ca8c03dde65b9eca40ed5ea8e48938ef58737994b2a2e122b76edc5c671cf4ef",
+  "platform_timeout_seconds": 6900,
+  "quota_before": {
+    "total_time_allowed": 108000.0,
+    "time_used": 29149.536,
+    "time_reserved": 0.0,
+    "available_seconds": 78850.464
+  },
+  "state": "accepted",
+  "reason": "Resolve original mounted utility and same model owner aliases after V1 failed before model copy; same frozen cohort and solver",
+  "purpose": "Same B4/R2 experiment recovery; no competition submission",
+  "response": {
+    "ref": "/code/zhuating/arc2-025-v1-selection-confirmation",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-025-v1-selection-confirmation",
+    "versionNumber": 2,
+    "kernelId": 140698356
+  },
+  "returned_at_utc": "2026-10-25T03:04:55.817900+00:00"
+}

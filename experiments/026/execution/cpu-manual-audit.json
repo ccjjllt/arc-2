@@ -1,0 +1,24 @@
+{
+  "script_sha256": "03cde88fd31b45b191313bd72f08002f1e130e87abbe367f09805b83f10a92bf",
+  "cpu_manifest": "/private/tmp/arc026-mask-embedded-v2/manifest.json",
+  "data_sha256": "33f3b4e6133be5b890b8f2efb76421390a463b04291f5669f6b5e44bcbd5f901",
+  "episodes": 1024,
+  "source_counts": {
+    "Kaggle ARC Prize 2026 official training": 512,
+    "water-vapor/synth-rearc": 512
+  },
+  "length_buckets": {
+    "1024": 346,
+    "2048": 301,
+    "4096": 269,
+    "8192": 108
+  },
+  "max_length": 7464,
+  "input_tokens": 1998306,
+  "supervised_tokens": 228017,
+  "overflow_skipped": 0,
+  "demos_removed": 0,
+  "every_accum4_group_has_2_plus_2_sources": true,
+  "manual_three_query_masks_valid": true,
+  "gpu_training": "not run"
+}

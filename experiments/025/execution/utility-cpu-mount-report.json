@@ -1,0 +1,58 @@
+{
+  "sys_path": [
+    "/kaggle/working",
+    "/kaggle/lib/kagglegym",
+    "/kaggle/lib",
+    "/kaggle/usr/lib",
+    "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch",
+    "/kaggle/input/competitions/arc-prize-2026-arc-agi-2",
+    "/usr/lib/python311.zip",
+    "/usr/lib/python3.11",
+    "/usr/lib/python3.11/lib-dynload",
+    "",
+    "/usr/local/lib/python3.11/dist-packages",
+    "/usr/lib/python3/dist-packages",
+    "/usr/local/lib/python3.11/dist-packages/IPython/extensions",
+    "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch/setuptools/_vendor",
+    "/root/.ipython"
+  ],
+  "mounts": {
+    "/kaggle/usr/lib/notebooks": {
+      "exists": true,
+      "candidate_paths": [
+        "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch"
+      ]
+    },
+    "/kaggle/input/notebooks": {
+      "exists": false
+    },
+    "/kaggle/input": {
+      "exists": true,
+      "candidate_paths": [
+        "/kaggle/input/competitions",
+        "/kaggle/input/models"
+      ]
+    }
+  },
+  "utility_roots": [
+    {
+      "path": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch",
+      "unsloth_init_bytes": 11452
+    },
+    {
+      "path": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch",
+      "unsloth_init_bytes": 11452
+    }
+  ],
+  "model_config_paths": [
+    {
+      "path": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1/config.json",
+      "exists": true
+    },
+    {
+      "path": "/kaggle/input/models/ivan/qwen3_4b_grids15_sft139/transformers/bfloat16/1/config.json",
+      "exists": false
+    }
+  ],
+  "elapsed_seconds": 0.03758835792541504
+}

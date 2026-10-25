@@ -1,0 +1,23 @@
+{
+  "requested_at_utc": "2026-10-25T02:48:28.468107+00:00",
+  "account": "zhuating",
+  "ref": "zhuating/arc2-025-v1-selection-confirmation",
+  "package_directory": "/private/tmp/arc2-025-v1-selection-confirmation-compact",
+  "notebook_sha256": "9a83821330e510d267ca7bdeed12a2f5aa34161ea0b0aeca22bc8e6dedd5dd08",
+  "platform_timeout_seconds": 7200,
+  "state": "accepted",
+  "quota_before": {
+    "total_time_allowed": 108000.0,
+    "time_used": 28980.164,
+    "time_reserved": 0.0,
+    "available_seconds": 79019.836
+  },
+  "purpose": "NVARC original-V1 candidate generation for paired B4/R2 selection research; no competition submission",
+  "returned_at_utc": "2026-10-25T02:48:30.809152+00:00",
+  "response": {
+    "ref": "/code/zhuating/arc2-025-v1-selection-confirmation",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-025-v1-selection-confirmation",
+    "versionNumber": 1,
+    "kernelId": 140698356
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "checked_at_utc": "2026-10-25T02:51:13.698844+00:00",
+  "ref": "zhuating/arc2-025-v1-selection-confirmation",
+  "status": {
+    "status": "ERROR"
+  },
+  "log_chars": 4219,
+  "scope": "One manual active-turn status/log read; no scheduled monitoring"
+}

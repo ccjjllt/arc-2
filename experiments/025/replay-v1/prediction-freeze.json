@@ -1,0 +1,110 @@
+{
+  "frozen_at_utc": "2026-10-25T05:26:46.610403+00:00",
+  "cohort": "025_NVARC_V1_B4_R2_confirmation40",
+  "n_tasks": 40,
+  "n_queries": 58,
+  "status": "paired_predictions_frozen_without_gold",
+  "source_order": "Ordered records use supplied original decoder load order; Python double means; complete B4 is checked against remote output.",
+  "baseline_exactly_reproduced": true,
+  "policies": {
+    "B4": "Original kgmon top2 distinct grids",
+    "R2": "Keep B4 first slot; lowest mean_aug_nll other grid; stable kgmon ties; preserve unfilled slots"
+  },
+  "inputs": {
+    "manifest": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/cohort-v1/manifest.json",
+      "bytes": 66098,
+      "sha256": "9e8c6617193bd48efc905b0766d218c37218853f51f5f145ee27bd15ee79fa45"
+    },
+    "challenges": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/cohort-v1/challenges.json",
+      "bytes": 1596517,
+      "sha256": "38df4c7126f160f9dd045b4b0c9fb37ccb4f24dfbb51c8d32aa7b50f132ebeb9"
+    },
+    "remote_B4": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v2-output/025/submission-B4.json",
+      "bytes": 117275,
+      "sha256": "c21ac0a8058b3829764b46998f5a38cef9c8ad05b6fe0e311c20f3d7b1bdccf1"
+    },
+    "scored_candidates": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v2-output/025/scored-candidates.jsonl",
+      "bytes": 1208811,
+      "sha256": "c7747576219e6abb876a673654b13c250909a13d6eb4dc6683e0bc24ce75fb4e",
+      "rows": 885
+    },
+    "raw_candidates": [
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v2-output/025/raw-candidates-rank0.jsonl",
+        "bytes": 219898,
+        "sha256": "8f10fa6da9abd61073ddd859a58ccd792aa46c79332e0bb306c268b17a1870f0",
+        "rows": 283
+      },
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v2-output/025/raw-candidates-rank1.jsonl",
+        "bytes": 275460,
+        "sha256": "f9eaecab98919ff70d898f0f009b97d20c94215c5241410d68fdacf82b9c36c7",
+        "rows": 169
+      },
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v2-output/025/raw-candidates-rank2.jsonl",
+        "bytes": 242370,
+        "sha256": "e8c3c688546e709306046a0890f7bdfc58659f494d627e5e249df55d8593d871",
+        "rows": 182
+      },
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v2-output/025/raw-candidates-rank3.jsonl",
+        "bytes": 270567,
+        "sha256": "2f57686fa7c29b5ee9bde7bb8190dc833c218b2be7f383797805a312b24c06fb",
+        "rows": 251
+      }
+    ]
+  },
+  "coverage": {
+    "queries_with_scored_candidates": 55,
+    "queries_without_scored_candidates": 3,
+    "scored_unique_candidates": 491,
+    "raw_unique_candidates": 491,
+    "invalid_raw_records": 0,
+    "raw_pool_available": true,
+    "second_slot_changed_queries": [
+      "269e22fb_0",
+      "269e22fb_1",
+      "62593bfd_0",
+      "62593bfd_1",
+      "7b5033c1_0",
+      "7ed72f31_0",
+      "898e7135_0",
+      "a251c730_0",
+      "b99e7126_0",
+      "dbff022c_0"
+    ]
+  },
+  "outputs": {
+    "submission-B4.json": {
+      "sha256": "4fc85dcf20b440555d1c9860571f508cff05f89c7a11eb092ed65872d4851485",
+      "bytes": 523457
+    },
+    "submission-R2.json": {
+      "sha256": "260c3c25e315bf33975169b8618386228cee3670bed0e835c25d36b5b8105b30",
+      "bytes": 522161
+    },
+    "candidate-pools-scored.json": {
+      "sha256": "04a5470d15267c0456252f1163b2bace85be2fbd837a95d182f78841322176b2",
+      "bytes": 5564415
+    },
+    "candidate-pools-raw.json": {
+      "sha256": "648c50f1390bf162520d9420f98e72ec32bae624e273aa1f9c99e2e6d1dd7d18",
+      "bytes": 5305169
+    },
+    "query-candidate-ledger.jsonl": {
+      "sha256": "658c5f8820aabef5d035096674790dd5d471931abab9b620609d949cd93031a4",
+      "bytes": 104966
+    }
+  },
+  "gold_access": false,
+  "new_model_calls": 0,
+  "hardware": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.9.6",
+  "wall_seconds": 0.49341983300000003,
+  "interpretation": "Selection-only paired replay. Correctness and oracle are unscored until separate input-matched gold access."
+}
