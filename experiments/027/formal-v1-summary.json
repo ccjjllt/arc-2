@@ -1,0 +1,166 @@
+{
+  "status": "ordinary_complete_and_competition_submission_accepted",
+  "kernel": "zhuating/arc2-027-ttt-view-ensemble-formal",
+  "kernel_version": 1,
+  "script_version_id": 362150112,
+  "notebook_sha256": "3c8551fbf483bd1a4755722a0b7585408c2ed789f5d8ae5b3ed618f8a4200919",
+  "submission_ref": 57634436,
+  "ordinary_score": {
+    "planned_queries": 5,
+    "input_matched_queries": 5,
+    "unresolved_or_mismatched_queries": 0,
+    "policies": {
+      "base_B4": {
+        "exact_queries": 4,
+        "matched_denominator": 5,
+        "em2": 0.8,
+        "prediction_present_queries": 5,
+        "valid_queries": 5,
+        "different_valid_attempts_queries": 5,
+        "fully_matched_tasks": 4,
+        "all_queries_exact_tasks": 3
+      },
+      "extra_B4": {
+        "exact_queries": 4,
+        "matched_denominator": 5,
+        "em2": 0.8,
+        "prediction_present_queries": 5,
+        "valid_queries": 5,
+        "different_valid_attempts_queries": 5,
+        "fully_matched_tasks": 4,
+        "all_queries_exact_tasks": 3
+      },
+      "ensemble": {
+        "exact_queries": 4,
+        "matched_denominator": 5,
+        "em2": 0.8,
+        "prediction_present_queries": 5,
+        "valid_queries": 5,
+        "different_valid_attempts_queries": 5,
+        "fully_matched_tasks": 4,
+        "all_queries_exact_tasks": 3
+      }
+    },
+    "cohort": "027_formal_ordinary_original_four",
+    "note": "Previously used public original-four runtime diagnostic only; C23 promotion remains unchanged."
+  },
+  "ordinary_validation": {
+    "status": "ordinary_validation_passed",
+    "script_version_id": 362150112,
+    "base_tasks_TTT128": 4,
+    "extra_tasks_TTT128": 4,
+    "base_queries_searched": 5,
+    "extra_queries_searched": 5,
+    "base_search_batches": 20,
+    "extra_search_batches": 20,
+    "no_hard_timeout": true,
+    "no_error_fallback": true,
+    "all_fixed_ensemble_queries_reproduced": true,
+    "base_frozen_before_extra": true,
+    "source_matches_frozen": true,
+    "input_mode": "original_ordinary_four",
+    "input_sha256": "f609f61bdc823802318d005eef7fd6400a2a1c6a4b9f9c93305e1de116979bc1",
+    "top_submission_sha256": "15ead46eddffb243d17db96ffd55e409953780a3c61b10224f2c6b9d11198c04",
+    "top_submission_bytes": 14616,
+    "wall_seconds": 3148.232118368149,
+    "peak_training_MiB": 13150,
+    "peak_inference_MiB": 17109,
+    "independent_agent_gold_read": false
+  },
+  "run_state": {
+    "notebook_started": 1792935954.1751032,
+    "session_deadline": 1792979154.1751032,
+    "global_end_time": 1792978554.1751032,
+    "solver_hard_deadline": 1792979094.1751032,
+    "input_identity": {
+      "mode": "original_ordinary_four",
+      "source_path": "/kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_evaluation_challenges.json",
+      "source_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "challenges_sha256": "f609f61bdc823802318d005eef7fd6400a2a1c6a4b9f9c93305e1de116979bc1",
+      "n_tasks": 4,
+      "n_queries": 5,
+      "task_ids": [
+        "0934a4d8",
+        "36a08778",
+        "981571dc",
+        "aa4ec2a5"
+      ],
+      "ordinary_reference_sha256": "63296c02509c34796ee7ebfac43fa73f96e5165e939de7c478924794cffd3381"
+    },
+    "python_hash_seed": 27027,
+    "source": "Original V1 312063593 / successful 025 wrapper",
+    "policy": "Sequential original-weight TTT-view ensemble; base seed1 then extra seed2",
+    "research_only": false,
+    "evaluation_gold_read": false,
+    "base": {
+      "branch": "base",
+      "ttt_augmentation_seed": 1,
+      "started_at": 1792936179.8285766,
+      "global_end_time": 1792978554.1751032,
+      "hard_deadline": 1792979094.1751032,
+      "timed_out": false,
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "starter.py",
+        "--end-time",
+        "1792978554.1751032"
+      ],
+      "process_group_id": 196,
+      "return_code": 0,
+      "status": "completed",
+      "finished_at": 1792937655.2650535,
+      "elapsed_s": 1475.4364774227142
+    },
+    "arms": {
+      "base": {
+        "scored_records": 87,
+        "candidate_file_count": 77,
+        "prediction_sha256": "15ead46eddffb243d17db96ffd55e409953780a3c61b10224f2c6b9d11198c04",
+        "queries_with_real_candidates": 5
+      },
+      "extra": {
+        "scored_records": 87,
+        "candidate_file_count": 76,
+        "prediction_sha256": "12436a926a70363266308c3921c02c9b7509303df722e296c11e5eca1f7324f0",
+        "queries_with_real_candidates": 5
+      }
+    },
+    "base_prediction_frozen_at": 1792937655.2921278,
+    "base_prediction_backup_sha256": "15ead46eddffb243d17db96ffd55e409953780a3c61b10224f2c6b9d11198c04",
+    "active_prediction_policy": "frozen_base_first_extra_first_ensemble",
+    "extra": {
+      "branch": "extra",
+      "ttt_augmentation_seed": 2,
+      "started_at": 1792937655.2923665,
+      "global_end_time": 1792978554.1751032,
+      "hard_deadline": 1792979094.1751032,
+      "timed_out": false,
+      "command": [
+        "/usr/bin/python3",
+        "-u",
+        "starter.py",
+        "--end-time",
+        "1792978554.1751032"
+      ],
+      "process_group_id": 2105,
+      "return_code": 0,
+      "status": "completed",
+      "finished_at": 1792939102.3196058,
+      "elapsed_s": 1447.0272397994995
+    },
+    "status": "completed",
+    "return_code": 0,
+    "solver_finished_at": 1792939102.3198984,
+    "prediction_sha256": "15ead46eddffb243d17db96ffd55e409953780a3c61b10224f2c6b9d11198c04",
+    "finished_at": 1792939102.4072213,
+    "elapsed_s": 3148.232118368149,
+    "planned_tasks": 4,
+    "planned_queries": 5,
+    "python": "3.11.13"
+  },
+  "start_Beijing": "2026-10-25T21:45:54.175103+08:00",
+  "finish_Beijing": "2026-10-25T22:38:22.407221+08:00",
+  "runtime_source_directory": "/private/tmp/arc2-027-formal-output-v1",
+  "note": "Ordinary original-four result is historical public runtime diagnostic. Ensemble equals base because all five first candidates agree; promotion evidence remains the predeclared C23 net1. Leaderboard score pending."
+}

@@ -1,0 +1,23 @@
+{
+  "status": "ordinary_validation_passed",
+  "script_version_id": 362150112,
+  "base_tasks_TTT128": 4,
+  "extra_tasks_TTT128": 4,
+  "base_queries_searched": 5,
+  "extra_queries_searched": 5,
+  "base_search_batches": 20,
+  "extra_search_batches": 20,
+  "no_hard_timeout": true,
+  "no_error_fallback": true,
+  "all_fixed_ensemble_queries_reproduced": true,
+  "base_frozen_before_extra": true,
+  "source_matches_frozen": true,
+  "input_mode": "original_ordinary_four",
+  "input_sha256": "f609f61bdc823802318d005eef7fd6400a2a1c6a4b9f9c93305e1de116979bc1",
+  "top_submission_sha256": "15ead46eddffb243d17db96ffd55e409953780a3c61b10224f2c6b9d11198c04",
+  "top_submission_bytes": 14616,
+  "wall_seconds": 3148.232118368149,
+  "peak_training_MiB": 13150,
+  "peak_inference_MiB": 17109,
+  "independent_agent_gold_read": false
+}

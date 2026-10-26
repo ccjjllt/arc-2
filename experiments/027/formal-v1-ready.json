@@ -1,17 +1,40 @@
 {
-  "status": "ordinary_v1_running_no_competition_submission_yet",
+  "status": "formal_submission_accepted_score_pending",
   "account": "zhuating",
   "competition": "arc-prize-2026-arc-agi-2",
   "kernel": "zhuating/arc2-027-ttt-view-ensemble-formal",
   "kernel_version": 1,
-  "verified_script_version_id": null,
+  "verified_script_version_id": 362150112,
   "notebook_sha256": "3c8551fbf483bd1a4755722a0b7585408c2ed789f5d8ae5b3ed618f8a4200919",
   "file_name": "submission.json",
   "message": "027 original NVARC4B sequential TTT view ensemble; frozen base-first rule; C23 input-matched confirmation net1, lost0.",
   "promotion_decision": "promotion-v1.json",
-  "ordinary_output": null,
-  "competition_submission_created": false,
+  "ordinary_output": {
+    "status": "COMPLETE",
+    "n_tasks": 4,
+    "n_queries": 5,
+    "exact_queries": 4,
+    "complete_tasks": 3,
+    "prediction_sha256": "15ead46eddffb243d17db96ffd55e409953780a3c61b10224f2c6b9d11198c04",
+    "active_prediction_policy": "frozen_base_first_extra_first_ensemble",
+    "evidence": "execution/formal-v1-outcome.json",
+    "score_evidence": "formal-scoring-v1-kaggle/score-report.json",
+    "note": "Historical public original-four runtime diagnostic, not a fresh confirmation or leaderboard score."
+  },
+  "competition_submission_created": true,
   "user_authorized_direct_submission": true,
   "user_requested_startup_only_then_completion_notification": true,
-  "next_action": "On user completion notice: download formalV1, verify complete ordinary base/extra output and exact source; read actual scriptVersion from output URLs; refresh allowance/pending/team; submit exact kernel_version1 with submission.json under existing authorization. No extra permission question."
+  "next_action": "Wait for user completion notification. Read submission57634436 once and compare actual public score against023 baseline30.14; do not resubmit or infer hidden status from ordinary COMPLETE.",
+  "submission_ref": 57634436,
+  "submitted_at_utc": "2026-10-25T15:18:01.880Z",
+  "submission_receipt": "execution/competition-submission-v1.json",
+  "initial_exact_binding_verified": true,
+  "latest_result": {
+    "checked_at_utc": "2026-10-25T15:19:08.492821+00:00",
+    "status": null,
+    "public_score": null,
+    "private_score": null,
+    "exact_binding_verified": true,
+    "evidence": "execution/submission-57634436-latest.json"
+  }
 }

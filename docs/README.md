@@ -1,6 +1,6 @@
 # 文档索引
 
-当前研究入口：[027计划](plan/027-nvarc-ttt-view-ensemble.md)与[027进展](progress/027-nvarc-ttt-view-ensemble.md)，[产物导航](../experiments/027/README.md)。原权重独立TTT视图确认完成：base5/34→融合6/34，净增1、无丢失、前缀无回归；正式V1已启动原四题普通验证，完成绑定后直接提交。026失败续训配方保持结束，不复活其权重。
+当前研究入口：[027计划](plan/027-nvarc-ttt-view-ensemble.md)与[027进展](progress/027-nvarc-ttt-view-ensemble.md)，[产物导航](../experiments/027/README.md)。原权重独立TTT视图确认完成：base5/34→融合6/34，净增1、无丢失、前缀无回归；普通验证已通过并正式提交57634436，绑定V1／362150112，等待真实公榜结果。026失败续训配方保持结束，不复活其权重。
 
 025此前B4=R2=15/58、oracle17/58，已结束R2扩展。正式交付仍为023的30.14，参见[023进展](progress/023-score-recovery-and-selection.md)。
 
@@ -36,7 +36,7 @@
 | 024 本地清理与目录整理 | [plan/024-project-organization.md](plan/024-project-organization.md) | [progress/024-project-organization.md](progress/024-project-organization.md)；仅目录维护，研究主线仍为023 |
 | 025 研究缺陷与赛前提分决策 | [plan/025-research-gap-and-next-step.md](plan/025-research-gap-and-next-step.md) | [progress/025-research-gap-and-next-step.md](progress/025-research-gap-and-next-step.md)；40task／58query确认完成，B4=R2=15/58，oracle17/58，无净增，保留B4 |
 | 026 NVARC额外训练规则覆盖挑战者 | [plan/026-nvarc-extra-rule-training.md](plan/026-nvarc-extra-rule-training.md) | [progress/026-nvarc-extra-rule-training.md](progress/026-nvarc-extra-rule-training.md)；V1 COMPLETE，base=challenger=4/23，新增2／丢失2，oracle6→9；结束该配方 |
-| 027 原权重TTT视图集成与提交 | [plan/027-nvarc-ttt-view-ensemble.md](plan/027-nvarc-ttt-view-ensemble.md) | [progress/027-nvarc-ttt-view-ensemble.md](progress/027-nvarc-ttt-view-ensemble.md)；确认5→6/34、净1无回归；正式V1原四题普通验证运行中 |
+| 027 原权重TTT视图集成与提交 | [plan/027-nvarc-ttt-view-ensemble.md](plan/027-nvarc-ttt-view-ensemble.md) | [progress/027-nvarc-ttt-view-ensemble.md](progress/027-nvarc-ttt-view-ensemble.md)；确认5→6/34、净1无回归；正式57634436已接受、精确绑定362150112，分数待返回 |
 
 ## 操作与维护
 

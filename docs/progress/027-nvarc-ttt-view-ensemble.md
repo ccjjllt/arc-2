@@ -93,3 +93,30 @@ base raw／scored均416记录、235个query-grid，28query有候选；extra均44
 **21:55:31北京时间**，正式普通V1的base rank0—3均完成两片模型加载，日志未见Traceback或CUDA OOM。动态输入仍为原4题／5query，canonical SHA与023参照一致；实际source cell与SHA3c8551...冻结正式包完全相同。见[普通启动健康](../../experiments/027/execution/formal-v1-startup-health.json)。此时尚未观察首题TTT完成、extra或最终输出，不能把加载正常写成普通运行完成。
 
 按用户既有习惯，确认正常后停止所有远端查询／日志流，无定时监控，等待用户通知普通验证完成。下一次直接按[正式接续参数](../../experiments/027/formal-v1-ready.json)下载、核对真实终态和source／submission.json／实际scriptVersion，再刷新限额、pending与队伍并提交固定V1；actual scriptVersion与submission ref仍为null，不编造、不询问重复许可。
+
+## 普通验证完成与正式提交接受
+
+用户再次通知“跑完了你看看”后读取实际终态。**普通V1／scriptVersionId362150112为COMPLETE**，两阶段均return0，无硬超时或错误回退；输入mode为`original_ordinary_four`，4task／5query及canonical SHA `f609f61bdc823802318d005eef7fd6400a2a1c6a4b9f9c93305e1de116979bc1`与原四题一致。
+
+- 实际4×L4，base／extra各4/4题完成128步TTT，5/5query各跑完整20/20批DFS。全阶段起止闭合，未见Traceback、OOM或非有限loss；训练／推理峰值13150／17109MiB。
+- 普通运行实际区间**21:45:54—22:38:22北京时间**，总**3148.232秒（52.47分）**；base1475.436秒、extra1447.027秒。实际消费早于普通会话7200秒上限。
+- `active_prediction_policy=frozen_base_first_extra_first_ensemble`。5个query两遍的首选均一致，冻结规则正确保留base第二槽，因此融合输出字节等于base；这不是错误回退。
+- 顶层`submission.json`、`027/submission-ensemble.json`与base备份均为14616字节，SHA **15ead46eddffb243d17db96ffd55e409953780a3c61b10224f2c6b9d11198c04**。191项工件身份通过，包括153个候选pickle；两臂原B4及融合逐query复现，源码只差IPython补末尾换行，helper仍为冻结SHA。
+- 用同一Kaggle官方公开快照匹配全部5个query后，base／extra／ensemble均**4/5，3/4完整task**。这是反复使用的原四题运行诊断；此次普通运行没有额外融合收益，正式晋级依据仍是之前预定的C23净增1，不能把4/5称为新确认或公榜80%。
+
+初次精确源预检将版本附在slug后返回403，随后尝试`version_label='1'`返回404。已改为读取该自有Notebook的元数据并**严格断言currentVersionNumber=1、全部cell源与冻结正式包一致**，再核对全部输出URL的唯一scriptVersion为362150112；实际提交调用仍显式`kernel_version=1`，没有提交latest或重新上传版本。两次错误只是只读源请求格式问题，不是自动审批拒绝，也没有创建提交。
+
+**23:16:27北京时间**完成预检：普通COMPLETE、源一致、顶层submission绑定362150112、今日num_today0／num_allowed_now1、无pending、队伍ccjjllt，精确版本此前未提交。独立新代理只读审计无阻塞；未改数据、权重、融合规则或再跑GPU。
+
+**23:18:02北京时间，平台接受正式submission 57634436**：
+
+- 账号zhuating、队伍ccjjllt、比赛`arc-prize-2026-arc-agi-2`。
+- Notebook `zhuating/arc2-027-ttt-view-ensemble-formal`，**kernel V1／scriptVersion362150112**。
+- 代码SHA **3c8551fbf483bd1a4755722a0b7585408c2ed789f5d8ae5b3ed618f8a4200919**，提交文件`submission.json`。
+- 接受回执见[competition-submission-v1.json](../../experiments/027/execution/competition-submission-v1.json)。
+
+23:19:08进行一次GetSubmission和同队提交列表核对，均找到57634436，列表URL精确绑定362150112、队伍和提交文件一致；**状态字段尚未返回，public／private score均未返回**。不得把空状态写成COMPLETE或把普通4/5／C23净1当作公榜提分。见[初始绑定](../../experiments/027/execution/submission-57634436-initial.json)。正式最好仍为023的30.14，027是否超过它等待真实评测结果。
+
+按用户偏好，回执与绑定核对后停止所有远端查询，无自动化或重复提交。用户通知评测结束时，人工运行`/private/tmp/arc2-027-read-submission-57634436.py`读取实际状态／分数与精确绑定，再更新结果；不要重提同一版本、不要从普通Notebook状态推断隐藏评测终态。
+
+本节结果入口：[普通完整汇总](../../experiments/027/formal-v1-summary.json)、[普通评分](../../experiments/027/formal-scoring-v1-kaggle/score-report.json)、[普通工件核查](../../experiments/027/execution/formal-v1-artifact-verification.json)、[完成预检](../../experiments/027/execution/formal-completion-preflight-v1.json)、[正式接续状态](../../experiments/027/formal-v1-ready.json)。

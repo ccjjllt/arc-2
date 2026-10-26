@@ -1,0 +1,138 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+[Rank 0] start!
+==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+   \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.35s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.09it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.02it/s]
+Unsloth: Training embed_tokens in mixed precision to save VRAM
+Unsloth: Training lm_head in mixed precision to save VRAM
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+[Rank 1] start!
+==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+   \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.34s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.10it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.03it/s]
+Unsloth: Training embed_tokens in mixed precision to save VRAM
+Unsloth: Training lm_head in mixed precision to save VRAM
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+[Rank 2] start!
+==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+   \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.34s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.11it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.03it/s]
+Unsloth: Training embed_tokens in mixed precision to save VRAM
+Unsloth: Training lm_head in mixed precision to save VRAM
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+[Rank 3] start!
+==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+   \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.34s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.10it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.03it/s]
+Unsloth: Training embed_tokens in mixed precision to save VRAM
+Unsloth: Training lm_head in mixed precision to save VRAM
+[Rank 1] allocated 13011MB for training
+[Rank 1] training stats for puzzle 36a08778: TrainOutput(global_step=128, training_loss=0.005083662923425436, metrics={'train_runtime': 188.9704, 'train_samples_per_second': 0.677, 'train_steps_per_second': 0.677, 'total_flos': 6648666941030400.0, 'train_loss': 0.005083662923425436, 'epoch': 1.0})
+[Rank 1] decoding ['36a08778_0.permute4150723698.ex031524', '36a08778_0.permute6720984531.ex021543', '36a08778_0.rot90.rot90.permute7931086254.ex405132', '36a08778_0.rot90.rot90.permute9302675184.ex105324']
+[Rank 1] scoring 36a08778_0.permute4150723698.ex031524 #0
+[Rank 1] scoring 36a08778_0.rot90.rot90.permute9302675184.ex105324 #1
+[Rank 1] decoding ['36a08778_0.rot90.permute1258796043.ex532401', '36a08778_0.rot90.permute5386701942.ex542013', '36a08778_0.rot90.rot90.rot90.permute2908315674.ex251403', '36a08778_0.rot90.rot90.rot90.permute8579032416.ex304521']
+[Rank 1] scoring 36a08778_0.rot90.rot90.rot90.permute2908315674.ex251403 #0
+[Rank 1] scoring 36a08778_0.rot90.rot90.rot90.permute2908315674.ex251403 #1
+[Rank 1] decoding ['36a08778_1.permute1602397845.ex023451', '36a08778_1.permute6827490351.ex345120', '36a08778_1.rot90.rot90.permute9180254367.ex104352', '36a08778_1.rot90.rot90.permute9368452107.ex125430']
+[Rank 0] allocated 13011MB for training
+[Rank 0] training stats for puzzle 0934a4d8: TrainOutput(global_step=128, training_loss=0.002870638854801655, metrics={'train_runtime': 399.0584, 'train_samples_per_second': 0.321, 'train_steps_per_second': 0.321, 'total_flos': 1.232880211132416e+16, 'train_loss': 0.002870638854801655, 'epoch': 1.0})
+[Rank 0] decoding ['0934a4d8_0.permute4150723698.ex0312', '0934a4d8_0.permute9302675184.ex1302', '0934a4d8_0.rot90.rot90.permute5386701942.ex0213', '0934a4d8_0.rot90.rot90.permute8579032416.ex3201']
+[Rank 0] scoring 0934a4d8_0.permute4150723698.ex0312 #0
+[Rank 0] scoring 0934a4d8_0.permute9302675184.ex1302 #0
+[Rank 0] scoring 0934a4d8_0.permute9302675184.ex1302 #1
+[Rank 0] scoring 0934a4d8_0.rot90.rot90.permute5386701942.ex0213 #0
+[Rank 0] decoding ['0934a4d8_0.rot90.permute4281673590.ex0213', '0934a4d8_0.rot90.permute4950812673.ex2013', '0934a4d8_0.rot90.rot90.rot90.permute1654278039.ex3120', '0934a4d8_0.rot90.rot90.rot90.permute4965803712.ex1023']
+[Rank 0] scoring 0934a4d8_0.rot90.permute4281673590.ex0213 #0
+[Rank 0] scoring 0934a4d8_0.rot90.rot90.rot90.permute1654278039.ex3120 #0
+[Rank 0] decoding ['0934a4d8_0.transpose.permute1602397845.ex2013', '0934a4d8_0.transpose.permute9180254367.ex1230', '0934a4d8_0.transpose.rot90.rot90.permute0986123745.ex2103', '0934a4d8_0.transpose.rot90.rot90.permute5436201789.ex2301']
+[Rank 0] scoring 0934a4d8_0.transpose.permute1602397845.ex2013 #0
+[Rank 3] allocated 13011MB for training
+[Rank 3] training stats for puzzle aa4ec2a5: TrainOutput(global_step=128, training_loss=0.005912221502512693, metrics={'train_runtime': 291.5733, 'train_samples_per_second': 0.439, 'train_steps_per_second': 0.439, 'total_flos': 1.01967536259072e+16, 'train_loss': 0.005912221502512693, 'epoch': 1.0})
+[Rank 3] decoding ['aa4ec2a5_0.permute4150723698.ex012', 'aa4ec2a5_0.permute9302675184.ex012', 'aa4ec2a5_0.rot90.rot90.permute5386701942.ex021', 'aa4ec2a5_0.rot90.rot90.permute8579032416.ex120']
+[Rank 0] scoring 0934a4d8_0.transpose.rot90.rot90.permute5436201789.ex2301 #0
+[Rank 1] scoring 36a08778_1.permute1602397845.ex023451 #0
+[Rank 0] scoring 0934a4d8_0.transpose.rot90.rot90.permute5436201789.ex2301 #1
+[Rank 1] scoring 36a08778_1.rot90.rot90.permute9180254367.ex104352 #0
+[Rank 1] decoding ['36a08778_1.rot90.permute5436201789.ex305412', '36a08778_1.rot90.permute8024967315.ex145203', '36a08778_1.rot90.rot90.rot90.permute0986123745.ex052341', '36a08778_1.rot90.rot90.rot90.permute7068392154.ex403215']
+[Rank 0] decoding ['0934a4d8_0.transpose.rot90.permute4907281356.ex3210', '0934a4d8_0.transpose.rot90.permute5980213764.ex1023', '0934a4d8_0.transpose.rot90.rot90.rot90.permute6142358709.ex3120', '0934a4d8_0.transpose.rot90.rot90.rot90.permute7690351428.ex0231']
+[Rank 0] scoring 0934a4d8_0.transpose.rot90.permute4907281356.ex3210 #0
+[Rank 0] scoring 0934a4d8_0.transpose.rot90.rot90.rot90.permute6142358709.ex3120 #0
+[Rank 0] allocated 14719MB for inference
+[Rank 0] finished 0934a4d8 in 536.7s
+[Rank 0] done!
+[Rank 3] scoring aa4ec2a5_0.permute4150723698.ex012 #0
+[Rank 3] scoring aa4ec2a5_0.rot90.rot90.permute5386701942.ex021 #0
+[Rank 3] decoding ['aa4ec2a5_0.rot90.permute4281673590.ex102', 'aa4ec2a5_0.rot90.permute4950812673.ex201', 'aa4ec2a5_0.rot90.rot90.rot90.permute1654278039.ex210', 'aa4ec2a5_0.rot90.rot90.rot90.permute4965803712.ex210']
+[Rank 1] scoring 36a08778_1.rot90.permute5436201789.ex305412 #0
+[Rank 1] scoring 36a08778_1.rot90.permute8024967315.ex145203 #1
+[Rank 1] scoring 36a08778_1.rot90.rot90.rot90.permute0986123745.ex052341 #0
+[Rank 3] scoring aa4ec2a5_0.rot90.rot90.rot90.permute1654278039.ex210 #1
+[Rank 1] scoring 36a08778_1.rot90.rot90.rot90.permute7068392154.ex403215 #0
+[Rank 3] decoding ['aa4ec2a5_0.transpose.permute1602397845.ex201', 'aa4ec2a5_0.transpose.permute9180254367.ex021', 'aa4ec2a5_0.transpose.rot90.rot90.permute0986123745.ex021', 'aa4ec2a5_0.transpose.rot90.rot90.permute5436201789.ex021']
+[Rank 1] decoding ['36a08778_0.transpose.permute4950812673.ex132450', '36a08778_0.transpose.permute9316478025.ex301425', '36a08778_0.transpose.rot90.rot90.permute4281673590.ex401253', '36a08778_0.transpose.rot90.rot90.permute7284135096.ex214530']
+[Rank 1] scoring 36a08778_0.transpose.permute9316478025.ex301425 #1
+[Rank 1] scoring 36a08778_0.transpose.rot90.rot90.permute4281673590.ex401253 #0
+[Rank 1] decoding ['36a08778_0.transpose.rot90.permute1654278039.ex204513', '36a08778_0.transpose.rot90.permute3170468295.ex120534', '36a08778_0.transpose.rot90.rot90.rot90.permute4965803712.ex420135', '36a08778_0.transpose.rot90.rot90.rot90.permute7568409321.ex152304']
+[Rank 3] decoding ['aa4ec2a5_0.transpose.rot90.permute4907281356.ex102', 'aa4ec2a5_0.transpose.rot90.permute5980213764.ex102', 'aa4ec2a5_0.transpose.rot90.rot90.rot90.permute6142358709.ex021', 'aa4ec2a5_0.transpose.rot90.rot90.rot90.permute7690351428.ex210']
+[Rank 1] scoring 36a08778_0.transpose.rot90.permute3170468295.ex120534 #1
+[Rank 1] decoding ['36a08778_1.transpose.permute5980213764.ex420135', '36a08778_1.transpose.permute6703249158.ex254310', '36a08778_1.transpose.rot90.rot90.permute4907281356.ex105324', '36a08778_1.transpose.rot90.rot90.permute7562830149.ex320145']
+[Rank 3] allocated 14101MB for inference
+[Rank 3] finished aa4ec2a5 in 629.0s
+[Rank 3] done!
+[Rank 1] scoring 36a08778_1.transpose.permute5980213764.ex420135 #0
+[Rank 1] scoring 36a08778_1.transpose.permute6703249158.ex254310 #0
+[Rank 1] scoring 36a08778_1.transpose.rot90.rot90.permute4907281356.ex105324 #0
+[Rank 1] scoring 36a08778_1.transpose.rot90.rot90.permute4907281356.ex105324 #1
+[Rank 1] scoring 36a08778_1.transpose.rot90.rot90.permute7562830149.ex320145 #0
+[Rank 2] allocated 13150MB for training
+[Rank 2] training stats for puzzle 981571dc: TrainOutput(global_step=128, training_loss=0.00011755510058719665, metrics={'train_runtime': 825.8522, 'train_samples_per_second': 0.155, 'train_steps_per_second': 0.155, 'total_flos': 2.385848559992832e+16, 'train_loss': 0.00011755510058719665, 'epoch': 1.0})
+[Rank 2] decoding ['981571dc_0.permute4150723698.ex312', '981571dc_0.permute9302675184.ex302', '981571dc_0.rot90.rot90.permute5386701942.ex213', '981571dc_0.rot90.rot90.permute8579032416.ex201']
+[Rank 1] scoring 36a08778_1.transpose.rot90.rot90.permute7562830149.ex320145 #1
+[Rank 1] decoding ['36a08778_1.transpose.rot90.permute7613284905.ex503421', '36a08778_1.transpose.rot90.permute7690351428.ex502134', '36a08778_1.transpose.rot90.rot90.rot90.permute6142358709.ex051324', '36a08778_1.transpose.rot90.rot90.rot90.permute6150492378.ex450312']
+[Rank 2] scoring 981571dc_0.permute4150723698.ex312 #0
+[Rank 2] decoding ['981571dc_0.rot90.permute4281673590.ex213', '981571dc_0.rot90.permute4950812673.ex013', '981571dc_0.rot90.rot90.rot90.permute1654278039.ex120', '981571dc_0.rot90.rot90.rot90.permute4965803712.ex023']
+[Rank 1] allocated 13053MB for inference
+[Rank 1] finished 36a08778 in 1033.9s
+[Rank 1] done!
+[Rank 2] decoding ['981571dc_0.transpose.permute1602397845.ex013', '981571dc_0.transpose.permute9180254367.ex230', '981571dc_0.transpose.rot90.rot90.permute0986123745.ex103', '981571dc_0.transpose.rot90.rot90.permute5436201789.ex301']
+[Rank 2] decoding ['981571dc_0.transpose.rot90.permute4907281356.ex210', '981571dc_0.transpose.rot90.permute5980213764.ex023', '981571dc_0.transpose.rot90.rot90.rot90.permute6142358709.ex120', '981571dc_0.transpose.rot90.rot90.rot90.permute7690351428.ex231']
+[Rank 2] allocated 17109MB for inference
+[Rank 2] finished 981571dc in 1221.1s
+[Rank 2] done!

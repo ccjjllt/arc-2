@@ -1,0 +1,35 @@
+{
+  "checked_at_utc": "2026-10-25T15:19:08.492821+00:00",
+  "ref": 57634436,
+  "account": "zhuating",
+  "expected_script_version_id": 362150112,
+  "get_submission": {
+    "ref": 57634436,
+    "totalBytes": 0,
+    "date": "2026-10-25T15:18:01.880Z",
+    "description": "027 original NVARC4B sequential TTT view ensemble; frozen base-first rule; C23 input-matched confirmation net1, lost0.",
+    "fileName": "submission.json",
+    "submittedBy": "zhuating",
+    "submittedByRef": "zhuating",
+    "teamName": "ccjjllt",
+    "url": "/submissions/57634436/57634436.raw"
+  },
+  "matching_rows": [
+    {
+      "ref": 57634436,
+      "totalBytes": 0,
+      "date": "2026-10-25T15:18:01.880Z",
+      "description": "027 original NVARC4B sequential TTT view ensemble; frozen base-first rule; C23 input-matched confirmation net1, lost0.",
+      "fileName": "submission.json",
+      "submittedBy": "zhuating",
+      "submittedByRef": "zhuating",
+      "teamName": "ccjjllt",
+      "url": "/code/zhuating/arc2-027-ttt-view-ensemble-formal?scriptVersionId=362150112"
+    }
+  ],
+  "exact_binding_verified": true,
+  "status": null,
+  "public_score": null,
+  "private_score": null,
+  "scope": "One receipt/binding read after authorized submission; no resubmission, GPU run or scheduled monitoring."
+}

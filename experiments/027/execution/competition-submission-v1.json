@@ -1,0 +1,28 @@
+{
+  "requested_at_utc": "2026-10-25T15:18:01.122797+00:00",
+  "account": "zhuating",
+  "team_name": "ccjjllt",
+  "competition": "arc-prize-2026-arc-agi-2",
+  "kernel": "zhuating/arc2-027-ttt-view-ensemble-formal",
+  "kernel_version": 1,
+  "script_version_id": 362150112,
+  "notebook_sha256": "3c8551fbf483bd1a4755722a0b7585408c2ed789f5d8ae5b3ed618f8a4200919",
+  "file_name": "submission.json",
+  "ordinary_output_sha256": "15ead46eddffb243d17db96ffd55e409953780a3c61b10224f2c6b9d11198c04",
+  "message": "027 original NVARC4B sequential TTT view ensemble; frozen base-first rule; C23 input-matched confirmation net1, lost0.",
+  "limits_before": {
+    "num_today": 0,
+    "num_total": 11,
+    "num_allowed_now": 1
+  },
+  "pending_before": 0,
+  "confirmation": "C23 exact Kaggle snapshot: base5/34 to fixed ensemble6/34, gained1/lost0, prefix nets0/0/1. Not leaderboard result.",
+  "ordinary_result": "Original public four:4/5 exact, both passes complete.",
+  "hidden_quota_charging": "unconfirmed; not assumed free",
+  "monitoring": "Initial receipt and exact binding check only; no scheduled polling.",
+  "state": "accepted",
+  "response": {
+    "ref": 57634436
+  },
+  "returned_at_utc": "2026-10-25T15:18:02.842125+00:00"
+}

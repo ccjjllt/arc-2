@@ -1,0 +1,82 @@
+{
+  "frozen_at_utc": "2026-10-25T15:16:06.665816+00:00",
+  "artifacts": {
+    "manifest": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/ordinary-v1-input/manifest.json",
+      "sha256": "7138596a88a420755a92efa0f3040560cd4a62dd165e5133ab6fdf1906c14122",
+      "bytes": 2968
+    },
+    "challenges": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/ordinary-v1-input/challenges.json",
+      "sha256": "f609f61bdc823802318d005eef7fd6400a2a1c6a4b9f9c93305e1de116979bc1",
+      "bytes": 41151
+    },
+    "predictions": [
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/formal-frozen-v1/submission-base_B4.json",
+        "sha256": "15ead46eddffb243d17db96ffd55e409953780a3c61b10224f2c6b9d11198c04",
+        "bytes": 14616,
+        "policy": "base_B4",
+        "task_ids": [
+          "0934a4d8",
+          "36a08778",
+          "981571dc",
+          "aa4ec2a5"
+        ]
+      },
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/formal-frozen-v1/submission-extra_B4.json",
+        "sha256": "12436a926a70363266308c3921c02c9b7509303df722e296c11e5eca1f7324f0",
+        "bytes": 14616,
+        "policy": "extra_B4",
+        "task_ids": [
+          "0934a4d8",
+          "36a08778",
+          "981571dc",
+          "aa4ec2a5"
+        ]
+      },
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/formal-frozen-v1/submission-ensemble.json",
+        "sha256": "15ead46eddffb243d17db96ffd55e409953780a3c61b10224f2c6b9d11198c04",
+        "bytes": 14616,
+        "policy": "ensemble",
+        "task_ids": [
+          "0934a4d8",
+          "36a08778",
+          "981571dc",
+          "aa4ec2a5"
+        ]
+      }
+    ],
+    "candidate_pools": [
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/formal-frozen-v1/candidate-pools-scored.json",
+        "sha256": "7f84a042c18636783fac0c016aaafa73bcbfd0364412e90e2b59630b54ceedad",
+        "bytes": 979446
+      }
+    ]
+  },
+  "cohort": "027_formal_ordinary_original_four",
+  "official_snapshot": {
+    "downloaded_at_utc": "2026-10-25T13:16:51.868680+00:00",
+    "competition": "arc-prize-2026-arc-agi-2",
+    "source": "Official Kaggle competition file download through authenticated API",
+    "files": {
+      "arc-agi_evaluation_challenges.json": {
+        "path": "/private/tmp/arc2-027-kaggle-scoring-snapshot/arc-agi_evaluation_challenges.json",
+        "bytes": 984679,
+        "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8"
+      },
+      "arc-agi_evaluation_solutions.json": {
+        "path": "/private/tmp/arc2-027-kaggle-scoring-snapshot/arc-agi_evaluation_solutions.json",
+        "bytes": 223838,
+        "sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1"
+      }
+    },
+    "cohort_full_task_content_matches": true,
+    "source_challenges_match_original008_sha": true,
+    "predictions_already_frozen": true,
+    "reason": "Resolve four genuine input-version mismatches in fixed GitHub reference without dropping queries or changing predictions."
+  }
+}

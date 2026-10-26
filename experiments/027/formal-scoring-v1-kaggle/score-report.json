@@ -1,0 +1,39 @@
+{
+  "planned_queries": 5,
+  "input_matched_queries": 5,
+  "unresolved_or_mismatched_queries": 0,
+  "policies": {
+    "base_B4": {
+      "exact_queries": 4,
+      "matched_denominator": 5,
+      "em2": 0.8,
+      "prediction_present_queries": 5,
+      "valid_queries": 5,
+      "different_valid_attempts_queries": 5,
+      "fully_matched_tasks": 4,
+      "all_queries_exact_tasks": 3
+    },
+    "extra_B4": {
+      "exact_queries": 4,
+      "matched_denominator": 5,
+      "em2": 0.8,
+      "prediction_present_queries": 5,
+      "valid_queries": 5,
+      "different_valid_attempts_queries": 5,
+      "fully_matched_tasks": 4,
+      "all_queries_exact_tasks": 3
+    },
+    "ensemble": {
+      "exact_queries": 4,
+      "matched_denominator": 5,
+      "em2": 0.8,
+      "prediction_present_queries": 5,
+      "valid_queries": 5,
+      "different_valid_attempts_queries": 5,
+      "fully_matched_tasks": 4,
+      "all_queries_exact_tasks": 3
+    }
+  },
+  "cohort": "027_formal_ordinary_original_four",
+  "note": "Previously used public original-four runtime diagnostic only; C23 promotion remains unchanged."
+}

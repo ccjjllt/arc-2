@@ -6,7 +6,9 @@
 
 [确认完整汇总](confirmation-v1-summary.json) · [精确评分](scoring-v1-kaggle/score-report.json) · [晋级决定](promotion-v1.json) · [数据版本身份](execution/official-kaggle-scoring-snapshot.json) · [归档核查](execution/artifact-verification-v1.json)
 
-[正式源码V1](https://www.kaggle.com/code/zhuating/arc2-027-ttt-view-ensemble-formal)已于21:44北京时间接受原4题／5query普通验证，源码和动态输入身份已核对，21:55确认4个worker模型加载正常后停止查询，等待用户完成通知。该普通会话上限7200秒，代码hidden预算保留原12小时；当前尚未创建新的competition submission。普通完成后读取真实scriptVersion与顶层submission.json再直接提交，已有用户授权。
+**正式submission57634436已被接受**，绑定[精确V1／362150112](https://www.kaggle.com/code/zhuating/arc2-027-ttt-view-ensemble-formal?scriptVersionId=362150112)。普通4题／5query验证已COMPLETE，base／extra完整跑完，冻结融合4/5且无错误回退。初始提交绑定核对通过，状态字段及公／私榜分数尚未返回；当前正式最好仍30.14。
+
+[提交回执](execution/competition-submission-v1.json) · [初始精确绑定](execution/submission-57634436-initial.json) · [普通完整汇总](formal-v1-summary.json) · [普通评分](formal-scoring-v1-kaggle/score-report.json)
 
 ## 唯一方案
 
@@ -61,3 +63,8 @@ python3 experiments/020/score_frozen_outputs.py \
 正式普通验证结束后，还可人工运行`/private/tmp/arc2-027-formal-completion-preflight.py`取得源cell一致性、实际输出scriptVersion集合、顶层submission.json绑定、提交名额和pending状态；此脚本只读不提交。严格绑定普通V1的实际输出，不能把kernelId140787141或研究版本362101452当作正式scriptVersion。
 
 [正式接续参数](formal-v1-ready.json)已保存，scriptVersion／submission ref须在普通完成后以真实结果填写。
+
+
+## 当前下一步
+
+已提交且完成一次回执／绑定读取，停止远端查询，等待用户通知结果。人工入口`/private/tmp/arc2-027-read-submission-57634436.py`只读取57634436实际状态、分数和精确版本绑定；不要重提V1，也不要把普通Notebook的COMPLETE当作隐藏评测已经完成。正式回执和ready是当前事实，前文准备／下载命令保留作历史复核入口。
