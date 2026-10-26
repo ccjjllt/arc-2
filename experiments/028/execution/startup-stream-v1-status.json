@@ -1,0 +1,12 @@
+{
+  "checked_at_utc": "2026-10-26T13:41:27.178733+00:00",
+  "ref": "zhuating/arc2-028-dfs-path-pilot",
+  "kernel_version": 1,
+  "events_read": 19,
+  "stop": "traceback_observed",
+  "model_loaded_marker_seen": false,
+  "ttt_stats_seen": false,
+  "path_call_seen": false,
+  "traceback_seen": true,
+  "scope": "One bounded manual startup stream. Stop remote reads after normal startup; no monitoring."
+}

@@ -1,0 +1,47 @@
+{
+  "status": "V2_model_load_observed_wait_user_completion",
+  "ref": "zhuating/arc2-028-dfs-path-pilot",
+  "kernel_version": 2,
+  "notebook_sha256": "0c9d58242c9dae02afb8afb411deda8a5e76ce5af14596b37b5a382fe40f5153",
+  "accepted_at_utc": "2026-10-26T13:43:04.060631+00:00",
+  "exact_cell_source_match": true,
+  "latest_startup": {
+    "checked_at_utc": "2026-10-26T13:51:11.102479+00:00",
+    "ref": "zhuating/arc2-028-dfs-path-pilot",
+    "kernel_version": 2,
+    "source_match_evidence": "execution/source-verification-v2.json",
+    "notebook_sha256": "0c9d58242c9dae02afb8afb411deda8a5e76ce5af14596b37b5a382fe40f5153",
+    "source_all_cells_match": true,
+    "input_tasks": 3,
+    "input_queries": 5,
+    "measured_queries_planned": 3,
+    "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0",
+    "actual_gpu": "4x NVIDIA L4,23034MiB each; three solver workers",
+    "model_copy_bytes": 7267271302,
+    "model_copy_seconds": 88.24861311912537,
+    "started_worker_ranks": [
+      0,
+      1
+    ],
+    "checkpoint_load_after_rank_start_marker": {
+      "0": true,
+      "1": true
+    },
+    "traceback_observed": false,
+    "ttt_stats_observed": false,
+    "path_A_call_observed": false,
+    "scope": "Bounded startup only; replayed SSE chunks do not establish exact per-worker timing or completed experiments."
+  },
+  "script_version_id": null,
+  "formal_submission_created": false,
+  "next_action": "Remote reads stopped after source/model identity and rank0/1 checkpoint load observed; rank2, TTT and path call not yet observed. Wait user completion notice, then run /private/tmp/arc2-028-download-completed-v2.py. It asserts exactV2 cell source before terminal download. Compare recorded mechanism reports before any promotion or new GPU run.",
+  "outcome_evidence": "execution/pilot-v2-outcome.json",
+  "baseline_public_score": "30.14",
+  "effects": {
+    "throughput": "unconfirmed",
+    "candidate_equivalence": "unconfirmed",
+    "competition_score_improvement": "unmeasured"
+  },
+  "startup_health_evidence": "execution/startup-health-v2.json",
+  "remote_monitoring_active": false
+}

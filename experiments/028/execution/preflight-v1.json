@@ -1,0 +1,109 @@
+{
+  "checked_at_utc": "2026-10-26T13:24:21.812766+00:00",
+  "account": "zhuating",
+  "scope": "Read-only028 quota and own active-session preflight; no launch or submission.",
+  "gpu": {
+    "total_time_allowed": 108000.0,
+    "time_used": 81067.108,
+    "time_reserved": 0.0,
+    "available_seconds": 26932.892000000007,
+    "available_hours": 7.481358888888891
+  },
+  "quota_refresh_time_utc": "2026-10-31 00:00:00",
+  "submission_limits": {
+    "num_today": 0,
+    "num_total": 12,
+    "num_allowed_now": 1,
+    "limited_by_total": false
+  },
+  "pending_submissions": [],
+  "latest_submissions": [
+    {
+      "ref": 57634436,
+      "totalBytes": 781092,
+      "date": "2026-10-25T15:18:01.880Z",
+      "description": "027 original NVARC4B sequential TTT view ensemble; frozen base-first rule; C23 input-matched confirmation net1, lost0.",
+      "fileName": "submission.json",
+      "publicScore": "29.72",
+      "status": "COMPLETE",
+      "submittedBy": "zhuating",
+      "submittedByRef": "zhuating",
+      "teamName": "ccjjllt",
+      "url": "/code/zhuating/arc2-027-ttt-view-ensemble-formal?scriptVersionId=362150112"
+    },
+    {
+      "ref": 57582282,
+      "totalBytes": 771745,
+      "date": "2026-10-24T04:28:38.180Z",
+      "description": "023 Failed in AIMO V1 faithful reproduction; original TTT, DFS, kgmon and timing; runtime compatibility repairs only.",
+      "fileName": "submission.json",
+      "publicScore": "30.14",
+      "status": "COMPLETE",
+      "submittedBy": "zhuating",
+      "submittedByRef": "zhuating",
+      "teamName": "ccjjllt",
+      "url": "/code/zhuating/arc2-023-failed-in-aimo-v1-faithful?scriptVersionId=361045383"
+    },
+    {
+      "ref": 57504054,
+      "totalBytes": 51179,
+      "date": "2026-10-22T01:10:47.217Z",
+      "description": "022 full NVARC4B V1; frozen E20V2 core; GPU ordinary4-task verified; full hidden fair budget41400s",
+      "fileName": "submission.json",
+      "publicScore": "0.00",
+      "status": "COMPLETE",
+      "submittedBy": "zhuating",
+      "submittedByRef": "zhuating",
+      "teamName": "ccjjllt",
+      "url": "/code/zhuating/arc2-022-nvarc-full-submission?scriptVersionId=360953982"
+    },
+    {
+      "ref": 57443913,
+      "totalBytes": 253680,
+      "date": "2026-10-20T15:28:59.223Z",
+      "description": "020 Qwen3.8-27B direct1 + CPU line, MTP2; frozen v1",
+      "fileName": "submission.json",
+      "publicScore": "12.50",
+      "status": "COMPLETE",
+      "submittedBy": "ccjjllt",
+      "submittedByRef": "ccjjllt",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/arc2-020-deep-direct-submission?scriptVersionId=360461153"
+    },
+    {
+      "ref": 57103498,
+      "totalBytes": 425016,
+      "date": "2026-10-12T09:56:36.720Z",
+      "description": "013 bounded base-only TTT; fixed kgmon selection; four-task runtime pilot verified. New candidate, not the historical 30.14 version.",
+      "fileName": "submission.json",
+      "publicScore": "25.69",
+      "status": "COMPLETE",
+      "submittedBy": "ccjjllt",
+      "submittedByRef": "ccjjllt",
+      "teamName": "ccjjllt",
+      "url": "/code/ccjjllt/arc2-013-bounded-baseline?scriptVersionId=357613526"
+    }
+  ],
+  "recent_kernel_refs": [
+    "zhuating/arc2-027-ttt-view-ensemble-formal",
+    "zhuating/arc2-027-ttt-view-ensemble-c23",
+    "zhuating/arc2-026-v1-paired-training",
+    "zhuating/arc3-037-highscore-pixels",
+    "zhuating/arc2-025-v1-selection-confirmation",
+    "zhuating/arc2-025-utility-mount-cpu",
+    "zhuating/arc3-auxiliary-reasoning-diagnostic",
+    "zhuating/arc2-023-failed-in-aimo-v1-faithful",
+    "zhuating/p015-31b-task-rft",
+    "zhuating/p015-train-next-sampling",
+    "zhuating/p015-train-next-cpu",
+    "zhuating/p015-base-and-train-sampling",
+    "zhuating/p015-natural-pr-panel-cpu",
+    "zhuating/p015-fsdp-capacity",
+    "zhuating/p015-attention-capacity",
+    "zhuating/p015-31b-tokenizer-cpu",
+    "zhuating/arc2-022-nvarc-full-submission",
+    "zhuating/arc2-022-nvarc-e20",
+    "zhuating/arc2-021-qwen-e20-direct32k",
+    "zhuating/arc3-032-memory-recovery"
+  ]
+}

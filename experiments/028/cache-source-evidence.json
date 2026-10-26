@@ -1,0 +1,15 @@
+{
+  "checked_date": "2026-10-26",
+  "source": "https://pypi.org/project/unsloth/2025.9.7/",
+  "provenance": "Fresh agent read exact PyPI wheel in memory, computed SHA and cross-checked local frozen sorokin utility; no installation.",
+  "wheel_bytes": 314642,
+  "wheel_sha256": "a15c55a064c0b86c5b462662b21a0f2d55f9004394db01f72c522aa669fec744",
+  "qwen3_py_sha256": "74e159d0835a3238f0be669fa49c52cae0f2588c3eb758a050ea8f0e459a3ece",
+  "llama_py_sha256": "0ec7ec3200e48f7be97a9893d3f5380c3dae63f9a975ecb935607cf74fba03f4",
+  "findings": [
+    "Nonempty past routes to fastdecode and requires q_len==1.",
+    "Legacy per-layer KV; fastdecode caches mutable internal paged buffers and uses passed KV length on later calls.",
+    "Any immutable snapshot restore must clear internal paged state before target copies snapshot prefix.",
+    "Proxy correctness and throughput are unconfirmed until actual same-adapter comparison."
+  ]
+}

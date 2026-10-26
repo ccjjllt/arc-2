@@ -1,0 +1,23 @@
+{
+  "requested_at_utc": "2026-10-26T13:39:08.687514+00:00",
+  "account": "zhuating",
+  "ref": "zhuating/arc2-028-dfs-path-pilot",
+  "notebook_sha256": "2d1d554f24cc20e566772cfdb00bd69a7f530e7c197f6ac8c84f7e87edde31ba",
+  "package_directory": "/private/tmp/arc2-028-dfs-pilot-v1-ready",
+  "state": "accepted",
+  "quota_before": {
+    "total_time_allowed": 108000.0,
+    "time_used": 81067.108,
+    "time_reserved": 0.0,
+    "available_seconds": 26932.892000000007
+  },
+  "session_timeout_seconds": 5400,
+  "purpose": "User-authorized bounded same-adapter DFS mechanism pilot; no offline training, no competition submission.",
+  "response": {
+    "ref": "/code/zhuating/arc2-028-dfs-path-pilot",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-028-dfs-path-pilot",
+    "versionNumber": 1,
+    "kernelId": 140991448
+  },
+  "returned_at_utc": "2026-10-26T13:39:13.653839+00:00"
+}

@@ -1,0 +1,27 @@
+{
+  "event": "original_utility_mount_lookup",
+  "roots": [
+    "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch"
+  ],
+  "elapsed_s": 0.005910077000010006,
+  "sys_path": [
+    "/kaggle/working",
+    "/kaggle/lib/kagglegym",
+    "/kaggle/lib",
+    "/kaggle/usr/lib",
+    "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch",
+    "/kaggle/input/competitions/arc-prize-2026-arc-agi-2",
+    "/usr/lib/python311.zip",
+    "/usr/lib/python3.11",
+    "/usr/lib/python3.11/lib-dynload",
+    "",
+    "/usr/local/lib/python3.11/dist-packages",
+    "/usr/lib/python3/dist-packages",
+    "/usr/local/lib/python3.11/dist-packages/IPython/extensions",
+    "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch/setuptools/_vendor",
+    "/root/.ipython"
+  ],
+  "model_roots": [
+    "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1"
+  ]
+}

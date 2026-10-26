@@ -1,0 +1,755 @@
+{
+  "created_at_utc": "2026-10-26T13:27:23.331190+00:00",
+  "status": "frozen_before028_GPU",
+  "selection_rule": "Take exactly the24 IDs from027 development-replay sets.025_development24_excluding026.task_ids, exclude026 sixteen and027 C23. For each task calculate the mean over all queries of [sum of demo input and known demo output grid cells plus that query input grid cells]. Sort by exact rational mean then task_id, split into three contiguous8-task tiers S/M/L. Within each tier sort by median host search_start-to-search_end interval over all completed original025 DFS batches, then task_id; choose the lower median, rank4 of8. Preserve all original queries. No prediction, candidate count, oracle, correctness, query answer or new result enters the rule.",
+  "eligible_task_ids": [
+    "221dfab4",
+    "271d71e2",
+    "2ba387bc",
+    "2d0172a1",
+    "332f06d7",
+    "35ab12c3",
+    "446ef5d2",
+    "5545f144",
+    "62593bfd",
+    "71e489b6",
+    "78332cb0",
+    "7b3084d4",
+    "7b80bb43",
+    "88e364bc",
+    "8f3a5a89",
+    "97d7923e",
+    "a251c730",
+    "b0039139",
+    "b10624e5",
+    "b99e7126",
+    "c7f57c3e",
+    "cb2d8a2c",
+    "d35bdbdc",
+    "dbff022c"
+  ],
+  "eligible_count": 24,
+  "all_eligible_metrics_in_prompt_order": [
+    {
+      "task_id": "78332cb0",
+      "n_test_queries": 2,
+      "n_demo": 3,
+      "prompt_grid_cells_by_query": [
+        697,
+        691
+      ],
+      "mean_prompt_grid_cells": 694.0,
+      "mean_prompt_grid_cells_fraction": [
+        1388,
+        2
+      ],
+      "query_input_cells": [
+        121,
+        115
+      ],
+      "median_completed_DFS_batch_host_seconds": 23.608521223068237,
+      "completed_DFS_batch_count": 8,
+      "sum_completed_DFS_host_seconds": 181.00028133392334,
+      "TTT_host_seconds": 81.42685341835022,
+      "prompt_tier": "S",
+      "prompt_rank_within_tier_1based": 1,
+      "runtime_rank_within_tier_1based": 3
+    },
+    {
+      "task_id": "d35bdbdc",
+      "n_test_queries": 3,
+      "n_demo": 3,
+      "prompt_grid_cells_by_query": [
+        700,
+        700,
+        700
+      ],
+      "mean_prompt_grid_cells": 700.0,
+      "mean_prompt_grid_cells_fraction": [
+        2100,
+        3
+      ],
+      "query_input_cells": [
+        100,
+        100,
+        100
+      ],
+      "median_completed_DFS_batch_host_seconds": 23.74549412727356,
+      "completed_DFS_batch_count": 12,
+      "sum_completed_DFS_host_seconds": 286.00673270225525,
+      "TTT_host_seconds": 81.15194392204285,
+      "prompt_tier": "S",
+      "prompt_rank_within_tier_1based": 2,
+      "runtime_rank_within_tier_1based": 4
+    },
+    {
+      "task_id": "b0039139",
+      "n_test_queries": 2,
+      "n_demo": 4,
+      "prompt_grid_cells_by_query": [
+        740,
+        761
+      ],
+      "mean_prompt_grid_cells": 750.5,
+      "mean_prompt_grid_cells_fraction": [
+        1501,
+        2
+      ],
+      "query_input_cells": [
+        182,
+        203
+      ],
+      "median_completed_DFS_batch_host_seconds": 10.250268816947937,
+      "completed_DFS_batch_count": 8,
+      "sum_completed_DFS_host_seconds": 95.50082159042358,
+      "TTT_host_seconds": 80.86835312843323,
+      "prompt_tier": "S",
+      "prompt_rank_within_tier_1based": 3,
+      "runtime_rank_within_tier_1based": 1
+    },
+    {
+      "task_id": "dbff022c",
+      "n_test_queries": 1,
+      "n_demo": 3,
+      "prompt_grid_cells_by_query": [
+        777
+      ],
+      "mean_prompt_grid_cells": 777.0,
+      "mean_prompt_grid_cells_fraction": [
+        777,
+        1
+      ],
+      "query_input_cells": [
+        169
+      ],
+      "median_completed_DFS_batch_host_seconds": 24.55221128463745,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 102.58628058433533,
+      "TTT_host_seconds": 82.06137275695801,
+      "prompt_tier": "S",
+      "prompt_rank_within_tier_1based": 4,
+      "runtime_rank_within_tier_1based": 5
+    },
+    {
+      "task_id": "97d7923e",
+      "n_test_queries": 1,
+      "n_demo": 3,
+      "prompt_grid_cells_by_query": [
+        1000
+      ],
+      "mean_prompt_grid_cells": 1000.0,
+      "mean_prompt_grid_cells_fraction": [
+        1000,
+        1
+      ],
+      "query_input_cells": [
+        200
+      ],
+      "median_completed_DFS_batch_host_seconds": 46.360552072525024,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 179.7014491558075,
+      "TTT_host_seconds": 99.79565930366516,
+      "prompt_tier": "S",
+      "prompt_rank_within_tier_1based": 5,
+      "runtime_rank_within_tier_1based": 8
+    },
+    {
+      "task_id": "446ef5d2",
+      "n_test_queries": 2,
+      "n_demo": 2,
+      "prompt_grid_cells_by_query": [
+        1356,
+        1080
+      ],
+      "mean_prompt_grid_cells": 1218.0,
+      "mean_prompt_grid_cells_fraction": [
+        2436,
+        2
+      ],
+      "query_input_cells": [
+        676,
+        400
+      ],
+      "median_completed_DFS_batch_host_seconds": 31.59264099597931,
+      "completed_DFS_batch_count": 8,
+      "sum_completed_DFS_host_seconds": 301.7330446243286,
+      "TTT_host_seconds": 86.73762965202332,
+      "prompt_tier": "S",
+      "prompt_rank_within_tier_1based": 6,
+      "runtime_rank_within_tier_1based": 6
+    },
+    {
+      "task_id": "5545f144",
+      "n_test_queries": 1,
+      "n_demo": 3,
+      "prompt_grid_cells_by_query": [
+        1273
+      ],
+      "mean_prompt_grid_cells": 1273.0,
+      "mean_prompt_grid_cells_fraction": [
+        1273,
+        1
+      ],
+      "query_input_cells": [
+        225
+      ],
+      "median_completed_DFS_batch_host_seconds": 43.90338969230652,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 175.5350317955017,
+      "TTT_host_seconds": 120.69890213012695,
+      "prompt_tier": "S",
+      "prompt_rank_within_tier_1based": 7,
+      "runtime_rank_within_tier_1based": 7
+    },
+    {
+      "task_id": "8f3a5a89",
+      "n_test_queries": 1,
+      "n_demo": 3,
+      "prompt_grid_cells_by_query": [
+        1656
+      ],
+      "mean_prompt_grid_cells": 1656.0,
+      "mean_prompt_grid_cells_fraction": [
+        1656,
+        1
+      ],
+      "query_input_cells": [
+        144
+      ],
+      "median_completed_DFS_batch_host_seconds": 15.89668345451355,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 65.5417845249176,
+      "TTT_host_seconds": 158.7149693965912,
+      "prompt_tier": "S",
+      "prompt_rank_within_tier_1based": 8,
+      "runtime_rank_within_tier_1based": 2
+    },
+    {
+      "task_id": "271d71e2",
+      "n_test_queries": 1,
+      "n_demo": 3,
+      "prompt_grid_cells_by_query": [
+        1670
+      ],
+      "mean_prompt_grid_cells": 1670.0,
+      "mean_prompt_grid_cells_fraction": [
+        1670,
+        1
+      ],
+      "query_input_cells": [
+        676
+      ],
+      "median_completed_DFS_batch_host_seconds": 50.45246648788452,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 222.6819348335266,
+      "TTT_host_seconds": 112.46668434143066,
+      "prompt_tier": "M",
+      "prompt_rank_within_tier_1based": 1,
+      "runtime_rank_within_tier_1based": 4
+    },
+    {
+      "task_id": "7b3084d4",
+      "n_test_queries": 1,
+      "n_demo": 3,
+      "prompt_grid_cells_by_query": [
+        1752
+      ],
+      "mean_prompt_grid_cells": 1752.0,
+      "mean_prompt_grid_cells_fraction": [
+        1752,
+        1
+      ],
+      "query_input_cells": [
+        400
+      ],
+      "median_completed_DFS_batch_host_seconds": 41.122713685035706,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 165.24599623680115,
+      "TTT_host_seconds": 143.21089839935303,
+      "prompt_tier": "M",
+      "prompt_rank_within_tier_1based": 2,
+      "runtime_rank_within_tier_1based": 3
+    },
+    {
+      "task_id": "332f06d7",
+      "n_test_queries": 1,
+      "n_demo": 4,
+      "prompt_grid_cells_by_query": [
+        1792
+      ],
+      "mean_prompt_grid_cells": 1792.0,
+      "mean_prompt_grid_cells_fraction": [
+        1792,
+        1
+      ],
+      "query_input_cells": [
+        400
+      ],
+      "median_completed_DFS_batch_host_seconds": 51.4599746465683,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 262.880252122879,
+      "TTT_host_seconds": 151.68093824386597,
+      "prompt_tier": "M",
+      "prompt_rank_within_tier_1based": 3,
+      "runtime_rank_within_tier_1based": 5
+    },
+    {
+      "task_id": "71e489b6",
+      "n_test_queries": 2,
+      "n_demo": 3,
+      "prompt_grid_cells_by_query": [
+        1926,
+        2012
+      ],
+      "mean_prompt_grid_cells": 1969.0,
+      "mean_prompt_grid_cells_fraction": [
+        3938,
+        2
+      ],
+      "query_input_cells": [
+        256,
+        342
+      ],
+      "median_completed_DFS_batch_host_seconds": 33.454649329185486,
+      "completed_DFS_batch_count": 8,
+      "sum_completed_DFS_host_seconds": 276.5359363555908,
+      "TTT_host_seconds": 172.78164315223694,
+      "prompt_tier": "M",
+      "prompt_rank_within_tier_1based": 4,
+      "runtime_rank_within_tier_1based": 2
+    },
+    {
+      "task_id": "c7f57c3e",
+      "n_test_queries": 1,
+      "n_demo": 2,
+      "prompt_grid_cells_by_query": [
+        2080
+      ],
+      "mean_prompt_grid_cells": 2080.0,
+      "mean_prompt_grid_cells_fraction": [
+        2080,
+        1
+      ],
+      "query_input_cells": [
+        784
+      ],
+      "median_completed_DFS_batch_host_seconds": 188.22600507736206,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 764.6419720649719,
+      "TTT_host_seconds": 144.13480377197266,
+      "prompt_tier": "M",
+      "prompt_rank_within_tier_1based": 5,
+      "runtime_rank_within_tier_1based": 8
+    },
+    {
+      "task_id": "35ab12c3",
+      "n_test_queries": 1,
+      "n_demo": 3,
+      "prompt_grid_cells_by_query": [
+        2339
+      ],
+      "mean_prompt_grid_cells": 2339.0,
+      "mean_prompt_grid_cells_fraction": [
+        2339,
+        1
+      ],
+      "query_input_cells": [
+        441
+      ],
+      "median_completed_DFS_batch_host_seconds": 88.6556487083435,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 352.0232312679291,
+      "TTT_host_seconds": 194.06917238235474,
+      "prompt_tier": "M",
+      "prompt_rank_within_tier_1based": 6,
+      "runtime_rank_within_tier_1based": 6
+    },
+    {
+      "task_id": "2d0172a1",
+      "n_test_queries": 2,
+      "n_demo": 4,
+      "prompt_grid_cells_by_query": [
+        2556,
+        2556
+      ],
+      "mean_prompt_grid_cells": 2556.0,
+      "mean_prompt_grid_cells_fraction": [
+        5112,
+        2
+      ],
+      "query_input_cells": [
+        625,
+        625
+      ],
+      "median_completed_DFS_batch_host_seconds": 27.028701186180115,
+      "completed_DFS_batch_count": 8,
+      "sum_completed_DFS_host_seconds": 210.88920736312866,
+      "TTT_host_seconds": 199.57326006889343,
+      "prompt_tier": "M",
+      "prompt_rank_within_tier_1based": 7,
+      "runtime_rank_within_tier_1based": 1
+    },
+    {
+      "task_id": "cb2d8a2c",
+      "n_test_queries": 2,
+      "n_demo": 4,
+      "prompt_grid_cells_by_query": [
+        2682,
+        2782
+      ],
+      "mean_prompt_grid_cells": 2732.0,
+      "mean_prompt_grid_cells_fraction": [
+        5464,
+        2
+      ],
+      "query_input_cells": [
+        364,
+        464
+      ],
+      "median_completed_DFS_batch_host_seconds": 102.49152338504791,
+      "completed_DFS_batch_count": 8,
+      "sum_completed_DFS_host_seconds": 729.9448437690735,
+      "TTT_host_seconds": 247.64555096626282,
+      "prompt_tier": "M",
+      "prompt_rank_within_tier_1based": 8,
+      "runtime_rank_within_tier_1based": 7
+    },
+    {
+      "task_id": "2ba387bc",
+      "n_test_queries": 1,
+      "n_demo": 4,
+      "prompt_grid_cells_by_query": [
+        2756
+      ],
+      "mean_prompt_grid_cells": 2756.0,
+      "mean_prompt_grid_cells_fraction": [
+        2756,
+        1
+      ],
+      "query_input_cells": [
+        456
+      ],
+      "median_completed_DFS_batch_host_seconds": 16.405821204185486,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 69.95204567909241,
+      "TTT_host_seconds": 242.57265996932983,
+      "prompt_tier": "L",
+      "prompt_rank_within_tier_1based": 1,
+      "runtime_rank_within_tier_1based": 1
+    },
+    {
+      "task_id": "7b80bb43",
+      "n_test_queries": 1,
+      "n_demo": 2,
+      "prompt_grid_cells_by_query": [
+        2797
+      ],
+      "mean_prompt_grid_cells": 2797.0,
+      "mean_prompt_grid_cells_fraction": [
+        2797,
+        1
+      ],
+      "query_input_cells": [
+        493
+      ],
+      "median_completed_DFS_batch_host_seconds": 81.46077537536621,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 305.1882748603821,
+      "TTT_host_seconds": 234.61144948005676,
+      "prompt_tier": "L",
+      "prompt_rank_within_tier_1based": 2,
+      "runtime_rank_within_tier_1based": 4
+    },
+    {
+      "task_id": "88e364bc",
+      "n_test_queries": 2,
+      "n_demo": 3,
+      "prompt_grid_cells_by_query": [
+        2800,
+        2800
+      ],
+      "mean_prompt_grid_cells": 2800.0,
+      "mean_prompt_grid_cells_fraction": [
+        5600,
+        2
+      ],
+      "query_input_cells": [
+        400,
+        400
+      ],
+      "median_completed_DFS_batch_host_seconds": 80.56337869167328,
+      "completed_DFS_batch_count": 8,
+      "sum_completed_DFS_host_seconds": 612.5168023109436,
+      "TTT_host_seconds": 245.53089570999146,
+      "prompt_tier": "L",
+      "prompt_rank_within_tier_1based": 3,
+      "runtime_rank_within_tier_1based": 3
+    },
+    {
+      "task_id": "a251c730",
+      "n_test_queries": 1,
+      "n_demo": 2,
+      "prompt_grid_cells_by_query": [
+        3032
+      ],
+      "mean_prompt_grid_cells": 3032.0,
+      "mean_prompt_grid_cells_fraction": [
+        3032,
+        1
+      ],
+      "query_input_cells": [
+        900
+      ],
+      "median_completed_DFS_batch_host_seconds": 34.96745419502258,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 141.65846300125122,
+      "TTT_host_seconds": 210.46962594985962,
+      "prompt_tier": "L",
+      "prompt_rank_within_tier_1based": 4,
+      "runtime_rank_within_tier_1based": 2
+    },
+    {
+      "task_id": "221dfab4",
+      "n_test_queries": 2,
+      "n_demo": 2,
+      "prompt_grid_cells_by_query": [
+        3177,
+        3452
+      ],
+      "mean_prompt_grid_cells": 3314.5,
+      "mean_prompt_grid_cells_fraction": [
+        6629,
+        2
+      ],
+      "query_input_cells": [
+        625,
+        900
+      ],
+      "median_completed_DFS_batch_host_seconds": 102.1254825592041,
+      "completed_DFS_batch_count": 5,
+      "sum_completed_DFS_host_seconds": 829.285894870758,
+      "TTT_host_seconds": 258.2627727985382,
+      "prompt_tier": "L",
+      "prompt_rank_within_tier_1based": 5,
+      "runtime_rank_within_tier_1based": 5
+    },
+    {
+      "task_id": "62593bfd",
+      "n_test_queries": 2,
+      "n_demo": 2,
+      "prompt_grid_cells_by_query": [
+        3489,
+        3396
+      ],
+      "mean_prompt_grid_cells": 3442.5,
+      "mean_prompt_grid_cells_fraction": [
+        6885,
+        2
+      ],
+      "query_input_cells": [
+        625,
+        532
+      ],
+      "median_completed_DFS_batch_host_seconds": 139.32128190994263,
+      "completed_DFS_batch_count": 6,
+      "sum_completed_DFS_host_seconds": 824.9172093868256,
+      "TTT_host_seconds": 294.28891372680664,
+      "prompt_tier": "L",
+      "prompt_rank_within_tier_1based": 6,
+      "runtime_rank_within_tier_1based": 8
+    },
+    {
+      "task_id": "b10624e5",
+      "n_test_queries": 1,
+      "n_demo": 2,
+      "prompt_grid_cells_by_query": [
+        3645
+      ],
+      "mean_prompt_grid_cells": 3645.0,
+      "mean_prompt_grid_cells_fraction": [
+        3645,
+        1
+      ],
+      "query_input_cells": [
+        729
+      ],
+      "median_completed_DFS_batch_host_seconds": 119.52041292190552,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 443.495064496994,
+      "TTT_host_seconds": 293.2549135684967,
+      "prompt_tier": "L",
+      "prompt_rank_within_tier_1based": 7,
+      "runtime_rank_within_tier_1based": 7
+    },
+    {
+      "task_id": "b99e7126",
+      "n_test_queries": 1,
+      "n_demo": 3,
+      "prompt_grid_cells_by_query": [
+        5887
+      ],
+      "mean_prompt_grid_cells": 5887.0,
+      "mean_prompt_grid_cells_fraction": [
+        5887,
+        1
+      ],
+      "query_input_cells": [
+        841
+      ],
+      "median_completed_DFS_batch_host_seconds": 116.6932692527771,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 478.61465072631836,
+      "TTT_host_seconds": 558.2786672115326,
+      "prompt_tier": "L",
+      "prompt_rank_within_tier_1based": 8,
+      "runtime_rank_within_tier_1based": 6
+    }
+  ],
+  "tiers": {
+    "S": {
+      "prompt_order_task_ids": [
+        "78332cb0",
+        "d35bdbdc",
+        "b0039139",
+        "dbff022c",
+        "97d7923e",
+        "446ef5d2",
+        "5545f144",
+        "8f3a5a89"
+      ],
+      "runtime_order_task_ids": [
+        "b0039139",
+        "8f3a5a89",
+        "78332cb0",
+        "d35bdbdc",
+        "dbff022c",
+        "446ef5d2",
+        "5545f144",
+        "97d7923e"
+      ],
+      "selected_runtime_rank_1based": 4,
+      "selected_task_id": "d35bdbdc"
+    },
+    "M": {
+      "prompt_order_task_ids": [
+        "271d71e2",
+        "7b3084d4",
+        "332f06d7",
+        "71e489b6",
+        "c7f57c3e",
+        "35ab12c3",
+        "2d0172a1",
+        "cb2d8a2c"
+      ],
+      "runtime_order_task_ids": [
+        "2d0172a1",
+        "71e489b6",
+        "7b3084d4",
+        "271d71e2",
+        "332f06d7",
+        "35ab12c3",
+        "cb2d8a2c",
+        "c7f57c3e"
+      ],
+      "selected_runtime_rank_1based": 4,
+      "selected_task_id": "271d71e2"
+    },
+    "L": {
+      "prompt_order_task_ids": [
+        "2ba387bc",
+        "7b80bb43",
+        "88e364bc",
+        "a251c730",
+        "221dfab4",
+        "62593bfd",
+        "b10624e5",
+        "b99e7126"
+      ],
+      "runtime_order_task_ids": [
+        "2ba387bc",
+        "a251c730",
+        "88e364bc",
+        "7b80bb43",
+        "221dfab4",
+        "b99e7126",
+        "b10624e5",
+        "62593bfd"
+      ],
+      "selected_runtime_rank_1based": 4,
+      "selected_task_id": "7b80bb43"
+    }
+  },
+  "selected_task_ids_in_tier_order": [
+    "d35bdbdc",
+    "271d71e2",
+    "7b80bb43"
+  ],
+  "n_tasks": 3,
+  "n_queries": 5,
+  "manifest": "experiments/028/panel-v1/manifest.json",
+  "input_artifact": {
+    "path": "experiments/028/panel-v1/challenges.json",
+    "sha256": "341e7bac741286b6cde44c29279f2105b9bae6cbe9df028c6c98e3bd2c6826cb",
+    "bytes": 11690,
+    "encoding": "UTF-8 canonical sort_keys compact JSON plus terminal LF"
+  },
+  "sources": [
+    {
+      "path": "experiments/027/development-replay.json",
+      "sha256": "547c00a9bb8315e7783ca2893d9c7e245723f34e1517cf8f4c7d51f4003e22b1",
+      "bytes": 6829,
+      "role": "Use only sets.025_development24_excluding026.task_ids; score fields do not enter selection"
+    },
+    {
+      "path": "experiments/025/confirmation-v2-output/025/input/challenges.json",
+      "sha256": "38df4c7126f160f9dd045b4b0c9fb37ccb4f24dfbb51c8d32aa7b50f132ebeb9",
+      "bytes": 1596517,
+      "role": "Actual original025 forty-task inference challenges; no query output"
+    },
+    {
+      "path": "experiments/026/panel-v1/manifest.json",
+      "sha256": "02143e35eeb28f0634fa54334e1f217af1965bbf6212bd216970c16d6805e605",
+      "bytes": 19669,
+      "role": "026 sixteen IDs exclusion only"
+    },
+    {
+      "path": "experiments/027/confirmation-v1/manifest.json",
+      "sha256": "c56c16780af77a60715dcb595f2993f3ed26ed410f23c9f26f5e824a9359fd97",
+      "bytes": 24293,
+      "role": "027 C23 IDs exclusion only"
+    },
+    {
+      "path": "experiments/025/confirmation-v2-output/025/events-rank0.jsonl",
+      "sha256": "d63102154049cca6f2e63baa055ef25ee2388d0411a5ea540d05a4eebf71d8d7",
+      "bytes": 216802,
+      "role": "Existing original025 host timestamp intervals, no candidate grids or correctness used"
+    },
+    {
+      "path": "experiments/025/confirmation-v2-output/025/events-rank1.jsonl",
+      "sha256": "e32b509f0b9e2a385bed75c854d768cc5e4e503f6a11a67c2939f00fcd111981",
+      "bytes": 127105,
+      "role": "Existing original025 host timestamp intervals, no candidate grids or correctness used"
+    },
+    {
+      "path": "experiments/025/confirmation-v2-output/025/events-rank2.jsonl",
+      "sha256": "c095ff287cd5088b435ba7e2754690ce8af290621d79d49cbb4a053e8e16460b",
+      "bytes": 154110,
+      "role": "Existing original025 host timestamp intervals, no candidate grids or correctness used"
+    },
+    {
+      "path": "experiments/025/confirmation-v2-output/025/events-rank3.jsonl",
+      "sha256": "35980080e1ed23c932c27bbd9c936e3461e24304948f369ef02c53e1e546aa58",
+      "bytes": 160971,
+      "role": "Existing original025 host timestamp intervals, no candidate grids or correctness used"
+    }
+  ],
+  "limitations": [
+    "Old public development mechanism panel, not a fresh score confirmation or unseen validation.",
+    "All selected tasks appeared in025 inference and may have prior019/upstream exposure; no claim that sft139 has never seen their rules.",
+    "Length is a known prompt grid-cell proxy, not actual tokenizer length; new run must record actual prompt token SHA and length.",
+    "Original025 timings are per-worker host event intervals from4xL4, not synchronized CUDA measurements or wall-clock sums.",
+    "Original025 did not explicitly fix PYTHONHASHSEED; new controlled pair must share hash, adapter and exact prompt token sequences.",
+    "Selection does not require old candidates to be correct or nonempty. If an earlier current-run batch has no legal draft, use original DFS fallback and report it.",
+    "No GPU run,028 TTT,DFS implementation,new predictions or scoring has occurred at this freeze."
+  ]
+}

@@ -1,0 +1,19 @@
+/usr/local/lib/python3.11/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  validate(nb)
+/usr/local/lib/python3.11/dist-packages/pydevd_plugins/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+/usr/local/lib/python3.11/dist-packages/pydevd_plugins/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+Found existing installation: tensorflow 2.18.0
+Uninstalling tensorflow-2.18.0:
+  Successfully uninstalled tensorflow-2.18.0
+{"event": "original_utility_mount_lookup", "roots": ["/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch"], "elapsed_s": 0.0039010449999921093, "sys_path": ["/kaggle/working", "/kaggle/lib/kagglegym", "/kaggle/lib", "/kaggle/usr/lib", "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch", "/kaggle/input/competitions/arc-prize-2026-arc-agi-2", "/usr/lib/python311.zip", "/usr/lib/python3.11", "/usr/lib/python3.11/lib-dynload", "", "/usr/local/lib/python3.11/dist-packages", "/usr/lib/python3/dist-packages", "/usr/local/lib/python3.11/dist-packages/IPython/extensions", "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch/setuptools/_vendor", "/root/.ipython"]}
+Traceback (most recent call last):

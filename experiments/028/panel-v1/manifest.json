@@ -1,0 +1,610 @@
+{
+  "created_at_utc": "2026-10-26T13:27:23.331190+00:00",
+  "cohort": "028_original_NVARC4B_DFS_throughput_development3",
+  "status": "input_and_selection_frozen_before028_GPU",
+  "n_tasks": 3,
+  "n_queries": 5,
+  "selection_rule": "Take exactly the24 IDs from027 development-replay sets.025_development24_excluding026.task_ids, exclude026 sixteen and027 C23. For each task calculate the mean over all queries of [sum of demo input and known demo output grid cells plus that query input grid cells]. Sort by exact rational mean then task_id, split into three contiguous8-task tiers S/M/L. Within each tier sort by median host search_start-to-search_end interval over all completed original025 DFS batches, then task_id; choose the lower median, rank4 of8. Preserve all original queries. No prediction, candidate count, oracle, correctness, query answer or new result enters the rule.",
+  "length_measure": "Mean full known prompt grid cells per query, including demo inputs and known demo outputs, excluding query outputs",
+  "runtime_measure": "Median completed original025 DFS batch search_start/search_end host interval, no return-beam/candidate count used",
+  "tiers": {
+    "S": {
+      "prompt_order_task_ids": [
+        "78332cb0",
+        "d35bdbdc",
+        "b0039139",
+        "dbff022c",
+        "97d7923e",
+        "446ef5d2",
+        "5545f144",
+        "8f3a5a89"
+      ],
+      "runtime_order_task_ids": [
+        "b0039139",
+        "8f3a5a89",
+        "78332cb0",
+        "d35bdbdc",
+        "dbff022c",
+        "446ef5d2",
+        "5545f144",
+        "97d7923e"
+      ],
+      "selected_runtime_rank_1based": 4,
+      "selected_task_id": "d35bdbdc"
+    },
+    "M": {
+      "prompt_order_task_ids": [
+        "271d71e2",
+        "7b3084d4",
+        "332f06d7",
+        "71e489b6",
+        "c7f57c3e",
+        "35ab12c3",
+        "2d0172a1",
+        "cb2d8a2c"
+      ],
+      "runtime_order_task_ids": [
+        "2d0172a1",
+        "71e489b6",
+        "7b3084d4",
+        "271d71e2",
+        "332f06d7",
+        "35ab12c3",
+        "cb2d8a2c",
+        "c7f57c3e"
+      ],
+      "selected_runtime_rank_1based": 4,
+      "selected_task_id": "271d71e2"
+    },
+    "L": {
+      "prompt_order_task_ids": [
+        "2ba387bc",
+        "7b80bb43",
+        "88e364bc",
+        "a251c730",
+        "221dfab4",
+        "62593bfd",
+        "b10624e5",
+        "b99e7126"
+      ],
+      "runtime_order_task_ids": [
+        "2ba387bc",
+        "a251c730",
+        "88e364bc",
+        "7b80bb43",
+        "221dfab4",
+        "b99e7126",
+        "b10624e5",
+        "62593bfd"
+      ],
+      "selected_runtime_rank_1based": 4,
+      "selected_task_id": "7b80bb43"
+    }
+  },
+  "entries": [
+    {
+      "task_id": "d35bdbdc",
+      "n_test_queries": 3,
+      "n_demo": 3,
+      "prompt_grid_cells_by_query": [
+        700,
+        700,
+        700
+      ],
+      "mean_prompt_grid_cells": 700.0,
+      "mean_prompt_grid_cells_fraction": [
+        2100,
+        3
+      ],
+      "query_input_cells": [
+        100,
+        100,
+        100
+      ],
+      "median_completed_DFS_batch_host_seconds": 23.74549412727356,
+      "completed_DFS_batch_count": 12,
+      "sum_completed_DFS_host_seconds": 286.00673270225525,
+      "TTT_host_seconds": 81.15194392204285,
+      "prompt_tier": "S",
+      "prompt_rank_within_tier_1based": 2,
+      "runtime_rank_within_tier_1based": 4,
+      "source_group": "public_evaluation_NVARC028_runtime_development_panel",
+      "demo_pairs_sha256": "d500a072ca5816371f983772f0d08eefeeb8be2ce080a66000d89cf4d5dc1cf9",
+      "task_challenge_sha256": "495ff6fe26d209691e5d50c0a32d723b8583c90fc05acd12a40fd23d459b4129",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "d35bdbdc_0",
+          "input_sha256": "8e79d412b58d81d2cfd39ce7be8246e2331f86ffb8a88dc03ef03699419acf1b",
+          "input_shape": [
+            10,
+            10
+          ],
+          "prompt_grid_cells": 700
+        },
+        {
+          "query_index": 1,
+          "query_key": "d35bdbdc_1",
+          "input_sha256": "b2032ad4119b7ab2e6124ebeec4be47cffbc4b68b3a7faaeb627c41e118e11e0",
+          "input_shape": [
+            10,
+            10
+          ],
+          "prompt_grid_cells": 700
+        },
+        {
+          "query_index": 2,
+          "query_key": "d35bdbdc_2",
+          "input_sha256": "e38c3173a31594838d2f3654471a39d9c26635f8b74d0ea35717d2dc6b13a117",
+          "input_shape": [
+            10,
+            10
+          ],
+          "prompt_grid_cells": 700
+        }
+      ],
+      "old_completed_DFS_batches": [
+        {
+          "rank": 0,
+          "subkeys": [
+            "d35bdbdc_0.permute4150723698.ex120",
+            "d35bdbdc_0.permute7931086254.ex201",
+            "d35bdbdc_0.rot90.rot90.permute0165489723.ex201",
+            "d35bdbdc_0.rot90.rot90.permute8579032416.ex201"
+          ],
+          "host_interval_seconds": 24.359298706054688,
+          "started_at_unix": 1792903068.3087118,
+          "finished_at_unix": 1792903092.6680105
+        },
+        {
+          "rank": 0,
+          "subkeys": [
+            "d35bdbdc_0.rot90.permute1654278039.ex102",
+            "d35bdbdc_0.rot90.permute7568409321.ex102",
+            "d35bdbdc_0.rot90.rot90.rot90.permute1456732089.ex120",
+            "d35bdbdc_0.rot90.rot90.rot90.permute9316478025.ex201"
+          ],
+          "host_interval_seconds": 41.590579986572266,
+          "started_at_unix": 1792903097.828061,
+          "finished_at_unix": 1792903139.418641
+        },
+        {
+          "rank": 0,
+          "subkeys": [
+            "d35bdbdc_1.permute1602397845.ex021",
+            "d35bdbdc_1.permute9368452107.ex102",
+            "d35bdbdc_1.rot90.rot90.permute0986123745.ex102",
+            "d35bdbdc_1.rot90.rot90.permute1678240593.ex012"
+          ],
+          "host_interval_seconds": 26.062432289123535,
+          "started_at_unix": 1792903144.628976,
+          "finished_at_unix": 1792903170.6914084
+        },
+        {
+          "rank": 0,
+          "subkeys": [
+            "d35bdbdc_1.rot90.permute6150492378.ex201",
+            "d35bdbdc_1.rot90.permute7690351428.ex021",
+            "d35bdbdc_1.rot90.rot90.rot90.permute6572109834.ex021",
+            "d35bdbdc_1.rot90.rot90.rot90.permute6703249158.ex201"
+          ],
+          "host_interval_seconds": 20.33158302307129,
+          "started_at_unix": 1792903175.906527,
+          "finished_at_unix": 1792903196.23811
+        },
+        {
+          "rank": 0,
+          "subkeys": [
+            "d35bdbdc_2.permute4950812673.ex120",
+            "d35bdbdc_2.permute7284135096.ex201",
+            "d35bdbdc_2.rot90.rot90.permute3450786921.ex210",
+            "d35bdbdc_2.rot90.rot90.permute4965803712.ex102"
+          ],
+          "host_interval_seconds": 13.607994079589844,
+          "started_at_unix": 1792903201.433276,
+          "finished_at_unix": 1792903215.04127
+        },
+        {
+          "rank": 0,
+          "subkeys": [
+            "d35bdbdc_2.rot90.permute0845731926.ex021",
+            "d35bdbdc_2.rot90.permute9302675184.ex021",
+            "d35bdbdc_2.rot90.rot90.rot90.permute1258796043.ex120",
+            "d35bdbdc_2.rot90.rot90.rot90.permute1948706532.ex201"
+          ],
+          "host_interval_seconds": 23.13168954849243,
+          "started_at_unix": 1792903217.6291702,
+          "finished_at_unix": 1792903240.7608597
+        },
+        {
+          "rank": 0,
+          "subkeys": [
+            "d35bdbdc_0.transpose.permute5980213764.ex201",
+            "d35bdbdc_0.transpose.permute7562830149.ex210",
+            "d35bdbdc_0.transpose.rot90.rot90.permute6142358709.ex102",
+            "d35bdbdc_0.transpose.rot90.rot90.permute9578240136.ex012"
+          ],
+          "host_interval_seconds": 30.72750425338745,
+          "started_at_unix": 1792903243.321282,
+          "finished_at_unix": 1792903274.0487862
+        },
+        {
+          "rank": 0,
+          "subkeys": [
+            "d35bdbdc_0.transpose.rot90.permute5431627809.ex021",
+            "d35bdbdc_0.transpose.rot90.permute9180254367.ex201",
+            "d35bdbdc_0.transpose.rot90.rot90.rot90.permute8024967315.ex210",
+            "d35bdbdc_0.transpose.rot90.rot90.rot90.permute8271654930.ex021"
+          ],
+          "host_interval_seconds": 18.86850595474243,
+          "started_at_unix": 1792903280.5905745,
+          "finished_at_unix": 1792903299.4590805
+        },
+        {
+          "rank": 0,
+          "subkeys": [
+            "d35bdbdc_1.transpose.permute2908315674.ex102",
+            "d35bdbdc_1.transpose.permute5386701942.ex201",
+            "d35bdbdc_1.transpose.rot90.rot90.permute6720984531.ex021",
+            "d35bdbdc_1.transpose.rot90.rot90.permute9756482013.ex120"
+          ],
+          "host_interval_seconds": 27.72183346748352,
+          "started_at_unix": 1792903303.373045,
+          "finished_at_unix": 1792903331.0948784
+        },
+        {
+          "rank": 0,
+          "subkeys": [
+            "d35bdbdc_1.transpose.rot90.permute0859274163.ex012",
+            "d35bdbdc_1.transpose.rot90.permute4281673590.ex102",
+            "d35bdbdc_1.transpose.rot90.rot90.rot90.permute3170468295.ex120",
+            "d35bdbdc_1.transpose.rot90.rot90.rot90.permute8356214097.ex102"
+          ],
+          "host_interval_seconds": 25.455158710479736,
+          "started_at_unix": 1792903333.6848843,
+          "finished_at_unix": 1792903359.140043
+        },
+        {
+          "rank": 0,
+          "subkeys": [
+            "d35bdbdc_2.transpose.permute5436201789.ex102",
+            "d35bdbdc_2.transpose.permute7068392154.ex102",
+            "d35bdbdc_2.transpose.rot90.rot90.permute6827490351.ex210",
+            "d35bdbdc_2.transpose.rot90.rot90.permute8431095762.ex201"
+          ],
+          "host_interval_seconds": 23.08578610420227,
+          "started_at_unix": 1792903359.1511,
+          "finished_at_unix": 1792903382.236886
+        },
+        {
+          "rank": 0,
+          "subkeys": [
+            "d35bdbdc_2.transpose.rot90.permute4095713862.ex120",
+            "d35bdbdc_2.transpose.rot90.permute4907281356.ex210",
+            "d35bdbdc_2.transpose.rot90.rot90.rot90.permute5198207463.ex102",
+            "d35bdbdc_2.transpose.rot90.rot90.rot90.permute7613284905.ex021"
+          ],
+          "host_interval_seconds": 11.064366579055786,
+          "started_at_unix": 1792903386.1004121,
+          "finished_at_unix": 1792903397.1647787
+        }
+      ],
+      "exposure": {
+        "prior025_inference": true,
+        "prior025_scoring_and027_development_replay": true,
+        "used_in026_sixteen": false,
+        "used_in027_C23": false,
+        "fresh_or_unseen_validation": false
+      }
+    },
+    {
+      "task_id": "271d71e2",
+      "n_test_queries": 1,
+      "n_demo": 3,
+      "prompt_grid_cells_by_query": [
+        1670
+      ],
+      "mean_prompt_grid_cells": 1670.0,
+      "mean_prompt_grid_cells_fraction": [
+        1670,
+        1
+      ],
+      "query_input_cells": [
+        676
+      ],
+      "median_completed_DFS_batch_host_seconds": 50.45246648788452,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 222.6819348335266,
+      "TTT_host_seconds": 112.46668434143066,
+      "prompt_tier": "M",
+      "prompt_rank_within_tier_1based": 1,
+      "runtime_rank_within_tier_1based": 4,
+      "source_group": "public_evaluation_NVARC028_runtime_development_panel",
+      "demo_pairs_sha256": "294171a7fd5128c7fd8d8cdd710147d8fbdc791ae0e8ca3e49b135e6a8af32f9",
+      "task_challenge_sha256": "bb841929305820dbf00ce487378c17b153c38d1cfe55a295ae80280643b3d90d",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "271d71e2_0",
+          "input_sha256": "87cad6f61c75f7533ebdd53f4df79358850a854df92d99d5a0c9fd5df5edd9e2",
+          "input_shape": [
+            26,
+            26
+          ],
+          "prompt_grid_cells": 1670
+        }
+      ],
+      "old_completed_DFS_batches": [
+        {
+          "rank": 3,
+          "subkeys": [
+            "271d71e2_0.permute4150723698.ex012",
+            "271d71e2_0.permute9302675184.ex012",
+            "271d71e2_0.rot90.rot90.permute5386701942.ex021",
+            "271d71e2_0.rot90.rot90.permute8579032416.ex120"
+          ],
+          "host_interval_seconds": 82.02824187278748,
+          "started_at_unix": 1792897950.9047842,
+          "finished_at_unix": 1792898032.933026
+        },
+        {
+          "rank": 3,
+          "subkeys": [
+            "271d71e2_0.rot90.permute4281673590.ex102",
+            "271d71e2_0.rot90.permute4950812673.ex201",
+            "271d71e2_0.rot90.rot90.rot90.permute1654278039.ex210",
+            "271d71e2_0.rot90.rot90.rot90.permute4965803712.ex210"
+          ],
+          "host_interval_seconds": 44.33169937133789,
+          "started_at_unix": 1792898032.9556148,
+          "finished_at_unix": 1792898077.2873142
+        },
+        {
+          "rank": 3,
+          "subkeys": [
+            "271d71e2_0.transpose.permute1602397845.ex201",
+            "271d71e2_0.transpose.permute9180254367.ex021",
+            "271d71e2_0.transpose.rot90.rot90.permute0986123745.ex021",
+            "271d71e2_0.transpose.rot90.rot90.permute5436201789.ex021"
+          ],
+          "host_interval_seconds": 56.57323360443115,
+          "started_at_unix": 1792898077.3018577,
+          "finished_at_unix": 1792898133.8750913
+        },
+        {
+          "rank": 3,
+          "subkeys": [
+            "271d71e2_0.transpose.rot90.permute4907281356.ex102",
+            "271d71e2_0.transpose.rot90.permute5980213764.ex102",
+            "271d71e2_0.transpose.rot90.rot90.rot90.permute6142358709.ex021",
+            "271d71e2_0.transpose.rot90.rot90.rot90.permute7690351428.ex210"
+          ],
+          "host_interval_seconds": 39.74875998497009,
+          "started_at_unix": 1792898133.8913226,
+          "finished_at_unix": 1792898173.6400826
+        }
+      ],
+      "exposure": {
+        "prior025_inference": true,
+        "prior025_scoring_and027_development_replay": true,
+        "used_in026_sixteen": false,
+        "used_in027_C23": false,
+        "fresh_or_unseen_validation": false
+      }
+    },
+    {
+      "task_id": "7b80bb43",
+      "n_test_queries": 1,
+      "n_demo": 2,
+      "prompt_grid_cells_by_query": [
+        2797
+      ],
+      "mean_prompt_grid_cells": 2797.0,
+      "mean_prompt_grid_cells_fraction": [
+        2797,
+        1
+      ],
+      "query_input_cells": [
+        493
+      ],
+      "median_completed_DFS_batch_host_seconds": 81.46077537536621,
+      "completed_DFS_batch_count": 4,
+      "sum_completed_DFS_host_seconds": 305.1882748603821,
+      "TTT_host_seconds": 234.61144948005676,
+      "prompt_tier": "L",
+      "prompt_rank_within_tier_1based": 2,
+      "runtime_rank_within_tier_1based": 4,
+      "source_group": "public_evaluation_NVARC028_runtime_development_panel",
+      "demo_pairs_sha256": "e3875702a70af35637fc2a71fbaec761037ee34b6a256482665fba871877ad3f",
+      "task_challenge_sha256": "0474a46cdd97436d65d2bb143a376d35e3ff2c264af6940c9f70de4ec4b06f8c",
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "7b80bb43_0",
+          "input_sha256": "2a1cb4bc08eb075f7721f0d0fc5ce8ae4a027f709a74032484079d9777b378a3",
+          "input_shape": [
+            29,
+            17
+          ],
+          "prompt_grid_cells": 2797
+        }
+      ],
+      "old_completed_DFS_batches": [
+        {
+          "rank": 2,
+          "subkeys": [
+            "7b80bb43_0.permute4150723698.ex10",
+            "7b80bb43_0.permute9302675184.ex10",
+            "7b80bb43_0.rot90.rot90.permute5386701942.ex01",
+            "7b80bb43_0.rot90.rot90.permute8579032416.ex01"
+          ],
+          "host_interval_seconds": 90.93892574310303,
+          "started_at_unix": 1792900793.6049228,
+          "finished_at_unix": 1792900884.5438485
+        },
+        {
+          "rank": 2,
+          "subkeys": [
+            "7b80bb43_0.rot90.permute4281673590.ex10",
+            "7b80bb43_0.rot90.permute4950812673.ex01",
+            "7b80bb43_0.rot90.rot90.rot90.permute1654278039.ex01",
+            "7b80bb43_0.rot90.rot90.rot90.permute4965803712.ex01"
+          ],
+          "host_interval_seconds": 86.30743217468262,
+          "started_at_unix": 1792900896.5826664,
+          "finished_at_unix": 1792900982.8900986
+        },
+        {
+          "rank": 2,
+          "subkeys": [
+            "7b80bb43_0.transpose.permute1602397845.ex01",
+            "7b80bb43_0.transpose.permute9180254367.ex01",
+            "7b80bb43_0.transpose.rot90.rot90.permute0986123745.ex01",
+            "7b80bb43_0.transpose.rot90.rot90.permute5436201789.ex10"
+          ],
+          "host_interval_seconds": 51.32779836654663,
+          "started_at_unix": 1792900995.0833852,
+          "finished_at_unix": 1792901046.4111836
+        },
+        {
+          "rank": 2,
+          "subkeys": [
+            "7b80bb43_0.transpose.rot90.permute4907281356.ex10",
+            "7b80bb43_0.transpose.rot90.permute5980213764.ex01",
+            "7b80bb43_0.transpose.rot90.rot90.rot90.permute6142358709.ex01",
+            "7b80bb43_0.transpose.rot90.rot90.rot90.permute7690351428.ex01"
+          ],
+          "host_interval_seconds": 76.6141185760498,
+          "started_at_unix": 1792901046.4383037,
+          "finished_at_unix": 1792901123.0524223
+        }
+      ],
+      "exposure": {
+        "prior025_inference": true,
+        "prior025_scoring_and027_development_replay": true,
+        "used_in026_sixteen": false,
+        "used_in027_C23": false,
+        "fresh_or_unseen_validation": false
+      }
+    }
+  ],
+  "input_artifact": {
+    "path": "experiments/028/panel-v1/challenges.json",
+    "sha256": "341e7bac741286b6cde44c29279f2105b9bae6cbe9df028c6c98e3bd2c6826cb",
+    "bytes": 11690,
+    "encoding": "UTF-8 canonical sort_keys compact JSON plus terminal LF"
+  },
+  "sources": [
+    {
+      "path": "experiments/027/development-replay.json",
+      "sha256": "547c00a9bb8315e7783ca2893d9c7e245723f34e1517cf8f4c7d51f4003e22b1",
+      "bytes": 6829,
+      "role": "Use only sets.025_development24_excluding026.task_ids; score fields do not enter selection"
+    },
+    {
+      "path": "experiments/025/confirmation-v2-output/025/input/challenges.json",
+      "sha256": "38df4c7126f160f9dd045b4b0c9fb37ccb4f24dfbb51c8d32aa7b50f132ebeb9",
+      "bytes": 1596517,
+      "role": "Actual original025 forty-task inference challenges; no query output"
+    },
+    {
+      "path": "experiments/026/panel-v1/manifest.json",
+      "sha256": "02143e35eeb28f0634fa54334e1f217af1965bbf6212bd216970c16d6805e605",
+      "bytes": 19669,
+      "role": "026 sixteen IDs exclusion only"
+    },
+    {
+      "path": "experiments/027/confirmation-v1/manifest.json",
+      "sha256": "c56c16780af77a60715dcb595f2993f3ed26ed410f23c9f26f5e824a9359fd97",
+      "bytes": 24293,
+      "role": "027 C23 IDs exclusion only"
+    },
+    {
+      "path": "experiments/025/confirmation-v2-output/025/events-rank0.jsonl",
+      "sha256": "d63102154049cca6f2e63baa055ef25ee2388d0411a5ea540d05a4eebf71d8d7",
+      "bytes": 216802,
+      "role": "Existing original025 host timestamp intervals, no candidate grids or correctness used"
+    },
+    {
+      "path": "experiments/025/confirmation-v2-output/025/events-rank1.jsonl",
+      "sha256": "e32b509f0b9e2a385bed75c854d768cc5e4e503f6a11a67c2939f00fcd111981",
+      "bytes": 127105,
+      "role": "Existing original025 host timestamp intervals, no candidate grids or correctness used"
+    },
+    {
+      "path": "experiments/025/confirmation-v2-output/025/events-rank2.jsonl",
+      "sha256": "c095ff287cd5088b435ba7e2754690ce8af290621d79d49cbb4a053e8e16460b",
+      "bytes": 154110,
+      "role": "Existing original025 host timestamp intervals, no candidate grids or correctness used"
+    },
+    {
+      "path": "experiments/025/confirmation-v2-output/025/events-rank3.jsonl",
+      "sha256": "35980080e1ed23c932c27bbd9c936e3461e24304948f369ef02c53e1e546aa58",
+      "bytes": 160971,
+      "role": "Existing original025 host timestamp intervals, no candidate grids or correctness used"
+    }
+  ],
+  "excluded026_task_ids": [
+    "20a9e565",
+    "269e22fb",
+    "4c7dc4dd",
+    "58490d8a",
+    "64efde09",
+    "65b59efc",
+    "67e490f4",
+    "7b0280bc",
+    "7b5033c1",
+    "7ed72f31",
+    "898e7135",
+    "9385bd28",
+    "a47bf94d",
+    "e12f9a14",
+    "e8686506",
+    "eee78d87"
+  ],
+  "excluded027_C23_task_ids": [
+    "16b78196",
+    "1ae2feb7",
+    "31f7f899",
+    "409aa875",
+    "4a21e3da",
+    "5dbc8537",
+    "6e4f6532",
+    "7666fa5d",
+    "7c66cb00",
+    "80a900e0",
+    "88bcf3b4",
+    "89565ca0",
+    "8b7bacbf",
+    "8b9c3697",
+    "9bbf930d",
+    "a32d8b75",
+    "a6f40cea",
+    "b5ca7ac4",
+    "b9e38dc0",
+    "d59b0160",
+    "dd6b8c4b",
+    "f560132c",
+    "faa9f03d"
+  ],
+  "query_output_fields_in_challenges": 0,
+  "query_solutions_read_for_selection": false,
+  "new_predictions_read_for_selection": false,
+  "limitations": [
+    "Old public development mechanism panel, not a fresh score confirmation or unseen validation.",
+    "All selected tasks appeared in025 inference and may have prior019/upstream exposure; no claim that sft139 has never seen their rules.",
+    "Length is a known prompt grid-cell proxy, not actual tokenizer length; new run must record actual prompt token SHA and length.",
+    "Original025 timings are per-worker host event intervals from4xL4, not synchronized CUDA measurements or wall-clock sums.",
+    "Original025 did not explicitly fix PYTHONHASHSEED; new controlled pair must share hash, adapter and exact prompt token sequences.",
+    "Selection does not require old candidates to be correct or nonempty. If an earlier current-run batch has no legal draft, use original DFS fallback and report it.",
+    "No GPU run,028 TTT,DFS implementation,new predictions or scoring has occurred at this freeze."
+  ],
+  "required_new_run_pair_controls": [
+    "One original128-step TTT adapter per task shared by both DFS variants",
+    "Original threshold0.2,8 scoring views,B4 and training/eval seeds fixed",
+    "Same actual four-view tokens for paired calls; freeze arm ordering",
+    "Only earlier current-run completed batch candidates may supply draft",
+    "Record actual hardware,elapsed,cache class,KV state,forwards,candidate sequence and NLL drift"
+  ],
+  "object_hash_encoding": "UTF-8 json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(comma,colon)), no terminal newline. Input-artifact byte SHA separately includes its terminal LF."
+}

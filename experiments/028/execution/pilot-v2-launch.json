@@ -1,0 +1,25 @@
+{
+  "requested_at_utc": "2026-10-26T13:43:01.766241+00:00",
+  "account": "zhuating",
+  "ref": "zhuating/arc2-028-dfs-path-pilot",
+  "notebook_sha256": "0c9d58242c9dae02afb8afb411deda8a5e76ce5af14596b37b5a382fe40f5153",
+  "package_directory": "/private/tmp/arc2-028-dfs-pilot-v2-ready",
+  "state": "accepted",
+  "quota_before": {
+    "total_time_allowed": 108000.0,
+    "time_used": 81158.828,
+    "time_reserved": 0.0,
+    "available_seconds": 26841.172000000006
+  },
+  "session_timeout_seconds": 5400,
+  "expected_version": 2,
+  "repair": "Define missing raw_rerun_flag in setup; V1 failed before checkpoint staging or TTT.",
+  "purpose": "User-authorized bounded same-adapter DFS mechanism pilot; no offline training, no competition submission.",
+  "response": {
+    "ref": "/code/zhuating/arc2-028-dfs-path-pilot",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-028-dfs-path-pilot",
+    "versionNumber": 2,
+    "kernelId": 140991448
+  },
+  "returned_at_utc": "2026-10-26T13:43:04.060631+00:00"
+}

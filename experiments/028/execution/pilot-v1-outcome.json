@@ -1,0 +1,54 @@
+{
+  "downloaded_at_utc": "2026-10-26T13:41:58.952401+00:00",
+  "ref": "zhuating/arc2-028-dfs-path-pilot",
+  "status": {
+    "status": "ERROR"
+  },
+  "script_version_ids": [
+    362510062
+  ],
+  "remote_files": [
+    "028/input/challenges.json",
+    "028/input/runtime-manifest.json",
+    "028/mount-diagnostics.json",
+    "dfs_path_reuse.py",
+    "pilot_runtime.py"
+  ],
+  "downloaded": [
+    {
+      "file_name": "028/input/challenges.json",
+      "bytes": 11690,
+      "sha256": "341e7bac741286b6cde44c29279f2105b9bae6cbe9df028c6c98e3bd2c6826cb",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v1-output/028/input/challenges.json"
+    },
+    {
+      "file_name": "028/input/runtime-manifest.json",
+      "bytes": 329,
+      "sha256": "8534dc75232fc9d8f8f124eeb57e7925041a3b76a3cf63e3f4d35407932a9854",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v1-output/028/input/runtime-manifest.json"
+    },
+    {
+      "file_name": "028/mount-diagnostics.json",
+      "bytes": 895,
+      "sha256": "33b8167c3b341478d04ccd21a22b502e51cb55ff2bf3be25ca29f7dbd2f18ba0",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v1-output/028/mount-diagnostics.json"
+    },
+    {
+      "file_name": "dfs_path_reuse.py",
+      "bytes": 13109,
+      "sha256": "b658d01533d599cc4074caf3f60bceb0b98cd61b5d87de3cc0e6ea8b9dce2e34",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v1/dfs_path_reuse.py"
+    },
+    {
+      "file_name": "pilot_runtime.py",
+      "bytes": 9146,
+      "sha256": "0551b066357f15c82715b14bf536b072de8b51f7a45826e74724fb144807862a",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v1/pilot_runtime.py"
+    }
+  ],
+  "local_output_directory": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v1-output",
+  "source_directory": "/private/tmp/arc2-028-pilot-output-v1",
+  "log_sha256": "5329484dcf813e1741a59e5467a7ad59f09845501c876cfc83388cc8f63eaaf5",
+  "gold_read_by_download": false,
+  "download_method": "8 parallel GETs; existing artifacts reused only after SHA match"
+}

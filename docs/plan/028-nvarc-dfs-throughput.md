@@ -1,6 +1,6 @@
 # 028 NVARC DFS提速与同预算搜索核查
 
-日期：2026-10-26。承接[027正式退分复盘](../progress/027-nvarc-ttt-view-ensemble.md)。本文件是实现与手动实验交接，**求解改动、GPU实验和新submission均未运行**。
+日期：2026-10-26。承接[027正式退分复盘](../progress/027-nvarc-ttt-view-ensemble.md)。用户进一步授权继续优化后，机制proxy、面板与手动配对已实现，研究V1启动日志变量错误已修正，**V2已接受启动，完整结果／提速／新submission均未取得**。见[实际进展](../progress/028-nvarc-dfs-throughput.md)。下文保留原研究目标，实际pilot范围以同号progress为准。
 
 ## 研究背景与唯一方向
 
@@ -24,7 +24,7 @@
 2. 先记录真实cache类型、有效长度与每次回溯前后长度、forward次数／token数，使用CUDA同步和events补测prefill、decode、CPU拷贝及分支控制。同步测量单独一遍，不把新增同步开销混进速度主比较。保留原版重复运行漂移作为参照。
 3. 唯一草稿规则：每个query取**更早已完成DFS批次按原返回顺序的第一个合法candidate**，保存原坐标grid；用`ArcDataset.forward_mod(grid, subkey)`映射到当前view，经原formatter／tokenizer得到路径。没有此前候选时直接走原DFS。不根据gold、候选分数或task ID选草稿，不额外调用模型生成草稿。
 4. 每次最多预计算该路径后续16 token。第一token概率来自当前prefix最后logit；后续来自前一token位置的target logits。只要当前实际前缀偏离草稿，该行预计算值立即失效。草稿只是减少相同路径上的forward，**每个仍满足原累计NLL阈值的替代分支都必须枚举**。
-5. 保持原每行按累计NLL排序的遍历顺序；不能为了利用草稿而优先访问原本更靠后的分支。保持`score < -log(0.2)`、原ARC_TOKENS、EOS15、最大输出token、540秒DFS／1200秒task／42600秒全局检查。当前pilot不启用新阈值。
+5. 保持原每行按累计NLL排序的遍历顺序；不能为了利用草稿而优先访问原本更靠后的分支。保持`score < -log(0.2)`、原ARC_TOKENS、EOS15、最大输出token与每次540秒DFS。机制ABBA多次重复测量受本次5400秒会话约束，不作为原1200秒task预算实证；后续端到端评价保留1200秒task／42600秒全局检查。当前pilot不启用新阈值。
 6. 明确处理四行batch的不同接受长度、EOS、无候选PAD行及RoPE position。离开预计算路径或回溯时恢复**实际Unsloth cache的全部可变状态**，不能假定它是普通tuple或仅裁剪一个可见长度字段。无法可靠恢复则停止该实现，不默认为等价。
 
 只新增必要的包装、观测与手动实验脚本，不新增测试文件、测试目录或框架。
@@ -47,4 +47,4 @@
 
 ## 当前交接状态
 
-已完成：027实际结果归档、已有阶段事件CPU统计、C23第二槽风险覆盖复盘及上述研究设计。未完成：面板ID冻结、DFS代码移植、GPU profile／机制配对、预算配对、新正式包和真实提分。需要代码实现与GPU实验时按本计划交接执行，不能把计划标成运行结果。
+已完成：027实际结果归档、已有阶段事件CPU统计、C23第二槽风险覆盖复盘、三题面板冻结、16-token已知路径proxy及手动同adapter ABBA包装。实际Unsloth不支持multi-token withpast，本轮改用无past prompt+16token prefill、不可变snapshot及原DFS callback；尚未实现后续连续分块。V1仅封装日志变量错误、未进入TTT，V2已接受。未完成：完整GPU配对结果、实际吞吐收益、预算配对、新正式包和真实提分。具体版本和SHA见同号progress，不能把代码实现或启动当作研究效果。
