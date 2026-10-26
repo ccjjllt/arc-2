@@ -1,5 +1,5 @@
 {
-  "status": "ordinary_complete_and_competition_submission_accepted",
+  "status": "ordinary_complete_competition_complete_public_regression",
   "kernel": "zhuating/arc2-027-ttt-view-ensemble-formal",
   "kernel_version": 1,
   "script_version_id": 362150112,
@@ -162,5 +162,14 @@
   "start_Beijing": "2026-10-25T21:45:54.175103+08:00",
   "finish_Beijing": "2026-10-25T22:38:22.407221+08:00",
   "runtime_source_directory": "/private/tmp/arc2-027-formal-output-v1",
-  "note": "Ordinary original-four result is historical public runtime diagnostic. Ensemble equals base because all five first candidates agree; promotion evidence remains the predeclared C23 net1. Leaderboard score pending."
+  "note": "Ordinary original-four4/5 and C23 net1 are public diagnostics. Actual formal027 is29.72, lower than02330.14; retain023. Hidden extra coverage and specific causal attribution are unconfirmed.",
+  "formal_result": {
+    "status": "COMPLETE",
+    "public_score": "29.72",
+    "private_score": null,
+    "delta_vs023": "-0.42",
+    "exact_binding_verified": true,
+    "evidence": "execution/submission-57634436-result-20261026.json"
+  },
+  "postmortem": "postmortem-20261026.json"
 }

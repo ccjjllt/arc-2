@@ -1,5 +1,5 @@
 {
-  "status": "formal_submission_accepted_score_pending",
+  "status": "formal_complete_public_regression",
   "account": "zhuating",
   "competition": "arc-prize-2026-arc-agi-2",
   "kernel": "zhuating/arc2-027-ttt-view-ensemble-formal",
@@ -24,17 +24,23 @@
   "competition_submission_created": true,
   "user_authorized_direct_submission": true,
   "user_requested_startup_only_then_completion_notification": true,
-  "next_action": "Wait for user completion notification. Read submission57634436 once and compare actual public score against023 baseline30.14; do not resubmit or infer hidden status from ordinary COMPLETE.",
+  "next_action": "Retain023 public30.14; close027 as a promoted improvement. No unchanged resubmission or posthoc C23 seed/selector rescue. Follow028 DFS throughput research plan; solver implementation and GPU pilot not run.",
   "submission_ref": 57634436,
   "submitted_at_utc": "2026-10-25T15:18:01.880Z",
   "submission_receipt": "execution/competition-submission-v1.json",
   "initial_exact_binding_verified": true,
   "latest_result": {
-    "checked_at_utc": "2026-10-25T15:19:08.492821+00:00",
-    "status": null,
-    "public_score": null,
+    "checked_at_utc": "2026-10-26T13:03:35.756019+00:00",
+    "status": "COMPLETE",
+    "public_score": "29.72",
     "private_score": null,
     "exact_binding_verified": true,
-    "evidence": "execution/submission-57634436-latest.json"
-  }
+    "evidence": "execution/submission-57634436-result-20261026.json"
+  },
+  "public_score": "29.72",
+  "public_score_delta_vs023": "-0.42",
+  "promotion_after_actual_formal_result": false,
+  "result_evidence": "execution/submission-57634436-result-20261026.json",
+  "postmortem": "postmortem-20261026.json",
+  "next_plan": "docs/plan/028-nvarc-dfs-throughput.md"
 }

@@ -1,5 +1,5 @@
 {
-  "status": "formal_v1_ordinary_complete_competition_submission_accepted",
+  "status": "formal_v1_competition_complete_public_regression",
   "source_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/prepare_formal.py",
   "source_sha256": "f4ad6d81409e0ee1573d06b713967ea311501727eb547066fce2ddf57a752904",
   "research_notebook_sha256": "bb1e8320a087a0abb57948077ff15f794c1206f53abdb2b235c2969b7cca87b0",
@@ -13,5 +13,8 @@
   "runtime_validation": "ordinary4task/5query complete,4/5 exact diagnostic; full hash and source binding passed",
   "formal_source_notebook_generated": true,
   "ref": "zhuating/arc2-027-ttt-view-ensemble-formal",
-  "notebook_sha256": "3c8551fbf483bd1a4755722a0b7585408c2ed789f5d8ae5b3ed618f8a4200919"
+  "notebook_sha256": "3c8551fbf483bd1a4755722a0b7585408c2ed789f5d8ae5b3ed618f8a4200919",
+  "public_score": "29.72",
+  "public_score_delta_vs023": "-0.42",
+  "result_evidence": "execution/submission-57634436-result-20261026.json"
 }

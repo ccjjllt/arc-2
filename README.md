@@ -4,9 +4,9 @@
 
 ## 当前进度
 
-**当前阶段：027已正式提交，等待Kaggle评测结果。** submission **57634436**绑定[精确V1／362150112](https://www.kaggle.com/code/zhuating/arc2-027-ttt-view-ensemble-formal?scriptVersionId=362150112)，平台已接受，初始状态字段及公／私榜分数尚未返回。C23确认5→6/34、净增1无丢失，普通四题4/5且完整通过；这些是本地诊断，正式最好仍为023的30.14。[提交回执](experiments/027/execution/competition-submission-v1.json)。
+**2026-10-26实查：027正式成绩29.72，较023的30.14下降0.42。** submission **57634436**已COMPLETE，绑定[精确V1／362150112](https://www.kaggle.com/code/zhuating/arc2-027-ttt-view-ensemble-formal?scriptVersionId=362150112)，私榜未返回。[实际结果](experiments/027/execution/submission-57634436-result-20261026.json)。结束本融合方案的提分晋级，保留023；C23的5→6/34没有转化为公榜收益。隐藏extra覆盖及具体退分根因未确认，不重提或事后换seed。下一步[028 DFS提速小实验计划](docs/plan/028-nvarc-dfs-throughput.md)已写好，代码和GPU实验未运行。
 
-2026-10-25用户确认以NVARC为唯一主线，每轮只优化一个因素。当前交接见[027计划](docs/plan/027-nvarc-ttt-view-ensemble.md)、[实际进展](docs/progress/027-nvarc-ttt-view-ensemble.md)；上一轮[025结果与产物](experiments/025/README.md)。
+2026-10-25用户确认以NVARC为唯一主线，每轮只优化一个因素。当前交接见[028计划](docs/plan/028-nvarc-dfs-throughput.md)、[027实际复盘](docs/progress/027-nvarc-ttt-view-ensemble.md)与[机器可读分析](experiments/027/postmortem-20261026.json)。
 
 截至**2026-10-25 10:05北京时间的实查记录**：
 
@@ -19,12 +19,12 @@
 
 | 记录 | 结果 | 限制与入口 |
 | --- | --- | --- |
-| 最新正式提交023／57582282 | **30.14**，COMPLETE | 精确V1／361045383；[实际结果](experiments/023/execution/submission-57582282-result-20261025.json)，与历史最好持平 |
+| 正式对照023／57582282 | **30.14**，COMPLETE | 精确V1／361045383；[实际结果](experiments/023/execution/submission-57582282-result-20261025.json)，与历史最好持平 |
 | 上一份022／57504054 | **0.00**，COMPLETE | 隐藏执行根因未确认；[结果凭据](experiments/022/execution/submission-57504054-result.json) |
 | 020／57443913 | **12.50**，COMPLETE | 27B替换路线；[结果凭据](experiments/020/execution/competition-submission.json) |
 | 历史复制提交／314617319 | 用户报告 **30.14** | 未修改公开方案的试提交，不作为自主研究效果；[历史记录](docs/progress/001-baseline.md) |
 | 022公开E20 | 4B最终3/27，oracle5/27 | 已开发集合；[4B与既有27B配对](experiments/022/paired-e20-v2/paired-table.md) |
-| 027正式提交57634436 | 已接受，分数待返回 | 精确V1／362150112；[提交与初始绑定](experiments/027/execution/submission-57634436-initial.json) |
+| 027正式提交57634436 | **29.72**，COMPLETE，较023低0.42 | 精确V1／362150112；[实际结果](experiments/027/execution/submission-57634436-result-20261026.json)；未提分、结束晋级 |
 | 026公开开发面板16task／23query | base=challenger=4/23，新增2／丢失2，oracle6→9 | 本地配对，结束本续训配方；[完整结果](experiments/026/paired-v1-summary.json) |
 | 025公开确认40task／58query | B4=R2=15/58，oracle17/58 | 本地公开诊断，非公榜；[完整结果](experiments/025/confirmation-v2-summary.json) |
 

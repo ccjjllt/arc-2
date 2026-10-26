@@ -1,0 +1,149 @@
+{
+  "created_at_utc": "2026-10-26T13:10:33.320677+00:00",
+  "scope": "Manual CPU analysis of completed formal results and existing public run events; no GPU, training, new predictions, gold reads or parameter search.",
+  "actual_formal": {
+    "submission_ref": 57634436,
+    "script_version_id": 362150112,
+    "status": "COMPLETE",
+    "public_score": "29.72",
+    "private_score": null,
+    "exact_binding_verified": true,
+    "evidence": "experiments/027/execution/submission-57634436-result-20261026.json"
+  },
+  "formal_baseline": {
+    "submission_ref": 57582282,
+    "public_score": "30.14",
+    "evidence": "experiments/023/execution/submission-57582282-result-20261025.json"
+  },
+  "public_score_difference": "-0.42",
+  "decision": "Do not promote027 as an improvement; retain023 public30.14. Stop unchanged resubmission and posthoc seed/selector rescue on C23.",
+  "hidden_diagnostics": {
+    "download_attempt": "execution/formal-final-file-download-20261026.json",
+    "final_submission_download_http_status": 403,
+    "run_state_available": false,
+    "base_prediction_available": false,
+    "events_available": false,
+    "extra_coverage": "unconfirmed",
+    "second_slot_loss": "unconfirmed",
+    "no_inference_from_ordinary_outputs": true
+  },
+  "C23_existing_ledger_diagnostic": {
+    "n_queries": 34,
+    "by_policy": {
+      "base_B4": {
+        "attempt_1_exact": 5,
+        "attempt_2_exact": 0,
+        "either_exact": 5,
+        "only_attempt_2_exact": 0
+      },
+      "extra_B4": {
+        "attempt_1_exact": 6,
+        "attempt_2_exact": 2,
+        "either_exact": 8,
+        "only_attempt_2_exact": 2
+      },
+      "ensemble": {
+        "attempt_1_exact": 5,
+        "attempt_2_exact": 1,
+        "either_exact": 6,
+        "only_attempt_2_exact": 1
+      }
+    },
+    "gain_task_extra_completion_index_1based": 16,
+    "note": "Explanation of the already frozen result, not a new strategy or fresh validation."
+  },
+  "existing_event_profiles": [
+    {
+      "run": "025_original40",
+      "work_seconds": {
+        "TTT": 7484.053870439529,
+        "DFS": 14610.051208734512,
+        "score_envelope": 2222.1775336265564
+      },
+      "completed_pairs": {
+        "TTT": 40,
+        "DFS": 227,
+        "score_envelope": 491
+      },
+      "measured_stage_work_seconds": 24316.282612800598,
+      "fractions": {
+        "TTT": 0.3077795232771216,
+        "DFS": 0.6008340765476824,
+        "score_envelope": 0.09138640017519602
+      },
+      "ideal_bound_if_all_score_envelope_removed": 1.1005778476052053,
+      "event_sources_sha256": {
+        "experiments/025/confirmation-v2-output/025/events-rank0.jsonl": "d63102154049cca6f2e63baa055ef25ee2388d0411a5ea540d05a4eebf71d8d7",
+        "experiments/025/confirmation-v2-output/025/events-rank1.jsonl": "e32b509f0b9e2a385bed75c854d768cc5e4e503f6a11a67c2939f00fcd111981",
+        "experiments/025/confirmation-v2-output/025/events-rank2.jsonl": "c095ff287cd5088b435ba7e2754690ce8af290621d79d49cbb4a053e8e16460b",
+        "experiments/025/confirmation-v2-output/025/events-rank3.jsonl": "35980080e1ed23c932c27bbd9c936e3461e24304948f369ef02c53e1e546aa58"
+      }
+    },
+    {
+      "run": "027_C23_base",
+      "work_seconds": {
+        "TTT": 4515.747774839401,
+        "DFS": 8256.765202999115,
+        "score_envelope": 1001.4123973846436
+      },
+      "completed_pairs": {
+        "TTT": 23,
+        "DFS": 133,
+        "score_envelope": 235
+      },
+      "measured_stage_work_seconds": 13773.92537522316,
+      "fractions": {
+        "TTT": 0.32784755629375106,
+        "DFS": 0.599448957219673,
+        "score_envelope": 0.07270348648657603
+      },
+      "ideal_bound_if_all_score_envelope_removed": 1.0784037095223302,
+      "event_sources_sha256": {
+        "experiments/027/confirmation-v1-output/027/base/events-rank0.jsonl": "3653ed50a10bf26ac47e41fa5a1609aab80fa1e7e0ff1211b2853e83ea12d38e",
+        "experiments/027/confirmation-v1-output/027/base/events-rank1.jsonl": "68f616b1792b1f11d95f7b13b86feb6188a3496aeab953d0704abe9fcfd1f840",
+        "experiments/027/confirmation-v1-output/027/base/events-rank2.jsonl": "dd42bf23eb28f55052c2f38d0f41a06f11154e1f1664131b062207041013a3e3",
+        "experiments/027/confirmation-v1-output/027/base/events-rank3.jsonl": "6c10e8988ab8a3fbd0f069a9162511c83e2914fe36309e0a94b9916b2ef55521"
+      }
+    },
+    {
+      "run": "027_C23_extra",
+      "work_seconds": {
+        "TTT": 4510.663565158844,
+        "DFS": 8647.568666219711,
+        "score_envelope": 1076.629008769989
+      },
+      "completed_pairs": {
+        "TTT": 23,
+        "DFS": 132,
+        "score_envelope": 236
+      },
+      "measured_stage_work_seconds": 14234.861240148544,
+      "fractions": {
+        "TTT": 0.31687443165492873,
+        "DFS": 0.6074923050060916,
+        "score_envelope": 0.07563326333897963
+      },
+      "ideal_bound_if_all_score_envelope_removed": 1.0818217059737358,
+      "event_sources_sha256": {
+        "experiments/027/confirmation-v1-output/027/extra/events-rank0.jsonl": "f4579ced3d7838111975ea6c8d3876db1ce3291ecc07a4badef4899f10250ada",
+        "experiments/027/confirmation-v1-output/027/extra/events-rank1.jsonl": "73bf444cbe293acca34d70738233b9d3a8ac46c48372c03a92b36330c1d5e0d3",
+        "experiments/027/confirmation-v1-output/027/extra/events-rank2.jsonl": "6761bd04ce0058644380f0a9147e4c9c2c2bcdfc2a63d356e8cd0854dc900a9c",
+        "experiments/027/confirmation-v1-output/027/extra/events-rank3.jsonl": "9a3b8f5356a6259f29aff4699dd3c87d5e37f4922dda5bc496bdc19670d72f26"
+      }
+    }
+  ],
+  "timing_limitations": [
+    "Sums of per-rank host event intervals, not a critical-path wall-clock decomposition.",
+    "TTT/DFS/score intervals omit startup and other gaps; score envelope includes augmentation and tokenization.",
+    "No added CUDA synchronization or profiler instrumentation; fractions guide the next pilot only.",
+    "Ideal score-elimination ratio is a bound on measured summed work, not a guaranteed end-to-end speedup."
+  ],
+  "supported_findings": [
+    "Public confirmation gained only one of34; first6 and12 extra-completed-task prefixes gained zero.",
+    "Sequential extra can be skipped after base consumes the shared budget; actual hidden coverage unavailable.",
+    "Preserving base slot1 does not preserve a correct base slot2.",
+    "Original023 leaves PYTHONHASHSEED unset;027 sets27027, affecting hash(query)-seeded scoring augmentation.",
+    "Batch numerical nondeterminism and different deadline coverage also confound comparison of independent formal runs."
+  ],
+  "next_research": "Single original-sft139 DFS throughput pilot with frozen threshold0.2, TTT128 and B4; no extra TTT arm. Prioritize profiling and exact-path speculative verification before considering deeper search."
+}
