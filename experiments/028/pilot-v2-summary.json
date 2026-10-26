@@ -1,0 +1,233 @@
+{
+  "created_at_utc": "2026-10-26T14:26:36.174378+00:00",
+  "ref": "zhuating/arc2-028-dfs-path-pilot",
+  "kernel_version": 2,
+  "script_version_id": 362511155,
+  "status": "COMPLETE",
+  "notebook_sha256": "0c9d58242c9dae02afb8afb411deda8a5e76ce5af14596b37b5a382fe40f5153",
+  "input_sha256": "341e7bac741286b6cde44c29279f2105b9bae6cbe9df028c6c98e3bd2c6826cb",
+  "n_tasks": 3,
+  "source_queries": 5,
+  "measured_queries": 3,
+  "wall_seconds": 1096.1209228038788,
+  "start_Beijing": "2026-10-26T21:43:31.672903+08:00",
+  "finish_Beijing": "2026-10-26T22:01:47.793825+08:00",
+  "actual_hardware": "4xNVIDIA L4 23034MiB each;3active workers",
+  "ttt": [
+    {
+      "task_id": "271d71e2",
+      "global_step": 128,
+      "training_loss": 0.01698942482471466
+    },
+    {
+      "task_id": "7b80bb43",
+      "global_step": 128,
+      "training_loss": 0.0018183569191023707
+    },
+    {
+      "task_id": "d35bdbdc",
+      "global_step": 128,
+      "training_loss": 0.010142829269170761
+    }
+  ],
+  "task_reports_complete": 3,
+  "completed_calls": 15,
+  "no_deadline_cutoff": true,
+  "no_traceback_or_oom": true,
+  "scope": "Manual CPU result analysis only; same-adapter raw DFS mechanism, no B4/scored oracle, no gold, no accuracy or competition submission.",
+  "tasks": [
+    {
+      "task_id": "271d71e2",
+      "rank": 0,
+      "gpu": "NVIDIA L4",
+      "prompt_lengths": [
+        1794,
+        1794,
+        1794,
+        1794
+      ],
+      "status": "complete",
+      "draft_available": false,
+      "original_mean_seconds": 37.49600447949996,
+      "path_mean_seconds": 37.51643177300002,
+      "time_reduction_percent": -0.05447858720848844,
+      "speed_ratio": 0.9994555107579617,
+      "original_repeat_sequence_and_nll_identical": true,
+      "path_repeat_sequence_and_nll_identical": true,
+      "original_returned_sequences": 0,
+      "path_returned_sequences": 0,
+      "original_unique_query_grids": 0,
+      "path_unique_query_grids": 0,
+      "same_canonical_grid_set": true,
+      "skipped_forwards_per_call": [
+        0,
+        0
+      ],
+      "original_forward_calls_per_call": [
+        379,
+        379
+      ],
+      "path_forward_calls_per_call": [
+        379,
+        379
+      ],
+      "common_sequence_max_nll_difference": null,
+      "max_original_allocated_MiB": 11315.75927734375,
+      "max_path_allocated_MiB": 11315.75927734375,
+      "any_call_cutoff_possible": false,
+      "canonical_grid_changes": [
+        {
+          "label": "path_A",
+          "missing_grid_sha256": [],
+          "added_grid_sha256": [],
+          "correct_grid_changes": "unmeasured; no gold read"
+        },
+        {
+          "label": "path_B",
+          "missing_grid_sha256": [],
+          "added_grid_sha256": [],
+          "correct_grid_changes": "unmeasured; no gold read"
+        }
+      ],
+      "raw_report": "experiments/028/pilot-v2-output/028/pilot/271d71e2.json"
+    },
+    {
+      "task_id": "7b80bb43",
+      "rank": 1,
+      "gpu": "NVIDIA L4",
+      "prompt_lengths": [
+        2940,
+        2940,
+        2940,
+        2940
+      ],
+      "status": "complete",
+      "draft_available": true,
+      "original_mean_seconds": 104.30669782149994,
+      "path_mean_seconds": 102.66951367749994,
+      "time_reduction_percent": 1.5695867841600315,
+      "speed_ratio": 1.0159461566083057,
+      "original_repeat_sequence_and_nll_identical": true,
+      "path_repeat_sequence_and_nll_identical": true,
+      "original_returned_sequences": 6,
+      "path_returned_sequences": 6,
+      "original_unique_query_grids": 3,
+      "path_unique_query_grids": 3,
+      "same_canonical_grid_set": true,
+      "skipped_forwards_per_call": [
+        16,
+        16
+      ],
+      "original_forward_calls_per_call": [
+        1061,
+        1061
+      ],
+      "path_forward_calls_per_call": [
+        1045,
+        1045
+      ],
+      "common_sequence_max_nll_difference": 0.0005878210067749023,
+      "max_original_allocated_MiB": 12615.46435546875,
+      "max_path_allocated_MiB": 12633.24072265625,
+      "any_call_cutoff_possible": false,
+      "canonical_grid_changes": [
+        {
+          "label": "path_A",
+          "missing_grid_sha256": [],
+          "added_grid_sha256": [],
+          "correct_grid_changes": "unmeasured; no gold read"
+        },
+        {
+          "label": "path_B",
+          "missing_grid_sha256": [],
+          "added_grid_sha256": [],
+          "correct_grid_changes": "unmeasured; no gold read"
+        }
+      ],
+      "raw_report": "experiments/028/pilot-v2-output/028/pilot/7b80bb43.json"
+    },
+    {
+      "task_id": "d35bdbdc",
+      "rank": 2,
+      "gpu": "NVIDIA L4",
+      "prompt_lengths": [
+        794,
+        794,
+        794,
+        794
+      ],
+      "status": "complete",
+      "draft_available": true,
+      "original_mean_seconds": 38.102478638000036,
+      "path_mean_seconds": 35.57704995,
+      "time_reduction_percent": 6.627990561961486,
+      "speed_ratio": 1.0709847694384238,
+      "original_repeat_sequence_and_nll_identical": true,
+      "path_repeat_sequence_and_nll_identical": true,
+      "original_returned_sequences": 3,
+      "path_returned_sequences": 3,
+      "original_unique_query_grids": 3,
+      "path_unique_query_grids": 3,
+      "same_canonical_grid_set": false,
+      "skipped_forwards_per_call": [
+        13,
+        13
+      ],
+      "original_forward_calls_per_call": [
+        394,
+        394
+      ],
+      "path_forward_calls_per_call": [
+        366,
+        366
+      ],
+      "common_sequence_max_nll_difference": 0.047850847244262695,
+      "max_original_allocated_MiB": 10178.30712890625,
+      "max_path_allocated_MiB": 10936.49658203125,
+      "any_call_cutoff_possible": false,
+      "canonical_grid_changes": [
+        {
+          "label": "path_A",
+          "missing_grid_sha256": [
+            "58f40a17e62390a8ec49dadbad2e6a0c547456da2398c88da0feedcdf89229c3"
+          ],
+          "added_grid_sha256": [
+            "db58877abbf26b35bc3ea4a7e582f2f947331a07227b24d885a8e2b817d22b15"
+          ],
+          "correct_grid_changes": "unmeasured; no gold read"
+        },
+        {
+          "label": "path_B",
+          "missing_grid_sha256": [
+            "58f40a17e62390a8ec49dadbad2e6a0c547456da2398c88da0feedcdf89229c3"
+          ],
+          "added_grid_sha256": [
+            "db58877abbf26b35bc3ea4a7e582f2f947331a07227b24d885a8e2b817d22b15"
+          ],
+          "correct_grid_changes": "unmeasured; no gold read"
+        }
+      ],
+      "raw_report": "experiments/028/pilot-v2-output/028/pilot/d35bdbdc.json"
+    }
+  ],
+  "paired_call_work_seconds": {
+    "original": 359.81036187799987,
+    "path": 351.5259908009999,
+    "apparent_time_reduction_percent": 2.302427043445989,
+    "note": "Cross-worker invocation work sum, not whole-pipeline wall time; includes changed search behavior."
+  },
+  "peak_allocated_MiB_all_calls": 12952.27197265625,
+  "artifact_verification": "execution/artifact-verification-v2.json",
+  "decision": "stop_fixed16_proxy_no_promotion",
+  "reasons": [
+    "One of two tasks with actual reuse changes both sequence and canonical-grid pool while original repeats are identical.",
+    "Forward reduction on d35 is28 while skipped forwards13: apparent speedup includes changed search behavior.",
+    "Other reused task saves1.57% of measured DFS call time only; no full-pipeline or score evidence.",
+    "One task has no draft and only checks fallback."
+  ],
+  "unresolved": [
+    "Numerical shape/prefill-decode difference versus snapshot restore defect is not distinguished by existing outputs.",
+    "Correctness of missing/added grids and final B4 score are unmeasured."
+  ],
+  "next_action": "Retain original023 solver. Close this fixed16-token recipe; no length/seed/threshold sweep on these results and no formal submission. Any future path reuse work first needs a separate paired per-position logits/KV diagnostic with new frozen scope."
+}

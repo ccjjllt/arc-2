@@ -1,5 +1,5 @@
 {
-  "status": "V2_model_load_observed_wait_user_completion",
+  "status": "V2_complete_fixed16_stopped_not_promoted",
   "ref": "zhuating/arc2-028-dfs-path-pilot",
   "kernel_version": 2,
   "notebook_sha256": "0c9d58242c9dae02afb8afb411deda8a5e76ce5af14596b37b5a382fe40f5153",
@@ -32,16 +32,24 @@
     "path_A_call_observed": false,
     "scope": "Bounded startup only; replayed SSE chunks do not establish exact per-worker timing or completed experiments."
   },
-  "script_version_id": null,
+  "script_version_id": 362511155,
   "formal_submission_created": false,
-  "next_action": "Remote reads stopped after source/model identity and rank0/1 checkpoint load observed; rank2, TTT and path call not yet observed. Wait user completion notice, then run /private/tmp/arc2-028-download-completed-v2.py. It asserts exactV2 cell source before terminal download. Compare recorded mechanism reports before any promotion or new GPU run.",
+  "next_action": "Retain original023 solver. Close this fixed16-token recipe; no length/seed/threshold sweep on these results and no formal submission. Any future path reuse work first needs a separate paired per-position logits/KV diagnostic with new frozen scope.",
   "outcome_evidence": "execution/pilot-v2-outcome.json",
   "baseline_public_score": "30.14",
   "effects": {
-    "throughput": "unconfirmed",
-    "candidate_equivalence": "unconfirmed",
-    "competition_score_improvement": "unmeasured"
+    "throughput": "Measured DFS invocation savings on one stable-candidate task1.57%; d35 apparent6.63% includes changed search behavior; fallback task unchanged.",
+    "candidate_equivalence": "Failed to establish: d35 stable canonical-grid replacement beyond observed original repeat drift.",
+    "competition_score_improvement": "Unmeasured; B4/accuracy not run; no competition submission."
   },
   "startup_health_evidence": "execution/startup-health-v2.json",
-  "remote_monitoring_active": false
+  "remote_monitoring_active": false,
+  "completed_result": {
+    "status": "COMPLETE",
+    "summary": "pilot-v2-summary.json",
+    "actual_wall_seconds": 1096.1209228038788,
+    "completed_tasks": 3,
+    "completed_calls": 15,
+    "decision": "stop_fixed16_proxy_no_promotion"
+  }
 }

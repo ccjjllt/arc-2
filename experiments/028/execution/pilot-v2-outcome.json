@@ -1,0 +1,276 @@
+{
+  "downloaded_at_utc": "2026-10-26T14:21:14.265393+00:00",
+  "ref": "zhuating/arc2-028-dfs-path-pilot",
+  "status": {
+    "status": "COMPLETE"
+  },
+  "script_version_ids": [
+    362511155
+  ],
+  "remote_files": [
+    "028/artifact-identities.json",
+    "028/boot.json",
+    "028/events-rank0.jsonl",
+    "028/events-rank1.jsonl",
+    "028/events-rank2.jsonl",
+    "028/input/challenges.json",
+    "028/input/runtime-manifest.json",
+    "028/model-copy.json",
+    "028/mount-diagnostics.json",
+    "028/pilot/271d71e2-attention-forward.py",
+    "028/pilot/271d71e2.json",
+    "028/pilot/7b80bb43-attention-forward.py",
+    "028/pilot/7b80bb43.json",
+    "028/pilot/d35bdbdc-attention-forward.py",
+    "028/pilot/d35bdbdc.json",
+    "028/run-state.json",
+    "028/sources/arc_decoder.py",
+    "028/sources/arc_loader.py",
+    "028/sources/arc_solver.py",
+    "028/sources/copy_model.py",
+    "028/sources/dfs_path_reuse.py",
+    "028/sources/pilot_runtime.py",
+    "028/sources/starter.py",
+    "028/worker.log",
+    "__pycache__/arc_loader.cpython-311.pyc",
+    "__pycache__/arc_solver.cpython-311.pyc",
+    "__pycache__/dfs_path_reuse.cpython-311.pyc",
+    "__pycache__/pilot_runtime.cpython-311.pyc",
+    "arc_decoder.py",
+    "arc_loader.py",
+    "arc_solver.py",
+    "copy_model.py",
+    "dfs_path_reuse.py",
+    "pilot_runtime.py",
+    "starter.py",
+    "unsloth_compiled_cache/UnslothAlignPropTrainer.py",
+    "unsloth_compiled_cache/UnslothBCOTrainer.py",
+    "unsloth_compiled_cache/UnslothCPOTrainer.py",
+    "unsloth_compiled_cache/UnslothDDPOTrainer.py",
+    "unsloth_compiled_cache/UnslothDPOTrainer.py",
+    "unsloth_compiled_cache/UnslothGKDTrainer.py",
+    "unsloth_compiled_cache/UnslothGRPOTrainer.py",
+    "unsloth_compiled_cache/UnslothIterativeSFTTrainer.py",
+    "unsloth_compiled_cache/UnslothKTOTrainer.py",
+    "unsloth_compiled_cache/UnslothNashMDTrainer.py",
+    "unsloth_compiled_cache/UnslothORPOTrainer.py",
+    "unsloth_compiled_cache/UnslothOnlineDPOTrainer.py",
+    "unsloth_compiled_cache/UnslothPPOTrainer.py",
+    "unsloth_compiled_cache/UnslothPRMTrainer.py",
+    "unsloth_compiled_cache/UnslothRLOOTrainer.py",
+    "unsloth_compiled_cache/UnslothRewardTrainer.py",
+    "unsloth_compiled_cache/UnslothSFTTrainer.py",
+    "unsloth_compiled_cache/UnslothXPOTrainer.py",
+    "unsloth_compiled_cache/__pycache__/UnslothAlignPropTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothBCOTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothCPOTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothDDPOTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothDPOTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothGKDTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothGRPOTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothIterativeSFTTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothKTOTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothNashMDTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothORPOTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothOnlineDPOTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothPPOTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothPRMTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothRLOOTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothRewardTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothSFTTrainer.cpython-311.pyc",
+    "unsloth_compiled_cache/__pycache__/UnslothXPOTrainer.cpython-311.pyc"
+  ],
+  "downloaded": [
+    {
+      "file_name": "028/artifact-identities.json",
+      "bytes": 2964,
+      "sha256": "167e76ad4eaa833b42c33a0b8d14a5d2ab0908b2c09f056fbb6a6f5b7ace84ea",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v2-output/028/artifact-identities.json"
+    },
+    {
+      "file_name": "028/boot.json",
+      "bytes": 1682,
+      "sha256": "1783c38aff546f4a1f83896817f91f8880aed24179a08c69bfd5e7a39e44bf5a",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v2-output/028/boot.json"
+    },
+    {
+      "file_name": "028/events-rank0.jsonl",
+      "bytes": 603,
+      "sha256": "79dadf38d74ed19464b3f15fafec7a70e165af8884e0d750e20f7c37bb5390bb",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v2-output/028/events-rank0.jsonl"
+    },
+    {
+      "file_name": "028/events-rank1.jsonl",
+      "bytes": 604,
+      "sha256": "b8c1ea3336f6a0d5c1dfbfa2e8876d3e38f6c85168b7c9871907343ecd64dfa9",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v2-output/028/events-rank1.jsonl"
+    },
+    {
+      "file_name": "028/events-rank2.jsonl",
+      "bytes": 606,
+      "sha256": "6cf0963ca6f36990d38ad7c7be240b748a240c7e916c26ef4df56765d1397c3b",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v2-output/028/events-rank2.jsonl"
+    },
+    {
+      "file_name": "028/input/challenges.json",
+      "bytes": 11690,
+      "sha256": "341e7bac741286b6cde44c29279f2105b9bae6cbe9df028c6c98e3bd2c6826cb",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v2-output/028/input/challenges.json"
+    },
+    {
+      "file_name": "028/input/runtime-manifest.json",
+      "bytes": 329,
+      "sha256": "8534dc75232fc9d8f8f124eeb57e7925041a3b76a3cf63e3f4d35407932a9854",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v2-output/028/input/runtime-manifest.json"
+    },
+    {
+      "file_name": "028/model-copy.json",
+      "bytes": 2290,
+      "sha256": "0fb09af38d417bb672daf8a3786e64f21ea4d7da13cf01869847a38846c98827",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v2-output/028/model-copy.json"
+    },
+    {
+      "file_name": "028/mount-diagnostics.json",
+      "bytes": 895,
+      "sha256": "2e3c38a8a7f91ffab1ded2fbbeb138e6c12e4434e68bd64b9ce34168056d6c93",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v2-output/028/mount-diagnostics.json"
+    },
+    {
+      "file_name": "028/pilot/271d71e2-attention-forward.py",
+      "bytes": 6053,
+      "sha256": "07acc9514bec3586614c325a23815476cfd7cf3cc6428ad73f79743902718cb4",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/028/pilot/271d71e2-attention-forward.py"
+    },
+    {
+      "file_name": "028/pilot/271d71e2.json",
+      "bytes": 9457,
+      "sha256": "de2efeb49c5a19ed5ecdccc58c1e24771b57be08e9d8f600e6e06fc053380f9d",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v2-output/028/pilot/271d71e2.json"
+    },
+    {
+      "file_name": "028/pilot/7b80bb43-attention-forward.py",
+      "bytes": 6053,
+      "sha256": "07acc9514bec3586614c325a23815476cfd7cf3cc6428ad73f79743902718cb4",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/028/pilot/7b80bb43-attention-forward.py"
+    },
+    {
+      "file_name": "028/pilot/7b80bb43.json",
+      "bytes": 524137,
+      "sha256": "e38a14590995d3f665d6f1359ff2de77c3302d23f589264ac40917a837b55ae6",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v2-output/028/pilot/7b80bb43.json"
+    },
+    {
+      "file_name": "028/pilot/d35bdbdc-attention-forward.py",
+      "bytes": 6053,
+      "sha256": "07acc9514bec3586614c325a23815476cfd7cf3cc6428ad73f79743902718cb4",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/028/pilot/d35bdbdc-attention-forward.py"
+    },
+    {
+      "file_name": "028/pilot/d35bdbdc.json",
+      "bytes": 68571,
+      "sha256": "74a9e56a2e260bfbe5a6d4ad93ac46735e269aebc01b58636d6c0d1e20bcfd4c",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v2-output/028/pilot/d35bdbdc.json"
+    },
+    {
+      "file_name": "028/run-state.json",
+      "bytes": 1173,
+      "sha256": "408cbf8836c5b66720b5399ee9f7562084b2ea2fd4951898c29123612eceabe7",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v2-output/028/run-state.json"
+    },
+    {
+      "file_name": "028/sources/arc_decoder.py",
+      "bytes": 4157,
+      "sha256": "b38b6b1bdd5f47dbd587a9809ad2ec20cdf9ce5723736a7fb7470e9b1ce61f1d",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/028/sources/arc_decoder.py"
+    },
+    {
+      "file_name": "028/sources/arc_loader.py",
+      "bytes": 12641,
+      "sha256": "2c62526daba3fdd9da317e3dcb689acca8e24018e56e4c7f2c33ed15381ed8c6",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/028/sources/arc_loader.py"
+    },
+    {
+      "file_name": "028/sources/arc_solver.py",
+      "bytes": 14569,
+      "sha256": "a5761fa4b96682e62ffc37003dde29f7dc0ffdeb49a944ceb0e4c6b83872e4d5",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/028/sources/arc_solver.py"
+    },
+    {
+      "file_name": "028/sources/copy_model.py",
+      "bytes": 3253,
+      "sha256": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/028/sources/copy_model.py"
+    },
+    {
+      "file_name": "028/sources/dfs_path_reuse.py",
+      "bytes": 13109,
+      "sha256": "b658d01533d599cc4074caf3f60bceb0b98cd61b5d87de3cc0e6ea8b9dce2e34",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/028/sources/dfs_path_reuse.py"
+    },
+    {
+      "file_name": "028/sources/pilot_runtime.py",
+      "bytes": 9146,
+      "sha256": "0551b066357f15c82715b14bf536b072de8b51f7a45826e74724fb144807862a",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/028/sources/pilot_runtime.py"
+    },
+    {
+      "file_name": "028/sources/starter.py",
+      "bytes": 1403,
+      "sha256": "9f9f7ff2cf213371b6e04372b0fcb6bbed397d43599c17242ad920b82c2dbaa4",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/028/sources/starter.py"
+    },
+    {
+      "file_name": "028/worker.log",
+      "bytes": 14287,
+      "sha256": "e456f6066b840a521c7e9192aa55a6f11843baae4f65c3018bca2ae590fa77c1",
+      "local_path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v2-output/028/worker.log"
+    },
+    {
+      "file_name": "arc_decoder.py",
+      "bytes": 4157,
+      "sha256": "b38b6b1bdd5f47dbd587a9809ad2ec20cdf9ce5723736a7fb7470e9b1ce61f1d",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/arc_decoder.py"
+    },
+    {
+      "file_name": "arc_loader.py",
+      "bytes": 12641,
+      "sha256": "2c62526daba3fdd9da317e3dcb689acca8e24018e56e4c7f2c33ed15381ed8c6",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/arc_loader.py"
+    },
+    {
+      "file_name": "arc_solver.py",
+      "bytes": 14569,
+      "sha256": "a5761fa4b96682e62ffc37003dde29f7dc0ffdeb49a944ceb0e4c6b83872e4d5",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/arc_solver.py"
+    },
+    {
+      "file_name": "copy_model.py",
+      "bytes": 3253,
+      "sha256": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/copy_model.py"
+    },
+    {
+      "file_name": "dfs_path_reuse.py",
+      "bytes": 13109,
+      "sha256": "b658d01533d599cc4074caf3f60bceb0b98cd61b5d87de3cc0e6ea8b9dce2e34",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/dfs_path_reuse.py"
+    },
+    {
+      "file_name": "pilot_runtime.py",
+      "bytes": 9146,
+      "sha256": "0551b066357f15c82715b14bf536b072de8b51f7a45826e74724fb144807862a",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/pilot_runtime.py"
+    },
+    {
+      "file_name": "starter.py",
+      "bytes": 1403,
+      "sha256": "9f9f7ff2cf213371b6e04372b0fcb6bbed397d43599c17242ad920b82c2dbaa4",
+      "local_path": "/private/tmp/arc2-028-pilot-output-v2/starter.py"
+    }
+  ],
+  "local_output_directory": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/028/pilot-v2-output",
+  "source_directory": "/private/tmp/arc2-028-pilot-output-v2",
+  "log_sha256": "8dfdfccbdd154a8eaf3737cdfddd5b069140cf8c0ae4c4b3cf723a00341ea35c",
+  "gold_read_by_download": false,
+  "download_method": "8 parallel GETs; existing artifacts reused only after SHA match"
+}

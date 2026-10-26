@@ -1,0 +1,75 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+[Rank 0] start!
+==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+   \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.34s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.10it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.03it/s]
+Unsloth: Training embed_tokens in mixed precision to save VRAM
+Unsloth: Training lm_head in mixed precision to save VRAM
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+[Rank 1] start!
+==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+   \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.35s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.09it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.02it/s]
+Unsloth: Training embed_tokens in mixed precision to save VRAM
+Unsloth: Training lm_head in mixed precision to save VRAM
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+[Rank 2] start!
+==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+   \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.34s/it][Rank 0] allocated 13011MB for training
+[Rank 0] training stats for puzzle 271d71e2: TrainOutput(global_step=128, training_loss=0.01698942482471466, metrics={'train_runtime': 120.4351, 'train_samples_per_second': 1.063, 'train_steps_per_second': 1.063, 'total_flos': 3471371297095680.0, 'train_loss': 0.01698942482471466, 'epoch': 1.0})
+
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.10it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.03it/s]
+Unsloth: Training embed_tokens in mixed precision to save VRAM
+Unsloth: Training lm_head in mixed precision to save VRAM
+{"event": "pilot_call_complete", "task_id": "271d71e2", "label": "seed_original", "elapsed_s": 40.38761900299994, "forward_calls": 398, "returned_sequences": 0, "mechanism": {"policy": "original", "fallback": false}}
+{"event": "pilot_call_complete", "task_id": "271d71e2", "label": "original_A", "elapsed_s": 37.62389234099999, "forward_calls": 379, "returned_sequences": 0, "mechanism": {"policy": "original", "fallback": false}}
+[Rank 2] allocated 13011MB for training
+[Rank 2] training stats for puzzle d35bdbdc: TrainOutput(global_step=128, training_loss=0.010142829269170761, metrics={'train_runtime': 78.3702, 'train_samples_per_second': 1.633, 'train_steps_per_second': 1.633, 'total_flos': 2167209704816640.0, 'train_loss': 0.010142829269170761, 'epoch': 1.0})
+{"event": "pilot_call_complete", "task_id": "d35bdbdc", "label": "seed_original", "elapsed_s": 16.49848680799994, "forward_calls": 166, "returned_sequences": 3, "mechanism": {"policy": "original", "fallback": false}}
+{"event": "pilot_call_complete", "task_id": "271d71e2", "label": "path_A", "elapsed_s": 37.51757278399998, "forward_calls": 379, "returned_sequences": 0, "mechanism": {"status": "completed", "model_forward_calls": 379, "model_forward_input_tokens": 8688, "max_model_forward_sequence": 1794, "reuse_was_enabled": false, "precomputed_draft_tokens_per_row": 0, "precomputed_draft_tokens_total": 0, "skipped_single_token_forwards": 0, "skipped_input_tokens": 0, "immutable_snapshot_bytes": 0, "immutable_snapshot_restores": 0, "paged_module_clear_count": 0, "fallback_reason": "no_draft", "reuse_stop_reason": null, "precompute_limit": 16, "source_runtime": "patched Unsloth2025.9.7/Qwen3 legacy KV", "traversal": "unchanged original_inference callback", "numerical_equivalence": "unconfirmed until paired GPU measurement", "attention_module_count": 36}}
+{"event": "pilot_call_complete", "task_id": "d35bdbdc", "label": "original_A", "elapsed_s": 38.03143892000003, "forward_calls": 394, "returned_sequences": 3, "mechanism": {"policy": "original", "fallback": false}}
+{"event": "pilot_call_complete", "task_id": "271d71e2", "label": "path_B", "elapsed_s": 37.51529076200006, "forward_calls": 379, "returned_sequences": 0, "mechanism": {"status": "completed", "model_forward_calls": 379, "model_forward_input_tokens": 8688, "max_model_forward_sequence": 1794, "reuse_was_enabled": false, "precomputed_draft_tokens_per_row": 0, "precomputed_draft_tokens_total": 0, "skipped_single_token_forwards": 0, "skipped_input_tokens": 0, "immutable_snapshot_bytes": 0, "immutable_snapshot_restores": 0, "paged_module_clear_count": 0, "fallback_reason": "no_draft", "reuse_stop_reason": null, "precompute_limit": 16, "source_runtime": "patched Unsloth2025.9.7/Qwen3 legacy KV", "traversal": "unchanged original_inference callback", "numerical_equivalence": "unconfirmed until paired GPU measurement", "attention_module_count": 36}}
+[Rank 1] allocated 13011MB for training
+[Rank 1] training stats for puzzle 7b80bb43: TrainOutput(global_step=128, training_loss=0.0018183569191023707, metrics={'train_runtime': 223.6472, 'train_samples_per_second': 0.572, 'train_steps_per_second': 0.572, 'total_flos': 7716289420984320.0, 'train_loss': 0.0018183569191023707, 'epoch': 1.0})
+{"event": "pilot_call_complete", "task_id": "d35bdbdc", "label": "path_A", "elapsed_s": 35.38876261799999, "forward_calls": 366, "returned_sequences": 3, "mechanism": {"status": "completed", "model_forward_calls": 366, "model_forward_input_tokens": 4700, "max_model_forward_sequence": 810, "reuse_was_enabled": true, "precomputed_draft_tokens_per_row": 16, "precomputed_draft_tokens_total": 64, "skipped_single_token_forwards": 13, "skipped_input_tokens": 52, "immutable_snapshot_bytes": 477757440, "immutable_snapshot_restores": 3, "paged_module_clear_count": 108, "fallback_reason": null, "reuse_stop_reason": "batch_token_mismatch", "precompute_limit": 16, "source_runtime": "patched Unsloth2025.9.7/Qwen3 legacy KV", "traversal": "unchanged original_inference callback", "numerical_equivalence": "unconfirmed until paired GPU measurement", "attention_module_count": 36, "prefill_cache_type": "builtins.tuple", "first_layer_key_shape": [4, 8, 810, 128]}}
+{"event": "pilot_call_complete", "task_id": "271d71e2", "label": "original_B", "elapsed_s": 37.36811661799993, "forward_calls": 379, "returned_sequences": 0, "mechanism": {"policy": "original", "fallback": false}}
+{"event": "task_pilot_complete", "task_id": "271d71e2", "comparisons": {"original_B": {"reference_sequences": 0, "sequences": 0, "same_sequence_set": true, "same_returned_sequence_order": true, "extra_sequences": 0, "missing_sequences": 0, "max_common_nll_difference": null, "speed_ratio_vs_original_A": 1.0068447582096458}, "path_A": {"reference_sequences": 0, "sequences": 0, "same_sequence_set": true, "same_returned_sequence_order": true, "extra_sequences": 0, "missing_sequences": 0, "max_common_nll_difference": null, "speed_ratio_vs_original_A": 1.0028338602183067}, "path_B": {"reference_sequences": 0, "sequences": 0, "same_sequence_set": true, "same_returned_sequence_order": true, "extra_sequences": 0, "missing_sequences": 0, "max_common_nll_difference": null, "speed_ratio_vs_original_A": 1.0028948617162239}}}
+[Rank 0] done!
+{"event": "pilot_call_complete", "task_id": "d35bdbdc", "label": "path_B", "elapsed_s": 35.76533728200002, "forward_calls": 366, "returned_sequences": 3, "mechanism": {"status": "completed", "model_forward_calls": 366, "model_forward_input_tokens": 4700, "max_model_forward_sequence": 810, "reuse_was_enabled": true, "precomputed_draft_tokens_per_row": 16, "precomputed_draft_tokens_total": 64, "skipped_single_token_forwards": 13, "skipped_input_tokens": 52, "immutable_snapshot_bytes": 477757440, "immutable_snapshot_restores": 3, "paged_module_clear_count": 108, "fallback_reason": null, "reuse_stop_reason": "batch_token_mismatch", "precompute_limit": 16, "source_runtime": "patched Unsloth2025.9.7/Qwen3 legacy KV", "traversal": "unchanged original_inference callback", "numerical_equivalence": "unconfirmed until paired GPU measurement", "attention_module_count": 36, "prefill_cache_type": "builtins.tuple", "first_layer_key_shape": [4, 8, 810, 128]}}
+{"event": "pilot_call_complete", "task_id": "7b80bb43", "label": "seed_original", "elapsed_s": 56.60083991399995, "forward_calls": 561, "returned_sequences": 6, "mechanism": {"policy": "original", "fallback": false}}
+{"event": "pilot_call_complete", "task_id": "d35bdbdc", "label": "original_B", "elapsed_s": 38.173518356000045, "forward_calls": 394, "returned_sequences": 3, "mechanism": {"policy": "original", "fallback": false}}
+{"event": "task_pilot_complete", "task_id": "d35bdbdc", "comparisons": {"original_B": {"reference_sequences": 3, "sequences": 3, "same_sequence_set": true, "same_returned_sequence_order": true, "extra_sequences": 0, "missing_sequences": 0, "max_common_nll_difference": 0.0, "speed_ratio_vs_original_A": 0.9962780628530227}, "path_A": {"reference_sequences": 3, "sequences": 3, "same_sequence_set": false, "same_returned_sequence_order": false, "extra_sequences": 1, "missing_sequences": 1, "max_common_nll_difference": 0.047850847244262695, "speed_ratio_vs_original_A": 1.0746755779659807}, "path_B": {"reference_sequences": 3, "sequences": 3, "same_sequence_set": false, "same_returned_sequence_order": false, "extra_sequences": 1, "missing_sequences": 1, "max_common_nll_difference": 0.047850847244262695, "speed_ratio_vs_original_A": 1.0633602759043599}}}
+[Rank 2] done!
+{"event": "pilot_call_complete", "task_id": "7b80bb43", "label": "original_A", "elapsed_s": 104.45172957599993, "forward_calls": 1061, "returned_sequences": 6, "mechanism": {"policy": "original", "fallback": false}}
+{"event": "pilot_call_complete", "task_id": "7b80bb43", "label": "path_A", "elapsed_s": 102.8983314269999, "forward_calls": 1045, "returned_sequences": 6, "mechanism": {"status": "completed", "model_forward_calls": 1045, "model_forward_input_tokens": 16000, "max_model_forward_sequence": 2956, "reuse_was_enabled": true, "precomputed_draft_tokens_per_row": 16, "precomputed_draft_tokens_total": 64, "skipped_single_token_forwards": 16, "skipped_input_tokens": 64, "immutable_snapshot_bytes": 1743519744, "immutable_snapshot_restores": 1, "paged_module_clear_count": 36, "fallback_reason": null, "reuse_stop_reason": "draft_exhausted", "precompute_limit": 16, "source_runtime": "patched Unsloth2025.9.7/Qwen3 legacy KV", "traversal": "unchanged original_inference callback", "numerical_equivalence": "unconfirmed until paired GPU measurement", "attention_module_count": 36, "prefill_cache_type": "builtins.tuple", "first_layer_key_shape": [4, 8, 2956, 128]}}
+{"event": "pilot_call_complete", "task_id": "7b80bb43", "label": "path_B", "elapsed_s": 102.44069592799997, "forward_calls": 1045, "returned_sequences": 6, "mechanism": {"status": "completed", "model_forward_calls": 1045, "model_forward_input_tokens": 16000, "max_model_forward_sequence": 2956, "reuse_was_enabled": true, "precomputed_draft_tokens_per_row": 16, "precomputed_draft_tokens_total": 64, "skipped_single_token_forwards": 16, "skipped_input_tokens": 64, "immutable_snapshot_bytes": 1743519744, "immutable_snapshot_restores": 1, "paged_module_clear_count": 36, "fallback_reason": null, "reuse_stop_reason": "draft_exhausted", "precompute_limit": 16, "source_runtime": "patched Unsloth2025.9.7/Qwen3 legacy KV", "traversal": "unchanged original_inference callback", "numerical_equivalence": "unconfirmed until paired GPU measurement", "attention_module_count": 36, "prefill_cache_type": "builtins.tuple", "first_layer_key_shape": [4, 8, 2956, 128]}}
+{"event": "pilot_call_complete", "task_id": "7b80bb43", "label": "original_B", "elapsed_s": 104.16166606699994, "forward_calls": 1061, "returned_sequences": 6, "mechanism": {"policy": "original", "fallback": false}}
+{"event": "task_pilot_complete", "task_id": "7b80bb43", "comparisons": {"original_B": {"reference_sequences": 6, "sequences": 6, "same_sequence_set": true, "same_returned_sequence_order": true, "extra_sequences": 0, "missing_sequences": 0, "max_common_nll_difference": 0.0, "speed_ratio_vs_original_A": 1.002784743370113}, "path_A": {"reference_sequences": 6, "sequences": 6, "same_sequence_set": true, "same_returned_sequence_order": true, "extra_sequences": 0, "missing_sequences": 0, "max_common_nll_difference": 0.0005878210067749023, "speed_ratio_vs_original_A": 1.015096436720182}, "path_B": {"reference_sequences": 6, "sequences": 6, "same_sequence_set": true, "same_returned_sequence_order": true, "extra_sequences": 0, "missing_sequences": 0, "max_common_nll_difference": 0.0005878210067749023, "speed_ratio_vs_original_A": 1.0196311986147908}}}
+[Rank 1] done!

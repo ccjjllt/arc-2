@@ -1,6 +1,6 @@
 # 028 NVARC DFS提速与同预算搜索核查
 
-日期：2026-10-26。承接[027正式退分复盘](../progress/027-nvarc-ttt-view-ensemble.md)。用户进一步授权继续优化后，机制proxy、面板与手动配对已实现，研究V1启动日志变量错误已修正，**V2已接受启动，完整结果／提速／新submission均未取得**。见[实际进展](../progress/028-nvarc-dfs-throughput.md)。下文保留原研究目标，实际pilot范围以同号progress为准。
+日期：2026-10-26。承接[027正式退分复盘](../progress/027-nvarc-ttt-view-ensemble.md)。用户进一步授权继续优化后，机制proxy、面板与手动配对已完成，V2／362511155已COMPLETE。**一题候选稳定且DFS调用耗时减1.57%，一题表面减6.63%但候选池变化，结束固定16-token配方，不晋级同预算或正式提交。** B4、准确率与提分未测量。见[实际进展](../progress/028-nvarc-dfs-throughput.md)。下文保留原研究目标，实际pilot范围以同号progress为准。
 
 ## 研究背景与唯一方向
 
@@ -47,4 +47,4 @@
 
 ## 当前交接状态
 
-已完成：027实际结果归档、已有阶段事件CPU统计、C23第二槽风险覆盖复盘、三题面板冻结、16-token已知路径proxy及手动同adapter ABBA包装。实际Unsloth不支持multi-token withpast，本轮改用无past prompt+16token prefill、不可变snapshot及原DFS callback；尚未实现后续连续分块。V1仅封装日志变量错误、未进入TTT，V2已接受。未完成：完整GPU配对结果、实际吞吐收益、预算配对、新正式包和真实提分。具体版本和SHA见同号progress，不能把代码实现或启动当作研究效果。
+已完成：027实际结果归档、已有阶段事件CPU统计、C23第二槽风险覆盖复盘、三题面板冻结、16-token已知路径proxy及手动同adapter ABBA包装。实际Unsloth不支持multi-token withpast，本轮改用无past prompt+16token prefill、不可变snapshot及原DFS callback；尚未实现后续连续分块。V1仅封装日志变量错误、未进入TTT；V2完整配对已完成。稳定候选题调用耗时减1.57%，d35候选变化不能称等价提速，按预定条件结束固定16-token配方。不扩长度／seed／阈值救结果，不进入同预算或正式提交。具体版本和SHA见同号progress；cache恢复与数值形状偏差的因果定位仍未完成，B4及真实提分未测量。

@@ -1,0 +1,12 @@
+{
+  "n_tasks": 3,
+  "n_queries": 5,
+  "measured_queries": 3,
+  "task_ids": [
+    "271d71e2",
+    "7b80bb43",
+    "d35bdbdc"
+  ],
+  "challenges_sha256": "341e7bac741286b6cde44c29279f2105b9bae6cbe9df028c6c98e3bd2c6826cb",
+  "source": "Frozen old025 development panel excluding026 andC23; firstquery only for mechanism comparison"
+}

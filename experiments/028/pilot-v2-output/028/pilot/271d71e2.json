@@ -1,0 +1,288 @@
+{
+  "task_id": "271d71e2",
+  "query_key": "271d71e2_0",
+  "rank": 0,
+  "status": "complete",
+  "scope": "Mechanism pilot on first query and first two original batches only; no accuracy score.",
+  "all_task_queries": 1,
+  "measured_queries": 1,
+  "model_object_id": 137560230461008,
+  "ttt_adapter_reused": true,
+  "probability_cutoff": 0.2,
+  "max_score": 1.6094379124341003,
+  "max_new_tokens": 931,
+  "hash_seed": "27027",
+  "order": [
+    "seed_original",
+    "original_A",
+    "path_A",
+    "path_B",
+    "original_B"
+  ],
+  "precompute_tokens": 16,
+  "records": [
+    {
+      "label": "seed_original",
+      "elapsed_s": 40.38761900299994,
+      "started_at": 1793022658.0243223,
+      "finished_at": 1793022698.4119465,
+      "call_deadline": 1793023218.0243223,
+      "prefill_returned_at": 1793022659.654833,
+      "cutoff_possible": false,
+      "model_forward_calls": 398,
+      "model_input_tokens": 8764,
+      "input_shapes": {
+        "[4, 1794]": 1,
+        "[4, 1]": 397
+      },
+      "peak_allocated_bytes": 11865434112,
+      "prompt_tokens_sha256": "6546b4e39548a4ceb9658073e9c98e341947807e63d3e18f9f0298ec66533f54",
+      "prompt_lengths": [
+        1794,
+        1794,
+        1794,
+        1794
+      ],
+      "subkeys": [
+        "271d71e2_0.permute4150723698.ex012",
+        "271d71e2_0.permute9302675184.ex012",
+        "271d71e2_0.rot90.rot90.permute5386701942.ex021",
+        "271d71e2_0.rot90.rot90.permute8579032416.ex120"
+      ],
+      "draft_tokens_sha256": null,
+      "mechanism": {
+        "policy": "original",
+        "fallback": false
+      },
+      "candidates": [],
+      "returned_sequences": 0,
+      "legal_candidates": 0
+    },
+    {
+      "label": "original_A",
+      "elapsed_s": 37.62389234099999,
+      "started_at": 1793022698.8796263,
+      "finished_at": 1793022736.5035245,
+      "call_deadline": 1793023258.8796263,
+      "prefill_returned_at": 1793022700.2827497,
+      "cutoff_possible": false,
+      "model_forward_calls": 379,
+      "model_input_tokens": 8688,
+      "input_shapes": {
+        "[4, 1794]": 1,
+        "[4, 1]": 378
+      },
+      "peak_allocated_bytes": 11865433600,
+      "prompt_tokens_sha256": "60dd349705edbfe9e804626fcab740eb4349a86d21be961e0bf41372639426cf",
+      "prompt_lengths": [
+        1794,
+        1794,
+        1794,
+        1794
+      ],
+      "subkeys": [
+        "271d71e2_0.rot90.permute4281673590.ex102",
+        "271d71e2_0.rot90.permute4950812673.ex201",
+        "271d71e2_0.rot90.rot90.rot90.permute1654278039.ex210",
+        "271d71e2_0.rot90.rot90.rot90.permute4965803712.ex210"
+      ],
+      "draft_tokens_sha256": null,
+      "mechanism": {
+        "policy": "original",
+        "fallback": false
+      },
+      "candidates": [],
+      "returned_sequences": 0,
+      "legal_candidates": 0
+    },
+    {
+      "label": "path_A",
+      "elapsed_s": 37.51757278399998,
+      "started_at": 1793022736.9627092,
+      "finished_at": 1793022774.480288,
+      "call_deadline": 1793023296.9627092,
+      "prefill_returned_at": 1793022738.3931324,
+      "cutoff_possible": false,
+      "model_forward_calls": 379,
+      "model_input_tokens": 8688,
+      "input_shapes": {
+        "[4, 1794]": 1,
+        "[4, 1]": 378
+      },
+      "peak_allocated_bytes": 11865433600,
+      "prompt_tokens_sha256": "60dd349705edbfe9e804626fcab740eb4349a86d21be961e0bf41372639426cf",
+      "prompt_lengths": [
+        1794,
+        1794,
+        1794,
+        1794
+      ],
+      "subkeys": [
+        "271d71e2_0.rot90.permute4281673590.ex102",
+        "271d71e2_0.rot90.permute4950812673.ex201",
+        "271d71e2_0.rot90.rot90.rot90.permute1654278039.ex210",
+        "271d71e2_0.rot90.rot90.rot90.permute4965803712.ex210"
+      ],
+      "draft_tokens_sha256": null,
+      "mechanism": {
+        "status": "completed",
+        "model_forward_calls": 379,
+        "model_forward_input_tokens": 8688,
+        "max_model_forward_sequence": 1794,
+        "reuse_was_enabled": false,
+        "precomputed_draft_tokens_per_row": 0,
+        "precomputed_draft_tokens_total": 0,
+        "skipped_single_token_forwards": 0,
+        "skipped_input_tokens": 0,
+        "immutable_snapshot_bytes": 0,
+        "immutable_snapshot_restores": 0,
+        "paged_module_clear_count": 0,
+        "fallback_reason": "no_draft",
+        "reuse_stop_reason": null,
+        "precompute_limit": 16,
+        "source_runtime": "patched Unsloth2025.9.7/Qwen3 legacy KV",
+        "traversal": "unchanged original_inference callback",
+        "numerical_equivalence": "unconfirmed until paired GPU measurement",
+        "attention_module_count": 36
+      },
+      "candidates": [],
+      "returned_sequences": 0,
+      "legal_candidates": 0
+    },
+    {
+      "label": "path_B",
+      "elapsed_s": 37.51529076200006,
+      "started_at": 1793022774.9470835,
+      "finished_at": 1793022812.4623795,
+      "call_deadline": 1793023334.9470835,
+      "prefill_returned_at": 1793022776.3336372,
+      "cutoff_possible": false,
+      "model_forward_calls": 379,
+      "model_input_tokens": 8688,
+      "input_shapes": {
+        "[4, 1794]": 1,
+        "[4, 1]": 378
+      },
+      "peak_allocated_bytes": 11865433600,
+      "prompt_tokens_sha256": "60dd349705edbfe9e804626fcab740eb4349a86d21be961e0bf41372639426cf",
+      "prompt_lengths": [
+        1794,
+        1794,
+        1794,
+        1794
+      ],
+      "subkeys": [
+        "271d71e2_0.rot90.permute4281673590.ex102",
+        "271d71e2_0.rot90.permute4950812673.ex201",
+        "271d71e2_0.rot90.rot90.rot90.permute1654278039.ex210",
+        "271d71e2_0.rot90.rot90.rot90.permute4965803712.ex210"
+      ],
+      "draft_tokens_sha256": null,
+      "mechanism": {
+        "status": "completed",
+        "model_forward_calls": 379,
+        "model_forward_input_tokens": 8688,
+        "max_model_forward_sequence": 1794,
+        "reuse_was_enabled": false,
+        "precomputed_draft_tokens_per_row": 0,
+        "precomputed_draft_tokens_total": 0,
+        "skipped_single_token_forwards": 0,
+        "skipped_input_tokens": 0,
+        "immutable_snapshot_bytes": 0,
+        "immutable_snapshot_restores": 0,
+        "paged_module_clear_count": 0,
+        "fallback_reason": "no_draft",
+        "reuse_stop_reason": null,
+        "precompute_limit": 16,
+        "source_runtime": "patched Unsloth2025.9.7/Qwen3 legacy KV",
+        "traversal": "unchanged original_inference callback",
+        "numerical_equivalence": "unconfirmed until paired GPU measurement",
+        "attention_module_count": 36
+      },
+      "candidates": [],
+      "returned_sequences": 0,
+      "legal_candidates": 0
+    },
+    {
+      "label": "original_B",
+      "elapsed_s": 37.36811661799993,
+      "started_at": 1793022812.9204853,
+      "finished_at": 1793022850.2886083,
+      "call_deadline": 1793023372.9204853,
+      "prefill_returned_at": 1793022814.2948263,
+      "cutoff_possible": false,
+      "model_forward_calls": 379,
+      "model_input_tokens": 8688,
+      "input_shapes": {
+        "[4, 1794]": 1,
+        "[4, 1]": 378
+      },
+      "peak_allocated_bytes": 11865433600,
+      "prompt_tokens_sha256": "60dd349705edbfe9e804626fcab740eb4349a86d21be961e0bf41372639426cf",
+      "prompt_lengths": [
+        1794,
+        1794,
+        1794,
+        1794
+      ],
+      "subkeys": [
+        "271d71e2_0.rot90.permute4281673590.ex102",
+        "271d71e2_0.rot90.permute4950812673.ex201",
+        "271d71e2_0.rot90.rot90.rot90.permute1654278039.ex210",
+        "271d71e2_0.rot90.rot90.rot90.permute4965803712.ex210"
+      ],
+      "draft_tokens_sha256": null,
+      "mechanism": {
+        "policy": "original",
+        "fallback": false
+      },
+      "candidates": [],
+      "returned_sequences": 0,
+      "legal_candidates": 0
+    }
+  ],
+  "python": "3.11.13",
+  "torch_version": "2.8.0+cu128",
+  "cuda": "12.8",
+  "gpu": "NVIDIA L4",
+  "gold_read": false,
+  "planned_mechanism": "One full prefill of prompt plus at most16 known draft tokens; original DFS callback and original traversal unchanged.",
+  "attention_class": "transformers.models.qwen3.modeling_qwen3.Qwen3Attention",
+  "attention_paged_state_names_before": [],
+  "attention_forward_source_sha256": "07acc9514bec3586614c325a23815476cfd7cf3cc6428ad73f79743902718cb4",
+  "draft_source": null,
+  "comparisons": {
+    "original_B": {
+      "reference_sequences": 0,
+      "sequences": 0,
+      "same_sequence_set": true,
+      "same_returned_sequence_order": true,
+      "extra_sequences": 0,
+      "missing_sequences": 0,
+      "max_common_nll_difference": null,
+      "speed_ratio_vs_original_A": 1.0068447582096458
+    },
+    "path_A": {
+      "reference_sequences": 0,
+      "sequences": 0,
+      "same_sequence_set": true,
+      "same_returned_sequence_order": true,
+      "extra_sequences": 0,
+      "missing_sequences": 0,
+      "max_common_nll_difference": null,
+      "speed_ratio_vs_original_A": 1.0028338602183067
+    },
+    "path_B": {
+      "reference_sequences": 0,
+      "sequences": 0,
+      "same_sequence_set": true,
+      "same_returned_sequence_order": true,
+      "extra_sequences": 0,
+      "missing_sequences": 0,
+      "max_common_nll_difference": null,
+      "speed_ratio_vs_original_A": 1.0028948617162239
+    }
+  },
+  "no_promotion_decision": true,
+  "note": "Timing includes precompute, KV cloning and synchronization at call boundaries. First call is cold; original_A/path_A/path_B/original_B are fixed ABBA. Partial-deadline outputs cannot establish complete tree equivalence."
+}

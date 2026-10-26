@@ -4,7 +4,7 @@
 
 ## 当前进度
 
-**2026-10-26实查：027正式成绩29.72，较023的30.14下降0.42。** submission **57634436**已COMPLETE，绑定[精确V1／362150112](https://www.kaggle.com/code/zhuating/arc2-027-ttt-view-ensemble-formal?scriptVersionId=362150112)，私榜未返回。[实际结果](experiments/027/execution/submission-57634436-result-20261026.json)。结束本融合方案的提分晋级，保留023；C23的5→6/34没有转化为公榜收益。隐藏extra覆盖及具体退分根因未确认，不重提或事后换seed。[028 DFS机制小实验](docs/progress/028-nvarc-dfs-throughput.md)已实现并启动修复后的V2，固定原权重、TTT和DFS0.2，同adapter配对；完整结果及提分均未确认。
+**2026-10-26实查：027正式成绩29.72，较023的30.14下降0.42。** submission **57634436**已COMPLETE，绑定[精确V1／362150112](https://www.kaggle.com/code/zhuating/arc2-027-ttt-view-ensemble-formal?scriptVersionId=362150112)，私榜未返回。[实际结果](experiments/027/execution/submission-57634436-result-20261026.json)。结束本融合方案的提分晋级，保留023；C23的5→6/34没有转化为公榜收益。隐藏extra覆盖及具体退分根因未确认，不重提或事后换seed。[028 DFS机制小实验](docs/progress/028-nvarc-dfs-throughput.md)已COMPLETE／362511155：稳定候选题DFS调用耗时减1.57%，另一题表面减6.63%却改变候选池；结束固定16-token配方，不晋级正式提交。
 
 2026-10-25用户确认以NVARC为唯一主线，每轮只优化一个因素。当前交接见[028计划](docs/plan/028-nvarc-dfs-throughput.md)、[027实际复盘](docs/progress/027-nvarc-ttt-view-ensemble.md)与[机器可读分析](experiments/027/postmortem-20261026.json)。
 

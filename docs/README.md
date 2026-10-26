@@ -1,6 +1,6 @@
 # 文档索引
 
-当前研究入口：[028计划](plan/028-nvarc-dfs-throughput.md)与[028进展](progress/028-nvarc-dfs-throughput.md)：三题同adapter机制对照已实现，修复后的V2已接受启动，完整结果、提速和同预算得分未确认。[027进展](progress/027-nvarc-ttt-view-ensemble.md)已完成正式复盘：57634436／V1／362150112为COMPLETE、公榜29.72，较02330.14下降0.42；公开确认5→6/34未转化为公榜收益，结束该融合方案的晋级。正式最好仍30.14，026失败续训配方保持结束。
+当前研究入口：[028计划](plan/028-nvarc-dfs-throughput.md)与[028进展](progress/028-nvarc-dfs-throughput.md)：V2／362511155完整完成，稳定候选题DFS调用耗时减1.57%，d35表面减6.63%但候选变化；结束固定16-token配方，不晋级同预算或正式提交。[027进展](progress/027-nvarc-ttt-view-ensemble.md)已完成正式复盘：57634436／V1／362150112为COMPLETE、公榜29.72，较02330.14下降0.42；公开确认5→6/34未转化为公榜收益，结束该融合方案的晋级。正式最好仍30.14，026失败续训配方保持结束。
 
 025此前B4=R2=15/58、oracle17/58，已结束R2扩展。正式交付仍为023的30.14，参见[023进展](progress/023-score-recovery-and-selection.md)。
 
@@ -37,7 +37,7 @@
 | 025 研究缺陷与赛前提分决策 | [plan/025-research-gap-and-next-step.md](plan/025-research-gap-and-next-step.md) | [progress/025-research-gap-and-next-step.md](progress/025-research-gap-and-next-step.md)；40task／58query确认完成，B4=R2=15/58，oracle17/58，无净增，保留B4 |
 | 026 NVARC额外训练规则覆盖挑战者 | [plan/026-nvarc-extra-rule-training.md](plan/026-nvarc-extra-rule-training.md) | [progress/026-nvarc-extra-rule-training.md](progress/026-nvarc-extra-rule-training.md)；V1 COMPLETE，base=challenger=4/23，新增2／丢失2，oracle6→9；结束该配方 |
 | 027 原权重TTT视图集成 | [plan/027-nvarc-ttt-view-ensemble.md](plan/027-nvarc-ttt-view-ensemble.md) | [progress/027-nvarc-ttt-view-ensemble.md](progress/027-nvarc-ttt-view-ensemble.md)；正式57634436已COMPLETE／29.72，较023下降0.42，结束晋级；隐藏根因未确认 |
-| 028 NVARC DFS提速 | [plan/028-nvarc-dfs-throughput.md](plan/028-nvarc-dfs-throughput.md) | [progress/028-nvarc-dfs-throughput.md](progress/028-nvarc-dfs-throughput.md)；三题同adapter机制对照V2已接受，结果未确认；V1封装变量错误已归档 |
+| 028 NVARC DFS提速 | [plan/028-nvarc-dfs-throughput.md](plan/028-nvarc-dfs-throughput.md) | [progress/028-nvarc-dfs-throughput.md](progress/028-nvarc-dfs-throughput.md)；V2 COMPLETE／362511155；稳定候选题减1.57%，d35候选变化，结束固定16-token配方；B4／得分未测量 |
 
 ## 操作与维护
 

@@ -1,6 +1,6 @@
 # 028 NVARC DFS路径复用小实验进展
 
-日期：2026-10-26。对应[028计划](../plan/028-nvarc-dfs-throughput.md)。用户授权继续优化后，本轮已实现并启动一次有上限的机制实验；**完整结果、真实提速、同预算最终得分和比赛提分均未取得**。
+日期：2026-10-26。对应[028计划](../plan/028-nvarc-dfs-throughput.md)。**V2／362511155已COMPLETE，三题同adapter机制配对完成；候选稳定题DFS调用耗时减1.57%，d35表面减6.63%但候选池变化，结束固定16-token配方，不晋级同预算或正式提交。** 下文按时间保留实现／启动记录，完整结果见文末。B4、准确率与比赛提分未测量。
 
 ## 面板与固定对照
 
@@ -52,7 +52,7 @@ V2唯一Notebook变化是在setup补`raw_rerun_flag=os.getenv('KAGGLE_IS_COMPETI
 
 ## 完成后读取与判断
 
-正常启动后停止远端查询，按用户既有方式等待通知，不建定时监控。通知完成后先核对精确V1终态、实际scriptVersion、全部报告和产物SHA；第三方runtime源码下载到私有tmp，仓库只留数据与诊断。
+正常启动后停止远端查询，按用户既有方式等待通知，不建定时监控。通知完成后先核对精确V2终态、实际scriptVersion、全部报告和产物SHA；第三方runtime源码下载到私有tmp，仓库只留数据与诊断。
 
 先看3份task报告、TTT128步、原／改两次配对均闭合，有无cache不支持／OOM／异常或deadline。然后看draft可得性、实际跳过forward数、完整批次候选与NLL差异相对原版重复漂移、同顺序比较、真实耗时与峰值显存。没有实际复用或没有稳定收益，就结束这个固定16-token配方，不用此面板扫描草稿长度救结果。截断的批次不能作为完整树一致证据。
 
@@ -65,3 +65,46 @@ V2唯一Notebook变化是在setup补`raw_rerun_flag=os.getenv('KAGGLE_IS_COMPETI
 截至**21:50:02北京时间**的有界启动流，rank0／1均出现启动及两片checkpoint100%加载，未见Traceback或CUDA OOM。rank2、TTT完整统计、首个path_A调用尚未观察，不能写成三题已运行完或缓存算法已通过。SSE存在重复回放，不将消息次数当真实步骤或推算各rank完成时刻。证据见[启动健康](../../experiments/028/execution/startup-health-v2.json)与[源绑定](../../experiments/028/execution/source-verification-v2.json)。
 
 按用户既有等待方式，现在停止所有远端状态／日志读取，无后台轮询或定时任务。接续状态存[ready](../../experiments/028/pilot-v2-ready.json)，实际V2 scriptVersion仍未知。用户通知完成后执行`/private/tmp/arc2-028-download-completed-v2.py`；该入口先严格核对当前V2与全部cell源，再检查终态、读取输出URL真实scriptVersion、归档诊断及SHA。实际吞吐、候选变化、NLL漂移及提分仍未确认。
+
+## V2完整结果与停止决定
+
+用户通知完成后，完成入口严格核对当前V2与全部冻结cell源，读取终态**COMPLETE**。所有输出URL唯一实际scriptVersion为**362511155**；kernelId140991448没有被误作运行版本。下载31项数据／源码产物，第三方源码及HTML保留`/private/tmp/arc2-028-pilot-output-v2`，可读数据在`experiments/028/pilot-v2-output/`。见[终态／下载凭据](../../experiments/028/execution/pilot-v2-outcome.json)。
+
+原产物manifest列出的**22项文件bytes／SHA全部匹配**，包括实际输入、三个task报告、原求解与helper／runner源码。汇总见[artifact-verification-v2.json](../../experiments/028/execution/artifact-verification-v2.json)。原source／helper／runner与V2冻结包身份一致；没有在读结果后改代码、候选、草稿或选择题目。
+
+### 运行完成性
+
+- 实际4×NVIDIA L4各23034MiB，三worker；Python3.11.13、Torch2.8.0+cu128、CUDA12.8，原sft139与固定配置。
+- 三题均完成原128步TTT。训练loss分别：271d71e2为0.0169894、7b80bb43为0.00181836、d35bdbdc为0.0101428；仅作训练执行诊断。
+- 3份报告complete、**15次调用全部闭合**，无540秒或共享deadline截断、无Traceback、OOM或非有限NLL。输入3task／5query，实际只测首query，共3query；没有扩大为5query准确率。
+- 实际时间**21:43:31—22:01:47北京时间**，墙钟**1096.121秒／18.27分钟**。各rank并行工作秒不能相加充作墙钟。
+
+### 固定ABBA配对结果
+
+下表原版为original_A／B均值，proxy为path_A／B均值。百分比为**调用耗时减少**，不等于全流程或比赛收益。
+
+| task | 原版均值秒 | proxy均值秒 | 耗时变化 | 实际复用与候选 |
+| --- | ---: | ---: | ---: | --- |
+| 271d71e2 | 37.496 | 37.516 | 慢0.05% | 无草稿，skip0；两边均无返回序列，只验证fallback |
+| 7b80bb43 | 104.307 | 102.670 | **减1.57%** | 每次skip16；6序列／3个canonical网格、集合及顺序均相同；公共NLL最大差0.000588 |
+| d35bdbdc | 38.102 | 35.577 | **表面减6.63%** | 每次skip13；3序列／3网格数量相同，但稳定缺1／增1，集合交集2/3；公共NLL最大差0.047851 |
+
+原A／B两次返回序列和NLL逐项相同；pathA／B也各自逐项相同。d35的变化因此不能解释成**本轮已观测到的原版重复漂移**。两次proxy均将原canonical grid `58f40a17…`替换为`db58877a…`，没有读gold，不能称新增／丢失正确答案。共有grid `ef06e3d5…`的NLL从1.084758变1.110053，`611e6dfb…`从1.413949变1.461800。
+
+d35原每次394次forward、proxy366次，减少**28次却只skip13次**，搜索行为变化也贡献了表面变快。原缺失候选NLL为1.580338，较原阈值`−log(0.2)≈1.609438`接近；这只提示概率偏移可能改变搜索树，现有输出缺少同一路径的新逐位置logits，不能据此证明实际根因。
+
+7b80每次1061→1045次forward，恰少16次，输入token总数相同，是本面板中较清晰的调用提速证据；但只覆盖1题／1个目标batch，幅度1.57%，B4未执行，不能外推12小时全量或分数。其NLL仍发生小幅变化，不能称严格数值等价。
+
+全部配对调用跨worker累计原359.810秒→proxy351.526秒，**表面减少2.30%**；该值混入d35候选／搜索变化，并且不是整个流程墙钟收益。保留全部raw报告用于审计，不将它作为优化成功指标。
+
+### 决策与下一步边界
+
+**结束这个固定16-token proxy配方，不晋级同预算搜索评价或正式提交，保留原023求解方案／公榜30.14。** 无draft的一题持平，一题只有小幅局部收益，另一题候选变化尚未解释；证据不足以证明可用的等价提速，也没有正确率／提分证据。不在这个面板扫描16→32等长度、seed或概率阈值救结果。
+
+本轮重新派出只读结果代理独立核查，同样复现22项SHA、完整性、ABBA均值、候选集合与NLL差异，结论一致。具体是prefill／decode数值与形状偏差，还是snapshot恢复缺陷，现有产物无法区分；没有将其擅自写成已证实cache bug。
+
+另一新代理有限静态审查没有发现可证明的logit索引／回溯错误，但也未证明缓存恢复正确。尤其首次prefill已将d35的长度从794改为810，root logits和prefix KV可能在第一次skip／restore之前就变化，不能只盯第13步。
+
+如继续研究路径复用，先另行冻结有限诊断，最多三项：同adapter比较prompt-only与prompt＋16draft的root logits／各层prefix KV；固定相同16token，比较原逐token与预计算的逐位置logits／累计NLL；用**原逐token生成的snapshot**关闭skip，只对比原位继续与清paged后恢复的下一token logits／KV，覆盖d35三次祖先恢复。只定位根因，不改变草稿／阈值或声称提分；诊断尚未运行。当前没有启动新GPU、没有新训练或competition submission。
+
+完整汇总、每题ABBA指标、正确性边界与停止决定见[pilot-v2-summary.json](../../experiments/028/pilot-v2-summary.json)，接续状态已更新为完成且不晋级。正式最好仍30.14。
