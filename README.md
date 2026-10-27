@@ -6,7 +6,7 @@
 
 **2026-10-26实查：027正式成绩29.72，较023的30.14下降0.42。** submission **57634436**已COMPLETE，绑定[精确V1／362150112](https://www.kaggle.com/code/zhuating/arc2-027-ttt-view-ensemble-formal?scriptVersionId=362150112)，私榜未返回。[实际结果](experiments/027/execution/submission-57634436-result-20261026.json)。结束本融合方案的提分晋级，保留023；C23的5→6/34没有转化为公榜收益。隐藏extra覆盖及具体退分根因未确认，不重提或事后换seed。[028 DFS机制小实验](docs/progress/028-nvarc-dfs-throughput.md)已COMPLETE／362511155：稳定候选题DFS调用耗时减1.57%，另一题表面减6.63%却改变候选池；结束固定16-token配方，不晋级正式提交。 [029诊断](docs/progress/029-nvarc-numerics-cache-diagnosis.md)已COMPLETE／362548497：差异在恢复前出现，三个受检恢复点均一致；结束这轮runtime定位，尚无提分证据。
 
-2026-10-25用户确认以NVARC为唯一主线，每轮只优化一个因素。当前交接见[028计划](docs/plan/028-nvarc-dfs-throughput.md)、[027实际复盘](docs/progress/027-nvarc-ttt-view-ensemble.md)与[机器可读分析](experiments/027/postmortem-20261026.json)。
+2026-10-27研究审计完成：当前可见最高公开Notebook仍为精确V1／312063593的33.89，公榜金牌显示边界69.44；当前配置账号普通GPU余额0，10月31日08:00北京时间刷新，最终截止11月3日07:59。当前交接见[030计划](docs/plan/030-final-week-search-coverage.md)与[030进展](docs/progress/030-final-week-search-coverage.md)：只设计原sft139／TTT／B4／runtime下DFS累计路径门槛0.2对0.1的同预算配对，实验代码和GPU均未运行；025—029已结束配方不复活。
 
 截至**2026-10-25 10:05北京时间的实查记录**：
 
