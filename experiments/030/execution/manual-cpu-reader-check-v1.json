@@ -1,0 +1,33 @@
+{
+  "checked_at_utc": "2026-10-27T03:06:06.953041+00:00",
+  "kind": "Manual CPU reuse of already frozen025 artifacts; no030 model run or new scoring",
+  "new_query_gold_read": false,
+  "gpu_run": false,
+  "source_scored_records": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v2-output/025/scored-candidates.jsonl",
+    "bytes": 1208811,
+    "sha256": "c7747576219e6abb876a673654b13c250909a13d6eb4dc6683e0bc24ce75fb4e",
+    "rows": 885
+  },
+  "source_B4": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/confirmation-v2-output/025/submission-B4.json",
+    "bytes": 117275,
+    "sha256": "c21ac0a8058b3829764b46998f5a38cef9c8ad05b6fe0e311c20f3d7b1bdccf1"
+  },
+  "task_count": 40,
+  "query_count": 58,
+  "original_B4_reproduction_passed": true,
+  "queries_four_completed_batches": 55,
+  "queries_never_started": [],
+  "unclosed_stage_intervals": 0,
+  "adapter_equality": "unconfirmed; historical025 did not export fingerprints",
+  "AST_parsed_scripts": [
+    "freeze_pair.py",
+    "prepare_mechanism.py",
+    "prepare_pair.py",
+    "prepare_panels.py",
+    "read_preflight.py",
+    "score_pair.py"
+  ],
+  "limitations": "This verifies the B4 reader and event aggregation against real historical artifacts; not a030 experiment result or a GPU compatibility proof."
+}

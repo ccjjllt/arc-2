@@ -1,0 +1,1352 @@
+{
+  "created_at_utc": "2026-10-27T02:56:29.405850+00:00",
+  "cohort": "030_initial40_fixed_public_regression",
+  "status": "input_panel_frozen_GPU_not_run",
+  "panel": "initial40",
+  "n_tasks": 40,
+  "n_queries": 58,
+  "source_task_count": 120,
+  "source_query_count": 172,
+  "eligible_task_count": 40,
+  "selection_seed": null,
+  "selection_rule": "Retain all025 forty task IDs, all original demos and all queries; do not select by030 outputs. Challenge bytes are copied unchanged from025. Task queue order is ascending task_id, as in original V1.",
+  "length_measure": "Sum of demo-input and query-input cells only; no demo-output or query-output cells",
+  "task_order": [
+    "20a9e565",
+    "221dfab4",
+    "269e22fb",
+    "271d71e2",
+    "2ba387bc",
+    "2d0172a1",
+    "332f06d7",
+    "35ab12c3",
+    "446ef5d2",
+    "4c7dc4dd",
+    "5545f144",
+    "58490d8a",
+    "62593bfd",
+    "64efde09",
+    "65b59efc",
+    "67e490f4",
+    "71e489b6",
+    "78332cb0",
+    "7b0280bc",
+    "7b3084d4",
+    "7b5033c1",
+    "7b80bb43",
+    "7ed72f31",
+    "88e364bc",
+    "898e7135",
+    "8f3a5a89",
+    "9385bd28",
+    "97d7923e",
+    "a251c730",
+    "a47bf94d",
+    "b0039139",
+    "b10624e5",
+    "b99e7126",
+    "c7f57c3e",
+    "cb2d8a2c",
+    "d35bdbdc",
+    "dbff022c",
+    "e12f9a14",
+    "e8686506",
+    "eee78d87"
+  ],
+  "task_order_sha256": "53ef12d3598394c129b47a0c37417865e44063eec7b484e437db6a7bc38ccde5",
+  "strata": {
+    "L_multi": {
+      "eligible_tasks": 10,
+      "selected_tasks": 6,
+      "selected_queries": 12,
+      "input_cells_min": 2334,
+      "input_cells_max": 4382,
+      "task_ids": [
+        "20a9e565",
+        "221dfab4",
+        "2d0172a1",
+        "4c7dc4dd",
+        "62593bfd",
+        "e12f9a14"
+      ]
+    },
+    "L_single": {
+      "eligible_tasks": 11,
+      "selected_tasks": 7,
+      "selected_queries": 7,
+      "input_cells_min": 2062,
+      "input_cells_max": 3364,
+      "task_ids": [
+        "2ba387bc",
+        "64efde09",
+        "67e490f4",
+        "a251c730",
+        "a47bf94d",
+        "b10624e5",
+        "b99e7126"
+      ]
+    },
+    "M_multi": {
+      "eligible_tasks": 9,
+      "selected_tasks": 6,
+      "selected_queries": 12,
+      "input_cells_min": 1178,
+      "input_cells_max": 2000,
+      "task_ids": [
+        "446ef5d2",
+        "65b59efc",
+        "71e489b6",
+        "7ed72f31",
+        "88e364bc",
+        "cb2d8a2c"
+      ]
+    },
+    "M_single": {
+      "eligible_tasks": 12,
+      "selected_tasks": 8,
+      "selected_queries": 8,
+      "input_cells_min": 1173,
+      "input_cells_max": 1939,
+      "task_ids": [
+        "271d71e2",
+        "35ab12c3",
+        "58490d8a",
+        "7b0280bc",
+        "7b3084d4",
+        "7b80bb43",
+        "898e7135",
+        "c7f57c3e"
+      ]
+    },
+    "S_multi": {
+      "eligible_tasks": 8,
+      "selected_tasks": 5,
+      "selected_queries": 11,
+      "input_cells_min": 527,
+      "input_cells_max": 1168,
+      "task_ids": [
+        "269e22fb",
+        "78332cb0",
+        "9385bd28",
+        "b0039139",
+        "d35bdbdc"
+      ]
+    },
+    "S_single": {
+      "eligible_tasks": 13,
+      "selected_tasks": 8,
+      "selected_queries": 8,
+      "input_cells_min": 144,
+      "input_cells_max": 1096,
+      "task_ids": [
+        "332f06d7",
+        "5545f144",
+        "7b5033c1",
+        "8f3a5a89",
+        "97d7923e",
+        "dbff022c",
+        "e8686506",
+        "eee78d87"
+      ]
+    }
+  },
+  "entries": [
+    {
+      "task_id": "20a9e565",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "L",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 4382,
+      "demo_pairs_sha256": "f41d40d647bf0ef36eafbe6685f8ccb151e9886b647fba2c37306b3ae4dd4e5d",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "20a9e565_0",
+          "input_sha256": "7f5776fabd1cdf8f1b3e32b32841328983dee656507ca5f11808781defbe40cb"
+        },
+        {
+          "query_index": 1,
+          "query_key": "20a9e565_1",
+          "input_sha256": "00291c6f44b6f3748d9b403c254fe1d37e23f80715af8fb783bbebc53b76bd46"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "221dfab4",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "L",
+      "query_group": "multi",
+      "n_demo": 2,
+      "total_input_cells": 2801,
+      "demo_pairs_sha256": "2c5bdd76ba874a775e8811eed39aea0a0db67d3cba4583cbdcd786a07b26f1fb",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "221dfab4_0",
+          "input_sha256": "f06271a2586a8d05a57af68e3d958602ec304b0eae487ddf100adfa8efc4c6ea"
+        },
+        {
+          "query_index": 1,
+          "query_key": "221dfab4_1",
+          "input_sha256": "314f0da2016a9686d00d3fd06db65fc06050a2825ad8b15546adbd5b825336c6"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "269e22fb",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "S",
+      "query_group": "multi",
+      "n_demo": 5,
+      "total_input_cells": 754,
+      "demo_pairs_sha256": "cf56c99748077794d8d8250bb835568f1a5dc2f23063ea709b66d4abff9ad709",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "269e22fb_0",
+          "input_sha256": "2f657d17c9974e931c50a8f081ce13010612f01a562d693f2b35ff4a4c22026e"
+        },
+        {
+          "query_index": 1,
+          "query_key": "269e22fb_1",
+          "input_sha256": "b11ef6abcb0a3807be54f6d17591323bfb25d6a33e2fc035b164e0006ca24bc1"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "271d71e2",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 1173,
+      "demo_pairs_sha256": "294171a7fd5128c7fd8d8cdd710147d8fbdc791ae0e8ca3e49b135e6a8af32f9",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "271d71e2_0",
+          "input_sha256": "87cad6f61c75f7533ebdd53f4df79358850a854df92d99d5a0c9fd5df5edd9e2"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "2ba387bc",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 4,
+      "total_input_cells": 2372,
+      "demo_pairs_sha256": "00c30973965a98179460c063ef40e3906c3223729e7f34f269ed34acc61fe3e1",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "2ba387bc_0",
+          "input_sha256": "427d66b9c2a794e1ff2505e7505fcea6cc9187a2b6d1b24c99047409701a7bce"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "2d0172a1",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "L",
+      "query_group": "multi",
+      "n_demo": 4,
+      "total_input_cells": 2890,
+      "demo_pairs_sha256": "44991b1b8631c77a1280440d18ba5179d2ad97ad563679ba7371b5e075b81c49",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "2d0172a1_0",
+          "input_sha256": "b4904ed1c6bef88b96f2f237ad841e6f5080327f5929bc88e102daf397ec0ab2"
+        },
+        {
+          "query_index": 1,
+          "query_key": "2d0172a1_1",
+          "input_sha256": "28c81d8fc8b29ae173de22f2fdbf3411746981460459ee3dc0f5f7a4d2abc51f"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "332f06d7",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 4,
+      "total_input_cells": 1096,
+      "demo_pairs_sha256": "bc9a1aa2ea0e5e4527fdc883757a82018079821187b7f63142a8177b4c505631",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "332f06d7_0",
+          "input_sha256": "a416da87f3fc0047e7429e241740f64cf66f4f6d51f652aa1c1c0f19ea981bc0"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "35ab12c3",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 1390,
+      "demo_pairs_sha256": "553f50df0a63b4ac07d851ec573368cec3ba73583813c5aaf03a6c4dc655a522",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "35ab12c3_0",
+          "input_sha256": "04d05510debe89f9ed3e1bbe1dee87c662e5f22f5394732f0b682afdc8e15b5a"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "446ef5d2",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "M",
+      "query_group": "multi",
+      "n_demo": 2,
+      "total_input_cells": 1416,
+      "demo_pairs_sha256": "715b8a2fc6d29ab658b6847fa4d83c454f3a9140ce8611e0d984f272f1b5f78d",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "446ef5d2_0",
+          "input_sha256": "ef3ff30504cf1e3828738c8cbd36ae7f84f0fd31b697c7d9218787c909724d6b"
+        },
+        {
+          "query_index": 1,
+          "query_key": "446ef5d2_1",
+          "input_sha256": "0eb092657ab6088a1a7339c1f450272e43cbdd2278017502d088d56a54d2ec8a"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "4c7dc4dd",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "L",
+      "query_group": "multi",
+      "n_demo": 2,
+      "total_input_cells": 3600,
+      "demo_pairs_sha256": "a355e8a099a8d0a891a1d51ceb7d8f478ed2e6966b0a60314606246f7ef616e6",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "4c7dc4dd_0",
+          "input_sha256": "1ae6833ecad572a57c690f6baad886c8ae7657f85b4d16e5c378010a637f0919"
+        },
+        {
+          "query_index": 1,
+          "query_key": "4c7dc4dd_1",
+          "input_sha256": "5b80c57da7c736c1ce3cc9f38f30a4969b489bd1409b2df9e034b22820dcaaf0"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "5545f144",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 1001,
+      "demo_pairs_sha256": "9f515293ec161bf540f8e9d2db07c439f17fe2c59de7ba3a77691cc3c7e61eb8",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "5545f144_0",
+          "input_sha256": "7688df11a4105ebd0159967891fa2f782889daa6e239a51e521c28083edced21"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "58490d8a",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 1939,
+      "demo_pairs_sha256": "f5091745eaa2b70deb85121ed2db03c51f613f0e8ca4b66ab612541bb1cd7faa",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "58490d8a_0",
+          "input_sha256": "1de2ab73a75c0f50aadb9ac6df3dc295b8e2e9163ce6ac9ec01f23929ce1edbc"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "62593bfd",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "L",
+      "query_group": "multi",
+      "n_demo": 2,
+      "total_input_cells": 2589,
+      "demo_pairs_sha256": "43f508b11d7f26227b6dcb8d92c2471266ac4fc542088b3748ec8d07b5055c0b",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "62593bfd_0",
+          "input_sha256": "90a8e1716bd7edbba441110749d75948163db6b987da019b966fc627fc88c925"
+        },
+        {
+          "query_index": 1,
+          "query_key": "62593bfd_1",
+          "input_sha256": "18e4e702f6c89d1d708663e62af80f4c6f3a92848e5229da39dea2e9bb1468ae"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "64efde09",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 2162,
+      "demo_pairs_sha256": "dfd02217395500bb8ec3ae531aee06bb2accb379359f1bb912e6ea5a664347fe",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "64efde09_0",
+          "input_sha256": "72627cfe8f69d26fb1668bace6cf702aa5cfd0bdd4a284efcc37c765d25425ac"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "65b59efc",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "M",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 1178,
+      "demo_pairs_sha256": "9d1fd3f53ef53b448dc5b7726bf7d07fd418607b7915d03ef467a0ff847b5b8c",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "65b59efc_0",
+          "input_sha256": "56abdc97fe19aaf7b142f2bfc0dd8d5ffffe1956622bd45ee9149356386f5092"
+        },
+        {
+          "query_index": 1,
+          "query_key": "65b59efc_1",
+          "input_sha256": "8ef23048bcca1e74f8c1ba556e18831f1ab480c90156f418dd4158d1a1b90d65"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "67e490f4",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 2700,
+      "demo_pairs_sha256": "a891a4ccd98ed46d02e17982d5edf5d612d67ce879d9cdd6b91e7e4380972ac0",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "67e490f4_0",
+          "input_sha256": "20073a2017acda52bf0a16184c698ac162a3e84f619c1da3392404b8576870f1"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "71e489b6",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "M",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 1433,
+      "demo_pairs_sha256": "24684d46911104373ece58e7a5be9f0387465cfeca412bb8d3a82b08b7e70774",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "71e489b6_0",
+          "input_sha256": "d4c33f3a317af77ee45308b7a4a21ca902518b5305bd562a500c027f4f66b17d"
+        },
+        {
+          "query_index": 1,
+          "query_key": "71e489b6_1",
+          "input_sha256": "efc43379a5493f1011ea7240526e356e6a4c4fddab875e3a228cebb583174e0d"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "78332cb0",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "S",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 527,
+      "demo_pairs_sha256": "4cdda0f37d93ab1f2a1601d1a4d5daf672b11920f1840d5ee181180b6ced1f59",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "78332cb0_0",
+          "input_sha256": "5ce6026d0b4f37d975cf721bd4c2ae70cbfa63756dd3f848aa90ea1aa0561d0d"
+        },
+        {
+          "query_index": 1,
+          "query_key": "78332cb0_1",
+          "input_sha256": "118685bb4a0a6504943e137b3d2061b541145703873335a6290b30d411bcd97c"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "7b0280bc",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 1849,
+      "demo_pairs_sha256": "c9c33d181ce419814d98053ae002b8774aa272359d2e9e415aa6f9022e02b1e6",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "7b0280bc_0",
+          "input_sha256": "7b366e8df0bc4355b50d72d9e9a44b48c939ba5e4b2385af1e02e4ab9055f36f"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "7b3084d4",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 1600,
+      "demo_pairs_sha256": "af2933bbe7066e74dec920ec1c4d0761151644e6b2d7b7d347e89ecfde763876",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "7b3084d4_0",
+          "input_sha256": "5d37f8dd098e8edbdbbaa0910650b4da4283172a22e93ac18509d2fe99de191f"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "7b5033c1",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 768,
+      "demo_pairs_sha256": "bcf53fdecdbf3f1a1b86777b25f28863ffe00bb30229a175cdae9e6472a4990d",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "7b5033c1_0",
+          "input_sha256": "5d867d549900226d6c0390e56f14124b18f1ab3412398c65ecc87c4a20d74257"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "7b80bb43",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 1645,
+      "demo_pairs_sha256": "e3875702a70af35637fc2a71fbaec761037ee34b6a256482665fba871877ad3f",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "7b80bb43_0",
+          "input_sha256": "2a1cb4bc08eb075f7721f0d0fc5ce8ae4a027f709a74032484079d9777b378a3"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "7ed72f31",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "M",
+      "query_group": "multi",
+      "n_demo": 2,
+      "total_input_cells": 1756,
+      "demo_pairs_sha256": "559e22951e2035a76f1277e90e04de4cd52d4cfc45af27d8596c4168bd7f7f06",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "7ed72f31_0",
+          "input_sha256": "b565d473d3b3c59270de5f536d1dba700b3b7896776562542406beb7aa3ea434"
+        },
+        {
+          "query_index": 1,
+          "query_key": "7ed72f31_1",
+          "input_sha256": "cdc813c14a4c3b09e64890b34ecd95041c986b3910b8830d89d5094628fb04e3"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "88e364bc",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "M",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 2000,
+      "demo_pairs_sha256": "9f6dc682a7b2b591b94efb3dde4fd1f0388b733bf66942248a0c29b68406ce75",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "88e364bc_0",
+          "input_sha256": "a1d500f8b5d54f14175bfa1c6f7437bfa374efd2ea9aa2dba2d08ea9ca06d4be"
+        },
+        {
+          "query_index": 1,
+          "query_key": "88e364bc_1",
+          "input_sha256": "ed1c45de4b77f58550f883e9c35f83a3e851924029d2c257891bdc2baab3cc52"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "898e7135",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 1770,
+      "demo_pairs_sha256": "84ed4ced005c4d2b555bd012c44ee6642d69c4e7bb8037cfe257e0a81788fc5d",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "898e7135_0",
+          "input_sha256": "6ce239ca827a12f45737ba3fea00d6a112174eb5d16fb7fa6073d77fe412e341"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "8f3a5a89",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 900,
+      "demo_pairs_sha256": "b985b589ad1c249ac3f8a96bf36f3f9da3c9f35f379fd69ab65de361fbbb7e64",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "8f3a5a89_0",
+          "input_sha256": "357784a6756a3a282bb15646851b4b59d8b5d7756c1aef0ef6e287e8208085a9"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "9385bd28",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "S",
+      "query_group": "multi",
+      "n_demo": 4,
+      "total_input_cells": 1168,
+      "demo_pairs_sha256": "67cabdb8c0d8d88c951b0754a1d9c2ff41a959e08cc730dea74af5648b4832aa",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "9385bd28_0",
+          "input_sha256": "91850403132f027fe1bcdee10a8ac131b3282961f8eadf0283b3e4ca62303472"
+        },
+        {
+          "query_index": 1,
+          "query_key": "9385bd28_1",
+          "input_sha256": "837ecee27b31c94defacbb45df586ad1d0524b7ab39870d7806fe0302076f8ab"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "97d7923e",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 600,
+      "demo_pairs_sha256": "b7e920303e2e45e0461fcb8a7c2d46590d6827a24e402be6d425d1b282273a82",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "97d7923e_0",
+          "input_sha256": "0a5c01e3945207897314b655fa3c288a3e9124b2ca4b82b8b30501660b235aab"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "a251c730",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 2700,
+      "demo_pairs_sha256": "d18d75ead937d9a83cd3c08ec06b5ccb8685f9200f7a861eab7d88b01aa230f9",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "a251c730_0",
+          "input_sha256": "5e5adca2bd9dcd150490637f0f7aab605648d85d68d238a3cd727ab10ab27f9b"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "a47bf94d",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 2062,
+      "demo_pairs_sha256": "abcdda01b7058660983c7c0a584680808e16c51141049643584b137994334eae",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "a47bf94d_0",
+          "input_sha256": "e36f204036279b481a3e938b0654ebc1ae2cb89765ab8adebbacbcb5c132e081"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "b0039139",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "S",
+      "query_group": "multi",
+      "n_demo": 4,
+      "total_input_cells": 826,
+      "demo_pairs_sha256": "de069a04521fb2a9dea4e08e1c1ad0ba07ba759283c32f7b5ac338c9df673c4c",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "b0039139_0",
+          "input_sha256": "023e16ebaa5278e0879fbbbf6316d042104b4e8e675d082a6223322b9d5a4d0f"
+        },
+        {
+          "query_index": 1,
+          "query_key": "b0039139_1",
+          "input_sha256": "b1dba1321d9bd47c2ee927562dc3dbe9a5e747e79b741b7d5a6032487785521d"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "b10624e5",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 2187,
+      "demo_pairs_sha256": "3b82c73757753ffa25fc2f1d276ebbc1c761a8c72e5d57080e33f5af95f091c1",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "b10624e5_0",
+          "input_sha256": "6184ddcf802ea73467294d8555fa0c45e5f78271357fe2dfabc23fa71e346dc5"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "b99e7126",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 3364,
+      "demo_pairs_sha256": "893642437bf56a36898f22389be95132b71a2d1955452ac2f597e2f1c5e56e3a",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "b99e7126_0",
+          "input_sha256": "a0c5cc1571194b3fd285e3cb919336ae224b0873882364db40aff26cd33e5601"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "c7f57c3e",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 1432,
+      "demo_pairs_sha256": "7ee243c3bc498dfc19165417d6926a5dcf53e55a9bea3507aa6c2eaa71c9458c",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "c7f57c3e_0",
+          "input_sha256": "0aaf0212b90ad5f74df0d407e71c163f62401ad70f4f7792fd311d53dc02706e"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "cb2d8a2c",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "M",
+      "query_group": "multi",
+      "n_demo": 4,
+      "total_input_cells": 1987,
+      "demo_pairs_sha256": "4c13b291cee0640ee12fd538ec7ce7bb4014ec52e6523c6414d56ed9c963348e",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "cb2d8a2c_0",
+          "input_sha256": "39a2d5769ffb8d05dcfb3ea258d0330decd8a17c9970a5305b48eb9f554d5df3"
+        },
+        {
+          "query_index": 1,
+          "query_key": "cb2d8a2c_1",
+          "input_sha256": "09eaa255b25ff5b1b0141203d25b40a06cd1a39036da56b2a2e5afec4fcd7b86"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "d35bdbdc",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "S",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 600,
+      "demo_pairs_sha256": "d500a072ca5816371f983772f0d08eefeeb8be2ce080a66000d89cf4d5dc1cf9",
+      "n_test_queries": 3,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "d35bdbdc_0",
+          "input_sha256": "8e79d412b58d81d2cfd39ce7be8246e2331f86ffb8a88dc03ef03699419acf1b"
+        },
+        {
+          "query_index": 1,
+          "query_key": "d35bdbdc_1",
+          "input_sha256": "b2032ad4119b7ab2e6124ebeec4be47cffbc4b68b3a7faaeb627c41e118e11e0"
+        },
+        {
+          "query_index": 2,
+          "query_key": "d35bdbdc_2",
+          "input_sha256": "e38c3173a31594838d2f3654471a39d9c26635f8b74d0ea35717d2dc6b13a117"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "dbff022c",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 473,
+      "demo_pairs_sha256": "9242631ab4774f8e24c90d3e0b131fdb524132c1320fd3d3024e68b4aa7da652",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "dbff022c_0",
+          "input_sha256": "53080724916ac81502ba91f436384b80d2cc014bcaed0bff823e55fbaf24293e"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "e12f9a14",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "L",
+      "query_group": "multi",
+      "n_demo": 4,
+      "total_input_cells": 2984,
+      "demo_pairs_sha256": "fa89cf89a5e4856b49d5b11d378b55a60f28c511503a5fa80864700dd4001d98",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "e12f9a14_0",
+          "input_sha256": "cf38714929571a00da4150156b16e8e384887f2a3ccf23e49271f1ee00fee785"
+        },
+        {
+          "query_index": 1,
+          "query_key": "e12f9a14_1",
+          "input_sha256": "42a0f7d52a2f273cd1a35465ddab74e1577043fac4d065a8e98bb6184539f17f"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "e8686506",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 563,
+      "demo_pairs_sha256": "965b5469237c27413b23aaffaf9c7bf285ed2b8f23210f6432199e5803383450",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "e8686506_0",
+          "input_sha256": "c291067d2d367866e4bf5cc363ffad9c2d8d6d08147eb07b14e17fc4d48e56ef"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "eee78d87",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 144,
+      "demo_pairs_sha256": "11fb8020ed856d033bcd612f536a8ba888b471be3ae294df510ce7ff32d5fb16",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "eee78d87_0",
+          "input_sha256": "83f59a0cc3fd5688128869df8cfde03e6137fe471e855e6d0398e9a6b424990b"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    }
+  ],
+  "source": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/008/raw-eval/arc-agi_evaluation_challenges.json",
+    "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+    "bytes": 984679,
+    "competition": "arc-prize-2026-arc-agi-2",
+    "provenance": "Official Kaggle challenge snapshot archived by008 and exact-SHA verified by027",
+    "matches_027_official_challenge_sha256": true
+  },
+  "sources": [
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/cohort-v1/manifest.json",
+      "sha256": "9e8c6617193bd48efc905b0766d218c37218853f51f5f145ee27bd15ee79fa45",
+      "bytes": 66098,
+      "role": "025 initial membership and historical exclusion metadata"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/cohort-v1/challenges.json",
+      "sha256": "38df4c7126f160f9dd045b4b0c9fb37ccb4f24dfbb51c8d32aa7b50f132ebeb9",
+      "bytes": 1596517,
+      "role": "025 exact input-only panel retained byte-for-byte"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/027/confirmation-v1/manifest.json",
+      "sha256": "c56c16780af77a60715dcb595f2993f3ed26ed410f23c9f26f5e824a9359fd97",
+      "bytes": 24293,
+      "role": "027 already consumed confirmation membership only"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/026/panel-v1/manifest.json",
+      "sha256": "02143e35eeb28f0634fa54334e1f217af1965bbf6212bd216970c16d6805e605",
+      "bytes": 19669,
+      "role": "026 development membership only; outcomes are not used"
+    }
+  ],
+  "input_artifact": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/030/panels-v1/initial40/challenges.json",
+    "sha256": "38df4c7126f160f9dd045b4b0c9fb37ccb4f24dfbb51c8d32aa7b50f132ebeb9",
+    "bytes": 1596517
+  },
+  "query_solutions_read": false,
+  "model_predictions_read": false,
+  "query_output_fields_in_challenges": 0,
+  "independent_confirmation": false,
+  "consumed_C23_tasks": [],
+  "historical_pressure_annotations": {
+    "2ba387bc_0": "025 known second-slot-only correct; historical pressure annotation, not a blind example",
+    "d35bdbdc_1": "025 correct raw candidate first observed in query batch 3; historical pressure annotation",
+    "7ed72f31_1": "025 correct raw candidate first observed in query batch 3; historical pressure annotation",
+    "7b0280bc_0": "025 correct raw candidate first observed in query batch 3; historical pressure annotation"
+  },
+  "pressure_annotation_usage": "Historical known behaviors only; never a deployment whitelist, selection weight or independent confirmation claim",
+  "frozen_solver_hypothesis": {
+    "A_cumulative_path_probability_floor": 0.2,
+    "B_cumulative_path_probability_floor": 0.1,
+    "selection": "Original B4 kgmon, first two distinct grids",
+    "note": "Input freeze does not replace the separate executable package/budget manifest"
+  },
+  "limitations": [
+    "Both panels are exposed public development/regression data, not an independent blind confirmation set.",
+    "All public tasks were inferred in 019; historical per-query gold exposure is not exhaustively audited.",
+    "C23 membership denotes a consumed prior confirmation set; its inclusion here does not restore holdout status.",
+    "Upstream NVARC public-eval validation/checkpoint selection and rule-derived data preclude model-unseen claims.",
+    "Historical exclusion records include metadata-only selections and reservations; they do not imply all120 query golds were read.",
+    "Input-cell strata approximate input size, not token length, semantic difficulty or measured runtime.",
+    "Full query denominators remain fixed even when a future budget cutoff leaves outputs missing.",
+    "This freeze records inputs/membership only; solver time budgets and executable source identity must be frozen separately before GPU execution."
+  ]
+}

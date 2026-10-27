@@ -1,0 +1,87 @@
+{
+  "prepared_at_utc": "2026-10-27T03:08:59.289323+00:00",
+  "status": "zhuating_mechanism_v1_running",
+  "competition": "arc-prize-2026-arc-agi-2",
+  "gpu_experiment_run": true,
+  "query_gold_read": false,
+  "new_score": null,
+  "packages": {
+    "mechanism": {
+      "directory": "/private/tmp/arc2-030-mechanism-v1",
+      "ref": "zhuating/arc2-030-threshold-mechanism",
+      "notebook_sha256": "2093702f934709070efe7bfcaa9a21350d4d84abf6d640d93b645e14c99ea14e",
+      "notebook_bytes": 80894,
+      "local_preparation_revision": 1,
+      "remote_version": 1,
+      "remote_script_version_id": null,
+      "launched": true,
+      "status": "RUNNING"
+    },
+    "initial": {
+      "directory": "/private/tmp/arc2-030-pair-initial-v3",
+      "ref": "zhuating/arc2-030-dfs-threshold-pair-initial",
+      "notebook_sha256": "8a6361e5ff76011ab1af63c736ecd0c014336a46c296c9794b9e142997d8966c",
+      "notebook_bytes": 123865,
+      "local_preparation_revision": 3,
+      "remote_version": null,
+      "remote_script_version_id": null,
+      "launched": false,
+      "status": "not_launched_superseded_for_current_quota_by_pilot20"
+    },
+    "extension": {
+      "directory": "/private/tmp/arc2-030-pair-extension-v3",
+      "ref": "zhuating/arc2-030-dfs-threshold-pair-extension",
+      "notebook_sha256": "c26c3d36e21860c262e18f075d635adbb06fd7c968df68e235530af69b8d43c2",
+      "notebook_bytes": 132541,
+      "local_preparation_revision": 3,
+      "remote_version": null,
+      "remote_script_version_id": null,
+      "launched": false
+    },
+    "pilot20": {
+      "directory": "/private/tmp/arc2-030-pair-pilot20-v1",
+      "ref": "zhuating/arc2-030-dfs-threshold-pilot20",
+      "notebook_sha256": "60a5454bbe50beafcf49a959d2840df6d0c321f0e8d766810c8aea0bce38cc63",
+      "notebook_bytes": 103361,
+      "local_preparation_revision": 1,
+      "remote_version": null,
+      "remote_script_version_id": null,
+      "launched": false,
+      "conditions": "Mechanism AA passes and current quota permits≤2h4L4; replaces initial40 for current balance, fixed original promotion criteria."
+    }
+  },
+  "script_sha256": {
+    "freeze_pair.py": "a223f904456be76465ffa1ae190e91119a018cf2b5aca6c4135018a1ce500d01",
+    "kaggle_zhuating.py": "f78de0599e205951f0c9892fb59d873e909d633001d1639d765a7fdaebee622d",
+    "prepare_mechanism.py": "db781cf0a9b500e16bd6c7ed17fbdb153fe4def2fb987441e57e883007e4629a",
+    "prepare_pair.py": "3ac895d5b6b0ee1c9b6b00292c994c0a92b424b6025ac9161de600b1d1cd5656",
+    "prepare_panels.py": "5f7ad1a62d7bb675d04caf9eab96218f19a6b3001fd83acc919d4fc63dd3f870",
+    "prepare_pilot.py": "f820c3b3064f4855522bf5e7cbea97c5c735e2f8cfe2855135c53ae620949212",
+    "read_preflight.py": "9c3f618d669b595e45159885d6a081ddef74c44a75a30ed9847f21d61e8bb6c2",
+    "score_pair.py": "01ee38c7191b0518b2b95263296e950a0336a369c073bf2b8c84b3a2e554a538"
+  },
+  "preflight": "execution/preflight-20261027.json",
+  "static_review": "pair-static-review-v1.json",
+  "manual_historical_reader_check": "execution/manual-cpu-reader-check-v1.json",
+  "next_action": "Wait for mechanism V1 completion, verify AA and exact sources, re-read zhuating CLI quota, then run fixed pilot20 if passed. pilot20 cannot alone support formal promotion: original40 pressure/coverage and extension remain required. Do not run both initial40 and pilot20 as alternatives and choose the better result.",
+  "budget": {
+    "mechanism_wall_seconds": 3600,
+    "initial_pair_wall_seconds": 14400,
+    "extension_pair_wall_seconds": 14400,
+    "ordinary_validation_reserve_seconds": 3600,
+    "total_max_wall_hours": 10,
+    "planned_quota_hours_at_factor2": 20,
+    "reserved_quota_hours_after_30h_refresh": 10
+  },
+  "no_automatic_monitor_or_scheduled_job_created": true,
+  "authenticated_account": "zhuating",
+  "quota_source": "execution/zhuating-cli-quota-20261027.json",
+  "prior_zero_quota_account": "qingyu1232",
+  "current_quota_budget": {
+    "mechanism_max_wall_hours": 1,
+    "pilot20_max_wall_hours": 2,
+    "combined_max_quota_hours_at_factor2": 6,
+    "observed_available_cli_hours_before_launch": 6.62,
+    "extension_not_currently_funded": true
+  }
+}

@@ -1,6 +1,6 @@
 # 文档索引
 
-当前研究入口：[030计划](plan/030-final-week-search-coverage.md)与[030进展](progress/030-final-week-search-coverage.md)：10月27日实查当前可见最高公开Notebook仍为精确V1／312063593的33.89，公榜金牌显示边界69.44；当前账号普通GPU余额0，10月31日08:00北京时间刷新。下一轮设计为原sft139／TTT／B4／runtime下DFS累计概率门槛0.2对0.1的同预算配对，代码／面板冻结／GPU均未运行。最终截止11月3日07:59北京时间，正式最好仍02330.14。
+当前研究入口：[030计划](plan/030-final-week-search-coverage.md)与[030进展](progress/030-final-week-search-coverage.md)：zhuating的机制V1已通过CLI启动／RUNNING，实际4×L4、固定权重复制及rank0加载正常；尚无终态／新分数。此前0余额属于qingyu1232，zhuating启动前余额6.62配额小时，当前先行pilot20／28query包已冻结、机制通过后才运行。[执行入口](../experiments/030/README.md)。正式最好仍02330.14，最终截止11月3日07:59北京时间。
 
 上轮[029进展](progress/029-nvarc-numerics-cache-diagnosis.md)：V1／362548497已COMPLETE，恢复前已有计算路径差异、三个受检恢复点一致；结束runtime支线，不构成提分。028固定16-token配方、027公榜29.72融合方案和026净0续训配方均保持结束。
 
@@ -41,7 +41,7 @@
 | 027 原权重TTT视图集成 | [plan/027-nvarc-ttt-view-ensemble.md](plan/027-nvarc-ttt-view-ensemble.md) | [progress/027-nvarc-ttt-view-ensemble.md](progress/027-nvarc-ttt-view-ensemble.md)；正式57634436已COMPLETE／29.72，较023下降0.42，结束晋级；隐藏根因未确认 |
 | 028 NVARC DFS提速 | [plan/028-nvarc-dfs-throughput.md](plan/028-nvarc-dfs-throughput.md) | [progress/028-nvarc-dfs-throughput.md](progress/028-nvarc-dfs-throughput.md)；V2 COMPLETE／362511155；稳定候选题减1.57%，d35候选变化，结束固定16-token配方；B4／得分未测量 |
 | 029 NVARC数值与缓存定位 | [plan/029-nvarc-numerics-cache-diagnosis.md](plan/029-nvarc-numerics-cache-diagnosis.md) | [progress/029-nvarc-numerics-cache-diagnosis.md](progress/029-nvarc-numerics-cache-diagnosis.md)；V1 COMPLETE／362548497；差异早于restore，受检三点0差，诊断结束；不证明028充分根因／提分 |
-| 030 赛前一周研究审计与搜索覆盖 | [plan/030-final-week-search-coverage.md](plan/030-final-week-search-coverage.md) | [progress/030-final-week-search-coverage.md](progress/030-final-week-search-coverage.md)；实时比赛／资源与历史审计完成，设计0.2对0.1同预算配对；实验代码与GPU未运行 |
+| 030 赛前一周研究审计与搜索覆盖 | [plan/030-final-week-search-coverage.md](plan/030-final-week-search-coverage.md) | [progress/030-final-week-search-coverage.md](progress/030-final-week-search-coverage.md)；zhuating机制V1 RUNNING／4×L4，pilot20已冻结，尚无终态／新分数 |
 
 ## 操作与维护
 

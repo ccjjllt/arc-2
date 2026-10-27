@@ -1,0 +1,81 @@
+{
+  "recorded_at_utc": "2026-10-27T03:25:46.655326+00:00",
+  "authenticated_account": "zhuating",
+  "authentication": "Kaggle CLI using user-designated account token file, no credential persisted here",
+  "ref": "zhuating/arc2-030-threshold-mechanism",
+  "url": "https://www.kaggle.com/code/zhuating/arc2-030-threshold-mechanism",
+  "kernel_version": 1,
+  "script_version_id": null,
+  "state": "RUNNING",
+  "source_notebook_sha256": "2093702f934709070efe7bfcaa9a21350d4d84abf6d640d93b645e14c99ea14e",
+  "platform_timeout_seconds": 3600,
+  "requested_machine_shape": "NvidiaL4",
+  "actual_gpu_inventory": "0, NVIDIA L4, 23034 MiB\n1, NVIDIA L4, 23034 MiB\n2, NVIDIA L4, 23034 MiB\n3, NVIDIA L4, 23034 MiB\n",
+  "execution_started_at_utc": "2026-10-27T03:19:55.037717+00:00",
+  "remote_cell_sources_match_frozen": true,
+  "remote_sources": {
+    "competition_sources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "kernel_sources": [
+      "sorokin/pip-install-unsloth-flash-patch"
+    ],
+    "model_sources": [
+      "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+    ]
+  },
+  "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0",
+  "copied_checkpoint_files": {
+    "added_tokens.json": {
+      "bytes": 68,
+      "sha256": "cf1224e6a594b51a34b8b9ca6c6dce3026683777521f361e37526b8a33258bce"
+    },
+    "config.json": {
+      "bytes": 1532,
+      "sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0"
+    },
+    "generation_config.json": {
+      "bytes": 113,
+      "sha256": "fd0abf1e2baa1f9407803a83486767a6e7841164481d750fcaa9b71d31a0ab02"
+    },
+    "model-00001-of-00002.safetensors": {
+      "bytes": 4996836472,
+      "sha256": "379de219f74a1402a67d26fe7dcacdacadbf686947e08e41117dd9c884ee4529"
+    },
+    "model-00002-of-00002.safetensors": {
+      "bytes": 2270397024,
+      "sha256": "3b8470b83355ccbc527afcb7a77664bd679e63899a80e79169c016658e6b92e0"
+    },
+    "model.safetensors.index.json": {
+      "bytes": 32913,
+      "sha256": "d2d5b2bffaf2fd27bad4452dfb4d4df80c56a4a77f1ac9c40fdd634845680cd4"
+    },
+    "special_tokens_map.json": {
+      "bytes": 367,
+      "sha256": "f4f79e08d97f4d1c87f8d89264f525c8789da3b73b3bb55d1e12f692f41a7b1b"
+    },
+    "tokenizer.json": {
+      "bytes": 1731,
+      "sha256": "af6b9e855f9db3192bd9152607708ebd7700b40f9fc5f792a26af70150a96cd5"
+    },
+    "tokenizer_config.json": {
+      "bytes": 988,
+      "sha256": "e1912aeba4050616cbfe01b34df3f3df2818207eda0056f6eb87c2336936ea90"
+    },
+    "vocab.json": {
+      "bytes": 94,
+      "sha256": "8141a61e47eceec466524bc178bc9c6d5076b7d1b18b456fbd3fdf66cae57f82"
+    }
+  },
+  "checkpoint_copy_complete": true,
+  "rank0_checkpoint_loaded": true,
+  "traceback_observed": false,
+  "evaluation_gold_read": false,
+  "new_score": null,
+  "competition_submission_created": false,
+  "notes": [
+    "CLI version1 push accepted and status RUNNING; actual scriptVersion remains unconfirmed until outputs are available.",
+    "Snapshot logs CLI is empty during execution; one bounded40s follow stream supplied real boot. Repeated stream chunks are deduplicated only for this summary."
+  ],
+  "all_checkpoint_file_hashes_match_frozen": true
+}

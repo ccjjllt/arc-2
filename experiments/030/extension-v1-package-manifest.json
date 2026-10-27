@@ -1,0 +1,151 @@
+{
+  "created_at_utc": "2026-10-27T03:05:37.381746+00:00",
+  "status": "prepared_not_launched",
+  "ref": "zhuating/arc2-030-dfs-threshold-pair-extension",
+  "notebook_sha256": "c26c3d36e21860c262e18f075d635adbb06fd7c968df68e235530af69b8d43c2",
+  "notebook_bytes": 132541,
+  "reference_script_version_id": 312063593,
+  "reference_sha256": "71416dd4d9885ecf2ae99b8b72ff0ef66d31fac0354b79d2d11071c49f84111d",
+  "base_023_notebook_sha256": "0bdde6503f6ec616be467321649e9abb997288f07aa54e8b4302f76f32f3d119",
+  "input_identity": {
+    "challenges_sha256": "6c76e81dfcbf00a0efb1f16d0da67a0240bc91f961d3ba8c540f3ead74e6db66",
+    "manifest_sha256": "13df5240f306ddb7f94fbb2b8209ad791f6b6938aedc9b6897368dc770b29517",
+    "n_tasks": 40,
+    "n_queries": 57,
+    "task_ids": [
+      "0934a4d8",
+      "13e47133",
+      "142ca369",
+      "16de56c4",
+      "1818057f",
+      "195c6913",
+      "247ef758",
+      "2c181942",
+      "31f7f899",
+      "38007db0",
+      "409aa875",
+      "4a21e3da",
+      "53fb4810",
+      "581f7754",
+      "5961cc34",
+      "5dbc8537",
+      "7491f3cf",
+      "7c66cb00",
+      "80a900e0",
+      "8698868d",
+      "8b7bacbf",
+      "8f215267",
+      "981571dc",
+      "9aaea919",
+      "9bbf930d",
+      "a25697e4",
+      "a395ee82",
+      "abc82100",
+      "b5ca7ac4",
+      "b6f77b65",
+      "bf45cf4b",
+      "d59b0160",
+      "d8e07eb2",
+      "da515329",
+      "db0c5428",
+      "db695cfb",
+      "e3721c99",
+      "e376de54",
+      "e87109e9",
+      "faa9f03d"
+    ]
+  },
+  "runtime_source_sha256": {
+    "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+    "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+    "arc_solver.py": "c73b7cc6a9d8239ecd9566592305cec742d9de588c75fbffc0721a1c90247580",
+    "starter.py": "1cfb8f446427d64ef6a45c4bcb55b0faa80ccd8e9af0bc8a6e12b55318b1efd4"
+  },
+  "config": {
+    "panel": "extension40",
+    "session_seconds": 14400,
+    "arm_slot_seconds": 6600,
+    "setup_allowance_seconds": 900,
+    "final_reserve_seconds": 120,
+    "arm_order": [
+      "challenger",
+      "base"
+    ],
+    "thresholds": {
+      "base": 0.2,
+      "challenger": 0.1
+    },
+    "python_hash_seed": 27030,
+    "gpu_ids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "ttt_augmentation_seed": 1,
+    "search_augmentation_seed": 2,
+    "task_soft_limit_seconds": 1200,
+    "dfs_limit_seconds": 540,
+    "hypothesis": "Wider original DFS under equal total deployment budget improves final B4 EM@2",
+    "decision": "Initial net>0 and gained>=2 tasks; extension net>0; noise and deadline audit required; no threshold scan"
+  },
+  "expected_checkpoint_files": {
+    "added_tokens.json": {
+      "bytes": 68,
+      "sha256": "cf1224e6a594b51a34b8b9ca6c6dce3026683777521f361e37526b8a33258bce"
+    },
+    "config.json": {
+      "bytes": 1532,
+      "sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0"
+    },
+    "generation_config.json": {
+      "bytes": 113,
+      "sha256": "fd0abf1e2baa1f9407803a83486767a6e7841164481d750fcaa9b71d31a0ab02"
+    },
+    "model-00001-of-00002.safetensors": {
+      "bytes": 4996836472,
+      "sha256": "379de219f74a1402a67d26fe7dcacdacadbf686947e08e41117dd9c884ee4529"
+    },
+    "model-00002-of-00002.safetensors": {
+      "bytes": 2270397024,
+      "sha256": "3b8470b83355ccbc527afcb7a77664bd679e63899a80e79169c016658e6b92e0"
+    },
+    "model.safetensors.index.json": {
+      "bytes": 32913,
+      "sha256": "d2d5b2bffaf2fd27bad4452dfb4d4df80c56a4a77f1ac9c40fdd634845680cd4"
+    },
+    "special_tokens_map.json": {
+      "bytes": 367,
+      "sha256": "f4f79e08d97f4d1c87f8d89264f525c8789da3b73b3bb55d1e12f692f41a7b1b"
+    },
+    "tokenizer.json": {
+      "bytes": 1731,
+      "sha256": "af6b9e855f9db3192bd9152607708ebd7700b40f9fc5f792a26af70150a96cd5"
+    },
+    "tokenizer_config.json": {
+      "bytes": 988,
+      "sha256": "e1912aeba4050616cbfe01b34df3f3df2818207eda0056f6eb87c2336936ea90"
+    },
+    "vocab.json": {
+      "bytes": 94,
+      "sha256": "8141a61e47eceec466524bc178bc9c6d5076b7d1b18b456fbd3fdf66cae57f82"
+    }
+  },
+  "evaluation_gold_read": false,
+  "source_025_preparation_sha256": "8a57d5837c0f53b04a5eb6ec53cee9d2e66680242fa26c65dfcedc4a3424c001",
+  "controlled_solver_difference": "Only original cumulative path probability threshold0.2 versus0.1",
+  "common_changes": [
+    "Fixed common hash27030",
+    "Input-only subset, full denominator",
+    "Independent process groups with original sorted4-worker queues",
+    "Equal arm deployment slots charging all common setup to each arm",
+    "Original candidate export plus TTT adapter fingerprints; observation overhead counted",
+    "Research rerun rejected; no ensemble or automatic formal challenge selection"
+  ],
+  "limitations": [
+    "Public exposed regression, not a fresh blind confirmation",
+    "Independent full TTT, adapter equality must be measured",
+    "Subset/deployment-budget pressure is not hidden240-task replication",
+    "Same-adapter A/A/B mechanism is a separate run, not performed by this package"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "reviewed_at_utc": "2026-10-27T03:26:18.040230+00:00",
+  "reviewer": "fresh_subagent_r030_mechanism_prelaunch_new",
+  "scope": "Read-only static review of quota-limited pilot20 preparation. No gold/prediction/network/GPU access.",
+  "notebook": {
+    "path": "/private/tmp/arc2-030-pair-pilot20-v1/arc2-030-dfs-threshold-pilot20.ipynb",
+    "sha256": "60a5454bbe50beafcf49a959d2840df6d0c321f0e8d766810c8aea0bce38cc63",
+    "bytes": 103361,
+    "matches_expected_sha256": true
+  },
+  "reference_initial_notebook_sha256": "8a6361e5ff76011ab1af63c736ecd0c014336a46c296c9794b9e142997d8966c",
+  "changed_cell_indices": [
+    0,
+    2,
+    7
+  ],
+  "runtime_source_sha256_unchanged": true,
+  "finalization_cell_source_unchanged": true,
+  "AST_all_code_cells_passed": true,
+  "input": {
+    "task_count": 20,
+    "query_count": 28,
+    "all_query_fields_input_only": true,
+    "challenges_sha256": "94d947c6d3da5f1080700de205bb2a0791764a65b79cb2e2b181f5f91bf58f12",
+    "manifest_sha256": "f9c4b4a12b4a76d641224007261377f2760470c169cc830c5035b96c933e371d",
+    "selection_rule": "Use all40 initial40 task IDs as eligible. Preserve each task's original S/M/L tier; cross tier with its single/multi-query status. Allocate20 proportionally by integer largest remainders, ties by stratum name. Within each stratum select ascending sha256(seed+':'+task_id), ties task_id. Keep every demo and every query; runtime queue order is ascending task_id. Correctness, predictions and historical pressure annotations are not selection inputs.",
+    "selection_seed": "030:pilot20:quota20261027"
+  },
+  "budget": {
+    "session_seconds": 7200,
+    "arm_slot_seconds": 3300,
+    "setup_allowance_seconds": 900,
+    "solver_global_duration_formula": "3300-common_setup_seconds-120 per arm",
+    "solver_hard_duration_formula": "3300-common_setup_seconds-60 per arm",
+    "min_global_seconds_at_setup_allowance": 2280,
+    "max_global_seconds_before_setup_charge": 3180,
+    "finalization_common_and_per_arm_charged": true,
+    "accounted_deployment_above_slot_forces_failure": true,
+    "stage_order": [
+      "base",
+      "challenger"
+    ],
+    "same_4_L4_sequential": true
+  },
+  "preserved": {
+    "ttt_augmentation_seed": 1,
+    "search_augmentation_seed": 2,
+    "python_hash_seed": 27030,
+    "task_soft_limit_seconds": 1200,
+    "dfs_limit_seconds": 540,
+    "thresholds": {
+      "base": 0.2,
+      "challenger": 0.1
+    },
+    "B4_unchanged": true
+  },
+  "preconditions": [
+    "Do not start while mechanism process group is running",
+    "Mechanism completed with AA passed and frozen source/input identity match",
+    "Re-read zhuating available and reserved quota before creating session",
+    "Pilot positive result still requires net>0, gains from>=2 tasks and noise/tail/budget review"
+  ],
+  "limitations": [
+    "Subset and shorter equal arm budgets are a resource-limited public regression, not independent confirmation or hidden240-task replication",
+    "Input-only selection did not include known025 second-slot-only task2ba387bc; this pilot cannot certify that specific regression risk",
+    "Actual hardware, runtime, adapter equality, AA, EM@2 and oracle are unmeasured until GPU execution"
+  ],
+  "blockers": [],
+  "conclusion": "Static prelaunch review passed. No solver-core or finalization change relative to reviewed initial-v3; launch only after mechanism completion and quota preflight."
+}

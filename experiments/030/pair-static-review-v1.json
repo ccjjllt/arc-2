@@ -1,0 +1,223 @@
+{
+  "review_created_at_utc": "2026-10-27T03:05:51.026919+00:00",
+  "reviewer": "fresh_subagent_r030_source_audit_new",
+  "status": "static_review_no_launch_blocker_found",
+  "scope": "Read-only actual active v3 packages and prepare_pair.py; earlier v2 re-reviewed with only finalization cell changed. No GPU, new query gold or submission.",
+  "generator": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/030/prepare_pair.py",
+    "sha256": "c18f9baad060775d5f00467f2624d33d2853c7e6a6b604fdd9c969b46adaf7a1"
+  },
+  "reviewed_packages": [
+    {
+      "panel": "initial",
+      "path": "/private/tmp/arc2-030-pair-initial-v3",
+      "notebook_sha256": "8a6361e5ff76011ab1af63c736ecd0c014336a46c296c9794b9e142997d8966c",
+      "notebook_bytes": 123865,
+      "notebook_sha_matches_manifest": true,
+      "source_less_than_1000000_bytes": true,
+      "python_cells_parse": 8,
+      "source_sha256": {
+        "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+        "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+        "arc_solver.py": "c73b7cc6a9d8239ecd9566592305cec742d9de588c75fbffc0721a1c90247580",
+        "starter.py": "1cfb8f446427d64ef6a45c4bcb55b0faa80ccd8e9af0bc8a6e12b55318b1efd4"
+      },
+      "source_sha_matches_manifest": true,
+      "original_functions_byte_equal": {
+        "turbo_dfs": true,
+        "inference_turbo_dfs": true,
+        "calc_scores": true
+      },
+      "original_loader_byte_equal": true,
+      "original_decoder_byte_equal": true,
+      "fixed_ttt_parameter_ast_equal": {
+        "peft_params": true,
+        "train_args": true,
+        "max_seq_length": true
+      },
+      "input_tasks": 40,
+      "input_queries": 58,
+      "test_queries_input_only": true,
+      "embedded_input_sha_matches_manifest": true,
+      "config": {
+        "panel": "initial40",
+        "session_seconds": 14400,
+        "arm_slot_seconds": 6600,
+        "setup_allowance_seconds": 900,
+        "final_reserve_seconds": 120,
+        "arm_order": [
+          "base",
+          "challenger"
+        ],
+        "thresholds": {
+          "base": 0.2,
+          "challenger": 0.1
+        },
+        "python_hash_seed": 27030,
+        "gpu_ids": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "ttt_augmentation_seed": 1,
+        "search_augmentation_seed": 2,
+        "task_soft_limit_seconds": 1200,
+        "dfs_limit_seconds": 540,
+        "hypothesis": "Wider original DFS under equal total deployment budget improves final B4 EM@2",
+        "decision": "Initial net>0 and gained>=2 tasks; extension net>0; noise and deadline audit required; no threshold scan"
+      },
+      "metadata": {
+        "enable_gpu": true,
+        "enable_internet": false,
+        "model_sources": [
+          "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+        ],
+        "kernel_sources": [
+          "sorokin/pip-install-unsloth-flash-patch"
+        ],
+        "docker_image": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868"
+      },
+      "changes_from_previously_reviewed_v2": [
+        8
+      ],
+      "finalization_budget_accounting_present": true
+    },
+    {
+      "panel": "extension",
+      "path": "/private/tmp/arc2-030-pair-extension-v3",
+      "notebook_sha256": "c26c3d36e21860c262e18f075d635adbb06fd7c968df68e235530af69b8d43c2",
+      "notebook_bytes": 132541,
+      "notebook_sha_matches_manifest": true,
+      "source_less_than_1000000_bytes": true,
+      "python_cells_parse": 8,
+      "source_sha256": {
+        "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+        "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+        "arc_solver.py": "c73b7cc6a9d8239ecd9566592305cec742d9de588c75fbffc0721a1c90247580",
+        "starter.py": "1cfb8f446427d64ef6a45c4bcb55b0faa80ccd8e9af0bc8a6e12b55318b1efd4"
+      },
+      "source_sha_matches_manifest": true,
+      "original_functions_byte_equal": {
+        "turbo_dfs": true,
+        "inference_turbo_dfs": true,
+        "calc_scores": true
+      },
+      "original_loader_byte_equal": true,
+      "original_decoder_byte_equal": true,
+      "fixed_ttt_parameter_ast_equal": {
+        "peft_params": true,
+        "train_args": true,
+        "max_seq_length": true
+      },
+      "input_tasks": 40,
+      "input_queries": 57,
+      "test_queries_input_only": true,
+      "embedded_input_sha_matches_manifest": true,
+      "config": {
+        "panel": "extension40",
+        "session_seconds": 14400,
+        "arm_slot_seconds": 6600,
+        "setup_allowance_seconds": 900,
+        "final_reserve_seconds": 120,
+        "arm_order": [
+          "challenger",
+          "base"
+        ],
+        "thresholds": {
+          "base": 0.2,
+          "challenger": 0.1
+        },
+        "python_hash_seed": 27030,
+        "gpu_ids": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "ttt_augmentation_seed": 1,
+        "search_augmentation_seed": 2,
+        "task_soft_limit_seconds": 1200,
+        "dfs_limit_seconds": 540,
+        "hypothesis": "Wider original DFS under equal total deployment budget improves final B4 EM@2",
+        "decision": "Initial net>0 and gained>=2 tasks; extension net>0; noise and deadline audit required; no threshold scan"
+      },
+      "metadata": {
+        "enable_gpu": true,
+        "enable_internet": false,
+        "model_sources": [
+          "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+        ],
+        "kernel_sources": [
+          "sorokin/pip-install-unsloth-flash-patch"
+        ],
+        "docker_image": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868"
+      },
+      "changes_from_previously_reviewed_v2": [
+        8
+      ],
+      "finalization_budget_accounting_present": true
+    }
+  ],
+  "superseded_packages": [
+    {
+      "path": "/private/tmp/arc2-030-pair-extension-v1",
+      "status": "superseded_not_for_execution_or_promotion",
+      "reason": "Earlier extension used larger10200-second arm slots and21600-second session; activev2 fixes both panels to6600/14400."
+    },
+    {
+      "path": "/private/tmp/arc2-030-pair-initial-v2",
+      "status": "superseded_by_v3",
+      "reason": "v3 adds complete per-arm finalization cost accounting"
+    },
+    {
+      "path": "/private/tmp/arc2-030-pair-extension-v2",
+      "status": "superseded_by_v3",
+      "reason": "v3 adds complete per-arm finalization cost accounting"
+    }
+  ],
+  "budget_analysis": {
+    "session_seconds": 14400,
+    "arm_deployment_slot_seconds": 6600,
+    "common_setup_limit_seconds": 900,
+    "each_arm_solver_global_duration_formula": "6600-common_setup_seconds-120",
+    "each_arm_solver_hard_duration_formula": "6600-common_setup_seconds-60",
+    "common_setup_charged_to_each_arm": true,
+    "other_arm_elapsed_not_charged": true,
+    "independent_fresh_four_gpu_process_group_per_arm": true,
+    "arm_order_initial": [
+      "base",
+      "challenger"
+    ],
+    "arm_order_extension": [
+      "challenger",
+      "base"
+    ],
+    "worst_case_actual_pair_solver_plus_setup_seconds_formula": "common_setup +2*(6600-common_setup-60)=13080-common_setup, excluding small process management overhead",
+    "hard_stop": "timeout to each arm hard deadline; SIGKILL whole process group, wait, kill remaining descendants before next marker cycle",
+    "budget_cutoff_outputs": "Complete atomic candidate pickle files only; incomplete files excluded. Original rescoring may finish after soft global cutoff but only until hard kill. All planned query keys retained via original get_submission.",
+    "finalization_cost_accounting": "Shared final imports/input setup charged once to EACH arm, then each branch B4 and ordered scored export time added to shared_setup+child elapsed. Accounted deployment>6600 or missing child elapsed sets deployment_budget_accounting_failure and return_code1; no efficacy comparison permitted."
+  },
+  "algorithm_review": {
+    "controlled_solver_factor": "max_score=-log(_dfs_threshold), validated frozen pairs base0.2/challenger0.1",
+    "dfs_batch_layout": "Original n2 seed2,16views,4batches; unchanged",
+    "task_and_dfs_limits": "Original1200s task soft check and540s DFS while condition; unchanged",
+    "ttt": "OriginalPEFT/train_args AST equal; 1epoch seed42 and augmentationseed1 unchanged",
+    "b4": "Original decoder exact bytes; original file traversal recorded and frozen; no fusion",
+    "hash": "PYTHONHASHSEED27030 passed to fresh child interpreter for both arms before import; rescoring hash formula unchanged",
+    "adapter_fingerprint": "Uses get_peft_model_state_dict(default), sorted keys, detached contiguous CPU tensors, dtype/shape metadata plus uint8 byte view; no RNG or model-state mutation. Static review only; local Python has no torch, so execution compatibility unverified.",
+    "gold": "Both embedded challenge payloads have onlyinput in test items; active research rerun rejected and original ordinary gold-scoring finalizer removed",
+    "stale_marker": "All4 original import markers deleted before each arm after previous group exits; original serialized import behavior retained"
+  },
+  "blockers": [],
+  "limitations": [
+    "Static parsing/byte comparison does not prove realGPU loading, fingerprint API behavior, score gains or12-hour hidden coverage.",
+    "Actual adapter equality and A/A repeat-control report are still required; same hyperparameters do not establish numerical equality.",
+    "Order reversal across panels limits systematic order bias but cannot completely identify JIT/filesystem cache or thermal effects within each panel.",
+    "Fresh Kaggle execution is assumed; repeated interactive execution over an existing030 candidate directory could retain old pickles, so use a new clean run."
+  ],
+  "review_updated_at_utc": "2026-10-27T03:06:36.449410+00:00",
+  "resolved_review_feedback": [
+    "v2 unmeasured per-arm finalization cost resolved in v3 with explicit timings and6600-second enforcement."
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "checked_at_utc": "2026-10-27T03:19:27.959761+00:00",
+  "authenticated_account": "zhuating",
+  "identity_source": "Kaggle CLI config view with explicitly selected access_token_zhuating",
+  "quota_source": "Kaggle CLI quota --format json; rounded display hours; reserved not exposed",
+  "resources": [
+    {
+      "resource": "GPU",
+      "used": "23.38h",
+      "remaining": "6.62h",
+      "total": "30.00h",
+      "refreshAt": "2026-10-31T00:00:00"
+    },
+    {
+      "resource": "TPU",
+      "used": "0.00h",
+      "remaining": "20.00h",
+      "total": "20.00h",
+      "refreshAt": "2026-10-31T00:00:00"
+    }
+  ],
+  "gpu_started": false
+}

@@ -1,0 +1,30 @@
+{
+  "checked_at_utc": "2026-10-27T03:14:58.066430+00:00",
+  "source": "Installed official Kaggle SDK, existing configured account; read-only",
+  "authenticated_account": "qingyu1232",
+  "quota_refresh_time_utc": "2026-10-31T00:00:00",
+  "resources": {
+    "gpu": {
+      "used_seconds": 120810.666,
+      "reserved_seconds": 0.0,
+      "total_seconds": 108000.0,
+      "remaining_seconds": 0,
+      "is_pay_to_scale_enabled": false
+    },
+    "tpu": {
+      "used_seconds": 0.0,
+      "reserved_seconds": 0.0,
+      "total_seconds": 72000.0,
+      "remaining_seconds": 72000.0,
+      "is_pay_to_scale_enabled": false
+    }
+  },
+  "submission_limits": {
+    "num_today": 0,
+    "num_total": 12,
+    "num_allowed_now": 1,
+    "limited_by_total": false
+  },
+  "gpu_started": false,
+  "competition_submission_created": false
+}

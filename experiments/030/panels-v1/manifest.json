@@ -1,0 +1,52 @@
+{
+  "created_at_utc": "2026-10-27T02:56:29.405850+00:00",
+  "status": "input_panels_frozen_GPU_not_run",
+  "source": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/008/raw-eval/arc-agi_evaluation_challenges.json",
+    "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+    "bytes": 984679
+  },
+  "selection_seed": "030:extension40:input-only:20261027",
+  "preparation_script": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/030/prepare_panels.py",
+    "sha256": "5f7ad1a62d7bb675d04caf9eab96218f19a6b3001fd83acc919d4fc63dd3f870",
+    "bytes": 14430
+  },
+  "outputs": {
+    "initial40": {
+      "n_tasks": 40,
+      "n_queries": 58,
+      "manifest": {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/030/panels-v1/initial40/manifest.json",
+        "sha256": "a1cd3da40aa0cd0fc218ac121c58ef18a75c37e2f5dd71ab822fb5a9572c815f",
+        "bytes": 48083
+      },
+      "challenges": {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/030/panels-v1/initial40/challenges.json",
+        "sha256": "38df4c7126f160f9dd045b4b0c9fb37ccb4f24dfbb51c8d32aa7b50f132ebeb9",
+        "bytes": 1596517
+      },
+      "task_order_sha256": "53ef12d3598394c129b47a0c37417865e44063eec7b484e437db6a7bc38ccde5"
+    },
+    "extension40": {
+      "n_tasks": 40,
+      "n_queries": 57,
+      "manifest": {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/030/panels-v1/extension40/manifest.json",
+        "sha256": "13df5240f306ddb7f94fbb2b8209ad791f6b6938aedc9b6897368dc770b29517",
+        "bytes": 48095
+      },
+      "challenges": {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/030/panels-v1/extension40/challenges.json",
+        "sha256": "6c76e81dfcbf00a0efb1f16d0da67a0240bc91f961d3ba8c540f3ead74e6db66",
+        "bytes": 1984030
+      },
+      "task_order_sha256": "ceb36d2427b0878c5af753285c2ce562036b407d45e091d8c5a2672a17337815"
+    }
+  },
+  "initial_extension_task_overlap": [],
+  "initial40_exactly_retains_025_challenge_bytes": true,
+  "query_solutions_read": false,
+  "model_predictions_read": false,
+  "notes": "Both are exposed public regression panels. No remote execution, GPU run or score was produced by this preparation."
+}
