@@ -1,0 +1,1524 @@
+{
+  "planned_queries": 12,
+  "input_matched_queries": 12,
+  "unresolved_or_mismatched_queries": 0,
+  "policies": {
+    "base_B4": {
+      "exact_queries": 2,
+      "matched_denominator": 12,
+      "em2": 0.16666666666666666,
+      "prediction_present_queries": 12,
+      "valid_queries": 12,
+      "different_valid_attempts_queries": 12,
+      "fully_matched_tasks": 8,
+      "all_queries_exact_tasks": 1,
+      "raw_oracle_queries": 3,
+      "scored_oracle_queries": 3,
+      "first_slot_exact_queries": 1,
+      "second_slot_only_exact_queries": 1
+    },
+    "challenger_B4": {
+      "exact_queries": 2,
+      "matched_denominator": 12,
+      "em2": 0.16666666666666666,
+      "prediction_present_queries": 12,
+      "valid_queries": 12,
+      "different_valid_attempts_queries": 12,
+      "fully_matched_tasks": 8,
+      "all_queries_exact_tasks": 1,
+      "raw_oracle_queries": 3,
+      "scored_oracle_queries": 3,
+      "first_slot_exact_queries": 1,
+      "second_slot_only_exact_queries": 1
+    }
+  },
+  "scored_at_utc": "2026-10-27T08:18:47.286695+00:00",
+  "cohort": "031_ttt64_exposed_eight_task_regression",
+  "planned_tasks": 8,
+  "fixed_query_denominator": 12,
+  "frozen_input_identity": {
+    "manifest": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/031/frozen-v1/input/manifest.json",
+      "sha256": "fd1382585393f7953f00cf1df555b1ff9cf39976f0f93dc411187aea7bbb029d",
+      "bytes": 12400
+    },
+    "challenges": {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/031/frozen-v1/input/challenges.json",
+      "sha256": "2ffb3661a4b8588eb7dcfeb232d9ddec5de0122f343e6fc62697ed8198d8f581",
+      "bytes": 313082
+    },
+    "predictions": [
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/031/frozen-v1/submission-base_B4.json",
+        "sha256": "37877dffbae7e0d933dc3c3d6cbad7c6dc395194704d21f5c2cccf3acdb112c8",
+        "bytes": 27479,
+        "policy": "base_B4",
+        "task_ids": [
+          "221dfab4",
+          "2ba387bc",
+          "35ab12c3",
+          "67e490f4",
+          "88e364bc",
+          "c7f57c3e",
+          "d35bdbdc",
+          "dbff022c"
+        ]
+      },
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/031/frozen-v1/submission-challenger_B4.json",
+        "sha256": "6957627f6e78e3c47cda9f1d82584e41b07d44398c1437d2ac7b966571392f74",
+        "bytes": 27479,
+        "policy": "challenger_B4",
+        "task_ids": [
+          "221dfab4",
+          "2ba387bc",
+          "35ab12c3",
+          "67e490f4",
+          "88e364bc",
+          "c7f57c3e",
+          "d35bdbdc",
+          "dbff022c"
+        ]
+      }
+    ],
+    "candidate_pools": [
+      {
+        "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/031/frozen-v1/candidate-pools-scored.json",
+        "sha256": "1e59bb1a431d806e5477eb6b562845844c56aadedb6dc03f5c0026aa1835381d",
+        "bytes": 1416814
+      }
+    ]
+  },
+  "original_prediction_freeze": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/031/frozen-v1/prediction-freeze.json",
+    "sha256": "9a65ddc733e5eaf2a4b48f91095380044b202339e214a90fd2e5115aed26f35d",
+    "bytes": 7307
+  },
+  "runtime_summary_identity": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/031/frozen-v1/runtime-summary.json",
+    "sha256": "fa49e0347a0deb9365bbec512414b6f327cbade645f6e41314ede399772d94fa",
+    "bytes": 9496
+  },
+  "run_state_identity": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/031/frozen-v1/run-state.json",
+    "sha256": "efcb8763d3729f7997b9192d52a69e64025608ab379c30edec57f19af243a0f4",
+    "bytes": 4581
+  },
+  "preregistered_ready_record": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/031/ready-v1.json",
+    "sha256": "1430c165f79ff996e080691141ab35afd8f2735c4028b1c5d40bbf8c46b14760",
+    "bytes": 1472
+  },
+  "preregistered_criteria": {
+    "final_EM2_net_strictly_positive": true,
+    "base_pressure_2ba_second_slot_only_must_reproduce": true,
+    "challenger_pressure_2ba_correct": true,
+    "challenger_searched_query_count_at_least_base": true,
+    "challenger_completed_batch_count_at_least_base": true,
+    "source_input_scheduler_b4_and_budget_manual_review": true
+  },
+  "official_snapshot_manifest": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/030/execution/official-kaggle-scoring-snapshot-v1.json",
+    "sha256": "6f28a84d2097fbefa9079fc58a31d2b2dd50477d1dc0d28dddbe98a87ff374da",
+    "bytes": 930
+  },
+  "official_sources": [
+    {
+      "task_id": "221dfab4",
+      "source_kind": "Exact Kaggle challenge/solution JSON pair",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "2ba387bc",
+      "source_kind": "Exact Kaggle challenge/solution JSON pair",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "35ab12c3",
+      "source_kind": "Exact Kaggle challenge/solution JSON pair",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "67e490f4",
+      "source_kind": "Exact Kaggle challenge/solution JSON pair",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "88e364bc",
+      "source_kind": "Exact Kaggle challenge/solution JSON pair",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "c7f57c3e",
+      "source_kind": "Exact Kaggle challenge/solution JSON pair",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "d35bdbdc",
+      "source_kind": "Exact Kaggle challenge/solution JSON pair",
+      "full_task_content_matches": true
+    },
+    {
+      "task_id": "dbff022c",
+      "source_kind": "Exact Kaggle challenge/solution JSON pair",
+      "full_task_content_matches": true
+    }
+  ],
+  "paired": {
+    "gained_queries": [],
+    "lost_queries": [],
+    "net_queries": 0,
+    "gain_task_ids": [],
+    "loss_task_ids": [],
+    "lost_base_second_slot_only_queries": []
+  },
+  "pressure_query": {
+    "task_id": "2ba387bc",
+    "query_index": 0,
+    "query_key": "2ba387bc_0",
+    "source_group": "public_evaluation_NVARC031_exposed_regression",
+    "tier": "L",
+    "gold_match_status": "matched",
+    "official_matching_indices": [
+      0
+    ],
+    "input_sha256": "427d66b9c2a794e1ff2505e7505fcea6cc9187a2b6d1b24c99047409701a7bce",
+    "gold_sha256": "3d15bf7067bbdbaf9fdb8ac96fa11de10930b212cf519d5899bb7a8939b5a23e",
+    "policies": {
+      "base_B4": {
+        "prediction_present": true,
+        "attempt_1_valid": true,
+        "attempt_2_valid": true,
+        "both_attempt_keys_exact": true,
+        "distinct_valid_attempts": true,
+        "prediction_status": "valid",
+        "both_placeholder": false,
+        "attempt_sha256": [
+          "b00a3aeebf35d1990096a309fd928d159c2f0438860e1f512ab7dd0a8be207f8",
+          "3d15bf7067bbdbaf9fdb8ac96fa11de10930b212cf519d5899bb7a8939b5a23e"
+        ],
+        "attempt_1_exact": false,
+        "attempt_2_exact": true,
+        "exact": true,
+        "raw_candidate_oracle_exact": true,
+        "candidate_oracle_exact": true,
+        "correct_candidate_not_selected": false,
+        "second_slot_only_exact": true
+      },
+      "challenger_B4": {
+        "prediction_present": true,
+        "attempt_1_valid": true,
+        "attempt_2_valid": true,
+        "both_attempt_keys_exact": true,
+        "distinct_valid_attempts": true,
+        "prediction_status": "valid",
+        "both_placeholder": false,
+        "attempt_sha256": [
+          "b00a3aeebf35d1990096a309fd928d159c2f0438860e1f512ab7dd0a8be207f8",
+          "3d15bf7067bbdbaf9fdb8ac96fa11de10930b212cf519d5899bb7a8939b5a23e"
+        ],
+        "attempt_1_exact": false,
+        "attempt_2_exact": true,
+        "exact": true,
+        "raw_candidate_oracle_exact": true,
+        "candidate_oracle_exact": true,
+        "correct_candidate_not_selected": false,
+        "second_slot_only_exact": true
+      }
+    }
+  },
+  "runtime_evidence": {
+    "run_status": "completed",
+    "arms": {
+      "base": {
+        "terminal": {
+          "branch": "base",
+          "ttt_stop_steps": 128,
+          "started_at": 1793084267.725046,
+          "shared_setup_seconds_charged": 118.16043901443481,
+          "global_end_time": 1793085649.564607,
+          "hard_deadline": 1793085709.564607,
+          "effective_solver_global_seconds": 1381.8395609855652,
+          "timed_out": false,
+          "status": "completed",
+          "command": [
+            "/usr/bin/python3",
+            "-u",
+            "starter.py",
+            "--end-time",
+            "1793085649.564607"
+          ],
+          "process_group_id": 134,
+          "return_code": 0,
+          "descendant_group_kill_requested": false,
+          "finished_at": 1793085659.441806,
+          "elapsed_s": 1391.716760635376,
+          "deployment_elapsed_seconds": 1509.8771996498108
+        },
+        "B4_exactly_reproduced": true,
+        "scored_record_count": 194,
+        "runtime_events": {
+          "event_counts": {
+            "task_start": 8,
+            "ttt_start": 8,
+            "ttt_schedule": 8,
+            "ttt_checkpoint": 16,
+            "ttt_end": 8,
+            "adapter_fingerprint": 8,
+            "search_start": 46,
+            "search_end": 46,
+            "raw_batch_saved": 46,
+            "score_start": 114,
+            "score_end": 114,
+            "scored_file_saved": 154,
+            "task_end": 8
+          },
+          "started_batches_by_query": {
+            "dbff022c_0": 3,
+            "88e364bc_0": 4,
+            "221dfab4_0": 4,
+            "d35bdbdc_2": 4,
+            "221dfab4_1": 4,
+            "35ab12c3_0": 4,
+            "c7f57c3e_0": 4,
+            "d35bdbdc_1": 4,
+            "88e364bc_1": 3,
+            "67e490f4_0": 4,
+            "2ba387bc_0": 4,
+            "d35bdbdc_0": 4
+          },
+          "completed_batches_by_query": {
+            "dbff022c_0": 3,
+            "88e364bc_0": 4,
+            "221dfab4_0": 4,
+            "d35bdbdc_2": 4,
+            "221dfab4_1": 4,
+            "35ab12c3_0": 4,
+            "c7f57c3e_0": 4,
+            "d35bdbdc_1": 4,
+            "88e364bc_1": 3,
+            "67e490f4_0": 4,
+            "2ba387bc_0": 4,
+            "d35bdbdc_0": 4
+          },
+          "queries_never_started": [],
+          "queries_with_four_completed_batches": 10,
+          "per_worker_stage_costs": {
+            "0": {
+              "TTT_seconds": 258.5054659843445,
+              "DFS_seconds": 763.650815486908,
+              "rescoring_seconds": 104.87309861183167,
+              "closed_intervals": 23,
+              "unmatched_end_events": 0
+            },
+            "1": {
+              "TTT_seconds": 497.5057806968689,
+              "DFS_seconds": 575.5482597351074,
+              "rescoring_seconds": 140.50887417793274,
+              "closed_intervals": 37,
+              "unmatched_end_events": 0
+            },
+            "2": {
+              "TTT_seconds": 365.04929208755493,
+              "DFS_seconds": 692.8693680763245,
+              "rescoring_seconds": 118.61141014099121,
+              "closed_intervals": 76,
+              "unmatched_end_events": 0
+            },
+            "3": {
+              "TTT_seconds": 350.1727349758148,
+              "DFS_seconds": 666.0442390441895,
+              "rescoring_seconds": 119.35651206970215,
+              "closed_intervals": 32,
+              "unmatched_end_events": 0
+            }
+          },
+          "unclosed_stage_intervals": 0,
+          "adapter_fingerprints_by_task": {
+            "221dfab4": [
+              "4fa300dba2e439eb3f119c3cb10180608c55ff1e0cfed801c47b95e7921de101"
+            ],
+            "2ba387bc": [
+              "f766cad9f9f5671e298991cf3a4a4b50295a1fb34c8ee48856b744aef14bd2cf"
+            ],
+            "88e364bc": [
+              "39b51d320e785508bf17f12187bb12cd7b226e40763e7605a93e82f68d53c23f"
+            ],
+            "35ab12c3": [
+              "e9348d71764f752644673bc4ba4017ab16880aa01af1be3825c1ec088b20efb5"
+            ],
+            "d35bdbdc": [
+              "19849ab6f4c8079f67b5be7888199fb2dada84b69a3e6756c58a29617beb1773"
+            ],
+            "dbff022c": [
+              "e0ebde228dee419673d84552d090336a6d203cd153f9014a11fa398447fbac83"
+            ],
+            "67e490f4": [
+              "0a68059ac4f28dc3fcd6fc7fa79533d20df70024ce19da183ee63f46a1e52597"
+            ],
+            "c7f57c3e": [
+              "cc367176222ef7e57bbcc80915e06372f5e5b71bc7dbb77477712ecd92d7fc5e"
+            ]
+          },
+          "cost_interpretation": "Host stage interval sums per worker; not synchronized CUDA profiles or wall-clock critical path. Unclosed cutoff intervals are not silently estimated."
+        }
+      },
+      "challenger": {
+        "terminal": {
+          "branch": "challenger",
+          "ttt_stop_steps": 64,
+          "started_at": 1793085659.4423153,
+          "shared_setup_seconds_charged": 118.16043901443481,
+          "global_end_time": 1793087041.2818763,
+          "hard_deadline": 1793087101.2818763,
+          "effective_solver_global_seconds": 1381.8395609855652,
+          "timed_out": false,
+          "status": "completed",
+          "command": [
+            "/usr/bin/python3",
+            "-u",
+            "starter.py",
+            "--end-time",
+            "1793087041.2818763"
+          ],
+          "process_group_id": 2976,
+          "return_code": 0,
+          "descendant_group_kill_requested": false,
+          "finished_at": 1793086928.9349706,
+          "elapsed_s": 1269.4926557540894,
+          "deployment_elapsed_seconds": 1387.6530947685242
+        },
+        "B4_exactly_reproduced": true,
+        "scored_record_count": 207,
+        "runtime_events": {
+          "event_counts": {
+            "task_start": 8,
+            "ttt_start": 8,
+            "ttt_schedule": 8,
+            "ttt_checkpoint": 8,
+            "ttt_end": 8,
+            "adapter_fingerprint": 8,
+            "search_start": 48,
+            "search_end": 48,
+            "raw_batch_saved": 48,
+            "score_start": 118,
+            "score_end": 118,
+            "scored_file_saved": 167,
+            "task_end": 8
+          },
+          "started_batches_by_query": {
+            "dbff022c_0": 4,
+            "88e364bc_0": 4,
+            "221dfab4_0": 4,
+            "d35bdbdc_2": 4,
+            "221dfab4_1": 4,
+            "35ab12c3_0": 4,
+            "c7f57c3e_0": 4,
+            "d35bdbdc_1": 4,
+            "88e364bc_1": 4,
+            "67e490f4_0": 4,
+            "2ba387bc_0": 4,
+            "d35bdbdc_0": 4
+          },
+          "completed_batches_by_query": {
+            "dbff022c_0": 4,
+            "88e364bc_0": 4,
+            "221dfab4_0": 4,
+            "d35bdbdc_2": 4,
+            "221dfab4_1": 4,
+            "35ab12c3_0": 4,
+            "c7f57c3e_0": 4,
+            "d35bdbdc_1": 4,
+            "88e364bc_1": 4,
+            "67e490f4_0": 4,
+            "2ba387bc_0": 4,
+            "d35bdbdc_0": 4
+          },
+          "queries_never_started": [],
+          "queries_with_four_completed_batches": 12,
+          "per_worker_stage_costs": {
+            "0": {
+              "TTT_seconds": 129.35674858093262,
+              "DFS_seconds": 945.4464964866638,
+              "rescoring_seconds": 120.66059422492981,
+              "closed_intervals": 25,
+              "unmatched_end_events": 0
+            },
+            "1": {
+              "TTT_seconds": 258.51111698150635,
+              "DFS_seconds": 599.8287587165833,
+              "rescoring_seconds": 170.21601915359497,
+              "closed_intervals": 43,
+              "unmatched_end_events": 0
+            },
+            "2": {
+              "TTT_seconds": 191.34193420410156,
+              "DFS_seconds": 734.0324182510376,
+              "rescoring_seconds": 123.2430157661438,
+              "closed_intervals": 79,
+              "unmatched_end_events": 0
+            },
+            "3": {
+              "TTT_seconds": 181.4616436958313,
+              "DFS_seconds": 727.1589479446411,
+              "rescoring_seconds": 91.34479784965515,
+              "closed_intervals": 27,
+              "unmatched_end_events": 0
+            }
+          },
+          "unclosed_stage_intervals": 0,
+          "adapter_fingerprints_by_task": {
+            "221dfab4": [
+              "a461b518d3b360fabd2311f1f1827d086fda08ffbb9fe56e22ff3e56002ac02b"
+            ],
+            "2ba387bc": [
+              "bbfbc60a0a8880faa3210e5fb789998e99f494f1599823b72d42b60a0eb12f2c"
+            ],
+            "88e364bc": [
+              "d709dd8248e4e215737659ad0e7e045ec430af88ad37d5d453f4f0211c305fa8"
+            ],
+            "35ab12c3": [
+              "6df0c12c426f63f5f3b61d97b96f4276d6c0f24cd8a19de5f729534fdc601d33"
+            ],
+            "d35bdbdc": [
+              "d77fb2b3a7c94cd92f1a40a83f5d1398fc41f5333c991da8c28b26a591b8a118"
+            ],
+            "dbff022c": [
+              "f2467bfabc0518038bc4c245c3e75b27d67af815e13650b795588dd131890530"
+            ],
+            "67e490f4": [
+              "5f9d71d652a2c816361946874725c65a7c34f4ed30a0119440fb551491a43114"
+            ],
+            "c7f57c3e": [
+              "a7195e34e3de5d908fccee9f46115440130ee2dfa84a86f4d7efd38e0aee91e7"
+            ]
+          },
+          "cost_interpretation": "Host stage interval sums per worker; not synchronized CUDA profiles or wall-clock critical path. Unclosed cutoff intervals are not silently estimated."
+        }
+      }
+    },
+    "adapter_comparison_by_task": {
+      "221dfab4": "paired_TTT_not_identical",
+      "2ba387bc": "paired_TTT_not_identical",
+      "35ab12c3": "paired_TTT_not_identical",
+      "67e490f4": "paired_TTT_not_identical",
+      "88e364bc": "paired_TTT_not_identical",
+      "c7f57c3e": "paired_TTT_not_identical",
+      "d35bdbdc": "paired_TTT_not_identical",
+      "dbff022c": "paired_TTT_not_identical"
+    },
+    "noise_control_status": "unknown_separate_mechanism_report_required",
+    "interpretation": "Same seed/full-run environment does not assert identical TTT; no accuracy measured here."
+  },
+  "observed_runtime_audit": {
+    "configuration_matches_frozen031": true,
+    "arms": {
+      "base": {
+        "searched_queries": 12,
+        "completed_search_batches": 46,
+        "queries_with_four_completed_batches": 10,
+        "started_batches_by_query": {
+          "221dfab4_1": 4,
+          "221dfab4_0": 4,
+          "2ba387bc_0": 4,
+          "35ab12c3_0": 4,
+          "d35bdbdc_2": 4,
+          "88e364bc_1": 3,
+          "dbff022c_0": 3,
+          "d35bdbdc_0": 4,
+          "88e364bc_0": 4,
+          "67e490f4_0": 4,
+          "d35bdbdc_1": 4,
+          "c7f57c3e_0": 4
+        },
+        "completed_batches_by_query": {
+          "221dfab4_1": 4,
+          "221dfab4_0": 4,
+          "2ba387bc_0": 4,
+          "35ab12c3_0": 4,
+          "d35bdbdc_2": 4,
+          "88e364bc_1": 3,
+          "dbff022c_0": 3,
+          "d35bdbdc_0": 4,
+          "88e364bc_0": 4,
+          "67e490f4_0": 4,
+          "d35bdbdc_1": 4,
+          "c7f57c3e_0": 4
+        },
+        "ttt_completed_tasks": [
+          "221dfab4",
+          "2ba387bc",
+          "35ab12c3",
+          "67e490f4",
+          "88e364bc",
+          "c7f57c3e",
+          "d35bdbdc",
+          "dbff022c"
+        ],
+        "ttt_unclosed_tasks": [],
+        "tasks_not_started": [],
+        "task_training_evidence": {
+          "221dfab4": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793084392.4906986,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 0,
+                "event": "ttt_schedule",
+                "task_id": "221dfab4",
+                "global_end_time": 1793085649.564607,
+                "max_steps": 128,
+                "stop_after_steps": 128,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "base"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793084523.5421312,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 0,
+                "event": "ttt_checkpoint",
+                "task_id": "221dfab4",
+                "global_end_time": 1793085649.564607,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              },
+              {
+                "timestamp": 1793084645.0442426,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 0,
+                "event": "ttt_checkpoint",
+                "task_id": "221dfab4",
+                "global_end_time": 1793085649.564607,
+                "global_step": 128,
+                "max_steps": 128,
+                "epoch": 1.0,
+                "learning_rates": [
+                  0.0,
+                  0.0
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              }
+            ],
+            "final_global_steps": [
+              128
+            ],
+            "completed_training_path_verified": true
+          },
+          "2ba387bc": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793084433.2419133,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 1,
+                "event": "ttt_schedule",
+                "task_id": "2ba387bc",
+                "global_end_time": 1793085649.564607,
+                "max_steps": 128,
+                "stop_after_steps": 128,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "base"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793084551.5861595,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 1,
+                "event": "ttt_checkpoint",
+                "task_id": "2ba387bc",
+                "global_end_time": 1793085649.564607,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              },
+              {
+                "timestamp": 1793084670.3938832,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 1,
+                "event": "ttt_checkpoint",
+                "task_id": "2ba387bc",
+                "global_end_time": 1793085649.564607,
+                "global_step": 128,
+                "max_steps": 128,
+                "epoch": 1.0,
+                "learning_rates": [
+                  0.0,
+                  0.0
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              }
+            ],
+            "final_global_steps": [
+              128
+            ],
+            "completed_training_path_verified": true
+          },
+          "35ab12c3": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793084472.954259,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 2,
+                "event": "ttt_schedule",
+                "task_id": "35ab12c3",
+                "global_end_time": 1793085649.564607,
+                "max_steps": 128,
+                "stop_after_steps": 128,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "base"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793084570.3277733,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 2,
+                "event": "ttt_checkpoint",
+                "task_id": "35ab12c3",
+                "global_end_time": 1793085649.564607,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              },
+              {
+                "timestamp": 1793084667.1056743,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 2,
+                "event": "ttt_checkpoint",
+                "task_id": "35ab12c3",
+                "global_end_time": 1793085649.564607,
+                "global_step": 128,
+                "max_steps": 128,
+                "epoch": 1.0,
+                "learning_rates": [
+                  0.0,
+                  0.0
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              }
+            ],
+            "final_global_steps": [
+              128
+            ],
+            "completed_training_path_verified": true
+          },
+          "67e490f4": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793084511.2015145,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 3,
+                "event": "ttt_schedule",
+                "task_id": "67e490f4",
+                "global_end_time": 1793085649.564607,
+                "max_steps": 128,
+                "stop_after_steps": 128,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "base"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793084612.1932604,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 3,
+                "event": "ttt_checkpoint",
+                "task_id": "67e490f4",
+                "global_end_time": 1793085649.564607,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              },
+              {
+                "timestamp": 1793084712.1082423,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 3,
+                "event": "ttt_checkpoint",
+                "task_id": "67e490f4",
+                "global_end_time": 1793085649.564607,
+                "global_step": 128,
+                "max_steps": 128,
+                "epoch": 1.0,
+                "learning_rates": [
+                  0.0,
+                  0.0
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              }
+            ],
+            "final_global_steps": [
+              128
+            ],
+            "completed_training_path_verified": true
+          },
+          "88e364bc": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793084775.380285,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 1,
+                "event": "ttt_schedule",
+                "task_id": "88e364bc",
+                "global_end_time": 1793085649.564607,
+                "max_steps": 128,
+                "stop_after_steps": 128,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "base"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793084900.0571353,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 1,
+                "event": "ttt_checkpoint",
+                "task_id": "88e364bc",
+                "global_end_time": 1793085649.564607,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              },
+              {
+                "timestamp": 1793085024.6552,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 1,
+                "event": "ttt_checkpoint",
+                "task_id": "88e364bc",
+                "global_end_time": 1793085649.564607,
+                "global_step": 128,
+                "max_steps": 128,
+                "epoch": 1.0,
+                "learning_rates": [
+                  0.0,
+                  0.0
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              }
+            ],
+            "final_global_steps": [
+              128
+            ],
+            "completed_training_path_verified": true
+          },
+          "c7f57c3e": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793084986.5212312,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 3,
+                "event": "ttt_schedule",
+                "task_id": "c7f57c3e",
+                "global_end_time": 1793085649.564607,
+                "max_steps": 128,
+                "stop_after_steps": 128,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "base"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793085056.0799608,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 3,
+                "event": "ttt_checkpoint",
+                "task_id": "c7f57c3e",
+                "global_end_time": 1793085649.564607,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              },
+              {
+                "timestamp": 1793085125.3774776,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 3,
+                "event": "ttt_checkpoint",
+                "task_id": "c7f57c3e",
+                "global_end_time": 1793085649.564607,
+                "global_step": 128,
+                "max_steps": 128,
+                "epoch": 1.0,
+                "learning_rates": [
+                  0.0,
+                  0.0
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              }
+            ],
+            "final_global_steps": [
+              128
+            ],
+            "completed_training_path_verified": true
+          },
+          "d35bdbdc": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793085083.8625538,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 2,
+                "event": "ttt_schedule",
+                "task_id": "d35bdbdc",
+                "global_end_time": 1793085649.564607,
+                "max_steps": 128,
+                "stop_after_steps": 128,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "base"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793085122.815901,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 2,
+                "event": "ttt_checkpoint",
+                "task_id": "d35bdbdc",
+                "global_end_time": 1793085649.564607,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              },
+              {
+                "timestamp": 1793085161.5920372,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 2,
+                "event": "ttt_checkpoint",
+                "task_id": "d35bdbdc",
+                "global_end_time": 1793085649.564607,
+                "global_step": 128,
+                "max_steps": 128,
+                "epoch": 1.0,
+                "learning_rates": [
+                  0.0,
+                  0.0
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              }
+            ],
+            "final_global_steps": [
+              128
+            ],
+            "completed_training_path_verified": true
+          },
+          "dbff022c": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793085476.9432058,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 2,
+                "event": "ttt_schedule",
+                "task_id": "dbff022c",
+                "global_end_time": 1793085649.564607,
+                "max_steps": 128,
+                "stop_after_steps": 128,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "base"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793085516.0196636,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 2,
+                "event": "ttt_checkpoint",
+                "task_id": "dbff022c",
+                "global_end_time": 1793085649.564607,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              },
+              {
+                "timestamp": 1793085555.4650972,
+                "branch": "base",
+                "ttt_limit": 128,
+                "rank": 2,
+                "event": "ttt_checkpoint",
+                "task_id": "dbff022c",
+                "global_end_time": 1793085649.564607,
+                "global_step": 128,
+                "max_steps": 128,
+                "epoch": 1.0,
+                "learning_rates": [
+                  0.0,
+                  0.0
+                ],
+                "stop_requested": false,
+                "arm": "base"
+              }
+            ],
+            "final_global_steps": [
+              128
+            ],
+            "completed_training_path_verified": true
+          }
+        },
+        "invalid_training_evidence_tasks": [],
+        "observed_training_paths_verified": true,
+        "deployment_budget_verified": true,
+        "accounted_deployment_elapsed_seconds": 1531.644279718399
+      },
+      "challenger": {
+        "searched_queries": 12,
+        "completed_search_batches": 48,
+        "queries_with_four_completed_batches": 12,
+        "started_batches_by_query": {
+          "221dfab4_1": 4,
+          "221dfab4_0": 4,
+          "2ba387bc_0": 4,
+          "35ab12c3_0": 4,
+          "d35bdbdc_2": 4,
+          "88e364bc_1": 4,
+          "dbff022c_0": 4,
+          "d35bdbdc_0": 4,
+          "88e364bc_0": 4,
+          "67e490f4_0": 4,
+          "d35bdbdc_1": 4,
+          "c7f57c3e_0": 4
+        },
+        "completed_batches_by_query": {
+          "221dfab4_1": 4,
+          "221dfab4_0": 4,
+          "2ba387bc_0": 4,
+          "35ab12c3_0": 4,
+          "d35bdbdc_2": 4,
+          "88e364bc_1": 4,
+          "dbff022c_0": 4,
+          "d35bdbdc_0": 4,
+          "88e364bc_0": 4,
+          "67e490f4_0": 4,
+          "d35bdbdc_1": 4,
+          "c7f57c3e_0": 4
+        },
+        "ttt_completed_tasks": [
+          "221dfab4",
+          "2ba387bc",
+          "35ab12c3",
+          "67e490f4",
+          "88e364bc",
+          "c7f57c3e",
+          "d35bdbdc",
+          "dbff022c"
+        ],
+        "ttt_unclosed_tasks": [],
+        "tasks_not_started": [],
+        "task_training_evidence": {
+          "221dfab4": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793085731.6697774,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 0,
+                "event": "ttt_schedule",
+                "task_id": "221dfab4",
+                "global_end_time": 1793087041.2818763,
+                "max_steps": 128,
+                "stop_after_steps": 64,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "challenger"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793085855.1048944,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 0,
+                "event": "ttt_checkpoint",
+                "task_id": "221dfab4",
+                "global_end_time": 1793087041.2818763,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": true,
+                "arm": "challenger"
+              }
+            ],
+            "final_global_steps": [
+              64
+            ],
+            "completed_training_path_verified": true
+          },
+          "2ba387bc": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793085770.8879976,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 1,
+                "event": "ttt_schedule",
+                "task_id": "2ba387bc",
+                "global_end_time": 1793087041.2818763,
+                "max_steps": 128,
+                "stop_after_steps": 64,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "challenger"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793085893.6810052,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 1,
+                "event": "ttt_checkpoint",
+                "task_id": "2ba387bc",
+                "global_end_time": 1793087041.2818763,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": true,
+                "arm": "challenger"
+              }
+            ],
+            "final_global_steps": [
+              64
+            ],
+            "completed_training_path_verified": true
+          },
+          "35ab12c3": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793085812.3231573,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 2,
+                "event": "ttt_schedule",
+                "task_id": "35ab12c3",
+                "global_end_time": 1793087041.2818763,
+                "max_steps": 128,
+                "stop_after_steps": 64,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "challenger"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793085911.234638,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 2,
+                "event": "ttt_checkpoint",
+                "task_id": "35ab12c3",
+                "global_end_time": 1793087041.2818763,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": true,
+                "arm": "challenger"
+              }
+            ],
+            "final_global_steps": [
+              64
+            ],
+            "completed_training_path_verified": true
+          },
+          "67e490f4": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793085858.1125376,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 3,
+                "event": "ttt_schedule",
+                "task_id": "67e490f4",
+                "global_end_time": 1793087041.2818763,
+                "max_steps": 128,
+                "stop_after_steps": 64,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "challenger"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793085959.5932317,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 3,
+                "event": "ttt_checkpoint",
+                "task_id": "67e490f4",
+                "global_end_time": 1793087041.2818763,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": true,
+                "arm": "challenger"
+              }
+            ],
+            "final_global_steps": [
+              64
+            ],
+            "completed_training_path_verified": true
+          },
+          "88e364bc": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793085995.2315824,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 1,
+                "event": "ttt_schedule",
+                "task_id": "88e364bc",
+                "global_end_time": 1793087041.2818763,
+                "max_steps": 128,
+                "stop_after_steps": 64,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "challenger"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793086119.8407803,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 1,
+                "event": "ttt_checkpoint",
+                "task_id": "88e364bc",
+                "global_end_time": 1793087041.2818763,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": true,
+                "arm": "challenger"
+              }
+            ],
+            "final_global_steps": [
+              64
+            ],
+            "completed_training_path_verified": true
+          },
+          "c7f57c3e": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793086153.8647718,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 3,
+                "event": "ttt_schedule",
+                "task_id": "c7f57c3e",
+                "global_end_time": 1793087041.2818763,
+                "max_steps": 128,
+                "stop_after_steps": 64,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "challenger"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793086223.4426005,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 3,
+                "event": "ttt_checkpoint",
+                "task_id": "c7f57c3e",
+                "global_end_time": 1793087041.2818763,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": true,
+                "arm": "challenger"
+              }
+            ],
+            "final_global_steps": [
+              64
+            ],
+            "completed_training_path_verified": true
+          },
+          "d35bdbdc": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793086308.4376965,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 2,
+                "event": "ttt_schedule",
+                "task_id": "d35bdbdc",
+                "global_end_time": 1793087041.2818763,
+                "max_steps": 128,
+                "stop_after_steps": 64,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "challenger"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793086347.149811,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 2,
+                "event": "ttt_checkpoint",
+                "task_id": "d35bdbdc",
+                "global_end_time": 1793087041.2818763,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": true,
+                "arm": "challenger"
+              }
+            ],
+            "final_global_steps": [
+              64
+            ],
+            "completed_training_path_verified": true
+          },
+          "dbff022c": {
+            "ttt_started": true,
+            "ttt_completed": true,
+            "schedule": [
+              {
+                "timestamp": 1793086678.0770314,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 2,
+                "event": "ttt_schedule",
+                "task_id": "dbff022c",
+                "global_end_time": 1793087041.2818763,
+                "max_steps": 128,
+                "stop_after_steps": 64,
+                "num_train_epochs": 1.0,
+                "warmup_ratio": 0.1,
+                "learning_rate": 5e-05,
+                "lr_scheduler_type": "SchedulerType.COSINE",
+                "arm": "challenger"
+              }
+            ],
+            "checkpoints": [
+              {
+                "timestamp": 1793086717.116134,
+                "branch": "challenger",
+                "ttt_limit": 64,
+                "rank": 2,
+                "event": "ttt_checkpoint",
+                "task_id": "dbff022c",
+                "global_end_time": 1793087041.2818763,
+                "global_step": 64,
+                "max_steps": 128,
+                "epoch": 0.5,
+                "learning_rates": [
+                  2.9415915362214692e-05,
+                  2.9415915362214692e-05
+                ],
+                "stop_requested": true,
+                "arm": "challenger"
+              }
+            ],
+            "final_global_steps": [
+              64
+            ],
+            "completed_training_path_verified": true
+          }
+        },
+        "invalid_training_evidence_tasks": [],
+        "observed_training_paths_verified": true,
+        "deployment_budget_verified": true,
+        "accounted_deployment_elapsed_seconds": 1409.4242787361145
+      }
+    },
+    "training_and_budget_verified": true,
+    "interpretation": "Unclosed TTT after a declared budget cutoff is reported, not assigned zero cost or removed from the query denominator. Independent TTT does not establish identical numerical trajectories."
+  },
+  "promotion_criteria": {
+    "all_frozen_queries_input_matched": true,
+    "net_queries_strictly_positive": false,
+    "base_pressure_second_slot_only_reproduced": true,
+    "challenger_pressure_still_correct": true,
+    "challenger_searched_queries_at_least_base": true,
+    "challenger_completed_batches_at_least_base": true,
+    "observed_training_and_budget_verified": true
+  },
+  "decision": "stop_fixed64_recipe",
+  "failed_criteria": [
+    "net_queries_strictly_positive"
+  ],
+  "mandatory_manual_review": {
+    "exact_V1_source_and_actual_script_version_id": "required_before_submission",
+    "checkpoint_bytes_and_actual_GPU": "required_before_submission",
+    "ordinary_top_level_equals_challenger_B4": "required_before_submission",
+    "no_runtime_error_and_declared_budget_cutoffs_only": "required_before_submission",
+    "daily_submission_allowance_and_pending": "required_before_submission"
+  },
+  "scoring_helper_sha256": "56f6a54e1544882ac01ccbaeb3527b5a2c03b0ae6ebd7c00e1c24ff0aef92d35",
+  "interpretation": "Exposed public exploratory regression, not independent blind confirmation or hidden leaderboard score. Independent TTT numerical trajectories can differ. A positive result permits manual review of this exact V1 only; it cannot guarantee public-score improvement. Invalid runtime evidence is an execution issue to review, not proof of algorithm failure. No automatic submission or alternate step/LR/seed/ranking selection is performed."
+}

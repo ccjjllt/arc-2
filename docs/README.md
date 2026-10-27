@@ -1,6 +1,8 @@
 # 文档索引
 
-当前研究入口：[031计划](plan/031-nvarc-ttt-budget.md)与[031进展](progress/031-nvarc-ttt-budget.md)：V1普通8题／12query配对已启动，原128步TTT与保留原调度的64步停止比较，DFS0.2／B4不变，L4×4最多3600秒；结果待返回，通过冻结条件才用同V1提交。尚无031正式submission或提分结论，正式最好仍02330.14。
+当前交付：[032计划](plan/032-highest-notebook-submission.md)与[032进展](progress/032-highest-notebook-submission.md)：按用户要求直接提交公开最高排序Failed in AIMO原V1／312063593，submission57694986已受理、PENDING，真实分数未返回。没有使用023副本或031改动，正式最好仍02330.14。
+
+上轮[031进展](progress/031-nvarc-ttt-budget.md)：V1／362740379 COMPLETE，完整12query两臂均2/12、净0，结束64步配方、不提交。
 
 [030进展](progress/030-final-week-search-coverage.md)：pilot20 V1／362694905已COMPLETE，官方28/28匹配，0.2与0.1均6/28、增2丢2净0，结束0.1。oracle7→8但覆盖下降，独立TTT字节指纹不同的混杂保留，不进40题扩展或正式提交。
 
@@ -44,7 +46,8 @@
 | 028 NVARC DFS提速 | [plan/028-nvarc-dfs-throughput.md](plan/028-nvarc-dfs-throughput.md) | [progress/028-nvarc-dfs-throughput.md](progress/028-nvarc-dfs-throughput.md)；V2 COMPLETE／362511155；稳定候选题减1.57%，d35候选变化，结束固定16-token配方；B4／得分未测量 |
 | 029 NVARC数值与缓存定位 | [plan/029-nvarc-numerics-cache-diagnosis.md](plan/029-nvarc-numerics-cache-diagnosis.md) | [progress/029-nvarc-numerics-cache-diagnosis.md](progress/029-nvarc-numerics-cache-diagnosis.md)；V1 COMPLETE／362548497；差异早于restore，受检三点0差，诊断结束；不证明028充分根因／提分 |
 | 030 赛前一周研究审计与搜索覆盖 | [plan/030-final-week-search-coverage.md](plan/030-final-week-search-coverage.md) | [progress/030-final-week-search-coverage.md](progress/030-final-week-search-coverage.md)；pilot V1 COMPLETE／362694905，6/28→6/28、净0，结束0.1，保留原0.2／B4 |
-| 031 原NVARC TTT预算 | [plan/031-nvarc-ttt-budget.md](plan/031-nvarc-ttt-budget.md) | [progress/031-nvarc-ttt-budget.md](progress/031-nvarc-ttt-budget.md)；V1普通8题／12query配对运行中，128调度保留、callback64停止；效果未确认 |
+| 031 原NVARC TTT预算 | [plan/031-nvarc-ttt-budget.md](plan/031-nvarc-ttt-budget.md) | [progress/031-nvarc-ttt-budget.md](progress/031-nvarc-ttt-budget.md)；V1 COMPLETE／362740379，2/12→2/12净0，结束64步、不提交 |
+| 032 最高分Notebook直接提交 | [plan/032-highest-notebook-submission.md](plan/032-highest-notebook-submission.md) | [progress/032-highest-notebook-submission.md](progress/032-highest-notebook-submission.md)；原作者V1／312063593，submission57694986受理、PENDING，无新分数 |
 
 ## 操作与维护
 

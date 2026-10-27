@@ -1,0 +1,365 @@
+{
+  "created_at_utc": "2026-10-27T06:50:20.715508+00:00",
+  "cohort": "031_ttt64_exposed_eight_task_regression",
+  "panel": "panel8",
+  "status": "input_panel_frozen_GPU_not_run",
+  "n_tasks": 8,
+  "n_queries": 12,
+  "source_task_count": 120,
+  "source_query_count": 172,
+  "task_order": [
+    "221dfab4",
+    "2ba387bc",
+    "35ab12c3",
+    "67e490f4",
+    "88e364bc",
+    "c7f57c3e",
+    "d35bdbdc",
+    "dbff022c"
+  ],
+  "entries": [
+    {
+      "task_id": "221dfab4",
+      "source_group": "public_evaluation_NVARC031_exposed_regression",
+      "tier": "L",
+      "query_group": "multi",
+      "n_demo": 2,
+      "total_input_cells": 2801,
+      "demo_pairs_sha256": "2c5bdd76ba874a775e8811eed39aea0a0db67d3cba4583cbdcd786a07b26f1fb",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "221dfab4_0",
+          "input_sha256": "f06271a2586a8d05a57af68e3d958602ec304b0eae487ddf100adfa8efc4c6ea"
+        },
+        {
+          "query_index": 1,
+          "query_key": "221dfab4_1",
+          "input_sha256": "314f0da2016a9686d00d3fd06db65fc06050a2825ad8b15546adbd5b825336c6"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "2ba387bc",
+      "source_group": "public_evaluation_NVARC031_exposed_regression",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 4,
+      "total_input_cells": 2372,
+      "demo_pairs_sha256": "00c30973965a98179460c063ef40e3906c3223729e7f34f269ed34acc61fe3e1",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "2ba387bc_0",
+          "input_sha256": "427d66b9c2a794e1ff2505e7505fcea6cc9187a2b6d1b24c99047409701a7bce"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "35ab12c3",
+      "source_group": "public_evaluation_NVARC031_exposed_regression",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 1390,
+      "demo_pairs_sha256": "553f50df0a63b4ac07d851ec573368cec3ba73583813c5aaf03a6c4dc655a522",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "35ab12c3_0",
+          "input_sha256": "04d05510debe89f9ed3e1bbe1dee87c662e5f22f5394732f0b682afdc8e15b5a"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "67e490f4",
+      "source_group": "public_evaluation_NVARC031_exposed_regression",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 2700,
+      "demo_pairs_sha256": "a891a4ccd98ed46d02e17982d5edf5d612d67ce879d9cdd6b91e7e4380972ac0",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "67e490f4_0",
+          "input_sha256": "20073a2017acda52bf0a16184c698ac162a3e84f619c1da3392404b8576870f1"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "88e364bc",
+      "source_group": "public_evaluation_NVARC031_exposed_regression",
+      "tier": "M",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 2000,
+      "demo_pairs_sha256": "9f6dc682a7b2b591b94efb3dde4fd1f0388b733bf66942248a0c29b68406ce75",
+      "n_test_queries": 2,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "88e364bc_0",
+          "input_sha256": "a1d500f8b5d54f14175bfa1c6f7437bfa374efd2ea9aa2dba2d08ea9ca06d4be"
+        },
+        {
+          "query_index": 1,
+          "query_key": "88e364bc_1",
+          "input_sha256": "ed1c45de4b77f58550f883e9c35f83a3e851924029d2c257891bdc2baab3cc52"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "c7f57c3e",
+      "source_group": "public_evaluation_NVARC031_exposed_regression",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 2,
+      "total_input_cells": 1432,
+      "demo_pairs_sha256": "7ee243c3bc498dfc19165417d6926a5dcf53e55a9bea3507aa6c2eaa71c9458c",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "c7f57c3e_0",
+          "input_sha256": "0aaf0212b90ad5f74df0d407e71c163f62401ad70f4f7792fd311d53dc02706e"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "d35bdbdc",
+      "source_group": "public_evaluation_NVARC031_exposed_regression",
+      "tier": "S",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 600,
+      "demo_pairs_sha256": "d500a072ca5816371f983772f0d08eefeeb8be2ce080a66000d89cf4d5dc1cf9",
+      "n_test_queries": 3,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "d35bdbdc_0",
+          "input_sha256": "8e79d412b58d81d2cfd39ce7be8246e2331f86ffb8a88dc03ef03699419acf1b"
+        },
+        {
+          "query_index": 1,
+          "query_key": "d35bdbdc_1",
+          "input_sha256": "b2032ad4119b7ab2e6124ebeec4be47cffbc4b68b3a7faaeb627c41e118e11e0"
+        },
+        {
+          "query_index": 2,
+          "query_key": "d35bdbdc_2",
+          "input_sha256": "e38c3173a31594838d2f3654471a39d9c26635f8b74d0ea35717d2dc6b13a117"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "dbff022c",
+      "source_group": "public_evaluation_NVARC031_exposed_regression",
+      "tier": "S",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 473,
+      "demo_pairs_sha256": "9242631ab4774f8e24c90d3e0b131fdb524132c1320fd3d3024e68b4aa7da652",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "dbff022c_0",
+          "input_sha256": "53080724916ac81502ba91f436384b80d2cc014bcaed0bff823e55fbaf24293e"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    }
+  ],
+  "source": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/008/raw-eval/arc-agi_evaluation_challenges.json",
+    "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+    "bytes": 984679,
+    "competition": "arc-prize-2026-arc-agi-2",
+    "provenance": "Official Kaggle challenge snapshot archived by008 and exact-SHA verified by027",
+    "matches_027_official_challenge_sha256": true
+  },
+  "input_artifact": {
+    "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/031/panel-v1/challenges.json",
+    "bytes": 313082,
+    "sha256": "2ffb3661a4b8588eb7dcfeb232d9ddec5de0122f343e6fc62697ed8198d8f581"
+  },
+  "sources": [
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/030/panels-v1/initial40/manifest.json",
+      "bytes": 48083,
+      "sha256": "a1cd3da40aa0cd0fc218ac121c58ef18a75c37e2f5dd71ab822fb5a9572c815f"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/030/panels-v1/initial40/challenges.json",
+      "bytes": 1596517,
+      "sha256": "38df4c7126f160f9dd045b4b0c9fb37ccb4f24dfbb51c8d32aa7b50f132ebeb9"
+    },
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/030/panels-v1/pilot20/manifest.json",
+      "bytes": 27449,
+      "sha256": "f9c4b4a12b4a76d641224007261377f2760470c169cc830c5035b96c933e371d"
+    }
+  ],
+  "selection_seed": "031:ttt64:quota20261027",
+  "strata": {
+    "L_multi": {
+      "eligible": [
+        "221dfab4",
+        "2d0172a1",
+        "4c7dc4dd"
+      ],
+      "n_selected": 1,
+      "selected": [
+        "221dfab4"
+      ]
+    },
+    "L_single": {
+      "eligible": [
+        "67e490f4",
+        "64efde09"
+      ],
+      "n_selected": 1,
+      "selected": [
+        "67e490f4"
+      ]
+    },
+    "M_multi": {
+      "eligible": [
+        "88e364bc",
+        "cb2d8a2c",
+        "65b59efc"
+      ],
+      "n_selected": 1,
+      "selected": [
+        "88e364bc"
+      ]
+    },
+    "M_single": {
+      "eligible": [
+        "c7f57c3e",
+        "35ab12c3",
+        "7b3084d4",
+        "58490d8a"
+      ],
+      "n_selected": 2,
+      "selected": [
+        "35ab12c3",
+        "c7f57c3e"
+      ]
+    },
+    "S_multi": {
+      "eligible": [
+        "d35bdbdc",
+        "78332cb0",
+        "b0039139"
+      ],
+      "n_selected": 1,
+      "selected": [
+        "d35bdbdc"
+      ]
+    },
+    "S_single": {
+      "eligible": [
+        "dbff022c",
+        "eee78d87",
+        "332f06d7",
+        "e8686506"
+      ],
+      "n_selected": 1,
+      "selected": [
+        "dbff022c"
+      ]
+    }
+  },
+  "forced_pressure_task": "2ba387bc",
+  "selection_rule": "Include2ba387bc as the previously known second-slot-only pressure task. Exclude all20 tasks from030 pilot to diversify public regression inputs. From the remaining19 allocate7 proportionally by inherited length tier crossed with single/multi-query; largest integer remainder, ties by stratum name. Within each stratum select ascending sha256(seed+colon+task_id), ties task_id. Retain every query and use original ascending task order.",
+  "independent_confirmation": false,
+  "query_solutions_read": false,
+  "model_predictions_read": false,
+  "historical_pressure_annotation_used": true,
+  "other_outcomes_used_for_selection": false,
+  "limitations": [
+    "All eight tasks were already used in025 and019; this is exposed development evidence.",
+    "The forced pressure task intentionally uses a historical outcome annotation.",
+    "Input length strata do not establish runtime or semantic difficulty.",
+    "All queries remain in the denominator after timeouts or missing candidates.",
+    "A small positive result cannot guarantee a hidden-test score increase."
+  ]
+}

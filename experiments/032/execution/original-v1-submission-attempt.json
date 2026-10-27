@@ -1,0 +1,41 @@
+{
+  "recorded_at_utc": "2026-10-27T08:31:00.539161+00:00",
+  "account": "zhuating",
+  "source": "Response hooks inside official Kaggle CLI",
+  "command": [
+    "competitions",
+    "submit",
+    "arc-prize-2026-arc-agi-2",
+    "-k",
+    "koushikrudra/failed-in-aimo",
+    "-v",
+    "1",
+    "-f",
+    "submission.json",
+    "-m",
+    "032 user requested direct highest-public-notebook submission: Failed in AIMO exact V1, no research modifications."
+  ],
+  "code_submission_requests": [
+    {
+      "competition": "arc-prize-2026-arc-agi-2",
+      "kernel_owner": "koushikrudra",
+      "kernel_slug": "failed-in-aimo",
+      "kernel_version": 1,
+      "file_name": "submission.json",
+      "description": "032 user requested direct highest-public-notebook submission: Failed in AIMO exact V1, no research modifications."
+    }
+  ],
+  "code_submission_responses": [
+    {
+      "ref": 57694986,
+      "message": ""
+    }
+  ],
+  "submissions": [],
+  "limits": {
+    "num_today": 1,
+    "num_total": 13,
+    "num_allowed_now": 0,
+    "limited_by_total": false
+  }
+}

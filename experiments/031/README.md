@@ -1,10 +1,10 @@
 # 031 NVARC TTT预算
 
-当前[031 V1](https://www.kaggle.com/code/zhuating/arc2-031-ttt-budget64)普通配对运行中，实际scriptVersionId待完成输出确认；尚未创建正式submission，正式最好仍02330.14。研究设计和停止／晋级条件：[计划](../../docs/plan/031-nvarc-ttt-budget.md)；实际状态：[进展](../../docs/progress/031-nvarc-ttt-budget.md)。
+当前[031 V1／362740379](https://www.kaggle.com/code/zhuating/arc2-031-ttt-budget64?scriptVersionId=362740379)已COMPLETE，完整12query两臂均2/12、增0／丢0／净0；第二槽与运行核查通过，净增条件失败，**结束64步配方，不正式提交**。保留原128步TTT／DFS0.2／B4和023正式30.14。[结果](v1-summary.json)、[停止决定](v1-decision.json)、[进展](../../docs/progress/031-nvarc-ttt-budget.md)。
 
 面板8task／12query全部是已曝光公共开发数据。保留原128步学习率调度和完整n16增强，仅callback64停止；原DFS0.2／B4。ordinary配对与hidden完整单遍候选共用同V1，结果前冻结，不据普通结果修改hidden源码。
 
-## 用户通知完成后的人工接续
+## 已执行的完成接续（历史命令，不要重复输出目录或提交）
 
 1. 用用户授权的CLI读终态、固定V1源码及工件。CLI2.2.4的owner/slug/version后缀不能单独证明输出版本；使用此处只读response-hook helper，在官方CLI内部记录current_version_number及全部输出URL路径中的 `/kf/<scriptVersionId>/` 数字，绝不保存签名URL／token。
 

@@ -1,0 +1,10 @@
+{
+  "decided_at_utc": "2026-10-27T08:21:26.667770+00:00",
+  "decision": "stop_fixed64_recipe",
+  "reason": "Complete12-query final EM@2 2->2, gained0 lost0 net0; preregistered positive-net condition failed",
+  "passed_pressure_and_runtime_conditions": true,
+  "formal_submission_created": false,
+  "retain": "023 formal30.14, original128 TTT/DFS0.2/B4",
+  "prohibited_rescue": "No32/96step, LR, seed or ranking scan on this panel",
+  "score_report_sha256": "fcbc728442e9feb4184b036a3f1741ce061b558e027308f6599c203f148b4ec7"
+}

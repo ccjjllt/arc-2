@@ -1,0 +1,28 @@
+{
+  "frozen_at_utc": "2026-10-27T06:54:42.455676+00:00",
+  "ref": "zhuating/arc2-031-ttt-budget64",
+  "expected_kernel_version": 1,
+  "actual_script_version_id": null,
+  "notebook_sha256": "10d2019a844bbd299dc6d89067f68581dce0b9f133ee4ab65358ed1068ae63fa",
+  "plan_sha256": "30d3a8e66d06c2dfbaecf4c21bfdce597cdf6404ceaec07fdad9b6825b04be1b",
+  "status": "ordinary_pair_v1_running",
+  "formal_submission_ref": null,
+  "ordinary_input_tasks": 8,
+  "ordinary_input_queries": 12,
+  "formal_policy": "TTT64_original128step_schedule_DFS0.2_original_B4",
+  "criteria": {
+    "final_EM2_net_strictly_positive": true,
+    "base_pressure_2ba_second_slot_only_must_reproduce": true,
+    "challenger_pressure_2ba_correct": true,
+    "challenger_searched_query_count_at_least_base": true,
+    "challenger_completed_batch_count_at_least_base": true,
+    "source_input_scheduler_b4_and_budget_manual_review": true
+  },
+  "if_pass": "Submit this exact V1 without modifying cells; record actual public score before claiming improvement",
+  "if_fail": "Stop fixed64 recipe; no step/LR/seed/ranking scan on this panel",
+  "gold_read_for_current_predictions": false,
+  "uploaded_cell_source_equal": true,
+  "startup_health": "four_base_workers_loaded_no_error_observed",
+  "next_step": "Wait for user completion notification; download exactV1, freeze original B4/candidates, score all12, manually review frozen criteria then submit exactV1 if passed",
+  "actual_TTT64_stop_verified": false
+}

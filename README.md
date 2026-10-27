@@ -4,7 +4,9 @@
 
 ## 当前进度
 
-2026-10-27 **[031 V1](https://www.kaggle.com/code/zhuating/arc2-031-ttt-budget64)普通配对已启动**：固定8题／12query，原128步TTT对比保留128步调度的64步停止，DFS0.2／B4不变。L4×4、最多3600秒，结果尚未返回；同V1 hidden分支已冻结为完整test单遍64，通过事前条件才提交。[031进展](docs/progress/031-nvarc-ttt-budget.md)。尚未创建031正式submission，正式最好仍02330.14。
+2026-10-27 **按用户要求直接提交当前公开排序第一的Failed in AIMO原V1：submission57694986，PENDING**。CLI实际请求和队伍列表均绑定[原作者V1／312063593](https://www.kaggle.com/code/koushikrudra/failed-in-aimo?scriptVersionId=312063593)，未使用023副本或031改动、未新启动ordinary GPU。原作者历史33.89，本次分数未返回；正式最好仍02330.14。[032进展](docs/progress/032-highest-notebook-submission.md)。
+
+2026-10-27 **[031 V1／362740379](https://www.kaggle.com/code/zhuating/arc2-031-ttt-budget64?scriptVersionId=362740379)已COMPLETE：2/12→2/12，增0／丢0／净0，结束64步配方、不正式提交**。原128步调度保留、B确实64步停止；部署账1531.644→1409.424秒、搜索46→48批，但没有新增正确query。第二槽压力保住，预定净增条件未过。[031结果](experiments/031/v1-summary.json)、[进展](docs/progress/031-nvarc-ttt-budget.md)。保留原128步TTT／DFS0.2／B4，正式最好仍02330.14。
 
 **2026-10-26实查：027正式成绩29.72，较023的30.14下降0.42。** submission **57634436**已COMPLETE，绑定[精确V1／362150112](https://www.kaggle.com/code/zhuating/arc2-027-ttt-view-ensemble-formal?scriptVersionId=362150112)，私榜未返回。[实际结果](experiments/027/execution/submission-57634436-result-20261026.json)。结束本融合方案的提分晋级，保留023；C23的5→6/34没有转化为公榜收益。隐藏extra覆盖及具体退分根因未确认，不重提或事后换seed。[028 DFS机制小实验](docs/progress/028-nvarc-dfs-throughput.md)已COMPLETE／362511155：稳定候选题DFS调用耗时减1.57%，另一题表面减6.63%却改变候选池；结束固定16-token配方，不晋级正式提交。 [029诊断](docs/progress/029-nvarc-numerics-cache-diagnosis.md)已COMPLETE／362548497：差异在恢复前出现，三个受检恢复点均一致；结束这轮runtime定位，尚无提分证据。
 

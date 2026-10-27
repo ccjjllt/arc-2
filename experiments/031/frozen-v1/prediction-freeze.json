@@ -1,0 +1,193 @@
+{
+  "frozen_at_utc": "2026-10-27T08:18:26.104474+00:00",
+  "cohort": "031_ttt64_exposed_eight_task_regression",
+  "n_tasks": 8,
+  "n_queries": 12,
+  "gold_read": false,
+  "B4_reproduced_for_both_arms": true,
+  "outputs": {
+    "candidate-ledger.jsonl": {
+      "bytes": 35418,
+      "sha256": "0b6a26bd73051bb2a5e339f9f76e034e37152e5165cdf156e032fa92c75bfd10"
+    },
+    "candidate-pools-raw.json": {
+      "bytes": 1356440,
+      "sha256": "3bdcbec7097d66a3c9a44a9c36a72145c28aa3c5add86f9d89fccc6ac7f86cf0"
+    },
+    "candidate-pools-scored.json": {
+      "bytes": 1416814,
+      "sha256": "1e59bb1a431d806e5477eb6b562845844c56aadedb6dc03f5c0026aa1835381d"
+    },
+    "input/challenges.json": {
+      "bytes": 313082,
+      "sha256": "2ffb3661a4b8588eb7dcfeb232d9ddec5de0122f343e6fc62697ed8198d8f581"
+    },
+    "input/manifest.json": {
+      "bytes": 12400,
+      "sha256": "fd1382585393f7953f00cf1df555b1ff9cf39976f0f93dc411187aea7bbb029d"
+    },
+    "run-state.json": {
+      "bytes": 4581,
+      "sha256": "efcb8763d3729f7997b9192d52a69e64025608ab379c30edec57f19af243a0f4"
+    },
+    "runtime-summary.json": {
+      "bytes": 9496,
+      "sha256": "fa49e0347a0deb9365bbec512414b6f327cbade645f6e41314ede399772d94fa"
+    },
+    "submission-base_B4.json": {
+      "bytes": 27479,
+      "sha256": "37877dffbae7e0d933dc3c3d6cbad7c6dc395194704d21f5c2cccf3acdb112c8"
+    },
+    "submission-challenger_B4.json": {
+      "bytes": 27479,
+      "sha256": "6957627f6e78e3c47cda9f1d82584e41b07d44398c1437d2ac7b966571392f74"
+    },
+    "worker-events.jsonl": {
+      "bytes": 374518,
+      "sha256": "dedd464c851322e88edef659ccb8e25670ce907f82b495ca23f617d8792cccc8"
+    }
+  },
+  "inputs": [
+    {
+      "path": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/031/panel-v1/manifest.json",
+      "bytes": 12400,
+      "sha256": "fd1382585393f7953f00cf1df555b1ff9cf39976f0f93dc411187aea7bbb029d"
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/input/manifest.json",
+      "bytes": 12400,
+      "sha256": "fd1382585393f7953f00cf1df555b1ff9cf39976f0f93dc411187aea7bbb029d"
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/input/challenges.json",
+      "bytes": 313082,
+      "sha256": "2ffb3661a4b8588eb7dcfeb232d9ddec5de0122f343e6fc62697ed8198d8f581"
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/run-state.json",
+      "bytes": 4581,
+      "sha256": "efcb8763d3729f7997b9192d52a69e64025608ab379c30edec57f19af243a0f4"
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/base/events-rank0.jsonl",
+      "bytes": 26974,
+      "sha256": "31078d7b227381440deb82f65994584c7efb1c5a32850efca741f92428988122",
+      "rows": 90
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/base/events-rank1.jsonl",
+      "bytes": 39424,
+      "sha256": "2e1e73e00dce5b19eda961f38a671daf4b74af7dd20d5cc256d646849a040ce7",
+      "rows": 133
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/base/events-rank2.jsonl",
+      "bytes": 74534,
+      "sha256": "fbb116c8aed5f9c0742e3638116226640e554f9a0dfe7d1bbbfd69ba6587fcf8",
+      "rows": 255
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/base/events-rank3.jsonl",
+      "bytes": 30793,
+      "sha256": "d590cc680a2eb6def16c831310bf81ca530363a10418ae0f47056e26c4d9062a",
+      "rows": 106
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/base/submission-B4.json",
+      "bytes": 27479,
+      "sha256": "37877dffbae7e0d933dc3c3d6cbad7c6dc395194704d21f5c2cccf3acdb112c8"
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/base/scored-candidates.jsonl",
+      "bytes": 285358,
+      "sha256": "5443410920f8cbd2935a5476dd368c91a5c7c9c4fdd7862fc6278809a2f7ee25",
+      "rows": 194
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/base/raw-candidates-rank0.jsonl",
+      "bytes": 80655,
+      "sha256": "8bd2f53bb363e6e6b70f48970f28f55984fd26129bb0679d6810e88f3e2de6b0",
+      "rows": 32
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/base/raw-candidates-rank1.jsonl",
+      "bytes": 56539,
+      "sha256": "5141f3810ae65cc3f98685dfaa42ed37dc7755b8d8a7db0d92e15bfe751b3c61",
+      "rows": 50
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/base/raw-candidates-rank2.jsonl",
+      "bytes": 59241,
+      "sha256": "9fec17134d15af737d34622435c22c9e8dc28a7bcfafa151ce1eba9c2dfd4ffe",
+      "rows": 85
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/base/raw-candidates-rank3.jsonl",
+      "bytes": 45081,
+      "sha256": "18bd82ad2e8544633dda17f78ba5c57e9d7778bdfcdca994dc01d3e2f75d4712",
+      "rows": 27
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/challenger/events-rank0.jsonl",
+      "bytes": 28774,
+      "sha256": "03a4c79bf4c7cb184d8607a1e382a5957cc86c43e9d6e7acbe989b6179775e13",
+      "rows": 95
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/challenger/events-rank1.jsonl",
+      "bytes": 46394,
+      "sha256": "daf3d465824ab1b0f6b65f0f713300046b62dc4e1e963954920019e9c5e2e2e5",
+      "rows": 154
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/challenger/events-rank2.jsonl",
+      "bytes": 78770,
+      "sha256": "8043d644b7e717c870ed7d2e2b1a3376bfcb5176bff7543adb42860dde546431",
+      "rows": 263
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/challenger/events-rank3.jsonl",
+      "bytes": 27432,
+      "sha256": "ce755d0daa49a4b2306cd3c70f2ba0344257667b0ac6ae0cb2f7bc03cec13c92",
+      "rows": 91
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/challenger/submission-B4.json",
+      "bytes": 27479,
+      "sha256": "6957627f6e78e3c47cda9f1d82584e41b07d44398c1437d2ac7b966571392f74"
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/challenger/scored-candidates.jsonl",
+      "bytes": 320663,
+      "sha256": "b263cc4c6c790dd0c48e426a7a7df780592b834db5d60ca0a8fb5ce894e7ded7",
+      "rows": 207
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/challenger/raw-candidates-rank0.jsonl",
+      "bytes": 100349,
+      "sha256": "5e03f41a6dcfaa8c3bdf139d5d891a1f469d0f28ca29ec15cc4414aacd049869",
+      "rows": 39
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/challenger/raw-candidates-rank1.jsonl",
+      "bytes": 62235,
+      "sha256": "6a72476441c5ffaec46019110326f0cf8c60ddcba741ec4323bf68dde3b1bc97",
+      "rows": 54
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/challenger/raw-candidates-rank2.jsonl",
+      "bytes": 66844,
+      "sha256": "efbff5dd0950aee8acadba8c6c4b727113257e5b83fd8b541f0f699f98c4877c",
+      "rows": 90
+    },
+    {
+      "path": "/private/tmp/arc2-031-completed-output/031/challenger/raw-candidates-rank3.jsonl",
+      "bytes": 44379,
+      "sha256": "bf5da2c035bc23d9d8bed34847764c148ecf0811e1f0247a4ce871a0c6f0b640",
+      "rows": 24
+    }
+  ],
+  "helper_source": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/replay_selection.py",
+  "helper_source_sha256": "02f6ecb1dbb3bc42d1441b5591da484b21780017347f6e0f63453f9de6607484",
+  "note": "Both original runtime B4 outputs and all diagnostic evidence frozen before gold; no alternate ranking generated."
+}

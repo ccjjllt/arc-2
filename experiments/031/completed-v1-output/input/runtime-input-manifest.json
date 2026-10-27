@@ -1,0 +1,20 @@
+{
+  "mode": "frozen_public_pair8",
+  "source_path": "/kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_evaluation_challenges.json",
+  "source_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+  "challenges_sha256": "2ffb3661a4b8588eb7dcfeb232d9ddec5de0122f343e6fc62697ed8198d8f581",
+  "n_tasks": 8,
+  "n_queries": 12,
+  "task_ids": [
+    "221dfab4",
+    "2ba387bc",
+    "35ab12c3",
+    "67e490f4",
+    "88e364bc",
+    "c7f57c3e",
+    "d35bdbdc",
+    "dbff022c"
+  ],
+  "ordinary_frozen_challenges_sha256": "2ffb3661a4b8588eb7dcfeb232d9ddec5de0122f343e6fc62697ed8198d8f581",
+  "ordinary_frozen_manifest_sha256": "fd1382585393f7953f00cf1df555b1ff9cf39976f0f93dc411187aea7bbb029d"
+}

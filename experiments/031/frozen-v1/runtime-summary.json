@@ -1,0 +1,283 @@
+{
+  "run_status": "completed",
+  "arms": {
+    "base": {
+      "terminal": {
+        "branch": "base",
+        "ttt_stop_steps": 128,
+        "started_at": 1793084267.725046,
+        "shared_setup_seconds_charged": 118.16043901443481,
+        "global_end_time": 1793085649.564607,
+        "hard_deadline": 1793085709.564607,
+        "effective_solver_global_seconds": 1381.8395609855652,
+        "timed_out": false,
+        "status": "completed",
+        "command": [
+          "/usr/bin/python3",
+          "-u",
+          "starter.py",
+          "--end-time",
+          "1793085649.564607"
+        ],
+        "process_group_id": 134,
+        "return_code": 0,
+        "descendant_group_kill_requested": false,
+        "finished_at": 1793085659.441806,
+        "elapsed_s": 1391.716760635376,
+        "deployment_elapsed_seconds": 1509.8771996498108
+      },
+      "B4_exactly_reproduced": true,
+      "scored_record_count": 194,
+      "runtime_events": {
+        "event_counts": {
+          "task_start": 8,
+          "ttt_start": 8,
+          "ttt_schedule": 8,
+          "ttt_checkpoint": 16,
+          "ttt_end": 8,
+          "adapter_fingerprint": 8,
+          "search_start": 46,
+          "search_end": 46,
+          "raw_batch_saved": 46,
+          "score_start": 114,
+          "score_end": 114,
+          "scored_file_saved": 154,
+          "task_end": 8
+        },
+        "started_batches_by_query": {
+          "dbff022c_0": 3,
+          "88e364bc_0": 4,
+          "221dfab4_0": 4,
+          "d35bdbdc_2": 4,
+          "221dfab4_1": 4,
+          "35ab12c3_0": 4,
+          "c7f57c3e_0": 4,
+          "d35bdbdc_1": 4,
+          "88e364bc_1": 3,
+          "67e490f4_0": 4,
+          "2ba387bc_0": 4,
+          "d35bdbdc_0": 4
+        },
+        "completed_batches_by_query": {
+          "dbff022c_0": 3,
+          "88e364bc_0": 4,
+          "221dfab4_0": 4,
+          "d35bdbdc_2": 4,
+          "221dfab4_1": 4,
+          "35ab12c3_0": 4,
+          "c7f57c3e_0": 4,
+          "d35bdbdc_1": 4,
+          "88e364bc_1": 3,
+          "67e490f4_0": 4,
+          "2ba387bc_0": 4,
+          "d35bdbdc_0": 4
+        },
+        "queries_never_started": [],
+        "queries_with_four_completed_batches": 10,
+        "per_worker_stage_costs": {
+          "0": {
+            "TTT_seconds": 258.5054659843445,
+            "DFS_seconds": 763.650815486908,
+            "rescoring_seconds": 104.87309861183167,
+            "closed_intervals": 23,
+            "unmatched_end_events": 0
+          },
+          "1": {
+            "TTT_seconds": 497.5057806968689,
+            "DFS_seconds": 575.5482597351074,
+            "rescoring_seconds": 140.50887417793274,
+            "closed_intervals": 37,
+            "unmatched_end_events": 0
+          },
+          "2": {
+            "TTT_seconds": 365.04929208755493,
+            "DFS_seconds": 692.8693680763245,
+            "rescoring_seconds": 118.61141014099121,
+            "closed_intervals": 76,
+            "unmatched_end_events": 0
+          },
+          "3": {
+            "TTT_seconds": 350.1727349758148,
+            "DFS_seconds": 666.0442390441895,
+            "rescoring_seconds": 119.35651206970215,
+            "closed_intervals": 32,
+            "unmatched_end_events": 0
+          }
+        },
+        "unclosed_stage_intervals": 0,
+        "adapter_fingerprints_by_task": {
+          "221dfab4": [
+            "4fa300dba2e439eb3f119c3cb10180608c55ff1e0cfed801c47b95e7921de101"
+          ],
+          "2ba387bc": [
+            "f766cad9f9f5671e298991cf3a4a4b50295a1fb34c8ee48856b744aef14bd2cf"
+          ],
+          "88e364bc": [
+            "39b51d320e785508bf17f12187bb12cd7b226e40763e7605a93e82f68d53c23f"
+          ],
+          "35ab12c3": [
+            "e9348d71764f752644673bc4ba4017ab16880aa01af1be3825c1ec088b20efb5"
+          ],
+          "d35bdbdc": [
+            "19849ab6f4c8079f67b5be7888199fb2dada84b69a3e6756c58a29617beb1773"
+          ],
+          "dbff022c": [
+            "e0ebde228dee419673d84552d090336a6d203cd153f9014a11fa398447fbac83"
+          ],
+          "67e490f4": [
+            "0a68059ac4f28dc3fcd6fc7fa79533d20df70024ce19da183ee63f46a1e52597"
+          ],
+          "c7f57c3e": [
+            "cc367176222ef7e57bbcc80915e06372f5e5b71bc7dbb77477712ecd92d7fc5e"
+          ]
+        },
+        "cost_interpretation": "Host stage interval sums per worker; not synchronized CUDA profiles or wall-clock critical path. Unclosed cutoff intervals are not silently estimated."
+      }
+    },
+    "challenger": {
+      "terminal": {
+        "branch": "challenger",
+        "ttt_stop_steps": 64,
+        "started_at": 1793085659.4423153,
+        "shared_setup_seconds_charged": 118.16043901443481,
+        "global_end_time": 1793087041.2818763,
+        "hard_deadline": 1793087101.2818763,
+        "effective_solver_global_seconds": 1381.8395609855652,
+        "timed_out": false,
+        "status": "completed",
+        "command": [
+          "/usr/bin/python3",
+          "-u",
+          "starter.py",
+          "--end-time",
+          "1793087041.2818763"
+        ],
+        "process_group_id": 2976,
+        "return_code": 0,
+        "descendant_group_kill_requested": false,
+        "finished_at": 1793086928.9349706,
+        "elapsed_s": 1269.4926557540894,
+        "deployment_elapsed_seconds": 1387.6530947685242
+      },
+      "B4_exactly_reproduced": true,
+      "scored_record_count": 207,
+      "runtime_events": {
+        "event_counts": {
+          "task_start": 8,
+          "ttt_start": 8,
+          "ttt_schedule": 8,
+          "ttt_checkpoint": 8,
+          "ttt_end": 8,
+          "adapter_fingerprint": 8,
+          "search_start": 48,
+          "search_end": 48,
+          "raw_batch_saved": 48,
+          "score_start": 118,
+          "score_end": 118,
+          "scored_file_saved": 167,
+          "task_end": 8
+        },
+        "started_batches_by_query": {
+          "dbff022c_0": 4,
+          "88e364bc_0": 4,
+          "221dfab4_0": 4,
+          "d35bdbdc_2": 4,
+          "221dfab4_1": 4,
+          "35ab12c3_0": 4,
+          "c7f57c3e_0": 4,
+          "d35bdbdc_1": 4,
+          "88e364bc_1": 4,
+          "67e490f4_0": 4,
+          "2ba387bc_0": 4,
+          "d35bdbdc_0": 4
+        },
+        "completed_batches_by_query": {
+          "dbff022c_0": 4,
+          "88e364bc_0": 4,
+          "221dfab4_0": 4,
+          "d35bdbdc_2": 4,
+          "221dfab4_1": 4,
+          "35ab12c3_0": 4,
+          "c7f57c3e_0": 4,
+          "d35bdbdc_1": 4,
+          "88e364bc_1": 4,
+          "67e490f4_0": 4,
+          "2ba387bc_0": 4,
+          "d35bdbdc_0": 4
+        },
+        "queries_never_started": [],
+        "queries_with_four_completed_batches": 12,
+        "per_worker_stage_costs": {
+          "0": {
+            "TTT_seconds": 129.35674858093262,
+            "DFS_seconds": 945.4464964866638,
+            "rescoring_seconds": 120.66059422492981,
+            "closed_intervals": 25,
+            "unmatched_end_events": 0
+          },
+          "1": {
+            "TTT_seconds": 258.51111698150635,
+            "DFS_seconds": 599.8287587165833,
+            "rescoring_seconds": 170.21601915359497,
+            "closed_intervals": 43,
+            "unmatched_end_events": 0
+          },
+          "2": {
+            "TTT_seconds": 191.34193420410156,
+            "DFS_seconds": 734.0324182510376,
+            "rescoring_seconds": 123.2430157661438,
+            "closed_intervals": 79,
+            "unmatched_end_events": 0
+          },
+          "3": {
+            "TTT_seconds": 181.4616436958313,
+            "DFS_seconds": 727.1589479446411,
+            "rescoring_seconds": 91.34479784965515,
+            "closed_intervals": 27,
+            "unmatched_end_events": 0
+          }
+        },
+        "unclosed_stage_intervals": 0,
+        "adapter_fingerprints_by_task": {
+          "221dfab4": [
+            "a461b518d3b360fabd2311f1f1827d086fda08ffbb9fe56e22ff3e56002ac02b"
+          ],
+          "2ba387bc": [
+            "bbfbc60a0a8880faa3210e5fb789998e99f494f1599823b72d42b60a0eb12f2c"
+          ],
+          "88e364bc": [
+            "d709dd8248e4e215737659ad0e7e045ec430af88ad37d5d453f4f0211c305fa8"
+          ],
+          "35ab12c3": [
+            "6df0c12c426f63f5f3b61d97b96f4276d6c0f24cd8a19de5f729534fdc601d33"
+          ],
+          "d35bdbdc": [
+            "d77fb2b3a7c94cd92f1a40a83f5d1398fc41f5333c991da8c28b26a591b8a118"
+          ],
+          "dbff022c": [
+            "f2467bfabc0518038bc4c245c3e75b27d67af815e13650b795588dd131890530"
+          ],
+          "67e490f4": [
+            "5f9d71d652a2c816361946874725c65a7c34f4ed30a0119440fb551491a43114"
+          ],
+          "c7f57c3e": [
+            "a7195e34e3de5d908fccee9f46115440130ee2dfa84a86f4d7efd38e0aee91e7"
+          ]
+        },
+        "cost_interpretation": "Host stage interval sums per worker; not synchronized CUDA profiles or wall-clock critical path. Unclosed cutoff intervals are not silently estimated."
+      }
+    }
+  },
+  "adapter_comparison_by_task": {
+    "221dfab4": "paired_TTT_not_identical",
+    "2ba387bc": "paired_TTT_not_identical",
+    "35ab12c3": "paired_TTT_not_identical",
+    "67e490f4": "paired_TTT_not_identical",
+    "88e364bc": "paired_TTT_not_identical",
+    "c7f57c3e": "paired_TTT_not_identical",
+    "d35bdbdc": "paired_TTT_not_identical",
+    "dbff022c": "paired_TTT_not_identical"
+  },
+  "noise_control_status": "unknown_separate_mechanism_report_required",
+  "interpretation": "Same seed/full-run environment does not assert identical TTT; no accuracy measured here."
+}
