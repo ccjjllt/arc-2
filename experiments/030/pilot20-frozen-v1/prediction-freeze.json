@@ -1,0 +1,193 @@
+{
+  "frozen_at_utc": "2026-10-27T06:06:35.889511+00:00",
+  "cohort": "030_pilot20_quota_limited_fixed_public_regression",
+  "n_tasks": 20,
+  "n_queries": 28,
+  "gold_read": false,
+  "B4_reproduced_for_both_arms": true,
+  "outputs": {
+    "candidate-ledger.jsonl": {
+      "bytes": 65762,
+      "sha256": "d1b7401cfd5e913ccd064ec4a08bad301fbd331d80eb6f0ac95660ee340d2495"
+    },
+    "candidate-pools-raw.json": {
+      "bytes": 2332930,
+      "sha256": "a72eb4937baeb8f3a9b2882fa59f08232eb29b8a6f1178adc3076a5efbf439e1"
+    },
+    "candidate-pools-scored.json": {
+      "bytes": 2443178,
+      "sha256": "4b8fccc7ab34a7557e4c2d6c4fb0c336626c333cd92e6806fdf58646d7033944"
+    },
+    "input/challenges.json": {
+      "bytes": 881609,
+      "sha256": "94d947c6d3da5f1080700de205bb2a0791764a65b79cb2e2b181f5f91bf58f12"
+    },
+    "input/manifest.json": {
+      "bytes": 27449,
+      "sha256": "f9c4b4a12b4a76d641224007261377f2760470c169cc830c5035b96c933e371d"
+    },
+    "run-state.json": {
+      "bytes": 4307,
+      "sha256": "46a29af4102e883ca0496645f8161323499885035cba045040737d474b2273dc"
+    },
+    "runtime-summary.json": {
+      "bytes": 13915,
+      "sha256": "cc88db24fc9fb4049b24ffaaeddcdf822b0757aa0e6e8340dc6afbb69a5438e5"
+    },
+    "submission-base_B4.json": {
+      "bytes": 49474,
+      "sha256": "e857f87a55a5093f91cfdea231d5d523c6aa59fe6687bc01e3d158e3993b59f7"
+    },
+    "submission-challenger_B4.json": {
+      "bytes": 44297,
+      "sha256": "fbaebbaee32d5ecfcf337941e5873d56f033234550822901795d2e54707c67b7"
+    },
+    "worker-events.jsonl": {
+      "bytes": 637818,
+      "sha256": "c1ac3e2b0302be7f560c1ba4a276fc8c4f5cbd972ff427f754fc87f85fd46fb8"
+    }
+  },
+  "inputs": [
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/input/manifest.json",
+      "bytes": 27449,
+      "sha256": "f9c4b4a12b4a76d641224007261377f2760470c169cc830c5035b96c933e371d"
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/input/manifest.json",
+      "bytes": 27449,
+      "sha256": "f9c4b4a12b4a76d641224007261377f2760470c169cc830c5035b96c933e371d"
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/input/challenges.json",
+      "bytes": 881609,
+      "sha256": "94d947c6d3da5f1080700de205bb2a0791764a65b79cb2e2b181f5f91bf58f12"
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/run-state.json",
+      "bytes": 4307,
+      "sha256": "46a29af4102e883ca0496645f8161323499885035cba045040737d474b2273dc"
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/base/events-rank0.jsonl",
+      "bytes": 86286,
+      "sha256": "df99308042c3da0b0f734e543e6e5940ad41d708e81698f6d515b16a4ccbe809",
+      "rows": 285
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/base/events-rank1.jsonl",
+      "bytes": 87736,
+      "sha256": "7d34e414ce58776b7e256ff7478bc3c2c82dd43c3ea11a21e3e236475b9b866d",
+      "rows": 291
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/base/events-rank2.jsonl",
+      "bytes": 57727,
+      "sha256": "e49c701e88e175bf325c4d9af22958200f2d48828b33b66e16017f80665ffd53",
+      "rows": 188
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/base/events-rank3.jsonl",
+      "bytes": 64102,
+      "sha256": "98387d450c3e2a060d56d96ae400ae0256f68f1a11341ee0db2df0adad991905",
+      "rows": 209
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/base/submission-B4.json",
+      "bytes": 49474,
+      "sha256": "e857f87a55a5093f91cfdea231d5d523c6aa59fe6687bc01e3d158e3993b59f7"
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/base/scored-candidates.jsonl",
+      "bytes": 479116,
+      "sha256": "87c89b25047af623ffb6da78c700c61160a658df45f12453394e0a1a0e993f19",
+      "rows": 313
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/base/raw-candidates-rank0.jsonl",
+      "bytes": 120652,
+      "sha256": "1ced8dadf68fbe7d5ff3940397bedbd86a26a9050069cce9cac8a59fa388768f",
+      "rows": 97
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/base/raw-candidates-rank1.jsonl",
+      "bytes": 112769,
+      "sha256": "8e618eda5b46feab124fa64db56475a3b1daf2fe65f53fe9ed20e7a81cc83f4a",
+      "rows": 112
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/base/raw-candidates-rank2.jsonl",
+      "bytes": 82958,
+      "sha256": "2b3217cf2e705d073818bc772e24db57aba21ac7430429765536b7b1e175711d",
+      "rows": 43
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/base/raw-candidates-rank3.jsonl",
+      "bytes": 91851,
+      "sha256": "dd686cc2315ea7c4b063d631be3122ff7f4e0fbf29bc60b512cbc793d109350b",
+      "rows": 61
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/challenger/events-rank0.jsonl",
+      "bytes": 82406,
+      "sha256": "460e3975b89c5d2c8d3f3ba2c490beaba2ac7858f7a97026e62994a3719c1293",
+      "rows": 283
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/challenger/events-rank1.jsonl",
+      "bytes": 84414,
+      "sha256": "9f544246c58771b1dc1e2be510592d1700a51ea4b39109ef2797e4a7f6c82972",
+      "rows": 285
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/challenger/events-rank2.jsonl",
+      "bytes": 59754,
+      "sha256": "d8d0cc3e8684b809485ab5917e0d91005a777597e918da8666c6bb4fbfbe34ce",
+      "rows": 204
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/challenger/events-rank3.jsonl",
+      "bytes": 79168,
+      "sha256": "f9bd66043c58e570ba98d9fb7f0ab4b9bbdda6175f16886bc99fb026beec9f45",
+      "rows": 258
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/challenger/submission-B4.json",
+      "bytes": 44297,
+      "sha256": "fbaebbaee32d5ecfcf337941e5873d56f033234550822901795d2e54707c67b7"
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/challenger/scored-candidates.jsonl",
+      "bytes": 637207,
+      "sha256": "fc6763cc7813c200e2313e0f70a0de290d042c25ee73d255b93ed52241dec153",
+      "rows": 445
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/challenger/raw-candidates-rank0.jsonl",
+      "bytes": 123625,
+      "sha256": "5814b2073d680a498079ce08acf7f918cc44176e7bbd0db7bc795060feb9ff01",
+      "rows": 112
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/challenger/raw-candidates-rank1.jsonl",
+      "bytes": 135557,
+      "sha256": "6370ae605ab3e060d3ce28f2e521cf13413bfbf7aacbabafa20bc405fd4c1602",
+      "rows": 135
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/challenger/raw-candidates-rank2.jsonl",
+      "bytes": 126579,
+      "sha256": "217b3efde5f1088ea77b7d5c9d4813a39f961f8287130ca135b411681cdc7f69",
+      "rows": 89
+    },
+    {
+      "path": "/private/tmp/arc2-030-pilot20-completed-v1/030/challenger/raw-candidates-rank3.jsonl",
+      "bytes": 151581,
+      "sha256": "de2027f3869c52637e8bae112442bf89c2911d15a32ca418ff336c1278f3074f",
+      "rows": 109
+    }
+  ],
+  "helper_source": "/Users/zhaohuaxiang/ccjjllt/arc-2/experiments/025/replay_selection.py",
+  "helper_source_sha256": "02f6ecb1dbb3bc42d1441b5591da484b21780017347f6e0f63453f9de6607484",
+  "note": "Both original runtime B4 outputs and all diagnostic evidence frozen before gold; no alternate ranking generated."
+}

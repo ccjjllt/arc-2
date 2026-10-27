@@ -1,0 +1,420 @@
+{
+  "run_status": "completed_budget_cutoffs",
+  "arms": {
+    "base": {
+      "terminal": {
+        "branch": "base",
+        "dfs_threshold": 0.2,
+        "started_at": 1793073559.343171,
+        "shared_setup_seconds_charged": 134.2951147556305,
+        "global_end_time": 1793076605.0480561,
+        "hard_deadline": 1793076665.0480561,
+        "effective_solver_global_seconds": 3045.7048852443695,
+        "timed_out": true,
+        "status": "budget_cutoff",
+        "command": [
+          "/usr/bin/python3",
+          "-u",
+          "starter.py",
+          "--end-time",
+          "1793076605.0480561"
+        ],
+        "process_group_id": 134,
+        "return_code": -9,
+        "descendant_group_kill_requested": true,
+        "finished_at": 1793076665.0807507,
+        "elapsed_s": 3105.737580060959,
+        "deployment_elapsed_seconds": 3240.0326948165894
+      },
+      "B4_exactly_reproduced": true,
+      "scored_record_count": 313,
+      "runtime_events": {
+        "event_counts": {
+          "task_start": 20,
+          "ttt_start": 20,
+          "ttt_end": 19,
+          "adapter_fingerprint": 19,
+          "search_start": 95,
+          "search_end": 95,
+          "raw_batch_saved": 95,
+          "score_start": 174,
+          "score_end": 174,
+          "scored_file_saved": 243,
+          "task_end": 19
+        },
+        "started_batches_by_query": {
+          "9385bd28_0": 4,
+          "7b5033c1_0": 4,
+          "a47bf94d_0": 2,
+          "a251c730_0": 4,
+          "b99e7126_0": 0,
+          "20a9e565_1": 4,
+          "7b80bb43_0": 4,
+          "271d71e2_0": 4,
+          "71e489b6_0": 4,
+          "e12f9a14_0": 0,
+          "e12f9a14_1": 0,
+          "97d7923e_0": 4,
+          "62593bfd_0": 4,
+          "7ed72f31_0": 4,
+          "269e22fb_0": 4,
+          "5545f144_0": 4,
+          "62593bfd_1": 3,
+          "9385bd28_1": 4,
+          "7ed72f31_1": 4,
+          "898e7135_0": 4,
+          "446ef5d2_1": 4,
+          "b10624e5_0": 2,
+          "71e489b6_1": 4,
+          "8f3a5a89_0": 4,
+          "446ef5d2_0": 4,
+          "269e22fb_1": 4,
+          "20a9e565_0": 4,
+          "7b0280bc_0": 4
+        },
+        "completed_batches_by_query": {
+          "9385bd28_0": 4,
+          "7b5033c1_0": 4,
+          "a47bf94d_0": 2,
+          "a251c730_0": 4,
+          "b99e7126_0": 0,
+          "20a9e565_1": 4,
+          "7b80bb43_0": 4,
+          "271d71e2_0": 4,
+          "71e489b6_0": 4,
+          "e12f9a14_0": 0,
+          "e12f9a14_1": 0,
+          "97d7923e_0": 4,
+          "62593bfd_0": 4,
+          "7ed72f31_0": 4,
+          "269e22fb_0": 4,
+          "5545f144_0": 4,
+          "62593bfd_1": 3,
+          "9385bd28_1": 4,
+          "7ed72f31_1": 4,
+          "898e7135_0": 4,
+          "446ef5d2_1": 4,
+          "b10624e5_0": 2,
+          "71e489b6_1": 4,
+          "8f3a5a89_0": 4,
+          "446ef5d2_0": 4,
+          "269e22fb_1": 4,
+          "20a9e565_0": 4,
+          "7b0280bc_0": 4
+        },
+        "queries_never_started": [
+          "b99e7126_0",
+          "e12f9a14_0",
+          "e12f9a14_1"
+        ],
+        "queries_with_four_completed_batches": 22,
+        "per_worker_stage_costs": {
+          "0": {
+            "TTT_seconds": 908.0081062316895,
+            "DFS_seconds": 1646.2308413982391,
+            "rescoring_seconds": 286.31704115867615,
+            "closed_intervals": 86,
+            "unmatched_end_events": 0
+          },
+          "1": {
+            "TTT_seconds": 1171.8402953147888,
+            "DFS_seconds": 1428.4655027389526,
+            "rescoring_seconds": 165.57405591011047,
+            "closed_intervals": 81,
+            "unmatched_end_events": 0
+          },
+          "2": {
+            "TTT_seconds": 586.7952356338501,
+            "DFS_seconds": 1515.5365798473358,
+            "rescoring_seconds": 168.8683304786682,
+            "closed_intervals": 60,
+            "unmatched_end_events": 0
+          },
+          "3": {
+            "TTT_seconds": 988.2904145717621,
+            "DFS_seconds": 1505.3736205101013,
+            "rescoring_seconds": 199.59274649620056,
+            "closed_intervals": 61,
+            "unmatched_end_events": 0
+          }
+        },
+        "unclosed_stage_intervals": 1,
+        "adapter_fingerprints_by_task": {
+          "20a9e565": [
+            "f76505ffcf4b19df6f7da4df025c63b9943c4f615903ac342d688251af6a4e3a"
+          ],
+          "71e489b6": [
+            "a536056b6185a0f8dbd3425ff7469d1b55e087bf02c7a1a3ec165371b7d61901"
+          ],
+          "7ed72f31": [
+            "2bf367905e45ce49e0191c4c40c075e6a71cc9d4d5f80922114a7ae2006ed15d"
+          ],
+          "a47bf94d": [
+            "3a0cd04e7712a5a4fe9733d0e84259fa8c879e61d2470c2f4fc0482c812b4496"
+          ],
+          "269e22fb": [
+            "dab311cd5afe8f1414f978f0db57622522d1e8882cdfccd636d466ce75fd3e55"
+          ],
+          "7b5033c1": [
+            "158269bb6e2a2d6be024fff2571ffe68502208c64ddd6c1d34c8181707ec07db"
+          ],
+          "7b80bb43": [
+            "c01c34b1a7b364106ecc66cc6a98ccb5d66e31f08e97ef967b344d88383ab27d"
+          ],
+          "8f3a5a89": [
+            "3273f84174fc57a2a92835c4ecd600b2896a60b9f9894d676d32e084ac078350"
+          ],
+          "97d7923e": [
+            "0f9c597478c196ed94b989e974f8dffeacdb73d446e201a11dbf4e6e1e98f165"
+          ],
+          "b10624e5": [
+            "312e95ffb47f6677948ff40038a24a5c5045dbc2a9706f812a4935a0fa62cd0e"
+          ],
+          "271d71e2": [
+            "f1b0fd05505f87ad4a5f3809f7216d16658fa53c84e6b2c15f255a9744509c06"
+          ],
+          "5545f144": [
+            "d392bcb3fc5e843e9270eb4fe6a329399fd8aa4f910551a17dbf5094516b607e"
+          ],
+          "7b0280bc": [
+            "886be9008dc66aedb10d4fb0ec423449aefa856f3c3a9527fa3ef439bcec3caf"
+          ],
+          "9385bd28": [
+            "1fd5de057ecd2f68cb89c55fb71b33ae06f34663fbbf85fd5c69e89736a2472f"
+          ],
+          "446ef5d2": [
+            "e8c8f836340c83f2b45a703df9b97f10f92351d4007e856caef34adff11af4f1"
+          ],
+          "62593bfd": [
+            "6d62a3ccf4c92d621c0e586f96a321841eba2cc2cdff89832393ffcd57d72779"
+          ],
+          "898e7135": [
+            "e9ec01a782f017f29225cd2400be35c6b2a762a1827ea3f49d71053d81f5046e"
+          ],
+          "a251c730": [
+            "1d926488d253d6afa8a0bac1634959fcc50ae9673d531befd4b99b69540876bb"
+          ],
+          "e12f9a14": [
+            "00043a42f9830d6a30589bfa95430cf9b094ee5001b23c2a28d2674c9917178e"
+          ]
+        },
+        "cost_interpretation": "Host stage interval sums per worker; not synchronized CUDA profiles or wall-clock critical path. Unclosed cutoff intervals are not silently estimated."
+      }
+    },
+    "challenger": {
+      "terminal": {
+        "branch": "challenger",
+        "dfs_threshold": 0.1,
+        "started_at": 1793076665.0812397,
+        "shared_setup_seconds_charged": 134.2951147556305,
+        "global_end_time": 1793079710.786125,
+        "hard_deadline": 1793079770.786125,
+        "effective_solver_global_seconds": 3045.7048852443695,
+        "timed_out": false,
+        "status": "completed",
+        "command": [
+          "/usr/bin/python3",
+          "-u",
+          "starter.py",
+          "--end-time",
+          "1793079710.786125"
+        ],
+        "process_group_id": 5631,
+        "return_code": 0,
+        "descendant_group_kill_requested": false,
+        "finished_at": 1793079734.3429608,
+        "elapsed_s": 3069.2617218494415,
+        "deployment_elapsed_seconds": 3203.556836605072
+      },
+      "B4_exactly_reproduced": true,
+      "scored_record_count": 445,
+      "runtime_events": {
+        "event_counts": {
+          "task_start": 15,
+          "ttt_start": 15,
+          "ttt_end": 15,
+          "adapter_fingerprint": 15,
+          "search_start": 75,
+          "search_end": 75,
+          "raw_batch_saved": 75,
+          "score_start": 243,
+          "score_end": 243,
+          "scored_file_saved": 244,
+          "task_end": 15
+        },
+        "started_batches_by_query": {
+          "9385bd28_0": 2,
+          "7b5033c1_0": 4,
+          "a47bf94d_0": 0,
+          "a251c730_0": 0,
+          "b99e7126_0": 0,
+          "20a9e565_1": 4,
+          "7b80bb43_0": 4,
+          "271d71e2_0": 4,
+          "71e489b6_0": 4,
+          "e12f9a14_0": 0,
+          "e12f9a14_1": 0,
+          "97d7923e_0": 3,
+          "62593bfd_0": 3,
+          "7ed72f31_0": 4,
+          "269e22fb_0": 3,
+          "5545f144_0": 4,
+          "62593bfd_1": 2,
+          "9385bd28_1": 2,
+          "7ed72f31_1": 3,
+          "898e7135_0": 4,
+          "446ef5d2_1": 4,
+          "b10624e5_0": 0,
+          "71e489b6_1": 4,
+          "8f3a5a89_0": 4,
+          "446ef5d2_0": 4,
+          "269e22fb_1": 2,
+          "20a9e565_0": 4,
+          "7b0280bc_0": 3
+        },
+        "completed_batches_by_query": {
+          "9385bd28_0": 2,
+          "7b5033c1_0": 4,
+          "a47bf94d_0": 0,
+          "a251c730_0": 0,
+          "b99e7126_0": 0,
+          "20a9e565_1": 4,
+          "7b80bb43_0": 4,
+          "271d71e2_0": 4,
+          "71e489b6_0": 4,
+          "e12f9a14_0": 0,
+          "e12f9a14_1": 0,
+          "97d7923e_0": 3,
+          "62593bfd_0": 3,
+          "7ed72f31_0": 4,
+          "269e22fb_0": 3,
+          "5545f144_0": 4,
+          "62593bfd_1": 2,
+          "9385bd28_1": 2,
+          "7ed72f31_1": 3,
+          "898e7135_0": 4,
+          "446ef5d2_1": 4,
+          "b10624e5_0": 0,
+          "71e489b6_1": 4,
+          "8f3a5a89_0": 4,
+          "446ef5d2_0": 4,
+          "269e22fb_1": 2,
+          "20a9e565_0": 4,
+          "7b0280bc_0": 3
+        },
+        "queries_never_started": [
+          "a251c730_0",
+          "a47bf94d_0",
+          "b10624e5_0",
+          "b99e7126_0",
+          "e12f9a14_0",
+          "e12f9a14_1"
+        ],
+        "queries_with_four_completed_batches": 13,
+        "per_worker_stage_costs": {
+          "0": {
+            "TTT_seconds": 749.9545812606812,
+            "DFS_seconds": 1698.4321172237396,
+            "rescoring_seconds": 517.9726514816284,
+            "closed_intervals": 97,
+            "unmatched_end_events": 0
+          },
+          "1": {
+            "TTT_seconds": 915.6705946922302,
+            "DFS_seconds": 1756.5725183486938,
+            "rescoring_seconds": 217.46298718452454,
+            "closed_intervals": 87,
+            "unmatched_end_events": 0
+          },
+          "2": {
+            "TTT_seconds": 542.0228221416473,
+            "DFS_seconds": 2092.783285856247,
+            "rescoring_seconds": 208.8441445827484,
+            "closed_intervals": 69,
+            "unmatched_end_events": 0
+          },
+          "3": {
+            "TTT_seconds": 399.49691891670227,
+            "DFS_seconds": 2206.265046596527,
+            "rescoring_seconds": 207.94541597366333,
+            "closed_intervals": 80,
+            "unmatched_end_events": 0
+          }
+        },
+        "unclosed_stage_intervals": 0,
+        "adapter_fingerprints_by_task": {
+          "20a9e565": [
+            "ddd93978912b13b20f6e71cee6b620eecb7daac322e9e6e0933a2a3cea802908"
+          ],
+          "62593bfd": [
+            "9e13bd73bf559b7ce339c68bde1323115dbcb118aa4199e58189c976cbeb8286"
+          ],
+          "898e7135": [
+            "80f7b421e416f37dbec42431ee9ea17b264aeb61bd10b8ce3fb824dd449b0a37"
+          ],
+          "269e22fb": [
+            "a7425f4e189ae98bec8c08f8b621e1fab3dfa64ec06945254831337d0b543a3d"
+          ],
+          "7b5033c1": [
+            "238252c3dac9f7e2efce90e2aeda633b83afb5090f5f48b41c0aab748aa51b52"
+          ],
+          "7b80bb43": [
+            "6d94763555ac426d2ed77eaa98ceb34c3987b87c3d24d2143088887f6c37818d"
+          ],
+          "8f3a5a89": [
+            "f0cf1db6d3507686d8b522c48eba69e25dab8de32bbe7d2cb75cb42bfc00a9d0"
+          ],
+          "9385bd28": [
+            "11f66b67238ab95d1d4a7fc6e2876ad3cf6b49df5494c470ffae104638c0d944"
+          ],
+          "271d71e2": [
+            "418821b97539faa2e15a9505cbbc41ddec03b71a5c22b7f49b9621fe30e7644a"
+          ],
+          "5545f144": [
+            "58f02605ffc285cb35a555d1f900819824f64753f5c9f7ea0d263d502a9ac0dd"
+          ],
+          "7b0280bc": [
+            "12c40ae1fed5e1fb1ab3a0364dff195af0c273480fa5e3c0115ac50fa1445139"
+          ],
+          "97d7923e": [
+            "47e421e570e3cf9c8c59a3b50987f7fbda3e5b3ca8e1e665d0014d2471190cba"
+          ],
+          "446ef5d2": [
+            "49c360ea1b18795efd3e5e08e14ebd37037781832842e57da5697fe44d826f99"
+          ],
+          "71e489b6": [
+            "5bacf1e7059a7075ae89f4ea9d9acc0e02753f6fda579de0b97fac1a63366e38"
+          ],
+          "7ed72f31": [
+            "375af46c359280970a8dea8e84aac804397e165d8c88c91736bf9fb45cd38dd0"
+          ]
+        },
+        "cost_interpretation": "Host stage interval sums per worker; not synchronized CUDA profiles or wall-clock critical path. Unclosed cutoff intervals are not silently estimated."
+      }
+    }
+  },
+  "adapter_comparison_by_task": {
+    "20a9e565": "paired_TTT_not_identical",
+    "269e22fb": "paired_TTT_not_identical",
+    "271d71e2": "paired_TTT_not_identical",
+    "446ef5d2": "paired_TTT_not_identical",
+    "5545f144": "paired_TTT_not_identical",
+    "62593bfd": "paired_TTT_not_identical",
+    "71e489b6": "paired_TTT_not_identical",
+    "7b0280bc": "paired_TTT_not_identical",
+    "7b5033c1": "paired_TTT_not_identical",
+    "7b80bb43": "paired_TTT_not_identical",
+    "7ed72f31": "paired_TTT_not_identical",
+    "898e7135": "paired_TTT_not_identical",
+    "8f3a5a89": "paired_TTT_not_identical",
+    "9385bd28": "paired_TTT_not_identical",
+    "97d7923e": "paired_TTT_not_identical",
+    "a251c730": "unconfirmed",
+    "a47bf94d": "unconfirmed",
+    "b10624e5": "unconfirmed",
+    "b99e7126": "unconfirmed",
+    "e12f9a14": "unconfirmed"
+  },
+  "noise_control_status": "unknown_separate_mechanism_report_required",
+  "interpretation": "Same seed/full-run environment does not assert identical TTT; no accuracy measured here."
+}

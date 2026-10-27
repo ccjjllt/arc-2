@@ -1,0 +1,20 @@
+{
+  "downloaded_at_utc": "2026-10-27T06:08:08.401508+00:00",
+  "competition": "arc-prize-2026-arc-agi-2",
+  "source": "Official Kaggle competition JSON downloads through explicitly authenticated zhuating CLI",
+  "files": {
+    "arc-agi_evaluation_challenges.json": {
+      "path": "/private/tmp/arc2-030-kaggle-scoring-snapshot/arc-agi_evaluation_challenges.json",
+      "bytes": 984679,
+      "sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8"
+    },
+    "arc-agi_evaluation_solutions.json": {
+      "path": "/private/tmp/arc2-030-kaggle-scoring-snapshot/arc-agi_evaluation_solutions.json",
+      "bytes": 223838,
+      "sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1"
+    }
+  },
+  "predictions_already_frozen": true,
+  "original_prediction_freeze_sha256": "08a81c956588f2c9a47da54369646d67a7373a2e3f0deb90fe92e3a5cd173add",
+  "matches_previous027_official_snapshot": true
+}

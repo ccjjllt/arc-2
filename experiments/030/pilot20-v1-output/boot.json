@@ -1,0 +1,84 @@
+{
+  "reference_version": 312063593,
+  "notebook_started": 1793073425.0467918,
+  "global_end_time": 1793080505.0467918,
+  "raw_rerun_flag": "",
+  "model_source": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1",
+  "model_target": "/kaggle/temp/arc030-model",
+  "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0",
+  "utility_root": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch",
+  "python": "3.11.13 (main, Jun  4 2025, 08:57:29) [GCC 11.4.0]",
+  "original_task_soft_limit": 1200,
+  "original_global_seconds": 42600,
+  "runtime_changes": [
+    "explicit GPU and current fixed model mount",
+    "stage identical checkpoint on local disk",
+    "original utility in child PYTHONPATH",
+    "propagate child failure"
+  ],
+  "session_seconds": 7200,
+  "solver_global_seconds": null,
+  "solver_hard_seconds": null,
+  "session_deadline": 1793080625.0467918,
+  "input_identity": {
+    "challenges_sha256": "94d947c6d3da5f1080700de205bb2a0791764a65b79cb2e2b181f5f91bf58f12",
+    "manifest_sha256": "f9c4b4a12b4a76d641224007261377f2760470c169cc830c5035b96c933e371d",
+    "n_tasks": 20,
+    "n_queries": 28,
+    "task_ids": [
+      "20a9e565",
+      "269e22fb",
+      "271d71e2",
+      "446ef5d2",
+      "5545f144",
+      "62593bfd",
+      "71e489b6",
+      "7b0280bc",
+      "7b5033c1",
+      "7b80bb43",
+      "7ed72f31",
+      "898e7135",
+      "8f3a5a89",
+      "9385bd28",
+      "97d7923e",
+      "a251c730",
+      "a47bf94d",
+      "b10624e5",
+      "b99e7126",
+      "e12f9a14"
+    ]
+  },
+  "gpu_inventory": "0, NVIDIA L4, 23034 MiB\n1, NVIDIA L4, 23034 MiB\n2, NVIDIA L4, 23034 MiB\n3, NVIDIA L4, 23034 MiB\n",
+  "gpu_inventory_return_code": 0,
+  "research_only": true,
+  "gold_read": false,
+  "python_hash_seed": 27030,
+  "threshold_pair_config": {
+    "panel": "pilot20",
+    "session_seconds": 7200,
+    "arm_slot_seconds": 3300,
+    "setup_allowance_seconds": 900,
+    "final_reserve_seconds": 120,
+    "arm_order": [
+      "base",
+      "challenger"
+    ],
+    "thresholds": {
+      "base": 0.2,
+      "challenger": 0.1
+    },
+    "python_hash_seed": 27030,
+    "gpu_ids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "ttt_augmentation_seed": 1,
+    "search_augmentation_seed": 2,
+    "task_soft_limit_seconds": 1200,
+    "dfs_limit_seconds": 540,
+    "hypothesis": "Wider original DFS under equal total deployment budget improves final B4 EM@2",
+    "decision": "Initial net>0 and gained>=2 tasks; extension net>0; noise and deadline audit required; no threshold scan"
+  }
+}

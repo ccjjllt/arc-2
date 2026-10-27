@@ -2,7 +2,7 @@
 
 日期：2026-10-27，北京时间。计划见[030计划](../plan/030-final-week-search-coverage.md)。
 
-**最新状态：机制V1／362686825已COMPLETE，3题TTT128、15调用闭合，5query A/A和adapter前后校验通过；已启动pilot20 V1／RUNNING，尚无配对准确率或新分数。** 账户为显式zhuating CLI token。执行入口见[030 README](../../experiments/030/README.md)，精确产物见[ready-v1.json](../../experiments/030/ready-v1.json)。
+**最新状态：pilot20 V1／362694905已COMPLETE，官方快照28/28匹配，原0.2与0.1最终均6/28，新增2／丢失2、净0，按预定规则结束0.1配方。** raw／scored oracle7→8，未转化为两槽收益。原initial40／extension40均不启动，不扫阈值或改排序救结果，保留原0.2／B4及023正式30.14。[结果汇总](../../experiments/030/pilot20-v1-summary.json)、[评分](../../experiments/030/pilot20-scoring-v1/score-report.json)、[停止决定](../../experiments/030/pilot20-v1-decision.json)。
 
 ## 已完成的工作
 
@@ -59,9 +59,9 @@
 
 ## 当前状态与接续
 
-**完成：研究审计、CPU实现、面板与预算冻结、实际包生成及独立审查。未完成：GPU机制／配对、扩展实际评价、正式挑战包及新分数。** 没有新增测试文件、框架或CI，也没有创建后续自动任务。
+**完成：研究审计、CPU实现、面板与预算冻结、机制GPU、pilot20 GPU、官方快照评分及独立复核。0.1净0，扩展及正式挑战按规则不再执行；没有新正式成绩。** 没有新增测试文件、框架或CI，也没有创建后续自动任务。
 
-接续先临GPU执行读取实际额度；现有条件下把10月31日刷新后的窗口用于单因素配对。每个实际实验仍须记录数据版本／划分、权重／代码SHA、配置、硬件、耗时、两槽与oracle指标及产物。若无法在预算内给出正向证据，保留023，不为赶时间盲投。
+当前接续为保留原0.2／B4和023正式30.14，结束本轮0.1；不将未执行的initial40／extension40当作待补救任务。后续须另行设计独立假设，不在已评分pilot调阈值、seed或排序。
 
 ## 用户授权后的CPU执行
 
@@ -128,3 +128,50 @@ B相对A均值的调用工作增加**43.2755%**，新增query-grid12、丢失0�
 本次没有调整阈值／seed／排序／面板，也没有读新gold。下一次用户通知pilot结束时，先核对真实终态／来源／完整输出与预算账，运行freeze_pair无gold冻结，再恢复精确官方Kaggle快照评分；机制参数用已验证runtime identity。净0／负停止0.1，不在面板救阈值；正但噪声／独立task收益／尾部预算证据不足保持hold，不直接正式晋级。
 
 pilot实际**11:57:05北京时间**boot确认4×L4、20task／28query及hash27030正确，10文件权重SHA全匹配，复制耗时87.606秒；base rank0已完成两片加载，日志未见Traceback。完整TTT、其他rank及challenger阶段尚未确认。[启动健康](../../experiments/030/execution/pilot20-v1-startup-health.json)。按既有用户偏好，确认健康后停止全部远端状态／日志查询，没有自动监控，等待用户结束通知。
+
+## pilot20完成评分：净0，结束0.1
+
+用户再次通知结束后，新建`r030_pilot_runtime_audit_new`、`r030_pilot_score_audit_new`独立核对运行与评分，未沿用上一批代理。CLI真实终态COMPLETE；按已记录的CLI版本局限，另核当前版本1、全部cell源与冻结包一致、输出URL唯一**scriptVersionId362694905**。原B4两臂均从有序scored JSONL精确重放，预测SHA与state一致。
+
+### 数据与执行身份
+
+- 固定pilot20：20task／28query，challenge SHA`94d947c6d3da5f1080700de205bb2a0791764a65b79cb2e2b181f5f91bf58f12`；上传包SHA`60a5454bbe50beafcf49a959d2840df6d0c321f0e8d766810c8aea0bce38cc63`，原sft139 BF16 V1、TTT增强seed1／Trainer与PEFT原seed42、搜索seed2／hash27030、原B4／DFS／批布局。只比较累计概率0.2与0.1。
+- 实际4×L4，**11:57:05—13:42:47北京时间**，墙钟**6342.443秒（105.71分）**。共用setup134.295秒向每臂全额计费；两臂相同global3045.705秒、hard3105.705秒。包含最终化的部署账分别**3272.964／3236.504秒**，均低于3300。
+- base按预定hard截止杀进程，rc−9／budget_cutoff；challenger rc0。顶层`completed_budget_cutoffs`／return0是预定预算状态，不冒称所有题都完整跑完；日志未见Traceback或CUDA OOM。
+- 下载36项核心工件，34项受远端SHA清单覆盖且全部通过，另2项为清单自身及run-state。远端清单共521项，未下载487项均是已有有序JSONL完整导出的候选pickle；原B4已重放，不把未下载项写成已验证。[身份与范围](../../experiments/030/execution/pilot20-v1-artifact-verification.json)。运行第三方源码保留临时目录，归档保留其SHA及字节比较记录。
+- 两臂完整28query、两槽及raw/scored池、全部事件在读取本轮gold前冻结，见[prediction-freeze](../../experiments/030/pilot20-frozen-v1/prediction-freeze.json)。之后通过zhuating CLI恢复本届官方challenge／solutions，SHA与027完全一致，20题完整demo及28个query全部匹配；没有删失分母或用旧GitHub错版评分。[官方来源](../../experiments/030/execution/official-kaggle-scoring-snapshot-v1.json)。首次恢复检查早于challenge下载结束而报文件未到，等待下载完成后重做；未产生评分、未修改预测。
+
+### 固定两槽结果
+
+| 指标 | base原0.2／B4 | challenger0.1／B4 |
+| --- | --- | --- |
+| query EM@2 | **6/28** | **6/28** |
+| 第一槽正确 | 6 | 4 |
+| 仅第二槽正确 | 0 | 2 |
+| 完整task全query正确 | 4/20 | 3/20 |
+| raw／scored oracle | 7/28／7/28 | 8/28／8/28 |
+| 有真实候选query | 22 | 20 |
+| unique query-grid | 174 | 243 |
+
+**新增`20a9e565_0`、`7ed72f31_0`；丢失`9385bd28_1`、`a251c730_0`；净0。** 前者新增分别为池外→首槽正确、原正确候选未选→第二槽正确。B额外oracle中的`269e22fb_1`与`8f3a5a89_0`仍未进入最终两槽；不据此再调B4救本配方。主评分与新代理独立直接网格计算一致，28/28全部输入匹配，机制AA身份验证通过。[逐query账本](../../experiments/030/pilot20-scoring-v1/query-ledger.jsonl)。
+
+### 覆盖与因果边界
+
+| 运行覆盖 | base | challenger |
+| --- | --- | --- |
+| 完成128步TTT的task | 19/20 | 15/20 |
+| query获得搜索 | 25/28 | 22/28 |
+| query完成四批 | 22/28 | 13/28 |
+| 完成搜索批次 | 95 | 75 |
+
+base的`b99e7126`训练被hard截止打断；challenger五个尾task`a251c730、a47bf94d、b10624e5、b99e7126、e12f9a14`未启动。丢失的`a251c730_0`在B没有搜索；`9385bd28_1`的base正确raw候选仅在第4批出现，B只完成2批。这里证明覆盖缺口与丢解同时发生，**不能把每题损失纯因果归于阈值**。
+
+15个两臂都有adapter指纹的task，**0/15字节SHA相同**；另外5个缺配对指纹。未导出张量，差异幅度与来源未确认，不能推断模型能力大幅变化或断言TTT造成某题增失。此前同adapter机制只证明受检首批重复性；这次是独立TTT的同预算系统比较，保留TTT／数值混杂，不写成同adapter纯阈值消融。
+
+闭合host区间累计：base TTT3654.934／DFS6095.607／重评分820.352秒；challenger2607.145／7754.053／1152.225秒。base另有1段被截断的TTT未闭合，没有记成0；这些是四worker阶段工作和，不是墙钟或CUDA profile。原1200秒为软检查，base 1题／challenger 4题超过它属于原逻辑，不是新增异常。
+
+### 决定与资源
+
+**严格净增条件未满足，结束固定0.1配方。** 不启动原initial40或extension40、不提交0.1、不在pilot改阈值／seed／排序挑变体；保留原0.2／B4及正式02330.14。该结果是已暴露公开回归，不是正式公榜21.43%或独立未见验证。
+
+本轮后CLI显示zhuating已用27.92／30小时、剩2.08小时；精确及reserved见[postrun quota](../../experiments/030/execution/pilot20-v1-postrun-quota.json)。剩余额度保留给另行设计的独立假设，没有新GPU会话、正式提交或自动任务。030这一轮的阈值实验到此结束，不能将候选oracle净增1当作晋级证据。

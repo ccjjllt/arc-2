@@ -1,9 +1,9 @@
 {
   "prepared_at_utc": "2026-10-27T03:08:59.289323+00:00",
-  "status": "pilot20_v1_running",
+  "status": "pilot20_complete_net0_recipe_stopped",
   "competition": "arc-prize-2026-arc-agi-2",
   "gpu_experiment_run": true,
-  "query_gold_read": false,
+  "query_gold_read": true,
   "new_score": null,
   "packages": {
     "mechanism": {
@@ -28,7 +28,7 @@
       "remote_version": null,
       "remote_script_version_id": null,
       "launched": false,
-      "status": "not_launched_superseded_for_current_quota_by_pilot20"
+      "status": "not_launched_recipe_stopped"
     },
     "extension": {
       "directory": "/private/tmp/arc2-030-pair-extension-v3",
@@ -38,7 +38,8 @@
       "local_preparation_revision": 3,
       "remote_version": null,
       "remote_script_version_id": null,
-      "launched": false
+      "launched": false,
+      "status": "not_launched_recipe_stopped"
     },
     "pilot20": {
       "directory": "/private/tmp/arc2-030-pair-pilot20-v1",
@@ -47,13 +48,14 @@
       "notebook_bytes": 103361,
       "local_preparation_revision": 1,
       "remote_version": 1,
-      "remote_script_version_id": null,
+      "remote_script_version_id": 362694905,
       "launched": true,
       "conditions": "Mechanism AA passes and current quota permits≤2h4L4; replaces initial40 for current balance, fixed original promotion criteria.",
-      "status": "RUNNING",
+      "status": "COMPLETE",
       "launch_record": "execution/pilot20-v1-launch.json",
       "actual_hardware": "4xNVIDIA L4",
-      "startup_health": "execution/pilot20-v1-startup-health.json"
+      "startup_health": "execution/pilot20-v1-startup-health.json",
+      "research_effect": "net0; stopped"
     }
   },
   "script_sha256": {
@@ -69,7 +71,7 @@
   "preflight": "execution/preflight-20261027.json",
   "static_review": "pair-static-review-v1.json",
   "manual_historical_reader_check": "execution/manual-cpu-reader-check-v1.json",
-  "next_action": "Wait for pilot20 V1 completion. Verify exact source/current version/output scriptVersion and artifacts; run freeze_pair without gold, then explicit official snapshot scoring with --mechanism-manifest mechanism-v1-runtime-identity.json. Stop0.1 for net0/negative, hold for insufficient/noise/budget evidence; no threshold or seed scan.",
+  "next_action": "Keep original0.2/B4 and official02330.14. Do not launch initial40/extension, scan thresholds, modify ranking or submit0.1. Preserve remaining quota for a separately designed hypothesis.",
   "budget": {
     "mechanism_wall_seconds": 3600,
     "initial_pair_wall_seconds": 14400,
@@ -91,5 +93,8 @@
     "extension_not_currently_funded": true
   },
   "mechanism_result": "mechanism-v1-summary.json",
-  "remote_queries_stopped_after_health_confirmation": true
+  "remote_queries_stopped_after_health_confirmation": true,
+  "public_regression_result": "base6/28 challenger6/28 gain2 loss2 net0",
+  "latest_summary": "pilot20-v1-summary.json",
+  "latest_decision": "pilot20-v1-decision.json"
 }

@@ -1,6 +1,6 @@
 # 030 赛前一周研究审计与搜索覆盖
 
-日期：2026-10-27，北京时间。对应[030进展](../progress/030-final-week-search-coverage.md)。**机制V1／362686825已COMPLETE，A/A及adapter前置通过，已启动pilot20 V1／RUNNING；尚无配对准确率或新分数。** 原V1／023来源、面板及包均已独立审查；[执行入口](../../experiments/030/README.md)、[精确就绪清单](../../experiments/030/ready-v1.json)。账户继续显式使用zhuating CLI token。
+日期：2026-10-27，北京时间。对应[030进展](../progress/030-final-week-search-coverage.md)。**pilot20 V1／362694905已COMPLETE并评分：base=challenger=6/28，新增2丢失2、净0，结束固定0.1配方。** raw／scored oracle7→8未转化为两槽收益；不进入原40题扩展，不扫描阈值／seed／排序救结果，保留原0.2／B4及023正式30.14。以下保留事前设计，实际结果及独立TTT混杂见progress；账户继续显式使用zhuating CLI token。
 
 ## 1 当前决策
 

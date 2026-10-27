@@ -1,0 +1,12 @@
+{
+  "decided_at_utc": "2026-10-27T06:12:30.565023+00:00",
+  "recipe": "Original NVARC DFS cumulative probability0.1 versus0.2",
+  "status": "stopped",
+  "reason": "Final two-slot6/28 versus6/28; gained2 lost2 net0, fails predefined strictly positive net criterion",
+  "initial40_launched": false,
+  "extension40_launched": false,
+  "competition_submission_created": false,
+  "no_threshold_or_seed_scan": true,
+  "kept_baseline": "Original0.2/B4; formal02330.14",
+  "source_summary": "pilot20-v1-summary.json"
+}

@@ -1,6 +1,6 @@
 # 030 原NVARC DFS搜索覆盖配对
 
-2026-10-27 **机制V1／362686825已COMPLETE，3题TTT128、15调用闭合、5query A/A及adapter一致性通过**，耗时1758.62秒；[结果汇总](mechanism-v1-summary.json)。已在原授权下启动[20题配对V1](https://www.kaggle.com/code/zhuating/arc2-030-dfs-threshold-pilot20)，CLI实查RUNNING、源码一致，最多7200秒。尚无配对准确率或新分数。所有账户操作继续显式使用zhuating CLI token，不使用默认qingyu1232。
+2026-10-27 **pilot20 V1／362694905已COMPLETE并评分：两臂均6/28，新增2丢失2、净0，按预定规则结束0.1。** raw／scored oracle7→8，覆盖25→22query、四批22→13；15个共同TTT task的adapter SHA均不同，保留因果限制。[结果汇总](pilot20-v1-summary.json)、[评分](pilot20-scoring-v1/score-report.json)、[停止决定](pilot20-v1-decision.json)。不启动原40题扩展、不提交0.1、不扫阈值／seed或改排序救结果，保留原0.2／B4及正式30.14。以下命令为已执行流程与复现记录，不表示继续启动GPU。
 
 研究决策及停止条件见[030计划](../../docs/plan/030-final-week-search-coverage.md)，实际交接见[030进展](../../docs/progress/030-final-week-search-coverage.md)。只比较原sft139／TTT／B4／runtime下的累计路径概率门槛0.2与0.1。
 
@@ -19,7 +19,9 @@
 | [panels-v1/pilot20/manifest.json](panels-v1/pilot20/manifest.json) | 当前额度受限先行20task／28query，读取030结果前input-only分层冻结；不是新盲测 |
 | [pilot20-v1-package-manifest.json](pilot20-v1-package-manifest.json) | ≤7200秒总会话、每臂3300秒，机制通过后才可运行；[静态审查](pilot20-static-review-v1.json)通过 |
 | [mechanism-v1-runtime-identity.json](mechanism-v1-runtime-identity.json) | 已验证实际运行源码身份，保留原包manifest；仅loader／decoder／starter多末尾1个IPython换行，solver逐字一致 |
-| [execution/pilot20-v1-launch.json](execution/pilot20-v1-launch.json) | 机制通过、实际余额／reserved核验后启动pilot V1；尚无终态及scriptVersionId |
+| [execution/pilot20-v1-launch.json](execution/pilot20-v1-launch.json) | 历史启动记录；完成已另绑定362694905，见[工件身份](execution/pilot20-v1-artifact-verification.json) |
+| [pilot20-frozen-v1/prediction-freeze.json](pilot20-frozen-v1/prediction-freeze.json) | 读取gold前精确重放B4并冻结两臂预测、候选、28query完整分母及事件 |
+| [pilot20-scoring-v1/score-report.json](pilot20-scoring-v1/score-report.json) | 官方快照28/28匹配，6/28→6/28、净0；不是公榜分数 |
 
 两臂均为6600秒部署槽；公共准备时间向每臂全额计费。global截止为本臂启动＋6600－公共准备－120，hard截止再晚60秒；模型导入、加载、TTT、DFS、重评分都在其中。最终B4导出及共同final import也计费，总账超过6600则比较无效。公共准备上限900秒。两个完整pair会话均最多14400秒，扩展没有额外加长每题计算。
 
@@ -35,7 +37,7 @@ python3 experiments/030/kaggle_zhuating.py quota --format json
 python3 experiments/030/kaggle_zhuating.py kernels status zhuating/arc2-030-threshold-mechanism
 ```
 
-机制已完成，pilot V1已启动，两者都不要重复push。普通`kernels logs`在运行中可能为空；需要启动健康检查时使用一次有界的`--follow`，关闭本地日志流不会停止远端会话。确认健康后按用户既有偏好停止远端轮询，等待结束通知。
+机制与pilot V1均已完成，两者都不要重复push；固定0.1配方已停止。普通`kernels logs`在运行中可能为空；历史启动检查采用有界`--follow`，关闭本地日志流不会停止远端会话。
 
 ## 手动准备与核对
 
@@ -62,7 +64,7 @@ python3 experiments/030/prepare_pair.py --owner zhuating --slug arc2-030-dfs-thr
 python3 experiments/030/kaggle_zhuating.py quota --format json
 ```
 
-当前pilot已运行，勿重复上传。沿用[已有Kaggle工作流](../../docs/kaggle-workflow.md)，核对L4×4、断网、精确源SHA和实际session timeout不小于包内上限。上传／运行是普通研究会话，**不能调用competition_submit_code提交这些带研究输入的包**；它们包含rerun拒绝逻辑。默认`read_preflight.py`仍读取全局认证，其结果不能代替显式zhuating CLI身份／额度。
+当前pilot已完成且净0，勿重复上传或启动扩展。历史操作沿用[已有Kaggle工作流](../../docs/kaggle-workflow.md)，上传／运行是普通研究会话，**不能调用competition_submit_code提交这些带研究输入的包**；它们包含rerun拒绝逻辑。默认`read_preflight.py`仍读取全局认证，其结果不能代替显式zhuating CLI身份／额度。
 
 先运行机制小检查；若A/A噪声失败或不完整，保留结果并人工分析，不自动重试。通过后运行初轮配对。初轮未通过停止0.1配方，不启动扩展。按用户既有习惯，确认启动健康后停止远端轮询，等待用户通知结束；没有预约或自动任务。
 

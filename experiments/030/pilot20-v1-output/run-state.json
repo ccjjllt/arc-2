@@ -1,0 +1,145 @@
+{
+  "notebook_started": 1793073425.0467918,
+  "pair_ready_at": 1793073559.3419065,
+  "session_deadline": 1793080625.0467918,
+  "input_identity": {
+    "challenges_sha256": "94d947c6d3da5f1080700de205bb2a0791764a65b79cb2e2b181f5f91bf58f12",
+    "manifest_sha256": "f9c4b4a12b4a76d641224007261377f2760470c169cc830c5035b96c933e371d",
+    "n_tasks": 20,
+    "n_queries": 28,
+    "task_ids": [
+      "20a9e565",
+      "269e22fb",
+      "271d71e2",
+      "446ef5d2",
+      "5545f144",
+      "62593bfd",
+      "71e489b6",
+      "7b0280bc",
+      "7b5033c1",
+      "7b80bb43",
+      "7ed72f31",
+      "898e7135",
+      "8f3a5a89",
+      "9385bd28",
+      "97d7923e",
+      "a251c730",
+      "a47bf94d",
+      "b10624e5",
+      "b99e7126",
+      "e12f9a14"
+    ]
+  },
+  "config": {
+    "panel": "pilot20",
+    "session_seconds": 7200,
+    "arm_slot_seconds": 3300,
+    "setup_allowance_seconds": 900,
+    "final_reserve_seconds": 120,
+    "arm_order": [
+      "base",
+      "challenger"
+    ],
+    "thresholds": {
+      "base": 0.2,
+      "challenger": 0.1
+    },
+    "python_hash_seed": 27030,
+    "gpu_ids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "ttt_augmentation_seed": 1,
+    "search_augmentation_seed": 2,
+    "task_soft_limit_seconds": 1200,
+    "dfs_limit_seconds": 540,
+    "hypothesis": "Wider original DFS under equal total deployment budget improves final B4 EM@2",
+    "decision": "Initial net>0 and gained>=2 tasks; extension net>0; noise and deadline audit required; no threshold scan"
+  },
+  "common_setup_seconds": 134.2951147556305,
+  "setup_charged_to_each_arm": true,
+  "python_hash_seed": 27030,
+  "status": "completed_budget_cutoffs",
+  "return_code": 0,
+  "research_only": true,
+  "evaluation_gold_read": false,
+  "noise_control_status": "unknown",
+  "source": "Frozen V1 312063593 / restored exact023 / 025 observations",
+  "base": {
+    "branch": "base",
+    "dfs_threshold": 0.2,
+    "started_at": 1793073559.343171,
+    "shared_setup_seconds_charged": 134.2951147556305,
+    "global_end_time": 1793076605.0480561,
+    "hard_deadline": 1793076665.0480561,
+    "effective_solver_global_seconds": 3045.7048852443695,
+    "timed_out": true,
+    "status": "budget_cutoff",
+    "command": [
+      "/usr/bin/python3",
+      "-u",
+      "starter.py",
+      "--end-time",
+      "1793076605.0480561"
+    ],
+    "process_group_id": 134,
+    "return_code": -9,
+    "descendant_group_kill_requested": true,
+    "finished_at": 1793076665.0807507,
+    "elapsed_s": 3105.737580060959,
+    "deployment_elapsed_seconds": 3240.0326948165894
+  },
+  "challenger": {
+    "branch": "challenger",
+    "dfs_threshold": 0.1,
+    "started_at": 1793076665.0812397,
+    "shared_setup_seconds_charged": 134.2951147556305,
+    "global_end_time": 1793079710.786125,
+    "hard_deadline": 1793079770.786125,
+    "effective_solver_global_seconds": 3045.7048852443695,
+    "timed_out": false,
+    "status": "completed",
+    "command": [
+      "/usr/bin/python3",
+      "-u",
+      "starter.py",
+      "--end-time",
+      "1793079710.786125"
+    ],
+    "process_group_id": 5631,
+    "return_code": 0,
+    "descendant_group_kill_requested": false,
+    "finished_at": 1793079734.3429608,
+    "elapsed_s": 3069.2617218494415,
+    "deployment_elapsed_seconds": 3203.556836605072
+  },
+  "solver_finished_at": 1793079734.3437977,
+  "arms": {
+    "base": {
+      "scored_records": 313,
+      "candidate_file_count": 243,
+      "prediction_sha256": "e857f87a55a5093f91cfdea231d5d523c6aa59fe6687bc01e3d158e3993b59f7",
+      "queries_with_real_candidates": 22,
+      "finalization_elapsed_seconds": 0.06733107566833496,
+      "accounted_deployment_elapsed_seconds": 3272.9644730091095,
+      "deployment_budget_exceeded": false
+    },
+    "challenger": {
+      "scored_records": 445,
+      "candidate_file_count": 244,
+      "prediction_sha256": "fbaebbaee32d5ecfcf337941e5873d56f033234550822901795d2e54707c67b7",
+      "queries_with_real_candidates": 20,
+      "finalization_elapsed_seconds": 0.08267593383789062,
+      "accounted_deployment_elapsed_seconds": 3236.5039596557617,
+      "deployment_budget_exceeded": false
+    }
+  },
+  "final_common_setup_seconds": 32.86444711685181,
+  "finished_at": 1793079767.4898112,
+  "elapsed_s": 6342.443019628525,
+  "planned_tasks": 20,
+  "planned_queries": 28,
+  "python": "3.11.13"
+}

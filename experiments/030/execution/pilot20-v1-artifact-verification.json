@@ -1,0 +1,2883 @@
+{
+  "verified_at_utc": "2026-10-27T06:06:35.670580+00:00",
+  "status": "COMPLETE",
+  "kernel_version": 1,
+  "script_version_id": 362694905,
+  "current_version_number": 1,
+  "all_cell_sources_match": true,
+  "source_normalization": [
+    {
+      "file": "arc_loader.py",
+      "expected_sha256": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+      "actual_sha256": "2c62526daba3fdd9da317e3dcb689acca8e24018e56e4c7f2c33ed15381ed8c6",
+      "only_one_extra_IPython_LF": true,
+      "exact": false
+    },
+    {
+      "file": "arc_decoder.py",
+      "expected_sha256": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+      "actual_sha256": "b38b6b1bdd5f47dbd587a9809ad2ec20cdf9ce5723736a7fb7470e9b1ce61f1d",
+      "only_one_extra_IPython_LF": true,
+      "exact": false
+    },
+    {
+      "file": "arc_solver.py",
+      "expected_sha256": "c73b7cc6a9d8239ecd9566592305cec742d9de588c75fbffc0721a1c90247580",
+      "actual_sha256": "7149df531b5c14e8518c6b3c8dea127fdcc4c1da104780b0089a884861ca2390",
+      "only_one_extra_IPython_LF": true,
+      "exact": false
+    },
+    {
+      "file": "starter.py",
+      "expected_sha256": "1cfb8f446427d64ef6a45c4bcb55b0faa80ccd8e9af0bc8a6e12b55318b1efd4",
+      "actual_sha256": "8a8d71bdc543b8e065cf38ee5fa34f47d8c1a002afa188560566d19813876b4e",
+      "only_one_extra_IPython_LF": true,
+      "exact": false
+    }
+  ],
+  "checkpoint_all10_files_match": true,
+  "input_identity_match": true,
+  "downloaded_artifacts_verified": 34,
+  "remote_manifest_artifact_count": 521,
+  "omitted_candidate_pickle_count": 487,
+  "omitted_scope": "Only redundant per-view inference pickle files; ordered scored and raw JSONL exports and events all downloaded; no query predictions dropped.",
+  "verified_files": [
+    "base/candidate-file-order.json",
+    "base/events-rank0.jsonl",
+    "base/events-rank1.jsonl",
+    "base/events-rank2.jsonl",
+    "base/events-rank3.jsonl",
+    "base/raw-candidates-rank0.jsonl",
+    "base/raw-candidates-rank1.jsonl",
+    "base/raw-candidates-rank2.jsonl",
+    "base/raw-candidates-rank3.jsonl",
+    "base/scored-candidates.jsonl",
+    "base/submission-B4.json",
+    "base/worker.log",
+    "boot.json",
+    "challenger/candidate-file-order.json",
+    "challenger/events-rank0.jsonl",
+    "challenger/events-rank1.jsonl",
+    "challenger/events-rank2.jsonl",
+    "challenger/events-rank3.jsonl",
+    "challenger/raw-candidates-rank0.jsonl",
+    "challenger/raw-candidates-rank1.jsonl",
+    "challenger/raw-candidates-rank2.jsonl",
+    "challenger/raw-candidates-rank3.jsonl",
+    "challenger/scored-candidates.jsonl",
+    "challenger/submission-B4.json",
+    "challenger/worker.log",
+    "input/challenges.json",
+    "input/manifest.json",
+    "model-copy.json",
+    "mount-diagnostics.json",
+    "sources/arc_decoder.py",
+    "sources/arc_loader.py",
+    "sources/arc_solver.py",
+    "sources/copy_model.py",
+    "sources/starter.py"
+  ],
+  "undownloaded_files": [
+    "base/inference_outputs/20a9e565_0.permute6720984531.ex021",
+    "base/inference_outputs/20a9e565_0.rot90.permute1258796043.ex201",
+    "base/inference_outputs/20a9e565_0.rot90.permute5386701942.ex021",
+    "base/inference_outputs/20a9e565_0.rot90.rot90.permute7931086254.ex012",
+    "base/inference_outputs/20a9e565_0.rot90.rot90.permute9302675184.ex120",
+    "base/inference_outputs/20a9e565_0.rot90.rot90.rot90.permute8579032416.ex012",
+    "base/inference_outputs/20a9e565_0.transpose.rot90.permute1654278039.ex021",
+    "base/inference_outputs/20a9e565_0.transpose.rot90.permute3170468295.ex201",
+    "base/inference_outputs/20a9e565_0.transpose.rot90.rot90.permute7284135096.ex102",
+    "base/inference_outputs/20a9e565_0.transpose.rot90.rot90.rot90.permute4965803712.ex120",
+    "base/inference_outputs/20a9e565_1.transpose.permute5980213764.ex021",
+    "base/inference_outputs/20a9e565_1.transpose.permute6703249158.ex021",
+    "base/inference_outputs/20a9e565_1.transpose.rot90.permute7690351428.ex120",
+    "base/inference_outputs/20a9e565_1.transpose.rot90.rot90.permute4907281356.ex012",
+    "base/inference_outputs/269e22fb_0.permute4150723698.ex30124",
+    "base/inference_outputs/269e22fb_0.rot90.permute1258796043.ex42103",
+    "base/inference_outputs/269e22fb_0.rot90.permute5386701942.ex24310",
+    "base/inference_outputs/269e22fb_0.rot90.rot90.permute7931086254.ex24310",
+    "base/inference_outputs/269e22fb_0.rot90.rot90.permute9302675184.ex20413",
+    "base/inference_outputs/269e22fb_0.rot90.rot90.rot90.permute2908315674.ex12340",
+    "base/inference_outputs/269e22fb_0.transpose.permute4950812673.ex02341",
+    "base/inference_outputs/269e22fb_0.transpose.permute9316478025.ex42013",
+    "base/inference_outputs/269e22fb_0.transpose.rot90.permute1654278039.ex30124",
+    "base/inference_outputs/269e22fb_0.transpose.rot90.permute3170468295.ex30124",
+    "base/inference_outputs/269e22fb_0.transpose.rot90.rot90.permute4281673590.ex31204",
+    "base/inference_outputs/269e22fb_0.transpose.rot90.rot90.permute7284135096.ex13240",
+    "base/inference_outputs/269e22fb_0.transpose.rot90.rot90.rot90.permute4965803712.ex23140",
+    "base/inference_outputs/269e22fb_0.transpose.rot90.rot90.rot90.permute7568409321.ex30142",
+    "base/inference_outputs/269e22fb_1.permute6827490351.ex34201",
+    "base/inference_outputs/269e22fb_1.rot90.permute8024967315.ex41230",
+    "base/inference_outputs/269e22fb_1.rot90.rot90.permute9180254367.ex20134",
+    "base/inference_outputs/269e22fb_1.rot90.rot90.permute9368452107.ex03421",
+    "base/inference_outputs/269e22fb_1.rot90.rot90.rot90.permute7068392154.ex40321",
+    "base/inference_outputs/269e22fb_1.transpose.rot90.permute7613284905.ex30142",
+    "base/inference_outputs/269e22fb_1.transpose.rot90.permute7690351428.ex30241",
+    "base/inference_outputs/269e22fb_1.transpose.rot90.rot90.permute4907281356.ex14023",
+    "base/inference_outputs/269e22fb_1.transpose.rot90.rot90.permute7562830149.ex14203",
+    "base/inference_outputs/446ef5d2_1.transpose.permute5980213764.ex10",
+    "base/inference_outputs/446ef5d2_1.transpose.rot90.rot90.rot90.permute6150492378.ex01",
+    "base/inference_outputs/5545f144_0.rot90.permute4281673590.ex102",
+    "base/inference_outputs/5545f144_0.rot90.permute4950812673.ex201",
+    "base/inference_outputs/5545f144_0.rot90.rot90.permute8579032416.ex120",
+    "base/inference_outputs/5545f144_0.rot90.rot90.rot90.permute1654278039.ex210",
+    "base/inference_outputs/5545f144_0.transpose.rot90.permute4907281356.ex102",
+    "base/inference_outputs/5545f144_0.transpose.rot90.rot90.rot90.permute7690351428.ex210",
+    "base/inference_outputs/62593bfd_0.permute4150723698.ex10",
+    "base/inference_outputs/62593bfd_0.permute6720984531.ex10",
+    "base/inference_outputs/62593bfd_0.rot90.permute1258796043.ex01",
+    "base/inference_outputs/62593bfd_0.rot90.permute5386701942.ex10",
+    "base/inference_outputs/62593bfd_0.rot90.rot90.permute7931086254.ex01",
+    "base/inference_outputs/62593bfd_0.rot90.rot90.permute9302675184.ex01",
+    "base/inference_outputs/62593bfd_0.rot90.rot90.rot90.permute2908315674.ex01",
+    "base/inference_outputs/62593bfd_0.rot90.rot90.rot90.permute8579032416.ex01",
+    "base/inference_outputs/62593bfd_0.transpose.permute4950812673.ex01",
+    "base/inference_outputs/62593bfd_0.transpose.permute9316478025.ex10",
+    "base/inference_outputs/62593bfd_0.transpose.rot90.permute1654278039.ex01",
+    "base/inference_outputs/62593bfd_0.transpose.rot90.permute3170468295.ex10",
+    "base/inference_outputs/62593bfd_0.transpose.rot90.rot90.permute4281673590.ex01",
+    "base/inference_outputs/62593bfd_0.transpose.rot90.rot90.permute7284135096.ex01",
+    "base/inference_outputs/62593bfd_0.transpose.rot90.rot90.rot90.permute4965803712.ex10",
+    "base/inference_outputs/62593bfd_0.transpose.rot90.rot90.rot90.permute7568409321.ex10",
+    "base/inference_outputs/62593bfd_1.permute1602397845.ex10",
+    "base/inference_outputs/62593bfd_1.permute6827490351.ex10",
+    "base/inference_outputs/62593bfd_1.rot90.permute5436201789.ex01",
+    "base/inference_outputs/62593bfd_1.rot90.permute8024967315.ex01",
+    "base/inference_outputs/62593bfd_1.rot90.rot90.permute9180254367.ex01",
+    "base/inference_outputs/62593bfd_1.rot90.rot90.permute9368452107.ex10",
+    "base/inference_outputs/62593bfd_1.rot90.rot90.rot90.permute7068392154.ex10",
+    "base/inference_outputs/62593bfd_1.transpose.permute5980213764.ex10",
+    "base/inference_outputs/62593bfd_1.transpose.rot90.rot90.permute4907281356.ex01",
+    "base/inference_outputs/62593bfd_1.transpose.rot90.rot90.permute7562830149.ex10",
+    "base/inference_outputs/71e489b6_0.permute4150723698.ex120",
+    "base/inference_outputs/71e489b6_0.permute6720984531.ex021",
+    "base/inference_outputs/71e489b6_0.rot90.permute1258796043.ex201",
+    "base/inference_outputs/71e489b6_0.rot90.permute5386701942.ex021",
+    "base/inference_outputs/71e489b6_0.rot90.rot90.permute7931086254.ex012",
+    "base/inference_outputs/71e489b6_0.rot90.rot90.permute9302675184.ex120",
+    "base/inference_outputs/71e489b6_0.rot90.rot90.rot90.permute2908315674.ex012",
+    "base/inference_outputs/71e489b6_0.rot90.rot90.rot90.permute8579032416.ex012",
+    "base/inference_outputs/71e489b6_0.transpose.permute4950812673.ex012",
+    "base/inference_outputs/71e489b6_0.transpose.permute9316478025.ex012",
+    "base/inference_outputs/71e489b6_0.transpose.rot90.permute1654278039.ex021",
+    "base/inference_outputs/71e489b6_0.transpose.rot90.permute3170468295.ex201",
+    "base/inference_outputs/71e489b6_0.transpose.rot90.rot90.permute4281673590.ex201",
+    "base/inference_outputs/71e489b6_0.transpose.rot90.rot90.permute7284135096.ex102",
+    "base/inference_outputs/71e489b6_0.transpose.rot90.rot90.rot90.permute4965803712.ex120",
+    "base/inference_outputs/71e489b6_0.transpose.rot90.rot90.rot90.permute7568409321.ex210",
+    "base/inference_outputs/71e489b6_1.permute1602397845.ex201",
+    "base/inference_outputs/71e489b6_1.permute6827490351.ex102",
+    "base/inference_outputs/71e489b6_1.rot90.permute5436201789.ex021",
+    "base/inference_outputs/71e489b6_1.rot90.permute8024967315.ex210",
+    "base/inference_outputs/71e489b6_1.rot90.rot90.permute9180254367.ex210",
+    "base/inference_outputs/71e489b6_1.rot90.rot90.permute9368452107.ex102",
+    "base/inference_outputs/71e489b6_1.rot90.rot90.rot90.permute0986123745.ex012",
+    "base/inference_outputs/71e489b6_1.rot90.rot90.rot90.permute7068392154.ex201",
+    "base/inference_outputs/71e489b6_1.transpose.permute5980213764.ex021",
+    "base/inference_outputs/71e489b6_1.transpose.permute6703249158.ex021",
+    "base/inference_outputs/71e489b6_1.transpose.rot90.permute7613284905.ex120",
+    "base/inference_outputs/71e489b6_1.transpose.rot90.permute7690351428.ex120",
+    "base/inference_outputs/71e489b6_1.transpose.rot90.rot90.permute4907281356.ex012",
+    "base/inference_outputs/71e489b6_1.transpose.rot90.rot90.permute7562830149.ex102",
+    "base/inference_outputs/71e489b6_1.transpose.rot90.rot90.rot90.permute6142358709.ex201",
+    "base/inference_outputs/71e489b6_1.transpose.rot90.rot90.rot90.permute6150492378.ex012",
+    "base/inference_outputs/7b0280bc_0.permute4150723698.ex012",
+    "base/inference_outputs/7b0280bc_0.permute9302675184.ex012",
+    "base/inference_outputs/7b0280bc_0.rot90.permute4281673590.ex102",
+    "base/inference_outputs/7b0280bc_0.rot90.permute4950812673.ex201",
+    "base/inference_outputs/7b0280bc_0.rot90.rot90.permute5386701942.ex021",
+    "base/inference_outputs/7b0280bc_0.rot90.rot90.permute8579032416.ex120",
+    "base/inference_outputs/7b0280bc_0.rot90.rot90.rot90.permute1654278039.ex210",
+    "base/inference_outputs/7b0280bc_0.rot90.rot90.rot90.permute4965803712.ex210",
+    "base/inference_outputs/7b0280bc_0.transpose.permute1602397845.ex201",
+    "base/inference_outputs/7b0280bc_0.transpose.permute9180254367.ex021",
+    "base/inference_outputs/7b0280bc_0.transpose.rot90.permute4907281356.ex102",
+    "base/inference_outputs/7b0280bc_0.transpose.rot90.permute5980213764.ex102",
+    "base/inference_outputs/7b0280bc_0.transpose.rot90.rot90.permute0986123745.ex021",
+    "base/inference_outputs/7b0280bc_0.transpose.rot90.rot90.permute5436201789.ex021",
+    "base/inference_outputs/7b0280bc_0.transpose.rot90.rot90.rot90.permute6142358709.ex021",
+    "base/inference_outputs/7b0280bc_0.transpose.rot90.rot90.rot90.permute7690351428.ex210",
+    "base/inference_outputs/7b5033c1_0.permute4150723698.ex10",
+    "base/inference_outputs/7b5033c1_0.permute9302675184.ex10",
+    "base/inference_outputs/7b5033c1_0.rot90.permute4281673590.ex10",
+    "base/inference_outputs/7b5033c1_0.rot90.rot90.permute5386701942.ex01",
+    "base/inference_outputs/7b5033c1_0.rot90.rot90.permute8579032416.ex01",
+    "base/inference_outputs/7b5033c1_0.rot90.rot90.rot90.permute1654278039.ex01",
+    "base/inference_outputs/7b5033c1_0.rot90.rot90.rot90.permute4965803712.ex01",
+    "base/inference_outputs/7b5033c1_0.transpose.permute1602397845.ex01",
+    "base/inference_outputs/7b5033c1_0.transpose.permute9180254367.ex01",
+    "base/inference_outputs/7b5033c1_0.transpose.rot90.permute4907281356.ex10",
+    "base/inference_outputs/7b5033c1_0.transpose.rot90.permute5980213764.ex01",
+    "base/inference_outputs/7b5033c1_0.transpose.rot90.rot90.permute0986123745.ex01",
+    "base/inference_outputs/7b5033c1_0.transpose.rot90.rot90.permute5436201789.ex10",
+    "base/inference_outputs/7b5033c1_0.transpose.rot90.rot90.rot90.permute6142358709.ex01",
+    "base/inference_outputs/7b5033c1_0.transpose.rot90.rot90.rot90.permute7690351428.ex01",
+    "base/inference_outputs/7b80bb43_0.permute4150723698.ex10",
+    "base/inference_outputs/7b80bb43_0.permute9302675184.ex10",
+    "base/inference_outputs/7b80bb43_0.rot90.permute4281673590.ex10",
+    "base/inference_outputs/7b80bb43_0.rot90.permute4950812673.ex01",
+    "base/inference_outputs/7b80bb43_0.rot90.rot90.permute5386701942.ex01",
+    "base/inference_outputs/7b80bb43_0.rot90.rot90.permute8579032416.ex01",
+    "base/inference_outputs/7b80bb43_0.rot90.rot90.rot90.permute1654278039.ex01",
+    "base/inference_outputs/7b80bb43_0.rot90.rot90.rot90.permute4965803712.ex01",
+    "base/inference_outputs/7b80bb43_0.transpose.permute1602397845.ex01",
+    "base/inference_outputs/7b80bb43_0.transpose.permute9180254367.ex01",
+    "base/inference_outputs/7b80bb43_0.transpose.rot90.permute4907281356.ex10",
+    "base/inference_outputs/7b80bb43_0.transpose.rot90.permute5980213764.ex01",
+    "base/inference_outputs/7b80bb43_0.transpose.rot90.rot90.permute0986123745.ex01",
+    "base/inference_outputs/7b80bb43_0.transpose.rot90.rot90.permute5436201789.ex10",
+    "base/inference_outputs/7b80bb43_0.transpose.rot90.rot90.rot90.permute6142358709.ex01",
+    "base/inference_outputs/7b80bb43_0.transpose.rot90.rot90.rot90.permute7690351428.ex01",
+    "base/inference_outputs/7ed72f31_0.permute4150723698.ex10",
+    "base/inference_outputs/7ed72f31_0.permute6720984531.ex10",
+    "base/inference_outputs/7ed72f31_0.rot90.permute1258796043.ex01",
+    "base/inference_outputs/7ed72f31_0.rot90.permute5386701942.ex10",
+    "base/inference_outputs/7ed72f31_0.rot90.rot90.permute7931086254.ex01",
+    "base/inference_outputs/7ed72f31_0.rot90.rot90.permute9302675184.ex01",
+    "base/inference_outputs/7ed72f31_0.rot90.rot90.rot90.permute2908315674.ex01",
+    "base/inference_outputs/7ed72f31_0.rot90.rot90.rot90.permute8579032416.ex01",
+    "base/inference_outputs/7ed72f31_0.transpose.permute4950812673.ex01",
+    "base/inference_outputs/7ed72f31_0.transpose.permute9316478025.ex10",
+    "base/inference_outputs/7ed72f31_0.transpose.rot90.permute1654278039.ex01",
+    "base/inference_outputs/7ed72f31_0.transpose.rot90.permute3170468295.ex10",
+    "base/inference_outputs/7ed72f31_0.transpose.rot90.rot90.permute4281673590.ex01",
+    "base/inference_outputs/7ed72f31_0.transpose.rot90.rot90.permute7284135096.ex01",
+    "base/inference_outputs/7ed72f31_0.transpose.rot90.rot90.rot90.permute4965803712.ex10",
+    "base/inference_outputs/7ed72f31_0.transpose.rot90.rot90.rot90.permute7568409321.ex10",
+    "base/inference_outputs/7ed72f31_1.permute1602397845.ex10",
+    "base/inference_outputs/7ed72f31_1.permute6827490351.ex10",
+    "base/inference_outputs/7ed72f31_1.rot90.rot90.rot90.permute0986123745.ex01",
+    "base/inference_outputs/7ed72f31_1.rot90.rot90.rot90.permute7068392154.ex10",
+    "base/inference_outputs/7ed72f31_1.transpose.permute5980213764.ex10",
+    "base/inference_outputs/7ed72f31_1.transpose.permute6703249158.ex01",
+    "base/inference_outputs/7ed72f31_1.transpose.rot90.permute7613284905.ex10",
+    "base/inference_outputs/7ed72f31_1.transpose.rot90.rot90.permute4907281356.ex01",
+    "base/inference_outputs/7ed72f31_1.transpose.rot90.rot90.permute7562830149.ex10",
+    "base/inference_outputs/7ed72f31_1.transpose.rot90.rot90.rot90.permute6150492378.ex01",
+    "base/inference_outputs/898e7135_0.permute4150723698.ex10",
+    "base/inference_outputs/898e7135_0.permute9302675184.ex10",
+    "base/inference_outputs/898e7135_0.rot90.rot90.permute8579032416.ex01",
+    "base/inference_outputs/898e7135_0.transpose.rot90.permute4907281356.ex10",
+    "base/inference_outputs/898e7135_0.transpose.rot90.rot90.permute0986123745.ex01",
+    "base/inference_outputs/898e7135_0.transpose.rot90.rot90.rot90.permute6142358709.ex01",
+    "base/inference_outputs/898e7135_0.transpose.rot90.rot90.rot90.permute7690351428.ex01",
+    "base/inference_outputs/8f3a5a89_0.permute4150723698.ex012",
+    "base/inference_outputs/8f3a5a89_0.permute9302675184.ex012",
+    "base/inference_outputs/8f3a5a89_0.rot90.permute4281673590.ex102",
+    "base/inference_outputs/8f3a5a89_0.rot90.permute4950812673.ex201",
+    "base/inference_outputs/8f3a5a89_0.rot90.rot90.permute5386701942.ex021",
+    "base/inference_outputs/8f3a5a89_0.rot90.rot90.permute8579032416.ex120",
+    "base/inference_outputs/8f3a5a89_0.rot90.rot90.rot90.permute1654278039.ex210",
+    "base/inference_outputs/8f3a5a89_0.rot90.rot90.rot90.permute4965803712.ex210",
+    "base/inference_outputs/8f3a5a89_0.transpose.permute1602397845.ex201",
+    "base/inference_outputs/8f3a5a89_0.transpose.permute9180254367.ex021",
+    "base/inference_outputs/8f3a5a89_0.transpose.rot90.permute4907281356.ex102",
+    "base/inference_outputs/8f3a5a89_0.transpose.rot90.permute5980213764.ex102",
+    "base/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.permute0986123745.ex021",
+    "base/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.permute5436201789.ex021",
+    "base/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.rot90.permute6142358709.ex021",
+    "base/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.rot90.permute7690351428.ex210",
+    "base/inference_outputs/9385bd28_0.rot90.permute5386701942.ex1203",
+    "base/inference_outputs/9385bd28_0.rot90.rot90.rot90.permute2908315674.ex3201",
+    "base/inference_outputs/9385bd28_0.rot90.rot90.rot90.permute8579032416.ex0213",
+    "base/inference_outputs/9385bd28_0.transpose.rot90.permute1654278039.ex2031",
+    "base/inference_outputs/9385bd28_0.transpose.rot90.permute3170468295.ex0132",
+    "base/inference_outputs/9385bd28_1.permute1602397845.ex0132",
+    "base/inference_outputs/9385bd28_1.rot90.permute5436201789.ex1320",
+    "base/inference_outputs/9385bd28_1.rot90.permute8024967315.ex0321",
+    "base/inference_outputs/9385bd28_1.transpose.permute6703249158.ex0123",
+    "base/inference_outputs/9385bd28_1.transpose.rot90.permute7613284905.ex0312",
+    "base/inference_outputs/9385bd28_1.transpose.rot90.permute7690351428.ex0132",
+    "base/inference_outputs/9385bd28_1.transpose.rot90.rot90.permute4907281356.ex1032",
+    "base/inference_outputs/97d7923e_0.permute4150723698.ex012",
+    "base/inference_outputs/97d7923e_0.permute9302675184.ex012",
+    "base/inference_outputs/97d7923e_0.rot90.permute4281673590.ex102",
+    "base/inference_outputs/97d7923e_0.rot90.permute4950812673.ex201",
+    "base/inference_outputs/97d7923e_0.rot90.rot90.permute5386701942.ex021",
+    "base/inference_outputs/97d7923e_0.rot90.rot90.permute8579032416.ex120",
+    "base/inference_outputs/97d7923e_0.rot90.rot90.rot90.permute1654278039.ex210",
+    "base/inference_outputs/97d7923e_0.rot90.rot90.rot90.permute4965803712.ex210",
+    "base/inference_outputs/97d7923e_0.transpose.permute1602397845.ex201",
+    "base/inference_outputs/97d7923e_0.transpose.permute9180254367.ex021",
+    "base/inference_outputs/97d7923e_0.transpose.rot90.permute4907281356.ex102",
+    "base/inference_outputs/97d7923e_0.transpose.rot90.permute5980213764.ex102",
+    "base/inference_outputs/97d7923e_0.transpose.rot90.rot90.permute0986123745.ex021",
+    "base/inference_outputs/97d7923e_0.transpose.rot90.rot90.rot90.permute6142358709.ex021",
+    "base/inference_outputs/97d7923e_0.transpose.rot90.rot90.rot90.permute7690351428.ex210",
+    "base/inference_outputs/a251c730_0.permute4150723698.ex10",
+    "base/inference_outputs/a251c730_0.permute9302675184.ex10",
+    "base/inference_outputs/a251c730_0.rot90.permute4281673590.ex10",
+    "base/inference_outputs/a251c730_0.rot90.rot90.permute5386701942.ex01",
+    "base/inference_outputs/a251c730_0.rot90.rot90.permute8579032416.ex01",
+    "base/inference_outputs/a251c730_0.rot90.rot90.rot90.permute1654278039.ex01",
+    "base/inference_outputs/a251c730_0.rot90.rot90.rot90.permute4965803712.ex01",
+    "base/inference_outputs/a251c730_0.transpose.permute1602397845.ex01",
+    "base/inference_outputs/a251c730_0.transpose.permute9180254367.ex01",
+    "base/inference_outputs/a251c730_0.transpose.rot90.permute4907281356.ex10",
+    "base/inference_outputs/a251c730_0.transpose.rot90.permute5980213764.ex01",
+    "base/inference_outputs/a251c730_0.transpose.rot90.rot90.permute5436201789.ex10",
+    "base/inference_outputs/a251c730_0.transpose.rot90.rot90.rot90.permute6142358709.ex01",
+    "base/inference_outputs/a251c730_0.transpose.rot90.rot90.rot90.permute7690351428.ex01",
+    "base/inference_outputs/a47bf94d_0.permute9302675184.ex012",
+    "base/inference_outputs/a47bf94d_0.rot90.rot90.permute5386701942.ex021",
+    "base/inference_outputs/a47bf94d_0.rot90.rot90.permute8579032416.ex120",
+    "challenger/inference_outputs/20a9e565_0.permute4150723698.ex120",
+    "challenger/inference_outputs/20a9e565_0.permute6720984531.ex021",
+    "challenger/inference_outputs/20a9e565_0.rot90.permute1258796043.ex201",
+    "challenger/inference_outputs/20a9e565_0.rot90.permute5386701942.ex021",
+    "challenger/inference_outputs/20a9e565_0.rot90.rot90.permute7931086254.ex012",
+    "challenger/inference_outputs/20a9e565_0.rot90.rot90.permute9302675184.ex120",
+    "challenger/inference_outputs/20a9e565_0.rot90.rot90.rot90.permute2908315674.ex012",
+    "challenger/inference_outputs/20a9e565_0.rot90.rot90.rot90.permute8579032416.ex012",
+    "challenger/inference_outputs/20a9e565_0.transpose.permute4950812673.ex012",
+    "challenger/inference_outputs/20a9e565_0.transpose.rot90.permute1654278039.ex021",
+    "challenger/inference_outputs/20a9e565_0.transpose.rot90.permute3170468295.ex201",
+    "challenger/inference_outputs/20a9e565_0.transpose.rot90.rot90.permute4281673590.ex201",
+    "challenger/inference_outputs/20a9e565_0.transpose.rot90.rot90.permute7284135096.ex102",
+    "challenger/inference_outputs/20a9e565_0.transpose.rot90.rot90.rot90.permute4965803712.ex120",
+    "challenger/inference_outputs/20a9e565_0.transpose.rot90.rot90.rot90.permute7568409321.ex210",
+    "challenger/inference_outputs/20a9e565_1.permute6827490351.ex102",
+    "challenger/inference_outputs/20a9e565_1.rot90.permute5436201789.ex021",
+    "challenger/inference_outputs/20a9e565_1.rot90.permute8024967315.ex210",
+    "challenger/inference_outputs/20a9e565_1.rot90.rot90.permute9180254367.ex210",
+    "challenger/inference_outputs/20a9e565_1.rot90.rot90.permute9368452107.ex102",
+    "challenger/inference_outputs/20a9e565_1.rot90.rot90.rot90.permute0986123745.ex012",
+    "challenger/inference_outputs/20a9e565_1.transpose.permute5980213764.ex021",
+    "challenger/inference_outputs/20a9e565_1.transpose.permute6703249158.ex021",
+    "challenger/inference_outputs/20a9e565_1.transpose.rot90.permute7613284905.ex120",
+    "challenger/inference_outputs/20a9e565_1.transpose.rot90.permute7690351428.ex120",
+    "challenger/inference_outputs/20a9e565_1.transpose.rot90.rot90.permute4907281356.ex012",
+    "challenger/inference_outputs/20a9e565_1.transpose.rot90.rot90.permute7562830149.ex102",
+    "challenger/inference_outputs/20a9e565_1.transpose.rot90.rot90.rot90.permute6142358709.ex201",
+    "challenger/inference_outputs/20a9e565_1.transpose.rot90.rot90.rot90.permute6150492378.ex012",
+    "challenger/inference_outputs/269e22fb_0.permute4150723698.ex30124",
+    "challenger/inference_outputs/269e22fb_0.permute6720984531.ex30412",
+    "challenger/inference_outputs/269e22fb_0.rot90.permute1258796043.ex42103",
+    "challenger/inference_outputs/269e22fb_0.rot90.permute5386701942.ex24310",
+    "challenger/inference_outputs/269e22fb_0.rot90.rot90.permute7931086254.ex24310",
+    "challenger/inference_outputs/269e22fb_0.rot90.rot90.permute9302675184.ex20413",
+    "challenger/inference_outputs/269e22fb_0.rot90.rot90.rot90.permute2908315674.ex12340",
+    "challenger/inference_outputs/269e22fb_0.rot90.rot90.rot90.permute8579032416.ex10432",
+    "challenger/inference_outputs/269e22fb_0.transpose.permute4950812673.ex02341",
+    "challenger/inference_outputs/269e22fb_0.transpose.permute9316478025.ex42013",
+    "challenger/inference_outputs/269e22fb_0.transpose.rot90.rot90.permute4281673590.ex31204",
+    "challenger/inference_outputs/269e22fb_0.transpose.rot90.rot90.permute7284135096.ex13240",
+    "challenger/inference_outputs/269e22fb_1.permute1602397845.ex02431",
+    "challenger/inference_outputs/269e22fb_1.permute6827490351.ex34201",
+    "challenger/inference_outputs/269e22fb_1.rot90.permute5436201789.ex01423",
+    "challenger/inference_outputs/269e22fb_1.rot90.permute8024967315.ex41230",
+    "challenger/inference_outputs/269e22fb_1.rot90.rot90.permute9180254367.ex20134",
+    "challenger/inference_outputs/269e22fb_1.rot90.rot90.permute9368452107.ex03421",
+    "challenger/inference_outputs/269e22fb_1.rot90.rot90.rot90.permute0986123745.ex01243",
+    "challenger/inference_outputs/269e22fb_1.rot90.rot90.rot90.permute7068392154.ex40321",
+    "challenger/inference_outputs/446ef5d2_1.rot90.rot90.permute9180254367.ex01",
+    "challenger/inference_outputs/446ef5d2_1.rot90.rot90.permute9368452107.ex10",
+    "challenger/inference_outputs/446ef5d2_1.transpose.permute5980213764.ex10",
+    "challenger/inference_outputs/446ef5d2_1.transpose.permute6703249158.ex01",
+    "challenger/inference_outputs/446ef5d2_1.transpose.rot90.rot90.permute4907281356.ex01",
+    "challenger/inference_outputs/446ef5d2_1.transpose.rot90.rot90.permute7562830149.ex10",
+    "challenger/inference_outputs/446ef5d2_1.transpose.rot90.rot90.rot90.permute6150492378.ex01",
+    "challenger/inference_outputs/5545f144_0.permute4150723698.ex012",
+    "challenger/inference_outputs/5545f144_0.permute9302675184.ex012",
+    "challenger/inference_outputs/5545f144_0.rot90.permute4281673590.ex102",
+    "challenger/inference_outputs/5545f144_0.rot90.permute4950812673.ex201",
+    "challenger/inference_outputs/5545f144_0.rot90.rot90.permute5386701942.ex021",
+    "challenger/inference_outputs/5545f144_0.rot90.rot90.permute8579032416.ex120",
+    "challenger/inference_outputs/5545f144_0.rot90.rot90.rot90.permute1654278039.ex210",
+    "challenger/inference_outputs/5545f144_0.rot90.rot90.rot90.permute4965803712.ex210",
+    "challenger/inference_outputs/5545f144_0.transpose.permute1602397845.ex201",
+    "challenger/inference_outputs/5545f144_0.transpose.permute9180254367.ex021",
+    "challenger/inference_outputs/5545f144_0.transpose.rot90.permute4907281356.ex102",
+    "challenger/inference_outputs/5545f144_0.transpose.rot90.permute5980213764.ex102",
+    "challenger/inference_outputs/5545f144_0.transpose.rot90.rot90.permute0986123745.ex021",
+    "challenger/inference_outputs/5545f144_0.transpose.rot90.rot90.permute5436201789.ex021",
+    "challenger/inference_outputs/5545f144_0.transpose.rot90.rot90.rot90.permute6142358709.ex021",
+    "challenger/inference_outputs/5545f144_0.transpose.rot90.rot90.rot90.permute7690351428.ex210",
+    "challenger/inference_outputs/62593bfd_0.permute4150723698.ex10",
+    "challenger/inference_outputs/62593bfd_0.permute6720984531.ex10",
+    "challenger/inference_outputs/62593bfd_0.rot90.permute1258796043.ex01",
+    "challenger/inference_outputs/62593bfd_0.rot90.permute5386701942.ex10",
+    "challenger/inference_outputs/62593bfd_0.rot90.rot90.permute7931086254.ex01",
+    "challenger/inference_outputs/62593bfd_0.rot90.rot90.permute9302675184.ex01",
+    "challenger/inference_outputs/62593bfd_0.rot90.rot90.rot90.permute2908315674.ex01",
+    "challenger/inference_outputs/62593bfd_0.rot90.rot90.rot90.permute8579032416.ex01",
+    "challenger/inference_outputs/62593bfd_0.transpose.permute4950812673.ex01",
+    "challenger/inference_outputs/62593bfd_0.transpose.permute9316478025.ex10",
+    "challenger/inference_outputs/62593bfd_0.transpose.rot90.rot90.permute4281673590.ex01",
+    "challenger/inference_outputs/62593bfd_0.transpose.rot90.rot90.permute7284135096.ex01",
+    "challenger/inference_outputs/62593bfd_1.permute1602397845.ex10",
+    "challenger/inference_outputs/62593bfd_1.permute6827490351.ex10",
+    "challenger/inference_outputs/62593bfd_1.rot90.permute5436201789.ex01",
+    "challenger/inference_outputs/62593bfd_1.rot90.permute8024967315.ex01",
+    "challenger/inference_outputs/62593bfd_1.rot90.rot90.permute9180254367.ex01",
+    "challenger/inference_outputs/62593bfd_1.rot90.rot90.permute9368452107.ex10",
+    "challenger/inference_outputs/62593bfd_1.rot90.rot90.rot90.permute0986123745.ex01",
+    "challenger/inference_outputs/62593bfd_1.rot90.rot90.rot90.permute7068392154.ex10",
+    "challenger/inference_outputs/71e489b6_0.permute4150723698.ex120",
+    "challenger/inference_outputs/71e489b6_0.permute6720984531.ex021",
+    "challenger/inference_outputs/71e489b6_0.rot90.permute1258796043.ex201",
+    "challenger/inference_outputs/71e489b6_0.rot90.permute5386701942.ex021",
+    "challenger/inference_outputs/71e489b6_0.rot90.rot90.permute7931086254.ex012",
+    "challenger/inference_outputs/71e489b6_0.rot90.rot90.permute9302675184.ex120",
+    "challenger/inference_outputs/71e489b6_0.rot90.rot90.rot90.permute2908315674.ex012",
+    "challenger/inference_outputs/71e489b6_0.rot90.rot90.rot90.permute8579032416.ex012",
+    "challenger/inference_outputs/71e489b6_0.transpose.permute4950812673.ex012",
+    "challenger/inference_outputs/71e489b6_0.transpose.permute9316478025.ex012",
+    "challenger/inference_outputs/71e489b6_0.transpose.rot90.permute1654278039.ex021",
+    "challenger/inference_outputs/71e489b6_0.transpose.rot90.permute3170468295.ex201",
+    "challenger/inference_outputs/71e489b6_0.transpose.rot90.rot90.permute4281673590.ex201",
+    "challenger/inference_outputs/71e489b6_0.transpose.rot90.rot90.permute7284135096.ex102",
+    "challenger/inference_outputs/71e489b6_0.transpose.rot90.rot90.rot90.permute4965803712.ex120",
+    "challenger/inference_outputs/71e489b6_0.transpose.rot90.rot90.rot90.permute7568409321.ex210",
+    "challenger/inference_outputs/71e489b6_1.permute1602397845.ex201",
+    "challenger/inference_outputs/71e489b6_1.permute6827490351.ex102",
+    "challenger/inference_outputs/71e489b6_1.rot90.permute5436201789.ex021",
+    "challenger/inference_outputs/71e489b6_1.rot90.permute8024967315.ex210",
+    "challenger/inference_outputs/71e489b6_1.rot90.rot90.permute9180254367.ex210",
+    "challenger/inference_outputs/71e489b6_1.rot90.rot90.permute9368452107.ex102",
+    "challenger/inference_outputs/71e489b6_1.rot90.rot90.rot90.permute0986123745.ex012",
+    "challenger/inference_outputs/71e489b6_1.rot90.rot90.rot90.permute7068392154.ex201",
+    "challenger/inference_outputs/71e489b6_1.transpose.permute5980213764.ex021",
+    "challenger/inference_outputs/71e489b6_1.transpose.permute6703249158.ex021",
+    "challenger/inference_outputs/71e489b6_1.transpose.rot90.permute7613284905.ex120",
+    "challenger/inference_outputs/71e489b6_1.transpose.rot90.permute7690351428.ex120",
+    "challenger/inference_outputs/71e489b6_1.transpose.rot90.rot90.permute4907281356.ex012",
+    "challenger/inference_outputs/71e489b6_1.transpose.rot90.rot90.permute7562830149.ex102",
+    "challenger/inference_outputs/71e489b6_1.transpose.rot90.rot90.rot90.permute6142358709.ex201",
+    "challenger/inference_outputs/71e489b6_1.transpose.rot90.rot90.rot90.permute6150492378.ex012",
+    "challenger/inference_outputs/7b0280bc_0.permute4150723698.ex012",
+    "challenger/inference_outputs/7b0280bc_0.permute9302675184.ex012",
+    "challenger/inference_outputs/7b0280bc_0.rot90.permute4281673590.ex102",
+    "challenger/inference_outputs/7b0280bc_0.rot90.permute4950812673.ex201",
+    "challenger/inference_outputs/7b0280bc_0.rot90.rot90.permute5386701942.ex021",
+    "challenger/inference_outputs/7b0280bc_0.rot90.rot90.permute8579032416.ex120",
+    "challenger/inference_outputs/7b0280bc_0.rot90.rot90.rot90.permute1654278039.ex210",
+    "challenger/inference_outputs/7b0280bc_0.rot90.rot90.rot90.permute4965803712.ex210",
+    "challenger/inference_outputs/7b0280bc_0.transpose.permute1602397845.ex201",
+    "challenger/inference_outputs/7b0280bc_0.transpose.permute9180254367.ex021",
+    "challenger/inference_outputs/7b0280bc_0.transpose.rot90.rot90.permute0986123745.ex021",
+    "challenger/inference_outputs/7b0280bc_0.transpose.rot90.rot90.permute5436201789.ex021",
+    "challenger/inference_outputs/7b5033c1_0.permute4150723698.ex10",
+    "challenger/inference_outputs/7b5033c1_0.permute9302675184.ex10",
+    "challenger/inference_outputs/7b5033c1_0.rot90.permute4281673590.ex10",
+    "challenger/inference_outputs/7b5033c1_0.rot90.permute4950812673.ex01",
+    "challenger/inference_outputs/7b5033c1_0.rot90.rot90.permute5386701942.ex01",
+    "challenger/inference_outputs/7b5033c1_0.rot90.rot90.permute8579032416.ex01",
+    "challenger/inference_outputs/7b5033c1_0.rot90.rot90.rot90.permute1654278039.ex01",
+    "challenger/inference_outputs/7b5033c1_0.rot90.rot90.rot90.permute4965803712.ex01",
+    "challenger/inference_outputs/7b5033c1_0.transpose.permute1602397845.ex01",
+    "challenger/inference_outputs/7b5033c1_0.transpose.rot90.permute4907281356.ex10",
+    "challenger/inference_outputs/7b5033c1_0.transpose.rot90.permute5980213764.ex01",
+    "challenger/inference_outputs/7b5033c1_0.transpose.rot90.rot90.permute5436201789.ex10",
+    "challenger/inference_outputs/7b5033c1_0.transpose.rot90.rot90.rot90.permute6142358709.ex01",
+    "challenger/inference_outputs/7b5033c1_0.transpose.rot90.rot90.rot90.permute7690351428.ex01",
+    "challenger/inference_outputs/7b80bb43_0.permute4150723698.ex10",
+    "challenger/inference_outputs/7b80bb43_0.permute9302675184.ex10",
+    "challenger/inference_outputs/7b80bb43_0.rot90.permute4281673590.ex10",
+    "challenger/inference_outputs/7b80bb43_0.rot90.permute4950812673.ex01",
+    "challenger/inference_outputs/7b80bb43_0.rot90.rot90.permute5386701942.ex01",
+    "challenger/inference_outputs/7b80bb43_0.rot90.rot90.permute8579032416.ex01",
+    "challenger/inference_outputs/7b80bb43_0.rot90.rot90.rot90.permute1654278039.ex01",
+    "challenger/inference_outputs/7b80bb43_0.rot90.rot90.rot90.permute4965803712.ex01",
+    "challenger/inference_outputs/7b80bb43_0.transpose.permute1602397845.ex01",
+    "challenger/inference_outputs/7b80bb43_0.transpose.permute9180254367.ex01",
+    "challenger/inference_outputs/7b80bb43_0.transpose.rot90.permute4907281356.ex10",
+    "challenger/inference_outputs/7b80bb43_0.transpose.rot90.permute5980213764.ex01",
+    "challenger/inference_outputs/7b80bb43_0.transpose.rot90.rot90.permute0986123745.ex01",
+    "challenger/inference_outputs/7b80bb43_0.transpose.rot90.rot90.permute5436201789.ex10",
+    "challenger/inference_outputs/7b80bb43_0.transpose.rot90.rot90.rot90.permute6142358709.ex01",
+    "challenger/inference_outputs/7b80bb43_0.transpose.rot90.rot90.rot90.permute7690351428.ex01",
+    "challenger/inference_outputs/7ed72f31_0.permute4150723698.ex10",
+    "challenger/inference_outputs/7ed72f31_0.permute6720984531.ex10",
+    "challenger/inference_outputs/7ed72f31_0.rot90.permute1258796043.ex01",
+    "challenger/inference_outputs/7ed72f31_0.rot90.permute5386701942.ex10",
+    "challenger/inference_outputs/7ed72f31_0.rot90.rot90.permute7931086254.ex01",
+    "challenger/inference_outputs/7ed72f31_0.rot90.rot90.permute9302675184.ex01",
+    "challenger/inference_outputs/7ed72f31_0.rot90.rot90.rot90.permute2908315674.ex01",
+    "challenger/inference_outputs/7ed72f31_0.rot90.rot90.rot90.permute8579032416.ex01",
+    "challenger/inference_outputs/7ed72f31_0.transpose.permute4950812673.ex01",
+    "challenger/inference_outputs/7ed72f31_0.transpose.permute9316478025.ex10",
+    "challenger/inference_outputs/7ed72f31_0.transpose.rot90.permute1654278039.ex01",
+    "challenger/inference_outputs/7ed72f31_0.transpose.rot90.permute3170468295.ex10",
+    "challenger/inference_outputs/7ed72f31_0.transpose.rot90.rot90.permute4281673590.ex01",
+    "challenger/inference_outputs/7ed72f31_0.transpose.rot90.rot90.permute7284135096.ex01",
+    "challenger/inference_outputs/7ed72f31_0.transpose.rot90.rot90.rot90.permute4965803712.ex10",
+    "challenger/inference_outputs/7ed72f31_0.transpose.rot90.rot90.rot90.permute7568409321.ex10",
+    "challenger/inference_outputs/7ed72f31_1.permute1602397845.ex10",
+    "challenger/inference_outputs/7ed72f31_1.permute6827490351.ex10",
+    "challenger/inference_outputs/7ed72f31_1.rot90.permute5436201789.ex01",
+    "challenger/inference_outputs/7ed72f31_1.rot90.permute8024967315.ex01",
+    "challenger/inference_outputs/7ed72f31_1.rot90.rot90.permute9180254367.ex01",
+    "challenger/inference_outputs/7ed72f31_1.rot90.rot90.rot90.permute0986123745.ex01",
+    "challenger/inference_outputs/7ed72f31_1.rot90.rot90.rot90.permute7068392154.ex10",
+    "challenger/inference_outputs/7ed72f31_1.transpose.permute5980213764.ex10",
+    "challenger/inference_outputs/7ed72f31_1.transpose.permute6703249158.ex01",
+    "challenger/inference_outputs/7ed72f31_1.transpose.rot90.rot90.permute4907281356.ex01",
+    "challenger/inference_outputs/7ed72f31_1.transpose.rot90.rot90.permute7562830149.ex10",
+    "challenger/inference_outputs/898e7135_0.permute4150723698.ex10",
+    "challenger/inference_outputs/898e7135_0.permute9302675184.ex10",
+    "challenger/inference_outputs/898e7135_0.rot90.permute4281673590.ex10",
+    "challenger/inference_outputs/898e7135_0.rot90.permute4950812673.ex01",
+    "challenger/inference_outputs/898e7135_0.rot90.rot90.permute5386701942.ex01",
+    "challenger/inference_outputs/898e7135_0.rot90.rot90.permute8579032416.ex01",
+    "challenger/inference_outputs/898e7135_0.rot90.rot90.rot90.permute4965803712.ex01",
+    "challenger/inference_outputs/898e7135_0.transpose.permute1602397845.ex01",
+    "challenger/inference_outputs/898e7135_0.transpose.rot90.permute4907281356.ex10",
+    "challenger/inference_outputs/898e7135_0.transpose.rot90.permute5980213764.ex01",
+    "challenger/inference_outputs/898e7135_0.transpose.rot90.rot90.permute0986123745.ex01",
+    "challenger/inference_outputs/898e7135_0.transpose.rot90.rot90.permute5436201789.ex10",
+    "challenger/inference_outputs/898e7135_0.transpose.rot90.rot90.rot90.permute6142358709.ex01",
+    "challenger/inference_outputs/898e7135_0.transpose.rot90.rot90.rot90.permute7690351428.ex01",
+    "challenger/inference_outputs/8f3a5a89_0.permute4150723698.ex012",
+    "challenger/inference_outputs/8f3a5a89_0.permute9302675184.ex012",
+    "challenger/inference_outputs/8f3a5a89_0.rot90.permute4281673590.ex102",
+    "challenger/inference_outputs/8f3a5a89_0.rot90.permute4950812673.ex201",
+    "challenger/inference_outputs/8f3a5a89_0.rot90.rot90.permute5386701942.ex021",
+    "challenger/inference_outputs/8f3a5a89_0.rot90.rot90.permute8579032416.ex120",
+    "challenger/inference_outputs/8f3a5a89_0.rot90.rot90.rot90.permute1654278039.ex210",
+    "challenger/inference_outputs/8f3a5a89_0.rot90.rot90.rot90.permute4965803712.ex210",
+    "challenger/inference_outputs/8f3a5a89_0.transpose.permute1602397845.ex201",
+    "challenger/inference_outputs/8f3a5a89_0.transpose.permute9180254367.ex021",
+    "challenger/inference_outputs/8f3a5a89_0.transpose.rot90.permute4907281356.ex102",
+    "challenger/inference_outputs/8f3a5a89_0.transpose.rot90.permute5980213764.ex102",
+    "challenger/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.permute0986123745.ex021",
+    "challenger/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.permute5436201789.ex021",
+    "challenger/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.rot90.permute6142358709.ex021",
+    "challenger/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.rot90.permute7690351428.ex210",
+    "challenger/inference_outputs/9385bd28_0.permute4150723698.ex3120",
+    "challenger/inference_outputs/9385bd28_0.permute6720984531.ex1023",
+    "challenger/inference_outputs/9385bd28_0.rot90.permute5386701942.ex1203",
+    "challenger/inference_outputs/9385bd28_0.rot90.rot90.permute7931086254.ex1032",
+    "challenger/inference_outputs/9385bd28_0.rot90.rot90.rot90.permute2908315674.ex3201",
+    "challenger/inference_outputs/9385bd28_0.rot90.rot90.rot90.permute8579032416.ex0213",
+    "challenger/inference_outputs/9385bd28_1.permute1602397845.ex0132",
+    "challenger/inference_outputs/9385bd28_1.permute6827490351.ex0132",
+    "challenger/inference_outputs/9385bd28_1.rot90.rot90.permute9368452107.ex3012",
+    "challenger/inference_outputs/97d7923e_0.permute4150723698.ex012",
+    "challenger/inference_outputs/97d7923e_0.permute9302675184.ex012",
+    "challenger/inference_outputs/97d7923e_0.rot90.permute4281673590.ex102",
+    "challenger/inference_outputs/97d7923e_0.rot90.permute4950812673.ex201",
+    "challenger/inference_outputs/97d7923e_0.rot90.rot90.permute5386701942.ex021",
+    "challenger/inference_outputs/97d7923e_0.rot90.rot90.permute8579032416.ex120",
+    "challenger/inference_outputs/97d7923e_0.rot90.rot90.rot90.permute1654278039.ex210",
+    "challenger/inference_outputs/97d7923e_0.rot90.rot90.rot90.permute4965803712.ex210",
+    "challenger/inference_outputs/97d7923e_0.transpose.permute1602397845.ex201",
+    "challenger/inference_outputs/97d7923e_0.transpose.permute9180254367.ex021",
+    "challenger/inference_outputs/97d7923e_0.transpose.rot90.rot90.permute0986123745.ex021",
+    "challenger/inference_outputs/97d7923e_0.transpose.rot90.rot90.permute5436201789.ex021"
+  ],
+  "output_version_provenance": {
+    "recorded_at_utc": "2026-10-27T06:04:53.596593+00:00",
+    "source": "Read-only response hooks inside official Kaggle CLI",
+    "account": "zhuating",
+    "command": [
+      "kernels",
+      "output",
+      "zhuating/arc2-030-dfs-threshold-pilot20",
+      "-p",
+      "/private/tmp/arc2-030-pilot20-completed-v1",
+      "--file-pattern",
+      "^030/(?!.*(?:inference_outputs|incomplete)/)",
+      "--page-size",
+      "200",
+      "--quiet"
+    ],
+    "kernels": [],
+    "output_files": [
+      {
+        "file_name": "030/artifact-identities.json",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/candidate-file-order.json",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/events-rank0.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/events-rank1.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/events-rank2.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/events-rank3.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/20a9e565_0.permute6720984531.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/20a9e565_0.rot90.permute1258796043.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/20a9e565_0.rot90.permute5386701942.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/20a9e565_0.rot90.rot90.permute7931086254.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/20a9e565_0.rot90.rot90.permute9302675184.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/20a9e565_0.rot90.rot90.rot90.permute8579032416.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/20a9e565_0.transpose.rot90.permute1654278039.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/20a9e565_0.transpose.rot90.permute3170468295.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/20a9e565_0.transpose.rot90.rot90.permute7284135096.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/20a9e565_0.transpose.rot90.rot90.rot90.permute4965803712.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/20a9e565_1.transpose.permute5980213764.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/20a9e565_1.transpose.permute6703249158.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/20a9e565_1.transpose.rot90.permute7690351428.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/20a9e565_1.transpose.rot90.rot90.permute4907281356.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_0.permute4150723698.ex30124",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_0.rot90.permute1258796043.ex42103",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_0.rot90.permute5386701942.ex24310",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_0.rot90.rot90.permute7931086254.ex24310",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_0.rot90.rot90.permute9302675184.ex20413",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_0.rot90.rot90.rot90.permute2908315674.ex12340",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_0.transpose.permute4950812673.ex02341",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_0.transpose.permute9316478025.ex42013",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_0.transpose.rot90.permute1654278039.ex30124",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_0.transpose.rot90.permute3170468295.ex30124",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_0.transpose.rot90.rot90.permute4281673590.ex31204",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_0.transpose.rot90.rot90.permute7284135096.ex13240",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_0.transpose.rot90.rot90.rot90.permute4965803712.ex23140",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_0.transpose.rot90.rot90.rot90.permute7568409321.ex30142",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_1.permute6827490351.ex34201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_1.rot90.permute8024967315.ex41230",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_1.rot90.rot90.permute9180254367.ex20134",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_1.rot90.rot90.permute9368452107.ex03421",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_1.rot90.rot90.rot90.permute7068392154.ex40321",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_1.transpose.rot90.permute7613284905.ex30142",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_1.transpose.rot90.permute7690351428.ex30241",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_1.transpose.rot90.rot90.permute4907281356.ex14023",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/269e22fb_1.transpose.rot90.rot90.permute7562830149.ex14203",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/446ef5d2_1.transpose.permute5980213764.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/446ef5d2_1.transpose.rot90.rot90.rot90.permute6150492378.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/5545f144_0.rot90.permute4281673590.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/5545f144_0.rot90.permute4950812673.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/5545f144_0.rot90.rot90.permute8579032416.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/5545f144_0.rot90.rot90.rot90.permute1654278039.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/5545f144_0.transpose.rot90.permute4907281356.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/5545f144_0.transpose.rot90.rot90.rot90.permute7690351428.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.permute4150723698.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.permute6720984531.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.rot90.permute1258796043.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.rot90.permute5386701942.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.rot90.rot90.permute7931086254.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.rot90.rot90.permute9302675184.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.rot90.rot90.rot90.permute2908315674.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.rot90.rot90.rot90.permute8579032416.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.transpose.permute4950812673.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.transpose.permute9316478025.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.transpose.rot90.permute1654278039.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.transpose.rot90.permute3170468295.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.transpose.rot90.rot90.permute4281673590.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.transpose.rot90.rot90.permute7284135096.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.transpose.rot90.rot90.rot90.permute4965803712.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_0.transpose.rot90.rot90.rot90.permute7568409321.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_1.permute1602397845.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_1.permute6827490351.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_1.rot90.permute5436201789.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_1.rot90.permute8024967315.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_1.rot90.rot90.permute9180254367.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_1.rot90.rot90.permute9368452107.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_1.rot90.rot90.rot90.permute7068392154.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_1.transpose.permute5980213764.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_1.transpose.rot90.rot90.permute4907281356.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/62593bfd_1.transpose.rot90.rot90.permute7562830149.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.permute4150723698.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.permute6720984531.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.rot90.permute1258796043.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.rot90.permute5386701942.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.rot90.rot90.permute7931086254.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.rot90.rot90.permute9302675184.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.rot90.rot90.rot90.permute2908315674.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.rot90.rot90.rot90.permute8579032416.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.transpose.permute4950812673.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.transpose.permute9316478025.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.transpose.rot90.permute1654278039.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.transpose.rot90.permute3170468295.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.transpose.rot90.rot90.permute4281673590.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.transpose.rot90.rot90.permute7284135096.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.transpose.rot90.rot90.rot90.permute4965803712.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_0.transpose.rot90.rot90.rot90.permute7568409321.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.permute1602397845.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.permute6827490351.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.rot90.permute5436201789.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.rot90.permute8024967315.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.rot90.rot90.permute9180254367.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.rot90.rot90.permute9368452107.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.rot90.rot90.rot90.permute0986123745.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.rot90.rot90.rot90.permute7068392154.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.transpose.permute5980213764.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.transpose.permute6703249158.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.transpose.rot90.permute7613284905.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.transpose.rot90.permute7690351428.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.transpose.rot90.rot90.permute4907281356.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.transpose.rot90.rot90.permute7562830149.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.transpose.rot90.rot90.rot90.permute6142358709.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/71e489b6_1.transpose.rot90.rot90.rot90.permute6150492378.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.permute4150723698.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.permute9302675184.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.rot90.permute4281673590.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.rot90.permute4950812673.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.rot90.rot90.permute5386701942.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.rot90.rot90.permute8579032416.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.rot90.rot90.rot90.permute1654278039.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.rot90.rot90.rot90.permute4965803712.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.transpose.permute1602397845.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.transpose.permute9180254367.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.transpose.rot90.permute4907281356.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.transpose.rot90.permute5980213764.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.transpose.rot90.rot90.permute0986123745.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.transpose.rot90.rot90.permute5436201789.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.transpose.rot90.rot90.rot90.permute6142358709.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b0280bc_0.transpose.rot90.rot90.rot90.permute7690351428.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b5033c1_0.permute4150723698.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b5033c1_0.permute9302675184.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b5033c1_0.rot90.permute4281673590.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b5033c1_0.rot90.rot90.permute5386701942.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b5033c1_0.rot90.rot90.permute8579032416.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b5033c1_0.rot90.rot90.rot90.permute1654278039.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b5033c1_0.rot90.rot90.rot90.permute4965803712.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b5033c1_0.transpose.permute1602397845.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b5033c1_0.transpose.permute9180254367.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b5033c1_0.transpose.rot90.permute4907281356.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b5033c1_0.transpose.rot90.permute5980213764.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b5033c1_0.transpose.rot90.rot90.permute0986123745.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b5033c1_0.transpose.rot90.rot90.permute5436201789.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b5033c1_0.transpose.rot90.rot90.rot90.permute6142358709.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b5033c1_0.transpose.rot90.rot90.rot90.permute7690351428.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.permute4150723698.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.permute9302675184.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.rot90.permute4281673590.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.rot90.permute4950812673.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.rot90.rot90.permute5386701942.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.rot90.rot90.permute8579032416.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.rot90.rot90.rot90.permute1654278039.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.rot90.rot90.rot90.permute4965803712.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.transpose.permute1602397845.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.transpose.permute9180254367.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.transpose.rot90.permute4907281356.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.transpose.rot90.permute5980213764.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.transpose.rot90.rot90.permute0986123745.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.transpose.rot90.rot90.permute5436201789.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.transpose.rot90.rot90.rot90.permute6142358709.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7b80bb43_0.transpose.rot90.rot90.rot90.permute7690351428.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.permute4150723698.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.permute6720984531.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.rot90.permute1258796043.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.rot90.permute5386701942.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.rot90.rot90.permute7931086254.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.rot90.rot90.permute9302675184.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.rot90.rot90.rot90.permute2908315674.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.rot90.rot90.rot90.permute8579032416.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.transpose.permute4950812673.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.transpose.permute9316478025.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.transpose.rot90.permute1654278039.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.transpose.rot90.permute3170468295.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.transpose.rot90.rot90.permute4281673590.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.transpose.rot90.rot90.permute7284135096.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.transpose.rot90.rot90.rot90.permute4965803712.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_0.transpose.rot90.rot90.rot90.permute7568409321.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_1.permute1602397845.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_1.permute6827490351.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_1.rot90.rot90.rot90.permute0986123745.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_1.rot90.rot90.rot90.permute7068392154.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_1.transpose.permute5980213764.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_1.transpose.permute6703249158.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_1.transpose.rot90.permute7613284905.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_1.transpose.rot90.rot90.permute4907281356.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_1.transpose.rot90.rot90.permute7562830149.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/7ed72f31_1.transpose.rot90.rot90.rot90.permute6150492378.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/898e7135_0.permute4150723698.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/898e7135_0.permute9302675184.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/898e7135_0.rot90.rot90.permute8579032416.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/898e7135_0.transpose.rot90.permute4907281356.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/898e7135_0.transpose.rot90.rot90.permute0986123745.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/898e7135_0.transpose.rot90.rot90.rot90.permute6142358709.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/898e7135_0.transpose.rot90.rot90.rot90.permute7690351428.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.permute4150723698.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.permute9302675184.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.rot90.permute4281673590.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.rot90.permute4950812673.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.rot90.rot90.permute5386701942.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.rot90.rot90.permute8579032416.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.rot90.rot90.rot90.permute1654278039.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.rot90.rot90.rot90.permute4965803712.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.transpose.permute1602397845.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.transpose.permute9180254367.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.transpose.rot90.permute4907281356.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.transpose.rot90.permute5980213764.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.permute0986123745.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.permute5436201789.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.rot90.permute6142358709.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.rot90.permute7690351428.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/9385bd28_0.rot90.permute5386701942.ex1203",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/9385bd28_0.rot90.rot90.rot90.permute2908315674.ex3201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/9385bd28_0.rot90.rot90.rot90.permute8579032416.ex0213",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/9385bd28_0.transpose.rot90.permute1654278039.ex2031",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/9385bd28_0.transpose.rot90.permute3170468295.ex0132",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/9385bd28_1.permute1602397845.ex0132",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/9385bd28_1.rot90.permute5436201789.ex1320",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/9385bd28_1.rot90.permute8024967315.ex0321",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/9385bd28_1.transpose.permute6703249158.ex0123",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/9385bd28_1.transpose.rot90.permute7613284905.ex0312",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/9385bd28_1.transpose.rot90.permute7690351428.ex0132",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/9385bd28_1.transpose.rot90.rot90.permute4907281356.ex1032",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/97d7923e_0.permute4150723698.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/97d7923e_0.permute9302675184.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/97d7923e_0.rot90.permute4281673590.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/97d7923e_0.rot90.permute4950812673.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/97d7923e_0.rot90.rot90.permute5386701942.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/97d7923e_0.rot90.rot90.permute8579032416.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/97d7923e_0.rot90.rot90.rot90.permute1654278039.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/97d7923e_0.rot90.rot90.rot90.permute4965803712.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/97d7923e_0.transpose.permute1602397845.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/97d7923e_0.transpose.permute9180254367.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/97d7923e_0.transpose.rot90.permute4907281356.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/97d7923e_0.transpose.rot90.permute5980213764.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/97d7923e_0.transpose.rot90.rot90.permute0986123745.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/97d7923e_0.transpose.rot90.rot90.rot90.permute6142358709.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/97d7923e_0.transpose.rot90.rot90.rot90.permute7690351428.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a251c730_0.permute4150723698.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a251c730_0.permute9302675184.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a251c730_0.rot90.permute4281673590.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a251c730_0.rot90.rot90.permute5386701942.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a251c730_0.rot90.rot90.permute8579032416.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a251c730_0.rot90.rot90.rot90.permute1654278039.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a251c730_0.rot90.rot90.rot90.permute4965803712.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a251c730_0.transpose.permute1602397845.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a251c730_0.transpose.permute9180254367.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a251c730_0.transpose.rot90.permute4907281356.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a251c730_0.transpose.rot90.permute5980213764.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a251c730_0.transpose.rot90.rot90.permute5436201789.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a251c730_0.transpose.rot90.rot90.rot90.permute6142358709.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a251c730_0.transpose.rot90.rot90.rot90.permute7690351428.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a47bf94d_0.permute9302675184.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a47bf94d_0.rot90.rot90.permute5386701942.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/inference_outputs/a47bf94d_0.rot90.rot90.permute8579032416.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/raw-candidates-rank0.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/raw-candidates-rank1.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/raw-candidates-rank2.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/raw-candidates-rank3.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/scored-candidates.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/submission-B4.json",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/base/worker.log",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/boot.json",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/candidate-file-order.json",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/events-rank0.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/events-rank1.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/events-rank2.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/events-rank3.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_0.permute4150723698.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_0.permute6720984531.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_0.rot90.permute1258796043.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_0.rot90.permute5386701942.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_0.rot90.rot90.permute7931086254.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_0.rot90.rot90.permute9302675184.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_0.rot90.rot90.rot90.permute2908315674.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_0.rot90.rot90.rot90.permute8579032416.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_0.transpose.permute4950812673.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_0.transpose.rot90.permute1654278039.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_0.transpose.rot90.permute3170468295.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_0.transpose.rot90.rot90.permute4281673590.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_0.transpose.rot90.rot90.permute7284135096.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_0.transpose.rot90.rot90.rot90.permute4965803712.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_0.transpose.rot90.rot90.rot90.permute7568409321.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_1.permute6827490351.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_1.rot90.permute5436201789.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_1.rot90.permute8024967315.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_1.rot90.rot90.permute9180254367.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_1.rot90.rot90.permute9368452107.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_1.rot90.rot90.rot90.permute0986123745.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_1.transpose.permute5980213764.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_1.transpose.permute6703249158.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_1.transpose.rot90.permute7613284905.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_1.transpose.rot90.permute7690351428.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_1.transpose.rot90.rot90.permute4907281356.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_1.transpose.rot90.rot90.permute7562830149.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_1.transpose.rot90.rot90.rot90.permute6142358709.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/20a9e565_1.transpose.rot90.rot90.rot90.permute6150492378.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_0.permute4150723698.ex30124",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_0.permute6720984531.ex30412",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_0.rot90.permute1258796043.ex42103",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_0.rot90.permute5386701942.ex24310",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_0.rot90.rot90.permute7931086254.ex24310",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_0.rot90.rot90.permute9302675184.ex20413",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_0.rot90.rot90.rot90.permute2908315674.ex12340",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_0.rot90.rot90.rot90.permute8579032416.ex10432",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_0.transpose.permute4950812673.ex02341",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_0.transpose.permute9316478025.ex42013",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_0.transpose.rot90.rot90.permute4281673590.ex31204",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_0.transpose.rot90.rot90.permute7284135096.ex13240",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_1.permute1602397845.ex02431",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_1.permute6827490351.ex34201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_1.rot90.permute5436201789.ex01423",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_1.rot90.permute8024967315.ex41230",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_1.rot90.rot90.permute9180254367.ex20134",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_1.rot90.rot90.permute9368452107.ex03421",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_1.rot90.rot90.rot90.permute0986123745.ex01243",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/269e22fb_1.rot90.rot90.rot90.permute7068392154.ex40321",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/446ef5d2_1.rot90.rot90.permute9180254367.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/446ef5d2_1.rot90.rot90.permute9368452107.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/446ef5d2_1.transpose.permute5980213764.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/446ef5d2_1.transpose.permute6703249158.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/446ef5d2_1.transpose.rot90.rot90.permute4907281356.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/446ef5d2_1.transpose.rot90.rot90.permute7562830149.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/446ef5d2_1.transpose.rot90.rot90.rot90.permute6150492378.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.permute4150723698.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.permute9302675184.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.rot90.permute4281673590.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.rot90.permute4950812673.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.rot90.rot90.permute5386701942.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.rot90.rot90.permute8579032416.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.rot90.rot90.rot90.permute1654278039.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.rot90.rot90.rot90.permute4965803712.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.transpose.permute1602397845.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.transpose.permute9180254367.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.transpose.rot90.permute4907281356.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.transpose.rot90.permute5980213764.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.transpose.rot90.rot90.permute0986123745.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.transpose.rot90.rot90.permute5436201789.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.transpose.rot90.rot90.rot90.permute6142358709.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/5545f144_0.transpose.rot90.rot90.rot90.permute7690351428.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_0.permute4150723698.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_0.permute6720984531.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_0.rot90.permute1258796043.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_0.rot90.permute5386701942.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_0.rot90.rot90.permute7931086254.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_0.rot90.rot90.permute9302675184.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_0.rot90.rot90.rot90.permute2908315674.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_0.rot90.rot90.rot90.permute8579032416.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_0.transpose.permute4950812673.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_0.transpose.permute9316478025.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_0.transpose.rot90.rot90.permute4281673590.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_0.transpose.rot90.rot90.permute7284135096.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_1.permute1602397845.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_1.permute6827490351.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_1.rot90.permute5436201789.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_1.rot90.permute8024967315.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_1.rot90.rot90.permute9180254367.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_1.rot90.rot90.permute9368452107.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_1.rot90.rot90.rot90.permute0986123745.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/62593bfd_1.rot90.rot90.rot90.permute7068392154.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.permute4150723698.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.permute6720984531.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.rot90.permute1258796043.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.rot90.permute5386701942.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.rot90.rot90.permute7931086254.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.rot90.rot90.permute9302675184.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.rot90.rot90.rot90.permute2908315674.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.rot90.rot90.rot90.permute8579032416.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.transpose.permute4950812673.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.transpose.permute9316478025.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.transpose.rot90.permute1654278039.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.transpose.rot90.permute3170468295.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.transpose.rot90.rot90.permute4281673590.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.transpose.rot90.rot90.permute7284135096.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.transpose.rot90.rot90.rot90.permute4965803712.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_0.transpose.rot90.rot90.rot90.permute7568409321.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.permute1602397845.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.permute6827490351.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.rot90.permute5436201789.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.rot90.permute8024967315.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.rot90.rot90.permute9180254367.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.rot90.rot90.permute9368452107.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.rot90.rot90.rot90.permute0986123745.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.rot90.rot90.rot90.permute7068392154.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.transpose.permute5980213764.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.transpose.permute6703249158.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.transpose.rot90.permute7613284905.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.transpose.rot90.permute7690351428.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.transpose.rot90.rot90.permute4907281356.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.transpose.rot90.rot90.permute7562830149.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.transpose.rot90.rot90.rot90.permute6142358709.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/71e489b6_1.transpose.rot90.rot90.rot90.permute6150492378.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b0280bc_0.permute4150723698.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b0280bc_0.permute9302675184.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b0280bc_0.rot90.permute4281673590.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b0280bc_0.rot90.permute4950812673.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b0280bc_0.rot90.rot90.permute5386701942.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b0280bc_0.rot90.rot90.permute8579032416.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b0280bc_0.rot90.rot90.rot90.permute1654278039.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b0280bc_0.rot90.rot90.rot90.permute4965803712.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b0280bc_0.transpose.permute1602397845.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b0280bc_0.transpose.permute9180254367.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b0280bc_0.transpose.rot90.rot90.permute0986123745.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b0280bc_0.transpose.rot90.rot90.permute5436201789.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b5033c1_0.permute4150723698.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b5033c1_0.permute9302675184.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b5033c1_0.rot90.permute4281673590.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b5033c1_0.rot90.permute4950812673.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b5033c1_0.rot90.rot90.permute5386701942.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b5033c1_0.rot90.rot90.permute8579032416.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b5033c1_0.rot90.rot90.rot90.permute1654278039.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b5033c1_0.rot90.rot90.rot90.permute4965803712.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b5033c1_0.transpose.permute1602397845.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b5033c1_0.transpose.rot90.permute4907281356.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b5033c1_0.transpose.rot90.permute5980213764.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b5033c1_0.transpose.rot90.rot90.permute5436201789.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b5033c1_0.transpose.rot90.rot90.rot90.permute6142358709.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b5033c1_0.transpose.rot90.rot90.rot90.permute7690351428.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.permute4150723698.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.permute9302675184.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.rot90.permute4281673590.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.rot90.permute4950812673.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.rot90.rot90.permute5386701942.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.rot90.rot90.permute8579032416.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.rot90.rot90.rot90.permute1654278039.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.rot90.rot90.rot90.permute4965803712.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.transpose.permute1602397845.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.transpose.permute9180254367.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.transpose.rot90.permute4907281356.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.transpose.rot90.permute5980213764.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.transpose.rot90.rot90.permute0986123745.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.transpose.rot90.rot90.permute5436201789.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.transpose.rot90.rot90.rot90.permute6142358709.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7b80bb43_0.transpose.rot90.rot90.rot90.permute7690351428.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.permute4150723698.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.permute6720984531.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.rot90.permute1258796043.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.rot90.permute5386701942.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.rot90.rot90.permute7931086254.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.rot90.rot90.permute9302675184.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.rot90.rot90.rot90.permute2908315674.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.rot90.rot90.rot90.permute8579032416.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.transpose.permute4950812673.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.transpose.permute9316478025.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.transpose.rot90.permute1654278039.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.transpose.rot90.permute3170468295.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.transpose.rot90.rot90.permute4281673590.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.transpose.rot90.rot90.permute7284135096.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.transpose.rot90.rot90.rot90.permute4965803712.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_0.transpose.rot90.rot90.rot90.permute7568409321.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_1.permute1602397845.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_1.permute6827490351.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_1.rot90.permute5436201789.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_1.rot90.permute8024967315.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_1.rot90.rot90.permute9180254367.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_1.rot90.rot90.rot90.permute0986123745.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_1.rot90.rot90.rot90.permute7068392154.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_1.transpose.permute5980213764.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_1.transpose.permute6703249158.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_1.transpose.rot90.rot90.permute4907281356.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/7ed72f31_1.transpose.rot90.rot90.permute7562830149.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/898e7135_0.permute4150723698.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/898e7135_0.permute9302675184.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/898e7135_0.rot90.permute4281673590.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/898e7135_0.rot90.permute4950812673.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/898e7135_0.rot90.rot90.permute5386701942.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/898e7135_0.rot90.rot90.permute8579032416.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/898e7135_0.rot90.rot90.rot90.permute4965803712.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/898e7135_0.transpose.permute1602397845.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/898e7135_0.transpose.rot90.permute4907281356.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/898e7135_0.transpose.rot90.permute5980213764.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/898e7135_0.transpose.rot90.rot90.permute0986123745.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/898e7135_0.transpose.rot90.rot90.permute5436201789.ex10",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/898e7135_0.transpose.rot90.rot90.rot90.permute6142358709.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/898e7135_0.transpose.rot90.rot90.rot90.permute7690351428.ex01",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.permute4150723698.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.permute9302675184.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.rot90.permute4281673590.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.rot90.permute4950812673.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.rot90.rot90.permute5386701942.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.rot90.rot90.permute8579032416.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.rot90.rot90.rot90.permute1654278039.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.rot90.rot90.rot90.permute4965803712.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.transpose.permute1602397845.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.transpose.permute9180254367.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.transpose.rot90.permute4907281356.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.transpose.rot90.permute5980213764.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.permute0986123745.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.permute5436201789.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.rot90.permute6142358709.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/8f3a5a89_0.transpose.rot90.rot90.rot90.permute7690351428.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/9385bd28_0.permute4150723698.ex3120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/9385bd28_0.permute6720984531.ex1023",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/9385bd28_0.rot90.permute5386701942.ex1203",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/9385bd28_0.rot90.rot90.permute7931086254.ex1032",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/9385bd28_0.rot90.rot90.rot90.permute2908315674.ex3201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/9385bd28_0.rot90.rot90.rot90.permute8579032416.ex0213",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/9385bd28_1.permute1602397845.ex0132",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/9385bd28_1.permute6827490351.ex0132",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/9385bd28_1.rot90.rot90.permute9368452107.ex3012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/97d7923e_0.permute4150723698.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/97d7923e_0.permute9302675184.ex012",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/97d7923e_0.rot90.permute4281673590.ex102",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/97d7923e_0.rot90.permute4950812673.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/97d7923e_0.rot90.rot90.permute5386701942.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/97d7923e_0.rot90.rot90.permute8579032416.ex120",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/97d7923e_0.rot90.rot90.rot90.permute1654278039.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/97d7923e_0.rot90.rot90.rot90.permute4965803712.ex210",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/97d7923e_0.transpose.permute1602397845.ex201",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/97d7923e_0.transpose.permute9180254367.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/97d7923e_0.transpose.rot90.rot90.permute0986123745.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/inference_outputs/97d7923e_0.transpose.rot90.rot90.permute5436201789.ex021",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/raw-candidates-rank0.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/raw-candidates-rank1.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/raw-candidates-rank2.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/raw-candidates-rank3.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/scored-candidates.jsonl",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/submission-B4.json",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/challenger/worker.log",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/input/challenges.json",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/input/manifest.json",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/model-copy.json",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/mount-diagnostics.json",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/run-state.json",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/sources/arc_decoder.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/sources/arc_loader.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/sources/arc_solver.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/sources/copy_model.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "030/sources/starter.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "__pycache__/arc_decoder.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "__pycache__/arc_loader.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "__pycache__/arc_solver.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "arc_decoder.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "arc_loader.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "arc_solver.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "copy_model.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "starter.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "submission.json",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothAlignPropTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothBCOTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothCPOTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothDDPOTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothDPOTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothGKDTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothGRPOTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothIterativeSFTTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothKTOTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothNashMDTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothORPOTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothOnlineDPOTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothPPOTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothPRMTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothRLOOTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothRewardTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothSFTTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/UnslothXPOTrainer.py",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothAlignPropTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothBCOTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothCPOTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothDDPOTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothDPOTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothGKDTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothGRPOTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothIterativeSFTTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothKTOTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothNashMDTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothORPOTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothOnlineDPOTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothPPOTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothPRMTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothRLOOTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothRewardTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothSFTTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      },
+      {
+        "file_name": "unsloth_compiled_cache/__pycache__/UnslothXPOTrainer.cpython-311.pyc",
+        "script_version_id": 362694905
+      }
+    ]
+  },
+  "source_version_provenance": {
+    "recorded_at_utc": "2026-10-27T06:04:51.020890+00:00",
+    "source": "Read-only response hooks inside official Kaggle CLI",
+    "account": "zhuating",
+    "command": [
+      "kernels",
+      "pull",
+      "zhuating/arc2-030-dfs-threshold-pilot20",
+      "-p",
+      "/private/tmp/arc2-030-pilot20-completed-source",
+      "-m"
+    ],
+    "kernels": [
+      {
+        "current_version_number": 1,
+        "slug": "arc2-030-dfs-threshold-pilot20",
+        "id": 141093278
+      }
+    ],
+    "output_files": []
+  },
+  "gold_read": false
+}
