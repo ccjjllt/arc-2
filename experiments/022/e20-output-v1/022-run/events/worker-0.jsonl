@@ -1,7 +1,0 @@
-{"event": "worker_import_start", "rank": 0, "time": 1792598158.394177, "pid": 184}
-{"event": "worker_import_done", "rank": 0, "time": 1792598951.1184185, "pid": 184}
-{"event": "model_load_start", "rank": 0, "time": 1792598951.1188037, "pid": 184, "host_memory": {"MemTotal_kib": 197859172, "MemFree_kib": 164764928, "MemAvailable_kib": 192978964, "SwapTotal_kib": 0, "SwapFree_kib": 0, "VmHWM_kib": 1280164, "VmRSS_kib": 1280164}, "model_path": "/kaggle/temp/arc022-model"}
-{"event": "model_weights_loaded", "rank": 0, "time": 1792598957.778408, "load_s": 6.659571409225464, "host_memory": {"MemTotal_kib": 197859172, "MemFree_kib": 164665448, "MemAvailable_kib": 192887560, "SwapTotal_kib": 0, "SwapFree_kib": 0, "VmHWM_kib": 6231144, "VmRSS_kib": 1362988}}
-{"event": "model_peft_ready", "rank": 0, "time": 1792598965.6929762, "load_s": 14.57412052154541, "host_memory": {"MemTotal_kib": 197859172, "MemFree_kib": 163229212, "MemAvailable_kib": 191451688, "SwapTotal_kib": 0, "SwapFree_kib": 0, "VmHWM_kib": 6231144, "VmRSS_kib": 2798584}}
-{"event": "model_loaded", "rank": 0, "time": 1792598966.142996, "load_s": 15.024348974227905, "max_seq_length": 8192, "task_seconds": 660.0, "model_path": "/kaggle/temp/arc022-model"}
-{"event": "model_wait_for_peers", "rank": 0, "time": 1792598966.143366, "host_memory": {"MemTotal_kib": 197859172, "MemFree_kib": 163225916, "MemAvailable_kib": 191448668, "SwapTotal_kib": 0, "SwapFree_kib": 0, "VmHWM_kib": 6231144, "VmRSS_kib": 2804500}}

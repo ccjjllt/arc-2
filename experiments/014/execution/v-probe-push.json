@@ -1,9 +1,0 @@
-{
-  "version": 1,
-  "slug": "jiyujia/arc2-014-v-27b-service-probe",
-  "design": "single vLLM server TP4/64K/C4/FP8 KV-default no-MTP; hello xhigh/low 4K; P2 xhigh/low 8K if budget; orderly evidence exits",
-  "payload": ["vdriver.py", "run_reasoning_probe.py", "p2-prompts.json"],
-  "mounts": {"model": "foysalemonshanto/qwen3-8-27b-fp8-repacked-v1/PyTorch/hf-fp8/1", "dataset": "nick2187/qwen38-vllm0272-cu130-wheelhouse-v1"},
-  "image": "kaggle default (no pin); python 3.12 gate first cell",
-  "local_verification": ["py_compile", "vdriver orderly-exit path", "notebook boot sim 3 files"]
-}

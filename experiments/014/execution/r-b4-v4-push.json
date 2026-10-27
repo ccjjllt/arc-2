@@ -1,9 +1,0 @@
-{
-  "version": 4,
-  "slug": "jiyujia/arc2-014-r-b4-paired-budget-diagnosis",
-  "redesign": "single pool single load; per-rank [wave1,wave2] queues; pop-position arm selection; wave1/wave2 output subdirs; 900s load line",
-  "shas": {"arc_solver": "b54cb596aaf6", "supervise": "83ac86f79cc5", "worker_pool": "eff6b573dc9f"},
-  "local_verification": ["py_compile", "load_cohort", "build_r_assignments pairing table", "parse_assignments incl 3 negatives", "aggregate 12-record synthetic", "repack boot sim 6 files"],
-  "v3_root_cause": "checkpoint shard stall (162s/shard) past 600s load line; zero model_loaded; not a decode bug",
-  "quota_jiyujia_remaining_h_at_push": 24.64
-}

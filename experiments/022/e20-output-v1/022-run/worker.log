@@ -1,20 +1,0 @@
-{"event": "worker_import_start", "rank": 0, "time": 1792598158.394177, "pid": 184}
-🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
-🦥 Unsloth Zoo will now patch everything to make training faster!
-{"event": "worker_import_done", "rank": 0, "time": 1792598951.1184185, "pid": 184}
-{"event": "model_load_start", "rank": 0, "time": 1792598951.1188037, "pid": 184, "host_memory": {"MemTotal_kib": 197859172, "MemFree_kib": 164764928, "MemAvailable_kib": 192978964, "SwapTotal_kib": 0, "SwapFree_kib": 0, "VmHWM_kib": 1280164, "VmRSS_kib": 1280164}, "model_path": "/kaggle/temp/arc022-model"}
-==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
-   \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
-O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
-\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
- "-____-"     Free license: http://github.com/unslothai/unsloth
-Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.40s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.08it/s]Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.00it/s]
-{"event": "model_weights_loaded", "rank": 0, "time": 1792598957.778408, "load_s": 6.659571409225464, "host_memory": {"MemTotal_kib": 197859172, "MemFree_kib": 164665448, "MemAvailable_kib": 192887560, "SwapTotal_kib": 0, "SwapFree_kib": 0, "VmHWM_kib": 6231144, "VmRSS_kib": 1362988}}
-Unsloth: Training embed_tokens in mixed precision to save VRAM
-Unsloth: Training lm_head in mixed precision to save VRAM
-{"event": "model_peft_ready", "rank": 0, "time": 1792598965.6929762, "load_s": 14.57412052154541, "host_memory": {"MemTotal_kib": 197859172, "MemFree_kib": 163229212, "MemAvailable_kib": 191451688, "SwapTotal_kib": 0, "SwapFree_kib": 0, "VmHWM_kib": 6231144, "VmRSS_kib": 2798584}}
-{"event": "model_loaded", "rank": 0, "time": 1792598966.142996, "load_s": 15.024348974227905, "max_seq_length": 8192, "task_seconds": 660.0, "model_path": "/kaggle/temp/arc022-model"}
-{"event": "model_wait_for_peers", "rank": 0, "time": 1792598966.143366, "host_memory": {"MemTotal_kib": 197859172, "MemFree_kib": 163225916, "MemAvailable_kib": 191448668, "SwapTotal_kib": 0, "SwapFree_kib": 0, "VmHWM_kib": 6231144, "VmRSS_kib": 2804500}}
-{"event": "worker_import_start", "rank": 1, "time": 1792598966.1954618, "pid": 185}
-🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.

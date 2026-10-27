@@ -1,9 +1,0 @@
-{
-  "version": 2,
-  "slug": "jiyujia/arc2-014-r-b4-paired-budget-diagnosis",
-  "fix": "per-wave markers dir",
-  "supervise_sha256": "b277fcc4b55ce61dbd4c206a5b9af4615bfa5dcd04105202ee07269d3abd8e21",
-  "kernel_metadata_id": "jiyujia/arc2-014-r-b4-paired-budget-diagnosis",
-  "status_at_push": "QUEUED",
-  "note": "first push 409 resolved by aligning metadata id to actual title-derived slug"
-}

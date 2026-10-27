@@ -1,1 +1,0 @@
-We need answer user's request: "Return [[1]]." Likely wants output exactly [[1]]. Need final only [[1]]. Ensure no extra.

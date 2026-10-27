@@ -1,1 +1,0 @@
-We need solve ARC puzzle. Need think carefully. Need output only grid. Need

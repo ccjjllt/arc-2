@@ -1,8 +1,0 @@
-{
-  "arc_loader.py": "8fae269c67f468e704cab380337055e8361f3990e9f542e60e173c2a1b0607aa",
-  "arc_solver.py": "b54cb596aaf6cf63f506fe47d9e1a55e86a246628ad3cf3dd40d333c9b7ced4a",
-  "build_submission.py": "1d82fea6c2fef557828fe51c59a4cf51e7f9bed38e6c645f61daa9cd38178c4e",
-  "supervise.py": "83ac86f79cc54eadecd76ae3c0e2377be1f0b8e3b2fc9b22524791761ae90b86",
-  "worker_pool.py": "eff6b573dc9f5f842b10f863d36b3e5e95a1d125ceb0296855b57d5d3dde9c61",
-  "b4_cohort.json": "ac233b4ae4e25249fc6a7be884c83d5cccb3c9c422a80030734f2ac80eaf511a"
-}

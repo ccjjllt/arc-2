@@ -1,5 +1,0 @@
-{
-  "causal_conv1d-1.7.0cu12torch2.10cxx11abiTRUE-cp312-cp312-linux_x86_64.whl": "causal_conv1d-1.7.0+cu12torch2.10cxx11abiTRUE-cp312-cp312-linux_x86_64.whl",
-  "fla_core-0.5.2-py3-none-any.whl": "fla_core-0.5.2-py3-none-any.whl",
-  "flash_linear_attention-0.5.2-py3-none-any.whl": "flash_linear_attention-0.5.2-py3-none-any.whl"
-}

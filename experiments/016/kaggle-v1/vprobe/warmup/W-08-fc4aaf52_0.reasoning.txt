@@ -1,1 +1,0 @@
-We need solve ARC puzzle. Need produce final grid only in code fence. Need
