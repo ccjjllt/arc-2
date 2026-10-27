@@ -1,0 +1,38 @@
+{
+  "reference_version": 312063593,
+  "notebook_started": 1793071195.0377173,
+  "global_end_time": 1793074675.0377173,
+  "raw_rerun_flag": "",
+  "model_source": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1",
+  "model_target": "/kaggle/temp/arc030-mechanism-model",
+  "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0",
+  "utility_root": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch",
+  "python": "3.11.13 (main, Jun  4 2025, 08:57:29) [GCC 11.4.0]",
+  "original_task_soft_limit": 1200,
+  "original_global_seconds": 42600,
+  "runtime_changes": [
+    "explicit GPU and current fixed model mount",
+    "stage identical checkpoint on local disk",
+    "original utility in child PYTHONPATH",
+    "propagate child failure"
+  ],
+  "session_seconds": 3600,
+  "solver_global_seconds": 3480,
+  "solver_hard_seconds": 3540,
+  "session_deadline": 1793074795.0377173,
+  "input_identity": {
+    "challenges_sha256": "6808f539a46334b30964e693d82f2d9db0d2f87120b97f701bf793904175b076",
+    "manifest_sha256": "9ca236e5cbb9f1803fa0c7bf0a45a1f00e5fd55be30ca65e10c00d8f2e4426f6",
+    "n_tasks": 3,
+    "n_queries": 5,
+    "task_ids": [
+      "2ba387bc",
+      "7b0280bc",
+      "d35bdbdc"
+    ]
+  },
+  "gpu_inventory": "0, NVIDIA L4, 23034 MiB\n1, NVIDIA L4, 23034 MiB\n2, NVIDIA L4, 23034 MiB\n3, NVIDIA L4, 23034 MiB\n",
+  "gpu_inventory_return_code": 0,
+  "research_only": true,
+  "gold_read": false
+}

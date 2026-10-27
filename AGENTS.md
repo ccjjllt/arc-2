@@ -25,6 +25,7 @@
 - 27B既有输出和研究作为历史互补证据保留，有限27B补题不再是当前活动分支。外部研究仅用于改进NVARC，不另开模型选型、独立求解器或新架构路线；仍排除SOAR 7B。合队及独立争奖路线不作为当前研究建议。
 - 030用户于2026-10-27授权开始并要求新子代理，CPU实现、初轮40task／58query及扩展40task／57query冻结、同adapter A/A/B机制与完整0.2／0.1配对包均已就绪，独立静态审查通过；GPU与新评分未运行。完整配对均固定6600秒每臂部署槽／4×L4、原TTT／DFS运行时／B4不改；公共准备及B4导出计费。机制1h＋初轮4h＋扩展4h＋普通验证预留1h，按L4系数2计划20配额小时。当前配置账号GPU余额0，10月31日08:00北京时间刷新。初轮要求最终两槽净增>0且至少两个task贡献新增，扩展仍须净增>0，噪声及预算证据不足保持hold；失败不扫阈值救结果。按`experiments/030/ready-v1.json`核对实际有效包，研究包不可比赛提交；正式最好仍02330.14。
 - 030后续用户明确授权zhuating GPU、指定Kaggle CLI及`.kaggle/` token。实查此前0余额属于默认qingyu1232；显式使用`~/.kaggle/access_token_zhuating`后CLI用户名为zhuating、启动前余额6.62配额小时。机制V1已CLI启动／RUNNING，11:19:55北京时间boot确认4×L4、固定权重复制与rank0加载正常；无终态／新分数。当前冻结额度受限pilot20／28query（包SHA60a5454b...，7200秒会话、3300秒每臂），机制通过后重读余额才运行；机制＋pilot上限约6配额小时。pilot不含2ba，不能独立支持正式晋级，仍需原40题压力／覆盖及扩展复核；不改阈值／seed／B4救结果。用`experiments/030/kaggle_zhuating.py`仅在子进程选token，不修改全局默认认证或输出凭证。健康确认后停止远端轮询，等用户结束通知，不创建自动监控。
+- 030机制V1／362686825现已COMPLETE：3题TTT128、15调用，5query A/A rows/tokens/grid/NLL全相同、adapter前后相同，A均未触时限；墙钟1758.62秒。B0.1的query-grid19→31、增12丢0，调用工作+43.28%，7b的B触540秒；未测B4／准确率／oracle，不构成提分。23项工件及10文件checkpoint身份通过，loader/decoder/starter仅IPython末尾多1 LF，solver精确；原manifest不改，后续评分显式用`mechanism-v1-runtime-identity.json`。机制完成后zhuating可用20264.952秒、reserved0，已CLI启动固定pilot20 **V1／RUNNING**（scriptVersion待完成取得），20task／28query、7200秒总／3300秒每臂、hash27030。用户通知结束后先核来源及预算、freeze无gold冻结，再精确Kaggle快照评分；净0／负结束0.1，不扫描阈值或seed救结果。正式最好仍02330.14。
 
 ## 文档交接
 

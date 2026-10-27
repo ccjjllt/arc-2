@@ -1,6 +1,6 @@
 {
   "prepared_at_utc": "2026-10-27T03:08:59.289323+00:00",
-  "status": "zhuating_mechanism_v1_running",
+  "status": "pilot20_v1_running",
   "competition": "arc-prize-2026-arc-agi-2",
   "gpu_experiment_run": true,
   "query_gold_read": false,
@@ -13,9 +13,11 @@
       "notebook_bytes": 80894,
       "local_preparation_revision": 1,
       "remote_version": 1,
-      "remote_script_version_id": null,
+      "remote_script_version_id": 362686825,
       "launched": true,
-      "status": "RUNNING"
+      "status": "COMPLETE",
+      "aa_control_status": "passed",
+      "runtime_identity": "mechanism-v1-runtime-identity.json"
     },
     "initial": {
       "directory": "/private/tmp/arc2-030-pair-initial-v3",
@@ -44,10 +46,14 @@
       "notebook_sha256": "60a5454bbe50beafcf49a959d2840df6d0c321f0e8d766810c8aea0bce38cc63",
       "notebook_bytes": 103361,
       "local_preparation_revision": 1,
-      "remote_version": null,
+      "remote_version": 1,
       "remote_script_version_id": null,
-      "launched": false,
-      "conditions": "Mechanism AA passes and current quota permits≤2h4L4; replaces initial40 for current balance, fixed original promotion criteria."
+      "launched": true,
+      "conditions": "Mechanism AA passes and current quota permits≤2h4L4; replaces initial40 for current balance, fixed original promotion criteria.",
+      "status": "RUNNING",
+      "launch_record": "execution/pilot20-v1-launch.json",
+      "actual_hardware": "4xNVIDIA L4",
+      "startup_health": "execution/pilot20-v1-startup-health.json"
     }
   },
   "script_sha256": {
@@ -63,7 +69,7 @@
   "preflight": "execution/preflight-20261027.json",
   "static_review": "pair-static-review-v1.json",
   "manual_historical_reader_check": "execution/manual-cpu-reader-check-v1.json",
-  "next_action": "Wait for mechanism V1 completion, verify AA and exact sources, re-read zhuating CLI quota, then run fixed pilot20 if passed. pilot20 cannot alone support formal promotion: original40 pressure/coverage and extension remain required. Do not run both initial40 and pilot20 as alternatives and choose the better result.",
+  "next_action": "Wait for pilot20 V1 completion. Verify exact source/current version/output scriptVersion and artifacts; run freeze_pair without gold, then explicit official snapshot scoring with --mechanism-manifest mechanism-v1-runtime-identity.json. Stop0.1 for net0/negative, hold for insufficient/noise/budget evidence; no threshold or seed scan.",
   "budget": {
     "mechanism_wall_seconds": 3600,
     "initial_pair_wall_seconds": 14400,
@@ -83,5 +89,7 @@
     "combined_max_quota_hours_at_factor2": 6,
     "observed_available_cli_hours_before_launch": 6.62,
     "extension_not_currently_funded": true
-  }
+  },
+  "mechanism_result": "mechanism-v1-summary.json",
+  "remote_queries_stopped_after_health_confirmation": true
 }

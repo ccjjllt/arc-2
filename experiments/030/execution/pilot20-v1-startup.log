@@ -1,0 +1,84 @@
+Warning: Looks like you're using an outdated `kaggle` version (installed: 2.2.4), please consider upgrading to the latest version (2.2.5)
+/usr/local/lib/python3.11/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  validate(nb)
+/usr/local/lib/python3.11/dist-packages/pydevd_plugins/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+/usr/local/lib/python3.11/dist-packages/pydevd_plugins/__init__.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  __import__("pkg_resources").declare_namespace(__name__)
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+Found existing installation: tensorflow 2.18.0
+Uninstalling tensorflow-2.18.0:
+  Successfully uninstalled tensorflow-2.18.0
+{"event": "original_utility_mount_lookup", "roots": ["/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch"], "elapsed_s": 0.008150774000000638, "sys_path": ["/kaggle/working", "/kaggle/lib/kagglegym", "/kaggle/lib", "/kaggle/usr/lib", "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch", "/kaggle/input/competitions/arc-prize-2026-arc-agi-2", "/usr/lib/python311.zip", "/usr/lib/python3.11", "/usr/lib/python3.11/lib-dynload", "", "/usr/local/lib/python3.11/dist-packages", "/usr/lib/python3/dist-packages", "/usr/local/lib/python3.11/dist-packages/IPython/extensions", "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch/setuptools/_vendor", "/root/.ipython"]}
+{"event": "faithful_v1_boot", "reference_version": 312063593, "notebook_started": 1793073425.0467918, "global_end_time": 1793080505.0467918, "raw_rerun_flag": "", "model_source": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1", "model_target": "/kaggle/temp/arc030-model", "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0", "utility_root": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch", "python": "3.11.13 (main, Jun  4 2025, 08:57:29) [GCC 11.4.0]", "original_task_soft_limit": 1200, "original_global_seconds": 42600, "runtime_changes": ["explicit GPU and current fixed model mount", "stage identical checkpoint on local disk", "original utility in child PYTHONPATH", "propagate child failure"], "session_seconds": 7200, "solver_global_seconds": null, "solver_hard_seconds": null, "session_deadline": 1793080625.0467918, "input_identity": {"challenges_sha256": "94d947c6d3da5f1080700de205bb2a0791764a65b79cb2e2b181f5f91bf58f12", "manifest_sha256": "f9c4b4a12b4a76d641224007261377f2760470c169cc830c5035b96c933e371d", "n_tasks": 20, "n_queries": 28, "task_ids": ["20a9e565", "269e22fb", "271d71e2", "446ef5d2", "5545f144", "62593bfd", "71e489b6", "7b0280bc", "7b5033c1", "7b80bb43", "7ed72f31", "898e7135", "8f3a5a89", "9385bd28", "97d7923e", "a251c730", "a47bf94d", "b10624e5", "b99e7126", "e12f9a14"]}, "gpu_inventory": "0, NVIDIA L4, 23034 MiB\n1, NVIDIA L4, 23034 MiB\n2, NVIDIA L4, 23034 MiB\n3, NVIDIA L4, 23034 MiB\n", "gpu_inventory_return_code": 0, "research_only": true, "gold_read": false, "python_hash_seed": 27030, "threshold_pair_config": {"panel": "pilot20", "session_seconds": 7200, "arm_slot_seconds": 3300, "setup_allowance_seconds": 900, "final_reserve_seconds": 120, "arm_order": ["base", "challenger"], "thresholds": {"base": 0.2, "challenger": 0.1}, "python_hash_seed": 27030, "gpu_ids": [0, 1, 2, 3], "ttt_augmentation_seed": 1, "search_augmentation_seed": 2, "task_soft_limit_seconds": 1200, "dfs_limit_seconds": 540, "hypothesis": "Wider original DFS under equal total deployment budget improves final B4 EM@2", "decision": "Initial net>0 and gained>=2 tasks; extension net>0; noise and deadline audit required; no threshold scan"}}
+{"event": "model_copy_file_start", "time": 1793073471.6430855, "file": "added_tokens.json", "bytes": 68}
+{"event": "model_copy_file_done", "time": 1793073471.65422, "path": "added_tokens.json", "bytes": 68, "sha256": "cf1224e6a594b51a34b8b9ca6c6dce3026683777521f361e37526b8a33258bce", "copy_s": 0.010941028594970703}
+{"event": "model_copy_file_start", "time": 1793073471.654292, "file": "config.json", "bytes": 1532}
+{"event": "model_copy_file_done", "time": 1793073471.6557531, "path": "config.json", "bytes": 1532, "sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0", "copy_s": 0.0012645721435546875}
+{"event": "model_copy_file_start", "time": 1793073471.655823, "file": "generation_config.json", "bytes": 113}
+{"event": "model_copy_file_done", "time": 1793073471.6609488, "path": "generation_config.json", "bytes": 113, "sha256": "fd0abf1e2baa1f9407803a83486767a6e7841164481d750fcaa9b71d31a0ab02", "copy_s": 0.0049283504486083984}
+{"event": "model_copy_file_start", "time": 1793073471.6610196, "file": "model-00001-of-00002.safetensors", "bytes": 4996836472}
+{"event": "model_copy_file_start", "time": 1793073471.6430855, "file": "added_tokens.json", "bytes": 68}
+{"event": "model_copy_file_done", "time": 1793073471.65422, "path": "added_tokens.json", "bytes": 68, "sha256": "cf1224e6a594b51a34b8b9ca6c6dce3026683777521f361e37526b8a33258bce", "copy_s": 0.010941028594970703}
+{"event": "model_copy_file_start", "time": 1793073471.654292, "file": "config.json", "bytes": 1532}
+{"event": "model_copy_file_done", "time": 1793073471.6557531, "path": "config.json", "bytes": 1532, "sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0", "copy_s": 0.0012645721435546875}
+{"event": "model_copy_file_start", "time": 1793073471.655823, "file": "generation_config.json", "bytes": 113}
+{"event": "model_copy_file_done", "time": 1793073471.6609488, "path": "generation_config.json", "bytes": 113, "sha256": "fd0abf1e2baa1f9407803a83486767a6e7841164481d750fcaa9b71d31a0ab02", "copy_s": 0.0049283504486083984}
+{"event": "model_copy_file_start", "time": 1793073471.6610196, "file": "model-00001-of-00002.safetensors", "bytes": 4996836472}
+{"event": "model_copy_file_done", "time": 1793073531.9404638, "path": "model-00001-of-00002.safetensors", "bytes": 4996836472, "sha256": "379de219f74a1402a67d26fe7dcacdacadbf686947e08e41117dd9c884ee4529", "copy_s": 60.279096364974976}
+{"event": "model_copy_file_start", "time": 1793073531.9406137, "file": "model-00002-of-00002.safetensors", "bytes": 2270397024}
+{"event": "model_copy_file_done", "time": 1793073531.9404638, "path": "model-00001-of-00002.safetensors", "bytes": 4996836472, "sha256": "379de219f74a1402a67d26fe7dcacdacadbf686947e08e41117dd9c884ee4529", "copy_s": 60.279096364974976}
+{"event": "model_copy_file_start", "time": 1793073531.9406137, "file": "model-00002-of-00002.safetensors", "bytes": 2270397024}
+{"event": "model_copy_file_done", "time": 1793073559.1892679, "path": "model-00002-of-00002.safetensors", "bytes": 2270397024, "sha256": "3b8470b83355ccbc527afcb7a77664bd679e63899a80e79169c016658e6b92e0", "copy_s": 27.248334169387817}
+{"event": "model_copy_file_start", "time": 1793073559.1893768, "file": "model.safetensors.index.json", "bytes": 32913}
+{"event": "model_copy_file_done", "time": 1793073559.195945, "path": "model.safetensors.index.json", "bytes": 32913, "sha256": "d2d5b2bffaf2fd27bad4452dfb4d4df80c56a4a77f1ac9c40fdd634845680cd4", "copy_s": 0.006178855895996094}
+{"event": "model_copy_file_start", "time": 1793073559.1960316, "file": "special_tokens_map.json", "bytes": 367}
+{"event": "model_copy_file_done", "time": 1793073559.2078302, "path": "special_tokens_map.json", "bytes": 367, "sha256": "f4f79e08d97f4d1c87f8d89264f525c8789da3b73b3bb55d1e12f692f41a7b1b", "copy_s": 0.011564254760742188}
+{"event": "model_copy_file_start", "time": 1793073559.2079089, "file": "tokenizer.json", "bytes": 1731}
+{"event": "model_copy_file_done", "time": 1793073559.216002, "path": "tokenizer.json", "bytes": 1731, "sha256": "af6b9e855f9db3192bd9152607708ebd7700b40f9fc5f792a26af70150a96cd5", "copy_s": 0.007884740829467773}
+{"event": "model_copy_file_start", "time": 1793073559.2160707, "file": "tokenizer_config.json", "bytes": 988}
+{"event": "model_copy_file_done", "time": 1793073559.2231395, "path": "tokenizer_config.json", "bytes": 988, "sha256": "e1912aeba4050616cbfe01b34df3f3df2818207eda0056f6eb87c2336936ea90", "copy_s": 0.00684809684753418}
+{"event": "model_copy_file_start", "time": 1793073559.2232056, "file": "vocab.json", "bytes": 94}
+{"event": "model_copy_file_done", "time": 1793073559.2306788, "path": "vocab.json", "bytes": 94, "sha256": "8141a61e47eceec466524bc178bc9c6d5076b7d1b18b456fbd3fdf66cae57f82", "copy_s": 0.0072269439697265625}
+{"event": "model_copy_complete", "time": 1793073559.2309387, "elapsed_s": 87.60585451126099, "copied_bytes": 7267271302}
+{"event": "model_copy_file_done", "time": 1793073559.1892679, "path": "model-00002-of-00002.safetensors", "bytes": 2270397024, "sha256": "3b8470b83355ccbc527afcb7a77664bd679e63899a80e79169c016658e6b92e0", "copy_s": 27.248334169387817}
+{"event": "model_copy_file_start", "time": 1793073559.1893768, "file": "model.safetensors.index.json", "bytes": 32913}
+{"event": "model_copy_file_done", "time": 1793073559.195945, "path": "model.safetensors.index.json", "bytes": 32913, "sha256": "d2d5b2bffaf2fd27bad4452dfb4d4df80c56a4a77f1ac9c40fdd634845680cd4", "copy_s": 0.006178855895996094}
+{"event": "model_copy_file_start", "time": 1793073559.1960316, "file": "special_tokens_map.json", "bytes": 367}
+{"event": "model_copy_file_done", "time": 1793073559.2078302, "path": "special_tokens_map.json", "bytes": 367, "sha256": "f4f79e08d97f4d1c87f8d89264f525c8789da3b73b3bb55d1e12f692f41a7b1b", "copy_s": 0.011564254760742188}
+{"event": "model_copy_file_start", "time": 1793073559.2079089, "file": "tokenizer.json", "bytes": 1731}
+{"event": "model_copy_file_done", "time": 1793073559.216002, "path": "tokenizer.json", "bytes": 1731, "sha256": "af6b9e855f9db3192bd9152607708ebd7700b40f9fc5f792a26af70150a96cd5", "copy_s": 0.007884740829467773}
+{"event": "model_copy_file_start", "time": 1793073559.2160707, "file": "tokenizer_config.json", "bytes": 988}
+{"event": "model_copy_file_done", "time": 1793073559.2231395, "path": "tokenizer_config.json", "bytes": 988, "sha256": "e1912aeba4050616cbfe01b34df3f3df2818207eda0056f6eb87c2336936ea90", "copy_s": 0.00684809684753418}
+{"event": "model_copy_file_start", "time": 1793073559.2232056, "file": "vocab.json", "bytes": 94}
+{"event": "model_copy_file_done", "time": 1793073559.2306788, "path": "vocab.json", "bytes": 94, "sha256": "8141a61e47eceec466524bc178bc9c6d5076b7d1b18b456fbd3fdf66cae57f82", "copy_s": 0.0072269439697265625}
+{"event": "model_copy_complete", "time": 1793073559.2309387, "elapsed_s": 87.60585451126099, "copied_bytes": 7267271302}
+Writing arc_loader.py
+Writing arc_decoder.py
+Writing arc_solver.py
+Writing starter.py
+[base] ð¦¥ Unsloth: Will patch your computer to enable 2x faster free finetuning.
+[base] ð¦¥ Unsloth Zoo will now patch everything to make training faster!
+[base] [Rank 0] start!
+[base] ==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+[base]    \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+[base] O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+[base] \        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+[base]  "-____-"     Free license: http://github.com/unslothai/unsloth
+[base] Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+[base] 
+[base] Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+[base] Loading checkpoint shards:  50%|âââââ     | 1/2 [00:01<00:01,  1.35s/it]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.10it/s]
+[base] Loading checkpoint shards: 100%|ââââââââââ| 2/2 [00:01<00:00,  1.02it/s]
+[base] Unsloth: Training embed_tokens in mixed precision to save VRAM
+[base] Unsloth: Training lm_head in mixed precision to save VRAM
+[base] ð¦¥ Unsloth: Will patch your computer to enable 2x faster free finetuning.
+[base] ð¦¥ Unsloth Zoo will now patch everything to make training faster!

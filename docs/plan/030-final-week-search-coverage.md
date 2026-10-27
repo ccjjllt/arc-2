@@ -1,6 +1,6 @@
 # 030 赛前一周研究审计与搜索覆盖
 
-日期：2026-10-27，北京时间。对应[030进展](../progress/030-final-week-search-coverage.md)。**zhuating的机制V1现已通过CLI启动，实查RUNNING、实际4×L4，尚无终态／新分数。** 原V1／023来源、面板及包均已独立审查；[执行入口](../../experiments/030/README.md)、[精确就绪清单](../../experiments/030/ready-v1.json)。此前0余额实为默认CLI账号qingyu1232，不能外推zhuating；用户指定token后核验zhuating启动前余额6.62配额小时。
+日期：2026-10-27，北京时间。对应[030进展](../progress/030-final-week-search-coverage.md)。**机制V1／362686825已COMPLETE，A/A及adapter前置通过，已启动pilot20 V1／RUNNING；尚无配对准确率或新分数。** 原V1／023来源、面板及包均已独立审查；[执行入口](../../experiments/030/README.md)、[精确就绪清单](../../experiments/030/ready-v1.json)。账户继续显式使用zhuating CLI token。
 
 ## 1 当前决策
 

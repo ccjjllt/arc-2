@@ -1,0 +1,58 @@
+{
+  "recorded_at_utc": "2026-10-27T03:58:19.130732+00:00",
+  "account": "zhuating",
+  "operation": "Official Kaggle CLI kernels push",
+  "state": "RUNNING",
+  "ref": "zhuating/arc2-030-dfs-threshold-pilot20",
+  "url": "https://www.kaggle.com/code/zhuating/arc2-030-dfs-threshold-pilot20",
+  "kernel_version": 1,
+  "script_version_id": null,
+  "notebook_sha256": "60a5454bbe50beafcf49a959d2840df6d0c321f0e8d766810c8aea0bce38cc63",
+  "platform_timeout_seconds": 7200,
+  "machine_shape": "NvidiaL4",
+  "enable_internet": false,
+  "remote_cell_sources_match_frozen": true,
+  "source_version_provenance": {
+    "recorded_at_utc": "2026-10-27T03:56:58.809176+00:00",
+    "source": "Read-only response hooks inside official Kaggle CLI",
+    "account": "zhuating",
+    "command": [
+      "kernels",
+      "pull",
+      "zhuating/arc2-030-dfs-threshold-pilot20",
+      "-p",
+      "/private/tmp/arc2-030-pilot20-v1-remote",
+      "-m"
+    ],
+    "kernels": [
+      {
+        "current_version_number": 1,
+        "slug": "arc2-030-dfs-threshold-pilot20",
+        "id": 141093278
+      }
+    ],
+    "output_files": []
+  },
+  "mechanism_prerequisite": {
+    "status": "COMPLETE",
+    "version": 1,
+    "script_version_id": 362686825,
+    "aa_control_status": "passed",
+    "artifact_verification": "mechanism-v1-summary.json",
+    "runtime_identity": "mechanism-v1-runtime-identity.json"
+  },
+  "quota_preflight": "execution/pilot20-v1-prelaunch-quota.json",
+  "planned_tasks": 20,
+  "planned_queries": 28,
+  "arm_slot_seconds": 3300,
+  "thresholds": {
+    "base": 0.2,
+    "challenger": 0.1
+  },
+  "python_hash_seed": 27030,
+  "actual_hardware": "0, NVIDIA L4, 23034 MiB\n1, NVIDIA L4, 23034 MiB\n2, NVIDIA L4, 23034 MiB\n3, NVIDIA L4, 23034 MiB\n",
+  "evaluation_gold_read": false,
+  "competition_submission_created": false,
+  "execution_started_at_utc": "2026-10-27T03:57:05.046792+00:00",
+  "startup_health": "execution/pilot20-v1-startup-health.json"
+}

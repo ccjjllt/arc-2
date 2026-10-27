@@ -1,0 +1,36 @@
+{
+  "solver_started_at": 1793071287.6434712,
+  "notebook_started": 1793071195.0377173,
+  "global_end_time": 1793074675.0377173,
+  "hard_deadline": 1793074735.0377173,
+  "session_deadline": 1793074795.0377173,
+  "input_identity": {
+    "challenges_sha256": "6808f539a46334b30964e693d82f2d9db0d2f87120b97f701bf793904175b076",
+    "manifest_sha256": "9ca236e5cbb9f1803fa0c7bf0a45a1f00e5fd55be30ca65e10c00d8f2e4426f6",
+    "n_tasks": 3,
+    "n_queries": 5,
+    "task_ids": [
+      "2ba387bc",
+      "7b0280bc",
+      "d35bdbdc"
+    ]
+  },
+  "source": "Frozen faithful 023 / original V1 312063593",
+  "timed_out": false,
+  "worker_pgid": 134,
+  "return_code": 0,
+  "status": "completed",
+  "solver_finished_at": 1793072953.6162758,
+  "finished_at": 1793072953.6565928,
+  "elapsed_s": 1758.6188757419586,
+  "completed_task_reports": 3,
+  "planned_mechanism_calls": 15,
+  "completed_mechanism_calls": 15,
+  "planned_tasks": 3,
+  "planned_queries": 5,
+  "research_only": true,
+  "gold_read": false,
+  "accuracy_computed": false,
+  "B4_computed": false,
+  "competition_submission_created": false
+}

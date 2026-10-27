@@ -2,7 +2,7 @@
 
 日期：2026-10-27，北京时间。计划见[030计划](../plan/030-final-week-search-coverage.md)。
 
-**最新状态：用户指定zhuating token及Kaggle CLI后，机制V1已启动／RUNNING，实际4×L4、固定权重复制和rank0加载正常；尚无终态或新分数。** 此前0余额实属默认CLI账号qingyu1232，zhuating启动前可用6.62小时。执行入口见[030 README](../../experiments/030/README.md)，精确产物见[ready-v1.json](../../experiments/030/ready-v1.json)。
+**最新状态：机制V1／362686825已COMPLETE，3题TTT128、15调用闭合，5query A/A和adapter前后校验通过；已启动pilot20 V1／RUNNING，尚无配对准确率或新分数。** 账户为显式zhuating CLI token。执行入口见[030 README](../../experiments/030/README.md)，精确产物见[ready-v1.json](../../experiments/030/ready-v1.json)。
 
 ## 已完成的工作
 
@@ -104,3 +104,27 @@ zhuating的CLI quota显示GPU used23.38h、remaining6.62h、total30h，刷新仍
 为在当前额度内取得先行结果，在读取任何030预测／新gold前冻结pilot20：从初轮40题按原长度tier×单多query比例、固定seed `030:pilot20:quota20261027`确定性选20题／28query，保留全部query，未强制纳入压力题。challenge SHA`94d947c6d3da5f1080700de205bb2a0791764a65b79cb2e2b181f5f91bf58f12`，包SHA`60a5454bbe50beafcf49a959d2840df6d0c321f0e8d766810c8aea0bce38cc63`；总上限7200秒、每臂3300秒，core源码与initial-v3一致。[新代理静态审查](../../experiments/030/pilot20-static-review-v1.json)无阻塞。机制终态通过、退出及重读实际余额后才能启动，当前未上传该pilot。
 
 当前先行预算机制≤1h＋pilot≤2h，按系数2最多6配额小时。pilot仍要求净增>0且至少两task贡献新增，不选其他子集或阈值救结果；但它未含2ba，不能声称覆盖已知第二槽独有正确风险，正式晋级仍需原40题压力／覆盖复核及扩展。原initial40与extension40包保留、没有重复启动或假定当前余额可支持它们。没有正式提交或自动任务；按用户既有偏好，确认健康后停止远端查询，等待用户通知结束。
+
+## 机制完成复核与pilot20启动
+
+用户通知结束后，CLI真实终态为COMPLETE。新派`r030_completed_audit_new`及`r030_provenance_new`分别独立复算结果和检查版本来源，没有沿用前一批代理，也未读取gold。
+
+机制实际**11:19:55—11:49:13北京时间**，墙钟**1758.618876秒（29.31分）**；solver return0、无硬截断。3task均128步／epoch1.0 TTT，3份adapter前后SHA相同，15/15调用完整返回。5个query的A1／A2原始rows、tokens、网格与含NLL完整签名逐项一致、prompt指纹相同，所有A对照均未触540／global边界。日志未见Traceback或OOM，训练峰值13011MiB；实际4×L4、固定原sft139及工具版本与启动记录相同。
+
+| 指标（仅各query第1批原DFS） | 原0.2 A1 | 原0.2 A2 | 0.1 B |
+| --- | --- | --- | --- |
+| 5次调用累计工作秒 | 455.228800 | 457.723504 | 654.018405 |
+| raw beam记录 | 25 | 25 | 41 |
+| 按query去重网格数之和 | 19 | 19 | 31 |
+
+B相对A均值的调用工作增加**43.2755%**，新增query-grid12、丢失0。新增分别为`7b0280bc_0`的3个、`d35bdbdc_0`的6个、`d35bdbdc_1`的3个；另两query不变。**B的7b调用542.676793秒触540秒限制**，其候选不是完整搜索结果。此处是host调用累计工作，不是全流程墙钟提速／退速结论；没有B4、正确率、oracle或公榜收益。
+
+完整临时输出23项SHA／字节核验通过，10个checkpoint文件全部匹配。CLI2.2.4的`output owner/slug/1`实际上没有将version传入请求，故没有只凭该命令声明绑定V1：在CLI同进程只读记录get_kernel的currentVersionNumber=1及全部cell源码一致，并从输出URL路径提取唯一实际**scriptVersionId362686825**；单独重取报告SHA也相同。未保存带签名的URL查询串。[版本证据](../../experiments/030/execution/mechanism-v1-provenance.json)。
+
+下载源码的loader、decoder、starter各比冻结cell body多一个末尾LF，solver精确一致；这是IPython writefile差异，逐字验证后建立[真实runtime身份](../../experiments/030/mechanism-v1-runtime-identity.json)，原包manifest保持不变，A/A标准不变。后续score_pair显式使用此身份，否则原严格字节SHA检查会正确报告不匹配。第三方运行源码保留临时目录，仓库归档保留报告、事件、调用记录及SHA。[结果汇总](../../experiments/030/mechanism-v1-summary.json)。
+
+机制前置通过后，再经显式zhuating CLI核对精确GPU余额**20264.952秒（5.629153小时）**、reserved0、无已存在pilot同名运行；足够7200秒×2的上限。[运行前额度](../../experiments/030/execution/pilot20-v1-prelaunch-quota.json)。随即在已有授权下CLI push固定SHA`60a5454b...`的pilot20，平台接受**V1**，后续status为RUNNING、currentVersionNumber=1及全部cell源内容一致。实际scriptVersionId尚未取得，保持未确认；不是正式competition submission。[启动记录](../../experiments/030/execution/pilot20-v1-launch.json)。
+
+本次没有调整阈值／seed／排序／面板，也没有读新gold。下一次用户通知pilot结束时，先核对真实终态／来源／完整输出与预算账，运行freeze_pair无gold冻结，再恢复精确官方Kaggle快照评分；机制参数用已验证runtime identity。净0／负停止0.1，不在面板救阈值；正但噪声／独立task收益／尾部预算证据不足保持hold，不直接正式晋级。
+
+pilot实际**11:57:05北京时间**boot确认4×L4、20task／28query及hash27030正确，10文件权重SHA全匹配，复制耗时87.606秒；base rank0已完成两片加载，日志未见Traceback。完整TTT、其他rank及challenger阶段尚未确认。[启动健康](../../experiments/030/execution/pilot20-v1-startup-health.json)。按既有用户偏好，确认健康后停止全部远端状态／日志查询，没有自动监控，等待用户结束通知。

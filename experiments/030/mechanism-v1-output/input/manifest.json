@@ -1,0 +1,106 @@
+{
+  "cohort": "030_known_pressure_first_batch_mechanism",
+  "n_tasks": 3,
+  "n_queries": 5,
+  "task_order": [
+    "2ba387bc",
+    "7b0280bc",
+    "d35bdbdc"
+  ],
+  "gold_read": false,
+  "source_panel_manifest_sha256": "a1cd3da40aa0cd0fc218ac121c58ef18a75c37e2f5dd71ab822fb5a9572c815f",
+  "source_panel_challenges_sha256": "38df4c7126f160f9dd045b4b0c9fb37ccb4f24dfbb51c8d32aa7b50f132ebeb9",
+  "entries": [
+    {
+      "task_id": "2ba387bc",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "L",
+      "query_group": "single",
+      "n_demo": 4,
+      "total_input_cells": 2372,
+      "demo_pairs_sha256": "00c30973965a98179460c063ef40e3906c3223729e7f34f269ed34acc61fe3e1",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "2ba387bc_0",
+          "input_sha256": "427d66b9c2a794e1ff2505e7505fcea6cc9187a2b6d1b24c99047409701a7bce"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "7b0280bc",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "M",
+      "query_group": "single",
+      "n_demo": 3,
+      "total_input_cells": 1849,
+      "demo_pairs_sha256": "c9c33d181ce419814d98053ae002b8774aa272359d2e9e415aa6f9022e02b1e6",
+      "n_test_queries": 1,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "7b0280bc_0",
+          "input_sha256": "7b366e8df0bc4355b50d72d9e9a44b48c939ba5e4b2385af1e02e4ab9055f36f"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": true,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    },
+    {
+      "task_id": "d35bdbdc",
+      "source_group": "public_evaluation_NVARC030_initial40",
+      "tier": "S",
+      "query_group": "multi",
+      "n_demo": 3,
+      "total_input_cells": 600,
+      "demo_pairs_sha256": "d500a072ca5816371f983772f0d08eefeeb8be2ce080a66000d89cf4d5dc1cf9",
+      "n_test_queries": 3,
+      "queries": [
+        {
+          "query_index": 0,
+          "query_key": "d35bdbdc_0",
+          "input_sha256": "8e79d412b58d81d2cfd39ce7be8246e2331f86ffb8a88dc03ef03699419acf1b"
+        },
+        {
+          "query_index": 1,
+          "query_key": "d35bdbdc_1",
+          "input_sha256": "b2032ad4119b7ab2e6124ebeec4be47cffbc4b68b3a7faaeb627c41e118e11e0"
+        },
+        {
+          "query_index": 2,
+          "query_key": "d35bdbdc_2",
+          "input_sha256": "e38c3173a31594838d2f3654471a39d9c26635f8b74d0ea35717d2dc6b13a117"
+        }
+      ],
+      "exposure": {
+        "in_025_scored_panel": true,
+        "in_026_training_recipe_development_panel": false,
+        "in_027_consumed_C23_confirmation": false,
+        "in_025_historical_exclusion_metadata": false,
+        "prior_019_full_public_inference": true,
+        "other_historical_query_gold_exposure": "Not exhaustively audited",
+        "upstream_model_unseen": "Not established"
+      }
+    }
+  ],
+  "exposure": "Previously scored025 tasks selected by known behavior; mechanism diagnosis only, no independent confirmation",
+  "selected_original_batch_index_per_query": 0,
+  "extra_third_batch": false
+}

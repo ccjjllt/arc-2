@@ -10,6 +10,8 @@ Notebook 发布与数据源挂载三条路只通两条，按稳定性排序：
 
 10月25日补记：025的SaveKernel明确返回400，要求kernel source小于1MB。较大challenge输入可采用确定性gzip＋base64嵌入，运行时解压并核对原始SHA；不能把拒绝请求记成已启动GPU。未压缩约2.28MB的025包改为113,733字节后已被接受。原Unsloth工具存在历史不同挂载位置，固定路径缺失时先做CPU挂载核对，按同名工具和`unsloth/__init__.py`识别原目录，不重新安装另一套依赖。
 
+10月27日补记：使用用户指定`~/.kaggle/access_token_zhuating`仅覆盖CLI子进程环境，先以`config view`确认用户名；默认CLI认证可能为qingyu1232，其额度不能代表zhuating。CLI2.2.4的`kernels output owner/slug/1`虽解析version，却未将其填入输出请求，status同样不能据后缀绑定版本；`kernels files`不返回实际scriptVersionId。030机制通过CLI原流程中的只读响应记录，核对当前版本1／全部cell源码，并从文件URL路径的`/kf/<id>/`取得唯一362686825，不保存带签名query。IPython `writefile`可能给源码补1个末尾LF，须逐字验证并记录runtime身份，不能静默放宽SHA检查或修改冻结包。
+
 
 ## 当前使用边界
 

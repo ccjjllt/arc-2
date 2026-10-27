@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "aa_control_status": "passed",
+  "planned_tasks": 3,
+  "planned_queries": 5,
+  "planned_calls": 15,
+  "completed_tasks": 3,
+  "completed_calls": 15,
+  "source": "Original DFS twice at0.2 plus once at0.1; same per-task TTT adapter",
+  "python_hash_seed": 27030,
+  "probability_cutoffs": {
+    "A1": 0.2,
+    "A2": 0.2,
+    "B": 0.1
+  },
+  "input_identity": {
+    "challenges_sha256": "6808f539a46334b30964e693d82f2d9db0d2f87120b97f701bf793904175b076",
+    "manifest_sha256": "9ca236e5cbb9f1803fa0c7bf0a45a1f00e5fd55be30ca65e10c00d8f2e4426f6",
+    "n_tasks": 3,
+    "n_queries": 5,
+    "task_ids": [
+      "2ba387bc",
+      "7b0280bc",
+      "d35bdbdc"
+    ]
+  },
+  "query_controls": [
+    {
+      "task_id": "2ba387bc",
+      "query_key": "2ba387bc_0",
+      "adapter_unchanged": true,
+      "status": "passed",
+      "reason": "exact_repeated_original_result",
+      "A1_tokens_sha256": "3b094abb57e39c3760b9f0f7aa93f5e11490d0c4606240020188148f9b52f9e5",
+      "A2_tokens_sha256": "3b094abb57e39c3760b9f0f7aa93f5e11490d0c4606240020188148f9b52f9e5",
+      "tokens_equal": true,
+      "grids_equal": true,
+      "tokens_grids_nll_equal": true,
+      "time_boundary_reached": false
+    },
+    {
+      "task_id": "7b0280bc",
+      "query_key": "7b0280bc_0",
+      "adapter_unchanged": true,
+      "status": "passed",
+      "reason": "exact_repeated_original_result",
+      "A1_tokens_sha256": "ae7c8040850e66db73f9c15743ca221807b81d007eb6ec1031eed0fbf96ec421",
+      "A2_tokens_sha256": "ae7c8040850e66db73f9c15743ca221807b81d007eb6ec1031eed0fbf96ec421",
+      "tokens_equal": true,
+      "grids_equal": true,
+      "tokens_grids_nll_equal": true,
+      "time_boundary_reached": false
+    },
+    {
+      "task_id": "d35bdbdc",
+      "query_key": "d35bdbdc_0",
+      "adapter_unchanged": true,
+      "status": "passed",
+      "reason": "exact_repeated_original_result",
+      "A1_tokens_sha256": "92019d2b20c9c1724eb84e86b5196244d2a558d81f599284002c3568c9c295e4",
+      "A2_tokens_sha256": "92019d2b20c9c1724eb84e86b5196244d2a558d81f599284002c3568c9c295e4",
+      "tokens_equal": true,
+      "grids_equal": true,
+      "tokens_grids_nll_equal": true,
+      "time_boundary_reached": false
+    },
+    {
+      "task_id": "d35bdbdc",
+      "query_key": "d35bdbdc_1",
+      "adapter_unchanged": true,
+      "status": "passed",
+      "reason": "exact_repeated_original_result",
+      "A1_tokens_sha256": "18564ead4dcf39bf92636b7c4b3161963e244cc80200abbff3ac40b1001adca8",
+      "A2_tokens_sha256": "18564ead4dcf39bf92636b7c4b3161963e244cc80200abbff3ac40b1001adca8",
+      "tokens_equal": true,
+      "grids_equal": true,
+      "tokens_grids_nll_equal": true,
+      "time_boundary_reached": false
+    },
+    {
+      "task_id": "d35bdbdc",
+      "query_key": "d35bdbdc_2",
+      "adapter_unchanged": true,
+      "status": "passed",
+      "reason": "exact_repeated_original_result",
+      "A1_tokens_sha256": "cb74476664482f15bf23b46bd525d26f52400d66bf24ee06f7104b8ae4229aca",
+      "A2_tokens_sha256": "cb74476664482f15bf23b46bd525d26f52400d66bf24ee06f7104b8ae4229aca",
+      "tokens_equal": true,
+      "grids_equal": true,
+      "tokens_grids_nll_equal": true,
+      "time_boundary_reached": false
+    }
+  ],
+  "runtime_source_sha256": {
+    "arc_decoder.py": "b38b6b1bdd5f47dbd587a9809ad2ec20cdf9ce5723736a7fb7470e9b1ce61f1d",
+    "arc_loader.py": "2c62526daba3fdd9da317e3dcb689acca8e24018e56e4c7f2c33ed15381ed8c6",
+    "arc_solver.py": "153d19a54d0be71e6e7f6375d14a351726c2bf1cbddef0a03ab2452643139169",
+    "copy_model.py": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010",
+    "starter.py": "dc2c05e965930a996a6da9755a5c5954c16519f9082ba5031142d703ae6ef80d"
+  },
+  "original_dfs_function_sha256": {
+    "2ba387bc": {
+      "turbo_dfs": "8cc597d067131726d281f2f6b0796a608daabe6e4162e1936426f529e231dfe6",
+      "inference_turbo_dfs": "da8a8e8860b26e82190b3c50abdf08a0a79957dd8630493edb7ebc8fc7f171a5"
+    },
+    "7b0280bc": {
+      "turbo_dfs": "8cc597d067131726d281f2f6b0796a608daabe6e4162e1936426f529e231dfe6",
+      "inference_turbo_dfs": "da8a8e8860b26e82190b3c50abdf08a0a79957dd8630493edb7ebc8fc7f171a5"
+    },
+    "d35bdbdc": {
+      "turbo_dfs": "8cc597d067131726d281f2f6b0796a608daabe6e4162e1936426f529e231dfe6",
+      "inference_turbo_dfs": "da8a8e8860b26e82190b3c50abdf08a0a79957dd8630493edb7ebc8fc7f171a5"
+    }
+  },
+  "checkpoint_files": {
+    "added_tokens.json": {
+      "bytes": 68,
+      "sha256": "cf1224e6a594b51a34b8b9ca6c6dce3026683777521f361e37526b8a33258bce"
+    },
+    "config.json": {
+      "bytes": 1532,
+      "sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0"
+    },
+    "generation_config.json": {
+      "bytes": 113,
+      "sha256": "fd0abf1e2baa1f9407803a83486767a6e7841164481d750fcaa9b71d31a0ab02"
+    },
+    "model-00001-of-00002.safetensors": {
+      "bytes": 4996836472,
+      "sha256": "379de219f74a1402a67d26fe7dcacdacadbf686947e08e41117dd9c884ee4529"
+    },
+    "model-00002-of-00002.safetensors": {
+      "bytes": 2270397024,
+      "sha256": "3b8470b83355ccbc527afcb7a77664bd679e63899a80e79169c016658e6b92e0"
+    },
+    "model.safetensors.index.json": {
+      "bytes": 32913,
+      "sha256": "d2d5b2bffaf2fd27bad4452dfb4d4df80c56a4a77f1ac9c40fdd634845680cd4"
+    },
+    "special_tokens_map.json": {
+      "bytes": 367,
+      "sha256": "f4f79e08d97f4d1c87f8d89264f525c8789da3b73b3bb55d1e12f692f41a7b1b"
+    },
+    "tokenizer.json": {
+      "bytes": 1731,
+      "sha256": "af6b9e855f9db3192bd9152607708ebd7700b40f9fc5f792a26af70150a96cd5"
+    },
+    "tokenizer_config.json": {
+      "bytes": 988,
+      "sha256": "e1912aeba4050616cbfe01b34df3f3df2818207eda0056f6eb87c2336936ea90"
+    },
+    "vocab.json": {
+      "bytes": 94,
+      "sha256": "8141a61e47eceec466524bc178bc9c6d5076b7d1b18b456fbd3fdf66cae57f82"
+    }
+  },
+  "accuracy_computed": false,
+  "B4_computed": false,
+  "gold_read": false,
+  "limits": "First original batch only; this is a repeat-control report, not a score or efficacy result"
+}

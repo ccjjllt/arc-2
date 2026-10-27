@@ -1,0 +1,156 @@
+{
+  "verified_at_utc": "2026-10-27T03:55:08.387731+00:00",
+  "ref": "zhuating/arc2-030-threshold-mechanism",
+  "version": 1,
+  "script_version_id": 362686825,
+  "status": "COMPLETE",
+  "aa_control_status": "passed",
+  "planned_tasks": 3,
+  "planned_queries": 5,
+  "ttt_global_steps": [
+    128
+  ],
+  "completed_calls": 15,
+  "wall_seconds": 1758.6188757419586,
+  "actual_hardware": "0, NVIDIA L4, 23034 MiB\n1, NVIDIA L4, 23034 MiB\n2, NVIDIA L4, 23034 MiB\n3, NVIDIA L4, 23034 MiB\n",
+  "DFS_call_work_seconds": {
+    "A1": 455.22880029678345,
+    "A2": 457.7235038280487,
+    "B": 654.0184051990509
+  },
+  "B_increase_vs_A_mean": 0.43275481587398223,
+  "raw_beam_counts": {
+    "A1": 25,
+    "A2": 25,
+    "B": 41
+  },
+  "query_unique_grid_counts": {
+    "A1": 19,
+    "A2": 19,
+    "B": 31
+  },
+  "query_results": [
+    {
+      "query_key": "2ba387bc_0",
+      "AA_exact": true,
+      "grid_counts": {
+        "A1": 2,
+        "A2": 2,
+        "B": 2
+      },
+      "new_grids": 0,
+      "lost_grids": 0,
+      "B_hit540": false,
+      "dfs_seconds": {
+        "A1": 16.160048007965088,
+        "A2": 16.047293186187744,
+        "B": 16.119568347930908
+      }
+    },
+    {
+      "query_key": "7b0280bc_0",
+      "AA_exact": true,
+      "grid_counts": {
+        "B": 10,
+        "A1": 7,
+        "A2": 7
+      },
+      "new_grids": 3,
+      "lost_grids": 0,
+      "B_hit540": true,
+      "dfs_seconds": {
+        "B": 542.6767928600311,
+        "A1": 375.3650052547455,
+        "A2": 377.37382078170776
+      }
+    },
+    {
+      "query_key": "d35bdbdc_0",
+      "AA_exact": true,
+      "grid_counts": {
+        "A2": 3,
+        "B": 9,
+        "A1": 3
+      },
+      "new_grids": 6,
+      "lost_grids": 0,
+      "B_hit540": false,
+      "dfs_seconds": {
+        "A2": 23.310319662094116,
+        "B": 39.48996353149414,
+        "A1": 22.55292248725891
+      }
+    },
+    {
+      "query_key": "d35bdbdc_1",
+      "AA_exact": true,
+      "grid_counts": {
+        "A2": 4,
+        "B": 7,
+        "A1": 4
+      },
+      "new_grids": 3,
+      "lost_grids": 0,
+      "B_hit540": false,
+      "dfs_seconds": {
+        "A2": 21.00074529647827,
+        "B": 35.80099153518677,
+        "A1": 21.246793508529663
+      }
+    },
+    {
+      "query_key": "d35bdbdc_2",
+      "AA_exact": true,
+      "grid_counts": {
+        "A2": 3,
+        "B": 3,
+        "A1": 3
+      },
+      "new_grids": 0,
+      "lost_grids": 0,
+      "B_hit540": false,
+      "dfs_seconds": {
+        "A2": 19.99132490158081,
+        "B": 19.93108892440796,
+        "A1": 19.9040310382843
+      }
+    }
+  ],
+  "artifact_count_verified": 23,
+  "source_cell_content_match": true,
+  "source_normalization": [
+    {
+      "file": "arc_loader.py",
+      "expected_sha256": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+      "actual_sha256": "2c62526daba3fdd9da317e3dcb689acca8e24018e56e4c7f2c33ed15381ed8c6",
+      "difference": "one trailing LF appended by IPython writefile"
+    },
+    {
+      "file": "arc_decoder.py",
+      "expected_sha256": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+      "actual_sha256": "b38b6b1bdd5f47dbd587a9809ad2ec20cdf9ce5723736a7fb7470e9b1ce61f1d",
+      "difference": "one trailing LF appended by IPython writefile"
+    },
+    {
+      "file": "arc_solver.py",
+      "expected_sha256": "153d19a54d0be71e6e7f6375d14a351726c2bf1cbddef0a03ab2452643139169",
+      "actual_sha256": "153d19a54d0be71e6e7f6375d14a351726c2bf1cbddef0a03ab2452643139169",
+      "difference": "none"
+    },
+    {
+      "file": "starter.py",
+      "expected_sha256": "84bea6067821adb107893bf5b8e2368685cc772392f57e2f9ec6418c799a8eb4",
+      "actual_sha256": "dc2c05e965930a996a6da9755a5c5954c16519f9082ba5031142d703ae6ef80d",
+      "difference": "one trailing LF appended by IPython writefile"
+    }
+  ],
+  "gate": "Mechanism repeatability prerequisite passed; proceed only to fixed same-budget pilot20 with quota recheck",
+  "accuracy_computed": false,
+  "B4_computed": false,
+  "gold_read": false,
+  "limitations": [
+    "5query first-batch diagnostic only, not fulltask or formal-score effect",
+    "B7b0280bc_0 reached540s; candidate increase is incomplete search",
+    "Increased work can remove later views/tasks under equal budget; pilot remains necessary"
+  ]
+}
