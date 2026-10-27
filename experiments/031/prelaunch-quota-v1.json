@@ -1,0 +1,20 @@
+{
+  "recorded_at_utc": "2026-10-27T06:53:18.028113+00:00",
+  "source": "Read-only response hooks inside official Kaggle CLI",
+  "account": "zhuating",
+  "command": [
+    "quota",
+    "--format",
+    "json"
+  ],
+  "kernels": [],
+  "output_files": [],
+  "authenticated_account": "zhuating",
+  "gpu_quota_seconds": {
+    "time_used": 100495.714,
+    "time_reserved": 0.0,
+    "total_time_allowed": 108000.0,
+    "is_pay_to_scale_enabled": false
+  },
+  "quota_refresh_time_utc": "2026-10-31T00:00:00"
+}

@@ -1,0 +1,96 @@
+{
+  "recorded_at_utc": "2026-10-27T07:05:17.936427+00:00",
+  "log_sha256": "2826c6eedf45d1ddbd0cc8585e37e6553427827fe8d5e9655efa99055d12fc77",
+  "boot": {
+    "event": "faithful_v1_boot",
+    "reference_version": 312063593,
+    "notebook_started": 1793084149.5632384,
+    "global_end_time": 1793087629.5632384,
+    "raw_rerun_flag": "",
+    "model_source": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1",
+    "model_target": "/kaggle/temp/arc031-model",
+    "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0",
+    "utility_root": "/kaggle/usr/lib/notebooks/sorokin/pip_install_unsloth_flash_patch",
+    "python": "3.11.13 (main, Jun  4 2025, 08:57:29) [GCC 11.4.0]",
+    "original_task_soft_limit": 1200,
+    "original_global_seconds": 42600,
+    "runtime_changes": [
+      "explicit GPU and current fixed model mount",
+      "stage identical checkpoint on local disk",
+      "original utility in child PYTHONPATH",
+      "propagate child failure"
+    ],
+    "session_seconds": 3600,
+    "solver_global_seconds": null,
+    "solver_hard_seconds": null,
+    "session_deadline": 1793087749.5632384,
+    "input_identity": {
+      "mode": "frozen_public_pair8",
+      "source_path": "/kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_evaluation_challenges.json",
+      "source_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+      "challenges_sha256": "2ffb3661a4b8588eb7dcfeb232d9ddec5de0122f343e6fc62697ed8198d8f581",
+      "n_tasks": 8,
+      "n_queries": 12,
+      "task_ids": [
+        "221dfab4",
+        "2ba387bc",
+        "35ab12c3",
+        "67e490f4",
+        "88e364bc",
+        "c7f57c3e",
+        "d35bdbdc",
+        "dbff022c"
+      ],
+      "ordinary_frozen_challenges_sha256": "2ffb3661a4b8588eb7dcfeb232d9ddec5de0122f343e6fc62697ed8198d8f581",
+      "ordinary_frozen_manifest_sha256": "fd1382585393f7953f00cf1df555b1ff9cf39976f0f93dc411187aea7bbb029d"
+    },
+    "gpu_inventory": "0, NVIDIA L4, 23034 MiB\n1, NVIDIA L4, 23034 MiB\n2, NVIDIA L4, 23034 MiB\n3, NVIDIA L4, 23034 MiB\n",
+    "gpu_inventory_return_code": 0,
+    "research_only": false,
+    "gold_read": false,
+    "python_hash_seed": 27031,
+    "ttt_budget_config": {
+      "ordinary_session_seconds": 3600,
+      "hidden_session_seconds": 43200,
+      "hidden_global_seconds": 42600,
+      "arm_slot_seconds": 1620,
+      "setup_allowance_seconds": 600,
+      "arm_order": [
+        "base",
+        "challenger"
+      ],
+      "ttt_steps": {
+        "base": 128,
+        "challenger": 64
+      },
+      "original_scheduler_steps": 128,
+      "python_hash_seed": 27031,
+      "dfs_threshold": 0.2,
+      "task_soft_limit_seconds": 1200,
+      "dfs_limit_seconds": 540,
+      "gpu_ids": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "ttt_augmentation_seed": 1,
+      "search_augmentation_seed": 2,
+      "selection": "original_B4",
+      "interpretation": "Exploratory exposed public equal-budget pair, not independent hidden-score evidence"
+    }
+  },
+  "checkpoint_10_files_match": true,
+  "base_worker_started_ranks": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "checkpoint_loading_complete_messages_observed": true,
+  "traceback_or_CUDA_OOM_observed": false,
+  "TTT_stats_observed": false,
+  "challenger64_actual_stop_verified": false,
+  "completed_run": false,
+  "remote_queries_stopped_after_startup": true
+}

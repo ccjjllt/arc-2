@@ -1,0 +1,26 @@
+{
+  "recorded_at_utc": "2026-10-27T07:05:17.937495+00:00",
+  "AST_checked": true,
+  "scripts": {
+    "prepare_panel.py": {
+      "bytes": 4958,
+      "sha256": "fca9658c8ce5460486a7da1c161a4b494ae7ebe8011105b773559bf661c303bd"
+    },
+    "prepare_candidate.py": {
+      "bytes": 22842,
+      "sha256": "819f2f0101f4d425bb825f905b947ca3e63620b7f9643911e2df37d1b6039937"
+    },
+    "score_pair.py": {
+      "bytes": 17169,
+      "sha256": "abf822e6829793a0eee15f4af0c08fb16aa3513067ef492c6784c1cd4b51970d"
+    },
+    "capture_cli_provenance.py": {
+      "bytes": 2428,
+      "sha256": "4c8926cc7ddc4fed55628babc6fdfb17c88033c3c949a04d1571f8bb648a8eba"
+    }
+  },
+  "additional_freezer": "experiments/030/freeze_pair.py",
+  "additional_freezer_sha256": "a223f904456be76465ffa1ae190e91119a018cf2b5aca6c4135018a1ce500d01",
+  "gold_read": false,
+  "scoring_executed": false
+}

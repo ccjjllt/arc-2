@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-10-27T06:55:52.927217+00:00",
+  "source": "Read-only response hooks inside official Kaggle CLI",
+  "account": "zhuating",
+  "command": [
+    "kernels",
+    "pull",
+    "zhuating/arc2-031-ttt-budget64",
+    "-p",
+    "/private/tmp/arc2-031-v1-remote",
+    "-m"
+  ],
+  "kernels": [
+    {
+      "current_version_number": 1,
+      "slug": "arc2-031-ttt-budget64",
+      "id": 141118487
+    }
+  ],
+  "output_files": []
+}

@@ -4,6 +4,8 @@
 
 ## 当前进度
 
+2026-10-27 **[031 V1](https://www.kaggle.com/code/zhuating/arc2-031-ttt-budget64)普通配对已启动**：固定8题／12query，原128步TTT对比保留128步调度的64步停止，DFS0.2／B4不变。L4×4、最多3600秒，结果尚未返回；同V1 hidden分支已冻结为完整test单遍64，通过事前条件才提交。[031进展](docs/progress/031-nvarc-ttt-budget.md)。尚未创建031正式submission，正式最好仍02330.14。
+
 **2026-10-26实查：027正式成绩29.72，较023的30.14下降0.42。** submission **57634436**已COMPLETE，绑定[精确V1／362150112](https://www.kaggle.com/code/zhuating/arc2-027-ttt-view-ensemble-formal?scriptVersionId=362150112)，私榜未返回。[实际结果](experiments/027/execution/submission-57634436-result-20261026.json)。结束本融合方案的提分晋级，保留023；C23的5→6/34没有转化为公榜收益。隐藏extra覆盖及具体退分根因未确认，不重提或事后换seed。[028 DFS机制小实验](docs/progress/028-nvarc-dfs-throughput.md)已COMPLETE／362511155：稳定候选题DFS调用耗时减1.57%，另一题表面减6.63%却改变候选池；结束固定16-token配方，不晋级正式提交。 [029诊断](docs/progress/029-nvarc-numerics-cache-diagnosis.md)已COMPLETE／362548497：差异在恢复前出现，三个受检恢复点均一致；结束这轮runtime定位，尚无提分证据。
 
 2026-10-27 **030 pilot20 V1／362694905已COMPLETE，官方快照28/28匹配，0.2与0.1最终均6/28、增2丢2净0，结束0.1配方**。oracle7→8未转化为两槽收益；覆盖25→22query，15个共同TTT task的adapter字节不同，不能纯因果归于阈值。不启动40题扩展或提交0.1。[结果汇总](experiments/030/pilot20-v1-summary.json)、[030进展](docs/progress/030-final-week-search-coverage.md)。保留原0.2／B4及023正式30.14。

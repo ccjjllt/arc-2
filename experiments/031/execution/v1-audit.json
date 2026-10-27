@@ -1,0 +1,18 @@
+{
+  "recorded_at_utc": "2026-10-27T06:57:21.887072+00:00",
+  "notebook_sha256": "10d2019a844bbd299dc6d89067f68581dce0b9f133ee4ab65358ed1068ae63fa",
+  "independent_new_agent": "r031_direction_audit_new",
+  "all_cell_and_writefile_AST_valid": true,
+  "loader_decoder_byte_equal_to_023": true,
+  "train_args_peft_params_max_score_max_seq_length_AST_equal_to_023": true,
+  "callback_CPU_manual_check": "base64_does_not_stop; challenger64_stops; max_steps64_rejected",
+  "ordinary_input_bytes_preserved": true,
+  "hidden_uses_all_actual_test": true,
+  "hidden_single_challenger_42600_from_notebook_start": true,
+  "gold_read": false,
+  "GPU_execution_verified": false,
+  "limitations": [
+    "Source/CPU checks only; actual128scheduler and64stop must be verified remotely",
+    "Small exposed regression does not guarantee hidden-score improvement"
+  ]
+}

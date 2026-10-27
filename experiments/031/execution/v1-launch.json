@@ -1,0 +1,23 @@
+{
+  "recorded_at_utc": "2026-10-27T06:56:08.983803+00:00",
+  "command": [
+    "python3",
+    "experiments/030/kaggle_zhuating.py",
+    "kernels",
+    "push",
+    "-p",
+    "/private/tmp/arc2-031-candidate-v1",
+    "-t",
+    "3600",
+    "--accelerator",
+    "NvidiaL4"
+  ],
+  "ref": "zhuating/arc2-031-ttt-budget64",
+  "kernel_version": 1,
+  "notebook_sha256": "10d2019a844bbd299dc6d89067f68581dce0b9f133ee4ab65358ed1068ae63fa",
+  "platform_response": "Kernel version1 successfully pushed",
+  "status_readback": "KernelWorkerStatus.RUNNING",
+  "all_uploaded_cell_sources_equal": true,
+  "actual_script_version_id": null,
+  "formal_submission_created": false
+}
