@@ -1,0 +1,26 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+[Rank 0] start!
+==((====))==  Unsloth 2025.9.7: Fast Qwen3 patching. Transformers: 4.55.4.
+   \\   /|    NVIDIA L4. Num GPUs = 1. Max memory: 22.034 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.8.0+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.4.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.32.post2. FA2 = True]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards:  50%|█████     | 1/2 [00:01<00:01,  1.34s/it]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.10it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:01<00:00,  1.03it/s]
+Unsloth: Training embed_tokens in mixed precision to save VRAM
+Unsloth: Training lm_head in mixed precision to save VRAM
+[Rank 0] allocated 13011MB for training
+[Rank 0] training stats for puzzle d35bdbdc: TrainOutput(global_step=128, training_loss=0.009979639202356339, metrics={'train_runtime': 81.1907, 'train_samples_per_second': 1.577, 'train_steps_per_second': 1.577, 'total_flos': 2167209704816640.0, 'train_loss': 0.009979639202356339, 'epoch': 1.0})
+{"event": "diagnostic_stage_complete", "task_id": "d35bdbdc", "stage": "seed_and_inputs_frozen"}
+{"event": "diagnostic_stage_complete", "task_id": "d35bdbdc", "stage": "prefill_shape"}
+{"event": "diagnostic_stage_complete", "task_id": "d35bdbdc", "stage": "sequential_vs_prefill"}
+{"event": "diagnostic_stage_complete", "task_id": "d35bdbdc", "stage": "snapshot_restore_0"}
+{"event": "diagnostic_stage_complete", "task_id": "d35bdbdc", "stage": "snapshot_restore_1"}
+{"event": "diagnostic_stage_complete", "task_id": "d35bdbdc", "stage": "snapshot_restore_13"}
+{"event": "diagnostic_stage_complete", "task_id": "d35bdbdc", "stage": "complete"}
+[Rank 0] done!

@@ -1,0 +1,36 @@
+{
+  "checked_at_utc": "2026-10-26T15:52:32.351685+00:00",
+  "ref": "zhuating/arc2-029-nvarc-cache-diagnostic",
+  "status": {
+    "status": "RUNNING"
+  },
+  "metadata": {
+    "id": 141011301,
+    "ref": "zhuating/arc2-029-nvarc-cache-diagnostic",
+    "title": "arc2 029 nvarc cache diagnostic",
+    "author": "zhuating",
+    "slug": "arc2-029-nvarc-cache-diagnostic",
+    "lastRunTime": "2026-10-23T15:52:31.714Z",
+    "language": "python",
+    "kernelType": "notebook",
+    "isPrivate": true,
+    "enableGpu": true,
+    "enableInternet": false,
+    "kernelDataSources": [
+      "sorokin/pip-install-unsloth-flash-patch"
+    ],
+    "competitionDataSources": [
+      "arc-prize-2026-arc-agi-2"
+    ],
+    "modelDataSources": [
+      "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+    ],
+    "enableTpu": false,
+    "currentVersionNumber": 1,
+    "dockerImage": "gcr.io/kaggle-private-byod/python@sha256:320043e14c68293f1c946585b9257123385205a58af4b94b17d31868cae4e868",
+    "machineShape": "NvidiaL4"
+  },
+  "all_cell_sources_match": true,
+  "kernel_version": 1,
+  "scope": "One startup identity read; ordinary research run only, no submission."
+}

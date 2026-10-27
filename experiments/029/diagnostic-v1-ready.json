@@ -1,0 +1,55 @@
+{
+  "status": "V1_complete_diagnostic_closed",
+  "ref": "zhuating/arc2-029-nvarc-cache-diagnostic",
+  "kernel_version": 1,
+  "notebook_sha256": "57613fc78197fbdf34c24ef9b2e26d343afca94e4554f20c5c18411a50771e4d",
+  "accepted_at_utc": "2026-10-26T15:50:47.770786+00:00",
+  "exact_cell_sources_match": true,
+  "script_version_id": 362548497,
+  "latest_startup": {
+    "checked_at_utc": "2026-10-26T15:57:26.995363+00:00",
+    "ref": "zhuating/arc2-029-nvarc-cache-diagnostic",
+    "kernel_version": 1,
+    "notebook_sha256": "57613fc78197fbdf34c24ef9b2e26d343afca94e4554f20c5c18411a50771e4d",
+    "source_all_cells_match": true,
+    "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0",
+    "actual_hardware": "4x NVIDIA L4,23034MiB each; one solver worker",
+    "model_copy_bytes": 7267271302,
+    "model_copy_seconds": 69.59818172454834,
+    "checkpoint_load_observed": true,
+    "started_worker_ranks": [
+      0
+    ],
+    "traceback_observed": false,
+    "ttt_completed_observed": false,
+    "diagnostic_stage_observed": false,
+    "scope": "Startup only. No completed TTT, diagnosis, root cause or score claim. Remote reads stopped."
+  },
+  "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0",
+  "budget": {
+    "session_seconds": 2400,
+    "global_seconds": 2220,
+    "hard_seconds": 2340
+  },
+  "formal_submission_created": false,
+  "root_cause": "Computation-path differences occur before restore; no restore discrepancy observed at tested0/1/13. Exact sufficient cause of028 grid replacement remains unproved.",
+  "accuracy_improvement": "unmeasured",
+  "next_action": "Retain original023 public30.14 solver. End this runtime diagnosis, no automatic new GPU or submission. Return to one frozen NVARC candidate-coverage/final-two-slot experiment with an actual budget and score comparison; not designed or run here.",
+  "outcome_evidence": "execution/diagnostic-v1-outcome.json",
+  "formal_baseline_public_score": "30.14",
+  "previous_028_fixed16_recipe": "closed; diagnosis does not promote it",
+  "model_copy_observed": {
+    "bytes": 7267271302,
+    "seconds": 69.59818172454834,
+    "complete": true
+  },
+  "remote_monitoring_active": false,
+  "startup_health_evidence": "execution/startup-health-v1.json",
+  "completed_result": {
+    "status": "COMPLETE",
+    "summary": "diagnostic-v1-summary.json",
+    "wall_seconds": 342.4685068130493,
+    "diagnostic_seconds": 41.62183928489685,
+    "decision": "close029_diagnostic_and_keep028_fixed16_recipe_closed"
+  }
+}

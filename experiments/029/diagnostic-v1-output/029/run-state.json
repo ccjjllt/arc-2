@@ -1,0 +1,31 @@
+{
+  "started_at": 1793030050.2144375,
+  "notebook_started": 1793029962.5842314,
+  "session_deadline": 1793032362.5842314,
+  "global_end_time": 1793032182.5842314,
+  "hard_deadline": 1793032302.5842314,
+  "input_identity": {
+    "n_tasks": 1,
+    "n_queries": 3,
+    "measured_queries": 1,
+    "task_ids": [
+      "d35bdbdc"
+    ],
+    "challenges_sha256": "af5e81c69f7fcd38e46866c55a3dd4348df25acc7c27e4e9b0ffb2d298583489",
+    "source": "Previously used028 affected development task selected for numerical diagnosis, not accuracy validation"
+  },
+  "status": "complete",
+  "research_only": true,
+  "gold_read": false,
+  "policy": "Same-adapter root, fixed-token and original-snapshot restore diagnosis; no strategy selection",
+  "model_source": "/kaggle/input/models/sorokin/qwen3_4b_grids15_sft139/transformers/bfloat16/1",
+  "model_config_sha256": "932e9430395ba3eea4087cba1769241bc7d0dc8d574846862d6983659456a2d0",
+  "return_code": 0,
+  "finished_at": 1793030305.052738,
+  "elapsed_s": 342.4685068130493,
+  "completed_task_reports": 1,
+  "planned_tasks": 1,
+  "challenge_queries": 3,
+  "measured_queries_planned": 1,
+  "formal_submission_created": false
+}

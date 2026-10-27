@@ -1,0 +1,23 @@
+{
+  "reviewed_at_utc": "2026-10-26T15:55:31.693660+00:00",
+  "scope": "Manual local source and frozen notebook inspection; not GPU execution or a test suite.",
+  "notebook_sha256": "57613fc78197fbdf34c24ef9b2e26d343afca94e4554f20c5c18411a50771e4d",
+  "notebook_bytes": 71158,
+  "input_tasks": 1,
+  "source_queries": 3,
+  "measured_queries": 1,
+  "query_answer_fields": 0,
+  "original_AST_identical": [
+    "turbo_dfs",
+    "inference_turbo_dfs",
+    "calc_scores",
+    "QwenDataCollatorForCompletionOnlyLM"
+  ],
+  "top_level_cross_cell_unbound_references": [],
+  "worker_count": 1,
+  "inference_mode_preserved": true,
+  "diagnostic_has_no_gold_or_accuracy": true,
+  "snapshot_source": "Original sequential target calls at0/1/13; deep clone; no full-prefill snapshot for restore isolation",
+  "static_independent_review": "Fresh029 scope agent reviewed actual notebook+embedded modules; no startup blocker. C prefix/slot total-KV interpretation limitation retained in progress.",
+  "performance_or_root_cause_verified": false
+}

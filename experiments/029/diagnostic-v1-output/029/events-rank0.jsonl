@@ -1,0 +1,4 @@
+{"timestamp": 1793030167.919289, "rank": 0, "event": "task_start", "task_id": "d35bdbdc", "global_end_time": 1793032182.5842314}
+{"timestamp": 1793030167.9600227, "rank": 0, "event": "ttt_start", "task_id": "d35bdbdc", "global_end_time": 1793032182.5842314}
+{"timestamp": 1793030253.9415503, "rank": 0, "event": "ttt_end", "task_id": "d35bdbdc", "global_end_time": 1793032182.5842314, "global_step": 128, "training_loss": 0.009979639202356339}
+{"timestamp": 1793030296.172474, "rank": 0, "event": "task_end", "task_id": "d35bdbdc", "global_end_time": 1793032182.5842314, "elapsed_s": 128.25318384170532}

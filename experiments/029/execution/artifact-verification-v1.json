@@ -1,0 +1,83 @@
+{
+  "checked_at_utc": "2026-10-26T16:06:29.287595+00:00",
+  "all_match": true,
+  "verified_files": 15,
+  "frozen_source_files_match": true,
+  "files": [
+    {
+      "file": "boot.json",
+      "bytes": 1655,
+      "sha256": "bf38e4fa671921c293db87534eda2f2f7f0eb5c25a9715544456b79f23e9d43e"
+    },
+    {
+      "file": "diagnostic/d35bdbdc.json",
+      "bytes": 596378,
+      "sha256": "ffc7c0cd73f775476e60a71eadea05edd0dfa09b001deae1ee040cf61345b2c7"
+    },
+    {
+      "file": "events-rank0.jsonl",
+      "bytes": 604,
+      "sha256": "d301100cb30c39df22f0e51dd702ccc6b5125bfcb142f35b6d0182c730bc26f1"
+    },
+    {
+      "file": "input/challenges.json",
+      "bytes": 2119,
+      "sha256": "af5e81c69f7fcd38e46866c55a3dd4348df25acc7c27e4e9b0ffb2d298583489"
+    },
+    {
+      "file": "input/runtime-manifest.json",
+      "bytes": 306,
+      "sha256": "295f024e758c62eda841841806a918922210882c1bab3f9f9bfca1dcce49c605"
+    },
+    {
+      "file": "model-copy.json",
+      "bytes": 2292,
+      "sha256": "7fb5167effc58bc96cfe6e3aa8b4615b6ca48836e407015bc21cb1e7e1292b7f"
+    },
+    {
+      "file": "mount-diagnostics.json",
+      "bytes": 896,
+      "sha256": "a1ac575a0312d65d77f6f2d9a38b951fdd571f0855369a5b825c98b3ad877a21"
+    },
+    {
+      "file": "sources/arc_decoder.py",
+      "bytes": 4157,
+      "sha256": "b38b6b1bdd5f47dbd587a9809ad2ec20cdf9ce5723736a7fb7470e9b1ce61f1d"
+    },
+    {
+      "file": "sources/arc_loader.py",
+      "bytes": 12641,
+      "sha256": "2c62526daba3fdd9da317e3dcb689acca8e24018e56e4c7f2c33ed15381ed8c6"
+    },
+    {
+      "file": "sources/arc_solver.py",
+      "bytes": 14585,
+      "sha256": "954e80f9e60e32d60aa564dff6bcda08dcec1b5a91f164e48217eaaa1a539661"
+    },
+    {
+      "file": "sources/copy_model.py",
+      "bytes": 3253,
+      "sha256": "5d51c4e6698ce5d574dd9997b140e0e370ea611fbee05d1de197b665a8458010"
+    },
+    {
+      "file": "sources/dfs_path_reuse.py",
+      "bytes": 13109,
+      "sha256": "b658d01533d599cc4074caf3f60bceb0b98cd61b5d87de3cc0e6ea8b9dce2e34"
+    },
+    {
+      "file": "sources/numerics_diagnostic.py",
+      "bytes": 18114,
+      "sha256": "a4b8d78431177f8e28c4e4428039cbdb1cfc66d18699c626c9e3a486f55eacb9"
+    },
+    {
+      "file": "sources/starter.py",
+      "bytes": 1403,
+      "sha256": "fb29d76fa4571aed5c8eaf7fa9e486e1121ce5cd31169aebb660bb89b923db28"
+    },
+    {
+      "file": "worker.log",
+      "bytes": 2068,
+      "sha256": "d595a0c18bc2634957cd232720758c71343db4d65f8e2939897ab61079f1a428"
+    }
+  ]
+}

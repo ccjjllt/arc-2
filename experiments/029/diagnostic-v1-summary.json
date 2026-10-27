@@ -1,0 +1,191 @@
+{
+  "created_at_utc": "2026-10-26T16:06:29.288728+00:00",
+  "ref": "zhuating/arc2-029-nvarc-cache-diagnostic",
+  "kernel_version": 1,
+  "script_version_id": 362548497,
+  "status": "COMPLETE",
+  "notebook_sha256": "57613fc78197fbdf34c24ef9b2e26d343afca94e4554f20c5c18411a50771e4d",
+  "input_sha256": "af5e81c69f7fcd38e46866c55a3dd4348df25acc7c27e4e9b0ffb2d298583489",
+  "source_tasks": 1,
+  "source_queries": 3,
+  "measured_queries": 1,
+  "ttt_steps": 128,
+  "training_loss": 0.009979639202356339,
+  "wall_seconds": 342.4685068130493,
+  "diagnostic_seconds": 41.62183928489685,
+  "start_Beijing": "2026-10-26T23:52:42.584231+08:00",
+  "finish_Beijing": "2026-10-26T23:58:25.052738+08:00",
+  "actual_hardware": "4xNVIDIA L4,23034MiB each; one active worker",
+  "actual_fastdecode_function": {
+    "module": "unsloth.models.qwen3",
+    "name": "Qwen3Attention_fast_forward_inference",
+    "code_sha256": "80ac01431b8f780b3f5f49bd3b14f77cd6176702b7583b084e7334c4e499afb1",
+    "source_sha256": "383acf33b9c2eb80ac56461cec1e1f36b5e010974464ffc3ce24e430d22edf91"
+  },
+  "diagnostic_forward_calls": 66,
+  "peak_allocated_MiB": 13034.61865234375,
+  "all_stages_complete": true,
+  "no_traceback_or_OOM": true,
+  "root": {
+    "prompt_length": 794,
+    "extended_length": 810,
+    "repeat_max_logit_difference": 0.0,
+    "repeat_max_KV_difference": 0.0,
+    "extended_max_logit_difference": 0.5,
+    "extended_max_KV_difference": 2.0,
+    "layers_with_prefix_KV_difference": 36,
+    "root_top1_changed_rows": []
+  },
+  "fixed_path": {
+    "logit_positions": 17,
+    "forced_tokens": 16,
+    "repeat_max_logit_difference": 0.0,
+    "repeat_max_KV_difference": 0.0,
+    "prefill_max_logit_difference": 1.0,
+    "prefill_max_KV_difference": 2.0,
+    "rows": [
+      {
+        "row": 0,
+        "last16_sequential_nll": 0.04094940796494484,
+        "last16_full_prefill_nll": 0.04094821587204933,
+        "last16_nll_difference": -1.1920928955078125e-06,
+        "max_abs_cumulative_nll_difference": 5.602836608886719e-06,
+        "top1_changed_positions": [],
+        "full_order_changed_positions": [
+          1,
+          4,
+          5,
+          9,
+          14,
+          15
+        ]
+      },
+      {
+        "row": 1,
+        "last16_sequential_nll": 1.318167805671692,
+        "last16_full_prefill_nll": 1.318677306175232,
+        "last16_nll_difference": 0.0005095005035400391,
+        "max_abs_cumulative_nll_difference": 0.0005096197128295898,
+        "top1_changed_positions": [],
+        "full_order_changed_positions": [
+          2,
+          3,
+          4,
+          5,
+          7,
+          10,
+          14,
+          15,
+          16
+        ]
+      },
+      {
+        "row": 2,
+        "last16_sequential_nll": 2.682514190673828,
+        "last16_full_prefill_nll": 2.6825149059295654,
+        "last16_nll_difference": 7.152557373046875e-07,
+        "max_abs_cumulative_nll_difference": 1.072752638719976e-06,
+        "top1_changed_positions": [],
+        "full_order_changed_positions": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          12
+        ]
+      },
+      {
+        "row": 3,
+        "last16_sequential_nll": 1.7808141708374023,
+        "last16_full_prefill_nll": 1.7814650535583496,
+        "last16_nll_difference": 0.0006508827209472656,
+        "max_abs_cumulative_nll_difference": 0.0006510019302368164,
+        "top1_changed_positions": [],
+        "full_order_changed_positions": [
+          0,
+          2,
+          8,
+          11,
+          15
+        ]
+      }
+    ]
+  },
+  "restore_points": [
+    {
+      "depth": 0,
+      "position": 794,
+      "snapshot_length": 794,
+      "returned_effective_length": 795,
+      "first_paged_shape": [
+        1307,
+        4,
+        8,
+        128
+      ],
+      "inplace_repeat_max_logit_difference": 0.0,
+      "restored_max_logit_difference": 0.0,
+      "restored_max_KV_difference": 0.0,
+      "copied_prefix_max_KV_difference": 0.0
+    },
+    {
+      "depth": 1,
+      "position": 795,
+      "snapshot_length": 795,
+      "returned_effective_length": 796,
+      "first_paged_shape": [
+        1308,
+        4,
+        8,
+        128
+      ],
+      "inplace_repeat_max_logit_difference": 0.0,
+      "restored_max_logit_difference": 0.0,
+      "restored_max_KV_difference": 0.0,
+      "copied_prefix_max_KV_difference": 0.0
+    },
+    {
+      "depth": 13,
+      "position": 807,
+      "snapshot_length": 807,
+      "returned_effective_length": 808,
+      "first_paged_shape": [
+        1320,
+        4,
+        8,
+        128
+      ],
+      "inplace_repeat_max_logit_difference": 0.0,
+      "restored_max_logit_difference": 0.0,
+      "restored_max_KV_difference": 0.0,
+      "copied_prefix_max_KV_difference": 0.0
+    }
+  ],
+  "comparability_with028": {
+    "same_target_prefix": true,
+    "old_training_loss": 0.010142829269170761,
+    "new_training_loss": 0.009979639202356339,
+    "old_draft_grid_sha256": "41db25948143aeaaaf982445aaba3c6fe715e5caad477efab3b0a93ac4d31945",
+    "new_draft_grid_sha256": "611e6dfba20cb80bb22688ac5d76c84898f0bf44a8e09f64899697828b83d197",
+    "same_draft_grid": false,
+    "note": "New TTT adapter, not an exact replay of028 weights/draft; all029 conditions share this same new adapter."
+  },
+  "artifact_verification": "execution/artifact-verification-v1.json",
+  "findings": [
+    "Computation-path/shape differences are observed before DFS skip or snapshot restore.",
+    "No discrepancy observed in tested original-sequential snapshot restoration atdepth0/1/13.",
+    "All4x17 ARC top1 choices match in this fixed path; max logit drift is not proof of changed search decisions.",
+    "Replacing only root logits would leave36layers of different prefix KV; it is not an established repair."
+  ],
+  "limitations": [
+    "Not a sufficient causal replay of028 candidate replacement.",
+    "Three fixed restore points do not certify every batched DFS branch or full-prefill snapshot.",
+    "No B4, oracle, accuracy, new prediction selection or leaderboard score measured."
+  ],
+  "decision": "close029_diagnostic_and_keep028_fixed16_recipe_closed",
+  "next_action": "Retain original023 public30.14 solver. End this runtime diagnosis, no automatic new GPU or submission. Return to one frozen NVARC candidate-coverage/final-two-slot experiment with an actual budget and score comparison; not designed or run here.",
+  "formal_baseline_public_score": "30.14",
+  "formal_submission_created": false
+}

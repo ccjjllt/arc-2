@@ -1,0 +1,10 @@
+{
+  "n_tasks": 1,
+  "n_queries": 3,
+  "measured_queries": 1,
+  "task_ids": [
+    "d35bdbdc"
+  ],
+  "challenges_sha256": "af5e81c69f7fcd38e46866c55a3dd4348df25acc7c27e4e9b0ffb2d298583489",
+  "source": "Previously used028 affected development task selected for numerical diagnosis, not accuracy validation"
+}

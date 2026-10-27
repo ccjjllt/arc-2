@@ -1,0 +1,24 @@
+{
+  "requested_at_utc": "2026-10-26T15:50:43.453842+00:00",
+  "account": "zhuating",
+  "ref": "zhuating/arc2-029-nvarc-cache-diagnostic",
+  "notebook_sha256": "57613fc78197fbdf34c24ef9b2e26d343afca94e4554f20c5c18411a50771e4d",
+  "package_directory": "/private/tmp/arc2-029-cache-diagnostic-v1",
+  "state": "accepted",
+  "quota_before": {
+    "total_time_allowed": 108000.0,
+    "time_used": 83429.33,
+    "time_reserved": 0.0,
+    "available_seconds": 24570.67
+  },
+  "session_timeout_seconds": 2400,
+  "expected_version": 1,
+  "purpose": "User-authorized one-task same-adapter numerical/cache diagnosis; no new offline weight, B4, accuracy evaluation or competition submission.",
+  "response": {
+    "ref": "/code/zhuating/arc2-029-nvarc-cache-diagnostic",
+    "url": "https://www.kaggle.com/code/zhuating/arc2-029-nvarc-cache-diagnostic",
+    "versionNumber": 1,
+    "kernelId": 141011301
+  },
+  "returned_at_utc": "2026-10-26T15:50:47.770786+00:00"
+}

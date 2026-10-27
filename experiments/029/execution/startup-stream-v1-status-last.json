@@ -1,0 +1,12 @@
+{
+  "checked_at_utc": "2026-10-26T15:57:26.995363+00:00",
+  "ref": "zhuating/arc2-029-nvarc-cache-diagnostic",
+  "kernel_version": 1,
+  "events_read": 78,
+  "stop": "checkpoint_load_observed",
+  "model_loaded_marker_seen": true,
+  "ttt_stats_seen": false,
+  "diagnostic_stage_seen": false,
+  "traceback_seen": false,
+  "scope": "One bounded manual startup stream. Stop remote reads after normal startup; no monitoring."
+}
