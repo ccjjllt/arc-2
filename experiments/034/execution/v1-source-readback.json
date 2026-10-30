@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-10-29T14:36:27.423399+00:00",
+  "source": "Read-only response hooks inside official Kaggle CLI",
+  "account": "zhuating",
+  "command": [
+    "kernels",
+    "pull",
+    "zhuating/arc2-034-visible-cell-cost-per-query-queue",
+    "-p",
+    "/private/tmp/r034-v1-remote",
+    "-m"
+  ],
+  "kernels": [
+    {
+      "current_version_number": 1,
+      "slug": "arc2-034-visible-cell-cost-per-query-queue",
+      "id": 141520332
+    }
+  ],
+  "output_files": []
+}

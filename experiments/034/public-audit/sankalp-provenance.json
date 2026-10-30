@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-10-29T14:21:05.947250+00:00",
+  "source": "Read-only response hooks inside official Kaggle CLI",
+  "account": "zhuating",
+  "command": [
+    "kernels",
+    "pull",
+    "sankalpsthakur/arc-agi2-nvarc-perfpatch-baseline-v1",
+    "-p",
+    "/private/tmp/r034-sankalp-source",
+    "-m"
+  ],
+  "kernels": [
+    {
+      "current_version_number": 1,
+      "slug": "arc-agi2-nvarc-perfpatch-baseline-v1",
+      "id": 129406570
+    }
+  ],
+  "output_files": []
+}

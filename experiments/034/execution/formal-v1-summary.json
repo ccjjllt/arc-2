@@ -1,0 +1,22 @@
+{
+  "status": "accepted_pending",
+  "ref": 57787438,
+  "kernel_version": 1,
+  "script_version_id": 363524873,
+  "submitted_at_utc": "2026-10-30T00:46:34.843000",
+  "submitted_at_beijing": "2026-10-30 08:46:34",
+  "account": "zhuating",
+  "team": "ccjjllt",
+  "source_url": "https://www.kaggle.com/code/zhuating/arc2-034-visible-cell-cost-per-query-queue?scriptVersionId=363524873",
+  "file": "submission.json",
+  "public_score": null,
+  "private_score": null,
+  "binding_verified": true,
+  "reference_best": {
+    "experiment": "033",
+    "ref": 57737364,
+    "public_score": 30.56
+  },
+  "score_retention": "Strict public>30.56 only; otherwise end fixed queue recipe",
+  "no_auto_monitoring": true
+}

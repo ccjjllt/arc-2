@@ -1,0 +1,48 @@
+{
+  "prepared_at_utc": "2026-10-29T14:32:29.844582+00:00",
+  "status": "prepared_not_launched",
+  "ref": "zhuating/arc2-034-queue-query-cost",
+  "notebook_sha256": "d748c29ea86260a2827ca91a9839e96f55910b579d9e1087fdbd163ca80091af",
+  "notebook_bytes": 50190,
+  "reference033": {
+    "ref": "mikelou1/arc-agi2-lb33-89-minimal-perfpatch",
+    "kernel_version": 2,
+    "script_version_id": 335137615,
+    "notebook_sha256": "ee49384a10a4296dc0bf0670ae67325521f798d5337ed57bee50c8a443a378f4"
+  },
+  "runtime_source_sha256": {
+    "arc_loader.py": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+    "arc_decoder.py": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+    "arc_solver.py": "4308e294f1feff5ce48148658ca8f7186cff2ecc5600fa3c799a2c487acdbec5",
+    "starter.py": "37c749995dd59d9eafceac87aa120e317be4fbfb5a383cda7ca9590eaaebfe62"
+  },
+  "solver_loader_decoder_byte_unchanged": true,
+  "factor": "Global task queue order by exact visible_cell_cost/n_test_queries, ties task_id",
+  "preserved": [
+    "original033 GPU-NLL",
+    "TTT128, augmentation and schedule",
+    "DFS0.2",
+    "B4",
+    "4workers",
+    "hidden42600 global and1200soft task budget",
+    "original hash behavior"
+  ],
+  "ordinary_smoke": {
+    "task_ids": [
+      "2ba387bc",
+      "d35bdbdc"
+    ],
+    "n_tasks": 2,
+    "n_queries": 4,
+    "global_seconds": 720,
+    "planned_CLI_session_seconds": 840,
+    "gold_read": false
+  },
+  "hidden": {
+    "all_actual_test_tasks": true,
+    "global_seconds": 42600
+  },
+  "efficacy": "not_run_not_proven",
+  "GPU_started": false,
+  "submission_created": false
+}

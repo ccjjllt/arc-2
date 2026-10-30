@@ -1,0 +1,14 @@
+{
+  "recorded_at_utc": "2026-10-29T14:39:19.956421+00:00",
+  "source": "New Kaggle read-only connector, after same-team submission list identity check",
+  "same_team_records_match_CLI": true,
+  "refs": [
+    57694986,
+    57737364
+  ],
+  "method": "download_competition_submission",
+  "result": "Permission submissions.download was denied for both",
+  "files_downloaded": false,
+  "bypass_attempted": false,
+  "hidden_prediction_coverage": "unconfirmed"
+}

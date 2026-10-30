@@ -1,0 +1,21 @@
+{
+  "checked_at_utc": "2026-10-28T12:47:21.317311+00:00",
+  "submission": {
+    "ref": 57694986,
+    "file_name": "submission.json",
+    "date": "2026-10-27T08:31:08.083000",
+    "description": "032 user requested direct highest-public-notebook submission: Failed in AIMO exact V1, no research modifications.",
+    "status": "SubmissionStatus.COMPLETE",
+    "public_score": "28.89",
+    "private_score": null,
+    "team_name": "ccjjllt",
+    "submitted_by": "zhuating",
+    "url": "/code/koushikrudra/failed-in-aimo?scriptVersionId=312063593",
+    "error_description": null
+  },
+  "exact_binding_verified": true,
+  "public_score_change_vs_023": -1.25,
+  "public_score_change_vs_external_historical_33_89": -5.0,
+  "hidden_runtime_hardware_and_coverage": "unconfirmed",
+  "decision": "Retain02330.14; do not repeat same originalV1 and do not infer a single causal reason from independent hidden runs"
+}

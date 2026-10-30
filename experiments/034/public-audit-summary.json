@@ -1,0 +1,64 @@
+{
+  "recorded_at_utc": "2026-10-29T14:39:19.956095+00:00",
+  "source": "New independent agents via authorized officialKaggle CLI",
+  "entries": [
+    {
+      "ref": "evgendvorkin/arc-2-2026-4-4-local-boyko-nvarc-astra",
+      "decision": "New weights, half-cost double pass/pool and CPU expert; multiple changes, excluded",
+      "notebook_sha256": "c8e0c2d3a44a958e6fcce61b17ec29dfdc5f76896b981898e6175e383b6659e2",
+      "notebook_bytes": 90501,
+      "current_versions": [
+        21
+      ]
+    },
+    {
+      "ref": "konstantinboyko/failed-in-aimo-on-docker-v169-v03",
+      "decision": "Weights/environment/1800soft budget and CPU NLL differ; multiple changes, excluded",
+      "notebook_sha256": "1721b2f7633caec0139df2d1e300301a9004e450e4fabffc9f5453f0ff2de278",
+      "notebook_bytes": 55518,
+      "current_versions": [
+        1
+      ]
+    },
+    {
+      "ref": "sankalpsthakur/arc-agi2-nvarc-perfpatch-baseline-v1",
+      "decision": "Exact same source as033, excluded unchanged resubmission",
+      "notebook_sha256": "ee49384a10a4296dc0bf0670ae67325521f798d5337ed57bee50c8a443a378f4",
+      "notebook_bytes": 41799,
+      "current_versions": [
+        1
+      ]
+    },
+    {
+      "ref": "fummyz/arc-agi-2-public-nvarc-perfpatch",
+      "decision": "Exact same source as033, excluded unchanged resubmission",
+      "notebook_sha256": "ee49384a10a4296dc0bf0670ae67325521f798d5337ed57bee50c8a443a378f4",
+      "notebook_bytes": 41799,
+      "current_versions": [
+        1
+      ]
+    },
+    {
+      "ref": "manderson240/arc-agi-2-fork-lb33-89-20260903",
+      "decision": "Complex ranking and independent DSL, excluded",
+      "notebook_sha256": "143594ed179be0b652b8141dcb56e3283264930d2251803052774baf150efec1",
+      "notebook_bytes": 63567,
+      "current_versions": [
+        19
+      ]
+    },
+    {
+      "ref": "yusuketogashi/arc-baseline-rebuild",
+      "current_kernel_version": 101,
+      "observed_status": "ERROR",
+      "decision": "Latest multiple changes/ERROR; exactV1 andV100 returned404, no enumeration continued",
+      "notebook_sha256": "1341ded4bf7ab43ccc421290801d05589d4dc08cd636fb7b1347ddb2324b98e9"
+    },
+    {
+      "ref": "dalezhong/arc-agi2-nvarc-plus-ckpt",
+      "observed_status": "HTTP403",
+      "decision": "Source unavailable, not referenced; no alternate authorization bypass attempted"
+    }
+  ],
+  "no_GPU_or_submission_or_query_gold": true
+}

@@ -1,6 +1,10 @@
 # 文档索引
 
-当前交付：[032计划](plan/032-highest-notebook-submission.md)与[032进展](progress/032-highest-notebook-submission.md)：按用户要求直接提交公开最高排序Failed in AIMO原V1／312063593，submission57694986已受理、PENDING，真实分数未返回。没有使用023副本或031改动，正式最好仍02330.14。
+当前正式最好：[033进展](progress/033-nvarc-gpu-nll-submission.md)，57737364 COMPLETE30.56、精确V2／335137615绑定通过，比02330.14提高0.42，私榜未返回。
+
+当前交付：[034计划](plan/034-nvarc-query-cost-queue.md)与[034进展](progress/034-nvarc-query-cost-queue.md)：从033仅改全局queue按visible cells/query排序；普通V1已COMPLETE，两题TTT128、16批及源身份通过，正式 **57787438／PENDING** 精确绑定363524873，尚无新分数。只有实际公榜>30.56才保留；CPU回放不是隐藏提分证明，全扫尾部有4.64%代价。
+
+[032进展](progress/032-highest-notebook-submission.md)：原作者V1／312063593正式57694986已COMPLETE28.89，低于02330.14，保留023、不重提原V1。
 
 上轮[031进展](progress/031-nvarc-ttt-budget.md)：V1／362740379 COMPLETE，完整12query两臂均2/12、净0，结束64步配方、不提交。
 
@@ -47,7 +51,9 @@
 | 029 NVARC数值与缓存定位 | [plan/029-nvarc-numerics-cache-diagnosis.md](plan/029-nvarc-numerics-cache-diagnosis.md) | [progress/029-nvarc-numerics-cache-diagnosis.md](progress/029-nvarc-numerics-cache-diagnosis.md)；V1 COMPLETE／362548497；差异早于restore，受检三点0差，诊断结束；不证明028充分根因／提分 |
 | 030 赛前一周研究审计与搜索覆盖 | [plan/030-final-week-search-coverage.md](plan/030-final-week-search-coverage.md) | [progress/030-final-week-search-coverage.md](progress/030-final-week-search-coverage.md)；pilot V1 COMPLETE／362694905，6/28→6/28、净0，结束0.1，保留原0.2／B4 |
 | 031 原NVARC TTT预算 | [plan/031-nvarc-ttt-budget.md](plan/031-nvarc-ttt-budget.md) | [progress/031-nvarc-ttt-budget.md](progress/031-nvarc-ttt-budget.md)；V1 COMPLETE／362740379，2/12→2/12净0，结束64步、不提交 |
-| 032 最高分Notebook直接提交 | [plan/032-highest-notebook-submission.md](plan/032-highest-notebook-submission.md) | [progress/032-highest-notebook-submission.md](progress/032-highest-notebook-submission.md)；原作者V1／312063593，submission57694986受理、PENDING，无新分数 |
+| 032 最高分Notebook直接提交 | [plan/032-highest-notebook-submission.md](plan/032-highest-notebook-submission.md) | [progress/032-highest-notebook-submission.md](progress/032-highest-notebook-submission.md)；原作者V1／312063593，57694986 COMPLETE28.89，保留02330.14 |
+| 033 NVARC GPU NLL实现 | [plan/033-nvarc-gpu-nll-submission.md](plan/033-nvarc-gpu-nll-submission.md) | [progress/033-nvarc-gpu-nll-submission.md](progress/033-nvarc-gpu-nll-submission.md)；57737364 COMPLETE30.56，新正式最好 |
+| 034 NVARC query成本队列 | [plan/034-nvarc-query-cost-queue.md](plan/034-nvarc-query-cost-queue.md) | [progress/034-nvarc-query-cost-queue.md](progress/034-nvarc-query-cost-queue.md)；普通V1通过，正式57787438 PENDING |
 
 ## 操作与维护
 

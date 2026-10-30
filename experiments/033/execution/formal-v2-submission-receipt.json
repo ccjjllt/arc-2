@@ -1,0 +1,41 @@
+{
+  "recorded_at_utc": "2026-10-28T13:02:03.625038+00:00",
+  "account": "zhuating",
+  "source": "Response hooks inside official Kaggle CLI",
+  "command": [
+    "competitions",
+    "submit",
+    "arc-prize-2026-arc-agi-2",
+    "-k",
+    "mikelou1/arc-agi2-lb33-89-minimal-perfpatch",
+    "-v",
+    "2",
+    "-f",
+    "submission.json",
+    "-m",
+    "033 NVARC public GPU NLL implementation V2; original TTT128 DFS0.2 B4 and budgets; exploratory formal comparison, score gain unverified."
+  ],
+  "code_submission_requests": [
+    {
+      "competition": "arc-prize-2026-arc-agi-2",
+      "kernel_owner": "mikelou1",
+      "kernel_slug": "arc-agi2-lb33-89-minimal-perfpatch",
+      "kernel_version": 2,
+      "file_name": "submission.json",
+      "description": "033 NVARC public GPU NLL implementation V2; original TTT128 DFS0.2 B4 and budgets; exploratory formal comparison, score gain unverified."
+    }
+  ],
+  "code_submission_responses": [
+    {
+      "ref": 57737364,
+      "message": ""
+    }
+  ],
+  "submissions": [],
+  "limits": {
+    "num_today": 1,
+    "num_total": 14,
+    "num_allowed_now": 0,
+    "limited_by_total": false
+  }
+}

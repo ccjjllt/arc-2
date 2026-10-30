@@ -1,0 +1,30 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-u",
+    "starter.py",
+    "--end-time",
+    "1793285466.5940025"
+  ],
+  "started_at": 1793284789.298666,
+  "finished_at": 1793285439.874211,
+  "elapsed_s": 650.5755450725555,
+  "return_code": 0,
+  "is_competition_rerun": false,
+  "ordinary_smoke_complete": true,
+  "finished_tasks": [
+    "2ba387bc",
+    "d35bdbdc"
+  ],
+  "training_steps": {
+    "2ba387bc": 128,
+    "d35bdbdc": 128
+  },
+  "started_batches_by_query": {
+    "2ba387bc_0": 4,
+    "d35bdbdc_0": 4,
+    "d35bdbdc_1": 4,
+    "d35bdbdc_2": 4
+  },
+  "no_new_hash_seed": true
+}

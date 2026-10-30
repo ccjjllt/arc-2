@@ -1,0 +1,17 @@
+{
+  "recorded_at_utc": "2026-10-29T14:37:32.057829+00:00",
+  "source_notebook_sha256": "d748c29ea86260a2827ca91a9839e96f55910b579d9e1087fdbd163ca80091af",
+  "independent_new_agent": "r034_package_audit_fresh",
+  "all_AST_valid": true,
+  "solver_loader_decoder_byte_equal_033": true,
+  "exact_visible_fraction_priority": true,
+  "hidden40task58query_membership_CPU_check": true,
+  "ordinary_order": [
+    "d35bdbdc",
+    "2ba387bc"
+  ],
+  "ordinary2task4query": true,
+  "log_regex_verified_against_real031": true,
+  "query_gold_read": false,
+  "quality_evidence": "CPU cost simulation only; no new GPU accuracy evidence"
+}

@@ -1,0 +1,52 @@
+{
+  "recorded_at_utc": "2026-10-29T14:46:00.140937+00:00",
+  "actual_ref": "zhuating/arc2-034-visible-cell-cost-per-query-queue",
+  "kernel_version": 1,
+  "latest_status": "RUNNING",
+  "log_sha256": "3a9036032b6148bdd13e5ab53256c7661416df55af1f58e642fc90bb04866b30",
+  "actual_queue_manifest": {
+    "event": "queue_priority_manifest",
+    "mode": "ordinary_order_smoke",
+    "source_path": "/kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_evaluation_challenges.json",
+    "source_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+    "priority_rule": "visible_cells(train inputs+outputs and test inputs) / n_test_queries; exact Fraction, task_id ties",
+    "original_reference": "033 V2/335137615",
+    "actual_order": [
+      "d35bdbdc",
+      "2ba387bc"
+    ],
+    "n_tasks": 2,
+    "n_queries": 4,
+    "entries": [
+      {
+        "task_id": "d35bdbdc",
+        "visible_cell_cost": 900,
+        "n_test_queries": 3,
+        "priority_numerator": 300,
+        "priority_denominator": 1
+      },
+      {
+        "task_id": "2ba387bc",
+        "visible_cell_cost": 2756,
+        "n_test_queries": 1,
+        "priority_numerator": 2756,
+        "priority_denominator": 1
+      }
+    ],
+    "query_outputs_read": false
+  },
+  "worker_started_ranks": [
+    0
+  ],
+  "NVIDIA_L4_observed": true,
+  "observed_versions": {
+    "unsloth": "2025.9.7",
+    "transformers": "4.55.4",
+    "torch": "2.8.0+cu128"
+  },
+  "errors_observed": false,
+  "actual_TTT128_and_all_workers_loaded": "not_yet_confirmed",
+  "ordinary_complete": false,
+  "formal_submission_created": false,
+  "remote_queries_stopped": true
+}

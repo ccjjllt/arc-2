@@ -1,0 +1,14 @@
+{
+  "recorded_at_utc": "2026-10-29T14:37:32.057829+00:00",
+  "requested_ref": "zhuating/arc2-034-queue-query-cost",
+  "actual_ref": "zhuating/arc2-034-visible-cell-cost-per-query-queue",
+  "kernel_version": 1,
+  "actual_script_version_id": null,
+  "notebook_sha256": "d748c29ea86260a2827ca91a9839e96f55910b579d9e1087fdbd163ca80091af",
+  "all_uploaded_cell_sources_equal": true,
+  "status_readback": "QUEUED",
+  "CLI_session_seconds": 840,
+  "accelerator": "NvidiaL4",
+  "formal_submission_created": false,
+  "slug_note": "Kaggle created title-derived slug despite requested id; use actual_ref thereafter. Do not rerun or rename V1."
+}

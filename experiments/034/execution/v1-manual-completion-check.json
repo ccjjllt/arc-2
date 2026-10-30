@@ -1,0 +1,81 @@
+{
+  "status": "ordinary_complete_manual_checks_passed",
+  "ref": "zhuating/arc2-034-visible-cell-cost-per-query-queue",
+  "kernel_version": 1,
+  "script_version_id": 363524873,
+  "source_cells_match": true,
+  "frozen_notebook_sha256": "d748c29ea86260a2827ca91a9839e96f55910b579d9e1087fdbd163ca80091af",
+  "runtime_source": {
+    "arc_solver.py": {
+      "sha256": "236a6c7e7e76d2c2ff3396514392d209c618f1b683b98ebe2416243d6853f112",
+      "exact": false,
+      "one_trailing_LF": true
+    },
+    "arc_loader.py": {
+      "sha256": "2c62526daba3fdd9da317e3dcb689acca8e24018e56e4c7f2c33ed15381ed8c6",
+      "exact": false,
+      "one_trailing_LF": true
+    },
+    "arc_decoder.py": {
+      "sha256": "b38b6b1bdd5f47dbd587a9809ad2ec20cdf9ce5723736a7fb7470e9b1ce61f1d",
+      "exact": false,
+      "one_trailing_LF": true
+    },
+    "starter.py": {
+      "sha256": "94e49938b0574f165f31f96e335bc395debdd679df8269659ea5fe08fd490d6f",
+      "exact": false,
+      "one_trailing_LF": true
+    }
+  },
+  "all_output_versions_unique": true,
+  "output_items": 48,
+  "queue_order": [
+    "d35bdbdc",
+    "2ba387bc"
+  ],
+  "queue_cost_per_query": [
+    300,
+    2756
+  ],
+  "training_steps": {
+    "2ba387bc": 128,
+    "d35bdbdc": 128
+  },
+  "batch_starts": {
+    "2ba387bc_0": 4,
+    "d35bdbdc_0": 4,
+    "d35bdbdc_1": 4,
+    "d35bdbdc_2": 4
+  },
+  "finished_tasks": [
+    [
+      "2ba387bc",
+      "371.2"
+    ],
+    [
+      "d35bdbdc",
+      "402.7"
+    ]
+  ],
+  "worker_started_ranks": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "hardware": "NVIDIA L4, 4 worker ranks present",
+  "no_timeout_traceback_oom": true,
+  "launcher_elapsed_s": 650.5755450725555,
+  "solver_finished_from_notebook_start_s": 693.2802085876465,
+  "solver_global_budget_s": 720,
+  "notebook_export_finished_s": 727.6209118366241,
+  "note_export": "B4 export continued after solver deadline; solver completion condition passed",
+  "schema_tasks": 120,
+  "schema_queries": 172,
+  "ordinary_planned_queries": 4,
+  "queries_nonplaceholder": 4,
+  "prediction_sha256": "0184133ab19c7c6773452da72a39f0888f1fd2a2a0e5fbd79dbfbd0c85d84993",
+  "query_gold_read": false,
+  "accuracy_or_speed_gain": "not_measured",
+  "eligible_next_action": "submit_same_V1_when_independent_review_passes"
+}

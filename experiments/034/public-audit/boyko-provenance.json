@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-10-29T14:21:47.068802+00:00",
+  "source": "Read-only response hooks inside official Kaggle CLI",
+  "account": "zhuating",
+  "command": [
+    "kernels",
+    "pull",
+    "konstantinboyko/failed-in-aimo-on-docker-v169-v03",
+    "-p",
+    "/private/tmp/r034-boyko-source",
+    "-m"
+  ],
+  "kernels": [
+    {
+      "current_version_number": 1,
+      "slug": "failed-in-aimo-on-docker-v169-v03",
+      "id": 127513066
+    }
+  ],
+  "output_files": []
+}

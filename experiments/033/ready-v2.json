@@ -1,0 +1,47 @@
+{
+  "prepared_at_utc": "2026-10-28T13:00:32.701193+00:00",
+  "status": "formal_result_complete_new_best",
+  "ref": "mikelou1/arc-agi2-lb33-89-minimal-perfpatch",
+  "kernel_version": 2,
+  "script_version_id": 335137615,
+  "notebook_sha256": "ee49384a10a4296dc0bf0670ae67325521f798d5337ed57bee50c8a443a378f4",
+  "file_name": "submission.json",
+  "submission_ref": 57737364,
+  "public_score": "30.56",
+  "private_score": null,
+  "core_policy": "original128TTT_DFS0.2_B4_with_public_GPU_NLL_implementation",
+  "ordinary_source_and_output_identity_verified": true,
+  "new_GPU_experiment_started": false,
+  "own_paired_efficacy": "not_run",
+  "public_score_for_candidate": "unconfirmed",
+  "plan_sha256": "d4e68909f8a3ae790907ac137c2a0c71dca675228301d9523380e86d355dc482",
+  "preflight_limits": {
+    "num_today": 0,
+    "num_total": 13,
+    "num_allowed_now": 1,
+    "limited_by_total": false
+  },
+  "quota": {
+    "time_used": 106153.032,
+    "time_reserved": 0.0,
+    "total_time_allowed": 108000.0,
+    "is_pay_to_scale_enabled": false
+  },
+  "formal_result_decision": "Retain only if actual public score exceeds02330.14; otherwise end this fixed public recipe. No same-result internal scan.",
+  "authorization": "User asked to continue optimizing and perform one submission after032 scored",
+  "next_action": "Retain03330.56 as incumbent; new experiments start from this exact source. Do not repeat identical source as a claimed optimization.",
+  "submitted_at_utc": "2026-10-28T13:02:06.680000",
+  "submitted_at_beijing": "2026-10-28T21:02:06.680000+08:00",
+  "initial_status": "SubmissionStatus.PENDING",
+  "exact_binding_verified": true,
+  "submitted_by": "zhuating",
+  "team_name": "ccjjllt",
+  "post_submit_limits": {
+    "num_today": 1,
+    "num_total": 14,
+    "num_allowed_now": 0,
+    "limited_by_total": false
+  },
+  "latest_status": "SubmissionStatus.COMPLETE",
+  "latest_result": "execution/submission-57737364-result-20261029.json"
+}

@@ -1,0 +1,65 @@
+{
+  "archived_at_utc": "2026-10-28T12:58:05.908474+00:00",
+  "ref": "mikelou1/arc-agi2-lb33-89-minimal-perfpatch",
+  "kernel_version": 2,
+  "script_version_id": 335137615,
+  "source_notebook_sha256": "ee49384a10a4296dc0bf0670ae67325521f798d5337ed57bee50c8a443a378f4",
+  "source_notebook_bytes": 41799,
+  "runtime_source_identity": {
+    "arc_loader.py": {
+      "source_sha256": "d01cd56167e534ae156706ef62ab11662fc7b403964614a7a55131940bde970c",
+      "runtime_sha256": "2c62526daba3fdd9da317e3dcb689acca8e24018e56e4c7f2c33ed15381ed8c6",
+      "runtime_match": "IPython_single_terminal_LF"
+    },
+    "arc_decoder.py": {
+      "source_sha256": "965cfd910777d9bbec9681c6c15c5e2ea3924569734248046f5e58f16cb28222",
+      "runtime_sha256": "b38b6b1bdd5f47dbd587a9809ad2ec20cdf9ce5723736a7fb7470e9b1ce61f1d",
+      "runtime_match": "IPython_single_terminal_LF"
+    },
+    "arc_solver.py": {
+      "source_sha256": "4308e294f1feff5ce48148658ca8f7186cff2ecc5600fa3c799a2c487acdbec5",
+      "runtime_sha256": "236a6c7e7e76d2c2ff3396514392d209c618f1b683b98ebe2416243d6853f112",
+      "runtime_match": "IPython_single_terminal_LF"
+    },
+    "starter.py": {
+      "source_sha256": "c3f0b49bd7fed7679eb8d128abc07517f4ec423613a8c20f17eb8b8b982ab3d4",
+      "runtime_sha256": "f56a1de0d4c17c2e5ec4ecf6874240fff2a8489dc075b5fbcf7d62bb00e4fd9e",
+      "runtime_match": "IPython_single_terminal_LF"
+    }
+  },
+  "model_sources": [
+    "sorokin/qwen3_4b_grids15_sft139/Transformers/bfloat16/1"
+  ],
+  "utility_sources": [
+    "sorokin/pip-install-unsloth-flash-patch"
+  ],
+  "actual_ordinary_submission_sha256": "62d39594d196c4505c42f1b828938c48e7dd52c619207ecac58ffea0cb8ea0e4",
+  "ordinary_non_placeholder_tasks": 4,
+  "ordinary_non_placeholder_queries": 5,
+  "ordinary_submission_total_schema_tasks": 120,
+  "ordinary_submission_total_schema_queries": 172,
+  "core_changes": [
+    "DFS float32 full-vocabulary GPU logsumexp, transfer12 ARC token NLLs",
+    "Teacher-forced rescoring GPU target-token gather with unused KV disabled",
+    "Current fixed sft139 model mount path"
+  ],
+  "preserved": [
+    "original sft139",
+    "TTT128 and original scheduler/aug16",
+    "DFS0.2",
+    "B4",
+    "original task/global budgets and4worker queue",
+    "loader/decoder/starter exact"
+  ],
+  "public_score_for_this_V2": "unconfirmed",
+  "own_paired_quality_or_speed_result": "not_run",
+  "vocab_size": 16,
+  "vocab_size_source": "026 verified base tokenizer and unchanged model structure",
+  "limitations": [
+    "Do not infer large full-Qwen-vocabulary transfer savings; this grid model has16 tokens.",
+    "GPU reduction/use_cache=False may change floating-point paths and candidates; bitwise equivalence unverified.",
+    "This fixed public implementation is a formal exploratory deployment contrast, not an isolated causal estimate of either hotspot.",
+    "Ordinary source has no saved outputs in CLI pull, so128 training steps are preserved in source but not independently verified from this downloaded notebook log.",
+    "Full hidden score and speed are not established by four ordinary tasks/five queries."
+  ]
+}

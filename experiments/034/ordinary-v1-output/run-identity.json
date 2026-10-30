@@ -1,0 +1,26 @@
+{
+  "original_reference": "033 V2/335137615",
+  "mode": "ordinary_order_smoke",
+  "source_input_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+  "queue_manifest_sha256": "d9d5fd196aecae61425f2aa52a91caaf424d9866c51eb32c965c495eb07c5de7",
+  "actual_order": [
+    "d35bdbdc",
+    "2ba387bc"
+  ],
+  "actual_task_count": 2,
+  "actual_query_count": 4,
+  "smoke_task_count": 2,
+  "smoke_query_count": 4,
+  "submission_schema_tasks": 120,
+  "submission_schema_queries": 172,
+  "prediction_sha256": "0184133ab19c7c6773452da72a39f0888f1fd2a2a0e5fbd79dbfbd0c85d84993",
+  "global_end_time": 1793285466.5940025,
+  "notebook_started": 1793284746.5940025,
+  "finished_at": 1793285474.2149138,
+  "elapsed_s": 727.6209118366241,
+  "ordinary_smoke_complete": true,
+  "query_gold_read": false,
+  "solver_loader_decoder_unchanged": true,
+  "quality_or_score_gain": "not_measured",
+  "no_new_hash_seed": true
+}

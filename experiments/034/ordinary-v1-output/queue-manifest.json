@@ -1,0 +1,30 @@
+{
+  "mode": "ordinary_order_smoke",
+  "source_path": "/kaggle/input/competitions/arc-prize-2026-arc-agi-2/arc-agi_evaluation_challenges.json",
+  "source_sha256": "e7c62a4bd211867c6b538f66b8013b81f299663c82ca062f49a52bf439d6e4e8",
+  "priority_rule": "visible_cells(train inputs+outputs and test inputs) / n_test_queries; exact Fraction, task_id ties",
+  "original_reference": "033 V2/335137615",
+  "actual_order": [
+    "d35bdbdc",
+    "2ba387bc"
+  ],
+  "n_tasks": 2,
+  "n_queries": 4,
+  "entries": [
+    {
+      "task_id": "d35bdbdc",
+      "visible_cell_cost": 900,
+      "n_test_queries": 3,
+      "priority_numerator": 300,
+      "priority_denominator": 1
+    },
+    {
+      "task_id": "2ba387bc",
+      "visible_cell_cost": 2756,
+      "n_test_queries": 1,
+      "priority_numerator": 2756,
+      "priority_denominator": 1
+    }
+  ],
+  "query_outputs_read": false
+}

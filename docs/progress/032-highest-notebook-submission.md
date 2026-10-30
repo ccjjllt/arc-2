@@ -2,6 +2,8 @@
 
 用户于2026-10-27明确要求直接使用最高分Notebook提交，不继续031研究。本次CLI按scoreDescending实时列表第一仍为Failed in AIMO；选已核验外部33.89的V1／312063593。
 
+**2026-10-28实查结果：submission57694986已COMPLETE，公榜28.89、私榜未返回，精确原V1／312063593绑定通过。** 较023的30.14低1.25，较原作者历史33.89低5.00。保留02330.14，不重复原V1。隐藏runtime、硬件、hash及逐题覆盖未确认，不能将差值归因某一因素。[实际结果](../../experiments/032/execution/submission-57694986-result-20261028.json)。
+
 正式预检：CLI submission-limits返回numTotal12、numAllowedNow1；最近10条submission均COMPLETE，最近02729.72，02330.14。原参考Notebook冻结SHA匹配。当前尚未发起正式请求，真实受理与绑定将追加记录。
 
 ## 已正式受理

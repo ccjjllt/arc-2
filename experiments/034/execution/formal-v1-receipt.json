@@ -1,0 +1,41 @@
+{
+  "recorded_at_utc": "2026-10-30T00:46:32.827147+00:00",
+  "account": "zhuating",
+  "source": "Response hooks inside official Kaggle CLI",
+  "command": [
+    "competitions",
+    "submit",
+    "arc-prize-2026-arc-agi-2",
+    "-k",
+    "zhuating/arc2-034-visible-cell-cost-per-query-queue",
+    "-v",
+    "1",
+    "-f",
+    "submission.json",
+    "-m",
+    "034 incumbent 033 solver unchanged; visible-cell cost per query task priority; frozen input-only rule; ordinary order smoke verified; formal exploratory coverage comparison."
+  ],
+  "code_submission_requests": [
+    {
+      "competition": "arc-prize-2026-arc-agi-2",
+      "kernel_owner": "zhuating",
+      "kernel_slug": "arc2-034-visible-cell-cost-per-query-queue",
+      "kernel_version": 1,
+      "file_name": "submission.json",
+      "description": "034 incumbent 033 solver unchanged; visible-cell cost per query task priority; frozen input-only rule; ordinary order smoke verified; formal exploratory coverage comparison."
+    }
+  ],
+  "code_submission_responses": [
+    {
+      "ref": 57787438,
+      "message": ""
+    }
+  ],
+  "submissions": [],
+  "limits": {
+    "num_today": 1,
+    "num_total": 15,
+    "num_allowed_now": 0,
+    "limited_by_total": false
+  }
+}

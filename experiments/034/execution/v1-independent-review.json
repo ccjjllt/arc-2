@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "agent": "r034_completion_review_new",
+  "read_only": true,
+  "all_cell_sources_equal": true,
+  "core_sources_match033": true,
+  "runtime_source_one_terminal_LF": true,
+  "kernel_version": 1,
+  "script_version_id": 363524873,
+  "output_entries_verified_by_parent": 48,
+  "TTT_steps": {
+    "2ba387bc": 128,
+    "d35bdbdc": 128
+  },
+  "query_batch_starts": 16,
+  "finished_tasks": 2,
+  "no_timeout_error_oom": true,
+  "solver_finished_s": 693.2802085876465,
+  "export_finished_s": 727.6209118366241,
+  "prediction_identity_and_schema": true,
+  "accuracy_or_speed_gain": "not_measured",
+  "queue_note": "FIFO put order d35 then2ba; asynchronous worker readiness means rank/training log order is not FIFO dequeue time evidence",
+  "result": "No implementation blocker for authorized sameV1 formal submission"
+}

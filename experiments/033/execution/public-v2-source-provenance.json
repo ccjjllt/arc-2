@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-10-28T12:51:31.654961+00:00",
+  "source": "Read-only response hooks inside official Kaggle CLI",
+  "account": "zhuating",
+  "command": [
+    "kernels",
+    "pull",
+    "mikelou1/arc-agi2-lb33-89-minimal-perfpatch",
+    "-p",
+    "/private/tmp/arc2-r033-perfpatch-provenance-read",
+    "-m"
+  ],
+  "kernels": [
+    {
+      "current_version_number": 2,
+      "slug": "arc-agi2-lb33-89-minimal-perfpatch",
+      "id": 127096220
+    }
+  ],
+  "output_files": []
+}

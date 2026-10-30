@@ -1,0 +1,23 @@
+{
+  "checked_at_utc": "2026-10-29T14:19:40.305387+00:00",
+  "submission": {
+    "ref": 57737364,
+    "file_name": "submission.json",
+    "date": "2026-10-28T13:02:06.680000",
+    "description": "033 NVARC public GPU NLL implementation V2; original TTT128 DFS0.2 B4 and budgets; exploratory formal comparison, score gain unverified.",
+    "status": "SubmissionStatus.COMPLETE",
+    "public_score": "30.56",
+    "private_score": null,
+    "team_name": "ccjjllt",
+    "submitted_by": "zhuating",
+    "url": "/code/mikelou1/arc-agi2-lb33-89-minimal-perfpatch?scriptVersionId=335137615",
+    "error_description": null
+  },
+  "exact_binding_verified": true,
+  "public_score_change_vs_023": 0.42,
+  "public_score_change_vs_032": 1.67,
+  "new_best_confirmed_public_score": 30.56,
+  "private_score": "not_returned",
+  "hidden_hardware_runtime_and_coverage": "unconfirmed",
+  "decision": "Retain033 as formal incumbent and keep023 as historical control. Score gain is observed overall, not a causal speed estimate."
+}

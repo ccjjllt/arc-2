@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-10-29T14:22:38.222118+00:00",
+  "source": "Read-only response hooks inside official Kaggle CLI",
+  "account": "zhuating",
+  "command": [
+    "kernels",
+    "pull",
+    "manderson240/arc-agi-2-fork-lb33-89-20260903",
+    "-p",
+    "/private/tmp/r034-manderson-source",
+    "-m"
+  ],
+  "kernels": [
+    {
+      "current_version_number": 19,
+      "slug": "arc-agi-2-fork-lb33-89-20260903",
+      "id": 133002000
+    }
+  ],
+  "output_files": []
+}

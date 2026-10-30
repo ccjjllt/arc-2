@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-10-29T14:22:51.519467+00:00",
+  "source": "Read-only response hooks inside official Kaggle CLI",
+  "account": "zhuating",
+  "command": [
+    "kernels",
+    "pull",
+    "fummyz/arc-agi-2-public-nvarc-perfpatch",
+    "-p",
+    "/private/tmp/r034-fummyz-source",
+    "-m"
+  ],
+  "kernels": [
+    {
+      "current_version_number": 1,
+      "slug": "arc-agi-2-public-nvarc-perfpatch",
+      "id": 138323552
+    }
+  ],
+  "output_files": []
+}

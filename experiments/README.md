@@ -1,6 +1,6 @@
 # 实验目录导航
 
-当前交付见[032](032/README.md)：用户要求直接提交最高分Notebook，原作者Failed in AIMO V1／312063593已由CLI正式提交，ref57694986、PENDING、无新分数。03164步和0300.1配方保持结束；[023](023/README.md)仍为已确认30.14对照。旧目录继续对应历史脚本及SHA。
+当前正式最好[033](033/README.md)：57737364 COMPLETE30.56，比023高0.42。当前交付[034](034/README.md)仅改033全局queue排序，普通V1通过两题TTT128／16批及身份核验，正式57787438 PENDING，尚无新分数。032原V1实际28.89，03164步和0300.1均结束，023保留历史对照。
 
 ## 当前交付及其依赖
 
@@ -8,7 +8,9 @@
 | --- | --- | --- |
 | [030/](030/) | pilot V1 COMPLETE／362694905；6/28→6/28净0，结束0.1、保留原0.2／B4 | [结果](030/pilot20-v1-summary.json)、[停止决定](030/pilot20-v1-decision.json) |
 | [031/](031/) | V1 COMPLETE／362740379；2/12→2/12净0，结束64步、不提交 | [结果](031/v1-summary.json)、[停止决定](031/v1-decision.json) |
-| [032/](032/) | 原作者最高排序V1／312063593直接提交，57694986 PENDING，无新分数 | [接续](032/ready-v1.json)、[进展](../docs/progress/032-highest-notebook-submission.md) |
+| [032/](032/) | 原作者V1／312063593直接提交，57694986 COMPLETE28.89，保留023 | [结果](032/ready-v1.json)、[进展](../docs/progress/032-highest-notebook-submission.md) |
+| [033/](033/) | 57737364 COMPLETE30.56，正式最好 | [结果](033/ready-v2.json)、[进展](../docs/progress/033-nvarc-gpu-nll-submission.md) |
+| [034/](034/) | 仅全局query成本queue；普通V1通过，正式57787438 PENDING | [接续](034/ready-v1.json)、[进展](../docs/progress/034-nvarc-query-cost-queue.md) |
 | [029/](029/) | V1 COMPLETE／362548497；差异早于恢复，受检恢复点一致，定位结束，无提分结论 | [当前导航](029/README.md) |
 | [028/](028/) | 同adapter机制V2 COMPLETE，d35候选变化，固定16-token配方结束，不晋级 | [当前导航](028/README.md) |
 | [027/](027/) | C23净增1，正式57634436已COMPLETE／29.72，较023低0.42，结束晋级 | [当前导航](027/README.md) |

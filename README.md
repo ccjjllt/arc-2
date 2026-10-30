@@ -4,7 +4,11 @@
 
 ## 当前进度
 
-2026-10-27 **按用户要求直接提交当前公开排序第一的Failed in AIMO原V1：submission57694986，PENDING**。CLI实际请求和队伍列表均绑定[原作者V1／312063593](https://www.kaggle.com/code/koushikrudra/failed-in-aimo?scriptVersionId=312063593)，未使用023副本或031改动、未新启动ordinary GPU。原作者历史33.89，本次分数未返回；正式最好仍02330.14。[032进展](docs/progress/032-highest-notebook-submission.md)。
+2026-10-29 **033正式57737364已COMPLETE／30.56，比此前最好30.14提高0.42**。精确[Minimal Perfpatch V2／335137615](https://www.kaggle.com/code/mikelou1/arc-agi2-lb33-89-minimal-perfpatch?scriptVersionId=335137615)绑定通过，保留为当前正式最好；私榜与隐藏覆盖未知，不能归因单个热点。[033结果](docs/progress/033-nvarc-gpu-nll-submission.md)。
+
+当前[034](docs/progress/034-nvarc-query-cost-queue.md)仅改033的全局任务入队顺序，按visible cells/query优先；原求解源逐字不变。普通V1已COMPLETE，两题TTT128、16批及身份核验通过，2026-10-30已正式提交 **57787438／PENDING**，zhuating／ccjjllt、精确[363524873](https://www.kaggle.com/code/zhuating/arc2-034-visible-cell-cost-per-query-queue?scriptVersionId=363524873)绑定正确；尚无新分数。CPU回放全扫尾部更慢4.64%，只有实际公榜>30.56才保留。
+
+032原作者V1／312063593正式submission57694986已实查COMPLETE **28.89**，比02330.14低1.25；精确绑定正确，隐藏退分原因未确认，不重提原V1。023 **30.14** 保留历史对照，当前最好已为03330.56。[032结果](docs/progress/032-highest-notebook-submission.md)。
 
 2026-10-27 **[031 V1／362740379](https://www.kaggle.com/code/zhuating/arc2-031-ttt-budget64?scriptVersionId=362740379)已COMPLETE：2/12→2/12，增0／丢0／净0，结束64步配方、不正式提交**。原128步调度保留、B确实64步停止；部署账1531.644→1409.424秒、搜索46→48批，但没有新增正确query。第二槽压力保住，预定净增条件未过。[031结果](experiments/031/v1-summary.json)、[进展](docs/progress/031-nvarc-ttt-budget.md)。保留原128步TTT／DFS0.2／B4，正式最好仍02330.14。
 

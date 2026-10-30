@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-10-29T14:20:59.842654+00:00",
+  "source": "Read-only response hooks inside official Kaggle CLI",
+  "account": "zhuating",
+  "command": [
+    "kernels",
+    "pull",
+    "evgendvorkin/arc-2-2026-4-4-local-boyko-nvarc-astra",
+    "-p",
+    "/private/tmp/r034-evgen-new-source",
+    "-m"
+  ],
+  "kernels": [
+    {
+      "current_version_number": 21,
+      "slug": "arc-2-2026-4-4-local-boyko-nvarc-astra",
+      "id": 131734977
+    }
+  ],
+  "output_files": []
+}
